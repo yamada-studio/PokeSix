@@ -38,7 +38,7 @@ One script per step, one folder per OS:
 | Run | `scripts/linux/run.sh` | `scripts/macos/run.sh` | `scripts\windows\run.bat` |
 
 ```bash
-git clone https://github.com/reidlo5135/PokeSix.git
+git clone https://github.com/yamada-studio/PokeSix.git
 cd PokeSix
 scripts/linux/setup.sh      # system packages (asks for sudo only if something is missing) + Qt via aqtinstall
 scripts/linux/build.sh      # debug build + tests;  add `release`, `--clean`, `--install <prefix>`
