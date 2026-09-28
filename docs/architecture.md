@@ -63,6 +63,13 @@ ui는 rviz 플러그인, app은 launch 파일이 하는 일(구성하고 연결�
 | `widgets/` | 재사용 컴포넌트 | `PanelFrame`, `TypeChip`, `StatBar`, `HeatmapWidget` … |
 | `home/` `dex/` `items/` `squad/` `settings/` | 화면(page)과 그 화면 전용 위젯 | `HomePage`, `DexPage`, `DetailDrawer` … |
 
+컴포넌트 규칙([ADR 0007](decisions/0007-ui-component-structure.md)):
+- `widgets/`에는 디자인 시트 §5에 있거나 두 화면 이상에서 쓰는 것만 둔다. widgets는 화면 폴더를 include하지 않는다
+- 창 그림(테두리 · 그림자 · 머리)은 `paintPanel()` 한 곳에서 그린다. 베이스 클래스는 동작으로 고른다
+  (클릭 · 선택 → `QAbstractButton`, 컨테이너 → `QWidget`)
+- 내용 위젯은 자기를 감싼 겉모양(`PanelFrame` · 드로어 · 모달)을 모른다. 겉모양 두께는 `contentsMargins`로 확보한다
+- 위젯 rect = 상자 + 아래 그림자. 상자 바깥 장식(선택 테 · 포커스 링)은 위젯 스스로 그리지 않는다
+
 ### app — `src/app/`
 
 composition root. 명령행 인자(`--gallery`, `--screenshot`), 로깅 초기화, 글꼴 로드와 테마 적용,

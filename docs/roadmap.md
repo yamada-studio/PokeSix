@@ -34,11 +34,11 @@
 | | 단계 | 배우는 것 | 눈에 보이는 결과 |
 |---|---|---|---|
 | ✅ | **A1** MainWindow와 디버깅 | VS Code 프리셋 빌드·디버그, `Q_OBJECT`와 moc, `QMainWindow`, object tree, `QLoggingCategory` | 홈을 올릴 창: 1440×900, 최소 960×640, 로그, 생성자 breakpoint |
-| ⬜ | **A2** 레이아웃 — 홈의 뼈대 | `QVBoxLayout` / `QHBoxLayout` / `QGridLayout`, margin · spacing · stretch, size policy, `QStackedWidget` | 앱 막대 자리(60) + 홈 페이지: 제목 줄, 세대 카드 9칸, 하단(최근 스쿼드 │ 바로 가기 3)이 **빈 상자로** 캡처와 같은 비율로 배치 |
+| 🟨 | **A2** 레이아웃 — 홈의 뼈대 | `QVBoxLayout` / `QHBoxLayout` / `QGridLayout`, margin · spacing · stretch, size policy, `QStackedWidget`, CSS 수치 → Qt 간격 환산 | 앱 막대 자리(60) + 홈 페이지: 제목 줄, 세대 카드 9칸, 하단(최근 스쿼드 │ 바로 가기 3)이 **최종 클래스 이름 그대로의 빈 상자로** 캡처와 같은 위치에 배치 ([ADR 0007](decisions/0007-ui-component-structure.md)) |
 | ⬜ | **A3** 캡처 도구 | `QCommandLineParser`, `QWidget::grab()`, offscreen 렌더링, 첫 `pokesix_app` 타깃 | `PokeSix --screenshot home 1440x900 out.png` → 이후 모든 단계를 기준 이미지와 나란히 비교 |
-| ⬜ | **A4** 글꼴 · 토큰 · QSS | qrc, `QFontDatabase`, `Tokens.h` 이식(`ui/theme`), QSS `@token` 치환, `QPalette` | 종이색 바탕, 도현 36 제목, 나눔고딕 설명문 |
-| ⬜ | **A5** PanelFrame — 첫 `paintEvent` | `QPainter`, `QPainterPath`, 안티에일리어싱, 블러 없는 오프셋 그림자 | 빨강 머리 "최근 스쿼드" 창, 바로 가기 카드 3개의 테두리와 그림자 |
-| ⬜ | **A6** 세대 카드와 AppState | 커스텀 위젯, 마우스 이벤트 · hover, **시그널/슬롯**, `Q_PROPERTY`, 첫 `pokesix_data` 타깃, core의 세대 표 | 세대 카드 9장(머리 색 순환, Silkscreen "GEN n"). 클릭하면 노란 테와 "▶ 진행 중"이 따라 옮겨 간다 |
+| ⬜ | **A4** 글꼴 · 토큰 · QSS | qrc, `QFontDatabase`, `Tokens.h` 이식(`ui/theme`) + 의미 역할(주 콘텐츠 · 정보 · 분류 …) 층, QSS `@token` 치환, `QPalette` | 종이색 바탕, 도현 36 제목, 나눔고딕 설명문 |
+| ⬜ | **A5** PanelFrame — 첫 `paintEvent` | `QPainter`, `QPainterPath`, 안티에일리어싱, 블러 없는 오프셋 그림자, 그리기 함수(`paintPanel`)와 위젯의 분리 | 빨강 머리 "최근 스쿼드" 창, 바로 가기 카드 3개, 세대 카드 틀이 **한 함수로** 그려진다 |
+| ⬜ | **A6** 세대 카드와 AppState | 커스텀 위젯, 마우스 이벤트 · hover, **시그널/슬롯**, `Q_PROPERTY`, `QButtonGroup`, 상자 바깥 선택 테 그리기, 첫 `pokesix_data` 타깃, core의 세대 표 | 세대 카드 9장(머리 색 순환, Silkscreen "GEN n"). 클릭하면 노란 테와 "▶ 진행 중"이 따라 옮겨 간다 |
 | ⬜ | **A7** 앱 막대와 탭 | SVG 렌더링(`QSvgRenderer`), 폴더 탭 커스텀 페인트, `QShortcut`(Ctrl+1…5) | 빨강 앱 막대: 마크 + POKESIX 워드마크 + 탭 5 + 세대 버튼 · 검색 자리. 탭으로 페이지 전환(홈 외 4개는 빈 페이지) |
 | ⬜ | **A8** 최근 스쿼드 · 바로 가기 · 마무리 | 행 위젯 조합, 임시 데이터, 빈 상태, 캡처 차이 목록으로 마감 | 홈 화면 완성. 기준 이미지와 차이 목록이 비어 있거나 설명 가능 → **v0.1.0** |
 
@@ -120,6 +120,8 @@ CI(GitHub Actions, 3개 OS), 패키징(dmg / zip / AppImage), sanitizer 프리�
 4. **패키징 방식** (Phase G): OS별 배포 형식
 5. **Tokens 네이밍** (A4): 핸드오프의 `kRed`를 유지할지, 컨벤션(`camelCase`)으로 바꿀지
 6. **글꼴 12MB를 qrc에 넣을지** (A4): 실행 파일에 포함(배포 간단, 빌드 느림) vs 실행 파일 옆 폴더(빌드 빠름, 경로 관리)
+7. **상자 바깥 장식을 그리는 방식** (A6): 부모 위젯이 그리기 vs `QFocusFrame`처럼 대상 위를 덮는 형제 위젯. 선택 테와 포커스 링에 같이 쓴다
+8. **모달 · 드로어 방식** (E2 전): 창 안 오버레이(dim + `PanelFrame`, 추천 기울기) vs frameless `QDialog`. 근거는 [ADR 0007](decisions/0007-ui-component-structure.md) 9항
 
 ## 나중에 붙일 것 (백로그)
 

@@ -14,3 +14,4 @@
 | [0004](0004-googletest-via-fetchcontent.md) | GoogleTest를 FetchContent + 해시로 고정한다 | Accepted |
 | [0005](0005-design-handoff-adoption.md) | 디자인 핸드오프를 기존 구조 위에 맞춰 반영한다 | Accepted |
 | [0006](0006-semver-and-trunk-based-branches.md) | SemVer(Phase = MINOR)와 main 하나 + 짧은 작업 브랜치 | Accepted |
+| [0007](0007-ui-component-structure.md) | UI 컴포넌트는 "그리기 · 동작 · 겉모양"을 나눠 모듈화한다 | Accepted |
