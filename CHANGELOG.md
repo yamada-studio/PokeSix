@@ -6,6 +6,11 @@ and the project uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- `MainWindow` in a new `pokesix_ui` library: 1440×900 default size, 960×640 minimum,
+  title with the application version.
+- `pokesix.ui` logging category (info by default; debug via `QT_LOGGING_RULES`).
+
 ## [0.0.1] - 2026-09-28
 
 ### Added
