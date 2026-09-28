@@ -7,14 +7,21 @@
 #
 # 첫 소스 파일을 추가할 때 아래 주석을 풀고 파일 목록을 채운다.
 #
-# qt_add_library(pokesix_ui STATIC
-#     shell/mainwindow.h
-#     shell/mainwindow.cpp
-# )
-# add_library(PokeSix::ui ALIAS pokesix_ui)
-# pokesix_qt_target(pokesix_ui)
-#
-# target_link_libraries(pokesix_ui
-#     PUBLIC  Qt6::Widgets
-#     PRIVATE pokesix_data     # data 를 아직 안 만들었으면 이 줄은 나중에
-# )
+qt_add_library(pokesix_ui STATIC
+    logging/logging.h
+    logging/logging.cpp
+    shell/mainwindow.h
+    shell/mainwindow.cpp
+)
+
+add_library(PokeSix::ui ALIAS pokesix_ui)
+pokesix_qt_target(pokesix_ui)
+
+target_link_libraries(pokesix_ui
+    PUBLIC  Qt6::Widgets
+    # PRIVATE pokesix_data     # data 를 아직 안 만들었으면 이 줄은 나중에
+)
+
+target_include_directories(pokesix_ui PUBLIC
+    "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>"
+)

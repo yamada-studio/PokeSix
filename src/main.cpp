@@ -1,5 +1,6 @@
+#include "ui/shell/mainwindow.h"
+
 #include <QApplication>
-#include <QMainWindow>
 
 int main(int argc, char *argv[])
 {
@@ -11,11 +12,8 @@ int main(int argc, char *argv[])
     QApplication::setApplicationName(QStringLiteral("PokeSix"));
     QApplication::setApplicationVersion(QStringLiteral(POKESIX_VERSION));
 
-    // TODO: src/app 의 MainWindow 로 교체
-    QMainWindow window;
-    window.setWindowTitle(QStringLiteral("PokeSix %1").arg(QApplication::applicationVersion()));
-    window.resize(1024, 720);
-    window.show();
+    com::yamada::studio::MainWindow mainWindow;
+    mainWindow.show();
 
     return app.exec();
 }

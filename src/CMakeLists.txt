@@ -38,7 +38,7 @@ target_compile_definitions(PokeSix PRIVATE
 # TODO: app / ui / data 타깃이 생기면 여기를 `pokesix_app` 하나로 바꾼다.
 target_link_libraries(PokeSix PRIVATE
     pokesix_core
-    Qt6::Widgets
+    pokesix_ui
 )
 
 set_target_properties(PokeSix PROPERTIES
