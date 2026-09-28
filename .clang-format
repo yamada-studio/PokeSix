@@ -31,7 +31,7 @@ BraceWrapping:
   BeforeElse: false
   BeforeCatch: false
   BeforeLambdaBody: false
-  SplitEmptyFunction: false
+  SplitEmptyFunction: true
   SplitEmptyRecord: false
 
 AllowShortFunctionsOnASingleLine: Inline
