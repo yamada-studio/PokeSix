@@ -53,6 +53,11 @@
 - 위젯 소유권은 **부모-자식(object tree)** 으로 관리한다. `new QLabel(this)`처럼 부모를 넘기면
   delete하지 않는다. 부모가 없는 최상위 객체만 스택이나 `std::unique_ptr`로 관리한다.
 - 생성자는 `explicit`이고 마지막 인자로 `QWidget *parent = nullptr`(또는 `QObject *parent`)를 받는다.
+- **상속받은 멤버 함수를 호출할 때 기반 클래스 이름을 붙인다**: `QMainWindow::setWindowTitle(...)`.
+  자기 클래스의 멤버와 물려받은 멤버를 코드에서 구분하려는 목적이다(프로젝트 결정).
+  - **단, 가상 함수에는 붙이지 않는다.** `Base::f()`는 가상 디스패치를 끄므로 오버라이드가 무시된다
+  - 예외: 오버라이드 안에서 기반 구현을 **일부러** 부를 때(`QMainWindow::resizeEvent(event);`)
+  - clang-tidy `bugprone-parent-virtual-call`이 일부 실수를 잡는다
 - 문자열 리터럴: 번역 대상이면 `tr("...")`, 아니면 `QStringLiteral("...")` / `u"..."_s`.
 - 색 · 크기 값을 코드에 하드코딩하지 않는다. `ui/theme`의 토큰에서만 가져온다(다크 테마 전환 대비).
 
