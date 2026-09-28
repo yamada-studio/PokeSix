@@ -1,25 +1,25 @@
 # shellcheck shell=bash
-# shellcheck disable=SC2034  # 여기서 정의한 변수는 이 파일을 source 하는 스크립트가 사용한다
-# scripts/macos/*.sh 공통 설정. 직접 실행하지 않고 source 한다.
+# shellcheck disable=SC2034  # variables defined here are used by the scripts that source this file
+# Shared settings for scripts/macos/*.sh. Source it; do not execute it directly.
 #
-# macOS 기본 bash 는 3.2 다. 이 폴더의 스크립트는 bash 3.2 에서 동작해야 한다:
-#   - mapfile / readarray / 연관 배열 금지
-#   - set -u 에서 빈 배열은 ${arr[@]+"${arr[@]}"} 로 전개
+# The default bash on macOS is 3.2. Scripts in this folder must work on bash 3.2:
+#   - no mapfile / readarray / associative arrays
+#   - with set -u, expand possibly-empty arrays as ${arr[@]+"${arr[@]}"}
 
 if [[ "$(uname -s)" != Darwin ]]; then
-    echo "error: macOS 전용 스크립트입니다. Linux: scripts/linux/, Windows: scripts\\windows\\" >&2
+    echo "error: this script is for macOS only. Linux: scripts/linux/, Windows: scripts\\windows\\" >&2
     exit 1
 fi
 
 POKESIX_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 
-# Qt 버전은 scripts/QT_VERSION 한 곳에서 관리한다 (환경 변수로 덮어쓸 수 있음)
+# The Qt version lives in one place, scripts/QT_VERSION (can be overridden by the environment)
 QT_VERSION="${QT_VERSION:-$(tr -d '[:space:]' <"$POKESIX_ROOT/scripts/QT_VERSION")}"
 QT_INSTALL_DIR="${QT_INSTALL_DIR:-$HOME/Qt}"
 QT_AQT_ARCH=clang_64                        # Intel + Apple Silicon universal
 QT_DEFAULT_DIR="$QT_INSTALL_DIR/$QT_VERSION/macos"
 
-# ── 출력 ──────────────────────────────────────────────────────
+# ── Output ────────────────────────────────────────────────────
 if [[ -t 1 ]]; then
     _c_blue=$'\e[1;34m'; _c_yellow=$'\e[1;33m'; _c_red=$'\e[1;31m'; _c_reset=$'\e[0m'
 else
@@ -32,30 +32,30 @@ die()  { printf '%serror:%s %s\n' "$_c_red" "$_c_reset" "$*" >&2; exit 1; }
 # ── Qt ────────────────────────────────────────────────────────
 is_qt_dir() { [[ -n "$1" && -f "$1/lib/cmake/Qt6/Qt6Config.cmake" ]]; }
 
-# QT_ROOT_DIR 을 확정해 export 한다: 환경 변수 → aqtinstall 기본 위치 → Homebrew 순
+# Resolve and export QT_ROOT_DIR: environment variable → aqtinstall default location → Homebrew
 resolve_qt() {
     if [[ -n "${QT_ROOT_DIR:-}" ]]; then
         is_qt_dir "$QT_ROOT_DIR" \
-            || die "QT_ROOT_DIR=$QT_ROOT_DIR 에 Qt 가 없습니다 (lib/cmake/Qt6 확인). docs/build.md §1"
+            || die "QT_ROOT_DIR=$QT_ROOT_DIR does not contain Qt (check lib/cmake/Qt6). See docs/build.md §1"
     elif is_qt_dir "$QT_DEFAULT_DIR"; then
         QT_ROOT_DIR="$QT_DEFAULT_DIR"
     elif command -v brew >/dev/null && is_qt_dir "$(brew --prefix qt 2>/dev/null)"; then
         QT_ROOT_DIR="$(brew --prefix qt)"
-        warn "Homebrew Qt 사용: $QT_ROOT_DIR (버전이 $QT_VERSION 과 다를 수 있음)"
+        warn "using Homebrew Qt: $QT_ROOT_DIR (its version may differ from $QT_VERSION)"
     else
-        die "Qt 를 찾을 수 없습니다. 먼저 scripts/macos/setup.sh 를 실행하거나 QT_ROOT_DIR 을 설정하세요."
+        die "Qt not found. Run scripts/macos/setup.sh first, or set QT_ROOT_DIR."
     fi
     export QT_ROOT_DIR
 }
 
-# ── 프리셋 · 경로 ──────────────────────────────────────────────
+# ── Presets and paths ─────────────────────────────────────────
 preset_for() {
     case "$1" in
         debug|release) printf 'macos-%s' "$1" ;;
-        *) die "빌드 구성은 debug 또는 release 입니다: '$1'" ;;
+        *) die "build configuration must be 'debug' or 'release': '$1'" ;;
     esac
 }
 
-# MACOSX_BUNDLE 이므로 실행 파일은 .app 번들 안에 있다
+# MACOSX_BUNDLE: the executable lives inside the .app bundle
 app_bundle() { printf '%s/build/%s/src/PokeSix.app' "$POKESIX_ROOT" "$1"; }
 app_binary() { printf '%s/Contents/MacOS/PokeSix' "$(app_bundle "$1")"; }

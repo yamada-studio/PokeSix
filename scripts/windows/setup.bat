@@ -1,13 +1,13 @@
 @echo off
-rem [Windows] 외부 의존성 한 번에 설치 — winget + aqtinstall.
+rem [Windows] Install all external dependencies in one go — winget + aqtinstall.
 rem
 rem   scripts\windows\setup.bat              VS 2022 C++ / CMake / Git / uv + Qt
-rem   scripts\windows\setup.bat --no-system  Qt 만
-rem   scripts\windows\setup.bat --no-qt      도구만
-rem   scripts\windows\setup.bat --yes        확인 질문 없이 (VS 설치 포함)
+rem   scripts\windows\setup.bat --no-system  Qt only
+rem   scripts\windows\setup.bat --no-qt      tools only
+rem   scripts\windows\setup.bat --yes        no prompts (includes installing Visual Studio)
 rem
-rem 이미 설치된 것은 건너뛴다. 여러 번 실행해도 안전하다.
-rem Visual Studio 설치는 수 GB 라서 --yes 가 아니면 먼저 묻는다.
+rem Anything already installed is skipped. Safe to run repeatedly.
+rem Visual Studio is several GB, so it asks first unless --yes is given.
 setlocal
 call "%~dp0env.bat" || exit /b 1
 
@@ -30,13 +30,13 @@ goto :parse
 :parsed
 
 
-rem ── 1. 도구 (winget) ─────────────────────────────────────────
+rem ── 1. Tools (winget) ───────────────────────────────────────
 if "%DO_SYSTEM%"=="0" goto :qt
 
 where winget >nul 2>&1
 if errorlevel 1 goto :no_winget
 
-rem Visual Studio 2022 + C++ 데스크톱 워크로드
+rem Visual Studio 2022 + the C++ desktop workload
 call "%~dp0env.bat" :find_vs
 if not errorlevel 1 goto :vs_found
 echo [setup] Visual Studio 2022 with C++ tools: not found
@@ -56,7 +56,7 @@ goto :vs_done
 echo warn: skipped Visual Studio. build.bat will fail until it is installed. 1>&2
 :vs_done
 
-rem CMake — VS 2022 에 번들된 것이 있으면 그것을 쓴다
+rem CMake — use the one bundled with VS 2022 if present
 call "%~dp0env.bat" :find_cmake
 if not errorlevel 1 goto :cmake_done
 call :winget_install Kitware.CMake
@@ -80,7 +80,7 @@ if exist "%QT_DEFAULT_DIR%\lib\cmake\Qt6\Qt6Config.cmake" goto :qt_already
 where uvx >nul 2>&1
 if errorlevel 1 goto :no_uv
 echo [setup] installing Qt %QT_VERSION% to %QT_INSTALL_DIR% ...
-rem aqt 는 실행 위치에 aqtinstall.log 를 남기므로 임시 폴더에서 실행한다
+rem aqt leaves aqtinstall.log in the working directory, so run it from a temp directory
 pushd "%TEMP%"
 uvx --from aqtinstall aqt install-qt windows desktop %QT_VERSION% %QT_AQT_ARCH% --outputdir "%QT_INSTALL_DIR%"
 set "AQT_RC=%errorlevel%"
@@ -97,7 +97,7 @@ echo [setup] Qt %QT_VERSION%: already installed at %QT_DEFAULT_DIR%
 goto :summary
 
 
-rem ── 3. 확인 ──────────────────────────────────────────────────
+rem ── 3. Check ────────────────────────────────────────────────
 :summary
 echo.
 echo [setup] check
@@ -120,9 +120,9 @@ echo   setx QT_ROOT_DIR "%QT_DEFAULT_DIR%"
 exit /b 0
 
 
-rem ── 서브루틴 ─────────────────────────────────────────────────
+rem ── Subroutines ─────────────────────────────────────────────
 
-rem :ensure_tool <exe> <winget-id> — exe 가 PATH 에 없으면 winget 으로 설치
+rem :ensure_tool <exe> <winget-id> — install with winget if exe is not on PATH
 :ensure_tool
 where %1 >nul 2>&1
 if errorlevel 1 goto :ensure_tool_install
@@ -132,12 +132,12 @@ exit /b 0
 call :winget_install %2
 exit /b %errorlevel%
 
-rem :winget_install <winget-id> — 설치 후 이 세션의 PATH 도 갱신한다
+rem :winget_install <winget-id> — also refreshes PATH for this session after installing
 :winget_install
 echo [setup] installing %1 ...
 winget install -e --id %1 --accept-package-agreements --accept-source-agreements
 if errorlevel 1 exit /b 1
-rem winget 이 등록한 PATH 는 새 터미널에서만 보이므로 알려진 설치 위치를 직접 추가한다
+rem PATH entries registered by winget only appear in new terminals, so add the known install locations here
 set "PATH=%LOCALAPPDATA%\Microsoft\WinGet\Links;%USERPROFILE%\.local\bin;%ProgramFiles%\Git\cmd;%ProgramFiles%\CMake\bin;%PATH%"
 exit /b 0
 

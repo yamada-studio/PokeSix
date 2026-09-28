@@ -53,6 +53,11 @@
 - 위젯 소유권은 **부모-자식(object tree)** 으로 관리한다. `new QLabel(this)`처럼 부모를 넘기면
   delete하지 않는다. 부모가 없는 최상위 객체만 스택이나 `std::unique_ptr`로 관리한다.
 - 생성자는 `explicit`이고 마지막 인자로 `QWidget *parent = nullptr`(또는 `QObject *parent`)를 받는다.
+- **상속받은 멤버 함수를 호출할 때 기반 클래스 이름을 붙인다**: `QMainWindow::setWindowTitle(...)`.
+  자기 클래스의 멤버와 물려받은 멤버를 코드에서 구분하려는 목적이다(프로젝트 결정).
+  - **단, 가상 함수에는 붙이지 않는다.** `Base::f()`는 가상 디스패치를 끄므로 오버라이드가 무시된다
+  - 예외: 오버라이드 안에서 기반 구현을 **일부러** 부를 때(`QMainWindow::resizeEvent(event);`)
+  - clang-tidy `bugprone-parent-virtual-call`이 일부 실수를 잡는다
 - 문자열 리터럴: 번역 대상이면 `tr("...")`, 아니면 `QStringLiteral("...")` / `u"..."_s`.
 - 색 · 크기 값을 코드에 하드코딩하지 않는다. `ui/theme`의 토큰에서만 가져온다(다크 테마 전환 대비).
 
@@ -69,9 +74,11 @@
 - `qDebug()`를 직접 쓰지 않고 `QLoggingCategory`를 쓴다.
   ```cpp
   // 헤더:  Q_DECLARE_LOGGING_CATEGORY(lcUi)
-  // .cpp:  Q_LOGGING_CATEGORY(lcUi, "pokesix.ui")
+  // .cpp:  Q_LOGGING_CATEGORY(lcUi, "pokesix.ui", QtInfoMsg)   // 3번째 인자: 기본 출력 수준
   qCInfo(lcUi) << "MainWindow created";
   ```
+- 세 번째 인자 `QtInfoMsg`를 꼭 준다. 생략하면 **debug까지 기본으로 켜진다.** 이 인자를 주면 기본은 info 이상만 출력하고,
+  debug는 `QT_LOGGING_RULES`로 켤 때만 나온다
 - 카테고리 이름: `pokesix.app`, `pokesix.ui`, `pokesix.data.api`, `pokesix.data.db`, `pokesix.data.state` …
 - 켜고 끄기: `QT_LOGGING_RULES="pokesix.*.debug=true" ./PokeSix`
 - core는 Qt가 없으므로 로그를 찍지 않는다. 결과를 반환하고, 호출한 쪽(data)이 기록한다.

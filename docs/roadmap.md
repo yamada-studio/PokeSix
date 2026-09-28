@@ -33,7 +33,7 @@
 
 | | 단계 | 배우는 것 | 눈에 보이는 결과 |
 |---|---|---|---|
-| 🟨 | **A1** MainWindow와 디버깅 | VS Code 프리셋 빌드·디버그, `Q_OBJECT`와 moc, `QMainWindow`, object tree, `QLoggingCategory` | 홈을 올릴 창: 1440×900, 최소 960×640, 로그, 생성자 breakpoint |
+| ✅ | **A1** MainWindow와 디버깅 | VS Code 프리셋 빌드·디버그, `Q_OBJECT`와 moc, `QMainWindow`, object tree, `QLoggingCategory` | 홈을 올릴 창: 1440×900, 최소 960×640, 로그, 생성자 breakpoint |
 | ⬜ | **A2** 레이아웃 — 홈의 뼈대 | `QVBoxLayout` / `QHBoxLayout` / `QGridLayout`, margin · spacing · stretch, size policy, `QStackedWidget` | 앱 막대 자리(60) + 홈 페이지: 제목 줄, 세대 카드 9칸, 하단(최근 스쿼드 │ 바로 가기 3)이 **빈 상자로** 캡처와 같은 비율로 배치 |
 | ⬜ | **A3** 캡처 도구 | `QCommandLineParser`, `QWidget::grab()`, offscreen 렌더링, 첫 `pokesix_app` 타깃 | `PokeSix --screenshot home 1440x900 out.png` → 이후 모든 단계를 기준 이미지와 나란히 비교 |
 | ⬜ | **A4** 글꼴 · 토큰 · QSS | qrc, `QFontDatabase`, `Tokens.h` 이식(`ui/theme`), QSS `@token` 치환, `QPalette` | 종이색 바탕, 도현 36 제목, 나눔고딕 설명문 |

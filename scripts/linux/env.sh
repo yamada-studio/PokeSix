@@ -1,21 +1,21 @@
 # shellcheck shell=bash
-# shellcheck disable=SC2034  # 여기서 정의한 변수는 이 파일을 source 하는 스크립트가 사용한다
-# scripts/linux/*.sh 공통 설정. 직접 실행하지 않고 source 한다.
+# shellcheck disable=SC2034  # variables defined here are used by the scripts that source this file
+# Shared settings for scripts/linux/*.sh. Source it; do not execute it directly.
 
 if [[ "$(uname -s)" != Linux ]]; then
-    echo "error: Linux 전용 스크립트입니다. macOS: scripts/macos/, Windows: scripts\\windows\\" >&2
+    echo "error: this script is for Linux only. macOS: scripts/macos/, Windows: scripts\\windows\\" >&2
     exit 1
 fi
 
 POKESIX_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 
-# Qt 버전은 scripts/QT_VERSION 한 곳에서 관리한다 (환경 변수로 덮어쓸 수 있음)
+# The Qt version lives in one place, scripts/QT_VERSION (can be overridden by the environment)
 QT_VERSION="${QT_VERSION:-$(tr -d '[:space:]' <"$POKESIX_ROOT/scripts/QT_VERSION")}"
 QT_INSTALL_DIR="${QT_INSTALL_DIR:-$HOME/Qt}"
 QT_AQT_ARCH=linux_gcc_64
 QT_DEFAULT_DIR="$QT_INSTALL_DIR/$QT_VERSION/gcc_64"
 
-# ── 출력 ──────────────────────────────────────────────────────
+# ── Output ────────────────────────────────────────────────────
 if [[ -t 1 ]]; then
     _c_blue=$'\e[1;34m'; _c_yellow=$'\e[1;33m'; _c_red=$'\e[1;31m'; _c_reset=$'\e[0m'
 else
@@ -26,28 +26,28 @@ warn() { printf '%swarn:%s %s\n' "$_c_yellow" "$_c_reset" "$*" >&2; }
 die()  { printf '%serror:%s %s\n' "$_c_red" "$_c_reset" "$*" >&2; exit 1; }
 
 # ── Qt ────────────────────────────────────────────────────────
-# Qt 설치 폴더로 보이는가 (lib/cmake/Qt6/Qt6Config.cmake 존재)
+# Does this look like a Qt installation? (lib/cmake/Qt6/Qt6Config.cmake exists)
 is_qt_dir() { [[ -n "$1" && -f "$1/lib/cmake/Qt6/Qt6Config.cmake" ]]; }
 
-# QT_ROOT_DIR 을 확정해 export 한다: 환경 변수 → 기본 설치 위치 순
+# Resolve and export QT_ROOT_DIR: environment variable first, then the default install location
 resolve_qt() {
     if [[ -n "${QT_ROOT_DIR:-}" ]]; then
         is_qt_dir "$QT_ROOT_DIR" \
-            || die "QT_ROOT_DIR=$QT_ROOT_DIR 에 Qt 가 없습니다 (lib/cmake/Qt6 확인). docs/build.md §1"
+            || die "QT_ROOT_DIR=$QT_ROOT_DIR does not contain Qt (check lib/cmake/Qt6). See docs/build.md §1"
     else
         is_qt_dir "$QT_DEFAULT_DIR" \
-            || die "Qt 를 찾을 수 없습니다. 먼저 scripts/linux/setup.sh 를 실행하거나 QT_ROOT_DIR 을 설정하세요."
+            || die "Qt not found. Run scripts/linux/setup.sh first, or set QT_ROOT_DIR."
         QT_ROOT_DIR="$QT_DEFAULT_DIR"
     fi
     export QT_ROOT_DIR
 }
 
-# ── 프리셋 · 경로 ──────────────────────────────────────────────
+# ── Presets and paths ─────────────────────────────────────────
 # preset_for debug|release → linux-debug / linux-release
 preset_for() {
     case "$1" in
         debug|release) printf 'linux-%s' "$1" ;;
-        *) die "빌드 구성은 debug 또는 release 입니다: '$1'" ;;
+        *) die "build configuration must be 'debug' or 'release': '$1'" ;;
     esac
 }
 

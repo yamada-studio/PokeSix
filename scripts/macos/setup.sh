@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# [macOS] 외부 의존성 한 번에 설치 — Xcode Command Line Tools + Homebrew.
+# [macOS] Install all external dependencies in one go — Xcode Command Line Tools + Homebrew.
 #
-#   scripts/macos/setup.sh              # Homebrew 패키지 + Qt
-#   scripts/macos/setup.sh --no-system  # Qt 만
-#   scripts/macos/setup.sh --no-qt      # Homebrew 패키지만
+#   scripts/macos/setup.sh              # Homebrew packages + Qt
+#   scripts/macos/setup.sh --no-system  # Qt only
+#   scripts/macos/setup.sh --no-qt      # Homebrew packages only
 #
-# 이미 설치된 것은 건너뛴다. 여러 번 실행해도 안전하다.
+# Anything already installed is skipped. Safe to run repeatedly.
 set -euo pipefail
 # shellcheck source=env.sh
 source "$(dirname "${BASH_SOURCE[0]}")/env.sh"
@@ -19,55 +19,55 @@ for arg in "$@"; do
         --no-system) do_system=0 ;;
         --no-qt)     do_qt=0 ;;
         -h|--help)   usage; exit 0 ;;
-        *) usage; die "알 수 없는 인자: $arg" ;;
+        *) usage; die "unknown argument: $arg" ;;
     esac
 done
 
-# ── 1. Xcode CLT · Homebrew 패키지 ─────────────────────────────
+# ── 1. Xcode CLT and Homebrew packages ────────────────────────
 if ((do_system)); then
     if ! xcode-select -p >/dev/null 2>&1; then
-        step "Xcode Command Line Tools 설치 창을 엽니다. 설치가 끝나면 이 스크립트를 다시 실행하세요."
+        step "opening the Xcode Command Line Tools installer. Run this script again when it finishes."
         xcode-select --install || true
         exit 1
     fi
-    command -v brew >/dev/null || die "Homebrew 가 필요합니다: https://brew.sh"
+    command -v brew >/dev/null || die "Homebrew is required: https://brew.sh"
 
-    pkgs="cmake ninja clang-format uv"          # git 은 Xcode CLT 에 포함, uv 는 aqtinstall 실행용
+    pkgs="cmake ninja clang-format uv"          # git comes with Xcode CLT; uv runs aqtinstall
     missing=""
     for p in $pkgs; do
         brew list --formula "$p" >/dev/null 2>&1 || missing="$missing $p"
     done
 
     if [[ -z "$missing" ]]; then
-        step "Homebrew 패키지: 모두 설치되어 있음"
+        step "Homebrew packages: all installed"
     else
-        step "Homebrew 패키지 설치:$missing"
-        # shellcheck disable=SC2086  # 공백으로 나눠 여러 인자로 넘기는 것이 의도
+        step "installing Homebrew packages:$missing"
+        # shellcheck disable=SC2086  # intentional word splitting into separate arguments
         brew install $missing
     fi
 fi
 
-# ── 2. Qt (aqtinstall) ─────────────────────────────────────────
-# Homebrew 의 qt 는 항상 최신이라 버전을 고정할 수 없으므로 aqtinstall 을 쓴다
+# ── 2. Qt (aqtinstall) ────────────────────────────────────────
+# Homebrew's qt is always the latest release and cannot be pinned, so use aqtinstall
 if ((do_qt)); then
     if [[ -n "${QT_ROOT_DIR:-}" ]] && is_qt_dir "$QT_ROOT_DIR"; then
-        step "Qt: QT_ROOT_DIR 사용 ($QT_ROOT_DIR)"
+        step "Qt: using QT_ROOT_DIR ($QT_ROOT_DIR)"
     elif is_qt_dir "$QT_DEFAULT_DIR"; then
-        step "Qt $QT_VERSION 이미 설치됨: $QT_DEFAULT_DIR"
+        step "Qt $QT_VERSION already installed: $QT_DEFAULT_DIR"
     else
-        command -v uvx >/dev/null || die "uv 가 없습니다. --no-system 없이 다시 실행하거나 'brew install uv'"
-        step "Qt $QT_VERSION 설치 → $QT_INSTALL_DIR"
-        # aqt 는 실행 위치에 aqtinstall.log 를 남기므로 임시 폴더에서 실행한다
+        command -v uvx >/dev/null || die "uv not found. Run again without --no-system, or 'brew install uv'"
+        step "installing Qt $QT_VERSION → $QT_INSTALL_DIR"
+        # aqt leaves aqtinstall.log in the working directory, so run it from a temp directory
         (cd "${TMPDIR:-/tmp}" && uvx --from aqtinstall aqt install-qt mac desktop "$QT_VERSION" "$QT_AQT_ARCH" \
             --outputdir "$QT_INSTALL_DIR")
-        is_qt_dir "$QT_DEFAULT_DIR" || die "설치 후에도 $QT_DEFAULT_DIR 에서 Qt 를 찾지 못했습니다."
+        is_qt_dir "$QT_DEFAULT_DIR" || die "Qt still not found at $QT_DEFAULT_DIR after installation."
     fi
 fi
 
-# ── 3. 확인 ───────────────────────────────────────────────────
-step "확인"
+# ── 3. Check ──────────────────────────────────────────────────
+step "check"
 cmake --version | head -1
-if command -v ninja >/dev/null; then echo "ninja $(ninja --version)"; else warn "ninja 없음"; fi
+if command -v ninja >/dev/null; then echo "ninja $(ninja --version)"; else warn "ninja not found"; fi
 if ((do_qt)); then
     resolve_qt
     echo "Qt    $QT_ROOT_DIR"
@@ -75,11 +75,11 @@ fi
 
 cat <<EOF
 
-다음 단계:
+Next:
   scripts/macos/build.sh      # configure + build + test
-  scripts/macos/run.sh        # 실행
+  scripts/macos/run.sh        # run
 
-scripts/macos/*.sh 는 QT_ROOT_DIR 이 없어도 기본 위치($QT_DEFAULT_DIR)를 찾는다.
-cmake --preset 을 직접 쓰거나 IDE 에서 빌드하려면 ~/.zshrc 에 추가:
+scripts/macos/*.sh find Qt at the default location ($QT_DEFAULT_DIR) even without QT_ROOT_DIR.
+To use cmake --preset directly or build from an IDE, add this to ~/.zshrc:
   export QT_ROOT_DIR="$QT_DEFAULT_DIR"
 EOF

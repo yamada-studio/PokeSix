@@ -76,7 +76,8 @@ auto *label = new QLabel(this);   // 부모 = this. delete 하지 않는다
 [conventions.md §6](../conventions.md#6-로깅)의 패턴을 쓴다. 정할 것:
 - 카테고리 선언(`Q_DECLARE_LOGGING_CATEGORY`)을 **어느 헤더**에 둘지. ui 레이어 전체가 공유할
   작은 헤더 하나를 추천한다
-- `qCInfo`와 `qCDebug`의 차이: debug는 **기본적으로 꺼져 있다**. `QT_LOGGING_RULES`로 켠다
+- `qCInfo`와 `qCDebug`의 차이: 카테고리를 `Q_LOGGING_CATEGORY(이름, "문자열", QtInfoMsg)`처럼 **세 번째 인자와 함께** 정의하면
+  debug는 기본으로 꺼지고 `QT_LOGGING_RULES`로 켤 때만 나온다. 세 번째 인자를 빼면 debug도 기본으로 켜진다
 
 ### 1-5. compile definition의 범위
 
