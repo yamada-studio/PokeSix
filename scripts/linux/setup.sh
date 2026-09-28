@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# [Linux] 외부 의존성 한 번에 설치 — Ubuntu 24.04 기준 (apt).
+# [Linux] Install all external dependencies in one go — Ubuntu 24.04 (apt).
 #
-#   scripts/linux/setup.sh              # 시스템 패키지(sudo) + Qt
-#   scripts/linux/setup.sh --no-system  # Qt 만 (sudo 없이)
-#   scripts/linux/setup.sh --no-qt      # 시스템 패키지만
+#   scripts/linux/setup.sh              # system packages (sudo) + Qt
+#   scripts/linux/setup.sh --no-system  # Qt only (no sudo)
+#   scripts/linux/setup.sh --no-qt      # system packages only
 #
-# 이미 설치된 것은 건너뛴다. 여러 번 실행해도 안전하다.
+# Anything already installed is skipped. Safe to run repeatedly.
 set -euo pipefail
 # shellcheck source=env.sh
 source "$(dirname "${BASH_SOURCE[0]}")/env.sh"
@@ -19,22 +19,22 @@ for arg in "$@"; do
         --no-system) do_system=0 ;;
         --no-qt)     do_qt=0 ;;
         -h|--help)   usage; exit 0 ;;
-        *) usage; die "알 수 없는 인자: $arg" ;;
+        *) usage; die "unknown argument: $arg" ;;
     esac
 done
 
-# ── 1. 시스템 패키지 (apt) ─────────────────────────────────────
+# ── 1. System packages (apt) ──────────────────────────────────
 if ((do_system)); then
     command -v apt-get >/dev/null \
-        || die "apt 기반 배포판(Ubuntu 24.04)만 지원합니다. docs/build.md 를 참고해 직접 설치하세요."
+        || die "only apt-based distributions (Ubuntu 24.04) are supported. See docs/build.md to install manually."
 
     pkgs=(
-        build-essential cmake ninja-build git     # 툴체인
-        libgl1-mesa-dev libxkbcommon-dev          # find_package(Qt6 Gui) 가 요구
-        libxcb-cursor0                            # Qt 6.5+ xcb platform plugin
-        clang-format clang-tidy gdb               # 코드 품질 · 디버거
+        build-essential cmake ninja-build git     # toolchain
+        libgl1-mesa-dev libxkbcommon-dev          # required by find_package(Qt6 Gui)
+        libxcb-cursor0                            # required by the Qt 6.5+ xcb platform plugin
+        clang-format clang-tidy gdb               # code quality, debugger
     )
-    # aqtinstall 은 uvx 로 실행한다. uv 가 없을 때만 python venv 가 필요하다
+    # aqtinstall runs through uvx. A Python venv is needed only when uv is missing
     command -v uvx >/dev/null 2>&1 || pkgs+=(python3-venv)
     missing=()
     for p in "${pkgs[@]}"; do
@@ -42,42 +42,42 @@ if ((do_system)); then
     done
 
     if ((${#missing[@]} == 0)); then
-        step "시스템 패키지: 모두 설치되어 있음"
+        step "system packages: all installed"
     else
-        step "시스템 패키지 설치 (sudo): ${missing[*]}"
+        step "installing system packages (sudo): ${missing[*]}"
         sudo apt-get update
         sudo apt-get install -y "${missing[@]}"
     fi
 fi
 
-# ── 2. Qt (aqtinstall) ─────────────────────────────────────────
-# Ubuntu 24.04 의 apt Qt 는 6.4 라서 쓰지 않는다 (docs/build.md §2-2)
+# ── 2. Qt (aqtinstall) ────────────────────────────────────────
+# Ubuntu 24.04 ships Qt 6.4 via apt, which is too old (docs/build.md §2-2)
 if ((do_qt)); then
     if [[ -n "${QT_ROOT_DIR:-}" ]] && is_qt_dir "$QT_ROOT_DIR"; then
-        step "Qt: QT_ROOT_DIR 사용 ($QT_ROOT_DIR)"
+        step "Qt: using QT_ROOT_DIR ($QT_ROOT_DIR)"
     elif is_qt_dir "$QT_DEFAULT_DIR"; then
-        step "Qt $QT_VERSION 이미 설치됨: $QT_DEFAULT_DIR"
+        step "Qt $QT_VERSION already installed: $QT_DEFAULT_DIR"
     else
         if command -v uvx >/dev/null 2>&1; then
-            aqt=(uvx --from aqtinstall aqt)           # 격리된 임시 venv
+            aqt=(uvx --from aqtinstall aqt)           # isolated throwaway venv
         else
             venv="${TMPDIR:-/tmp}/pokesix-aqt-venv"
-            python3 -m venv "$venv" || die "python3 -m venv 실패 (sudo apt install python3-venv)"
+            python3 -m venv "$venv" || die "python3 -m venv failed (sudo apt install python3-venv)"
             "$venv/bin/pip" install --quiet aqtinstall
             aqt=("$venv/bin/aqt")
         fi
-        step "Qt $QT_VERSION 설치 → $QT_INSTALL_DIR"
-        # aqt 는 실행 위치에 aqtinstall.log 를 남기므로 임시 폴더에서 실행한다
+        step "installing Qt $QT_VERSION → $QT_INSTALL_DIR"
+        # aqt leaves aqtinstall.log in the working directory, so run it from a temp directory
         (cd "${TMPDIR:-/tmp}" && "${aqt[@]}" install-qt linux desktop "$QT_VERSION" "$QT_AQT_ARCH" \
             --outputdir "$QT_INSTALL_DIR")
-        is_qt_dir "$QT_DEFAULT_DIR" || die "설치 후에도 $QT_DEFAULT_DIR 에서 Qt 를 찾지 못했습니다."
+        is_qt_dir "$QT_DEFAULT_DIR" || die "Qt still not found at $QT_DEFAULT_DIR after installation."
     fi
 fi
 
-# ── 3. 확인 ───────────────────────────────────────────────────
-step "확인"
+# ── 3. Check ──────────────────────────────────────────────────
+step "check"
 cmake --version | head -1
-if command -v ninja >/dev/null; then echo "ninja $(ninja --version)"; else warn "ninja 없음"; fi
+if command -v ninja >/dev/null; then echo "ninja $(ninja --version)"; else warn "ninja not found"; fi
 if ((do_qt)); then
     resolve_qt
     echo "Qt    $QT_ROOT_DIR"
@@ -85,11 +85,11 @@ fi
 
 cat <<EOF
 
-다음 단계:
+Next:
   scripts/linux/build.sh      # configure + build + test
-  scripts/linux/run.sh        # 실행
+  scripts/linux/run.sh        # run
 
-scripts/linux/*.sh 는 QT_ROOT_DIR 이 없어도 기본 위치($QT_DEFAULT_DIR)를 찾는다.
-cmake --preset 을 직접 쓰거나 IDE 에서 빌드하려면 ~/.bashrc 에 추가:
+scripts/linux/*.sh find Qt at the default location ($QT_DEFAULT_DIR) even without QT_ROOT_DIR.
+To use cmake --preset directly or build from an IDE, add this to ~/.bashrc:
   export QT_ROOT_DIR="$QT_DEFAULT_DIR"
 EOF

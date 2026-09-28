@@ -31,7 +31,7 @@ scripts/
 - **Windows**
   - Developer Command Prompt가 필요 없다. CMake가 PATH에 없으면 VS 2022에 번들된 CMake를 `vswhere`로 찾는다
   - PokeSix는 GUI(WIN32) 앱이라 콘솔 출력이 없다. `run.bat`은 로그를 `build\windows-msvc\PokeSix-<config>.log`에 받아 앱이 끝난 뒤 보여 준다. 실행 중에 보려면 `--vs`를 쓴다
-  - 화면 메시지는 영어다. 한국어 Windows 콘솔(CP949)에서 UTF-8 한글이 깨지기 때문이다
+  - 한국어 Windows 콘솔(CP949)에서는 UTF-8 한글이 깨진다. 스크립트를 영어로 쓰는 이유 중 하나다
 
 ## 검증 상태
 
@@ -43,6 +43,7 @@ scripts/
 
 ## 스크립트를 고칠 때
 
+- **스크립트(`.sh`, `.bat`)는 주석·사용법·출력 메시지 모두 영어로 쓴다**
 - Qt 버전 변경은 `QT_VERSION` 한 줄만 고친다
 - `.sh`: `shellcheck -x -P SCRIPTDIR scripts/*/*.sh`(`uvx --from shellcheck-py shellcheck …`)
 - `.bat`: `( )` 블록 안에서 경로 변수를 펼치지 않는다(`Program Files (x86)`의 `)`). 분기는 `goto`로 처리한다

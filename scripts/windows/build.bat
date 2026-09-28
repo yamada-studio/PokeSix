@@ -1,14 +1,14 @@
 @echo off
-rem [Windows] configure -> build -> test (-> install) 한 번에. MSVC 2022, Visual Studio generator.
+rem [Windows] configure -> build -> test (-> install) in one go. MSVC 2022, Visual Studio generator.
 rem
 rem   scripts\windows\build.bat                     debug: configure + build + test
 rem   scripts\windows\build.bat release             release
-rem   scripts\windows\build.bat --clean             빌드 폴더를 지우고 처음부터
-rem   scripts\windows\build.bat --no-test           테스트 생략
+rem   scripts\windows\build.bat --clean             delete the build directory and start over
+rem   scripts\windows\build.bat --no-test           skip tests
 rem   scripts\windows\build.bat release --install C:\Apps\PokeSix
 rem
-rem 빌드 폴더: build\windows-msvc (multi-config — Debug/Release 가 한 폴더를 공유)
-rem Developer Command Prompt 가 필요 없다. CMake 가 vswhere 로 VS 2022 를 직접 찾는다.
+rem Build directory: build\windows-msvc (multi-config — Debug and Release share one directory)
+rem No Developer Command Prompt needed: CMake finds VS 2022 itself via vswhere.
 setlocal
 call "%~dp0env.bat" || exit /b 1
 

@@ -1,17 +1,17 @@
 @echo off
-rem [Windows] PokeSix 실행. 빌드된 실행 파일이 없으면 먼저 빌드한다.
+rem [Windows] Run PokeSix. Builds first if the executable does not exist yet.
 rem
-rem   scripts\windows\run.bat                       debug 빌드 실행
+rem   scripts\windows\run.bat                       run the debug build
 rem   scripts\windows\run.bat release
-rem   scripts\windows\run.bat --rebuild             실행 전에 항상 빌드 (테스트 생략)
-rem   scripts\windows\run.bat --log                 pokesix.* debug 로그 켜기
-rem   scripts\windows\run.bat --vs                  Visual Studio 디버거에서 실행
-rem   scripts\windows\run.bat --offscreen           창 없이 실행 (CI, 캡처)
-rem   scripts\windows\run.bat -- --screenshot home 1440x900 out.png     -- 뒤는 앱 인자
+rem   scripts\windows\run.bat --rebuild             always build before running (tests skipped)
+rem   scripts\windows\run.bat --log                 enable pokesix.* debug logs
+rem   scripts\windows\run.bat --vs                  run under the Visual Studio debugger
+rem   scripts\windows\run.bat --offscreen           run without a window (CI, screenshots)
+rem   scripts\windows\run.bat -- --screenshot home 1440x900 out.png     everything after -- goes to the app
 rem
-rem 로그: PokeSix 는 GUI(WIN32) 앱이라 콘솔이 없다. 그래서 stderr 를 파일로 받아
-rem       (build\windows-msvc\PokeSix-<config>.log) 앱이 끝난 뒤 출력한다.
-rem       실행 중에 보려면 --vs 로 띄우고 Visual Studio 출력 창을 본다.
+rem Logs: PokeSix is a GUI (WIN32) app and has no console, so stderr is captured to a file
+rem       (build\windows-msvc\PokeSix-<config>.log) and printed after the app exits.
+rem       To watch logs live, launch with --vs and use the Visual Studio Output window.
 setlocal
 call "%~dp0env.bat" || exit /b 1
 
@@ -37,7 +37,7 @@ goto :usage_fail
 shift
 goto :parse
 
-rem -- 뒤의 인자는 그대로 앱에 넘긴다
+rem Arguments after -- are passed to the app unchanged
 :collect
 shift
 :collect_loop
@@ -63,7 +63,7 @@ if not exist "%BIN%" goto :no_binary
 :run
 call "%~dp0env.bat" :resolve_qt
 if errorlevel 1 exit /b 1
-rem Windows 에는 RPATH 가 없다. Qt DLL 과 플러그인을 찾도록 Qt bin 을 PATH 앞에 둔다
+rem Windows has no RPATH: put Qt bin first on PATH so Qt DLLs and plugins are found
 set "PATH=%QT_ROOT_DIR%\bin;%PATH%"
 
 if "%MODE%"=="vs" goto :run_vs

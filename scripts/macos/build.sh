@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
-# [macOS] configure → build → test (→ install) 한 번에.
+# [macOS] configure → build → test (→ install) in one go.
 #
 #   scripts/macos/build.sh                    # debug: configure + build + test
 #   scripts/macos/build.sh release            # release
-#   scripts/macos/build.sh --clean            # 빌드 폴더를 지우고 처음부터
-#   scripts/macos/build.sh --no-test          # 테스트 생략
-#   scripts/macos/build.sh --tidy             # clang-tidy 켜고 빌드 (brew install llvm 필요)
-#   scripts/macos/build.sh --format           # 빌드 전에 clang-format 검사 (위반 시 실패)
+#   scripts/macos/build.sh --clean            # delete the build directory and start over
+#   scripts/macos/build.sh --no-test          # skip tests
+#   scripts/macos/build.sh --tidy             # build with clang-tidy enabled (needs brew install llvm)
+#   scripts/macos/build.sh --format           # check clang-format before building (fails on violations)
 #   scripts/macos/build.sh release --install ~/Applications
 #
-# 빌드 폴더: build/macos-<debug|release>  (CMakePresets.json 과 같음)
+# Build directory: build/macos-<debug|release>  (same as CMakePresets.json)
 set -euo pipefail
 # shellcheck source=env.sh
 source "$(dirname "${BASH_SOURCE[0]}")/env.sh"
@@ -31,10 +31,10 @@ while (($#)); do
         --tidy)        tidy=ON ;;
         --format)      check_format=1 ;;
         --install)
-            (($# >= 2)) || die "--install 뒤에 설치 경로가 필요합니다"
+            (($# >= 2)) || die "--install needs an install path"
             install_prefix="$2"; shift ;;
         -h|--help)     usage; exit 0 ;;
-        *) usage; die "알 수 없는 인자: $1" ;;
+        *) usage; die "unknown argument: $1" ;;
     esac
     shift
 done
@@ -47,9 +47,9 @@ cd "$POKESIX_ROOT"
 step "preset=$preset  Qt=$QT_ROOT_DIR"
 
 if ((check_format)); then
-    step "clang-format 검사"
-    command -v clang-format >/dev/null || die "clang-format 이 없습니다 (scripts/macos/setup.sh)"
-    sources=()   # bash 3.2 에는 mapfile 이 없다
+    step "checking clang-format"
+    command -v clang-format >/dev/null || die "clang-format not found (scripts/macos/setup.sh)"
+    sources=()   # bash 3.2 has no mapfile
     while IFS= read -r f; do sources+=("$f"); done \
         < <(git ls-files --cached --others --exclude-standard -- 'src/*.cpp' 'src/*.h' 'tests/*.cpp' 'tests/*.h')
     clang-format --dry-run --Werror ${sources[@]+"${sources[@]}"}
@@ -76,4 +76,4 @@ if [[ -n "$install_prefix" ]]; then
     cmake --install "$build_dir" --prefix "$install_prefix"
 fi
 
-step "완료: $(app_bundle "$preset")"
+step "done: $(app_bundle "$preset")"
