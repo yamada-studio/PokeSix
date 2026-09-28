@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>스쿼드 — 좁은 창</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&amp;family=Nanum+Gothic:wght@400;700;800&amp;family=Nanum+Gothic+Coding:wght@400;700&amp;family=Silkscreen:wght@400;700&amp;display=swap">
+<style>
+body{margin:0;background:#F3EFE6;color:#22222A;font-family:'Nanum Gothic','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+a{color:#2C64B0}a:hover{color:#1D4E8F}
+</style>
+</helmet>
+<div style="width: 1024px; height: 768px; display: flex; flex-direction: column; background: #F3EFE6; overflow: hidden; font-family: 'Nanum Gothic','Apple SD Gothic Neo','Malgun Gothic',sans-serif; color: #22222A">
+
+<header style="height: 56px; flex: none; display: flex; align-items: center; gap: 14px; padding: 0 14px; box-sizing: border-box; background: #D8322B; border-bottom: 3px solid #2A2A33">
+<a href="Home.dc.html" aria-label="PokeSix 홈" style="display: flex; align-items: center; text-decoration: none">
+<svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,2 91.57,26 91.57,74 50,98 8.43,74 8.43,26" fill="#2A2A33" stroke="#FFFFFF" stroke-width="5"></polygon><polygon points="50,50 50,9 85.51,29.5" fill="#F2C12E" stroke="#2A2A33" stroke-width="7" stroke-linejoin="round"></polygon><polygon points="50,50 85.51,29.5 85.51,70.5" fill="#FFFFFF" stroke="#2A2A33" stroke-width="7" stroke-linejoin="round"></polygon><polygon points="50,50 85.51,70.5 50,91" fill="#2C64B0" stroke="#2A2A33" stroke-width="7" stroke-linejoin="round"></polygon><polygon points="50,50 50,91 14.49,70.5" fill="#FFFFFF" stroke="#2A2A33" stroke-width="7" stroke-linejoin="round"></polygon><polygon points="50,50 14.49,70.5 14.49,29.5" fill="#2A7D38" stroke="#2A2A33" stroke-width="7" stroke-linejoin="round"></polygon><polygon points="50,50 14.49,29.5 50,9" fill="#FFFFFF" stroke="#2A2A33" stroke-width="7" stroke-linejoin="round"></polygon></svg>
+</a>
+<nav aria-label="주 메뉴" style="display: flex; align-self: flex-end; align-items: flex-end; gap: 3px; margin-bottom: -3px">
+<a href="Home.dc.html" style="display: flex; align-items: center; gap: 5px; height: 36px; margin-bottom: 3px; padding: 0 11px; box-sizing: border-box; border-radius: 7px 7px 0 0; background: #B8241D; color: #FFFFFF; text-decoration: none; font-family: 'Do Hyeon',sans-serif; font-size: 16px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M4 11l8-6 8 6v9H15v-6H9v6H4z"></path></svg>홈</a>
+<a href="DexCompact.dc.html" style="display: flex; align-items: center; gap: 5px; height: 36px; margin-bottom: 3px; padding: 0 11px; box-sizing: border-box; border-radius: 7px 7px 0 0; background: #B8241D; color: #FFFFFF; text-decoration: none; font-family: 'Do Hyeon',sans-serif; font-size: 16px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M4 9h16M9 9v11"></path></svg>도감</a>
+<a href="Items.dc.html" style="display: flex; align-items: center; gap: 5px; height: 36px; margin-bottom: 3px; padding: 0 11px; box-sizing: border-box; border-radius: 7px 7px 0 0; background: #B8241D; color: #FFFFFF; text-decoration: none; font-family: 'Do Hyeon',sans-serif; font-size: 16px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M5 8h14l-1.2 12H6.2z"></path><path d="M9 8V6.5a3 3 0 0 1 6 0V8"></path></svg>아이템</a>
+<a href="SquadCompact.dc.html" aria-current="page" style="display: flex; align-items: center; gap: 5px; height: 42px; padding: 0 13px; box-sizing: border-box; border-radius: 7px 7px 0 0; border: 3px solid #2A2A33; border-bottom: 0; background: #F3EFE6; color: #D8322B; text-decoration: none; font-family: 'Do Hyeon',sans-serif; font-size: 16px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.8 4.5v9L12 21l-7.8-4.5v-9z"></path><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9"></path></svg>스쿼드</a>
+<a href="Settings.dc.html" aria-label="설정" style="display: flex; align-items: center; height: 36px; margin-bottom: 3px; padding: 0 11px; box-sizing: border-box; border-radius: 7px 7px 0 0; background: #B8241D; color: #FFFFFF; text-decoration: none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"></circle><path d="M12 2.8v2.6M12 18.6v2.6M2.8 12h2.6M18.6 12h2.6M5.5 5.5l1.8 1.8M16.7 16.7l1.8 1.8M5.5 18.5l1.8-1.8M16.7 7.3l1.8-1.8"></path></svg></a>
+</nav>
+<div style="flex-grow: 1"></div>
+<button style="display: flex; align-items: center; gap: 6px; height: 34px; padding: 0 10px; border-radius: 6px; border: 2px solid #2A2A33; background: #FFFFFF; color: #22222A; box-shadow: 0 2px 0 #2A2A33; font-family: 'Silkscreen',monospace; font-size: 12px; font-weight: 400">GEN 4<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M6 9l6 6 6-6"></path></svg></button>
+<button aria-label="전체 검색 (Ctrl K)" style="width: 36px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: 6px; border: 2px solid #2A2A33; background: #FFFFFF; color: #22222A; box-shadow: 0 2px 0 #2A2A33"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4.5-4.5"></path></svg></button>
+</header>
+
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 10px; padding: 12px 16px 16px; box-sizing: border-box; min-height: 0">
+<div style="height: 36px; flex: none; display: flex; align-items: center; gap: 10px">
+<h1 style="margin: 0; font-family: 'Do Hyeon',sans-serif; font-size: 24px; font-weight: 400">신오 정주행</h1>
+<span style="display: flex; align-items: center; height: 24px; padding: 0 9px; border-radius: 12px; border: 2px solid #2A2A33; background: #FFF4CC; font-size: 11px; font-weight: 800">4세대 규칙</span>
+<span style="font-family: 'Nanum Gothic Coding',monospace; font-size: 12px; font-weight: 700">5 / 6</span>
+<div style="flex-grow: 1"></div>
+<button aria-label="더 보기 (복제 · 내보내기)" style="width: 36px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: 6px; border: 2px solid #2A2A33; background: #FFFFFF; color: #22222A; box-shadow: 0 2px 0 #2A2A33"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle></svg></button>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(2, 166px); gap: 10px; flex: none; padding-bottom: 3px">
+<sc-for list="{{members}}" as="m" hint-placeholder-count="5">
+<article style="display: flex; flex-direction: column; border-radius: 8px; border: 2px solid #2A2A33; background: #FFFFFF; box-shadow: 0 3px 0 #2A2A33; overflow: hidden; outline: {{m.ol}}; outline-offset: 2px">
+<div style="display: flex; align-items: center; gap: 7px; height: 34px; flex: none; padding: 0 8px; border-bottom: 2px solid #2A2A33; background: {{m.hf}}; color: {{m.hc}}">
+<sc-if value="{{m.sel}}" hint-placeholder-val="{{false}}"><span style="width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 8px solid #F2C12E"></span></sc-if>
+<span style="font-family: 'Silkscreen',monospace; font-size: 11px; font-weight: 400">{{m.no}}</span>
+<span style="font-family: 'Do Hyeon',sans-serif; font-size: 18px">{{m.name}}</span>
+<span style="margin-left: auto; display: flex; gap: 3px"><sc-for list="{{m.types}}" as="t" hint-placeholder-count="2"><span style="display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; box-sizing: border-box; border-radius: 4px; border: 1.5px solid #2A2A33; font-size: 11px; font-weight: 800; background: {{t.fill}}; color: {{t.fg}}">{{t.a}}</span></sc-for></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 8px 10px; flex-grow: 1">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px">
+<sc-for list="{{m.moves}}" as="mv" hint-placeholder-count="4">
+<span style="display: flex; align-items: center; gap: 5px; height: 26px; padding: 0 6px; box-sizing: border-box; border-radius: 4px; font-size: 11px; font-weight: 700; white-space: nowrap; overflow: hidden; border: {{mv.bd}}; color: {{mv.fc}}"><span style="width: 8px; height: 8px; flex: none; box-sizing: border-box; border-radius: 2px; border: 1px solid {{mv.sq}}; background: {{mv.fill}}"></span>{{mv.n}}</span>
+</sc-for>
+</div>
+<div style="display: flex; align-items: center; gap: 3px; margin-top: auto">
+<span style="font-size: 11px; font-weight: 700; color: #6B6872; margin-right: 3px">약점</span>
+<sc-for list="{{m.weak}}" as="w" hint-placeholder-count="3"><span style="display: flex; align-items: center; justify-content: center; min-width: 18px; height: 18px; padding: 0 3px; box-sizing: border-box; border-radius: 3px; border: 1.5px solid #2A2A33; font-size: 10px; font-weight: 800; background: {{w.fill}}; color: {{w.fg}}">{{w.a}}</span></sc-for>
+</div>
+</div>
+</article>
+</sc-for>
+<article style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; border-radius: 8px; border: 2px dashed #9A96A0; background: repeating-linear-gradient(135deg, #F3EFE6 0px, #F3EFE6 8px, #EDE7DA 8px, #EDE7DA 16px)">
+<span style="font-family: 'Do Hyeon',sans-serif; font-size: 18px; color: #55535C">06 · 빈 슬롯</span>
+<button style="display: flex; align-items: center; gap: 6px; height: 34px; padding: 0 14px; border-radius: 6px; border: 2px solid #2A2A33; background: #D8322B; color: #FFFFFF; box-shadow: 0 3px 0 #2A2A33; font-family: 'Do Hyeon',sans-serif; font-size: 16px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"></path></svg>개체 추가</button>
+</article>
+</div>
+
+<section aria-label="실시간 분석" style="flex-grow: 1; display: flex; flex-direction: column; min-height: 0; border-radius: 8px; border: 2px solid #2A2A33; background: #FFFFFF; box-shadow: 0 3px 0 #2A2A33; overflow: hidden">
+<div style="display: flex; align-items: flex-end; gap: 4px; height: 38px; flex: none; padding: 0 10px; background: #2C64B0; border-bottom: 2px solid #2A2A33">
+<div role="tablist" aria-label="분석 보기" style="display: flex; align-items: flex-end; gap: 4px; margin-bottom: -2px">
+<button role="tab" aria-selected="false" style="display: flex; align-items: center; gap: 5px; height: 30px; padding: 0 12px; border-radius: 6px 6px 0 0; border: 0; background: #1D4E8F; color: #FFFFFF; font-family: 'Do Hyeon',sans-serif; font-size: 16px">문제 <span style="display: flex; align-items: center; justify-content: center; min-width: 18px; height: 18px; border-radius: 9px; background: #D8322B; font-family: 'Nanum Gothic Coding',monospace; font-size: 11px; font-weight: 700">3</span></button>
+<button role="tab" aria-selected="true" style="height: 34px; padding: 0 14px; border-radius: 6px 6px 0 0; border: 2px solid #2A2A33; border-bottom: 0; background: #FFFFFF; color: #22222A; font-family: 'Do Hyeon',sans-serif; font-size: 16px">히트맵</button>
+<button role="tab" aria-selected="false" style="height: 30px; padding: 0 12px; border-radius: 6px 6px 0 0; border: 0; background: #1D4E8F; color: #FFFFFF; font-family: 'Do Hyeon',sans-serif; font-size: 16px">물리 · 특수</button>
+</div>
+</div>
+<div style="display: flex; align-items: center; gap: 8px; height: 34px; flex: none; padding: 0 12px; background: #FDE7E4; border-bottom: 2px solid #D8322B; font-size: 12px; font-weight: 800; color: #8E1C16">
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D8322B" stroke-width="3"><path d="M12 4l9 16H3z"></path><path d="M12 10v4"></path></svg>
+문제 3 — 땅 약점 3 · 얼음 ×4 · 고스트 공격 없음
+<span style="margin-left: auto; font-weight: 400; color: #55535C">탭을 바꿔도 이 줄은 항상 보여요</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 2px; padding: 8px 12px; position: relative">
+<div style="display: grid; grid-template-columns: 84px repeat(18, minmax(0, 1fr)); gap: 2px">
+<span></span>
+<sc-for list="{{head}}" as="h" hint-placeholder-count="18"><span style="display: flex; align-items: center; justify-content: center; height: 22px; box-sizing: border-box; border-radius: 4px; font-size: 11px; font-weight: 800; background: {{h.fill}}; color: {{h.fg}}; border: {{h.bd}}">{{h.a}}</span></sc-for>
+</div>
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="6">
+<div style="display: grid; grid-template-columns: 84px repeat(18, minmax(0, 1fr)); gap: 2px">
+<span style="display: flex; align-items: center; height: 22px; padding: 0 6px; box-sizing: border-box; border-radius: 3px; font-size: 11px; font-weight: 800; white-space: nowrap; overflow: hidden; background: {{r.lb}}; color: {{r.lc}}">{{r.name}}</span>
+<sc-for list="{{r.cells}}" as="c" hint-placeholder-count="18"><span style="display: flex; align-items: center; justify-content: center; height: 22px; box-sizing: border-box; border-radius: 3px; border: 1px solid #E4DDCF; font-family: 'Nanum Gothic Coding',monospace; font-size: 12px; background: {{c.bg}}; color: {{c.fg}}; font-weight: {{c.fw}}">{{c.t}}</span></sc-for>
+</div>
+</sc-for>
+</div>
+</section>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1024,"height":768}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const TT = {
+      '노말': ['노','#BDBBA6','#2A2A33'], '불꽃': ['불','#CC4A22','#FFFFFF'], '물': ['물','#3470C2','#FFFFFF'],
+      '풀': ['풀','#377D33','#FFFFFF'], '전기': ['전','#F2C12E','#2A2A33'], '얼음': ['얼','#7FCFD4','#2A2A33'],
+      '격투': ['격','#A8332A','#FFFFFF'], '독': ['독','#8A3F96','#FFFFFF'], '땅': ['땅','#D8B062','#2A2A33'],
+      '비행': ['비','#A3AEEF','#2A2A33'], '에스퍼': ['에','#C93866','#FFFFFF'], '벌레': ['벌','#A9BA3A','#2A2A33'],
+      '바위': ['바','#806C30','#FFFFFF'], '고스트': ['고','#5B4A8C','#FFFFFF'], '드래곤': ['드','#4B42C4','#FFFFFF'],
+      '악': ['악','#4A3F38','#FFFFFF'], '강철': ['강','#B5C0CC','#2A2A33'], '페어리': ['페','#EFA6CF','#2A2A33']
+    };
+    const ORDER = Object.keys(TT);
+    const mv = (n, t) => n ? { n, fill: TT[t][1], sq: '#2A2A33', bd: '1.5px solid #DDD6C8', fc: '#22222A' } : { n: '+ 기술', fill: 'transparent', sq: 'transparent', bd: '1.5px dashed #9A96A0', fc: '#6B6872' };
+    const data = [
+      ['초염몽', ['불꽃', '격투'], [mv('화염방사', '불꽃'), mv('인파이트', '격투'), mv('유턴', '벌레'), mv('마하펀치', '격투')], [1, .5, 2, .5, 1, .5, 1, 1, 2, 2, 2, .25, 1, 1, 1, .5, .5, null]],
+      ['엠페르트', ['물', '강철'], [mv('파도타기', '물'), mv('냉동빔', '얼음'), mv('러스트캐논', '강철'), mv('그라스믹서', '풀')], [.5, 1, .5, 1, 2, .25, 2, 0, 2, .5, .5, .5, .5, .5, .5, .5, .25, null]],
+      ['한카리아스', ['드래곤', '땅'], [mv('지진', '땅'), mv('역린', '드래곤'), mv('스톤에지', '바위'), mv('칼춤', '노말')], [1, .5, 1, 1, 0, 4, 1, .5, 1, 1, 1, 1, .5, 1, 2, 1, 1, null]],
+      ['렌트라', ['전기'], [mv('스파크', '전기'), mv('몸통박치기', '노말'), mv('째려보기', '노말'), mv()], [1, 1, 1, 1, .5, 1, 1, 1, 2, .5, 1, 1, 1, 1, 1, 1, .5, null]],
+      ['토게키스', ['노말', '비행'], [mv('에어슬래시', '비행'), mv('파동탄', '격투'), mv('원시의힘', '바위'), mv('전기자석파', '전기')], [1, 1, 1, .5, 2, 2, 1, 1, 0, 1, 1, .5, 2, 0, 1, 1, 1, null]]
+    ];
+    const SEL = 2;
+    const members = data.map(([name, types, moves, m], i) => {
+      const weak = [];
+      m.forEach((x, j) => { if (x && x > 1) { const n = ORDER[j]; weak.push(x >= 4 ? { a: TT[n][0] + '×4', fill: '#D8322B', fg: '#FFFFFF' } : { a: TT[n][0], fill: TT[n][1], fg: TT[n][2] }); } });
+      const lead = TT[types[0]];
+      return { no: '0' + (i + 1), name, moves, weak, sel: i === SEL, hf: lead[1], hc: lead[2], ol: i === SEL ? '4px solid #F2C12E' : '0px solid transparent',
+        types: types.map((n) => ({ a: TT[n][0], fill: TT[n][1], fg: TT[n][2] })) };
+    });
+    const cell = (x) => {
+      if (x === null) return { t: '—', bg: 'repeating-linear-gradient(135deg, #EFEAE0 0px, #EFEAE0 3px, #FFFFFF 3px, #FFFFFF 6px)', fg: '#9A96A0', fw: 400 };
+      if (x >= 4) return { t: '4', bg: '#D8322B', fg: '#FFFFFF', fw: 700 };
+      if (x >= 2) return { t: '2', bg: '#F9CFC9', fg: '#8E1C16', fw: 700 };
+      if (x === 1) return { t: '', bg: '#FFFFFF', fg: '#22222A', fw: 400 };
+      if (x === 0) return { t: '0', bg: '#2A2A33', fg: '#FFFFFF', fw: 700 };
+      if (x <= 0.25) return { t: '¼', bg: '#2C64B0', fg: '#FFFFFF', fw: 700 };
+      return { t: '½', bg: '#D3E3F7', fg: '#1D4E8F', fw: 700 };
+    };
+    const head = ORDER.map((n, j) => j === 17
+      ? { a: TT[n][0], fill: '#FFFFFF', fg: '#9A96A0', bd: '1.5px dashed #9A96A0' }
+      : j === 8 ? { a: TT[n][0], fill: TT[n][1], fg: TT[n][2], bd: '3px solid #D8322B' }
+      : { a: TT[n][0], fill: TT[n][1], fg: TT[n][2], bd: '1.5px solid #2A2A33' });
+    const rows = data.map(([name, , , m], i) => ({ name, lb: i === SEL ? '#FFF4CC' : 'transparent', lc: '#22222A', cells: m.map(cell) }));
+    const weakN = ORDER.map((_, j) => j === 17 ? null : data.filter((d) => d[3][j] > 1).length);
+    rows.push({ name: '약점 수', lb: 'transparent', lc: '#55535C', cells: weakN.map((n) => n === null ? { t: '—', bg: 'transparent', fg: '#9A96A0', fw: 400 } : n >= 3 ? { t: String(n), bg: '#D8322B', fg: '#FFFFFF', fw: 700 } : n === 2 ? { t: '2', bg: '#F9CFC9', fg: '#8E1C16', fw: 700 } : { t: String(n), bg: 'transparent', fg: n ? '#22222A' : '#9A96A0', fw: 700 }) });
+    return { members, head, rows };
+  }
+}
+</script>
+</body>
+</html>

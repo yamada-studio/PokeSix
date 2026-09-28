@@ -1,0 +1,11 @@
+<!DOCTYPE RCC>
+<!--
+  Qt 리소스: 여기 등록한 파일은 실행 파일 안에 바이너리로 포함되고
+  런타임에 ":/styles/app.qss" 같은 가상 경로로 접근한다.
+  경로는 이 .qrc 파일 기준 상대 경로. 자체 제작 에셋만 등록한다.
+-->
+<RCC version="1.0">
+  <qresource prefix="/">
+    <file>styles/app.qss</file>
+  </qresource>
+</RCC>

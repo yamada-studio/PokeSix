@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=PokeSix
+GenericName=Pokédex & party analyzer
+Comment=Generation-aware Pokédex and six-member party analyzer
+Exec=PokeSix
+Icon=pokesix
+Terminal=false
+Categories=Game;
+StartupWMClass=PokeSix

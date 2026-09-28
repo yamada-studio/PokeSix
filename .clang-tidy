@@ -1,0 +1,37 @@
+# PokeSix — 처음엔 "명백한 버그 + 성능 + 네이밍"만. 익숙해지면 단계적으로 추가한다.
+# 다음 후보: modernize-*, cppcoreguidelines-*, readability-* (선별)
+---
+Checks: >
+  -*,
+  bugprone-*,
+  -bugprone-easily-swappable-parameters,
+  clang-analyzer-*,
+  -clang-analyzer-cplusplus.NewDeleteLeaks,
+  performance-*,
+  modernize-use-override,
+  modernize-use-nullptr,
+  readability-identifier-naming
+
+# 경고만 표시하고 빌드를 막지 않는다
+WarningsAsErrors: ''
+
+# 우리 소스의 헤더만 검사 (Qt 헤더, moc 생성물 제외)
+HeaderFilterRegex: '.*/src/.*'
+
+CheckOptions:
+  # ── 네이밍 (Qt 관례) ─────────────────────────
+  - { key: readability-identifier-naming.NamespaceCase,        value: lower_case }
+  - { key: readability-identifier-naming.ClassCase,            value: CamelCase  }
+  - { key: readability-identifier-naming.StructCase,           value: CamelCase  }
+  - { key: readability-identifier-naming.EnumCase,             value: CamelCase  }
+  - { key: readability-identifier-naming.EnumConstantCase,     value: CamelCase  }
+  - { key: readability-identifier-naming.FunctionCase,         value: camelBack  }
+  - { key: readability-identifier-naming.MethodCase,           value: camelBack  }
+  - { key: readability-identifier-naming.ParameterCase,        value: camelBack  }
+  - { key: readability-identifier-naming.LocalVariableCase,    value: camelBack  }
+  - { key: readability-identifier-naming.PrivateMemberPrefix,  value: m_         }
+  - { key: readability-identifier-naming.PrivateMemberCase,    value: camelBack  }
+  - { key: readability-identifier-naming.ProtectedMemberPrefix, value: m_        }
+  - { key: readability-identifier-naming.ProtectedMemberCase,  value: camelBack  }
+  - { key: readability-identifier-naming.PublicMemberCase,     value: camelBack  }
+  - { key: readability-identifier-naming.TemplateParameterCase, value: CamelCase }

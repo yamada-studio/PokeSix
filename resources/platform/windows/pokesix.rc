@@ -1,0 +1,3 @@
+// Windows 리소스 스크립트 — 탐색기·작업 표시줄에 보이는 실행 파일 아이콘.
+// (창 제목 표시줄 아이콘은 런타임에 QApplication::setWindowIcon 으로 따로 지정한다)
+IDI_ICON1 ICON "../../icons/app/windows/pokesix.ico"

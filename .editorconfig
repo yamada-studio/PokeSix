@@ -1,0 +1,26 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+[*.{h,hpp,cpp,cxx}]
+indent_size = 4
+max_line_length = 100
+
+[{CMakeLists.txt,*.cmake}]
+indent_size = 4
+
+[*.{json,yml,yaml,qrc,ui,xml}]
+indent_size = 2
+
+[*.md]
+# 줄 끝 공백 두 칸 = 강제 줄바꿈이므로 지우지 않는다
+trim_trailing_whitespace = false
+
+[*.{bat,ps1}]
+end_of_line = crlf

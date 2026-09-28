@@ -1,0 +1,47 @@
+# ── Build output ──────────────────────────────────────────────
+/build/
+/out/
+/install/
+
+# 머신별 개인 프리셋 (Qt 경로 등). 공용 프리셋은 CMakePresets.json
+CMakeUserPresets.json
+
+# clangd / compile database
+.cache/
+compile_commands.json
+
+# ── IDE ───────────────────────────────────────────────────────
+# Qt Creator
+*.user
+*.user.*
+.qtcreator/
+# VS Code (공유할 설정이 생기면 예외로 추가: !.vscode/extensions.json)
+.vscode/
+# CLion
+.idea/
+cmake-build-*/
+# Visual Studio
+.vs/
+
+# ── Runtime data ─────────────────────────────────────────────
+# SQLite 캐시는 런타임에 QStandardPaths::AppDataLocation 에 생성된다.
+# 실수로 리포 안에서 만들어진 경우를 대비한 방어선.
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# ── Game assets ──────────────────────────────────────────────
+# 스프라이트·게임 아트는 리포에 커밋하지 않는다 (README "Assets policy").
+# 런타임에 받아 캐시 디렉터리에 저장한다.
+/resources/sprites/
+*.sprite.png
+
+# ── OS ───────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# aqtinstall 이 실행 위치에 남기는 로그
+aqtinstall.log

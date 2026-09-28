@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>SixSquad 편집</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&amp;family=Nanum+Gothic:wght@400;700;800&amp;family=Nanum+Gothic+Coding:wght@400;700&amp;family=Silkscreen:wght@400;700&amp;display=swap">
+<style>
+body{margin:0;background:#F3EFE6;color:#22222A;font-family:'Nanum Gothic','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+a{color:#2C64B0}a:hover{color:#1D4E8F}
+</style>
+</helmet>
+<div style="width: 1440px; height: 900px; display: flex; flex-direction: column; background: #F3EFE6; overflow: hidden; font-family: 'Nanum Gothic','Apple SD Gothic Neo','Malgun Gothic',sans-serif; color: #22222A">
+
+<header style="height: 60px; flex: none; display: flex; align-items: center; gap: 24px; padding: 0 20px; box-sizing: border-box; background: #D8322B; border-bottom: 3px solid #2A2A33">
+<a href="Home.dc.html" aria-label="PokeSix 홈" style="display: flex; align-items: center; gap: 10px; text-decoration: none">
+<svg width="32" height="32" viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,2 91.57,26 91.57,74 50,98 8.43,74 8.43,26" fill="#2A2A33" stroke="#FFFFFF" stroke-width="5"></polygon><polygon points="50,50 50,9 85.51,29.5" fill="#F2C12E" stroke="#2A2A33" stroke-width="7" stroke-linejoin="round"></polygon><polygon points="50,50 85.51,29.5 85.51,70.5" fill="#FFFFFF" stroke="#2A2A33" stroke-width="7" stroke-linejoin="round"></polygon><polygon points="50,50 85.51,70.5 50,91" fill="#2C64B0" stroke="#2A2A33" stroke-width="7" stroke-linejoin="round"></polygon><polygon points="50,50 50,91 14.49,70.5" fill="#FFFFFF" stroke="#2A2A33" stroke-width="7" stroke-linejoin="round"></polygon><polygon points="50,50 14.49,70.5 14.49,29.5" fill="#2A7D38" stroke="#2A2A33" stroke-width="7" stroke-linejoin="round"></polygon><polygon points="50,50 14.49,29.5 50,9" fill="#FFFFFF" stroke="#2A2A33" stroke-width="7" stroke-linejoin="round"></polygon></svg>
+<span style="font-family: 'Silkscreen',monospace; font-size: 20px; font-weight: 700; color: #FFFFFF">POKE<span style="color: #FFE08A">SIX</span></span>
+</a>
+<nav aria-label="주 메뉴" style="display: flex; align-self: flex-end; align-items: flex-end; gap: 4px; margin-bottom: -3px">
+<a href="Home.dc.html" style="display: flex; align-items: center; gap: 7px; height: 38px; margin-bottom: 3px; padding: 0 16px; box-sizing: border-box; border-radius: 8px 8px 0 0; background: #B8241D; color: #FFFFFF; text-decoration: none; font-family: 'Do Hyeon',sans-serif; font-size: 18px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M4 11l8-6 8 6v9H15v-6H9v6H4z"></path></svg>홈</a>
+<a href="Dex.dc.html" style="display: flex; align-items: center; gap: 7px; height: 38px; margin-bottom: 3px; padding: 0 16px; box-sizing: border-box; border-radius: 8px 8px 0 0; background: #B8241D; color: #FFFFFF; text-decoration: none; font-family: 'Do Hyeon',sans-serif; font-size: 18px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M4 9h16M9 9v11"></path></svg>도감</a>
+<a href="Items.dc.html" style="display: flex; align-items: center; gap: 7px; height: 38px; margin-bottom: 3px; padding: 0 16px; box-sizing: border-box; border-radius: 8px 8px 0 0; background: #B8241D; color: #FFFFFF; text-decoration: none; font-family: 'Do Hyeon',sans-serif; font-size: 18px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M5 8h14l-1.2 12H6.2z"></path><path d="M9 8V6.5a3 3 0 0 1 6 0V8"></path></svg>아이템</a>
+<a href="Squad.dc.html" aria-current="page" style="display: flex; align-items: center; gap: 7px; height: 45px; padding: 0 18px; box-sizing: border-box; border-radius: 8px 8px 0 0; border: 3px solid #2A2A33; border-bottom: 0; background: #F3EFE6; color: #D8322B; text-decoration: none; font-family: 'Do Hyeon',sans-serif; font-size: 18px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.8 4.5v9L12 21l-7.8-4.5v-9z"></path><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9"></path></svg>스쿼드</a>
+<a href="Settings.dc.html" style="display: flex; align-items: center; gap: 7px; height: 38px; margin-bottom: 3px; padding: 0 16px; box-sizing: border-box; border-radius: 8px 8px 0 0; background: #B8241D; color: #FFFFFF; text-decoration: none; font-family: 'Do Hyeon',sans-serif; font-size: 18px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"></circle><path d="M12 2.8v2.6M12 18.6v2.6M2.8 12h2.6M18.6 12h2.6M5.5 5.5l1.8 1.8M16.7 16.7l1.8 1.8M5.5 18.5l1.8-1.8M16.7 7.3l1.8-1.8"></path></svg>설정</a>
+</nav>
+<div style="flex-grow: 1"></div>
+<button style="display: flex; align-items: center; gap: 8px; height: 36px; padding: 0 12px; border-radius: 6px; border: 2px solid #2A2A33; background: #FFFFFF; color: #22222A; box-shadow: 0 2px 0 #2A2A33; font-family: 'Do Hyeon',sans-serif; font-size: 16px"><span style="font-family: 'Silkscreen',monospace; font-size: 11px; font-weight: 400; padding: 2px 5px; border-radius: 3px; background: #2A2A33; color: #FFE08A">GEN 4</span>신오<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M6 9l6 6 6-6"></path></svg></button>
+<label style="display: flex; align-items: center; gap: 8px; width: 280px; height: 36px; padding: 0 10px; box-sizing: border-box; border-radius: 6px; border: 2px solid #2A2A33; background: #FFFFFF; color: #6B6872"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4.5-4.5"></path></svg><input aria-label="전체 검색" placeholder="포켓몬 · 기술 · 아이템 검색" style="flex-grow: 1; min-width: 0; border: 0; background: transparent; color: #22222A; font-family: inherit; font-size: 13px; outline: none"><span style="font-family: 'Nanum Gothic Coding',monospace; font-size: 11px; padding: 1px 5px; border: 1.5px solid #BDB4A3; border-radius: 3px; white-space: nowrap">Ctrl K</span></label>
+</header>
+
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 14px; padding: 16px 20px 20px; box-sizing: border-box; min-height: 0">
+<div style="height: 44px; flex: none; display: flex; align-items: center; gap: 14px">
+<h1 style="margin: 0; font-family: 'Do Hyeon',sans-serif; font-size: 28px; font-weight: 400">신오 정주행</h1>
+<button aria-label="스쿼드 이름 변경" style="width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 5px; border: 1.5px solid #BDB4A3; background: #FFFFFF; color: #55535C"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 20h4L19 9l-4-4L4 16z"></path></svg></button>
+<span style="display: flex; align-items: center; height: 26px; padding: 0 10px; border-radius: 13px; border: 2px solid #2A2A33; background: #FFF4CC; font-size: 12px; font-weight: 800">4세대 규칙</span>
+<span style="display: flex; align-items: center; gap: 4px">
+<sc-for list="{{pips}}" as="p" hint-placeholder-count="6"><span style="width: 12px; height: 12px; box-sizing: border-box; border-radius: 3px; border: 2px solid #2A2A33; background: {{p.c}}"></span></sc-for>
+<span style="font-family: 'Nanum Gothic Coding',monospace; font-size: 13px; font-weight: 700; margin-left: 4px">5 / 6</span>
+</span>
+<div style="flex-grow: 1"></div>
+<span style="display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: #2A7D38"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"></path></svg>자동 저장됨</span>
+<button style="height: 36px; padding: 0 14px; border-radius: 6px; border: 2px solid #2A2A33; background: #FFFFFF; color: #22222A; box-shadow: 0 3px 0 #2A2A33; font-family: 'Do Hyeon',sans-serif; font-size: 16px">복제</button>
+<button style="height: 36px; padding: 0 14px; border-radius: 6px; border: 2px solid #2A2A33; background: #2C64B0; color: #FFFFFF; box-shadow: 0 3px 0 #2A2A33; font-family: 'Do Hyeon',sans-serif; font-size: 16px">내보내기</button>
+</div>
+
+<div style="flex-grow: 1; display: grid; grid-template-columns: 600px 1fr; gap: 20px; min-height: 0">
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 12px; min-height: 0; padding-bottom: 3px">
+<sc-for list="{{members}}" as="m" hint-placeholder-count="5">
+<article style="display: flex; flex-direction: column; min-height: 0; border-radius: 8px; border: 2px solid #2A2A33; background: #FFFFFF; box-shadow: 0 3px 0 #2A2A33; overflow: hidden; outline: {{m.ol}}; outline-offset: 2px">
+<div style="display: flex; align-items: center; gap: 8px; height: 40px; flex: none; padding: 0 4px 0 10px; border-bottom: 2px solid #2A2A33; background: {{m.hf}}; color: {{m.hc}}">
+<sc-if value="{{m.sel}}" hint-placeholder-val="{{false}}"><span style="width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 9px solid #F2C12E"></span></sc-if>
+<span style="font-family: 'Silkscreen',monospace; font-size: 12px; font-weight: 400">{{m.no}}</span>
+<button onClick="{{m.pick}}" aria-label="{{m.name}} 선택" aria-pressed="{{m.sel}}" style="display: flex; align-items: center; gap: 8px; flex-grow: 1; height: 40px; padding: 0; border: 0; background: transparent; color: inherit; text-align: left; cursor: pointer">
+<span style="width: 26px; height: 26px; flex: none; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: #FFFFFF; border: 1.5px solid #2A2A33; font-family: 'Nanum Gothic Coding',monospace; font-size: 9px; color: #6B6872">{{m.dex}}</span>
+<span style="font-family: 'Do Hyeon',sans-serif; font-size: 19px">{{m.name}}</span>
+</button>
+<button aria-label="슬롯 메뉴" style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border: 0; background: transparent; color: inherit"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle></svg></button>
+</div>
+<div style="display: flex; flex-direction: column; gap: 7px; padding: 9px 12px 10px; flex-grow: 1; min-height: 0">
+<div style="display: flex; align-items: center; gap: 4px">
+<sc-for list="{{m.types}}" as="t" hint-placeholder-count="2"><span style="display: flex; align-items: center; height: 22px; padding: 0 9px; box-sizing: border-box; border-radius: 5px; border: 2px solid #2A2A33; font-size: 12px; font-weight: 800; background: {{t.fill}}; color: {{t.fg}}">{{t.name}}</span></sc-for>
+<sc-if value="{{m.hasNote}}" hint-placeholder-val="{{false}}"><span style="margin-left: auto; font-size: 11px; font-weight: 700; color: #1D4E8F">{{m.note}}</span></sc-if>
+</div>
+<input aria-label="{{m.name}} 역할 메모" value="{{m.memo}}" style="height: 28px; flex: none; box-sizing: border-box; padding: 0 8px; border-radius: 5px; border: 1.5px solid #BDB4A3; background: #FAF7F0; color: #55535C; font-family: inherit; font-size: 12px">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{m.moves}}" as="mv" hint-placeholder-count="4">
+<sc-if value="{{mv.filled}}" hint-placeholder-val="{{true}}">
+<div style="display: flex; align-items: center; gap: 6px; height: 30px; padding: 0 6px 0 8px; box-sizing: border-box; border-radius: 5px; border: 1.5px solid #DDD6C8"><span style="width: 10px; height: 10px; box-sizing: border-box; border-radius: 2px; border: 1px solid #2A2A33; flex: none; background: {{mv.fill}}"></span><span style="font-size: 12px; font-weight: 700; flex-grow: 1; white-space: nowrap; overflow: hidden">{{mv.n}}</span><span style="display: flex; align-items: center; justify-content: center; width: 18px; height: 18px; flex: none; box-sizing: border-box; border-radius: 3px; border: 1px solid #2A2A33; font-size: 10px; font-weight: 800; background: {{mv.cb}}; color: {{mv.cc}}">{{mv.c}}</span></div>
+</sc-if>
+<sc-if value="{{mv.empty}}" hint-placeholder-val="{{false}}">
+<button style="display: flex; align-items: center; gap: 6px; height: 30px; padding: 0 8px; border-radius: 5px; border: 1.5px dashed #9A96A0; background: transparent; color: #6B6872; font-family: inherit; font-size: 12px; font-weight: 700"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M12 5v14M5 12h14"></path></svg>기술 추가</button>
+</sc-if>
+</sc-for>
+</div>
+<div style="display: flex; align-items: center; gap: 4px; margin-top: auto">
+<span style="font-size: 11px; font-weight: 700; color: #6B6872; margin-right: 4px">약점</span>
+<sc-for list="{{m.weak}}" as="w" hint-placeholder-count="3"><span style="display: flex; align-items: center; justify-content: center; min-width: 20px; height: 20px; padding: 0 3px; box-sizing: border-box; border-radius: 4px; border: 1.5px solid #2A2A33; font-size: 11px; font-weight: 800; background: {{w.fill}}; color: {{w.fg}}">{{w.a}}</span></sc-for>
+</div>
+</div>
+</article>
+</sc-for>
+
+<article style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; padding: 14px; border-radius: 8px; border: 2px dashed #9A96A0; background: repeating-linear-gradient(135deg, #F3EFE6 0px, #F3EFE6 8px, #EDE7DA 8px, #EDE7DA 16px)">
+<svg width="40" height="40" viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,6 88.1,28 88.1,72 50,94 11.9,72 11.9,28" fill="#FFFFFF" stroke="#9A96A0" stroke-width="4" stroke-dasharray="8 6"></polygon><path d="M50 34v32M34 50h32" stroke="#6B6872" stroke-width="6" fill="none"></path></svg>
+<div style="display: flex; align-items: baseline; gap: 6px"><span style="font-family: 'Silkscreen',monospace; font-size: 12px; font-weight: 400; color: #6B6872">06</span><span style="font-family: 'Do Hyeon',sans-serif; font-size: 19px; color: #55535C">빈 슬롯</span></div>
+<button style="display: flex; align-items: center; gap: 6px; height: 36px; padding: 0 16px; border-radius: 6px; border: 2px solid #2A2A33; background: #D8322B; color: #FFFFFF; box-shadow: 0 3px 0 #2A2A33; font-family: 'Do Hyeon',sans-serif; font-size: 17px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"></path></svg>개체 추가</button>
+<span style="font-size: 12px; line-height: 17px; color: #55535C; text-align: center; max-width: 240px">땅을 받아낼 수 있고 고스트 · 악 기술을 가진 포켓몬이면 문제 2건이 함께 풀려요.</span>
+</article>
+</div>
+
+<section aria-label="실시간 분석" style="display: flex; flex-direction: column; min-height: 0; min-width: 0; border-radius: 8px; border: 2px solid #2A2A33; background: #FFFFFF; box-shadow: 0 3px 0 #2A2A33; overflow: hidden">
+<div style="display: flex; align-items: center; gap: 10px; height: 38px; flex: none; padding: 0 12px 0 14px; background: #2C64B0; border-bottom: 2px solid #2A2A33; color: #FFFFFF">
+<h2 style="margin: 0; font-family: 'Do Hyeon',sans-serif; font-size: 20px; font-weight: 400">실시간 분석</h2>
+<span style="font-size: 12px">4세대 상성표 · 강철이 고스트/악 반감 · 페어리 없음</span>
+<span style="margin-left: auto; display: flex; align-items: center; gap: 5px; height: 24px; padding: 0 10px; border-radius: 12px; border: 2px solid #2A2A33; background: #D8322B; color: #FFFFFF; font-size: 12px; font-weight: 800"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 4l9 16H3z"></path><path d="M12 10v4"></path></svg>문제 3</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 12px 14px; min-height: 0">
+
+<div style="display: flex; flex-direction: column; gap: 6px">
+<sc-for list="{{problems}}" as="p" hint-placeholder-count="3">
+<div style="display: grid; grid-template-columns: 24px 1fr auto; gap: 10px; align-items: center; min-height: 42px; padding: 5px 10px; box-sizing: border-box; border-radius: 6px; border: 2px solid #D8322B; background: #FDE7E4">
+<span style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; box-sizing: border-box; border-radius: 4px; border: 1.5px solid #2A2A33; font-size: 12px; font-weight: 800; background: {{p.fill}}; color: {{p.fg}}">{{p.a}}</span>
+<div style="display: flex; flex-direction: column; gap: 1px; min-width: 0"><span style="font-size: 13px; font-weight: 800; color: #8E1C16">{{p.title}}</span><span style="font-size: 12px; color: #55535C">{{p.detail}}</span></div>
+<span style="font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: 3px; background: #D8322B; color: #FFFFFF">{{p.tag}}</span>
+</div>
+</sc-for>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; align-items: baseline; justify-content: space-between"><span style="font-family: 'Do Hyeon',sans-serif; font-size: 17px">방어 상성 히트맵</span><span style="font-size: 11px; color: #6B6872">행 = 포켓몬 · 열 = 공격 타입 · 숫자 = 받는 배율</span></div>
+<div style="position: relative; display: flex; flex-direction: column; gap: 2px">
+<div style="display: grid; grid-template-columns: 92px repeat(18, 34px); gap: 2px">
+<span></span>
+<sc-for list="{{head}}" as="h" hint-placeholder-count="18"><span style="display: flex; align-items: center; justify-content: center; height: 24px; box-sizing: border-box; border-radius: 4px; font-size: 11px; font-weight: 800; background: {{h.fill}}; color: {{h.fg}}; border: {{h.bd}}">{{h.a}}</span></sc-for>
+</div>
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="6">
+<div style="display: grid; grid-template-columns: 92px repeat(18, 34px); gap: 2px">
+<span style="display: flex; align-items: center; gap: 5px; height: 26px; padding: 0 6px; box-sizing: border-box; border-radius: 3px; font-size: 12px; font-weight: 700; white-space: nowrap; overflow: hidden; color: {{r.lc}}; background: {{r.lb}}"><span style="font-family: 'Nanum Gothic Coding',monospace; font-size: 10px; color: #6B6872">{{r.no}}</span>{{r.name}}</span>
+<sc-for list="{{r.cells}}" as="c" hint-placeholder-count="18"><span style="display: flex; align-items: center; justify-content: center; height: 26px; box-sizing: border-box; border-radius: 3px; border: 1px solid #E4DDCF; font-family: 'Nanum Gothic Coding',monospace; font-size: 13px; background: {{c.bg}}; color: {{c.fg}}; font-weight: {{c.fw}}">{{c.t}}</span></sc-for>
+</div>
+</sc-for>
+<div style="height: 6px"></div>
+<sc-for list="{{sums}}" as="r" hint-placeholder-count="3">
+<div style="display: grid; grid-template-columns: 92px repeat(18, 34px); gap: 2px">
+<span style="display: flex; align-items: center; height: 24px; padding: 0 6px; font-size: 12px; font-weight: 800; color: #55535C">{{r.name}}</span>
+<sc-for list="{{r.cells}}" as="c" hint-placeholder-count="18"><span style="display: flex; align-items: center; justify-content: center; height: 24px; border-radius: 3px; font-family: 'Nanum Gothic Coding',monospace; font-size: 13px; background: {{c.bg}}; color: {{c.fg}}; font-weight: {{c.fw}}">{{c.t}}</span></sc-for>
+</div>
+</sc-for>
+<div style="position: absolute; top: -4px; bottom: -4px; left: 380px; width: 38px; box-sizing: border-box; border: 3px solid #D8322B; border-radius: 5px; pointer-events: none"></div>
+</div>
+<div style="display: flex; align-items: center; gap: 14px; padding-top: 2px; font-size: 11px; font-weight: 700; color: #55535C">
+<span style="display: flex; align-items: center; gap: 5px"><span style="width: 12px; height: 12px; border: 1px solid #2A2A33; background: #D8322B"></span>×4</span>
+<span style="display: flex; align-items: center; gap: 5px"><span style="width: 12px; height: 12px; border: 1px solid #2A2A33; background: #F9CFC9"></span>×2</span>
+<span style="display: flex; align-items: center; gap: 5px"><span style="width: 12px; height: 12px; border: 1px solid #2A2A33; background: #D3E3F7"></span>×½</span>
+<span style="display: flex; align-items: center; gap: 5px"><span style="width: 12px; height: 12px; border: 1px solid #2A2A33; background: #2C64B0"></span>×¼</span>
+<span style="display: flex; align-items: center; gap: 5px"><span style="width: 12px; height: 12px; border: 1px solid #2A2A33; background: #2A2A33"></span>무효</span>
+<span style="display: flex; align-items: center; gap: 5px"><span style="width: 12px; height: 12px; box-sizing: border-box; border: 3px solid #D8322B"></span>문제 열</span>
+<span style="margin-left: auto; font-weight: 400; color: #6B6872">포켓몬 이름을 누르면 행이 노랗게 강조돼요</span>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 10px; border-top: 2px dashed #DDD6C8">
+<div style="display: flex; align-items: center; gap: 10px">
+<span style="font-family: 'Do Hyeon',sans-serif; font-size: 17px">물리 · 특수 분포</span>
+<span style="font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: 3px; border: 1.5px solid #2A2A33; background: #FFF4CC">4세대~ 기술마다 판정</span>
+<span style="margin-left: auto; font-family: 'Nanum Gothic Coding',monospace; font-size: 12px; font-weight: 700">기술 19 / 20</span>
+</div>
+<div style="display: flex; height: 18px; box-sizing: border-box; border-radius: 4px; border: 2px solid #2A2A33; overflow: hidden">
+<div style="width: 40%; background: #EE8040; border-right: 2px solid #2A2A33"></div>
+<div style="width: 40%; background: #2C64B0; border-right: 2px solid #2A2A33"></div>
+<div style="width: 15%; background: #BDBBA6; border-right: 2px solid #2A2A33"></div>
+<div style="width: 5%; background: repeating-linear-gradient(135deg, #FFFFFF 0px, #FFFFFF 2px, #DDD6C8 2px, #DDD6C8 4px)"></div>
+</div>
+<div style="display: flex; gap: 16px; align-items: center; font-size: 12px; font-weight: 700; color: #55535C">
+<span style="display: flex; align-items: center; gap: 6px"><span style="width: 11px; height: 11px; border: 1px solid #2A2A33; background: #EE8040"></span>물리 <span style="font-family: 'Nanum Gothic Coding',monospace; color: #22222A">8</span></span>
+<span style="display: flex; align-items: center; gap: 6px"><span style="width: 11px; height: 11px; border: 1px solid #2A2A33; background: #2C64B0"></span>특수 <span style="font-family: 'Nanum Gothic Coding',monospace; color: #22222A">8</span></span>
+<span style="display: flex; align-items: center; gap: 6px"><span style="width: 11px; height: 11px; border: 1px solid #2A2A33; background: #BDBBA6"></span>변화 <span style="font-family: 'Nanum Gothic Coding',monospace; color: #22222A">3</span></span>
+<span style="display: flex; align-items: center; gap: 6px"><span style="width: 11px; height: 11px; border: 1px dashed #9A96A0"></span>빈칸 <span style="font-family: 'Nanum Gothic Coding',monospace; color: #22222A">1</span></span>
+<span style="margin-left: auto; font-weight: 400; color: #55535C">1–3세대 규칙(타입 기준)이면 <b style="font-weight: 800; color: #22222A">물리 10 · 특수 6</b></span>
+</div>
+</div>
+
+</div>
+</section>
+
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { sel: 2 }; }
+  renderVals() {
+    const TT = {
+      '노말': ['노','#BDBBA6','#2A2A33'], '불꽃': ['불','#CC4A22','#FFFFFF'], '물': ['물','#3470C2','#FFFFFF'],
+      '풀': ['풀','#377D33','#FFFFFF'], '전기': ['전','#F2C12E','#2A2A33'], '얼음': ['얼','#7FCFD4','#2A2A33'],
+      '격투': ['격','#A8332A','#FFFFFF'], '독': ['독','#8A3F96','#FFFFFF'], '땅': ['땅','#D8B062','#2A2A33'],
+      '비행': ['비','#A3AEEF','#2A2A33'], '에스퍼': ['에','#C93866','#FFFFFF'], '벌레': ['벌','#A9BA3A','#2A2A33'],
+      '바위': ['바','#806C30','#FFFFFF'], '고스트': ['고','#5B4A8C','#FFFFFF'], '드래곤': ['드','#4B42C4','#FFFFFF'],
+      '악': ['악','#4A3F38','#FFFFFF'], '강철': ['강','#B5C0CC','#2A2A33'], '페어리': ['페','#EFA6CF','#2A2A33']
+    };
+    const ORDER = Object.keys(TT);
+    const chip = (n) => ({ name: n, fill: TT[n][1], fg: TT[n][2] });
+    const cat = { '물': { cb: '#EE8040', cc: '#22222A' }, '특': { cb: '#2C64B0', cc: '#FFFFFF' }, '변': { cb: '#BDBBA6', cc: '#22222A' } };
+    const mv = (n, t, c) => n ? { filled: true, empty: false, n, c, fill: TT[t][1], ...cat[c] } : { filled: false, empty: true };
+    const data = [
+      { dex: '392', name: '초염몽', types: ['불꽃', '격투'], memo: '선봉 · 고속 혼합 어태커',
+        moves: [mv('화염방사', '불꽃', '특'), mv('인파이트', '격투', '물'), mv('유턴', '벌레', '물'), mv('마하펀치', '격투', '물')],
+        m: [1, .5, 2, .5, 1, .5, 1, 1, 2, 2, 2, .25, 1, 1, 1, .5, .5, null] },
+      { dex: '395', name: '엠페르트', types: ['물', '강철'], memo: '내구 특수 · 비행/에스퍼 받이',
+        moves: [mv('파도타기', '물', '특'), mv('냉동빔', '얼음', '특'), mv('러스트캐논', '강철', '특'), mv('그라스믹서', '풀', '특')],
+        m: [.5, 1, .5, 1, 2, .25, 2, 0, 2, .5, .5, .5, .5, .5, .5, .5, .25, null] },
+      { dex: '445', name: '한카리아스', types: ['드래곤', '땅'], memo: '에이스 · 칼춤 스위퍼',
+        moves: [mv('지진', '땅', '물'), mv('역린', '드래곤', '물'), mv('스톤에지', '바위', '물'), mv('칼춤', '노말', '변')],
+        m: [1, .5, 1, 1, 0, 4, 1, .5, 1, 1, 1, 1, .5, 1, 2, 1, 1, null] },
+      { dex: '405', name: '렌트라', types: ['전기'], memo: '비행 견제 · 육성 중',
+        moves: [mv('스파크', '전기', '물'), mv('몸통박치기', '노말', '물'), mv('째려보기', '노말', '변'), mv()],
+        m: [1, 1, 1, 1, .5, 1, 1, 1, 2, .5, 1, 1, 1, 1, 1, 1, .5, null] },
+      { dex: '468', name: '토게키스', types: ['노말', '비행'], memo: '특수 · 땅 무효 받이', note: '4세대 타입 · 6세대~ 페어리/비행',
+        moves: [mv('에어슬래시', '비행', '특'), mv('파동탄', '격투', '특'), mv('원시의힘', '바위', '특'), mv('전기자석파', '전기', '변')],
+        m: [1, 1, 1, .5, 2, 2, 1, 1, 0, 1, 1, .5, 2, 0, 1, 1, 1, null] }
+    ];
+    const sel = this.state.sel;
+    const members = data.map((d, i) => {
+      const s = i === sel;
+      const weak = [];
+      d.m.forEach((x, j) => {
+        if (x && x > 1) {
+          const n = ORDER[j];
+          weak.push(x >= 4 ? { a: TT[n][0] + '×4', fill: '#D8322B', fg: '#FFFFFF' } : { a: TT[n][0], fill: TT[n][1], fg: TT[n][2] });
+        }
+      });
+      const lead = TT[d.types[0]];
+      return {
+        no: '0' + (i + 1), dex: d.dex, name: d.name, memo: d.memo, note: d.note || '', hasNote: !!d.note,
+        types: d.types.map(chip), moves: d.moves, weak, sel: s,
+        hf: lead[1], hc: lead[2], ol: s ? '4px solid #F2C12E' : '0px solid transparent',
+        pick: () => this.setState({ sel: i })
+      };
+    });
+    const pips = [...data.map((d) => ({ c: TT[d.types[0]][1] })), { c: '#FFFFFF' }];
+    const cell = (x) => {
+      if (x === null) return { t: '—', bg: 'repeating-linear-gradient(135deg, #EFEAE0 0px, #EFEAE0 3px, #FFFFFF 3px, #FFFFFF 6px)', fg: '#9A96A0', fw: 400 };
+      if (x >= 4) return { t: '4', bg: '#D8322B', fg: '#FFFFFF', fw: 700 };
+      if (x >= 2) return { t: '2', bg: '#F9CFC9', fg: '#8E1C16', fw: 700 };
+      if (x === 1) return { t: '', bg: '#FFFFFF', fg: '#22222A', fw: 400 };
+      if (x === 0) return { t: '0', bg: '#2A2A33', fg: '#FFFFFF', fw: 700 };
+      if (x <= 0.25) return { t: '¼', bg: '#2C64B0', fg: '#FFFFFF', fw: 700 };
+      return { t: '½', bg: '#D3E3F7', fg: '#1D4E8F', fw: 700 };
+    };
+    const head = ORDER.map((n, j) => j === 17
+      ? { a: TT[n][0], fill: '#FFFFFF', fg: '#9A96A0', bd: '1.5px dashed #9A96A0' }
+      : { a: TT[n][0], fill: TT[n][1], fg: TT[n][2], bd: '1.5px solid #2A2A33' });
+    const rows = data.map((d, i) => ({
+      no: '0' + (i + 1), name: d.name,
+      lc: '#22222A', lb: i === sel ? '#FFF4CC' : 'transparent',
+      cells: d.m.map((x) => { const c = cell(x); return i === sel && x === 1 ? { ...c, bg: '#FFF9E0' } : c; })
+    }));
+    rows.push({ no: '06', name: '빈 슬롯', lc: '#9A96A0', lb: 'transparent', cells: ORDER.map(() => ({ t: '', bg: '#FAF7F0', fg: '#9A96A0', fw: 400 })) });
+    const weakN = ORDER.map((_, j) => j === 17 ? null : data.filter((d) => d.m[j] > 1).length);
+    const resN = ORDER.map((_, j) => j === 17 ? null : data.filter((d) => d.m[j] !== null && d.m[j] < 1).length);
+    const covered = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, null];
+    const na = { t: '—', bg: 'transparent', fg: '#9A96A0', fw: 400 };
+    const sums = [
+      { name: '약점 수', cells: weakN.map((n) => n === null ? na : n >= 3 ? { t: String(n), bg: '#D8322B', fg: '#FFFFFF', fw: 700 } : n === 2 ? { t: '2', bg: '#F9CFC9', fg: '#8E1C16', fw: 700 } : { t: String(n), bg: 'transparent', fg: n ? '#22222A' : '#9A96A0', fw: 700 }) },
+      { name: '내성 · 무효', cells: resN.map((n) => n === null ? na : { t: String(n), bg: n === 0 ? 'transparent' : '#E3EDF9', fg: n === 0 ? '#9A96A0' : '#1D4E8F', fw: 700 }) },
+      { name: '공격 커버', cells: covered.map((c) => c === null ? na : c ? { t: '✓', bg: '#E3F3E4', fg: '#2A7D38', fw: 700 } : { t: '✕', bg: '#D8322B', fg: '#FFFFFF', fw: 700 }) }
+    ];
+    const pc = (n) => ({ fill: TT[n][1], fg: TT[n][2], a: TT[n][0] });
+    const problems = [
+      { ...pc('땅'), title: '땅 — 약점 3, 받아낼 포켓몬 1', detail: '초염몽 · 엠페르트 · 렌트라 ×2 / 토게키스만 무효', tag: '방어' },
+      { ...pc('얼음'), title: '얼음 — 4배 약점', detail: '한카리아스 ×4 · 토게키스 ×2 / 엠페르트 ×¼로 받을 수 있음', tag: '방어' },
+      { ...pc('고스트'), title: '고스트 — 효과가 굉장한 기술 없음', detail: '고스트 · 악 타입 공격 기술이 스쿼드에 없음', tag: '공격' }
+    ];
+    return { members, pips, head, rows, sums, problems };
+  }
+}
+</script>
+</body>
+</html>

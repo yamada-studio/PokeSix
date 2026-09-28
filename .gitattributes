@@ -1,0 +1,11 @@
+# 저장소 안에서는 항상 LF. Windows에서 core.autocrlf 설정이 달라도
+# clang-format 결과와 diff가 OS마다 흔들리지 않게 한다.
+* text=auto eol=lf
+
+*.bat  text eol=crlf
+*.ps1  text eol=crlf
+
+*.png  binary
+*.ico  binary
+*.icns binary
+*.svg  text
