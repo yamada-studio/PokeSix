@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>PokeSix 기초</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&amp;family=Nanum+Gothic:wght@400;700;800&amp;family=Nanum+Gothic+Coding:wght@400;700&amp;family=Silkscreen:wght@400;700&amp;display=swap">
+<style>
+body{margin:0;background:#F3EFE6;color:#22222A;font-family:'Nanum Gothic','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+a{color:#2C64B0}a:hover{color:#1D4E8F}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1560px; box-sizing: border-box; background: #F3EFE6; display: flex; flex-direction: column; font-family: 'Nanum Gothic','Apple SD Gothic Neo','Malgun Gothic',sans-serif; color: #22222A">
+
+<header style="display: flex; align-items: center; gap: 20px; height: 120px; padding: 0 56px; box-sizing: border-box; background: #D8322B; border-bottom: 4px solid #2A2A33; color: #FFFFFF">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-family: 'Silkscreen','Courier New',monospace; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; color: #FFE08A">POKESIX · FOUNDATIONS</span>
+<h1 style="margin: 0; font-family: 'Do Hyeon','Malgun Gothic',sans-serif; font-size: 44px; font-weight: 400; line-height: 1">기초 체계</h1>
+</div>
+<p style="margin: 0 0 0 auto; max-width: 520px; font-size: 15px; line-height: 23px; color: #FFFFFF">빨강과 하양이 주인공, 파랑과 초록이 조연. 두꺼운 먹선과 각진 대화창으로 휴대용 게임기 시절의 손맛을 내되, 데이터는 조밀하고 정확하게.</p>
+</header>
+
+<div style="display: grid; grid-template-columns: 7fr 5fr; gap: 40px; padding: 40px 56px 0">
+
+<div style="display: flex; flex-direction: column; gap: 36px">
+<section style="display: flex; flex-direction: column; border: 2px solid #2A2A33; border-radius: 8px; background: #FFFFFF; box-shadow: 0 4px 0 #2A2A33; overflow: hidden">
+<div style="display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 16px; background: #D8322B; border-bottom: 2px solid #2A2A33; color: #FFFFFF"><span style="font-family: 'Silkscreen',monospace; font-size: 13px; font-weight: 400">01</span><h2 style="margin: 0; font-family: 'Do Hyeon',sans-serif; font-size: 20px; font-weight: 400">팔레트</h2></div>
+<div style="display: flex; flex-direction: column; gap: 18px; padding: 20px">
+<sc-for list="{{groups}}" as="g" hint-placeholder-count="6">
+<div style="display: grid; grid-template-columns: 96px 1fr; gap: 16px; align-items: start">
+<div style="font-family: 'Do Hyeon',sans-serif; font-size: 16px; color: #22222A; padding-top: 10px">{{g.label}}</div>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{g.items}}" as="s" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="height: 42px; border-radius: 6px; border: 2px solid #2A2A33; background: {{s.hex}}"></div>
+<div style="display: flex; flex-direction: column; gap: 1px">
+<span style="font-family: 'Nanum Gothic Coding',monospace; font-size: 12px; font-weight: 700">{{s.tok}}</span>
+<span style="font-family: 'Nanum Gothic Coding',monospace; font-size: 11px; color: #6B6872">{{s.hex}}</span>
+<span style="font-size: 12px; color: #55535C">{{s.use}}</span>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; border: 2px solid #2A2A33; border-radius: 8px; background: #FFFFFF; box-shadow: 0 4px 0 #2A2A33; overflow: hidden">
+<div style="display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 16px; background: #2C64B0; border-bottom: 2px solid #2A2A33; color: #FFFFFF"><span style="font-family: 'Silkscreen',monospace; font-size: 13px; font-weight: 400">02</span><h2 style="margin: 0; font-family: 'Do Hyeon',sans-serif; font-size: 20px; font-weight: 400">타입 컬러</h2><span style="margin-left: auto; font-size: 12px">솔리드 칩 · 글자색은 대비 4.5:1 이상이 되는 쪽으로 자동 선택</span></div>
+<div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px 10px; padding: 20px">
+<sc-for list="{{types}}" as="t" hint-placeholder-count="18">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="display: flex; align-items: center; justify-content: center; height: 28px; border-radius: 5px; border: 2px solid #2A2A33; font-size: 13px; font-weight: 800; background: {{t.fill}}; color: {{t.fg}}">{{t.name}}</span>
+<span style="font-family: 'Nanum Gothic Coding',monospace; font-size: 11px; color: #6B6872; text-align: center">{{t.fill}} · {{t.abbr}}</span>
+</div>
+</sc-for>
+</div>
+<p style="margin: 0; padding: 0 20px 20px; font-size: 13px; line-height: 20px; color: #55535C">밝은 채움(전기 · 얼음 · 땅 · 비행 · 벌레 · 강철 · 페어리 · 노말)은 먹색 글자, 짙은 채움은 흰 글자. 히트맵 머리글은 한 글자 약칭을 쓰며 18개가 겹치지 않는다.</p>
+</section>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 36px">
+<section style="display: flex; flex-direction: column; border: 2px solid #2A2A33; border-radius: 8px; background: #FFFFFF; box-shadow: 0 4px 0 #2A2A33; overflow: hidden">
+<div style="display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 16px; background: #2A7D38; border-bottom: 2px solid #2A2A33; color: #FFFFFF"><span style="font-family: 'Silkscreen',monospace; font-size: 13px; font-weight: 400">03</span><h2 style="margin: 0; font-family: 'Do Hyeon',sans-serif; font-size: 20px; font-weight: 400">타이포그래피</h2></div>
+<div style="display: flex; flex-direction: column; padding: 4px 20px 16px">
+<div style="display: grid; grid-template-columns: 116px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px dashed #BDB4A3; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 700">워드마크 · 라틴</span><span style="font-family: 'Nanum Gothic Coding',monospace; font-size: 11px; color: #6B6872">Silkscreen 700</span></div>
+<div style="font-family: 'Silkscreen','Courier New',monospace; font-size: 34px; font-weight: 700; line-height: 1">POKE<span style="color: #D8322B">SIX</span></div>
+</div>
+<div style="display: grid; grid-template-columns: 116px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px dashed #BDB4A3; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 700">제목</span><span style="font-family: 'Nanum Gothic Coding',monospace; font-size: 11px; color: #6B6872">도현 · 28 / 20 / 17</span></div>
+<div style="display: flex; flex-direction: column; gap: 4px; font-family: 'Do Hyeon',sans-serif"><span style="font-size: 28px; line-height: 1.1">도감 대백과</span><span style="font-size: 20px">타입 상성 · 방어</span><span style="font-size: 17px; color: #55535C">패널 머리 · 버튼</span></div>
+</div>
+<div style="display: grid; grid-template-columns: 116px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px dashed #BDB4A3; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 700">본문</span><span style="font-family: 'Nanum Gothic Coding',monospace; font-size: 11px; color: #6B6872">나눔고딕 400 · 14/21</span></div>
+<div style="font-size: 14px; line-height: 21px">땅 타입 기술은 비행 타입과 부유 특성에게 효과가 없다.</div>
+</div>
+<div style="display: grid; grid-template-columns: 116px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px dashed #BDB4A3; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 700">조밀 · 강조</span><span style="font-family: 'Nanum Gothic Coding',monospace; font-size: 11px; color: #6B6872">나눔고딕 13/18 · 800</span></div>
+<div style="font-size: 13px; line-height: 18px; color: #55535C">4세대부터 물리 · 특수는 <b style="font-weight: 800; color: #22222A">기술마다</b> 판정한다.</div>
+</div>
+<div style="display: grid; grid-template-columns: 116px 1fr; gap: 14px; padding: 14px 0; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 700">데이터</span><span style="font-family: 'Nanum Gothic Coding',monospace; font-size: 11px; color: #6B6872">나눔고딕코딩 700 · 13</span></div>
+<div style="font-family: 'Nanum Gothic Coding',monospace; font-size: 13px; font-weight: 700; white-space: pre">108  130   95   80   85  102 │ <span style="color: #D8322B">600</span></div>
+</div>
+<p style="margin: 0; font-size: 12px; line-height: 18px; color: #55535C">도현은 옛 간판 같은 굵은 획이라 제목과 버튼에만. 본문은 오래 봐도 피곤하지 않은 나눔고딕. 모두 OFL이라 앱에 번들 가능.</p>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; border: 2px solid #2A2A33; border-radius: 8px; background: #FFFFFF; box-shadow: 0 4px 0 #2A2A33; overflow: hidden">
+<div style="display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 16px; background: #F2C12E; border-bottom: 2px solid #2A2A33; color: #22222A"><span style="font-family: 'Silkscreen',monospace; font-size: 13px; font-weight: 400">04</span><h2 style="margin: 0; font-family: 'Do Hyeon',sans-serif; font-size: 20px; font-weight: 400">모양 · 선 · 그림자</h2></div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; padding: 20px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="height: 64px; border-radius: 8px; border: 2px solid #2A2A33; background: #FFFFFF; box-shadow: 0 4px 0 #2A2A33"></div>
+<span style="font-size: 12px; line-height: 17px; color: #55535C">창 — 먹선 2 · 반경 8 · 아래로 4px 단단한 그림자</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="height: 64px; border-radius: 6px; border: 1px solid #DDD6C8; background: #FAF7F0"></div>
+<span style="font-size: 12px; line-height: 17px; color: #55535C">창 안의 칸 — 연한 선 1 · 반경 6 · 그림자 없음</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="height: 64px; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 6px; border: 2px solid #2A2A33; background: #FFF4CC; font-family: 'Do Hyeon',sans-serif; font-size: 17px"><span style="width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 9px solid #2A2A33"></span>선택 커서</div>
+<span style="font-size: 12px; line-height: 17px; color: #55535C">선택 — 노란 바탕 + ▶ 커서. 옛 메뉴의 문법</span>
+</div>
+</div>
+<div style="display: flex; align-items: flex-end; gap: 14px; padding: 0 20px 20px">
+<sc-for list="{{spaces}}" as="sp" hint-placeholder-count="6">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 6px"><div style="background: #2C64B0; border-radius: 2px; width: {{sp.px}}; height: {{sp.px}}"></div><span style="font-family: 'Nanum Gothic Coding',monospace; font-size: 11px; color: #6B6872">{{sp.n}}</span></div>
+</sc-for>
+<span style="margin-left: auto; font-size: 12px; color: #55535C">간격 4 단위 · Qt에서 모두 QPainter 사각형으로 구현</span>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; border: 2px solid #2A2A33; border-radius: 8px; background: #FFFFFF; box-shadow: 0 4px 0 #2A2A33; overflow: hidden">
+<div style="display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 16px; background: #2A2A33; border-bottom: 2px solid #2A2A33; color: #FFFFFF"><span style="font-family: 'Silkscreen',monospace; font-size: 13px; font-weight: 400">05</span><h2 style="margin: 0; font-family: 'Do Hyeon',sans-serif; font-size: 20px; font-weight: 400">다크 테마 (선택)</h2></div>
+<div style="display: grid; grid-template-columns: 1fr 190px; gap: 16px; padding: 20px">
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{dark}}" as="l" hint-placeholder-count="5"><div style="display: flex; flex-direction: column; gap: 4px"><div style="height: 36px; border-radius: 5px; border: 2px solid #2A2A33; background: {{l.hex}}"></div><span style="font-family: 'Nanum Gothic Coding',monospace; font-size: 10px; color: #6B6872">{{l.hex}}</span></div></sc-for>
+</div>
+<div style="border-radius: 8px; border: 2px solid #0E0E12; background: #25252D; overflow: hidden">
+<div style="height: 26px; display: flex; align-items: center; padding: 0 10px; background: #B8241D; color: #FFFFFF; font-family: 'Do Hyeon',sans-serif; font-size: 15px; border-bottom: 2px solid #0E0E12">한카리아스</div>
+<div style="display: flex; gap: 4px; padding: 10px"><span style="height: 20px; padding: 0 8px; display: flex; align-items: center; border-radius: 4px; font-size: 11px; font-weight: 800; background: #4B42C4; color: #FFFFFF">드래곤</span><span style="height: 20px; padding: 0 8px; display: flex; align-items: center; border-radius: 4px; font-size: 11px; font-weight: 800; background: #D8B062; color: #22222A">땅</span></div>
+</div>
+</div>
+</section>
+</div>
+</div>
+
+<section style="display: flex; flex-direction: column; margin: 36px 56px 0; border: 2px solid #2A2A33; border-radius: 8px; background: #FFFFFF; box-shadow: 0 4px 0 #2A2A33; overflow: hidden">
+<div style="display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 16px; background: #D8322B; border-bottom: 2px solid #2A2A33; color: #FFFFFF"><span style="font-family: 'Silkscreen',monospace; font-size: 13px; font-weight: 400">06</span><h2 style="margin: 0; font-family: 'Do Hyeon',sans-serif; font-size: 20px; font-weight: 400">반응형 규칙</h2><span style="margin-left: auto; font-size: 12px">최소 창 960 × 640 · QSplitter + 폭 임계값 · 1024 보드는 아래 행 참고</span></div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; padding: 20px">
+<sc-for list="{{bps}}" as="b" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; align-items: center; gap: 8px"><span style="font-family: 'Nanum Gothic Coding',monospace; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 4px; border: 2px solid #2A2A33; background: {{b.c}}; color: {{b.fg}}">{{b.w}}</span><span style="font-family: 'Do Hyeon',sans-serif; font-size: 17px">{{b.name}}</span></div>
+<div style="height: 132px; border-radius: 6px; border: 2px solid #2A2A33; background: #F3EFE6; display: flex; flex-direction: column; overflow: hidden">
+<div style="height: 14px; background: #D8322B; border-bottom: 2px solid #2A2A33"></div>
+<div style="flex-grow: 1; display: flex; gap: 5px; padding: 6px">
+<sc-for list="{{b.cols}}" as="c" hint-placeholder-count="3"><div style="border-radius: 3px; border: 1.5px solid #2A2A33; background: {{c.bg}}; flex-grow: {{c.g}}; flex-basis: {{c.w}}"></div></sc-for>
+</div>
+</div>
+<span style="font-size: 12px; line-height: 18px; color: #55535C">{{b.note}}</span>
+</div>
+</sc-for>
+</div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1560}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const TT = [
+      ['노말','노','#BDBBA6','#2A2A33'],['불꽃','불','#CC4A22','#FFFFFF'],['물','물','#3470C2','#FFFFFF'],
+      ['풀','풀','#377D33','#FFFFFF'],['전기','전','#F2C12E','#2A2A33'],['얼음','얼','#7FCFD4','#2A2A33'],
+      ['격투','격','#A8332A','#FFFFFF'],['독','독','#8A3F96','#FFFFFF'],['땅','땅','#D8B062','#2A2A33'],
+      ['비행','비','#A3AEEF','#2A2A33'],['에스퍼','에','#C93866','#FFFFFF'],['벌레','벌','#A9BA3A','#2A2A33'],
+      ['바위','바','#806C30','#FFFFFF'],['고스트','고','#5B4A8C','#FFFFFF'],['드래곤','드','#4B42C4','#FFFFFF'],
+      ['악','악','#4A3F38','#FFFFFF'],['강철','강','#B5C0CC','#2A2A33'],['페어리','페','#EFA6CF','#2A2A33']
+    ];
+    const types = TT.map(([name, abbr, fill, fg]) => ({ name, abbr, fill, fg }));
+    const groups = [
+      { label: '빨강 (주)', items: [
+        { tok: 'red', hex: '#D8322B', use: '앱 막대 · 주요 버튼' },
+        { tok: 'red.deep', hex: '#B8241D', use: '눌림 · 비활성 탭' },
+        { tok: 'red.tint', hex: '#FDE7E4', use: '약점 · 경고 바탕' } ] },
+      { label: '하양 · 종이', items: [
+        { tok: 'white', hex: '#FFFFFF', use: '창 바탕' },
+        { tok: 'paper', hex: '#F3EFE6', use: '앱 바탕' },
+        { tok: 'paper.alt', hex: '#FAF7F0', use: '줄무늬 행 · 칸' } ] },
+      { label: '파랑', items: [
+        { tok: 'blue', hex: '#2C64B0', use: '링크 · 정보 창 머리' },
+        { tok: 'blue.deep', hex: '#1D4E8F', use: '내성 글자' },
+        { tok: 'blue.tint', hex: '#E3EDF9', use: '내성 바탕' } ] },
+      { label: '초록', items: [
+        { tok: 'green', hex: '#2A7D38', use: '확인 · 커버됨' },
+        { tok: 'green.tint', hex: '#E3F3E4', use: '정상 상태 바탕' } ] },
+      { label: '노랑 (선택)', items: [
+        { tok: 'yellow', hex: '#F2C12E', use: '선택 테두리 · 강조' },
+        { tok: 'yellow.tint', hex: '#FFF4CC', use: '선택 행 바탕' } ] },
+      { label: '먹 · 선 · 글자', items: [
+        { tok: 'ink', hex: '#2A2A33', use: '외곽선 · 그림자' },
+        { tok: 'text.1', hex: '#22222A', use: '본문' },
+        { tok: 'text.2', hex: '#55535C', use: '보조' },
+        { tok: 'text.3', hex: '#6B6872', use: '캡션 (종이 위 4.6:1)' },
+        { tok: 'line', hex: '#DDD6C8', use: '연한 구분선' } ] }
+    ];
+    const spaces = [4, 8, 12, 16, 24, 32].map((n) => ({ n: String(n), px: n + 'px' }));
+    const dark = ['#1B1B21', '#25252D', '#33333D', '#B8241D', '#E9E6EF'].map((hex) => ({ hex }));
+    const W = '#FFFFFF', A = '#FAF7F0', Y = '#FFF4CC';
+    const bps = [
+      { w: '≥ 1360', name: '넓게', c: '#2A7D38', fg: '#FFFFFF', note: '도감: 필터 264 · 목록 · 상세 420 세 단. 스쿼드: 슬롯 2×3 + 분석 오른쪽.',
+        cols: [{ bg: A, g: 0, w: '22%' }, { bg: W, g: 1, w: '0' }, { bg: Y, g: 0, w: '30%' }] },
+      { w: '1100–1359', name: '보통', c: '#2C64B0', fg: '#FFFFFF', note: '필터 패널이 목록 위 필터 칩 한 줄로 접힌다. 상세는 고정.',
+        cols: [{ bg: W, g: 1, w: '0' }, { bg: Y, g: 0, w: '34%' }] },
+      { w: '1024', name: '좁게', c: '#F2C12E', fg: '#22222A', note: '앱 막대 탭은 아이콘 + 짧은 이름. 도감 상세는 오른쪽 드로어, 스쿼드 분석은 탭 전환.',
+        cols: [{ bg: W, g: 1, w: '0' }] },
+      { w: '960–1023', name: '최소', c: '#D8322B', fg: '#FFFFFF', note: '스쿼드 슬롯은 3×2 위, 분석은 아래로 스크롤. 문제 목록은 언제나 분석의 첫 줄.',
+        cols: [{ bg: W, g: 1, w: '0' }] }
+    ];
+    return { types, groups, spaces, dark, bps };
+  }
+}
+</script>
+</body>
+</html>

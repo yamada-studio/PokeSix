@@ -27,7 +27,7 @@ cached in a local SQLite database, and used offline afterwards.
 ## Building
 
 Requirements: a C++20 compiler, CMake 3.21+, Ninja (Linux/macOS), and **Qt 6.8 or newer**
-(Widgets, Sql, Network).
+(Widgets, Svg, Sql, Network).
 
 One script per step, one folder per OS:
 
@@ -63,7 +63,7 @@ src/app/    main window and application bootstrap
 tests/      unit tests (GoogleTest) and a Qt runtime environment check
 resources/  app icons, bundled fonts, style sheets (Qt resource system)
 docs/       architecture, build guide, conventions, roadmap, decision records
-docs/design-handoff/   visual design package: screens, design sheet, specs, tokens
+design/      visual design packages from Claude Design (handoff-v1, handoff-v2) and design requests
 ```
 
 See [docs/architecture.md](docs/architecture.md) for the layering rules.

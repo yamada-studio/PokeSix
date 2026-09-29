@@ -5,7 +5,7 @@
 
 ## 맥락
 
-Claude Design으로 만든 디자인 핸드오프([docs/design-handoff/](../design-handoff/PROMPT.md))가 도착했다.
+Claude Design으로 만든 디자인 핸드오프([design/handoff-v1/](../../design/handoff-v1/PROMPT.md))가 도착했다.
 화면 캡처, 디자인 시트, 화면 정의서, 설계서, 규칙 테스트 값, 토큰·QSS 시작 파일, 앱 아이콘이 들어 있다.
 핸드오프는 저장소를 보지 않고 작성되었다. 그래서 일부 전제가 이미 확정한 결정과 다르다(C++17, QtTest,
 core의 QtCore 허용, `ps::tok` namespace, 데이터 원본 미정). 또 PROMPT.md는 **Claude가 직접 구현하는 것**을 전제로 한다.

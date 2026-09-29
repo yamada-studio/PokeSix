@@ -1,4 +1,88 @@
-/*
- * PokeSix 앱 전역 스타일시트 (QSS — Qt Style Sheets, CSS와 유사한 문법).
- * 아직 로드하지 않는다. 적용 시: qApp->setStyleSheet(<":/styles/app.qss" 내용>)
- */
+/* PokeSix 앱 전역 스타일시트 (라이트 테마). QSS = Qt Style Sheets, CSS와 비슷한 문법.
+   출발점은 design/handoff-v2/design/pokesix.qss. 색은 "@이름" 자리표시로 쓰고, 실행 시
+   theme::apply()가 src/ui/theme/tokens.h의 값으로 바꾼다(예: @red.deep → #B8241D).
+   창 그림자 · 타입 칩 · 히트맵 · 종족값 바 · 앱 막대 탭처럼 QSS로 안 되는 것은 paintEvent에서 그린다.
+   글꼴 이름은 등록된 실제 이름을 쓴다: "NanumGothic"(핸드오프의 "Nanum Gothic" 아님), "NanumGothicCoding". */
+
+
+QWidget {
+  background: @paper;
+  color: @text.1;
+  font-family: "NanumGothic";
+  font-size: 13px;
+}
+
+QToolTip {
+  background: @white; color: @text.1;
+  border: 2px solid @ink; border-radius: 6px; padding: 6px 8px;
+}
+
+/* ── 버튼: setProperty("variant", "primary" | "secondary" | "text" | "danger") ── */
+QPushButton {
+  font-family: "Do Hyeon"; font-size: 16px;
+  min-height: 32px; padding: 0 14px;
+  border: 2px solid @ink; border-radius: 6px;
+  background: @white; color: @text.1;
+}
+QPushButton[variant="primary"] { background: @red; color: @white; }
+QPushButton[variant="primary"]:pressed { background: @red.deep; }
+QPushButton[variant="info"] { background: @blue; color: @white; }
+QPushButton[variant="text"] { border-color: transparent; background: transparent; color: @blue; }
+QPushButton[variant="danger"] { border-color: @red; color: @red.deep; }
+QPushButton:hover { background: @paper; }
+QPushButton[variant="primary"]:hover { background: #E0443C; }
+QPushButton:focus { outline: none; border-color: @blue; }
+QPushButton:disabled { border: 2px dashed @line.strong; color: @text.disabled; background: transparent; }
+/* 아래 3px 단단한 그림자는 ShadowButton(QPushButton 서브클래스) paintEvent에서 추가 */
+
+/* ── 입력 ── */
+QLineEdit {
+  min-height: 32px; padding: 0 10px;
+  border: 2px solid @ink; border-radius: 6px;
+  background: @white; color: @text.1;
+  selection-background-color: @yellow; selection-color: @text.1;
+}
+QLineEdit:focus { border-color: @blue; }
+QLineEdit[role="memo"] { min-height: 24px; border: 1.5px solid @line.strong; border-radius: 5px; background: @paper.alt; color: @text.2; font-size: 12px; }
+
+QCheckBox { spacing: 8px; font-weight: 700; }
+QCheckBox::indicator { width: 16px; height: 16px; border: 2px solid @ink; border-radius: 3px; background: @white; }
+QCheckBox::indicator:checked { background: @red; image: url(:/icons/ui/check-white.svg); }
+
+/* ── 표 ── */
+QTableView {
+  background: @white; alternate-background-color: @paper.alt;
+  border: none; gridline-color: @line.soft;
+  selection-background-color: @yellow.tint; selection-color: @text.1;
+}
+QHeaderView::section {
+  background: @white; color: @text.2;
+  font-size: 11px; font-weight: 800;
+  border: none; border-bottom: 2px solid @ink; padding: 0 6px; min-height: 28px;
+}
+
+/* ── 스크롤바: 두꺼운 먹선 손잡이 ── */
+QScrollBar:vertical { width: 14px; background: @paper.alt; border-left: 1px solid @line; }
+QScrollBar::handle:vertical { min-height: 32px; margin: 2px; border: 2px solid @ink; border-radius: 4px; background: @white; }
+QScrollBar::add-line, QScrollBar::sub-line { height: 0; width: 0; }
+QScrollBar:horizontal { height: 14px; background: @paper.alt; border-top: 1px solid @line; }
+QScrollBar::handle:horizontal { min-width: 32px; margin: 2px; border: 2px solid @ink; border-radius: 4px; background: @white; }
+
+/* ── 메뉴 (세대 전환 등) ── */
+QMenu { background: @white; border: 2px solid @ink; border-radius: 6px; padding: 4px; }
+QMenu::item { padding: 8px 14px 8px 26px; border-radius: 4px; font-family: "Do Hyeon"; font-size: 16px; }
+QMenu::item:selected { background: @yellow.tint; }
+
+/* ── 라벨은 전역 배경(paper)을 칠하지 않는다. 무늬 · 패널 위에 얹히기 때문 ── */
+QLabel { background: transparent; }
+
+/* ── 인트로(HomePage) — 위젯은 objectName으로 고른다: QLabel#이름 ── */
+QLabel#introSubtitle { font-family: "Do Hyeon"; font-size: 22px; color: @text.2; }
+QLabel#introGenerationLabel { font-size: 12px; font-weight: 700; color: @text.3; }
+QLabel#introVersion { font-family: "NanumGothicCoding"; font-size: 12px; font-weight: 700; color: @text.2; }
+QLabel#introKeyCap {
+  font-family: "NanumGothicCoding"; font-size: 12px; font-weight: 700; color: @text.2;
+  padding: 1px 5px; border: 1px solid @line.strong; border-radius: 3px; background: @white;
+}
+QLabel#introKeyHint { font-size: 12px; font-weight: 700; color: @text.2; }
+QLabel#introSource { font-size: 12px; color: @text.2; }

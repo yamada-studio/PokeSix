@@ -116,7 +116,9 @@
 
 - `resources/resources.qrc` 하나를 실행 파일에 붙인다. 정적 라이브러리에 qrc를 넣으면
   `Q_INIT_RESOURCE()`가 필요하므로 그렇게 하지 않는다.
-- 가상 경로: `:/icons/app/…`, `:/icons/ui/…`, `:/fonts/…`, `:/styles/…`
+- qrc는 `qt_add_big_resources`로 컴파일한다(글꼴 12 MB를 거대한 생성 `.cpp` 없이 오브젝트로 넣는다).
+- 가상 경로: `:/styles/app.qss`, `:/fonts/*.ttf`, `:/icons/mark/…`(마크 SVG), `:/icons/window/pokesix-<크기>.png`(창 아이콘).
+  원본 파일 위치와 다른 짧은 경로는 qrc의 `alias`로 붙인다.
 - **자체 제작이거나 라이선스가 확인된 파일만** 넣는다(글꼴은 OFL, 라이선스 파일 동봉).
 - 포켓몬 스프라이트, 공식 아트, 공식 로고, 포켓볼 도안은 넣지 않는다. `SpritePlaceholder` 위젯을 쓴다.
 

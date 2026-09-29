@@ -30,15 +30,19 @@ Claude Code가 이 리포에서 세션을 시작할 때마다 읽는 파일이�
 단계별 가이드는 `docs/guides/<step>.md`에 쓴다. **그 단계를 시작할 때 하나만** 쓰고, 미리 여러 개 쓰지 않는다.
 화면 단계는 디자인 핸드오프를 기준으로, 화면마다 배경부터 하나씩 쌓는다.
 
-### 디자인 핸드오프 — [docs/design-handoff/](docs/design-handoff/PROMPT.md)
+### 디자인 핸드오프 — [design/](design/README.md)
 
-- 시각 디자인의 기준이다. 수치가 이미지와 다르면 `design/source/*.dc.html`이 정답이다
+- 시각 디자인의 기준이다. `design/handoff-v1/`(도감 · 아이템 · 스쿼드 · 설정 · 컴포넌트 · 규칙)과
+  `design/handoff-v2/`(인트로 · 4탭 앱 막대 · 캡슐 마크)가 있다. **v2의 `docs/*b_*.md`가 v1의 해당 절을 덮어쓴다**
+- 수치가 이미지와 다르면 각 핸드오프의 `design/source/*.dc.html`이 정답이다
 - **`PROMPT.md`는 Claude가 직접 구현하는 것을 전제로 쓰였지만, 이 리포에서는 위의 가이더 역할이 우선한다.**
   PROMPT의 작업 순서는 roadmap.md의 단계로 재구성되어 있다
 - 핸드오프의 C++17 · QtTest · core의 QtCore 허용 · `ps::tok`은 이 리포의 결정(C++20 · GoogleTest ·
-  Qt 없는 core · `com::yamada::studio`)으로 대체된다. 대응표는 [docs/architecture.md §3](docs/architecture.md#3-디자인-설계서와의-대응),
-  근거는 [ADR 0005](docs/decisions/0005-design-handoff-adoption.md)
-- 핸드오프 폴더는 원본 스냅샷이다. 수정하지 않는다
+  Qt 없는 core · `com::yamada::studio`)으로 대체된다. v2의 `IntroPage`는 이 리포의 `HomePage`다.
+  대응표는 [docs/architecture.md §3](docs/architecture.md#3-디자인-설계서와의-대응),
+  근거는 [ADR 0005](docs/decisions/0005-design-handoff-adoption.md) · [ADR 0009](docs/decisions/0009-design-handoff-v2.md)
+- 핸드오프 폴더는 원본 스냅샷이다. 수정하지 않는다. 핸드오프 안의 `docs/design-handoff…` 경로는 옛 위치이고, 지금은 `design/` 아래에 있다
+- 새 디자인이 필요하면 `design/requests/`에 요청서를 쓰고, 결과는 `design/handoff-vN/`으로 받는다
 - 화면 진단은 `--screenshot`(A3 단계에서 구현)으로 캡처해 `images/screens/`의 기준 이미지와 나란히 비교한다
 
 ### 소통
@@ -52,7 +56,7 @@ Claude Code가 이 리포에서 세션을 시작할 때마다 읽는 파일이�
 ## 2. 프로젝트 요약
 
 - **PokeSix**: 포켓몬 세대별 정주행 보조 도구 (도감 → SixSquad 파티 분석 → 아이템 → 오버레이)
-- C++20, Qt 6.8 LTS (Widgets / Sql / Network, LGPL 동적 링크), CMake 3.21+ Presets, SQLite
+- C++20, Qt 6.8 LTS (Widgets / Svg / Sql / Network, LGPL 동적 링크), CMake 3.21+ Presets, SQLite
 - 데이터: PokéAPI → SQLite 캐시 → 오프라인 동작
 - 라이선스: MIT. 게임 에셋(스프라이트 등)은 **절대 커밋하지 않는다**
 

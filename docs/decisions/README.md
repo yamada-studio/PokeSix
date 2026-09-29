@@ -15,3 +15,6 @@
 | [0005](0005-design-handoff-adoption.md) | 디자인 핸드오프를 기존 구조 위에 맞춰 반영한다 | Accepted |
 | [0006](0006-semver-and-trunk-based-branches.md) | SemVer(Phase = MINOR)와 main 하나 + 짧은 작업 브랜치 | Accepted |
 | [0007](0007-ui-component-structure.md) | UI 컴포넌트는 "그리기 · 동작 · 겉모양"을 나눠 모듈화한다 | Accepted |
+| [0008](0008-intro-screen-replaces-home.md) | 홈 화면을 전체 화면 인트로(타이틀)로 바꾼다 | Accepted |
+| [0009](0009-design-handoff-v2.md) | 디자인 핸드오프 v2(인트로 · 4탭 · 캡슐 마크)를 채택한다 | Accepted |
+| [0010](0010-intro-implemented-by-claude.md) | 인트로 화면을 Claude가 구현하고, 그 과정의 기술 결정을 확정한다 | Accepted |

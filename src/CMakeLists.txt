@@ -17,9 +17,13 @@ set(POKESIX_RES "${PROJECT_SOURCE_DIR}/resources")
 
 qt_add_executable(PokeSix WIN32 MACOSX_BUNDLE
     main.cpp
-    ${POKESIX_RES}/resources.qrc
 )
 pokesix_qt_target(PokeSix)
+
+# Resources (styles, 12 MB of fonts, mark and window icons). qt_add_big_resources embeds
+# them as a separate object file instead of a huge generated .cpp, so builds stay fast.
+qt_add_big_resources(POKESIX_RCC ${POKESIX_RES}/resources.qrc)
+target_sources(PokeSix PRIVATE ${POKESIX_RCC})
 
 # ── 실행 파일 아이콘 (OS 셸이 보는 아이콘) ─────────────────────
 if(WIN32)
@@ -41,7 +45,11 @@ target_link_libraries(PokeSix PRIVATE
     pokesix_ui
 )
 
+# Linux: 설치한 실행 파일이 Qt(~/Qt/6.8.3/…/lib)를 찾을 수 있도록, 링크한 라이브러리 경로를
+# 설치본의 RPATH에 남긴다. 기본값은 설치할 때 RPATH를 지워서 데스크톱 런처에서 실행하면
+# "libQt6Core.so.6: not found"로 뜨지 않는다. Qt를 동봉하는 배포 패키징은 Phase G에서 따로 한다.
 set_target_properties(PokeSix PROPERTIES
+    INSTALL_RPATH_USE_LINK_PATH TRUE
     MACOSX_BUNDLE_GUI_IDENTIFIER "com.yamada.studio.pokesix"
     MACOSX_BUNDLE_BUNDLE_VERSION "${PROJECT_VERSION}"
     MACOSX_BUNDLE_SHORT_VERSION_STRING "${PROJECT_VERSION}"
