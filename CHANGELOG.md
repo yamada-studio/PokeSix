@@ -10,6 +10,17 @@ and the project uses [Semantic Versioning](https://semver.org/).
 - `MainWindow` in a new `pokesix_ui` library: 1440×900 default size, 960×640 minimum,
   title with the application version.
 - `pokesix.ui` logging category (info by default; debug via `QT_LOGGING_RULES`).
+- Full-screen intro (home) screen from design handoff v2: capsule mark, wordmark with its offset
+  shadow, generation button, menu window with five rows (hover, arrow keys, Enter, 1–4, Esc to quit)
+  and an info footer, on a striped background between red bands.
+- Design theme: v2 tokens, bundled fonts registered at startup, and an application stylesheet with
+  `@token` substitution.
+- Capsule app icons for macOS, Windows and Linux, a multi-size window icon and the Linux desktop file name.
+- Design packages moved to a top-level `design/` folder (handoff v1, v2 and design requests).
+
+### Changed
+- The home screen is a full-screen intro instead of the v1 dashboard; the app bar will have four tabs.
+- Installed Linux binaries keep the Qt library path in their RUNPATH, so the desktop launcher works.
 
 ## [0.0.1] - 2026-09-28
 

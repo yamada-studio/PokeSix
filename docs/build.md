@@ -6,7 +6,7 @@
 | macOS | Apple Clang (Xcode CLT) | Ninja | `macos-debug` / `macos-release` | ⚠ 미검증 |
 | Windows 10/11 | MSVC 2022 | Visual Studio 17 2022 | `windows-msvc` + `windows-debug` / `windows-release` | ⚠ 미검증 |
 
-공통 요구 사항: CMake 3.21+, **Qt 6.8 이상** (Widgets / Sql / Network), 인터넷(첫 configure 때 GoogleTest를 받는다).
+공통 요구 사항: CMake 3.21+, **Qt 6.8 이상** (Widgets / Svg / Sql / Network), 인터넷(첫 configure 때 GoogleTest를 받는다).
 
 ---
 

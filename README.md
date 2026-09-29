@@ -27,7 +27,7 @@ cached in a local SQLite database, and used offline afterwards.
 ## Building
 
 Requirements: a C++20 compiler, CMake 3.21+, Ninja (Linux/macOS), and **Qt 6.8 or newer**
-(Widgets, Sql, Network).
+(Widgets, Svg, Sql, Network).
 
 One script per step, one folder per OS:
 

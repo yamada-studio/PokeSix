@@ -7,6 +7,10 @@
 > 시각 기준은 디자인 v2다([ADR 0009](../decisions/0009-design-handoff-v2.md), [`30_intro_1440.png`](../../design/handoff-v2/images/screens/30_intro_1440.png),
 > 원본 수치 `design/handoff-v2/design/source/Intro.dc.html`). v2 문서의 `IntroPage`가 이 리포의 `HomePage`다.
 > 체크포인트 1(AppBar + 페이지 스택)은 그대로 살아 있다.
+>
+> **완료(2026-09-29)**: 체크포인트 A · B1 · B2는 사용자가, 이후(B3 정보 줄과 실제 모양 · 동작)는 사용자 요청으로
+> Claude가 구현했다([ADR 0010](../decisions/0010-intro-implemented-by-claude.md)). 이 가이드는 읽기 자료로 남긴다.
+> §3의 "임시 고정 크기"는 이제 각 위젯의 `sizeHint()`로 바뀌었다.
 
 ## 목표
 
