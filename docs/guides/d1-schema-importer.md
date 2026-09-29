@@ -164,3 +164,102 @@ pokemon_id  slot  type_id  gen_from  gen_to
 - [QSqlQuery](https://doc.qt.io/qt-6/qsqlquery.html) — "Approaches to Binding Values"
 - [RFC 4180](https://www.rfc-editor.org/rfc/rfc4180) — CSV 규칙(짧다)
 - [SQLite: INSERT가 느린 이유](https://www.sqlite.org/faq.html#q19) — FAQ 19
+
+---
+
+## CP4 따라 하기 — `pokesix-import-csv`
+
+목표: 명령 한 줄로 실제 CSV 폴더를 DB 파일로 바꾸는 도구. `tools/fetchcsv`와 거의 같은 모양이다.
+
+### 0단계 — CSV를 최신 목록으로 받아 두기
+받을 목록에 `pokemon_forms.csv`가 추가되었으므로 한 번 더 실행한다. 이미 받은 35개는 건너뛴다.
+```bash
+cmake --build --preset linux-debug
+build/linux-debug/tools/fetchcsv/pokesix-fetch-csv
+```
+기대 출력(마지막 줄): `done: /home/<you>/.cache/YamadaStudio/PokeSix/pokeapi-csv/168b1e89…`
+
+### 1단계 — 폴더와 CMake (그대로 복사)
+`tools/importcsv/CMakeLists.txt`를 새로 만든다:
+```cmake
+# pokesix-import-csv — 받아 둔 PokéAPI CSV 폴더를 게임 데이터 DB로 바꾼다(CsvImporter를 그대로 쓴다).
+qt_add_executable(pokesix-import-csv
+    main.cpp
+)
+pokesix_qt_target(pokesix-import-csv)
+
+target_link_libraries(pokesix-import-csv PRIVATE
+    pokesix_data
+)
+```
+`tools/CMakeLists.txt` 맨 아래에 한 줄 추가:
+```cmake
+add_subdirectory(importcsv)
+```
+
+### 2단계 — `tools/importcsv/main.cpp` (TODO 5개만 채운다)
+```cpp
+// pokesix-import-csv <CSV 폴더> <DB 파일>
+//   pokesix-fetch-csv로 받아 둔 CSV 폴더를 게임 데이터 DB(SQLite)로 바꾼다.
+#include "data/update/csvimporter.h"
+
+#include <QCoreApplication>
+#include <QElapsedTimer>
+#include <QTextStream>
+
+using com::yamada::studio::CsvImporter;
+
+int main(int argc, char *argv[])
+{
+    // 이벤트 루프(exec)는 돌리지 않지만 QCoreApplication은 있어야 한다.
+    // 이유: QSqlDatabase가 SQLite 드라이버를 "플러그인"으로 불러오는데, 그 일을 QCoreApplication이 한다.
+    QCoreApplication app(argc, argv);
+    QTextStream out(stdout);
+
+    // TODO ① 명령행 인자 목록을 얻는다: QCoreApplication::arguments()  (QStringList, [0]은 프로그램 이름)
+    const QStringList args = /* ① */;
+
+    // TODO ② 인자가 정확히 2개가 아니면(= args.size() != 3) 사용법을 찍고 1을 반환한다
+    //        out << "usage: pokesix-import-csv <csv-dir> <db-file>" << Qt::endl;
+
+    const QString csvDir = args.at(1);
+    const QString dbPath = args.at(2);
+
+    // TODO ③ 시간 재기: QElapsedTimer timer; 를 만들고 timer.start();
+
+    // TODO ④ 변환: CsvImporter importer; 를 만들고 importer.run(csvDir, dbPath)
+    //        실패(false)면  out << "failed: " << importer.errorString() << Qt::endl;  하고 1을 반환
+
+    // TODO ⑤ 성공 출력: "done: <dbPath> in <ms> ms"   (걸린 시간 = timer.elapsed(), 단위 ms)
+
+    return 0; // CsvImporter::run()은 동기 함수라 끝나면 곧바로 결과가 있다 → exec()가 필요 없다
+}
+```
+`fetchcsv/main.cpp`와 비교해 보면 차이는 하나다. 그쪽은 결과가 **나중에** 시그널로 오기 때문에 `app.exec()`로 이벤트 루프를 돌려야 했다. 이쪽은 `run()`이 끝나는 순간 결과가 있다.
+
+### 3단계 — 빌드와 실행
+```bash
+scripts/linux/build.sh --format
+build/linux-debug/tools/importcsv/pokesix-import-csv ~/.cache/YamadaStudio/PokeSix/pokeapi-csv/168b1e89467054cda2e7df43ccebbb69b459497a /tmp/pokesix.sqlite
+```
+기대 출력:
+```
+pokesix.data: imported PokéAPI CSV "…/168b1e89…" into "/tmp/pokesix.sqlite"
+done: /tmp/pokesix.sqlite in 150 ms          ← 숫자는 PC마다 조금 다르다
+```
+인자를 빼고 실행하면 `usage: …`가 나오고 종료 코드가 1이어야 한다(`echo $?`).
+
+### 4단계 — DB 들여다보기 (sqlite3 없이 Python으로)
+```bash
+python3 -c "
+import sqlite3; db = sqlite3.connect('/tmp/pokesix.sqlite')
+print(db.execute('SELECT COUNT(*) FROM species').fetchone())                           # (1025,)
+print(db.execute('SELECT name_ko FROM species WHERE intro_gen = 4 LIMIT 3').fetchall())  # 모부기 · 수풀부기 · 토대부기
+print(db.execute('''SELECT t.name_ko FROM pokemon_types pt JOIN types t ON t.id = pt.type_id
+                    WHERE pt.pokemon_id = 35 AND pt.gen_from <= 5 AND (pt.gen_to IS NULL OR pt.gen_to >= 5)''').fetchall())  # 노말
+"
+```
+세 줄 모두 주석의 값과 같으면 CP4 완료다. 원하는 질의를 더 해 보자. 예: 4세대의 한카리아스(445) 종족값, 1세대 상성표의 칸 수(225).
+
+### 끝나면
+"CP4 진단해줘"라고 요청한다. Claude가 코드를 보고, 커밋 · merge한다.
