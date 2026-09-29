@@ -55,7 +55,7 @@ QHBoxLayout은 가로 공간을 이런 순서로 나눈다.
 | 위젯 | sizeHint 폭 | 비고 |
 |---|---|---|
 | AppBar 전체 | **1030** | 여백 13 + 20, 간격 12 + 24 포함 |
-| MarkButton | 151 | size policy가 없다 → 기본값 `Preferred` → **줄어들 수 있다** (CP2의 함정) |
+| MarkButton | 151 | `Fixed` (A9에서 이미 설정) |
 | AppTabBar | 400 | `Fixed` |
 | GenerationButton | 130 | `Fixed` |
 | SearchField | 280 | `setFixedSize(280, 36)` |
@@ -122,19 +122,15 @@ QSize SearchField::minimumSizeHint() const
     layout->addWidget(m_search, 0, Qt::AlignVCenter);
 ```
 
-**함정**: 이대로 창을 좁히면 검색창만이 아니라 **마크 버튼도 같이 줄어든다**.
-MarkButton에는 size policy를 따로 준 적이 없어서 기본값 `Preferred`(줄여도 됨)이다.
-게다가 `minimumSizeHint()`가 없어서(-1, -1) 최소 폭이 사실상 0이다.
-공간이 모자라면 레이아웃은 줄일 수 있는 위젯들 사이에 줄일 폭을 나눈다. 그래서 마크도 찌그러진다.
+**MarkButton은 손대지 않는다.** 생성자에 이미 `setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed)`가 있다.
+(처음 쓴 가이드는 이 줄이 없다고 잘못 적어 TODO 6을 두었다. TODO 6은 없다.)
 
-```cpp
-// markbutton.cpp — 생성자
-    // TODO 6: 가로 · 세로 모두 Fixed. (GenerationButton · AppTabBar의 TabButton과 같은 방식)
-    //         그러면 마크는 늘 sizeHint(151 × 50) 그대로다.
-```
+(선택 실험) policy가 무슨 일을 하는지 직접 보고 싶으면, 그 줄을 **잠깐 주석 처리**하고 실행해 창을 좁혀 본다.
+- 기본값 `Preferred`는 "hint보다 줄여도 된다"는 뜻이다.
+- MarkButton은 `minimumSizeHint()`를 override하지 않았고 레이아웃도 없어서, 최소값이 (-1, -1), 곧 사실상 0이다.
+- 공간이 모자라면 레이아웃은 줄일 수 있는 위젯들 사이에 줄일 폭을 나눈다. 그래서 검색창과 함께 **마크도 찌그러진다**.
 
-> TODO 6을 먼저 하지 말고, **TODO 5만 한 상태로 한 번 실행해 창을 좁혀 보는 걸 추천한다.**
-> 마크가 찌그러지는 걸 직접 보면 policy가 무슨 일을 하는지 바로 와닿는다.
+확인했으면 주석을 되돌린다.
 
 ## CP3 — 좁으면 `Ctrl K` 배지를 숨긴다
 
