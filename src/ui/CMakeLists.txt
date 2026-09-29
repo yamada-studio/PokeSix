@@ -22,6 +22,8 @@ qt_add_library(pokesix_ui STATIC
     widgets/segmentprogress.cpp
     widgets/svgicon.h
     widgets/svgicon.cpp
+    widgets/searchfield.h
+    widgets/searchfield.cpp
     home/homepage.h
     home/homepage.cpp
     home/intromenu.h
@@ -35,6 +37,10 @@ qt_add_library(pokesix_ui STATIC
     shell/page.h
     shell/appbar.h
     shell/appbar.cpp
+    shell/apptabbar.h
+    shell/apptabbar.cpp
+    shell/markbutton.h
+    shell/markbutton.cpp
     shell/mainwindow.h
     shell/mainwindow.cpp
 )

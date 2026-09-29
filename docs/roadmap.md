@@ -42,14 +42,15 @@ Qt의 기초(창, 레이아웃, 리소스, 테마, 커스텀 페인트, 시그�
 | ✅ | **A6** 캡슐 마크를 코드로 | `QTransform`(회전 −35°), 경로 합성 · 클리핑, 크기별 규칙(01b §6-3), `sizeHint()` | `MarkWidget` 136이 `41_mark_final.png`의 128+ 규칙대로 그려진다(광택 · 눈빛 · 입 · 볼) |
 | 🟨 | **A7** 메뉴 동작 — 시그널/슬롯 | `QAbstractButton`, hover가 선택을 옮김, 키보드(↑↓ 순환 없음 · Enter · 1–4 · Esc), 포커스 이유(`Qt::TabFocusReason`), ▶ 커서와 노란 선택 칸, 눌림 2px, **시그널/슬롯**, 상자 바깥 포커스 링 | 메뉴로 본 화면에 들어가고(임시 되돌아가기 버튼으로) 인트로로 돌아온다. 종료 줄 · Esc 두 번 → 종료 |
 | ⬜ | **A8** 세대 버튼 · 세대 메뉴와 AppState | `Qt::Popup` 창, `Q_PROPERTY`, 첫 `pokesix_data` 타깃, core의 세대 표, `QSettings`(`gen`) | "GEN 4 신오 ▾" → 폭 300 · 9줄 팝업(▶ · ✓), 고른 세대가 `AppState`에 들어가고 다음 실행에도 남는다 |
-| ⬜ | **A9** 앱 막대와 탭 | 폴더 탭 커스텀 페인트, 마크 버튼(스티커 변형 36, hover 점선 테), `QShortcut`(Ctrl+1…4), `enum class Page` + `MainWindow::open(Page)` | 빨강 앱 막대: 캡슐 마크 + POKESIX + 탭 4 + 세대 버튼(같은 `AppState`) · 검색 자리. 메뉴 선택 → 그 탭이 활성인 본 화면, 마크 → 인트로 |
+| ✅ | **A9** 앱 막대와 탭 | 폴더 탭 커스텀 페인트, 마크 버튼(스티커 변형 36, hover 점선 테), `QShortcut`(Ctrl+1…4), `enum class Page` + `MainWindow::open(Page)` | 빨강 앱 막대: 캡슐 마크 + POKESIX + 탭 4 + 세대 버튼(같은 `AppState`) · 검색 자리. 메뉴 선택 → 그 탭이 활성인 본 화면, 마크 → 인트로 |
 | ⬜ | **A10** 마무리 | 캡처 차이 목록, 키보드만으로 왕복 확인 | `30` · `31`과의 차이 목록이 비어 있거나 설명 가능 → **v0.1.0** |
 
 - **A2 후반 · A4 · A5 · A6과 A3 · A7의 일부는 사용자 요청으로 Claude가 구현했다**([ADR 0010](decisions/0010-intro-implemented-by-claude.md)).
   학습 루프상으로는 해당 코드(`src/ui/theme`, `src/ui/widgets`, `src/ui/home`)를 읽고 설명할 수 있으면 그 단계를 이해한 것으로 본다
   - A3 남은 것: `--screenshot`, `pokesix_app` 타깃, 로그 형식. 끝난 것: 창 아이콘, 설치 시 Qt RPATH
   - A6: 마크는 SVG(`QSvgRenderer`)로 그렸다. `QTransform`으로 직접 그려 보는 것은 선택 과제
-  - A7 남은 것: 포커스 링(열린 질문 7), 메뉴 → 본 화면 전환(돌아올 길이 생기는 A9와 함께). 끝난 것: 선택 · 키보드 · hover · 눌림 · 종료
+  - A7 남은 것: 포커스 링(열린 질문 7). 끝난 것: 선택 · 키보드 · hover · 눌림 · 종료 · 메뉴 → 본 화면 전환(A9와 함께)
+  - A9는 사용자 요청으로 Claude가 구현했다: 마크 버튼(→ 인트로), 폴더 탭 4, 앱 막대용 세대 버튼, 검색 칸, `MainWindow::open(Page)`, Ctrl+1…4 · Ctrl+K
 - 캡슐 앱 아이콘 리소스는 v2로 교체했다([ADR 0009](decisions/0009-design-handoff-v2.md))
 - `FirstRunPanel`(데이터 없음 · 받는 중 · 실패, `34` ③)은 D4에서 만든다. Phase A의 인트로는 데이터가 있는 상태만 다룬다
 - 1024 · 960 인트로 배치(`32`, `33`)는 Phase F에서 다룬다

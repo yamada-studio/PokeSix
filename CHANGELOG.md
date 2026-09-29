@@ -30,6 +30,10 @@ and the project uses [Semantic Versioning](https://semver.org/).
   SixSquad until it finishes; the import runs on a worker thread. `ShadowButton` and
   `SegmentProgress` widgets.
 
+- Main screen app bar: capsule sticker mark and wordmark (back to the intro), four folder tabs, a
+  compact generation button and a search field; intro menu entries, tabs, Ctrl+1–4 and Ctrl+K switch
+  pages. Pages other than the intro are placeholders for now.
+
 ### Changed
 - The paper background in `app.qss` applies to `QMainWindow` only, so plain container widgets no
   longer paint paper-coloured rectangles over panels.

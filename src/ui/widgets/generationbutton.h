@@ -13,7 +13,12 @@ class GenerationButton : public QAbstractButton
 {
     Q_OBJECT
 public:
-    explicit GenerationButton(QWidget *parent = nullptr);
+    enum class Size {
+        Large,   // 인트로: 높이 46 · 지역명 도현 20
+        Compact, // 앱 막대: 높이 36 · 지역명 도현 16
+    };
+
+    explicit GenerationButton(Size size = Size::Large, QWidget *parent = nullptr);
 
     // 표시할 세대. number는 뱃지("GEN 4"), region은 지역명("신오").
     void setGeneration(int number, const QString &region);
@@ -26,6 +31,7 @@ protected:
 private:
     QString badgeText() const;
 
+    Size m_size;
     int m_number = 1;
     QString m_region;
     QFont m_badgeFont;
