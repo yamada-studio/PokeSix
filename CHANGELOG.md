@@ -18,6 +18,10 @@ and the project uses [Semantic Versioning](https://semver.org/).
 - Capsule app icons for macOS, Windows and Linux, a multi-size window icon and the Linux desktop file name.
 - Design packages moved to a top-level `design/` folder (handoff v1, v2 and design requests).
 
+- `pokesix_data` library with `CsvDownloader`: downloads 35 PokéAPI CSV files (12.5 MB) pinned to one
+  commit, verifies each file's size and SHA-256, resumes per file and writes atomically.
+- `pokesix-fetch-csv` developer tool that runs the same downloader from the command line.
+
 ### Changed
 - The home screen is a full-screen intro instead of the v1 dashboard; the app bar will have four tabs.
 - Installed Linux binaries keep the Qt library path in their RUNPATH, so the desktop launcher works.
