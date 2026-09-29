@@ -1,0 +1,16 @@
+pokemon_species_id,local_language_id,name,genus
+1,3,이상해씨,씨앗포켓몬
+1,9,Bulbasaur,Seed Pokémon
+1,11,フシギダネ,たねポケモン
+35,3,삐삐,요정포켓몬
+35,9,Clefairy,Fairy Pokémon
+35,11,ピッピ,ようせいポケモン
+36,3,픽시,요정포켓몬
+36,9,Clefable,Fairy Pokémon
+36,11,ピクシー,ようせいポケモン
+37,3,식스테일,여우포켓몬
+37,9,Vulpix,Fox Pokémon
+37,11,ロコン,きつねポケモン
+445,3,한카리아스,마하포켓몬
+445,9,Garchomp,Mach Pokémon
+445,11,ガブリアス,マッハポケモン

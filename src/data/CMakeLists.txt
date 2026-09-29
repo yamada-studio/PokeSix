@@ -15,6 +15,10 @@ qt_add_library(pokesix_data STATIC
     update/csvdownloader.cpp
     update/csvreader.h
     update/csvreader.cpp
+    update/genranges.h
+    update/csvimporter.h
+    update/csvimporter.cpp
+    db/schema.h
 )
 add_library(PokeSix::data ALIAS pokesix_data)
 pokesix_qt_target(pokesix_data)

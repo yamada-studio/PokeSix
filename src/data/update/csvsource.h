@@ -38,13 +38,18 @@ inline constexpr auto kFiles = std::to_array<CsvFile>({
         {"type_efficacy", 2883, "cdd7de4066680414d0a2433af805f139f425d6350cbf998ecab559a0fe8ff587"},
         {"type_efficacy_past", 118,
          "0d8cb1251c7f987c7978d77d6c1b9ecfc54e04474b7584b8ecf96fef498fb9d4"},
-        // ── 도감: 종 · 이름 · 모습(폼) · 타입 · 종족값(과거 포함) · 특성 · 지역 도감 번호 · 진화
+        // ── 도감: 종 · 이름 · 모습(폼) · 폼 등장 시기 · 타입 · 종족값(과거 포함) · 특성 · 지역
+        // 도감 번호 · 진화
         {"stats", 202, "ee8c541b45b64f40f0eb2545c767294b5801ce8a1410e19d8c33a54e6f1c3b9c"},
         {"pokemon_species", 56884,
          "e66e2eeb25fd3836b0ebab6bf87bbf01960aa3c0555e2bac495fa8393c5e0c45"},
         {"pokemon_species_names", 404502,
          "820cde17074cdb1c2b0595c997fb8f998e773bd5da3bb525dec85703c86c5fd9"},
         {"pokemon", 47082, "16c81c33188b0eac403aa2f759fcbe9e42c611f722d263f5b5a6a5bff9f8ce6b"},
+        {"pokemon_forms", 63721,
+         "99bf8f7ad4dc1f2e291357a090cef6a575623ec3cbf9030d0e33656e6e608ae2"}, // 폼이 처음 나온 버전
+                                                                              // 그룹 → 그 포켓몬이
+                                                                              // 처음 나온 세대
         {"pokemon_types", 19058,
          "f1fc4bfd657a034ea3bf6972423b10276424aa068577b304a78a08996425ba05"},
         {"pokemon_types_past", 428,
