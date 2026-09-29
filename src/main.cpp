@@ -14,19 +14,27 @@ int main(int argc, char *argv[])
     QApplication::setApplicationName(QStringLiteral("PokeSix"));
     QApplication::setApplicationVersion(QStringLiteral(POKESIX_VERSION));
 
-    // 창 아이콘(제목 표시줄 · 작업 표시줄 · Alt+Tab). 크기별 PNG를 한 QIcon에 모아 두면
-    // OS가 필요한 크기를 고른다. 16px은 벡터 축소가 아닌 수작업 픽셀 원본(디자인 01b §6-3).
-    //   실행 파일 아이콘은 따로다: Windows = pokesix.rc, macOS = .app 번들의 PokeSix.icns,
-    //   Linux 데스크톱 런처 = 설치된 .desktop + hicolor 아이콘 (src/CMakeLists.txt의 install)
+    // ── 앱 아이콘 ─────────────────────────────────────────────────────────────
+    // OS마다 아이콘을 정하는 곳이 다르다. 코드에서 설정하는 것은 Linux뿐이다.
+    //   Windows: 실행 파일에 박힌 pokesix.ico(resources/platform/windows/pokesix.rc)를
+    //            Qt가 창 · 작업 표시줄 아이콘으로도 그대로 쓴다. 여기서 덮어쓰면 오히려 달라진다.
+    //   macOS:   .app 번들의 PokeSix.icns(Info.plist)를 Dock · Finder가 쓴다.
+    //            setWindowIcon을 부르면 실행 중 Dock 아이콘이 이 PNG로 바뀌어 버린다.
+    //   Linux:   독 · 런처는 설치된 .desktop 파일의 Icon=pokesix(hicolor 테마)를 쓴다.
+    //            창 제목 표시줄 · Alt+Tab · .desktop이 없을 때는 아래 창 아이콘을 쓴다.
+#if defined(Q_OS_LINUX)
+    // 크기별 PNG를 한 QIcon에 모아 두면 필요한 크기를 골라 쓴다.
+    // 16px은 벡터 축소가 아닌 수작업 픽셀 원본(디자인 01b §6-3). 경로는 resources.qrc의 alias.
     QIcon windowIcon;
     for (const int size : {16, 32, 64, 128, 256})
         windowIcon.addFile(QStringLiteral(":/icons/window/pokesix-%1.png").arg(size),
                            QSize(size, size));
     QApplication::setWindowIcon(windowIcon);
 
-    // Linux(Wayland · GNOME 등)는 실행 중인 창을 이 이름의 .desktop 파일과 짝지어
-    // 독 · 작업 표시줄 아이콘을 정한다. resources/platform/linux/ 의 파일 이름과 같아야 한다.
+    // 실행 중인 창을 .desktop 파일과 짝짓는 이름(Wayland의 app_id, X11의 _GTK_APPLICATION_ID).
+    // resources/platform/linux/com.yamada.studio.pokesix.desktop 의 파일 이름과 같아야 한다.
     QGuiApplication::setDesktopFileName(QStringLiteral("com.yamada.studio.pokesix"));
+#endif
 
     // 디자인 스타일: 번들 글꼴 등록 + app.qss(@token 치환) 적용. 위젯을 만들기 전에 불러야 한다.
     com::yamada::studio::theme::apply(app);
