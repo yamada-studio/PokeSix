@@ -90,8 +90,12 @@ A에서 만든 `PanelFrame`, 버튼 스타일도 갤러리에 올린다.
 | ⬜ | **D1** | SQLite 스키마 + 개발 · 테스트용 시드 CSV(목업의 4세대 19종 · 기술 · 아이템, `tests/fixtures/`) + `CsvImporter`(CSV → SQLite) + `Repository` 조회 | QtSql, 트랜잭션, 세대 구간 쿼리, CSV 파싱 |
 | ⬜ | **D2** | `SpeciesTableModel` + `SpeciesFilterProxy` | **모델/뷰**, role, `QSortFilterProxyModel` |
 | ⬜ | **D3** | `SquadSession` + `SquadStore`(JSON, 디바운스 저장) → 홈의 최근 스쿼드를 실제 데이터로 | `QJsonDocument`, `QSaveFile`, 디바운스 `QTimer` |
-| ⬜ | **D4** | 데이터 받기: PokéAPI CSV 원본을 **고정 커밋**에서 다운로드, 파일별 **SHA-256 검증**, 파일 단위 이어받기 ([ADR 0011](decisions/0011-data-from-pinned-pokeapi-csv.md)) | `QNetworkAccessManager`, 비동기 흐름, `QCryptographicHash`, `QSaveFile` |
+| ✅ | **D4** | 데이터 받기: PokéAPI CSV 원본을 **고정 커밋**에서 다운로드, 파일별 **SHA-256 검증**, 파일 단위 이어받기 ([ADR 0011](decisions/0011-data-from-pinned-pokeapi-csv.md)) | `QNetworkAccessManager`, 비동기 흐름, `QCryptographicHash`, `QSaveFile` |
 | ⬜ | **D5** | `DataUpdater`: 받기 → worker 스레드에서 `CsvImporter`로 변환 → 임시 DB 교체, 인트로 `FirstRunPanel`(받기 전 · 받는 중 · 실패, v2 `34` ③)과 메뉴 잠금 | `moveToThread`, 스레드별 `QSqlDatabase` 연결, 진행 시그널, 상태 전환 |
+
+- **D4는 사용자 요청("섞어서")으로 Claude가 구현했다**: `CsvDownloader`, 고정 목록 `csvsource.h`, 개발 도구 `pokesix-fetch-csv`.
+  D1(스키마 · CSV 파서 · `CsvImporter`)과 D5의 worker 스레드는 사용자가 가이드를 따라 구현한다
+- Phase D를 Phase A · C보다 먼저 시작했다. D1은 core의 타입(`core/types`)만 있으면 되므로 순서에 막히지 않는다
 
 ## Phase E — 나머지 화면 (PROMPT 4-5) → v0.5.0
 

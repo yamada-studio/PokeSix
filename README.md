@@ -62,6 +62,7 @@ src/data/   PokéAPI client, SQLite cache, repositories, Qt item models
 src/ui/     Qt Widgets screens and reusable widgets
 src/app/    main window and application bootstrap
 tests/      unit tests (GoogleTest) and a Qt runtime environment check
+tools/      developer command-line tools (e.g. pokesix-fetch-csv: download the pinned PokéAPI CSV files)
 resources/  app icons, bundled fonts, style sheets (Qt resource system)
 docs/       architecture, build guide, conventions, roadmap, decision records
 design/      visual design packages from Claude Design (handoff-v1, handoff-v2) and design requests

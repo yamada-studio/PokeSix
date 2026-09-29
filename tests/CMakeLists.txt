@@ -21,4 +21,5 @@ FetchContent_MakeAvailable(googletest)
 include(GoogleTest)
 
 add_subdirectory(core)
+add_subdirectory(data)
 add_subdirectory(env)

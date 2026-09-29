@@ -31,9 +31,10 @@
 **선택지 4**를 쓰고, 개발 · 테스트용 **작은 시드**를 곁들인다.
 
 - 받는 곳: `https://raw.githubusercontent.com/PokeAPI/pokeapi/<커밋>/data/v2/csv/<파일>.csv`
-  - **커밋을 고정한다.** 첫 고정값은 D4를 시작할 때 정한다(참고: 2026-09-26 master = `168b1e89467054cda2e7df43ccebbb69b459497a`)
+  - **커밋을 고정한다.** 첫 고정값: `168b1e89467054cda2e7df43ccebbb69b459497a`(2026-09-26 master). 목록과 해시는 `src/data/update/csvsource.h`
   - 파일마다 **SHA-256을 코드에 적어 두고 검증한다.** GoogleTest를 URL + 해시로 고정한 것([ADR 0004](0004-googletest-via-fetchcontent.md))과 같은 원리다
-  - 파일 목록은 D4에서 확정한다(세대 · 타입 · 상성(과거 포함) · 종 · 이름(ko/en/ja) · 포켓몬 · 타입(과거 포함) · 종족값 · 기술(변경 이력 포함) · 습득 기술 · 아이템 · 진화)
+  - 파일 목록(35개, 12.5 MB): 언어 · 세대 · 버전 그룹 / 타입 · 상성(과거 포함) / 종 · 이름 · 포켓몬 · 타입 · 종족값(과거 포함) · 특성 · 지역 도감 번호 · 진화 /
+    기술 · 이름 · 변경 이력 · 분류 · 습득 방법 · 습득 기술 / 아이템 · 이름 · 분류 · 주머니 · 세대별 존재. 아이템 효과 설명문은 E3에서 필요해지면 추가
 - 받은 CSV는 `CacheLocation/pokeapi-csv/<커밋>/`에 보관한다. 도중에 끊기면 **파일 단위로 이어받는다**. 디자인의 "창을 닫아도 다음에 이어서 받아요"가 이 동작이다
 - 변환: `CsvImporter`가 worker 스레드에서 트랜잭션 하나로 `AppDataLocation/pokesix.sqlite`를 만든다. 완성본을 임시 파일로 만든 뒤 교체해서, 중간에 실패해도 반쪽짜리 DB가 남지 않게 한다
 - 흐름을 묶는 클래스는 v2 설계서의 이름대로 `DataUpdater`다(`progress(step, total, label)` · `failed(code)` · `finished()`). 인트로의 `FirstRunPanel`이 이 신호를 받는다
