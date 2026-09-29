@@ -3,6 +3,12 @@ qt_add_library(pokesix_ui STATIC
     logging/logging.cpp
     widgets/layoutguide.h
     widgets/layoutguide.cpp
+    widgets/markwidget.h
+    widgets/markwidget.cpp
+    widgets/wordmarklabel.h
+    widgets/wordmarklabel.cpp
+    widgets/generationbutton.h
+    widgets/generationbutton.cpp
     home/homepage.h
     home/homepage.cpp
     shell/appbar.h
