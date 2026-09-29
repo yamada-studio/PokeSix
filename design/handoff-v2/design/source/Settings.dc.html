@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>설정</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&amp;family=Nanum+Gothic:wght@400;700;800&amp;family=Nanum+Gothic+Coding:wght@400;700&amp;family=Silkscreen:wght@400;700&amp;display=swap">
+<style>
+body{margin:0;background:#F3EFE6;color:#22222A;font-family:'Nanum Gothic','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+a{color:#2C64B0}a:hover{color:#1D4E8F}
+</style>
+</helmet>
+<div style="width: 1440px; height: 900px; display: flex; flex-direction: column; background: #F3EFE6; overflow: hidden; font-family: 'Nanum Gothic','Apple SD Gothic Neo','Malgun Gothic',sans-serif; color: #22222A">
+
+<header style="height: 60px; flex: none; display: flex; align-items: center; gap: 24px; padding: 0 20px; box-sizing: border-box; background: #D8322B; border-bottom: 3px solid #2A2A33">
+<a href="Intro.dc.html" aria-label="처음 화면으로" title="처음 화면으로" style="display: flex; align-items: center; gap: 10px; text-decoration: none">
+<svg width="36" height="36" viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(50 50) scale(1.071) rotate(-35) translate(-50 -50)"><rect x="10" y="25" width="80" height="50" rx="25" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="16"></rect><path d="M50 25 L35 25 A25 25 0 0 0 35 75 L50 75 Z" fill="#D8322B"></path><path d="M50 25 L65 25 A25 25 0 0 1 65 75 L50 75 Z" fill="#FFF8EC"></path><line x1="50" y1="25" x2="50" y2="75" stroke="#2A2A33" stroke-width="6"></line><rect x="10" y="25" width="80" height="50" rx="25" fill="none" stroke="#2A2A33" stroke-width="7"></rect><ellipse cx="61" cy="47" rx="4.8" ry="5.4" fill="#2A2A33"></ellipse><ellipse cx="77" cy="47" rx="4.8" ry="5.4" fill="#2A2A33"></ellipse></g></svg>
+<span style="font-family: 'Silkscreen',monospace; font-size: 20px; font-weight: 700; color: #FFFFFF">POKE<span style="color: #FFE08A">SIX</span></span>
+</a>
+<nav aria-label="주 메뉴" style="display: flex; align-self: flex-end; align-items: flex-end; gap: 4px; margin-bottom: -3px">
+<a href="Dex.dc.html" style="display: flex; align-items: center; gap: 7px; height: 38px; margin-bottom: 3px; padding: 0 16px; box-sizing: border-box; border-radius: 8px 8px 0 0; background: #B8241D; color: #FFFFFF; text-decoration: none; font-family: 'Do Hyeon',sans-serif; font-size: 18px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M4 9h16M9 9v11"></path></svg>도감</a>
+<a href="Items.dc.html" style="display: flex; align-items: center; gap: 7px; height: 38px; margin-bottom: 3px; padding: 0 16px; box-sizing: border-box; border-radius: 8px 8px 0 0; background: #B8241D; color: #FFFFFF; text-decoration: none; font-family: 'Do Hyeon',sans-serif; font-size: 18px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M5 8h14l-1.2 12H6.2z"></path><path d="M9 8V6.5a3 3 0 0 1 6 0V8"></path></svg>아이템</a>
+<a href="Squad.dc.html" style="display: flex; align-items: center; gap: 7px; height: 38px; margin-bottom: 3px; padding: 0 16px; box-sizing: border-box; border-radius: 8px 8px 0 0; background: #B8241D; color: #FFFFFF; text-decoration: none; font-family: 'Do Hyeon',sans-serif; font-size: 18px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.8 4.5v9L12 21l-7.8-4.5v-9z"></path><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9"></path></svg>스쿼드</a>
+<a href="Settings.dc.html" aria-current="page" style="display: flex; align-items: center; gap: 7px; height: 45px; padding: 0 18px; box-sizing: border-box; border-radius: 8px 8px 0 0; border: 3px solid #2A2A33; border-bottom: 0; background: #F3EFE6; color: #D8322B; text-decoration: none; font-family: 'Do Hyeon',sans-serif; font-size: 18px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"></circle><path d="M12 2.8v2.6M12 18.6v2.6M2.8 12h2.6M18.6 12h2.6M5.5 5.5l1.8 1.8M16.7 16.7l1.8 1.8M5.5 18.5l1.8-1.8M16.7 7.3l1.8-1.8"></path></svg>설정</a>
+</nav>
+<div style="flex-grow: 1"></div>
+<label style="display: flex; align-items: center; gap: 8px; width: 280px; height: 36px; padding: 0 10px; box-sizing: border-box; border-radius: 6px; border: 2px solid #2A2A33; background: #FFFFFF; color: #6B6872"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4.5-4.5"></path></svg><input aria-label="설정 검색" placeholder="설정 검색" style="flex-grow: 1; min-width: 0; border: 0; background: transparent; color: #22222A; font-family: inherit; font-size: 13px; outline: none"></label>
+</header>
+
+<div style="flex-grow: 1; display: grid; grid-template-columns: 220px 1fr 1fr; gap: 16px; padding: 16px 20px 20px; box-sizing: border-box; min-height: 0">
+
+<nav aria-label="설정 분류" style="display: flex; flex-direction: column; border-radius: 8px; border: 2px solid #2A2A33; background: #FFFFFF; box-shadow: 0 3px 0 #2A2A33; overflow: hidden; align-self: start">
+<div style="display: flex; align-items: center; height: 38px; padding: 0 14px; background: #2A2A33; color: #FFFFFF"><h1 style="margin: 0; font-family: 'Do Hyeon',sans-serif; font-size: 20px; font-weight: 400">설정</h1></div>
+<div style="display: flex; flex-direction: column; gap: 4px; padding: 10px">
+<sc-for list="{{sections}}" as="s" hint-placeholder-count="5">
+<a href="#{{s.id}}" style="display: flex; align-items: center; gap: 10px; height: 44px; padding: 0 10px; box-sizing: border-box; border-radius: 6px; font-family: 'Do Hyeon',sans-serif; font-size: 18px; color: #22222A; text-decoration: none; border: {{s.bd}}; background: {{s.bg}}">
+<span style="width: 12px; display: flex; justify-content: center"><sc-if value="{{s.on}}" hint-placeholder-val="{{false}}"><span style="width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 9px solid #2A2A33"></span></sc-if></span>
+<span style="width: 14px; height: 14px; box-sizing: border-box; border-radius: 3px; border: 1.5px solid #2A2A33; background: {{s.sw}}"></span>{{s.name}}</a>
+</sc-for>
+</div>
+</nav>
+
+<section id="rules" style="display: flex; flex-direction: column; border-radius: 8px; border: 2px solid #2A2A33; background: #FFFFFF; box-shadow: 0 3px 0 #2A2A33; overflow: hidden; align-self: start">
+<div style="display: flex; align-items: center; height: 38px; padding: 0 14px; background: #D8322B; border-bottom: 2px solid #2A2A33; color: #FFFFFF"><h2 style="margin: 0; font-family: 'Do Hyeon',sans-serif; font-size: 20px; font-weight: 400">세대 규칙</h2><span style="margin-left: auto; font-size: 12px">모든 화면의 계산에 적용</span></div>
+<div style="display: flex; flex-direction: column">
+<div style="display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; padding: 14px 16px; border-bottom: 1px solid #EFEAE0">
+<div style="display: flex; flex-direction: column; gap: 3px"><span style="font-size: 14px; font-weight: 800">기준 세대</span><span style="font-size: 12px; color: #6B6872">도감 범위와 상성표를 이 세대로 맞춰요</span></div>
+<button style="display: flex; align-items: center; gap: 8px; height: 36px; padding: 0 12px; border-radius: 6px; border: 2px solid #2A2A33; background: #FFFFFF; color: #22222A; box-shadow: 0 2px 0 #2A2A33; font-family: 'Do Hyeon',sans-serif; font-size: 16px"><span style="font-family: 'Silkscreen',monospace; font-size: 11px; font-weight: 400; padding: 2px 5px; border-radius: 3px; background: #2A2A33; color: #FFE08A">GEN 4</span>신오<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M6 9l6 6 6-6"></path></svg></button>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 14px 16px; border-bottom: 1px solid #EFEAE0">
+<div style="display: flex; flex-direction: column; gap: 3px"><span style="font-size: 14px; font-weight: 800">물리 · 특수 판정</span><span style="font-size: 12px; color: #6B6872">1–3세대는 타입 기준, 4세대부터 기술마다 판정</span></div>
+<div role="radiogroup" aria-label="물리 · 특수 판정" style="display: flex; border-radius: 6px; border: 2px solid #2A2A33; overflow: hidden; align-self: flex-start">
+<button role="radio" aria-checked="true" style="height: 34px; padding: 0 14px; border: 0; background: #F2C12E; color: #22222A; font-family: 'Do Hyeon',sans-serif; font-size: 15px">세대 자동</button>
+<button role="radio" aria-checked="false" style="height: 34px; padding: 0 14px; border: 0; border-left: 2px solid #2A2A33; background: #FFFFFF; color: #55535C; font-family: 'Do Hyeon',sans-serif; font-size: 15px">항상 타입 기준</button>
+<button role="radio" aria-checked="false" style="height: 34px; padding: 0 14px; border: 0; border-left: 2px solid #2A2A33; background: #FFFFFF; color: #55535C; font-family: 'Do Hyeon',sans-serif; font-size: 15px">항상 기술 기준</button>
+</div>
+</div>
+<sc-for list="{{toggles}}" as="t" hint-placeholder-count="4">
+<div style="display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; padding: 14px 16px; border-bottom: 1px solid #EFEAE0">
+<div style="display: flex; flex-direction: column; gap: 3px"><span style="font-size: 14px; font-weight: 800">{{t.name}}</span><span style="font-size: 12px; color: #6B6872">{{t.desc}}</span></div>
+<button role="switch" aria-checked="{{t.on}}" aria-label="{{t.name}}" style="position: relative; width: 50px; height: 28px; padding: 0; box-sizing: border-box; border-radius: 14px; border: 2px solid #2A2A33; background: {{t.bg}}"><span style="position: absolute; top: 2px; width: 20px; height: 20px; box-sizing: border-box; border-radius: 10px; border: 2px solid #2A2A33; background: #FFFFFF; left: {{t.x}}"></span></button>
+</div>
+</sc-for>
+<div style="padding: 12px 16px; font-size: 12px; line-height: 18px; color: #55535C; background: #FAF7F0">예: 4세대 기준에서 토게키스는 노말/비행, 강철은 고스트 · 악을 반감, 페어리 열은 히트맵에서 비활성으로 표시돼요.</div>
+</div>
+</section>
+
+<div style="display: flex; flex-direction: column; gap: 16px; min-height: 0">
+<section id="data" style="display: flex; flex-direction: column; border-radius: 8px; border: 2px solid #2A2A33; background: #FFFFFF; box-shadow: 0 3px 0 #2A2A33; overflow: hidden">
+<div style="display: flex; align-items: center; height: 38px; padding: 0 14px; background: #2C64B0; border-bottom: 2px solid #2A2A33; color: #FFFFFF"><h2 style="margin: 0; font-family: 'Do Hyeon',sans-serif; font-size: 20px; font-weight: 400">데이터</h2></div>
+<div style="display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; padding: 14px 16px; border-bottom: 1px solid #EFEAE0">
+<div style="display: flex; flex-direction: column; gap: 3px"><span style="font-size: 14px; font-weight: 800">도감 · 기술 · 아이템 데이터</span><span style="font-family: 'Nanum Gothic Coding',monospace; font-size: 12px; color: #6B6872">버전 [데이터 버전] · 마지막 확인 [날짜]</span></div>
+<button style="display: flex; align-items: center; gap: 6px; height: 36px; padding: 0 14px; border-radius: 6px; border: 2px solid #2A2A33; background: #2C64B0; color: #FFFFFF; box-shadow: 0 3px 0 #2A2A33; font-family: 'Do Hyeon',sans-serif; font-size: 16px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v4h-4"></path></svg>지금 갱신</button>
+</div>
+<div style="display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; padding: 14px 16px">
+<div style="display: flex; flex-direction: column; gap: 3px"><span style="font-size: 14px; font-weight: 800">시작할 때 새 데이터 확인</span><span style="font-size: 12px; color: #6B6872">갱신 중에도 기존 데이터로 계속 쓸 수 있어요</span></div>
+<button role="switch" aria-checked="true" aria-label="시작할 때 새 데이터 확인" style="position: relative; width: 50px; height: 28px; padding: 0; box-sizing: border-box; border-radius: 14px; border: 2px solid #2A2A33; background: #2A7D38"><span style="position: absolute; top: 2px; left: 24px; width: 20px; height: 20px; box-sizing: border-box; border-radius: 10px; border: 2px solid #2A2A33; background: #FFFFFF"></span></button>
+</div>
+</section>
+
+<section id="lang" style="display: flex; flex-direction: column; border-radius: 8px; border: 2px solid #2A2A33; background: #FFFFFF; box-shadow: 0 3px 0 #2A2A33; overflow: hidden">
+<div style="display: flex; align-items: center; height: 38px; padding: 0 14px; background: #2A7D38; border-bottom: 2px solid #2A2A33; color: #FFFFFF"><h2 style="margin: 0; font-family: 'Do Hyeon',sans-serif; font-size: 20px; font-weight: 400">언어</h2></div>
+<div style="display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; padding: 14px 16px; border-bottom: 1px solid #EFEAE0">
+<div style="display: flex; flex-direction: column; gap: 3px"><span style="font-size: 14px; font-weight: 800">포켓몬 · 기술 이름 표기</span><span style="font-size: 12px; color: #6B6872">인터페이스 언어와 따로 정할 수 있어요</span></div>
+<div role="radiogroup" aria-label="이름 표기" style="display: flex; border-radius: 6px; border: 2px solid #2A2A33; overflow: hidden">
+<button role="radio" aria-checked="true" style="height: 34px; padding: 0 12px; border: 0; background: #F2C12E; color: #22222A; font-family: 'Do Hyeon',sans-serif; font-size: 15px">한국어</button>
+<button role="radio" aria-checked="false" style="height: 34px; padding: 0 12px; border: 0; border-left: 2px solid #2A2A33; background: #FFFFFF; color: #55535C; font-family: 'Do Hyeon',sans-serif; font-size: 15px">English</button>
+<button role="radio" aria-checked="false" style="height: 34px; padding: 0 12px; border: 0; border-left: 2px solid #2A2A33; background: #FFFFFF; color: #55535C; font-family: 'Do Hyeon',sans-serif; font-size: 15px">日本語</button>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; padding: 14px 16px">
+<div style="display: flex; flex-direction: column; gap: 3px"><span style="font-size: 14px; font-weight: 800">원어 이름 함께 보기</span><span style="font-size: 12px; color: #6B6872">예: 한카리아스 (Garchomp)</span></div>
+<button role="switch" aria-checked="false" aria-label="원어 이름 함께 보기" style="position: relative; width: 50px; height: 28px; padding: 0; box-sizing: border-box; border-radius: 14px; border: 2px solid #2A2A33; background: #DDD6C8"><span style="position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; box-sizing: border-box; border-radius: 10px; border: 2px solid #2A2A33; background: #FFFFFF"></span></button>
+</div>
+</section>
+
+<section id="theme" style="display: flex; flex-direction: column; border-radius: 8px; border: 2px solid #2A2A33; background: #FFFFFF; box-shadow: 0 3px 0 #2A2A33; overflow: hidden">
+<div style="display: flex; align-items: center; height: 38px; padding: 0 14px; background: #F2C12E; border-bottom: 2px solid #2A2A33; color: #22222A"><h2 style="margin: 0; font-family: 'Do Hyeon',sans-serif; font-size: 20px; font-weight: 400">테마</h2></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 14px 16px">
+<button aria-pressed="true" style="display: flex; flex-direction: column; gap: 8px; padding: 8px; border-radius: 8px; border: 2px solid #2A2A33; background: #FFFFFF; outline: 4px solid #F2C12E; outline-offset: 2px; text-align: left; font-family: inherit">
+<span style="display: flex; flex-direction: column; height: 64px; border-radius: 5px; border: 1.5px solid #2A2A33; overflow: hidden; background: #F3EFE6"><span style="height: 14px; background: #D8322B; border-bottom: 1.5px solid #2A2A33"></span><span style="display: flex; gap: 4px; padding: 6px"><span style="width: 30px; height: 30px; border-radius: 3px; border: 1.5px solid #2A2A33; background: #FFFFFF"></span><span style="flex-grow: 1; height: 30px; border-radius: 3px; border: 1.5px solid #2A2A33; background: #FFFFFF"></span></span></span>
+<span style="font-family: 'Do Hyeon',sans-serif; font-size: 17px; color: #22222A">라이트 · 기본</span>
+</button>
+<button aria-pressed="false" style="display: flex; flex-direction: column; gap: 8px; padding: 8px; border-radius: 8px; border: 2px solid #2A2A33; background: #FFFFFF; text-align: left; font-family: inherit">
+<span style="display: flex; flex-direction: column; height: 64px; border-radius: 5px; border: 1.5px solid #0E0E12; overflow: hidden; background: #1B1B21"><span style="height: 14px; background: #B8241D; border-bottom: 1.5px solid #0E0E12"></span><span style="display: flex; gap: 4px; padding: 6px"><span style="width: 30px; height: 30px; border-radius: 3px; background: #33333D"></span><span style="flex-grow: 1; height: 30px; border-radius: 3px; background: #25252D"></span></span></span>
+<span style="font-family: 'Do Hyeon',sans-serif; font-size: 17px; color: #22222A">다크</span>
+</button>
+</div>
+<div style="display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; padding: 0 16px 14px">
+<div style="display: flex; flex-direction: column; gap: 3px"><span style="font-size: 14px; font-weight: 800">표 밀도</span><span style="font-size: 12px; color: #6B6872">조밀: 행 높이 30 · 표준: 34</span></div>
+<div role="radiogroup" aria-label="표 밀도" style="display: flex; border-radius: 6px; border: 2px solid #2A2A33; overflow: hidden">
+<button role="radio" aria-checked="false" style="height: 34px; padding: 0 12px; border: 0; background: #FFFFFF; color: #55535C; font-family: 'Do Hyeon',sans-serif; font-size: 15px">조밀</button>
+<button role="radio" aria-checked="true" style="height: 34px; padding: 0 12px; border: 0; border-left: 2px solid #2A2A33; background: #F2C12E; color: #22222A; font-family: 'Do Hyeon',sans-serif; font-size: 15px">표준</button>
+</div>
+</div>
+</section>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const sections = [['rules', '세대 규칙', '#D8322B'], ['data', '데이터', '#2C64B0'], ['lang', '언어', '#2A7D38'], ['theme', '테마', '#F2C12E'], ['keys', '단축키', '#BDBBA6']].map(([id, name, sw], i) => ({
+      id, name, sw, on: i === 0,
+      bd: i === 0 ? '2px solid #2A2A33' : '2px solid transparent', bg: i === 0 ? '#FFF4CC' : 'transparent'
+    }));
+    const toggles = [
+      ['페어리 타입', '6세대 이전 세대에서는 숨기고 히트맵 열을 비활성으로', true],
+      ['강철 내성 (2–5세대)', '해당 세대에서 강철이 고스트 · 악을 반감', true],
+      ['당시 타입 사용', '선택 세대 당시의 타입으로 계산 (타입 변경 이력 반영)', true],
+      ['당시 종족값 사용', '이후 세대에서 조정된 종족값을 선택 세대 기준으로', true]
+    ].map(([name, desc, on]) => ({ name, desc, on, bg: on ? '#2A7D38' : '#DDD6C8', x: on ? '24px' : '2px' }));
+    return { sections, toggles };
+  }
+}
+</script>
+</body>
+</html>

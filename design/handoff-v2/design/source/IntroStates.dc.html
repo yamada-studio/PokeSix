@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>인트로 상태</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&amp;family=Nanum+Gothic:wght@400;700;800&amp;family=Nanum+Gothic+Coding:wght@400;700&amp;family=Silkscreen:wght@400;700&amp;display=swap">
+<style>
+body{margin:0;background:#F3EFE6;color:#22222A;font-family:'Nanum Gothic','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+a{color:#2C64B0}a:hover{color:#1D4E8F}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1040px; box-sizing: border-box; background: #F3EFE6; display: flex; flex-direction: column; font-family: 'Nanum Gothic','Apple SD Gothic Neo','Malgun Gothic',sans-serif; color: #22222A">
+
+<header style="display: flex; align-items: center; gap: 20px; height: 100px; padding: 0 56px; box-sizing: border-box; background: #D8322B; border-bottom: 4px solid #2A2A33; color: #FFFFFF">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-family: 'Silkscreen','Courier New',monospace; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; color: #FFE08A">POKESIX · V2</span>
+<h1 style="margin: 0; font-family: 'Do Hyeon',sans-serif; font-size: 38px; font-weight: 400; line-height: 1">인트로 상태 · 4탭 앱 막대</h1>
+</div>
+</header>
+
+<div style="display: flex; flex-direction: column; gap: 28px; padding: 32px 56px">
+
+<section style="display: flex; flex-direction: column; border: 2px solid #2A2A33; border-radius: 8px; background: #FFFFFF; box-shadow: 0 4px 0 #2A2A33; overflow: hidden">
+<div style="display: flex; align-items: center; gap: 10px; height: 38px; padding: 0 14px; background: #D8322B; border-bottom: 2px solid #2A2A33; color: #FFFFFF"><span style="font-family: 'Silkscreen',monospace; font-size: 13px">01</span><h2 style="margin: 0; font-family: 'Do Hyeon',sans-serif; font-size: 19px; font-weight: 400">메뉴 항목</h2><span style="margin-left: auto; font-size: 12px">마우스를 올리면 선택이 그 줄로 옮겨 가요 — hover와 선택은 같은 모양</span></div>
+<div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; padding: 18px">
+<sc-for list="{{states}}" as="s" hint-placeholder-count="6">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="padding: 6px; border-radius: 8px; border: 2px solid #DDD6C8; background: #FFFFFF">
+<div style="display: grid; grid-template-columns: 18px 1fr auto; gap: 8px; align-items: center; height: 54px; padding: 0 8px; box-sizing: border-box; border-radius: 7px; border: {{s.bd}}; background: {{s.bg}}; outline: {{s.ol}}; outline-offset: 2px; transform: {{s.tf}}; opacity: {{s.op}}">
+<span style="display: flex; justify-content: center"><sc-if value="{{s.cur}}" hint-placeholder-val="{{false}}"><span style="width: 0; height: 0; border-top: 7px solid transparent; border-bottom: 7px solid transparent; border-left: 10px solid #2A2A33"></span></sc-if></span>
+<span style="display: flex; flex-direction: column; gap: 1px"><span style="font-family: 'Do Hyeon',sans-serif; font-size: 21px; line-height: 1.1">도감 대백과</span><span style="font-size: 11px; color: #55535C">{{s.desc}}</span></span>
+<span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; box-sizing: border-box; border-radius: 5px; border: 2px solid #2A2A33; background: {{s.kb}}; font-family: 'Silkscreen',monospace; font-size: 11px">1</span>
+</div>
+</div>
+<span style="font-family: 'Do Hyeon',sans-serif; font-size: 16px">{{s.name}}</span>
+<span style="font-size: 12px; line-height: 17px; color: #55535C">{{s.note}}</span>
+</div>
+</sc-for>
+</div>
+</section>
+
+<div style="display: grid; grid-template-columns: 420px 1fr; gap: 28px">
+<section style="display: flex; flex-direction: column; border: 2px solid #2A2A33; border-radius: 8px; background: #FFFFFF; box-shadow: 0 4px 0 #2A2A33; overflow: hidden">
+<div style="display: flex; align-items: center; gap: 10px; height: 38px; padding: 0 14px; background: #2C64B0; border-bottom: 2px solid #2A2A33; color: #FFFFFF"><span style="font-family: 'Silkscreen',monospace; font-size: 13px">02</span><h2 style="margin: 0; font-family: 'Do Hyeon',sans-serif; font-size: 19px; font-weight: 400">세대 버튼</h2></div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; padding: 18px; background: #F3EFE6; flex-grow: 1">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+<span style="font-size: 12px; font-weight: 700; color: #6B6872">기본</span>
+<span style="display: flex; align-items: center; gap: 8px; height: 42px; padding: 0 12px; border-radius: 8px; border: 2px solid #2A2A33; background: #FFFFFF; box-shadow: 0 3px 0 #2A2A33; font-family: 'Do Hyeon',sans-serif; font-size: 18px"><span style="font-family: 'Silkscreen',monospace; font-size: 11px; padding: 3px 6px; border-radius: 4px; background: #2A2A33; color: #FFE08A">GEN 4</span>신오<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M6 9l6 6 6-6"></path></svg></span>
+<span style="font-size: 12px; font-weight: 700; color: #6B6872; margin-top: 12px">포커스</span>
+<span style="display: flex; align-items: center; gap: 8px; height: 42px; padding: 0 12px; border-radius: 8px; border: 2px solid #2A2A33; background: #FFFFFF; box-shadow: 0 3px 0 #2A2A33; outline: 3px solid #2C64B0; outline-offset: 3px; font-family: 'Do Hyeon',sans-serif; font-size: 18px"><span style="font-family: 'Silkscreen',monospace; font-size: 11px; padding: 3px 6px; border-radius: 4px; background: #2A2A33; color: #FFE08A">GEN 4</span>신오<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M6 9l6 6 6-6"></path></svg></span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 6px">
+<span style="font-size: 12px; font-weight: 700; color: #6B6872">열린 메뉴</span>
+<span style="display: flex; align-items: center; gap: 8px; height: 42px; padding: 0 12px; border-radius: 8px; border: 2px solid #2A2A33; background: #FFF4CC; font-family: 'Do Hyeon',sans-serif; font-size: 18px; transform: translateY(2px)"><span style="font-family: 'Silkscreen',monospace; font-size: 11px; padding: 3px 6px; border-radius: 4px; background: #2A2A33; color: #FFE08A">GEN 4</span>신오<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M18 15l-6-6-6 6"></path></svg></span>
+<div style="width: 170px; display: flex; flex-direction: column; gap: 1px; padding: 5px; margin-top: 4px; box-sizing: border-box; border-radius: 8px; border: 2px solid #2A2A33; background: #FFFFFF; box-shadow: 0 4px 0 #2A2A33">
+<sc-for list="{{gens}}" as="g" hint-placeholder-count="9">
+<span style="display: grid; grid-template-columns: 10px 44px 1fr 12px; gap: 5px; align-items: center; height: 24px; padding: 0 5px; border-radius: 4px; font-family: 'Do Hyeon',sans-serif; font-size: 14px; background: {{g.bg}}">
+<span style="display: flex"><sc-if value="{{g.cur}}" hint-placeholder-val="{{false}}"><span style="width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 6px solid #2A2A33"></span></sc-if></span>
+<span style="font-family: 'Silkscreen',monospace; font-size: 10px">GEN {{g.n}}</span>{{g.region}}
+<sc-if value="{{g.cur}}" hint-placeholder-val="{{false}}"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#2A7D38" stroke-width="3.6"><path d="M5 12l5 5 9-10"></path></svg></sc-if>
+</span>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; border: 2px solid #2A2A33; border-radius: 8px; background: #FFFFFF; box-shadow: 0 4px 0 #2A2A33; overflow: hidden">
+<div style="display: flex; align-items: center; gap: 10px; height: 38px; padding: 0 14px; background: #F2C12E; border-bottom: 2px solid #2A2A33; color: #22222A"><span style="font-family: 'Silkscreen',monospace; font-size: 13px">03</span><h2 style="margin: 0; font-family: 'Do Hyeon',sans-serif; font-size: 19px; font-weight: 400">첫 실행 — 데이터가 없을 때</h2><span style="margin-left: auto; font-size: 12px">메뉴 위에 창 하나가 끼어들고, 데이터가 필요한 항목은 잠겨요</span></div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; padding: 18px; background: #F3EFE6">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'Do Hyeon',sans-serif; font-size: 16px">① 받기 전</span>
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 14px; border-radius: 10px; border: 3px solid #2A2A33; background: #FFFFFF; box-shadow: 0 4px 0 #2A2A33">
+<span style="font-family: 'Do Hyeon',sans-serif; font-size: 20px">도감 데이터가 아직 없어요</span>
+<span style="font-size: 12px; line-height: 18px; color: #55535C">PokéAPI에서 포켓몬 · 기술 · 아이템 정보를 받아 와요. 한 번만 받으면 인터넷 없이도 써요.</span>
+<span style="font-family: 'Nanum Gothic Coding',monospace; font-size: 11px; color: #6B6872">예상 크기 [약 n MB]</span>
+<span style="display: flex; align-items: center; justify-content: center; gap: 6px; height: 40px; border-radius: 6px; border: 2px solid #2A2A33; background: #D8322B; color: #FFFFFF; box-shadow: 0 3px 0 #2A2A33; font-family: 'Do Hyeon',sans-serif; font-size: 18px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>데이터 받기</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 2px; padding: 5px; border-radius: 8px; border: 2px solid #DDD6C8; background: #FFFFFF">
+<sc-for list="{{locked}}" as="l" hint-placeholder-count="4">
+<span style="display: flex; align-items: center; gap: 8px; height: 30px; padding: 0 8px; border-radius: 5px; font-family: 'Do Hyeon',sans-serif; font-size: 16px; color: {{l.fg}}"><span style="width: 14px; display: flex">
+<sc-if value="{{l.lock}}" hint-placeholder-val="{{true}}"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><rect x="5" y="11" width="14" height="9" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg></sc-if></span>{{l.name}}<span style="margin-left: auto; font-family: 'Nanum Gothic',sans-serif; font-size: 11px">{{l.tag}}</span></span>
+</sc-for>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'Do Hyeon',sans-serif; font-size: 16px">② 받는 중</span>
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 14px; border-radius: 10px; border: 3px solid #2A2A33; background: #FFFFFF; box-shadow: 0 4px 0 #2A2A33">
+<span style="font-family: 'Do Hyeon',sans-serif; font-size: 20px">데이터 받는 중…</span>
+<div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 700"><span>기술 데이터</span><span style="font-family: 'Nanum Gothic Coding',monospace">3 / 5</span></div>
+<div style="display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 3px; padding: 3px; border-radius: 4px; border: 2px solid #2A2A33; background: #FFFFFF">
+<sc-for list="{{seg}}" as="g" hint-placeholder-count="10"><span style="height: 12px; border-radius: 1px; background: {{g.c}}"></span></sc-for>
+</div>
+<span style="font-size: 12px; color: #6B6872">창을 닫아도 다음에 이어서 받아요.</span>
+<span style="display: flex; align-items: center; justify-content: center; height: 36px; border-radius: 6px; border: 2px solid #2A2A33; background: #FFFFFF; box-shadow: 0 3px 0 #2A2A33; font-family: 'Do Hyeon',sans-serif; font-size: 17px">취소</span>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'Do Hyeon',sans-serif; font-size: 16px">③ 실패</span>
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 14px; border-radius: 10px; border: 3px solid #D8322B; background: #FDE7E4; box-shadow: 0 4px 0 #D8322B">
+<span style="display: flex; align-items: center; gap: 8px; font-family: 'Do Hyeon',sans-serif; font-size: 20px; color: #8E1C16"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D8322B" stroke-width="2.8"><path d="M12 4l9 16H3z"></path><path d="M12 10v4M12 17v.5"></path></svg>데이터를 받지 못했어요</span>
+<span style="font-size: 12px; line-height: 18px; color: #55535C">네트워크 연결을 확인하고 다시 시도해 주세요. 받은 부분은 남아 있어요.</span>
+<span style="font-family: 'Nanum Gothic Coding',monospace; font-size: 11px; color: #6B6872">[오류 코드]</span>
+<span style="display: flex; align-items: center; justify-content: center; height: 40px; border-radius: 6px; border: 2px solid #2A2A33; background: #D8322B; color: #FFFFFF; box-shadow: 0 3px 0 #2A2A33; font-family: 'Do Hyeon',sans-serif; font-size: 18px">다시 시도</span>
+</div>
+</div>
+
+</div>
+</section>
+</div>
+
+<section style="display: flex; flex-direction: column; border: 2px solid #2A2A33; border-radius: 8px; background: #FFFFFF; box-shadow: 0 4px 0 #2A2A33; overflow: hidden">
+<div style="display: flex; align-items: center; gap: 10px; height: 38px; padding: 0 14px; background: #2A7D38; border-bottom: 2px solid #2A2A33; color: #FFFFFF"><span style="font-family: 'Silkscreen',monospace; font-size: 13px">04</span><h2 style="margin: 0; font-family: 'Do Hyeon',sans-serif; font-size: 19px; font-weight: 400">앱 막대 — 홈 탭을 빼고 4개</h2><span style="margin-left: auto; font-size: 12px">마크 + 워드마크를 누르면 인트로로 · 단축키 Ctrl+1…4</span></div>
+<div style="display: flex; flex-direction: column; gap: 14px; padding: 18px; background: #F3EFE6">
+<div style="display: flex; align-items: center; gap: 24px; height: 60px; padding: 0 20px; box-sizing: border-box; border-radius: 6px 6px 0 0; background: #D8322B; border-bottom: 3px solid #2A2A33; overflow: hidden">
+<span style="display: flex; align-items: center; gap: 10px; padding: 3px 8px 3px 3px; border-radius: 8px; outline: 2px dashed #FFE08A; outline-offset: 2px">
+<svg width="36" height="36" viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(50 50) scale(1.071) rotate(-35) translate(-50 -50)"><rect x="10" y="25" width="80" height="50" rx="25" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="16"></rect><path d="M50 25 L35 25 A25 25 0 0 0 35 75 L50 75 Z" fill="#D8322B"></path><path d="M50 25 L65 25 A25 25 0 0 1 65 75 L50 75 Z" fill="#FFF8EC"></path><line x1="50" y1="25" x2="50" y2="75" stroke="#2A2A33" stroke-width="6"></line><rect x="10" y="25" width="80" height="50" rx="25" fill="none" stroke="#2A2A33" stroke-width="7"></rect><ellipse cx="61" cy="47" rx="4.8" ry="5.4" fill="#2A2A33"></ellipse><ellipse cx="77" cy="47" rx="4.8" ry="5.4" fill="#2A2A33"></ellipse></g></svg>
+<span style="font-family: 'Silkscreen',monospace; font-size: 20px; font-weight: 700; color: #FFFFFF">POKE<span style="color: #FFE08A">SIX</span></span></span>
+<span style="display: flex; align-self: flex-end; align-items: flex-end; gap: 4px; margin-bottom: -3px">
+<span style="display: flex; align-items: center; height: 45px; padding: 0 18px; box-sizing: border-box; border-radius: 8px 8px 0 0; border: 3px solid #2A2A33; border-bottom: 0; background: #F3EFE6; color: #D8322B; font-family: 'Do Hyeon',sans-serif; font-size: 18px">도감</span>
+<span style="display: flex; align-items: center; height: 38px; margin-bottom: 3px; padding: 0 16px; box-sizing: border-box; border-radius: 8px 8px 0 0; background: #B8241D; color: #FFFFFF; font-family: 'Do Hyeon',sans-serif; font-size: 18px">아이템</span>
+<span style="display: flex; align-items: center; height: 38px; margin-bottom: 3px; padding: 0 16px; box-sizing: border-box; border-radius: 8px 8px 0 0; background: #B8241D; color: #FFFFFF; font-family: 'Do Hyeon',sans-serif; font-size: 18px">스쿼드</span>
+<span style="display: flex; align-items: center; height: 38px; margin-bottom: 3px; padding: 0 16px; box-sizing: border-box; border-radius: 8px 8px 0 0; background: #B8241D; color: #FFFFFF; font-family: 'Do Hyeon',sans-serif; font-size: 18px">설정</span>
+</span>
+<span style="margin-left: auto; font-size: 12px; font-weight: 700; color: #FFFFFF">세대 버튼 · 전체 검색은 그대로</span>
+</div>
+<div style="display: flex; gap: 24px; font-size: 13px; line-height: 20px; color: #55535C">
+<span style="flex: 1"><b style="font-weight: 800; color: #22222A">마크 버튼</b> — 빨강 바탕용 스티커 마크(흰 테 + 먹선). hover 시 노란 점선 테, 툴팁 "처음 화면으로". 1100 미만에선 워드마크 숨김.</span>
+<span style="flex: 1"><b style="font-weight: 800; color: #22222A">탭 4개</b> — 도감 · 아이템 · 스쿼드 · 설정. 1024 이하에선 설정이 아이콘만. 활성 탭 규칙(높이 45 · 종이색 · 빨강 글자)은 그대로.</span>
+<span style="flex: 1"><b style="font-weight: 800; color: #22222A">인트로에서 들어올 때</b> — 고른 메뉴의 탭이 활성인 상태로 본 화면이 열려요. 전환은 즉시(애니메이션 없음).</span>
+</div>
+</div>
+</section>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1040}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const base = { cur: false, bd: '2px solid transparent', bg: 'transparent', ol: '0px solid transparent', tf: 'none', op: 1, kb: '#FFFFFF', desc: '종족값 · 상성 · 기술' };
+    const selected = { ...base, cur: true, bd: '2px solid #2A2A33', bg: '#FFF4CC', kb: '#F2C12E' };
+    const states = [
+      { ...base, name: '기본', note: '투명 바탕 · 커서 없음 · 단축키 칸은 흰색' },
+      { ...selected, name: '마우스 hover', note: '선택이 마우스를 따라와요. 모양은 키보드 선택과 같고 커서는 손가락' },
+      { ...selected, name: '키보드 선택', note: '↑↓로 옮긴 현재 줄. 노란 칸 + ▶ + 먹선 2 · 단축키 칸 노랑' },
+      { ...selected, bg: '#F2C12E', tf: 'translateY(2px)', name: '눌림', note: '진한 노랑 · 2px 내려앉음 · 떼면 화면 전환' },
+      { ...selected, ol: '3px solid #2C64B0', name: '포커스 링', note: 'Tab으로 메뉴에 들어왔을 때만 파랑 3px (마우스 사용 중엔 숨김)' },
+      { ...base, op: 0.45, desc: '데이터가 필요해요', name: '잠김 (첫 실행)', note: '불투명도 45% · 선택은 건너뛰고 설정 · 종료만 고를 수 있어요' }
+    ];
+    const R = ['관동', '성도', '호연', '신오', '하나', '칼로스', '알로라', '가라르', '팔데아'];
+    const gens = R.map((region, i) => ({ n: i + 1, region, cur: i === 3, bg: i === 3 ? '#FFF4CC' : 'transparent' }));
+    const locked = [['도감 대백과', true], ['아이템 대백과', true], ['SixSquad', true], ['설정', false]].map(([name, lock]) => ({ name, lock, fg: lock ? '#9A96A0' : '#22222A', tag: lock ? '데이터 필요' : '' }));
+    const seg = Array.from({ length: 10 }, (_, i) => ({ c: i < 6 ? '#5DAE45' : '#EFEAE0' }));
+    return { states, gens, locked, seg };
+  }
+}
+</script>
+</body>
+</html>

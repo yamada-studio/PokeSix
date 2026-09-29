@@ -13,7 +13,7 @@
 - 가이드는 그 단계를 시작할 때 쓴다. 미리 전부 쓰지 않는다
 - **Git 작업은 Claude가 전담한다**(브랜치 · 커밋 · merge · 태그 · CHANGELOG). 규칙: [versioning-and-git.md](versioning-and-git.md). Phase가 끝나면 MINOR 릴리스
 - 진단을 요청할 때: "A2 진단해줘"라고 하면 된다. 막혔으면 에러 메시지 전체를 붙인다
-- 디자인 기준: [design-handoff/](design-handoff/). 수치가 이미지와 다르면 `design/source/*.dc.html`이 정답이다
+- 디자인 기준: [design/](../design/README.md). 수치가 이미지와 다르면 `design/source/*.dc.html`이 정답이다
 
 상태: ⬜ 대기 · 🟨 진행 중 · ✅ 완료
 
@@ -26,26 +26,29 @@
 
 ## Phase A — 인트로 화면으로 배우는 Qt 기초 → v0.1.0
 
-**전체 화면 인트로(로고 · 현재 세대 버튼 · ▶ 메뉴)와, 메뉴로 들어가는 본 화면의 틀(앱 막대 + 페이지)을 완성하면서**
+**전체 화면 인트로(마크 · 워드마크 · 현재 세대 버튼 · ▶ 메뉴)와, 메뉴로 들어가는 본 화면의 틀(4탭 앱 막대 + 페이지)을 완성하면서**
 Qt의 기초(창, 레이아웃, 리소스, 테마, 커스텀 페인트, 시그널/슬롯)를 순서대로 익힌다.
-방향 전환의 근거: [ADR 0008](decisions/0008-intro-screen-replaces-home.md). 시각 기준은 Claude Design에 요청했다([요청서 0001](design-requests/0001-intro-and-mark.md)).
-**새 디자인이 오기 전까지는** [01_DESIGN_SHEET.md](design-handoff/docs/01_DESIGN_SHEET.md) §1–§5의 규칙과 가이드의 임시 와이어프레임 수치로 진행하고, 도착하면 수치만 바꾼다.
+근거: [ADR 0008](decisions/0008-intro-screen-replaces-home.md)(인트로로 전환) · [ADR 0009](decisions/0009-design-handoff-v2.md)(v2 채택).
+기준 이미지: [`30_intro_1440.png`](../design/handoff-v2/images/screens/30_intro_1440.png) · `31`(세대 메뉴) · `34`(상태 · 앱 막대).
+사양: [02b §SCR-00 · SCR-01](../design/handoff-v2/docs/02b_SCREEN_SPEC_V2.md), 디자인 시트 v1 §1–§5 + [01b](../design/handoff-v2/docs/01b_DESIGN_SHEET_V2.md). 원본 수치: `design/handoff-v2/design/source/Intro.dc.html`.
 
 | | 단계 | 배우는 것 | 눈에 보이는 결과 |
 |---|---|---|---|
 | ✅ | **A1** MainWindow와 디버깅 | VS Code 프리셋 빌드·디버그, `Q_OBJECT`와 moc, `QMainWindow`, object tree, `QLoggingCategory` | 1440×900 창, 최소 960×640, 로그, 생성자 breakpoint |
-| 🟨 | **A2** 레이아웃 — 두 단계 화면과 인트로 뼈대 | `QVBoxLayout` / `QHBoxLayout`, margin · spacing · stretch, 가운데 정렬과 `sizeHint`, size policy, `QStackedWidget` 두 단계 | `m_screens`[인트로 │ 본 화면(AppBar + `m_pages`)]. 인트로의 로고 · 세대 버튼 · 메뉴 창(메뉴 항목 4) · 아래 정보 줄이 **최종 클래스 이름 그대로의 빈 상자로** 화면 가운데에 선다 |
-| ⬜ | **A3** 캡처 도구 | `QCommandLineParser`, `QWidget::grab()`, offscreen 렌더링, 첫 `pokesix_app` 타깃, 로그 형식 초기화 | `PokeSix --screenshot intro 1440x900 out.png` → 이후 단계를 기준 이미지와 나란히 비교 |
-| ⬜ | **A4** 글꼴 · 토큰 · QSS | qrc, `QFontDatabase`, `Tokens.h` 이식(`ui/theme`) + 의미 역할 층, QSS `@token` 치환, `QPalette` | 종이색 바탕, 도현 메뉴 글자, 나눔고딕 · Silkscreen 정보 줄 |
-| ⬜ | **A5** PanelFrame과 메뉴 항목 — 첫 `paintEvent` | `QPainter`, `QPainterPath`, 안티에일리어싱, 블러 없는 오프셋 그림자, 그리기 함수(`paintPanel`)와 위젯의 분리 | 먹선 · 그림자가 있는 메뉴 창, 메뉴 항목의 기본 · hover 모양이 **한 함수로** 그려진다 |
-| ⬜ | **A6** 메뉴 동작 — 시그널/슬롯 | `QAbstractButton`, 마우스 · 키보드(↑↓ Enter), 포커스, ▶ 커서와 노란 선택 칸, **시그널/슬롯**, 상자 바깥 장식 그리기 | 메뉴로 본 화면에 들어가고(임시 되돌아가기 버튼으로) 인트로로 돌아온다 |
-| ⬜ | **A7** 세대 버튼과 AppState | `QMenu`, `Q_PROPERTY`, 첫 `pokesix_data` 타깃, core의 세대 표 | "GEN 4 신오 ▾" → 1–9세대 목록(✓), 고른 세대가 `AppState`에 들어가고 버튼 표시가 따라 바뀐다 |
-| ⬜ | **A8** 앱 막대와 탭 | SVG 렌더링(`QSvgRenderer`), 폴더 탭 커스텀 페인트, `QShortcut`(Ctrl+1…4), 마크 → 인트로 | 빨강 앱 막대: 마크 + POKESIX + 탭 4 + 세대 버튼(같은 `AppState`) · 검색 자리. 탭으로 빈 페이지 4개 전환 |
-| ⬜ | **A9** 새 마크 · 아이콘 반영과 마무리 | 리소스 교체, 앱 아이콘 3 OS, 캡처 차이 목록으로 마감 | 새 디자인의 인트로와 차이 목록이 비어 있거나 설명 가능 → **v0.1.0** |
+| 🟨 | **A2** 레이아웃 — 두 단계 화면과 인트로 뼈대 | `QVBoxLayout` / `QHBoxLayout`, margin · spacing · stretch, `addSpacing`, 가운데 정렬과 `sizeHint`, `QStackedWidget` 두 단계, CSS 수치 → Qt 환산 | `m_screens`[인트로 │ 본 화면(AppBar + `m_pages`)]. 인트로의 마크 · 워드마크 · 부제 · 세대 블록 · 메뉴 창(5줄) · 아래 정보 줄이 **최종 클래스 이름 그대로의 빈 상자로** `30`과 같은 x 좌표에 선다 |
+| ⬜ | **A3** 캡처 도구와 앱 초기화 | `QCommandLineParser`, `QWidget::grab()`, offscreen 렌더링, 첫 `pokesix_app` 타깃, 로그 형식, `setWindowIcon` | `PokeSix --screenshot intro 1440x900 out.png` → 이후 단계를 `30`과 나란히 비교. 창 제목 표시줄에 캡슐 아이콘 |
+| ⬜ | **A4** 글꼴 · 토큰 · QSS | qrc, `QFontDatabase`, `Tokens.h`(v2) 이식(`ui/theme`) + 의미 역할 층, QSS `@token` 치환, `QPalette`, 폰트 메트릭으로 `sizeHint()` | 종이색 바탕, Silkscreen 워드마크 · 도현 부제와 메뉴 이름 · 나눔고딕 설명과 정보 줄 |
+| ⬜ | **A5** 첫 `paintEvent` — 바탕 · 창 · 글자 그림자 | `QPainter`, `QPainterPath`, 안티에일리어싱, `QPixmap` 타일, 블러 없는 오프셋 그림자, 그리기 함수(`paintPanel`)와 위젯의 분리 | 사선 무늬 + 위아래 빨강 띠(`IntroBackground`), 먹선 3 · 이중 테 · 그림자 6의 메뉴 창, 노란 그림자의 워드마크 |
+| ⬜ | **A6** 캡슐 마크를 코드로 | `QTransform`(회전 −35°), 경로 합성 · 클리핑, 크기별 규칙(01b §6-3), `sizeHint()` | `MarkWidget` 136이 `41_mark_final.png`의 128+ 규칙대로 그려진다(광택 · 눈빛 · 입 · 볼) |
+| ⬜ | **A7** 메뉴 동작 — 시그널/슬롯 | `QAbstractButton`, hover가 선택을 옮김, 키보드(↑↓ 순환 없음 · Enter · 1–4 · Esc), 포커스 이유(`Qt::TabFocusReason`), ▶ 커서와 노란 선택 칸, 눌림 2px, **시그널/슬롯**, 상자 바깥 포커스 링 | 메뉴로 본 화면에 들어가고(임시 되돌아가기 버튼으로) 인트로로 돌아온다. 종료 줄 · Esc 두 번 → 종료 |
+| ⬜ | **A8** 세대 버튼 · 세대 메뉴와 AppState | `Qt::Popup` 창, `Q_PROPERTY`, 첫 `pokesix_data` 타깃, core의 세대 표, `QSettings`(`gen`) | "GEN 4 신오 ▾" → 폭 300 · 9줄 팝업(▶ · ✓), 고른 세대가 `AppState`에 들어가고 다음 실행에도 남는다 |
+| ⬜ | **A9** 앱 막대와 탭 | 폴더 탭 커스텀 페인트, 마크 버튼(스티커 변형 36, hover 점선 테), `QShortcut`(Ctrl+1…4), `enum class Page` + `MainWindow::open(Page)` | 빨강 앱 막대: 캡슐 마크 + POKESIX + 탭 4 + 세대 버튼(같은 `AppState`) · 검색 자리. 메뉴 선택 → 그 탭이 활성인 본 화면, 마크 → 인트로 |
+| ⬜ | **A10** 마무리 | 캡처 차이 목록, 키보드만으로 왕복 확인 | `30` · `31`과의 차이 목록이 비어 있거나 설명 가능 → **v0.1.0** |
 
-- 핸드오프 홈의 세대 카드 · 최근 스쿼드 · 바로 가기는 Phase A에서 빠졌다. 최근 스쿼드 목록은 E2(스쿼드)에서 다룬다
-- 새 디자인이 늦으면 A5–A8은 디자인 시트 규칙으로 진행하고, 도착 후 A9에서 수치를 맞춘다
-- 반응형(1024 · 960)은 Phase F에서 다룬다
+- 캡슐 앱 아이콘 리소스는 v2로 이미 교체했다([ADR 0009](decisions/0009-design-handoff-v2.md)). 창 제목 표시줄 아이콘 코드는 A3
+- `FirstRunPanel`(데이터 없음 · 받는 중 · 실패, `34` ③)은 D4에서 만든다. Phase A의 인트로는 데이터가 있는 상태만 다룬다
+- 1024 · 960 인트로 배치(`32`, `33`)는 Phase F에서 다룬다
+- v1 홈의 세대 카드 · 최근 스쿼드 · 바로 가기는 빠졌다. 최근 스쿼드 목록은 E2에서 다룬다
 
 ## Phase B — 컴포넌트와 갤러리 (PROMPT 4-2) → v0.2.0
 
@@ -66,7 +69,7 @@ A에서 만든 `PanelFrame`, 버튼 스타일도 갤러리에 올린다.
 ## Phase C — core 도메인과 분석 (PROMPT 4-3) → v0.3.0
 
 순수 C++20 TDD. Qt 학습과 번갈아 진행해도 된다(머리 식히기용).
-테스트 값은 [04_RULES_AND_TESTS.md](design-handoff/docs/04_RULES_AND_TESTS.md)의 표를 그대로 쓴다.
+테스트 값은 [04_RULES_AND_TESTS.md](../design/handoff-v1/docs/04_RULES_AND_TESTS.md)의 표를 그대로 쓴다.
 
 | | 단계 | 내용 | 통과할 테스트 |
 |---|---|---|---|
@@ -82,7 +85,7 @@ A에서 만든 `PanelFrame`, 버튼 스타일도 갤러리에 올린다.
 | ⬜ | **D1** | SQLite 스키마 + 시드 데이터(목업의 4세대 19종·기술·아이템) + `Repository` 조회 | QtSql, 트랜잭션, 세대 구간 쿼리 |
 | ⬜ | **D2** | `SpeciesTableModel` + `SpeciesFilterProxy` | **모델/뷰**, role, `QSortFilterProxyModel` |
 | ⬜ | **D3** | `SquadSession` + `SquadStore`(JSON, 디바운스 저장) → 홈의 최근 스쿼드를 실제 데이터로 | `QJsonDocument`, `QSaveFile`, 디바운스 `QTimer` |
-| ⬜ | **D4** | PokéAPI 가져오기 → 캐시 DB | `QNetworkAccessManager`, 비동기 흐름, worker 스레드 — **방식 결정 필요(아래 열린 질문 1)** |
+| ⬜ | **D4** | PokéAPI 가져오기 → 캐시 DB + 인트로 `FirstRunPanel`(받기 전 · 받는 중 · 실패, v2 `34` ③) | `QNetworkAccessManager`, 비동기 흐름, worker 스레드, 진행 신호 — **방식 결정 필요(아래 열린 질문 1)** |
 
 ## Phase E — 나머지 화면 (PROMPT 4-5) → v0.5.0
 
@@ -122,8 +125,10 @@ CI(GitHub Actions, 3개 OS), 패키징(dmg / zip / AppImage), sanitizer 프리�
 4. **패키징 방식** (Phase G): OS별 배포 형식
 5. **Tokens 네이밍** (A4): 핸드오프의 `kRed`를 유지할지, 컨벤션(`camelCase`)으로 바꿀지
 6. **글꼴 12MB를 qrc에 넣을지** (A4): 실행 파일에 포함(배포 간단, 빌드 느림) vs 실행 파일 옆 폴더(빌드 빠름, 경로 관리)
-7. **상자 바깥 장식을 그리는 방식** (A6): 부모 위젯이 그리기 vs `QFocusFrame`처럼 대상 위를 덮는 형제 위젯. 선택 테와 포커스 링에 같이 쓴다
+7. **상자 바깥 장식을 그리는 방식** (A7): 부모 위젯이 그리기 vs `QFocusFrame`처럼 대상 위를 덮는 형제 위젯. 선택 테와 포커스 링에 같이 쓴다
 8. **모달 · 드로어 방식** (E2 전): 창 안 오버레이(dim + `PanelFrame`, 추천 기울기) vs frameless `QDialog`. 근거는 [ADR 0007](decisions/0007-ui-component-structure.md) 9항
+9. **종료 확인** (A7 전): 종료 줄 Enter · 두 번째 Esc에서 확인 대화 상자를 띄울지(v2 PROMPT §6-1)
+10. **PokéAPI 출처 표기 문구** (A10 전): 인트로 "데이터: PokéAPI · 비공식 팬 도구"가 약관에 맞는지(v2 PROMPT §6-3)
 
 ## 나중에 붙일 것 (백로그)
 

@@ -1,7 +1,7 @@
 # 아키텍처
 
 PokeSix의 레이어 구조, 의존 방향, 각 디렉토리의 책임을 정리한다.
-디자인 핸드오프의 설계서([design-handoff/docs/03_ARCHITECTURE.md](design-handoff/docs/03_ARCHITECTURE.md))는
+디자인 핸드오프의 설계서([design/handoff-v1/docs/03_ARCHITECTURE.md](../design/handoff-v1/docs/03_ARCHITECTURE.md))는
 "어떤 역할이 필요한가"의 기준으로 쓰고, "그 역할이 어디에 놓이는가"는 이 문서가 정한다.
 
 ## 1. 레이어와 의존 방향
@@ -78,6 +78,8 @@ composition root. 명령행 인자(`--gallery`, `--screenshot`), 로깅 초기�
 
 ## 3. 디자인 설계서와의 대응
 
+설계서는 [design/handoff-v1/docs/03_ARCHITECTURE.md](../design/handoff-v1/docs/03_ARCHITECTURE.md)와 그 위를 덮는 [design/handoff-v2/docs/03b_ARCHITECTURE_V2.md](../design/handoff-v2/docs/03b_ARCHITECTURE_V2.md)다.
+
 | 설계서(03) | 이 리포 | 비고 |
 |---|---|---|
 | `domain/` | `core/types`, `core/rules`, `core/domain` | |
@@ -89,6 +91,10 @@ composition root. 명령행 인자(`--gallery`, `--screenshot`), 로깅 초기�
 | `ui/MainWindow`, `AppBar` … | `ui/shell` | |
 | `ui/widgets` | `ui/widgets` | |
 | `ui/pages` | `ui/home`, `ui/dex`, `ui/items`, `ui/squad`, `ui/settings` | 화면별 하위 위젯이 많아서 폴더로 나눔. `home`은 대시보드가 아니라 인트로([ADR 0008](decisions/0008-intro-screen-replaces-home.md)) |
+| v2 `IntroPage` | `ui/home/HomePage` | 이름만 다르다([ADR 0009](decisions/0009-design-handoff-v2.md)). 부품 `IntroMenu` · `IntroFooter` · `IntroBackground`는 `ui/home/` |
+| v2 `MarkWidget` · `WordmarkLabel` · `GenerationButton` · `GenerationMenu` | `ui/widgets` | 인트로와 앱 막대 두 곳에서 쓴다 |
+| v2 `FirstRunPanel` | `ui/home` | Phase D4(`DataUpdater`)와 함께 만든다 |
+| v2 `Shell` | `MainWindow`가 조립하는 `QWidget` | 그리기 · 동작이 없는 조합이라 클래스로 만들지 않는다 |
 | CMake 타깃 `pokesix_core` 하나 | `pokesix_core` / `pokesix_data` / `pokesix_ui` / `pokesix_app` | 레이어 규칙을 링크 단계에서 강제 |
 | QtTest | GoogleTest | core는 Qt가 없으므로 GoogleTest. 04 문서의 표를 그대로 테스트 데이터로 쓴다 |
 | C++17 | C++20 | |
@@ -115,7 +121,7 @@ PokéAPI ──HTTP(비동기)──▶ api ──▶ db (SQLite 캐시)
 ## 5. 세대별 규칙은 데이터로
 
 세대 차이는 `if (gen >= 6)`식 분기를 코드 곳곳에 두지 않고, **테이블 또는 전략 객체**로 표현한다.
-규칙 목록과 반드시 통과해야 할 값은 [design-handoff/docs/04_RULES_AND_TESTS.md](design-handoff/docs/04_RULES_AND_TESTS.md)에 있다.
+규칙 목록과 반드시 통과해야 할 값은 [design/handoff-v1/docs/04_RULES_AND_TESTS.md](../design/handoff-v1/docs/04_RULES_AND_TESTS.md)에 있다.
 
 - DB: 세대에 따라 달라지는 값(타입, 종족값, 상성)은 `gen_from`/`gen_to` 구간으로 저장한다.
   세대 g의 값은 `gen_from <= g AND (gen_to IS NULL OR gen_to >= g)`로 조회한다.

@@ -63,7 +63,7 @@ src/app/    main window and application bootstrap
 tests/      unit tests (GoogleTest) and a Qt runtime environment check
 resources/  app icons, bundled fonts, style sheets (Qt resource system)
 docs/       architecture, build guide, conventions, roadmap, decision records
-docs/design-handoff/   visual design package: screens, design sheet, specs, tokens
+design/      visual design packages from Claude Design (handoff-v1, handoff-v2) and design requests
 ```
 
 See [docs/architecture.md](docs/architecture.md) for the layering rules.
