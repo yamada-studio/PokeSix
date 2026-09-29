@@ -51,7 +51,7 @@ if ((check_format)); then
     command -v clang-format >/dev/null || die "clang-format not found (scripts/linux/setup.sh)"
     sources=()
     while IFS= read -r f; do sources+=("$f"); done \
-        < <(git ls-files --cached --others --exclude-standard -- 'src/*.cpp' 'src/*.h' 'tests/*.cpp' 'tests/*.h')
+        < <(git ls-files --cached --others --exclude-standard -- 'src/*.cpp' 'src/*.h' 'tests/*.cpp' 'tests/*.h' 'tools/*.cpp' 'tools/*.h')
     clang-format --dry-run --Werror "${sources[@]}"
 fi
 

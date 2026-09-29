@@ -51,7 +51,7 @@ if ((check_format)); then
     command -v clang-format >/dev/null || die "clang-format not found (scripts/macos/setup.sh)"
     sources=()   # bash 3.2 has no mapfile
     while IFS= read -r f; do sources+=("$f"); done \
-        < <(git ls-files --cached --others --exclude-standard -- 'src/*.cpp' 'src/*.h' 'tests/*.cpp' 'tests/*.h')
+        < <(git ls-files --cached --others --exclude-standard -- 'src/*.cpp' 'src/*.h' 'tests/*.cpp' 'tests/*.h' 'tools/*.cpp' 'tools/*.h')
     clang-format --dry-run --Werror ${sources[@]+"${sources[@]}"}
 fi
 

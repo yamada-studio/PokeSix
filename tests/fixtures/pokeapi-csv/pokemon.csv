@@ -1,0 +1,7 @@
+id,identifier,species_id,height,weight,base_experience,order,is_default
+1,bulbasaur,1,7,69,64,1,1
+35,clefairy,35,6,75,113,64,1
+36,clefable,36,13,400,217,65,1
+37,vulpix,37,6,99,60,66,1
+445,garchomp,445,19,950,270,570,1
+10103,vulpix-alola,37,6,99,60,67,0
