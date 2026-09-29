@@ -9,8 +9,14 @@ qt_add_library(pokesix_ui STATIC
     widgets/wordmarklabel.cpp
     widgets/generationbutton.h
     widgets/generationbutton.cpp
+    widgets/panelframe.h
+    widgets/panelframe.cpp
     home/homepage.h
     home/homepage.cpp
+    home/intromenu.h
+    home/intromenu.cpp
+    home/intromenuitem.h
+    home/intromenuitem.cpp
     shell/appbar.h
     shell/appbar.cpp
     shell/mainwindow.h

@@ -1,8 +1,10 @@
 #include "ui/home/homepage.h"
 
+#include "ui/home/intromenu.h"
 #include "ui/widgets/generationbutton.h"
 #include "ui/widgets/layoutguide.h"
 #include "ui/widgets/markwidget.h"
+#include "ui/widgets/panelframe.h"
 #include "ui/widgets/wordmarklabel.h"
 
 #include <QLabel>
@@ -13,6 +15,7 @@ constexpr QMargins kPageMargins = {32, 44, 32, 26}; // left, top, right, bottom
 constexpr QSize kMarkSize = {136, 136};
 constexpr QSize kWordmarkSize = {460, 85};
 constexpr QSize kGenerationButtonSize = {162, 49};
+constexpr int kMenuWidth = 520;
 } // namespace
 
 namespace com::yamada::studio {
@@ -45,6 +48,12 @@ HomePage::HomePage(QWidget *parent)
     GenerationButton *generationButton = new GenerationButton;
     generationButton->setFixedSize(kGenerationButtonSize);
     layout->addWidget(generationButton, 0, Qt::AlignHCenter);
+    layout->addSpacing(21);
+
+    PanelFrame *menuFrame = new PanelFrame;
+    menuFrame->setFixedWidth(kMenuWidth); // the width belongs to the caller
+    menuFrame->setBody(new IntroMenu);
+    layout->addWidget(menuFrame, 0, Qt::AlignHCenter);
 
     layout->addStretch();
 }
