@@ -89,8 +89,11 @@ void IntroMenuItem::setSelected(bool selected)
 void IntroMenuItem::changeEvent(QEvent *event)
 {
     QAbstractButton::changeEvent(event);
-    // TODO C 활성 상태가 바뀌면(event->type() == QEvent::EnabledChange) 커서를 바꾼다:
+    // 활성 상태가 바뀌면(event->type() == QEvent::EnabledChange) 커서를 바꾼다:
     //        활성 = Qt::PointingHandCursor(손가락), 비활성 = Qt::ArrowCursor(보통 화살표)
+    if (event->type() == QEvent::EnabledChange)
+        QAbstractButton::setCursor(QAbstractButton::isEnabled() ? Qt::PointingHandCursor
+                                                                : Qt::ArrowCursor);
 }
 
 void IntroMenuItem::enterEvent(QEnterEvent *event)
@@ -107,7 +110,9 @@ void IntroMenuItem::paintEvent(QPaintEvent *event)
     painter.setRenderHint(QPainter::Antialiasing, true);
 
     // 눌림: 줄 전체가 2px 내려앉는다. 위젯 밖으로는 그릴 수 없으니 위쪽을 2px 줄인 상자를 쓴다.
-    // TODO A 잠김(비활성)이면 이 줄 전체를 45% 불투명도로: painter.setOpacity(kLockedOpacity)
+    // 잠김(비활성)이면 이 줄 전체를 45% 불투명도로 그린다: painter.setOpacity(0.45)
+    if (!QAbstractButton::isEnabled())
+        painter.setOpacity(kLockedOpacity);
 
     const bool down = QAbstractButton::isDown();
     const qreal offset = down ? kPressedOffset : 0;
@@ -151,8 +156,8 @@ void IntroMenuItem::paintEntry(QPainter &painter, const QRectF &row)
     painter.setPen(QColor(tok::kText2));
     painter.drawText(
             QPointF(kTextX, baselineIn(top + kNameLine + kNameDescGap, descLine, descMetrics)),
-            // TODO B 잠겼으면 설명 대신 tr("데이터가 필요해요")
-            m_description); // ← 잠겼으면 tr("데이터가 필요해요")가 나오게 바꾼다
+            // 잠겼으면 설명 대신 tr("데이터가 필요해요")
+            QAbstractButton::isEnabled() ? m_description : tr("데이터가 필요해요"));
 
     // 오른쪽 단축키 칸: 흰 바탕(선택 시 노랑) + 먹선 2 + Silkscreen 숫자
     const qreal half = kBorder / 2.0;

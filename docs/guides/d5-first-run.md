@@ -18,8 +18,8 @@
 | | 체크포인트 | 파일 | 배우는 것 |
 |---|---|---|---|
 | ✅ | **CP1 `DataUpdater`** | `src/data/db/gamedatabase.cpp`, `src/data/update/dataupdater.cpp` | **worker 스레드**(`moveToThread`), 스레드를 넘는 시그널/슬롯 |
-| ▶ | CP2 메뉴 잠금 | `src/ui/home/intromenu*`, `intromenuitem*` | 상태를 가진 위젯, 선택 건너뛰기 |
-| | CP3 `FirstRunPanel` | `src/ui/home/firstrunpanel*` (새 파일) | 상태 3개(받기 전 · 받는 중 · 실패)를 가진 화면 |
+| ✅ | CP2 메뉴 잠금 | `src/ui/home/intromenu*`, `intromenuitem*` | 상태를 가진 위젯, 선택 건너뛰기 |
+| ▶ | CP3 `FirstRunPanel` | `src/ui/home/firstrunpanel*` (새 파일) | 상태 3개(받기 전 · 받는 중 · 실패)를 가진 화면 |
 | | CP4 연결 | `homepage.cpp`, `mainwindow.cpp` | 시그널/슬롯으로 부품 잇기 |
 
 CP2부터의 자세한 단계는 CP1을 마치면 이 파일에 이어서 쓴다.
