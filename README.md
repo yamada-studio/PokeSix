@@ -21,8 +21,9 @@ six-member party holds up against every attacking type.
 3. **Item encyclopedia** — later.
 4. **Emulator overlay** — long-term goal; the architecture leaves room for it.
 
-Game data comes from [PokéAPI](https://pokeapi.co). It is fetched on first launch,
-cached in a local SQLite database, and used offline afterwards.
+Game data comes from [PokéAPI](https://pokeapi.co). On first launch PokeSix downloads
+PokéAPI's CSV data files from its GitHub repository — pinned to one commit and checked
+against SHA-256 hashes — converts them into a local SQLite database, and works offline afterwards.
 
 ## Building
 
@@ -86,8 +87,8 @@ PokeSix is released under the [MIT License](LICENSE).
 
 Pokémon data is provided by [PokéAPI](https://pokeapi.co), created by Paul Hallett and
 the PokéAPI contributors. PokeSix follows PokéAPI's
-[fair use policy](https://pokeapi.co/docs/v2): every response is cached
-locally and the API is not polled repeatedly.
+[fair use policy](https://pokeapi.co/docs/v2): it never queries the API servers; it downloads
+the published CSV files once, caches them locally and only downloads again when you ask for an update.
 
 ### Assets policy
 

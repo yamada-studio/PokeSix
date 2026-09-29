@@ -57,7 +57,7 @@ Claude Code가 이 리포에서 세션을 시작할 때마다 읽는 파일이�
 
 - **PokeSix**: 포켓몬 세대별 정주행 보조 도구 (도감 → SixSquad 파티 분석 → 아이템 → 오버레이)
 - C++20, Qt 6.8 LTS (Widgets / Svg / Sql / Network, LGPL 동적 링크), CMake 3.21+ Presets, SQLite
-- 데이터: PokéAPI → SQLite 캐시 → 오프라인 동작
+- 데이터: 첫 실행에 PokéAPI CSV 원본(고정 커밋 + SHA-256)을 받아 로컬 SQLite로 변환 → 이후 오프라인 동작 ([ADR 0011](docs/decisions/0011-data-from-pinned-pokeapi-csv.md))
 - 라이선스: MIT. 게임 에셋(스프라이트 등)은 **절대 커밋하지 않는다**
 
 ## 3. 빌드

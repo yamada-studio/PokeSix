@@ -47,9 +47,9 @@ ui는 rviz 플러그인, app은 launch 파일이 하는 일(구성하고 연결�
 
 | 디렉토리 | 책임 | 예 |
 |---|---|---|
-| `api/` | PokéAPI HTTP 클라이언트 (비동기) | `PokeApiClient` |
-| `db/` | SQLite 연결, 스키마 생성·마이그레이션 | `Database`, `schema.sql` |
-| `repository/` | 조회 창구. 캐시 적중이면 DB, 아니면 API → DB 저장 | `Repository` |
+| `update/` | 데이터 받기와 변환: 고정 커밋의 PokéAPI CSV 다운로드 · SHA-256 검증 · 이어받기, CSV → SQLite | `DataUpdater`, `CsvDownloader`, `CsvImporter` |
+| `db/` | SQLite 연결, 스키마 생성 | `Database`, `schema.sql` |
+| `repository/` | 조회 창구. 로컬 DB만 읽는다(네트워크 없음) | `Repository` |
 | `store/` | 사용자 데이터 저장 | `SquadStore` (`squads.json`) |
 | `state/` | 앱 상태 QObject. 시그널로 변경 통지 | `AppState`, `SquadSession`, `Settings` |
 | `models/` | Qt item model과 필터 프록시 | `SpeciesTableModel`, `SpeciesFilterProxy` |
@@ -98,25 +98,31 @@ composition root. 명령행 인자(`--gallery`, `--screenshot`), 로깅 초기�
 | CMake 타깃 `pokesix_core` 하나 | `pokesix_core` / `pokesix_data` / `pokesix_ui` / `pokesix_app` | 레이어 규칙을 링크 단계에서 강제 |
 | QtTest | GoogleTest | core는 Qt가 없으므로 GoogleTest. 04 문서의 표를 그대로 테스트 데이터로 쓴다 |
 | C++17 | C++20 | |
-| 데이터 원본 미정, 번들 `pokesix.db` | PokéAPI → SQLite 캐시 | 설계서의 스키마(`gen_from`/`gen_to`)는 캐시 스키마로 채택 |
+| 데이터 원본 미정, 번들 `pokesix.db` | 첫 실행에 PokéAPI CSV(고정 커밋) → 로컬 `pokesix.sqlite` | 설계서의 스키마(`gen_from`/`gen_to`)를 채택. `DataUpdater`는 설계서 이름 그대로 ([ADR 0011](decisions/0011-data-from-pinned-pokeapi-csv.md)) |
 
 ## 4. 데이터 흐름
 
 ```
-PokéAPI ──HTTP(비동기)──▶ api ──▶ db (SQLite 캐시)
-                                   ▲
-                        repository ┘  ← "캐시 적중? DB : API→DB"
-                            │
-              models / state (QObject, 시그널)
-                            │
-                           ui  (view가 model을 표시, 사용자 입력 → state 변경)
+첫 실행 · "지금 갱신" 때만:
+  GitHub PokeAPI/pokeapi@<고정 커밋>/data/v2/csv ──HTTP(비동기)──▶ update (SHA-256 검증, 이어받기)
+                                                                   │ worker 스레드: CsvImporter
+                                                                   ▼
+평소:                                                        db (pokesix.sqlite)
+                                                                   ▲
+                                                        repository ┘  ← 로컬 DB만 읽는다
+                                                            │
+                                              models / state (QObject, 시그널)
+                                                            │
+                                                           ui  (view가 model을 표시, 사용자 입력 → state 변경)
 ```
+- **데이터 원천**: PokéAPI API 서버가 아니라 PokéAPI 저장소의 CSV 원본을 고정 커밋에서 받는다([ADR 0011](decisions/0011-data-from-pinned-pokeapi-csv.md)).
+  개발 · 테스트는 `tests/fixtures/`의 작은 시드 CSV를 같은 `CsvImporter`로 변환해 쓴다
 
 - **세대 전환**: `AppState::generationChanged` → 모든 화면이 다시 계산한다. 세대는 앱 전역 상태의 중심이다.
 - **스쿼드 편집**: `SquadSession::changed` → `SquadAnalyzer::analyze()`(core, 동기) → 분석 패널 갱신,
   `SquadStore`에 디바운스(800ms) 저장.
-- **이름 표기**: UI 문구는 `tr()`(한국어 소스)로, 포켓몬·기술·아이템 이름은 PokéAPI의
-  다국어 `names[]`(ko / en / ja)를 DB에 저장하고 설정(`nameLang`)에 따라 고른다. 두 경로는 별개다.
+- **이름 표기**: UI 문구는 `tr()`(한국어 소스)로, 포켓몬·기술·아이템 이름은 PokéAPI CSV의
+  다국어 이름(`*_names.csv`의 ko / en / ja)을 DB에 저장하고 설정(`nameLang`)에 따라 고른다. 두 경로는 별개다.
 
 ## 5. 세대별 규칙은 데이터로
 
@@ -155,7 +161,8 @@ PokéAPI ──HTTP(비동기)──▶ api ──▶ db (SQLite 캐시)
 | 용도 | 위치 (`QStandardPaths`) | Linux 예 |
 |---|---|---|
 | 설정 | `QSettings` (IniFormat) | `~/.config/YamadaStudio/PokeSix.ini` |
-| PokéAPI 캐시 DB | `AppDataLocation/pokeapi-cache.sqlite` | `~/.local/share/YamadaStudio/PokeSix/` |
+| 게임 데이터 DB | `AppDataLocation/pokesix.sqlite` | `~/.local/share/YamadaStudio/PokeSix/` |
+| 받은 CSV 원본 (이어받기용) | `CacheLocation/pokeapi-csv/<커밋>/` | `~/.cache/YamadaStudio/PokeSix/` |
 | 스쿼드 | `AppDataLocation/squads.json` | 위와 같음 |
 | 스프라이트 캐시 (도입 시) | `CacheLocation/sprites/` | `~/.cache/YamadaStudio/PokeSix/` |
 
