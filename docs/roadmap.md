@@ -24,26 +24,28 @@
 빌드 시스템, 프리셋, OS별 스크립트, 코드 품질 도구, core 골격, 테스트 파이프라인, 문서,
 디자인 핸드오프 반영, 글꼴 · 앱 아이콘 가져오기.
 
-## Phase A — 홈 화면으로 배우는 Qt 기초 → v0.1.0
+## Phase A — 인트로 화면으로 배우는 Qt 기초 → v0.1.0
 
-**홈 화면 하나를 기준 이미지 [`10_home_1440.png`](design-handoff/images/screens/10_home_1440.png)와
-같게 완성하면서** Qt의 기초(창, 레이아웃, 리소스, 테마, 커스텀 페인트, 시그널/슬롯)를 순서대로 익힌다.
-사양: [02_SCREEN_SPEC.md](design-handoff/docs/02_SCREEN_SPEC.md) SCR-00(앱 막대) · SCR-01(홈),
-[01_DESIGN_SHEET.md](design-handoff/docs/01_DESIGN_SHEET.md) §1–§5. 원본 수치: `design/source/Home.dc.html`.
+**전체 화면 인트로(로고 · 현재 세대 버튼 · ▶ 메뉴)와, 메뉴로 들어가는 본 화면의 틀(앱 막대 + 페이지)을 완성하면서**
+Qt의 기초(창, 레이아웃, 리소스, 테마, 커스텀 페인트, 시그널/슬롯)를 순서대로 익힌다.
+방향 전환의 근거: [ADR 0008](decisions/0008-intro-screen-replaces-home.md). 시각 기준은 Claude Design에 요청했다([요청서 0001](design-requests/0001-intro-and-mark.md)).
+**새 디자인이 오기 전까지는** [01_DESIGN_SHEET.md](design-handoff/docs/01_DESIGN_SHEET.md) §1–§5의 규칙과 가이드의 임시 와이어프레임 수치로 진행하고, 도착하면 수치만 바꾼다.
 
 | | 단계 | 배우는 것 | 눈에 보이는 결과 |
 |---|---|---|---|
-| ✅ | **A1** MainWindow와 디버깅 | VS Code 프리셋 빌드·디버그, `Q_OBJECT`와 moc, `QMainWindow`, object tree, `QLoggingCategory` | 홈을 올릴 창: 1440×900, 최소 960×640, 로그, 생성자 breakpoint |
-| 🟨 | **A2** 레이아웃 — 홈의 뼈대 | `QVBoxLayout` / `QHBoxLayout` / `QGridLayout`, margin · spacing · stretch, size policy, `QStackedWidget`, CSS 수치 → Qt 간격 환산 | 앱 막대 자리(60) + 홈 페이지: 제목 줄, 세대 카드 9칸, 하단(최근 스쿼드 │ 바로 가기 3)이 **최종 클래스 이름 그대로의 빈 상자로** 캡처와 같은 위치에 배치 ([ADR 0007](decisions/0007-ui-component-structure.md)) |
-| ⬜ | **A3** 캡처 도구 | `QCommandLineParser`, `QWidget::grab()`, offscreen 렌더링, 첫 `pokesix_app` 타깃 | `PokeSix --screenshot home 1440x900 out.png` → 이후 모든 단계를 기준 이미지와 나란히 비교 |
-| ⬜ | **A4** 글꼴 · 토큰 · QSS | qrc, `QFontDatabase`, `Tokens.h` 이식(`ui/theme`) + 의미 역할(주 콘텐츠 · 정보 · 분류 …) 층, QSS `@token` 치환, `QPalette` | 종이색 바탕, 도현 36 제목, 나눔고딕 설명문 |
-| ⬜ | **A5** PanelFrame — 첫 `paintEvent` | `QPainter`, `QPainterPath`, 안티에일리어싱, 블러 없는 오프셋 그림자, 그리기 함수(`paintPanel`)와 위젯의 분리 | 빨강 머리 "최근 스쿼드" 창, 바로 가기 카드 3개, 세대 카드 틀이 **한 함수로** 그려진다 |
-| ⬜ | **A6** 세대 카드와 AppState | 커스텀 위젯, 마우스 이벤트 · hover, **시그널/슬롯**, `Q_PROPERTY`, `QButtonGroup`, 상자 바깥 선택 테 그리기, 첫 `pokesix_data` 타깃, core의 세대 표 | 세대 카드 9장(머리 색 순환, Silkscreen "GEN n"). 클릭하면 노란 테와 "▶ 진행 중"이 따라 옮겨 간다 |
-| ⬜ | **A7** 앱 막대와 탭 | SVG 렌더링(`QSvgRenderer`), 폴더 탭 커스텀 페인트, `QShortcut`(Ctrl+1…5) | 빨강 앱 막대: 마크 + POKESIX 워드마크 + 탭 5 + 세대 버튼 · 검색 자리. 탭으로 페이지 전환(홈 외 4개는 빈 페이지) |
-| ⬜ | **A8** 최근 스쿼드 · 바로 가기 · 마무리 | 행 위젯 조합, 임시 데이터, 빈 상태, 캡처 차이 목록으로 마감 | 홈 화면 완성. 기준 이미지와 차이 목록이 비어 있거나 설명 가능 → **v0.1.0** |
+| ✅ | **A1** MainWindow와 디버깅 | VS Code 프리셋 빌드·디버그, `Q_OBJECT`와 moc, `QMainWindow`, object tree, `QLoggingCategory` | 1440×900 창, 최소 960×640, 로그, 생성자 breakpoint |
+| 🟨 | **A2** 레이아웃 — 두 단계 화면과 인트로 뼈대 | `QVBoxLayout` / `QHBoxLayout`, margin · spacing · stretch, 가운데 정렬과 `sizeHint`, size policy, `QStackedWidget` 두 단계 | `m_screens`[인트로 │ 본 화면(AppBar + `m_pages`)]. 인트로의 로고 · 세대 버튼 · 메뉴 창(메뉴 항목 4) · 아래 정보 줄이 **최종 클래스 이름 그대로의 빈 상자로** 화면 가운데에 선다 |
+| ⬜ | **A3** 캡처 도구 | `QCommandLineParser`, `QWidget::grab()`, offscreen 렌더링, 첫 `pokesix_app` 타깃, 로그 형식 초기화 | `PokeSix --screenshot intro 1440x900 out.png` → 이후 단계를 기준 이미지와 나란히 비교 |
+| ⬜ | **A4** 글꼴 · 토큰 · QSS | qrc, `QFontDatabase`, `Tokens.h` 이식(`ui/theme`) + 의미 역할 층, QSS `@token` 치환, `QPalette` | 종이색 바탕, 도현 메뉴 글자, 나눔고딕 · Silkscreen 정보 줄 |
+| ⬜ | **A5** PanelFrame과 메뉴 항목 — 첫 `paintEvent` | `QPainter`, `QPainterPath`, 안티에일리어싱, 블러 없는 오프셋 그림자, 그리기 함수(`paintPanel`)와 위젯의 분리 | 먹선 · 그림자가 있는 메뉴 창, 메뉴 항목의 기본 · hover 모양이 **한 함수로** 그려진다 |
+| ⬜ | **A6** 메뉴 동작 — 시그널/슬롯 | `QAbstractButton`, 마우스 · 키보드(↑↓ Enter), 포커스, ▶ 커서와 노란 선택 칸, **시그널/슬롯**, 상자 바깥 장식 그리기 | 메뉴로 본 화면에 들어가고(임시 되돌아가기 버튼으로) 인트로로 돌아온다 |
+| ⬜ | **A7** 세대 버튼과 AppState | `QMenu`, `Q_PROPERTY`, 첫 `pokesix_data` 타깃, core의 세대 표 | "GEN 4 신오 ▾" → 1–9세대 목록(✓), 고른 세대가 `AppState`에 들어가고 버튼 표시가 따라 바뀐다 |
+| ⬜ | **A8** 앱 막대와 탭 | SVG 렌더링(`QSvgRenderer`), 폴더 탭 커스텀 페인트, `QShortcut`(Ctrl+1…4), 마크 → 인트로 | 빨강 앱 막대: 마크 + POKESIX + 탭 4 + 세대 버튼(같은 `AppState`) · 검색 자리. 탭으로 빈 페이지 4개 전환 |
+| ⬜ | **A9** 새 마크 · 아이콘 반영과 마무리 | 리소스 교체, 앱 아이콘 3 OS, 캡처 차이 목록으로 마감 | 새 디자인의 인트로와 차이 목록이 비어 있거나 설명 가능 → **v0.1.0** |
 
-- A8의 최근 스쿼드는 **임시 데이터**로 채운다. 실제 저장소(`SquadStore`)는 Phase D에서 연결한다
-- 반응형(1100 미만 5열 × 2행)은 Phase F에서 다룬다
+- 핸드오프 홈의 세대 카드 · 최근 스쿼드 · 바로 가기는 Phase A에서 빠졌다. 최근 스쿼드 목록은 E2(스쿼드)에서 다룬다
+- 새 디자인이 늦으면 A5–A8은 디자인 시트 규칙으로 진행하고, 도착 후 A9에서 수치를 맞춘다
+- 반응형(1024 · 960)은 Phase F에서 다룬다
 
 ## Phase B — 컴포넌트와 갤러리 (PROMPT 4-2) → v0.2.0
 
