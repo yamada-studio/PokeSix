@@ -93,6 +93,7 @@ A에서 만든 `PanelFrame`, 버튼 스타일도 갤러리에 올린다.
 | ✅ | **D4** | 데이터 받기: PokéAPI CSV 원본을 **고정 커밋**에서 다운로드, 파일별 **SHA-256 검증**, 파일 단위 이어받기 ([ADR 0011](decisions/0011-data-from-pinned-pokeapi-csv.md)) | `QNetworkAccessManager`, 비동기 흐름, `QCryptographicHash`, `QSaveFile` |
 | ⬜ | **D5** | `DataUpdater`: 받기 → worker 스레드에서 `CsvImporter`로 변환 → 임시 DB 교체, 인트로 `FirstRunPanel`(받기 전 · 받는 중 · 실패, v2 `34` ③)과 메뉴 잠금 | `moveToThread`, 스레드별 `QSqlDatabase` 연결, 진행 시그널, 상태 전환 |
 
+- **D1의 CP1–CP3(CsvReader · 스키마 · 타입 · 상성 · 종 · 포켓몬 · 종족값)도 사용자 요청으로 Claude가 구현했다.** 남은 것: CP4 도구(`pokesix-import-csv`), 기술 · 습득 기술 · 아이템, `Repository`
 - **D4는 사용자 요청("섞어서")으로 Claude가 구현했다**: `CsvDownloader`, 고정 목록 `csvsource.h`, 개발 도구 `pokesix-fetch-csv`.
   D1(스키마 · CSV 파서 · `CsvImporter`)과 D5의 worker 스레드는 사용자가 가이드를 따라 구현한다
 - Phase D를 Phase A · C보다 먼저 시작했다. D1은 core의 타입(`core/types`)만 있으면 되므로 순서에 막히지 않는다
@@ -134,6 +135,15 @@ CI(GitHub Actions, 3개 OS), 패키징(dmg / zip / AppImage), sanitizer 프리�
 8. **모달 · 드로어 방식** (E2 전): 창 안 오버레이(dim + `PanelFrame`, 추천 기울기) vs frameless `QDialog`. 근거는 [ADR 0007](decisions/0007-ui-component-structure.md) 9항
 9. **종료 확인** (A7 전): 종료 줄 Enter · 두 번째 Esc에서 확인 대화 상자를 띄울지(v2 PROMPT §6-1)
 10. **PokéAPI 출처 표기 문구** (A10 전): 인트로 "데이터: PokéAPI · 비공식 팬 도구"가 약관에 맞는지(v2 PROMPT §6-3)
+
+## 장기 목표 (Phase A–G 이후)
+
+지금 구조는 이 목표들을 막지 않게 유지한다. 설계 방향은 [architecture.md §9](architecture.md#9-확장-여지).
+
+| 목표 | 필요한 것 | 지금 지켜 둘 것 |
+|---|---|---|
+| **배틀 시뮬레이터** | core의 세대별 배틀 규칙 엔진, 기술 · 특성 · 도구 효과 구현, 결정적 난수 | 계산은 core에(Qt 없음), 세대는 항상 인자로, id는 PokéAPI id |
+| **에뮬레이터 오버레이** | 게임 내부 번호 → PokéAPI id 표(`*_game_indices`), 에뮬레이터 상태 읽기, 별도 창 | core 분석 · data state를 UI와 분리해 두기 |
 
 ## 나중에 붙일 것 (백로그)
 

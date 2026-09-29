@@ -5,6 +5,9 @@
 >
 > 역할 분담([roadmap Phase D](../roadmap.md)): 받기(D4 `CsvDownloader`)는 Claude가 만들었다. 여기부터는 직접 짠다.
 > 결정의 근거: [ADR 0011](../decisions/0011-data-from-pinned-pokeapi-csv.md)
+>
+> **진행(2026-09-29)**: CP1–CP3은 사용자 요청으로 Claude가 구현했다(`csvreader`, `genranges.h`, `db/schema.h`, `csvimporter`,
+> `tests/fixtures/pokeapi-csv`). 1-3의 설계 질문에 대한 답은 `genranges.h`와 `csvimporter.cpp`의 주석에 있다. CP4부터 이어서 한다.
 
 ## 목표
 
