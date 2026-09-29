@@ -1,11 +1,31 @@
 <!DOCTYPE RCC>
 <!--
-  Qt 리소스: 여기 등록한 파일은 실행 파일 안에 바이너리로 포함되고
-  런타임에 ":/styles/app.qss" 같은 가상 경로로 접근한다.
-  경로는 이 .qrc 파일 기준 상대 경로. 자체 제작 에셋만 등록한다.
+  Qt resources, compiled into the PokeSix executable (qt_add_big_resources in src/CMakeLists.txt)
+  and read at runtime through virtual paths such as ":/styles/app.qss".
+  Paths are relative to this file. Only original or license-checked assets (fonts: OFL).
 -->
 <RCC version="1.0">
   <qresource prefix="/">
     <file>styles/app.qss</file>
+
+    <file>fonts/DoHyeon-Regular.ttf</file>
+    <file>fonts/NanumGothic-Regular.ttf</file>
+    <file>fonts/NanumGothic-Bold.ttf</file>
+    <file>fonts/NanumGothic-ExtraBold.ttf</file>
+    <file>fonts/NanumGothicCoding-Regular.ttf</file>
+    <file>fonts/NanumGothicCoding-Bold.ttf</file>
+    <file>fonts/Silkscreen-Regular.ttf</file>
+    <file>fonts/Silkscreen-Bold.ttf</file>
+
+    <file alias="icons/mark/pokesix-mark.svg">icons/app/svg/pokesix-mark.svg</file>
+    <file alias="icons/mark/pokesix-mark-on-red.svg">icons/app/svg/pokesix-mark-on-red.svg</file>
+    <file alias="icons/mark/pokesix-mark-small.svg">icons/app/svg/pokesix-mark-small.svg</file>
+
+    <!-- Window icon sizes. 16px is the hand-drawn pixel version (design 01b §6-3). -->
+    <file alias="icons/window/pokesix-16.png">icons/app/windows/pokesix-16-pixel.png</file>
+    <file alias="icons/window/pokesix-32.png">icons/app/linux/hicolor/32x32/apps/pokesix.png</file>
+    <file alias="icons/window/pokesix-64.png">icons/app/linux/hicolor/64x64/apps/pokesix.png</file>
+    <file alias="icons/window/pokesix-128.png">icons/app/linux/hicolor/128x128/apps/pokesix.png</file>
+    <file alias="icons/window/pokesix-256.png">icons/app/linux/hicolor/256x256/apps/pokesix.png</file>
   </qresource>
 </RCC>
