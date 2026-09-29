@@ -5,8 +5,11 @@
    글꼴 이름은 등록된 실제 이름을 쓴다: "NanumGothic"(핸드오프의 "Nanum Gothic" 아님), "NanumGothicCoding". */
 
 
+/* 종이색 바탕은 창에만 준다. QWidget 전체에 주면 "평범한 QWidget"(레이아웃을 담는 상자 등)이
+   전부 종이색을 칠해서, 흰 패널이나 사선 무늬 위에 사각형이 생긴다. 직접 그리는 위젯은 원래 QSS 배경을 칠하지 않는다. */
+QMainWindow { background: @paper; }
+
 QWidget {
-  background: @paper;
   color: @text.1;
   font-family: "NanumGothic";
   font-size: 13px;
@@ -86,3 +89,13 @@ QLabel#introKeyCap {
 }
 QLabel#introKeyHint { font-size: 12px; font-weight: 700; color: @text.2; }
 QLabel#introSource { font-size: 12px; color: @text.2; }
+
+/* ── 첫 실행 패널(FirstRunPanel) ── */
+QStackedWidget#firstRunPages { background: transparent; }
+QLabel#firstRunTitle { font-family: "Do Hyeon"; font-size: 20px; color: @text.1; }
+QLabel#firstRunFailedTitle { font-family: "Do Hyeon"; font-size: 20px; color: @red.text; }
+QLabel#firstRunBody { font-size: 12px; color: @text.2; }
+QLabel#firstRunMeta { font-family: "NanumGothicCoding"; font-size: 11px; color: @text.3; }
+QLabel#firstRunStep { font-size: 12px; font-weight: 700; color: @text.1; }
+QLabel#firstRunPercent { font-family: "NanumGothicCoding"; font-size: 12px; font-weight: 700; color: @text.1; }
+QLabel#firstRunNote { font-size: 12px; color: @text.3; }

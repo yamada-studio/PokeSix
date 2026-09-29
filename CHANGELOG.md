@@ -25,8 +25,14 @@ and the project uses [Semantic Versioning](https://semver.org/).
   chart, stats, species (ko/en/ja names), pokemon with forms, pokemon types and base stats, storing
   per-generation values as `gen_from`/`gen_to` ranges derived from PokéAPI's `*_past` tables.
 - `pokesix-import-csv` developer tool that turns a downloaded CSV folder into the database.
+- First run: without a game database the intro shows a panel that downloads and imports the data
+  (ready, downloading with a 10-segment bar and cancel, failed with retry) and locks Dex, Items and
+  SixSquad until it finishes; the import runs on a worker thread. `ShadowButton` and
+  `SegmentProgress` widgets.
 
 ### Changed
+- The paper background in `app.qss` applies to `QMainWindow` only, so plain container widgets no
+  longer paint paper-coloured rectangles over panels.
 - The home screen is a full-screen intro instead of the v1 dashboard; the app bar will have four tabs.
 - Installed Linux binaries keep the Qt library path in their RUNPATH, so the desktop launcher works.
 

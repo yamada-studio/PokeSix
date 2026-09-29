@@ -26,12 +26,18 @@ public:
     void setSelected(bool selected);
     bool isSelected() const { return m_selected; }
 
+    // 잠김(첫 실행에 데이터가 없을 때)은 따로 만들지 않고 QWidget의 "비활성"(setEnabled(false))을
+    // 쓴다. 비활성 위젯은 Qt가 클릭 · 키 입력을 막아 준다. 모양만 여기서 바꾼다: 45% 흐리게 +
+    // "데이터가 필요해요". 주의: 마우스가 올라가는 것(enterEvent → hovered)은 비활성이어도
+    // 전달된다. 그건 IntroMenu가 거른다.
+
 signals:
     void hovered();
 
 protected:
     void paintEvent(QPaintEvent *event) override;
     void enterEvent(QEnterEvent *event) override;
+    void changeEvent(QEvent *event) override; // 활성 ↔ 비활성이 바뀔 때 커서를 바꾼다
 
 private:
     void paintEntry(QPainter &painter, const QRectF &row);

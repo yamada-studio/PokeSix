@@ -16,6 +16,12 @@ qt_add_library(pokesix_ui STATIC
     widgets/generationbutton.cpp
     widgets/panelframe.h
     widgets/panelframe.cpp
+    widgets/shadowbutton.h
+    widgets/shadowbutton.cpp
+    widgets/segmentprogress.h
+    widgets/segmentprogress.cpp
+    widgets/svgicon.h
+    widgets/svgicon.cpp
     home/homepage.h
     home/homepage.cpp
     home/intromenu.h
@@ -24,6 +30,8 @@ qt_add_library(pokesix_ui STATIC
     home/intromenuitem.cpp
     home/introfooter.h
     home/introfooter.cpp
+    home/firstrunpanel.h
+    home/firstrunpanel.cpp
     shell/page.h
     shell/appbar.h
     shell/appbar.cpp
@@ -37,7 +45,7 @@ pokesix_qt_target(pokesix_ui)
 target_link_libraries(pokesix_ui
     PUBLIC  Qt6::Widgets
     PRIVATE Qt6::Svg          # MarkWidget이 캡슐 마크 SVG를 그린다(QSvgRenderer)
-    # PRIVATE pokesix_data     # data 를 아직 안 만들었으면 이 줄은 나중에
+    PRIVATE pokesix_data      # 인트로가 DataUpdater(첫 실행 데이터 받기)를 쓴다
 )
 
 target_include_directories(pokesix_ui PUBLIC

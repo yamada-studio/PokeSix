@@ -24,7 +24,11 @@ public:
     explicit IntroMenu(QWidget *parent = nullptr);
 
     int currentIndex() const { return m_current; }
-    void setCurrentIndex(int index);
+    void setCurrentIndex(int index); // 잠긴(비활성) 줄은 고를 수 없다 — 부르면 무시한다
+
+    // 데이터가 없으면 도감 · 아이템 · SixSquad를 잠근다(설정 · 종료는 데이터 없이도 쓸 수 있다).
+    // 선택이 잠긴 줄에 있었으면 쓸 수 있는 첫 줄로 옮긴다. 잠금이 풀리면 선택은 도감으로 간다.
+    void setDataLocked(bool locked);
 
 signals:
     // 사용자가 줄을 실행했다(클릭, Enter, 1–4, 종료 줄에서 Esc). index는 kQuitIndex 포함.
@@ -35,6 +39,9 @@ protected:
     void paintEvent(QPaintEvent *event) override;
 
 private:
+    // from에서 direction(+1 아래 / −1 위) 쪽으로 가며 처음 만나는 쓸 수 있는 줄. 없으면 from.
+    int nextEnabled(int from, int direction) const;
+
     std::vector<IntroMenuItem *> m_items; // 소유는 object tree(부모 = this)가 한다. 여기는 참조만.
     int m_current = 0;
 };

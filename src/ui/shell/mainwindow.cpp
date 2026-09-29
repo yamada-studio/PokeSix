@@ -1,5 +1,6 @@
 #include "ui/shell/mainwindow.h"
 
+#include "data/update/dataupdater.h"
 #include "ui/home/homepage.h"
 #include "ui/logging/logging.h"
 #include "ui/shell/appbar.h"
@@ -24,8 +25,12 @@ MainWindow::MainWindow(QWidget *parent)
     //            ├ AppBar    fixed 60
     //            └ m_pages
     //               └ (placeholder) QWidget
+    // 첫 실행 데이터 받기 · 변환. 인트로가 쓰지만 MainWindow가 만들어 넘긴다(생성자 주입).
+    // A3에서 앱 초기화 계층(pokesix_app)이 생기면 거기서 만들어 넘기게 된다.
+    DataUpdater *dataUpdater = new DataUpdater(this);
+
     m_screens = new QStackedWidget;
-    HomePage *home = new HomePage;
+    HomePage *home = new HomePage(dataUpdater);
     m_screens->addWidget(home);
 
     QWidget *shell = new QWidget;
