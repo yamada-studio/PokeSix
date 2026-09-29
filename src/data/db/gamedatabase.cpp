@@ -11,9 +11,9 @@
 namespace com::yamada::studio::gamedatabase {
 QString defaultPath()
 {
-    // TODO A AppDataLocation 폴더 + "/pokesix.sqlite"
-    //        QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)
-    return QString(); // ← 이 줄을 TODO A의 코드로 바꾼다
+    // AppDataLocation 폴더 + "/pokesix.sqlite"
+    return QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)
+           + QStringLiteral("/pokesix.sqlite");
 }
 
 bool isUsable(const QString &path)
@@ -28,9 +28,13 @@ bool isUsable(const QString &path)
         db.setDatabaseName(path);
         if (db.open()) {
             QSqlQuery query(db);
-            // TODO B meta 표에서 schema_version을 읽어 schema::kVersion과 같으면 usable = true
-            //        query.exec("SELECT value FROM meta WHERE key = 'schema_version'")
-            //        query.next()가 true면 query.value(0).toInt()가 버전
+            // meta 표에서 schema_version을 읽어 schema::kVersion과 같으면 usable = true
+            query.exec(QStringLiteral("SELECT value FROM meta WHERE key = 'schema_version'"));
+            if (query.next()) {
+                if (query.value(0).toInt() == schema::kVersion) {
+                    usable = true;
+                }
+            }
         }
     }
     QSqlDatabase::removeDatabase(connection);
