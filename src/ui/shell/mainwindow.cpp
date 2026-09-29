@@ -17,25 +17,30 @@ MainWindow::MainWindow(QWidget *parent)
     QMainWindow::setMinimumSize(960, 640);
     QMainWindow::resize(1440, 900);
 
-    // central
-    //  └ QVBoxLayout (margins 0, spacing 0)
-    //     ├ AppBar           fixed 60
-    //     └ QStackedWidget   the rest
-    //        └ HomePage      page 0
-    QWidget *central = new QWidget;
-    QVBoxLayout *layout = new QVBoxLayout(central); // installs itself on central
-    layout->setContentsMargins(0, 0, 0, 0);         // no style default margins (~9-11px)
-    layout->setSpacing(0);                          // no style default spacing (~6px)
+    // m_screens (central)
+    //  ├ [0] HomePage
+    //  └ [1] shell
+    //         └ QVBoxLayout (margins 0, spacing 0)
+    //            ├ AppBar    fixed 60
+    //            └ m_pages
+    //               └ (placeholder) QWidget
+    m_screens = new QStackedWidget;
+    m_screens->addWidget(new HomePage);
 
-    QStackedWidget *pages = new QStackedWidget;
-    pages->addWidget(new HomePage); // reparents HomePage to pages
+    QWidget *shell = new QWidget;
+    QVBoxLayout *layout = new QVBoxLayout(shell); // installs itself on shell
+    layout->setContentsMargins(0, 0, 0, 0);       // no style default margins (~9-11px)
+    layout->setSpacing(0);                        // no style default spacing (~6px)
 
-    layout->addWidget(new AppBar); // reparents AppBar to central
-    layout->addWidget(pages);
+    m_pages = new QStackedWidget;
+    m_pages->addWidget(new QWidget);
 
-    QMainWindow::setCentralWidget(central); // MainWindow takes ownership of central
+    layout->addWidget(new AppBar);
+    layout->addWidget(m_pages);
 
-    m_pages = pages; // keep a pointer to the QStackedWidget for later use
+    m_screens->addWidget(shell);
+
+    QMainWindow::setCentralWidget(m_screens);
 
     qCInfo(lcUi) << "MainWindow initialized";
 }

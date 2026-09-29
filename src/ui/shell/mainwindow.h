@@ -13,5 +13,6 @@ public:
 
 private:
     QStackedWidget *m_pages = nullptr;
+    QStackedWidget *m_screens = nullptr;
 };
 } // namespace com::yamada::studio
