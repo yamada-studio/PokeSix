@@ -23,6 +23,12 @@ qt_add_library(pokesix_data STATIC
     db/schema.h
     db/gamedatabase.h
     db/gamedatabase.cpp
+    repository/repository.h
+    repository/repository.cpp
+    models/speciestablemodel.h
+    models/speciestablemodel.cpp
+    models/speciesfilterproxy.h
+    models/speciesfilterproxy.cpp
 )
 add_library(PokeSix::data ALIAS pokesix_data)
 pokesix_qt_target(pokesix_data)

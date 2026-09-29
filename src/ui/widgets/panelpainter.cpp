@@ -22,7 +22,8 @@ QPainterPath strokePath(const QRectF &outer, qreal radius, qreal pen)
 QMargins chromeMargins(const PanelStyle &style)
 {
     const int side = style.outline + style.innerInset + style.innerLine;
-    return {side, side, side, side + style.shadow};
+    const int top = side + (style.header > 0 ? style.header + style.headerLine : 0);
+    return {side, top, side, side + style.shadow};
 }
 
 void paintPanel(QPainter &painter, const QRect &rect, const PanelStyle &style)
@@ -47,6 +48,25 @@ void paintPanel(QPainter &painter, const QRect &rect, const PanelStyle &style)
     painter.setPen(QPen(QColor(style.ink), style.outline));
     painter.setBrush(QColor(style.fill));
     painter.drawPath(strokePath(box, style.radius, style.outline));
+
+    // 2-1) 컬러 머리: 둥근 상자 모양으로 잘라(clip) 위쪽 띠를 칠하고, 그 아래에 먹선을 긋는다.
+    //      다시 테두리를 그려 머리가 테두리 위를 덮지 않게 한다.
+    if (style.header > 0) {
+        painter.save();
+        QPainterPath inside;
+        const qreal o = style.outline;
+        inside.addRoundedRect(box.adjusted(o / 2.0, o / 2.0, -o / 2.0, -o / 2.0),
+                              style.radius - o / 2.0, style.radius - o / 2.0);
+        painter.setClipPath(inside);
+        const QRectF band(box.left(), box.top(), box.width(), style.outline + style.header);
+        painter.fillRect(band, QColor(style.headerColor));
+        painter.fillRect(QRectF(box.left(), band.bottom(), box.width(), style.headerLine),
+                         QColor(style.ink));
+        painter.restore();
+        painter.setPen(QPen(QColor(style.ink), style.outline));
+        painter.setBrush(Qt::NoBrush);
+        painter.drawPath(strokePath(box, style.radius, style.outline));
+    }
 
     // 3) 안쪽 선(이중 테): 먹선 + 간격만큼 들어간 곳에 가는 선을 하나 더
     if (style.innerLine > 0) {

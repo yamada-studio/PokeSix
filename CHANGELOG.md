@@ -34,6 +34,12 @@ and the project uses [Semantic Versioning](https://semver.org/).
   compact generation button and a search field; intro menu entries, tabs, Ctrl+1–4 and Ctrl+K switch
   pages. Pages other than the intro are placeholders for now.
 
+- Dex list with real data: `Repository` reads species with their types and base stats for a
+  generation from the read-only game database, `SpeciesTableModel` and `SpeciesFilterProxy` (search by
+  number or ko/en/ja name, numeric sort) feed a table drawn by a row delegate with type chips; the
+  panel header shows the count. Generation 4 is fixed until the generation popup lands.
+- `PanelFrame` title header band and a reusable `typechip` painter.
+
 ### Changed
 - The paper background in `app.qss` applies to `QMainWindow` only, so plain container widgets no
   longer paint paper-coloured rectangles over panels.
