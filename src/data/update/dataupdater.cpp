@@ -1,0 +1,86 @@
+#include "data/update/dataupdater.h"
+
+#include "data/db/gamedatabase.h"
+#include "data/logging/logging.h"
+#include "data/update/csvdownloader.h"
+#include "data/update/csvimporter.h"
+
+#include <QDir>
+#include <QFileInfo>
+#include <QThread>
+
+namespace com::yamada::studio {
+// ── ImportWorker (worker 스레드) ─────────────────────────────────────────────
+void ImportWorker::importCsv(const QString &csvDir, const QString &dbPath)
+{
+    qCInfo(lcData) << "importing on thread" << QThread::currentThread();
+
+    // SQLite는 폴더가 없으면 파일을 만들지 못한다. 첫 실행이면 AppDataLocation 폴더가 아직 없다.
+    QDir().mkpath(QFileInfo(dbPath).absolutePath());
+
+    // TODO ⑨ CsvImporter importer; 를 만들고 importer.run(csvDir, dbPath)의 결과를
+    //        emit importFinished(결과, importer.errorString()); 으로 알린다
+    Q_UNUSED(csvDir); // ← TODO ⑨를 채우면 이 줄은 지운다
+    emit importFinished(
+            false, QStringLiteral("not implemented (TODO ⑨)")); // ← 이 줄을 TODO ⑨의 코드로 바꾼다
+}
+
+// ── DataUpdater (UI 스레드) ──────────────────────────────────────────────────
+DataUpdater::DataUpdater(QObject *parent)
+    : QObject(parent)
+    , m_downloader(new CsvDownloader(CsvDownloader::defaultDirectory(), this))
+    , m_thread(new QThread(this))
+    , m_worker(new ImportWorker) // 부모 없음: 다른 스레드로 옮길 객체는 부모를 가질 수 없다
+{
+    // TODO ① worker를 m_thread로 옮긴다
+    // TODO ② 스레드가 끝나면 worker를 지우게 한다 (worker는 부모가 없어서 object tree가 지워 주지
+    // 않는다)
+    // TODO ③ 일 보내기: this의 importRequested → m_worker의 importCsv
+    // TODO ④ 결과 받기: m_worker의 importFinished → this의 onImportFinished
+
+    // 다운로더의 신호를 이 클래스의 신호로 바꿔 전한다. 받기는 전체 진행의 0–90%로 친다.
+    connect(m_downloader, &CsvDownloader::progress, this,
+            [this](int, int, qint64 bytes, qint64 totalBytes, const QString &) {
+                const int percent = totalBytes > 0 ? static_cast<int>(bytes * 90 / totalBytes) : 0;
+                emit progress(percent, tr("데이터 받는 중"));
+            });
+    connect(m_downloader, &CsvDownloader::finished, this, &DataUpdater::onDownloadFinished);
+    connect(m_downloader, &CsvDownloader::failed, this,
+            [this](CsvDownloader::Error, const QString &detail) { emit failed(detail); });
+
+    // TODO ⑤ 스레드를 시작한다. 이제부터 worker 스레드의 이벤트 루프가 돌며 신호를 기다린다
+}
+
+DataUpdater::~DataUpdater()
+{
+    // TODO ⑥ 스레드의 이벤트 루프를 끝내고(quit) 실제로 끝날 때까지 기다린다(wait).
+    //        기다리지 않으면 QThread 객체가 돌고 있는 스레드보다 먼저 지워져 앱이 죽는다.
+}
+
+bool DataUpdater::hasData()
+{
+    return gamedatabase::isUsable(gamedatabase::defaultPath());
+}
+
+void DataUpdater::start()
+{
+    emit progress(0, tr("데이터 받는 중"));
+    m_downloader->start(); // 이미 받아 둔 파일은 건너뛴다(이어받기)
+}
+
+void DataUpdater::onDownloadFinished()
+{
+    emit progress(90, tr("데이터 정리하는 중"));
+    // TODO ⑦ worker에게 변환을 시킨다: emit importRequested(CSV 폴더, DB 경로);
+    //        CSV 폴더 = m_downloader->directory(), DB 경로 = gamedatabase::defaultPath()
+}
+
+void DataUpdater::onImportFinished(bool ok, const QString &error)
+{
+    qCInfo(lcData) << "import result on thread" << QThread::currentThread();
+    // TODO ⑧ ok면 emit progress(100, tr("준비 완료")); 와 emit finished();
+    //        아니면 emit failed(error);
+    Q_UNUSED(ok); // ← TODO ⑧을 채우면 이 두 줄은 지운다
+    Q_UNUSED(error);
+}
+} // namespace com::yamada::studio

@@ -37,7 +37,7 @@ pokesix_qt_target(pokesix_ui)
 target_link_libraries(pokesix_ui
     PUBLIC  Qt6::Widgets
     PRIVATE Qt6::Svg          # MarkWidget이 캡슐 마크 SVG를 그린다(QSvgRenderer)
-    # PRIVATE pokesix_data     # data 를 아직 안 만들었으면 이 줄은 나중에
+    PRIVATE pokesix_data      # 인트로가 DataUpdater(첫 실행 데이터 받기)를 쓴다
 )
 
 target_include_directories(pokesix_ui PUBLIC

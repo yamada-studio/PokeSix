@@ -1,11 +1,13 @@
 #include "ui/shell/mainwindow.h"
 
+#include "data/update/dataupdater.h"
 #include "ui/home/homepage.h"
 #include "ui/logging/logging.h"
 #include "ui/shell/appbar.h"
 
 #include <QApplication>
 #include <QStackedWidget>
+#include <QThread>
 #include <QVBoxLayout>
 
 namespace com::yamada::studio {
@@ -52,6 +54,20 @@ MainWindow::MainWindow(QWidget *parent)
     // 종료: 확인 대화 상자 여부는 열린 질문 9(roadmap). 지금은 바로 창을 닫는다(마지막 창 → 앱
     // 종료).
     connect(home, &HomePage::quitRequested, this, &QMainWindow::close);
+
+    // [임시 · D5 CP1 확인용] DB가 없으면 받아서 변환한다. CP4에서 인트로의 FirstRunPanel로 옮긴다.
+    if (!DataUpdater::hasData()) {
+        DataUpdater *updater = new DataUpdater(this);
+        connect(updater, &DataUpdater::progress, this,
+                [](int percent, const QString &label) { qCInfo(lcUi) << percent << "%" << label; });
+        connect(updater, &DataUpdater::finished, this, [] { qCInfo(lcUi) << "data ready"; });
+        connect(updater, &DataUpdater::failed, this,
+                [](const QString &message) { qCWarning(lcUi) << "data failed:" << message; });
+        updater->start();
+    } else {
+        qCInfo(lcUi) << "data already available";
+    }
+    qCInfo(lcUi) << "UI thread is" << QThread::currentThread();
 
     qCInfo(lcUi) << "MainWindow initialized";
 }
