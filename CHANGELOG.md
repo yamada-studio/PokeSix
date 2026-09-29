@@ -21,6 +21,10 @@ and the project uses [Semantic Versioning](https://semver.org/).
 - `pokesix_data` library with `CsvDownloader`: downloads 35 PokéAPI CSV files (12.5 MB) pinned to one
   commit, verifies each file's size and SHA-256, resumes per file and writes atomically.
 - `pokesix-fetch-csv` developer tool that runs the same downloader from the command line.
+- `CsvReader` (RFC 4180) and `CsvImporter`: builds `pokesix.sqlite` with generations, types, the type
+  chart, stats, species (ko/en/ja names), pokemon with forms, pokemon types and base stats, storing
+  per-generation values as `gen_from`/`gen_to` ranges derived from PokéAPI's `*_past` tables.
+- `pokesix-import-csv` developer tool that turns a downloaded CSV folder into the database.
 
 ### Changed
 - The home screen is a full-screen intro instead of the v1 dashboard; the app bar will have four tabs.
