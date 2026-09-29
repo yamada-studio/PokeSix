@@ -24,11 +24,16 @@ public:
     void setPanelStyle(const PanelStyle &style);
     const PanelStyle &panelStyle() const { return m_style; }
 
+    // 머리 글자(style.header > 0일 때): 제목(도현 20) + 옆 보조 글자(나눔고딕코딩 13 굵게). 흰색.
+    void setTitle(const QString &title, const QString &detail = QString());
+
 protected:
     void paintEvent(QPaintEvent *event) override;
 
 private:
     QVBoxLayout *m_layout = nullptr;
     PanelStyle m_style;
+    QString m_title;
+    QString m_detail;
 };
 } // namespace com::yamada::studio

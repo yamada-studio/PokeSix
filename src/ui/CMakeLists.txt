@@ -24,6 +24,8 @@ qt_add_library(pokesix_ui STATIC
     widgets/svgicon.cpp
     widgets/searchfield.h
     widgets/searchfield.cpp
+    widgets/typechip.h
+    widgets/typechip.cpp
     home/homepage.h
     home/homepage.cpp
     home/intromenu.h
@@ -34,6 +36,10 @@ qt_add_library(pokesix_ui STATIC
     home/introfooter.cpp
     home/firstrunpanel.h
     home/firstrunpanel.cpp
+    dex/dexpage.h
+    dex/dexpage.cpp
+    dex/dexrowdelegate.h
+    dex/dexrowdelegate.cpp
     shell/page.h
     shell/appbar.h
     shell/appbar.cpp

@@ -24,6 +24,12 @@ struct PanelStyle
     int innerLine = 0;  // 안쪽 선 두께. 0이면 그리지 않는다
     int innerRadius = 0;
     QRgb innerColor = tok::kLine;
+
+    // 선택: 컬러 머리(디자인 시트 §4 "머리 높이 38 · 머리 아래 ink 2px"). 0이면 머리 없음.
+    // 머리 색은 역할로 고른다(01 §5-2): 빨강 = 주 콘텐츠, 파랑 = 필터 · 분석 · 정보, 초록 = 분류 …
+    int header = 0;
+    QRgb headerColor = tok::kRed;
+    int headerLine = 2; // 머리 아래 먹선
 };
 
 // 겉모양이 사방에서 차지하는 두께 → 겉모양 위젯이 자기 레이아웃의 contentsMargins로 쓴다.
