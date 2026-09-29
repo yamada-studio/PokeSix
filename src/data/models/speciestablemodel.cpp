@@ -49,11 +49,13 @@ QVariant SpeciesTableModel::data(const QModelIndex &index, int role) const
             return row.nameKo;
         if (column == TypesColumn)
             return row.types.value(0);
-        if (column == CursorColumn)
+        if (column == CursorColumn || column == IconColumn)
             return row.speciesId;
         return data(index, Qt::DisplayRole); // 숫자 칸은 숫자 그대로
     case TypesRole:
         return row.types;
+    case PokemonIdRole:
+        return row.pokemonId;
     case SearchTextRole:
         return QStringLiteral("%1 %2 %3 %4")
                 .arg(row.speciesId)

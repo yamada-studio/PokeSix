@@ -9,6 +9,7 @@ namespace com::yamada::studio {
 class PanelFrame;
 class Repository;
 class SearchField;
+class SpriteCache;
 class SpeciesFilterProxy;
 class SpeciesTableModel;
 
@@ -38,6 +39,7 @@ private:
     PanelFrame *m_panel = nullptr;
     SearchField *m_search = nullptr;
     QTableView *m_table = nullptr;
+    SpriteCache *m_sprites = nullptr; // 이름 옆 아이콘 파일 캐시
     QTimer *m_searchDelay = nullptr;
     bool m_loaded = false;
 };

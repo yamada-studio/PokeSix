@@ -20,6 +20,7 @@ public:
     enum Column {
         CursorColumn, // ▶ (선택된 줄 표시 — 값 없음)
         NumberColumn,
+        IconColumn, // 작은 아이콘(값은 PokemonIdRole — 그림은 delegate가 SpriteCache에서)
         NameColumn,
         TypesColumn,
         HpColumn,
@@ -36,6 +37,7 @@ public:
         SortRole = Qt::UserRole, // 정렬용 값(숫자는 숫자로 — 문자열로 정렬하면 "100" < "20"이 된다)
         TypesRole,      // QStringList: 타입 identifier(슬롯 순)
         SearchTextRole, // 검색에 쓰는 문자열(번호 · 한국어 · 영어 · 일본어 이름)
+        PokemonIdRole, // int: 기본 모습의 pokemon id(아이콘 파일 이름)
     };
 
     explicit SpeciesTableModel(QObject *parent = nullptr);
