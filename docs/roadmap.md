@@ -87,7 +87,7 @@ A에서 만든 `PanelFrame`, 버튼 스타일도 갤러리에 올린다.
 
 | | 단계 | 내용 | 주제 |
 |---|---|---|---|
-| ⬜ | **D1** | SQLite 스키마 + 개발 · 테스트용 시드 CSV(목업의 4세대 19종 · 기술 · 아이템, `tests/fixtures/`) + `CsvImporter`(CSV → SQLite) + `Repository` 조회 | QtSql, 트랜잭션, 세대 구간 쿼리, CSV 파싱 |
+| 🟨 | **D1** | SQLite 스키마 + 개발 · 테스트용 시드 CSV(목업의 4세대 19종 · 기술 · 아이템, `tests/fixtures/`) + `CsvImporter`(CSV → SQLite) + `Repository` 조회 | QtSql, 트랜잭션, 세대 구간 쿼리, CSV 파싱 |
 | ⬜ | **D2** | `SpeciesTableModel` + `SpeciesFilterProxy` | **모델/뷰**, role, `QSortFilterProxyModel` |
 | ⬜ | **D3** | `SquadSession` + `SquadStore`(JSON, 디바운스 저장) → 홈의 최근 스쿼드를 실제 데이터로 | `QJsonDocument`, `QSaveFile`, 디바운스 `QTimer` |
 | ✅ | **D4** | 데이터 받기: PokéAPI CSV 원본을 **고정 커밋**에서 다운로드, 파일별 **SHA-256 검증**, 파일 단위 이어받기 ([ADR 0011](decisions/0011-data-from-pinned-pokeapi-csv.md)) | `QNetworkAccessManager`, 비동기 흐름, `QCryptographicHash`, `QSaveFile` |
