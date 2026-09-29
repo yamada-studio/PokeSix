@@ -2,6 +2,7 @@
 #   update/      게임 데이터 받기와 변환: 고정 커밋의 PokéAPI CSV 다운로드 · 검증(ADR 0011), CSV → SQLite
 #   db/          SQLite 스키마 · 연결 (QtSql)
 #   repository/  로컬 DB 조회 창구 (네트워크 없음)
+#   sprites/     포켓몬 아이콘 파일 캐시 (실행 중에 받아 사용자 캐시 폴더에. 리포에는 없다)
 #   store/       사용자 데이터 저장 (SquadStore — squads.json)
 #   state/       앱 상태 QObject (AppState, SquadSession, Settings)
 #   models/      QAbstractItemModel 파생 + 필터 프록시
@@ -25,6 +26,8 @@ qt_add_library(pokesix_data STATIC
     db/gamedatabase.cpp
     repository/repository.h
     repository/repository.cpp
+    sprites/spritecache.h
+    sprites/spritecache.cpp
     models/speciestablemodel.h
     models/speciestablemodel.cpp
     models/speciesfilterproxy.h

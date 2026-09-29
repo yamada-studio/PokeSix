@@ -1,19 +1,44 @@
 #include "ui/dex/dexrowdelegate.h"
 
 #include "data/models/speciestablemodel.h"
+#include "data/sprites/spritecache.h"
 #include "ui/theme/theme.h"
 #include "ui/theme/tokens.h"
 #include "ui/widgets/typechip.h"
 
+#include <QImage>
 #include <QPainter>
 #include <QPainterPath>
+#include <QPixmap>
+#include <QPixmapCache>
+
+#include <algorithm>
 
 namespace {
 using namespace com::yamada::studio;
 
-constexpr int kRowHeight = tok::kSizeTableRow; // 34
-constexpr qreal kCellPadding = 4;              // 열 사이 gap 8의 절반씩
-constexpr QSizeF kCursor {9, 12};              // ▶ border-left 9 · 위아래 6
+constexpr QSizeF kIcon {34, 28};  // 8세대 박스 아이콘 68×56의 절반
+constexpr qreal kCellPadding = 4; // 열 사이 gap 8의 절반씩
+constexpr QSizeF kCursor {9, 12}; // ▶ border-left 9 · 위아래 6
+
+// 알파가 0이 아닌 픽셀을 모두 담는 가장 작은 사각형. 다 투명하면 전체.
+QRect opaqueBounds(const QImage &source)
+{
+    const QImage image = source.convertToFormat(QImage::Format_ARGB32);
+    int left = image.width(), top = image.height(), right = -1, bottom = -1;
+    for (int y = 0; y < image.height(); ++y) {
+        const QRgb *line = reinterpret_cast<const QRgb *>(image.constScanLine(y));
+        for (int x = 0; x < image.width(); ++x) {
+            if (qAlpha(line[x]) == 0)
+                continue;
+            left = std::min(left, x);
+            right = std::max(right, x);
+            top = std::min(top, y);
+            bottom = std::max(bottom, y);
+        }
+    }
+    return right < 0 ? image.rect() : QRect(QPoint(left, top), QPoint(right, bottom));
+}
 
 QColor statColor(int value)
 {
@@ -26,6 +51,38 @@ QColor statColor(int value)
 } // namespace
 
 namespace com::yamada::studio {
+DexRowDelegate::DexRowDelegate(SpriteCache *sprites, QObject *parent)
+    : QStyledItemDelegate(parent)
+    , m_sprites(sprites)
+{
+}
+
+void DexRowDelegate::paintIcon(QPainter *painter, const QRectF &cell, int pokemonId) const
+{
+    const QString file = m_sprites->path(pokemonId);
+    if (file.isEmpty()) {
+        m_sprites->request(pokemonId); // 받으면 ready → DexPage가 표를 다시 그린다
+        return;
+    }
+    // 파일 → QPixmap 디코딩은 줄마다 매번 하면 스크롤이 버벅인다. QPixmapCache(앱 전역 LRU)에
+    // 한 번 읽은 그림을 넣어 두고 꺼내 쓴다.
+    const QString key = QStringLiteral("pokesix.sprite.%1").arg(pokemonId);
+    QPixmap pixmap;
+    if (!QPixmapCache::find(key, &pixmap)) {
+        QImage image;
+        if (!image.load(file))
+            return;
+        // 원본 PNG는 투명 여백이 넓다(68×56 안에 몸은 30px 남짓). 불투명한 부분만 잘라 칸을 채운다.
+        pixmap = QPixmap::fromImage(image.copy(opaqueBounds(image)));
+        QPixmapCache::insert(key, pixmap);
+    }
+    // 비율을 지키며 아이콘 칸(34×28)에 맞춘다. 96×96 대체 스프라이트도 같은 칸에 들어간다.
+    const QSizeF size = QSizeF(pixmap.size()).scaled(kIcon, Qt::KeepAspectRatio);
+    const QRectF target(cell.center() - QPointF(size.width() / 2, size.height() / 2), size);
+    painter->setRenderHint(QPainter::SmoothPixmapTransform, true);
+    painter->drawPixmap(target, pixmap, pixmap.rect());
+}
+
 QSize DexRowDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     return {QStyledItemDelegate::sizeHint(option, index).width(), kRowHeight};
@@ -67,12 +124,15 @@ void DexRowDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option
         }
         break;
     case SpeciesTableModel::NumberColumn:
-        painter->setFont(theme::font(theme::kFamilyData, 12, QFont::Bold));
+        painter->setFont(theme::font(theme::kFamilyData, 13, QFont::Bold));
         painter->setPen(QColor(tok::kText3));
         painter->drawText(content, Qt::AlignLeft | Qt::AlignVCenter, value.toString());
         break;
+    case SpeciesTableModel::IconColumn:
+        paintIcon(painter, cell, index.data(SpeciesTableModel::PokemonIdRole).toInt());
+        break;
     case SpeciesTableModel::NameColumn:
-        painter->setFont(theme::font(theme::kFamilyBody, 13, QFont::ExtraBold));
+        painter->setFont(theme::font(theme::kFamilyBody, 14, QFont::ExtraBold));
         painter->setPen(QColor(tok::kText1));
         painter->drawText(content, Qt::AlignLeft | Qt::AlignVCenter, value.toString());
         break;
@@ -86,14 +146,14 @@ void DexRowDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option
         break;
     }
     case SpeciesTableModel::TotalColumn:
-        painter->setFont(theme::font(theme::kFamilyData, 13, QFont::Bold));
+        painter->setFont(theme::font(theme::kFamilyData, 14, QFont::Bold));
         painter->setPen(QColor(tok::kRed));
         painter->drawText(content, Qt::AlignRight | Qt::AlignVCenter, value.toString());
         break;
     default: { // 종족값 6칸
         const int stat = value.toInt();
         painter->setFont(
-                theme::font(theme::kFamilyData, 12, stat >= 100 ? QFont::Bold : QFont::Normal));
+                theme::font(theme::kFamilyData, 13, stat >= 100 ? QFont::Bold : QFont::Normal));
         painter->setPen(statColor(stat));
         painter->drawText(content, Qt::AlignRight | Qt::AlignVCenter, value.toString());
         break;

@@ -3,6 +3,7 @@
 #include "data/models/speciesfilterproxy.h"
 #include "data/models/speciestablemodel.h"
 #include "data/repository/repository.h"
+#include "data/sprites/spritecache.h"
 #include "ui/dex/dexrowdelegate.h"
 #include "ui/logging/logging.h"
 #include "ui/theme/tokens.h"
@@ -12,6 +13,8 @@
 #include <QHBoxLayout>
 #include <QHeaderView>
 #include <QLineEdit>
+#include <QScrollBar>
+#include <QStyle>
 #include <QTableView>
 #include <QTimer>
 #include <QVBoxLayout>
@@ -36,20 +39,38 @@ constexpr int kSearchDebounceMs = 150; // 입력 즉시가 아니라 멈춘 뒤 
 // TODO(A8): AppState의 현재 세대로 바꾼다. 지금은 세대 버튼과 같은 4(신오)로 고정.
 constexpr int kGeneration = 4;
 
-// 열 폭: Dex.dc.html의 grid-template-columns: 18 40 28 1fr 146 216 40 + gap 8 (칸마다 좌우 4씩
-// 포함)
+// 열 폭(칸마다 좌우 여백 4씩 포함). 디자인(Dex.dc.html: 18 40 28 1fr 146 216 40 + gap 8)은 이름
+// 칸이 남는 폭을 갖지만, 거기엔 좌우에 필터 · 상세 창이 있어 목록이 좁다. 지금은 목록 창 하나라
+// 칸을 늘리면 칸 사이가 휑하다 → 모든 칸을 고정 폭으로 두고(디자인보다 조금씩 넓게) 표를 가운데에
+// 놓는다. E1에서 창 셋이 되면 다시 본다. (design/README.md "의도한 차이")
 struct ColumnWidth
 {
     int column;
     int width;
 };
+constexpr int kStatWidth = 54;
 constexpr ColumnWidth kColumnWidths[] = {
-        {SpeciesTableModel::CursorColumn, 18 + 8},   {SpeciesTableModel::NumberColumn, 40 + 8},
-        {SpeciesTableModel::NameColumn, 160 + 8},    {SpeciesTableModel::HpColumn, 36 + 8},
-        {SpeciesTableModel::AttackColumn, 36 + 8},   {SpeciesTableModel::DefenseColumn, 36 + 8},
-        {SpeciesTableModel::SpAttackColumn, 36 + 8}, {SpeciesTableModel::SpDefenseColumn, 36 + 8},
-        {SpeciesTableModel::SpeedColumn, 36 + 8},    {SpeciesTableModel::TotalColumn, 40 + 8},
+        {SpeciesTableModel::CursorColumn, 24},
+        {SpeciesTableModel::NumberColumn, 52},
+        {SpeciesTableModel::IconColumn, 44},
+        {SpeciesTableModel::NameColumn, 150},
+        {SpeciesTableModel::TypesColumn, 170},
+        {SpeciesTableModel::HpColumn, kStatWidth},
+        {SpeciesTableModel::AttackColumn, kStatWidth},
+        {SpeciesTableModel::DefenseColumn, kStatWidth},
+        {SpeciesTableModel::SpAttackColumn, kStatWidth},
+        {SpeciesTableModel::SpDefenseColumn, kStatWidth},
+        {SpeciesTableModel::SpeedColumn, kStatWidth},
+        {SpeciesTableModel::TotalColumn, 62},
 };
+
+constexpr int columnsWidth()
+{
+    int sum = 0;
+    for (const ColumnWidth &width : kColumnWidths)
+        sum += width.width;
+    return sum;
+}
 } // namespace
 
 namespace com::yamada::studio {
@@ -58,6 +79,7 @@ DexPage::DexPage(Repository *repository, QWidget *parent)
     , m_repository(repository)
     , m_model(new SpeciesTableModel(this))
     , m_proxy(new SpeciesFilterProxy(this))
+    , m_sprites(new SpriteCache(this))
     , m_searchDelay(new QTimer(this))
 {
     m_proxy->setSourceModel(m_model); // 프록시는 원본 모델 위에 얹힌다. 뷰는 프록시를 본다
@@ -67,7 +89,9 @@ DexPage::DexPage(Repository *repository, QWidget *parent)
 
     m_panel = new PanelFrame;
     m_panel->setPanelStyle(kListPanel);
-    layout->addWidget(m_panel);
+    // 가로만 가운데 정렬: 창은 내용(표) 폭만큼만, 세로는 화면 높이 전체를 쓴다.
+    // (정렬 플래그에 세로 성분이 없으면 레이아웃은 세로로는 칸을 꽉 채운다)
+    layout->addWidget(m_panel, 0, Qt::AlignHCenter);
 
     QWidget *body = new QWidget;
     QVBoxLayout *bodyLayout = new QVBoxLayout(body);
@@ -84,7 +108,8 @@ DexPage::DexPage(Repository *repository, QWidget *parent)
     m_table = new QTableView;
     m_table->setObjectName(QStringLiteral("dexTable"));
     m_table->setModel(m_proxy);
-    m_table->setItemDelegate(new DexRowDelegate(m_table)); // 모든 칸을 이 delegate가 그린다
+    m_table->setItemDelegate(
+            new DexRowDelegate(m_sprites, m_table)); // 모든 칸을 이 delegate가 그린다
     m_table->setSelectionBehavior(QAbstractItemView::SelectRows);
     m_table->setSelectionMode(QAbstractItemView::SingleSelection);
     m_table->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -92,22 +117,28 @@ DexPage::DexPage(Repository *repository, QWidget *parent)
     m_table->setWordWrap(false);
     m_table->setFrameShape(QFrame::NoFrame);
     m_table->verticalHeader()->hide();
-    m_table->verticalHeader()->setDefaultSectionSize(tok::kSizeTableRow); // 줄 높이 34
+    m_table->verticalHeader()->setDefaultSectionSize(DexRowDelegate::kRowHeight); // 줄 높이 40
     QHeaderView *header = m_table->horizontalHeader();
     header->setSectionResizeMode(QHeaderView::Fixed);
-    // 디자인은 이름 칸(1fr)이 남는 폭을 갖지만, 거기엔 좌우에 필터 · 상세 창이 있어 목록이 좁다.
-    // 지금은 목록 창이 화면 폭 전체라 이름이 늘어나면 타입 칩이 멀리 떨어진다. 그래서 이름은
-    // 160으로 두고 타입 칸(최소 146)이 남는 폭을 갖는다. E1에서 창 셋이 되면 디자인대로 되돌린다.
-    header->setSectionResizeMode(SpeciesTableModel::TypesColumn, QHeaderView::Stretch);
     for (const ColumnWidth &width : kColumnWidths)
         header->resizeSection(width.column, width.width);
     header->setHighlightSections(false);
     m_table->setSortingEnabled(true);
-    m_table->sortByColumn(SpeciesTableModel::TotalColumn,
-                          Qt::DescendingOrder); // 디자인 기본: 합계 높은 순
+    // 기본은 도감 번호 오름차순(사용자 결정. 디자인 기본은 합계 높은 순). 머리 칸을 누르면 바뀐다.
+    m_table->sortByColumn(SpeciesTableModel::NumberColumn, Qt::AscendingOrder);
+    header->setStretchLastSection(false);
+    // 표 폭 = 칸 합 + 세로 스크롤바. 가로 스크롤은 생기지 않게 고정한다.
+    m_table->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    m_table->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    m_table->setFixedWidth(columnsWidth()
+                           + m_table->style()->pixelMetric(QStyle::PM_ScrollBarExtent));
     bodyLayout->addWidget(m_table, 1);
 
     m_panel->setBody(body);
+
+    // 아이콘 파일이 하나 받아질 때마다 표를 다시 그린다. update()는 그리기를 "예약"만 하고, 이벤트
+    // 루프가 여러 번의 예약을 한 번의 paintEvent로 합친다 → 수백 개가 연달아 와도 부담이 없다.
+    connect(m_sprites, &SpriteCache::ready, m_table->viewport(), qOverload<>(&QWidget::update));
 
     // 검색: 글자가 바뀔 때마다 타이머를 다시 건다 → 입력이 150ms 멈추면 한 번만 거른다(디바운스).
     m_searchDelay->setSingleShot(true);

@@ -39,6 +39,9 @@ and the project uses [Semantic Versioning](https://semver.org/).
   number or ko/en/ja name, numeric sort) feed a table drawn by a row delegate with type chips; the
   panel header shows the count. Generation 4 is fixed until the generation popup lands.
 - `PanelFrame` title header band and a reusable `typechip` painter.
+- Dex list icons: `SpriteCache` downloads small Pokémon icons from PokéAPI/sprites into the user cache
+  folder on demand (never into the repository); the list sorts by number, uses fixed, slightly wider
+  columns with taller rows and sits centred on the page.
 
 ### Changed
 - The paper background in `app.qss` applies to `QMainWindow` only, so plain container widgets no
