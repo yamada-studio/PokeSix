@@ -136,8 +136,14 @@ void IntroMenu::keyPressEvent(QKeyEvent *event)
     case Qt::Key_2:
     case Qt::Key_3:
     case Qt::Key_4: {
+        // 수식키(Ctrl · Alt …)가 눌렸으면 "1–4 바로 가기"가 아니다(Ctrl+1 같은 조합은 다른 뜻).
+        // 숫자 키패드는 허용.
+        if ((event->modifiers() & ~Qt::KeypadModifier) != Qt::NoModifier) {
+            QWidget::keyPressEvent(event);
+            return;
+        }
         const int index = event->key() - Qt::Key_1;
-        // 잠긴 줄의 번호 키는 무시한다: m_items[index]->isEnabled()가 아니면 return
+        // 잠긴 줄의 번호 키는 무시한다
         if (!m_items[index]->isEnabled())
             return;
         setCurrentIndex(index);

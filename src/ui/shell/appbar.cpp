@@ -1,21 +1,77 @@
 #include "ui/shell/appbar.h"
 
-#include "ui/widgets/layoutguide.h"
+#include "ui/shell/apptabbar.h"
+#include "ui/shell/markbutton.h"
+#include "ui/theme/tokens.h"
+#include "ui/widgets/generationbutton.h"
+#include "ui/widgets/searchfield.h"
 
+#include <QColor>
+#include <QHBoxLayout>
 #include <QPainter>
 
-namespace com::yamada::studio {
-constexpr int kHeight = 60;
+namespace {
+using namespace com::yamada::studio;
 
+constexpr int kHeight = tok::kSizeAppBar; // 60 (아래 먹선 3 포함)
+constexpr int kBottomLine = 3;
+constexpr int kPaddingX = 20; // padding: 0 20px
+constexpr int kGap = 24;      // 항목 사이 gap: 24px
+constexpr int kSearchWidth = 280;
+constexpr int kSearchHeight = 36;
+// MarkButton은 hover 모양(안쪽 여백 3 · 8 + 점선 테 2 + 간격 2)이 들어갈 자리까지 위젯 크기에
+// 넣었다 (위젯 밖에는 그릴 수 없다). 디자인의 평소 배치에는 그 자리가 없으므로(마크 링크는 padding
+// 없음), 막대의 왼쪽 여백과 다음 간격에서 그만큼 뺀다 → 마크가 디자인과 같은 x=20에, 탭이 같은
+// 자리에 선다.
+constexpr int kMarkLeftExtra = 3 + 4;  // 왼쪽 padding 3 + 테 4
+constexpr int kMarkRightExtra = 8 + 4; // 오른쪽 padding 8 + 테 4
+} // namespace
+
+namespace com::yamada::studio {
 AppBar::AppBar(QWidget *parent)
     : QWidget(parent)
 {
-    setFixedHeight(kHeight);
+    QWidget::setFixedHeight(kHeight);
+
+    QHBoxLayout *layout = new QHBoxLayout(this);
+    layout->setContentsMargins(kPaddingX - kMarkLeftExtra, 0, kPaddingX, 0);
+    layout->setSpacing(0); // 칸마다 addSpacing으로
+
+    m_mark = new MarkButton;
+    layout->addWidget(m_mark, 0, Qt::AlignVCenter);
+    layout->addSpacing(kGap - kMarkRightExtra);
+
+    // 탭은 막대의 아래 끝에 붙인다: 활성 탭(45)이 아래 먹선(3)을 덮어 본문과 이어져 보이게.
+    m_tabs = new AppTabBar;
+    layout->addWidget(m_tabs, 0, Qt::AlignBottom);
+    layout->addStretch();
+
+    m_generation = new GenerationButton(GenerationButton::Size::Compact);
+    m_generation->setGeneration(4, tr("신오")); // TODO(A8): AppState와 연결
+    layout->addWidget(m_generation, 0, Qt::AlignVCenter);
+    layout->addSpacing(kGap);
+
+    m_search = new SearchField(tr("포켓몬 · 기술 · 아이템 검색"), QStringLiteral("Ctrl K"));
+    m_search->setFixedSize(kSearchWidth, kSearchHeight);
+    layout->addWidget(m_search, 0, Qt::AlignVCenter);
+
+    connect(m_mark, &MarkButton::clicked, this, &AppBar::homeRequested);
+    connect(m_tabs, &AppTabBar::pageSelected, this,
+            &AppBar::pageSelected); // 신호 → 신호로 그대로 전달
+}
+
+void AppBar::setCurrentPage(Page page)
+{
+    m_tabs->setCurrentPage(page);
 }
 
 void AppBar::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event);
-    paintLayoutGuide(*this);
+    // 빨강 바탕 + 아래 먹선 3. 활성 탭은 자식이라 이 위에 그려져 먹선을 덮는다(부모 → 자식 순서로
+    // 그린다).
+    QPainter painter(this);
+    painter.fillRect(rect(), QColor(tok::kRed));
+    painter.fillRect(0, height() - kBottomLine, width(), kBottomLine, QColor(tok::kInk));
 }
 } // namespace com::yamada::studio
