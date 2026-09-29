@@ -19,10 +19,10 @@
 |---|---|---|---|
 | ✅ | **CP1 `DataUpdater`** | `src/data/db/gamedatabase.cpp`, `src/data/update/dataupdater.cpp` | **worker 스레드**(`moveToThread`), 스레드를 넘는 시그널/슬롯 |
 | ✅ | CP2 메뉴 잠금 | `src/ui/home/intromenu*`, `intromenuitem*` | 상태를 가진 위젯, 선택 건너뛰기 |
-| ▶ | CP3 `FirstRunPanel` | `src/ui/home/firstrunpanel*` (새 파일) | 상태 3개(받기 전 · 받는 중 · 실패)를 가진 화면 |
-| | CP4 연결 | `homepage.cpp`, `mainwindow.cpp` | 시그널/슬롯으로 부품 잇기 |
+| ✅ | CP3 `FirstRunPanel` | `src/ui/home/firstrunpanel*` (새 파일) | 상태 3개(받기 전 · 받는 중 · 실패)를 가진 화면 |
+| ✅ | CP4 연결 | `homepage.cpp`, `mainwindow.cpp` | 시그널/슬롯으로 부품 잇기 |
 
-CP2부터의 자세한 단계는 CP1을 마치면 이 파일에 이어서 쓴다.
+CP1은 사용자가 구현했다. CP2 · CP3 · CP4는 사용자 요청으로 Claude가 구현했다(아래 "CP3 · CP4 읽기 안내").
 
 ---
 
@@ -218,3 +218,35 @@ scripts/linux/run.sh
 막히면: 선택이 잠긴 줄로 간다 → ③ / ↑↓가 잠긴 줄에서 멈춘다 → ④ · ⑤ / 처음 선택이 도감에 있다 → ②
 
 끝나면 "D5 CP2 진단해줘".
+
+---
+
+## CP3 · CP4 읽기 안내 (Claude 구현)
+
+사용자 요청으로 CP3 · CP4는 Claude가 구현했다. 읽는 순서를 추천한다.
+
+| 순서 | 파일 | 볼 것 |
+|---|---|---|
+| 1 | `src/ui/widgets/shadowbutton.cpp` | 그림자 버튼. 글꼴을 `m_font`로 따로 드는 이유(QSS가 `setFont`를 덮어쓴다) |
+| 2 | `src/ui/widgets/segmentprogress.cpp` | 10칸 진행 막대 — 퍼센트를 칸 수로 |
+| 3 | `src/ui/home/firstrunpanel.cpp` | 상태 3개를 `QStackedWidget` 페이지로. 높이가 출렁이지 않는 이유, 상태가 바뀔 때 포커스를 옮기는 이유 |
+| 4 | `src/data/update/dataupdater.cpp` | `cancel()` · `cancelled()`: 다운로더의 "실패"를 "취소"로 바꿔 알리는 곳 |
+| 5 | `src/ui/home/homepage.cpp` | 패널 ↔ DataUpdater를 잇는 여섯 줄, `setCompact()`(세로가 모자랄 때 마크 · 부제 줄이기), `onDataReady()`의 `deleteLater` |
+| 6 | `src/ui/shell/mainwindow.cpp` | `DataUpdater`를 만들어 `HomePage`에 넘긴다(생성자 주입) |
+
+### 같이 고친 것
+- `app.qss`의 전역 `QWidget { background: @paper }`를 `QMainWindow`로 옮겼다. **평범한 `QWidget`은 QSS 배경을 칠한다**(직접 만든 하위 클래스는 칠하지 않는다). 그래서 레이아웃을 담는 상자가 흰 패널 위에 종이색 사각형을 만들었다
+
+### 확인한 동작
+- 받기 전 → [데이터 받기] → 받는 중(진행 막대) → 변환(worker 스레드) → 패널이 사라지고 마크 · 부제 원래대로, 잠금 해제, 선택 = 도감 백과
+- 받는 중 [취소] → 받기 전으로. 받은 파일은 남아서 다음에 이어받는다
+- 네트워크 오류 → 실패(빨강 테) → [다시 시도]
+- 1440×900에서 패널이 있어도 메뉴 창(높이 338)이 정보 줄 위에 온전히 들어간다
+
+### 해 볼 것
+```bash
+rm -f ~/.local/share/YamadaStudio/PokeSix/pokesix.sqlite   # 첫 실행 상황
+scripts/linux/run.sh
+```
+- 네트워크를 끊고(또는 `https_proxy=http://127.0.0.1:9 scripts/linux/run.sh`) [데이터 받기] → 실패 화면
+- 받아 둔 CSV까지 지우면(`rm -rf ~/.cache/YamadaStudio/PokeSix/pokeapi-csv`) 실제 다운로드 진행 막대를 볼 수 있다

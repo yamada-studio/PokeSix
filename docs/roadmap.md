@@ -92,9 +92,10 @@ A에서 만든 `PanelFrame`, 버튼 스타일도 갤러리에 올린다.
 | ⬜ | **D2** | `SpeciesTableModel` + `SpeciesFilterProxy` | **모델/뷰**, role, `QSortFilterProxyModel` |
 | ⬜ | **D3** | `SquadSession` + `SquadStore`(JSON, 디바운스 저장) → 홈의 최근 스쿼드를 실제 데이터로 | `QJsonDocument`, `QSaveFile`, 디바운스 `QTimer` |
 | ✅ | **D4** | 데이터 받기: PokéAPI CSV 원본을 **고정 커밋**에서 다운로드, 파일별 **SHA-256 검증**, 파일 단위 이어받기 ([ADR 0011](decisions/0011-data-from-pinned-pokeapi-csv.md)) | `QNetworkAccessManager`, 비동기 흐름, `QCryptographicHash`, `QSaveFile` |
-| ⬜ | **D5** | `DataUpdater`: 받기 → worker 스레드에서 `CsvImporter`로 변환 → 임시 DB 교체, 인트로 `FirstRunPanel`(받기 전 · 받는 중 · 실패, v2 `34` ③)과 메뉴 잠금 | `moveToThread`, 스레드별 `QSqlDatabase` 연결, 진행 시그널, 상태 전환 |
+| ✅ | **D5** | `DataUpdater`: 받기 → worker 스레드에서 `CsvImporter`로 변환 → 임시 DB 교체, 인트로 `FirstRunPanel`(받기 전 · 받는 중 · 실패, v2 `34` ③)과 메뉴 잠금 | `moveToThread`, 스레드별 `QSqlDatabase` 연결, 진행 시그널, 상태 전환 |
 
 - **D1의 CP1–CP3(CsvReader · 스키마 · 타입 · 상성 · 종 · 포켓몬 · 종족값)도 사용자 요청으로 Claude가 구현했다.** CP4(`pokesix-import-csv`)는 사용자가 구현했다. 기술 · 습득 기술 · 아이템과 `Repository`는 D1b로 나눴다
+- **D5**: CP1(`DataUpdater` · worker 스레드)은 사용자가, CP2–CP4(메뉴 잠금 · `FirstRunPanel` · 연결)는 사용자 요청으로 Claude가 구현했다
 - **D4는 사용자 요청("섞어서")으로 Claude가 구현했다**: `CsvDownloader`, 고정 목록 `csvsource.h`, 개발 도구 `pokesix-fetch-csv`.
   D1(스키마 · CSV 파서 · `CsvImporter`)과 D5의 worker 스레드는 사용자가 가이드를 따라 구현한다
 - Phase D를 Phase A · C보다 먼저 시작했다. D1은 core의 타입(`core/types`)만 있으면 되므로 순서에 막히지 않는다

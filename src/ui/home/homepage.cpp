@@ -1,6 +1,7 @@
 #include "ui/home/homepage.h"
 
 #include "data/update/dataupdater.h"
+#include "ui/home/firstrunpanel.h"
 #include "ui/home/introfooter.h"
 #include "ui/home/intromenu.h"
 #include "ui/theme/tokens.h"
@@ -28,6 +29,12 @@ constexpr int kSubtitleToGeneration = 24;   // 세대 블록 margin-top: 24
 constexpr int kGenerationLabelToButton = 6; // 세대 블록 gap: 6
 constexpr int kGenerationToMenu = 24 - 3;   // nav margin-top: 24 − 세대 버튼 그림자 3
 constexpr int kMenuWidth = tok::kSizeIntroMenuWidth; // 520
+constexpr int kFirstRunToMenu = 12;                  // 첫 실행 패널과 메뉴 창 사이
+// 첫 실행 패널이 들어가면 세로가 모자란다. 화면 정의서(02b SCR-01): "높이가 부족하면 마크 → 부제
+// 순으로 줄인다. 메뉴는 절대 잘리지 않는다." 그래서 패널이 있는 동안에만 마크를 작게(960 배치와
+// 같은 72) 하고 부제를 숨긴다.
+constexpr int kCompactMark = 72;
+constexpr int kCompactGenerationGap = 12; // compact에서 (숨긴 부제 자리의) 세대 블록 위 간격
 // 글자 줄의 높이. CSS의 line-height: normal은 브라우저가 글꼴 파일의 줄 간격 값으로 정하는데,
 // Qt의 QLabel은 다른 값(QFontMetrics::height)을 쓴다. 도현 22는 Qt가 32로 잡아서 아래가 전부
 // 밀리므로 기준 이미지(30_intro_1440.png)에서 잰 브라우저 값으로 고정한다.
@@ -97,8 +104,9 @@ QLabel *makeLabel(const QString &text, const char *objectName)
 } // namespace
 
 namespace com::yamada::studio {
-HomePage::HomePage(QWidget *parent)
+HomePage::HomePage(DataUpdater *updater, QWidget *parent)
     : QWidget(parent)
+    , m_updater(updater)
 {
     QVBoxLayout *layout = new QVBoxLayout(this); // installs itself on this
     layout->setContentsMargins(kPageMargins);
@@ -106,16 +114,23 @@ HomePage::HomePage(QWidget *parent)
 
     // 크기는 각 위젯의 sizeHint()가 알려 준다. Qt::AlignHCenter를 주면 레이아웃은 위젯을
     // 칸 폭으로 늘리지 않고 sizeHint 크기 그대로 가로 가운데에 둔다.
-    layout->addWidget(new MarkWidget, 0, Qt::AlignHCenter);
+    m_mark = new MarkWidget;
+    layout->addWidget(m_mark, 0, Qt::AlignHCenter);
     layout->addSpacing(kMarkToWordmark);
 
     layout->addWidget(new WordmarkLabel, 0, Qt::AlignHCenter);
-    layout->addSpacing(kWordmarkToSubtitle);
+    // 간격을 addSpacing 대신 QSpacerItem으로 만들어 들고 있으면, 나중에 changeSize()로 바꿀 수
+    // 있다.
+    m_subtitleGap
+            = new QSpacerItem(0, kWordmarkToSubtitle, QSizePolicy::Minimum, QSizePolicy::Fixed);
+    layout->addSpacerItem(m_subtitleGap);
 
-    QLabel *subtitle = makeLabel(tr("도감 · 파티 도우미"), "introSubtitle");
-    subtitle->setFixedHeight(kSubtitleLine);
-    layout->addWidget(subtitle, 0, Qt::AlignHCenter);
-    layout->addSpacing(kSubtitleToGeneration);
+    m_subtitle = makeLabel(tr("도감 · 파티 도우미"), "introSubtitle");
+    m_subtitle->setFixedHeight(kSubtitleLine);
+    layout->addWidget(m_subtitle, 0, Qt::AlignHCenter);
+    m_generationGap
+            = new QSpacerItem(0, kSubtitleToGeneration, QSizePolicy::Minimum, QSizePolicy::Fixed);
+    layout->addSpacerItem(m_generationGap);
 
     QLabel *generationLabel = makeLabel(tr("세대를 선택하여 시작하세요:"), "introGenerationLabel");
     generationLabel->setFixedHeight(kGenerationLabelLine);
@@ -128,11 +143,22 @@ HomePage::HomePage(QWidget *parent)
     layout->addWidget(generationButton, 0, Qt::AlignHCenter);
     layout->addSpacing(kGenerationToMenu);
 
+    // 첫 실행이면 메뉴 창 위에 패널을 끼운다. 패널과 그 아래 간격을 한 상자(m_firstRunBlock)에 담아
+    // 두면, 끝났을 때 상자만 지우면 간격까지 함께 사라진다.
+    const bool firstRun = !DataUpdater::hasData();
+    if (firstRun) {
+        m_firstRunBlock = new QWidget;
+        QVBoxLayout *block = new QVBoxLayout(m_firstRunBlock);
+        block->setContentsMargins(0, 0, 0, kFirstRunToMenu);
+        m_firstRun = new FirstRunPanel;
+        m_firstRun->setFixedWidth(kMenuWidth);
+        block->addWidget(m_firstRun);
+        layout->addWidget(m_firstRunBlock, 0, Qt::AlignHCenter);
+    }
+
     // 메뉴 창 = 겉모양(PanelFrame) + 내용(IntroMenu). 폭은 쓰는 쪽(HomePage)이 정한다.
     m_menu = new IntroMenu;
-    // 첫 실행(쓸 수 있는 DB가 없음)이면 데이터가 필요한 메뉴를 잠근다. 푸는 일은 CP4에서
-    // DataUpdater와 잇는다.
-    m_menu->setDataLocked(!DataUpdater::hasData());
+    m_menu->setDataLocked(firstRun); // 데이터가 필요한 줄(도감 · 아이템 · SixSquad)을 잠근다
     PanelFrame *menuFrame = new PanelFrame;
     menuFrame->setPanelStyle(kMenuWindow);
     menuFrame->setFixedWidth(kMenuWidth);
@@ -149,6 +175,45 @@ HomePage::HomePage(QWidget *parent)
         else
             emit openRequested(static_cast<Page>(index)); // 메뉴 순서 = Page 순서 (page.h)
     });
+
+    if (m_firstRun) {
+        setCompact(true);
+        // 패널의 버튼 → DataUpdater, DataUpdater의 진행 · 결과 → 패널. 두 쪽은 서로를 모른다.
+        // HomePage가 이 자리에서 둘을 잇기만 한다(패널은 UI, DataUpdater는 data 레이어).
+        connect(m_firstRun, &FirstRunPanel::startRequested, m_updater, &DataUpdater::start);
+        connect(m_firstRun, &FirstRunPanel::cancelRequested, m_updater, &DataUpdater::cancel);
+        connect(m_updater, &DataUpdater::progress, m_firstRun, &FirstRunPanel::setProgress);
+        connect(m_updater, &DataUpdater::failed, m_firstRun, &FirstRunPanel::showFailure);
+        connect(m_updater, &DataUpdater::cancelled, m_firstRun,
+                [this] { m_firstRun->setState(FirstRunPanel::State::Ready); });
+        connect(m_updater, &DataUpdater::finished, this, &HomePage::onDataReady);
+    }
+}
+
+void HomePage::setCompact(bool compact)
+{
+    // 첫 실행 패널이 들어간 만큼 위쪽을 줄인다. 1440×900에서 메뉴 창 아래 끝이 정보 줄(858)을 넘지
+    // 않게.
+    m_mark->setMarkSize(compact ? kCompactMark : tok::kSizeIntroMark);
+    m_subtitle->setVisible(!compact);
+    m_subtitleGap->changeSize(0, compact ? 0 : kWordmarkToSubtitle, QSizePolicy::Minimum,
+                              QSizePolicy::Fixed);
+    m_generationGap->changeSize(0, compact ? kCompactGenerationGap : kSubtitleToGeneration,
+                                QSizePolicy::Minimum, QSizePolicy::Fixed);
+    QWidget::layout()->invalidate(); // 간격(spacer)은 위젯이 아니라서 바뀐 것을 스스로 레이아웃에
+                                     // 알리지 못한다
+}
+
+void HomePage::onDataReady()
+{
+    // 패널 상자를 지운다. deleteLater: 지금 처리 중인 신호가 끝난 뒤(이벤트 루프로 돌아간 뒤)
+    // 지운다. 이 함수는 DataUpdater의 신호 처리 도중에 불리므로, 바로 delete하는 것보다 안전하다.
+    m_firstRunBlock->deleteLater();
+    m_firstRunBlock = nullptr;
+    m_firstRun = nullptr;
+    setCompact(false);
+    m_menu->setDataLocked(false); // 잠금 해제, 선택은 도감 백과
+    m_menu->setFocus(Qt::OtherFocusReason);
 }
 
 void HomePage::paintEvent(QPaintEvent *event)
@@ -163,6 +228,9 @@ void HomePage::showEvent(QShowEvent *event)
     QWidget::showEvent(event);
     // 인트로가 보이면 키보드 입력을 메뉴가 받게 한다(↑↓ Enter가 바로 동작하도록).
     // 이게 없으면 Tab 순서상 첫 위젯인 세대 버튼이 포커스를 가져간다.
-    m_menu->setFocus(Qt::OtherFocusReason);
+    if (m_firstRun)
+        m_firstRun->focusTarget()->setFocus(Qt::OtherFocusReason); // 첫 포커스 = "데이터 받기"(02b)
+    else
+        m_menu->setFocus(Qt::OtherFocusReason);
 }
 } // namespace com::yamada::studio

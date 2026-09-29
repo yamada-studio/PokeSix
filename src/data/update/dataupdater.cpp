@@ -50,7 +50,17 @@ DataUpdater::DataUpdater(QObject *parent)
             });
     connect(m_downloader, &CsvDownloader::finished, this, &DataUpdater::onDownloadFinished);
     connect(m_downloader, &CsvDownloader::failed, this,
-            [this](CsvDownloader::Error, const QString &detail) { emit failed(detail); });
+            [this](CsvDownloader::Error error, const QString &detail) {
+                m_busy = false;
+                // 사용자가 취소한 것이면 "실패"가 아니라 "취소"로 알린다(화면이 받기 전 상태로
+                // 돌아가야 한다)
+                if (m_cancelling || error == CsvDownloader::Error::Cancelled) {
+                    m_cancelling = false;
+                    emit cancelled();
+                } else {
+                    emit failed(detail);
+                }
+            });
 
     // 스레드를 시작한다. 이제부터 worker 스레드의 이벤트 루프가 돌며 신호를 기다린다
     m_thread->start();
@@ -71,12 +81,31 @@ bool DataUpdater::hasData()
 
 void DataUpdater::start()
 {
+    if (m_busy)
+        return;
+    m_busy = true;
+    m_cancelling = false;
     emit progress(0, tr("데이터 받는 중"));
     m_downloader->start(); // 이미 받아 둔 파일은 건너뛴다(이어받기)
 }
 
+void DataUpdater::cancel()
+{
+    if (!m_busy)
+        return;
+    m_cancelling = true;
+    m_downloader->cancel(); // 받는 중이면 곧바로 failed(Cancelled) → 위의 연결이 cancelled()로 바꿔
+                            // 보낸다
+}
+
 void DataUpdater::onDownloadFinished()
 {
+    if (m_cancelling) { // 마지막 파일이 도착하는 순간 취소를 눌렀다 → 변환하지 않는다
+        m_cancelling = false;
+        m_busy = false;
+        emit cancelled();
+        return;
+    }
     emit progress(90, tr("데이터 정리하는 중"));
     // worker에게 변환을 시킨다: emit importRequested(CSV 폴더, DB 경로);
     //        CSV 폴더 = m_downloader->directory(), DB 경로 = gamedatabase::defaultPath()
@@ -88,6 +117,7 @@ void DataUpdater::onImportFinished(bool ok, const QString &error)
     qCInfo(lcData) << "import result on thread" << QThread::currentThread();
     // ok면 emit progress(100, tr("준비 완료")); 와 emit finished();
     //        아니면 emit failed(error);
+    m_busy = false;
     if (ok) {
         emit progress(100, tr("준비 완료"));
         emit finished();

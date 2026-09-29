@@ -7,7 +7,6 @@
 
 #include <QApplication>
 #include <QStackedWidget>
-#include <QThread>
 #include <QVBoxLayout>
 
 namespace com::yamada::studio {
@@ -26,8 +25,12 @@ MainWindow::MainWindow(QWidget *parent)
     //            ├ AppBar    fixed 60
     //            └ m_pages
     //               └ (placeholder) QWidget
+    // 첫 실행 데이터 받기 · 변환. 인트로가 쓰지만 MainWindow가 만들어 넘긴다(생성자 주입).
+    // A3에서 앱 초기화 계층(pokesix_app)이 생기면 거기서 만들어 넘기게 된다.
+    DataUpdater *dataUpdater = new DataUpdater(this);
+
     m_screens = new QStackedWidget;
-    HomePage *home = new HomePage;
+    HomePage *home = new HomePage(dataUpdater);
     m_screens->addWidget(home);
 
     QWidget *shell = new QWidget;
@@ -54,20 +57,6 @@ MainWindow::MainWindow(QWidget *parent)
     // 종료: 확인 대화 상자 여부는 열린 질문 9(roadmap). 지금은 바로 창을 닫는다(마지막 창 → 앱
     // 종료).
     connect(home, &HomePage::quitRequested, this, &QMainWindow::close);
-
-    // [임시 · D5 CP1 확인용] DB가 없으면 받아서 변환한다. CP4에서 인트로의 FirstRunPanel로 옮긴다.
-    if (!DataUpdater::hasData()) {
-        DataUpdater *updater = new DataUpdater(this);
-        connect(updater, &DataUpdater::progress, this,
-                [](int percent, const QString &label) { qCInfo(lcUi) << percent << "%" << label; });
-        connect(updater, &DataUpdater::finished, this, [] { qCInfo(lcUi) << "data ready"; });
-        connect(updater, &DataUpdater::failed, this,
-                [](const QString &message) { qCWarning(lcUi) << "data failed:" << message; });
-        updater->start();
-    } else {
-        qCInfo(lcUi) << "data already available";
-    }
-    qCInfo(lcUi) << "UI thread is" << QThread::currentThread();
 
     qCInfo(lcUi) << "MainWindow initialized";
 }

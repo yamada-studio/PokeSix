@@ -47,12 +47,16 @@ public:
     // 쓸 수 있는 게임 데이터 DB가 이미 있는가(= 첫 실행이 아닌가)
     static bool hasData();
 
-    void start();
+    void start(); // 이미 진행 중이면 무시한다
+    void
+    cancel(); // 받는 중이면 멈추고 cancelled()를 보낸다. 변환(수 초 이내)은 멈추지 않고 끝까지 간다
+    bool isBusy() const { return m_busy; }
 
 signals:
     void progress(int percent, const QString &label); // 0–100, 지금 하는 일
     void finished();                                  // DB 준비 끝
     void failed(const QString &message);
+    void cancelled(); // cancel()로 멈췄다. 받은 파일은 남아 있다(이어받기)
 
     // 내부용: worker에게 일을 넘기는 신호. 밖에서 connect하지 않는다.
     void importRequested(const QString &csvDir, const QString &dbPath);
@@ -64,5 +68,7 @@ private:
     CsvDownloader *m_downloader = nullptr;
     QThread *m_thread = nullptr;
     ImportWorker *m_worker = nullptr;
+    bool m_busy = false; // start()부터 finished · failed · cancelled까지
+    bool m_cancelling = false; // cancel()을 불렀다 → 다운로더의 실패를 "취소"로 알린다
 };
 } // namespace com::yamada::studio
