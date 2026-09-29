@@ -4,6 +4,7 @@
 > 브랜치: `feat/a2-home-layout` (Claude가 만들어 둠)
 >
 > **방향 전환(2026-09-29)**: 홈은 앱 막대 없는 전체 화면 인트로가 되었다([ADR 0008](../decisions/0008-intro-screen-replaces-home.md)).
+> 클래스 이름은 `HomePage`를 그대로 쓴다. 이 리포에서 "홈"은 인트로 화면이고, 핸드오프 SCR-01(대시보드)과는 다르다.
 > 처음 버전의 이 가이드(세대 카드 · 최근 스쿼드 · 바로 가기)는 폐기했다. 체크포인트 1(AppBar + 페이지 스택)은 그대로 살아 있다.
 
 ## 목표
@@ -25,16 +26,16 @@ A4(토큰) · A5(`paintEvent`) · A6(메뉴 동작) · A7(세대 버튼) · A8(�
 |---|---|---|---|
 | `shell/mainwindow` | `MainWindow` (수정) | `QMainWindow` | central = `m_screens`(QStackedWidget) [인트로 │ 본 화면] |
 | `shell/appbar` | `AppBar` (있음) | `QWidget` | 그대로. 본 화면의 맨 위 |
-| `intro/intropage` | `IntroPage` (← `HomePage` 이름 변경) | `QWidget` | **이번 단계의 본체.** 인트로 전체 레이아웃 |
-| `intro/intromenu` | `IntroMenu` | `QWidget` | 메뉴 창의 **내용**: 메뉴 항목 4개를 세로로. 키보드 이동은 A6 |
-| `intro/menubutton` | `MenuButton` | `QAbstractButton` | 메뉴 항목 하나. ▶ 커서 · 선택은 A6 |
+| `home/homepage` | `HomePage` (있음) | `QWidget` | **이번 단계의 본체.** 인트로(홈) 전체 레이아웃 |
+| `home/homemenu` | `HomeMenu` | `QWidget` | 메뉴 창의 **내용**: 메뉴 항목 4개를 세로로. 키보드 이동은 A6 |
+| `home/menubutton` | `MenuButton` | `QAbstractButton` | 메뉴 항목 하나. ▶ 커서 · 선택은 A6 |
 | `widgets/panelframe` | `PanelFrame` | `QWidget` | 창의 **겉모양**. 내용 위젯 하나를 받아 안에 끼운다. 그림은 A5 |
 | `widgets/logo` | `Logo` | `QWidget` | 마크 + 워드마크. 인트로(크게)와 앱 막대(작게, A8)에서 쓴다 |
 | `widgets/generationbutton` | `GenerationButton` | `QAbstractButton` | "GEN 4 신오 ▾". 인트로와 앱 막대에서 쓴다. 메뉴는 A7 |
 | `widgets/layoutguide` | 자유 함수 (있음) | — | 임시 점선 + 클래스 이름. A5에서 지운다 |
 
 **폴더를 가른 기준**(ADR 0007 6항): `Logo`와 `GenerationButton`은 인트로와 앱 막대 **두 곳**에서 쓰니 `widgets/`에 둔다.
-`MenuButton`은 지금은 인트로에서만 쓰니 `intro/`에 둔다. 나중에 설정 · 아이템의 분류 목록(노란 칸 + ▶)에서도 쓰게 되면 그때 `widgets/`로 올린다.
+`MenuButton`은 지금은 홈에서만 쓰니 `home/`에 둔다. 나중에 설정 · 아이템의 분류 목록(노란 칸 + ▶)에서도 쓰게 되면 그때 `widgets/`로 올린다.
 
 ## 2. 알아야 할 개념
 
@@ -43,7 +44,7 @@ A4(토큰) · A5(`paintEvent`) · A6(메뉴 동작) · A7(세대 버튼) · A8(�
 ```
 MainWindow
  └ m_screens (QStackedWidget)            ← setCentralWidget
-    ├ [0] IntroPage                      전체 화면
+    ├ [0] HomePage                      전체 화면
     └ [1] 본 화면 (QWidget, 클래스 없음)
          └ QVBoxLayout (margins 0, spacing 0)
             ├ AppBar                     고정 60
@@ -65,7 +66,7 @@ MainWindow
 그런데 레이아웃도 없고 `sizeHint()`를 재정의하지도 않은 `QWidget`의 `sizeHint()`는 **무효값(-1 × -1)**이다. 그래서 정렬을 주는 순간 상자가 사라질 수 있다(실험 3).
 이번 단계에서는 `setFixedSize()`로 크기를 못 박는다. 제대로 된 방법은 위젯이 자기 크기를 아는 것, 즉 `sizeHint()` 재정의다. 로고 · 버튼이 실제로 그림을 그리게 되는 A5 · A7에서 그렇게 바꾼다.
 
-반대로 **레이아웃이 있는 위젯**(`PanelFrame`, `IntroMenu`)은 레이아웃이 자식들의 크기를 합쳐 `sizeHint()`를 계산해 준다. 그래서 메뉴 창은 높이를 따로 정하지 않아도 된다.
+반대로 **레이아웃이 있는 위젯**(`PanelFrame`, `HomeMenu`)은 레이아웃이 자식들의 크기를 합쳐 `sizeHint()`를 계산해 준다. 그래서 메뉴 창은 높이를 따로 정하지 않아도 된다.
 
 ### 2-3. 레이아웃과 object tree (체크포인트 1 복습)
 
@@ -78,12 +79,12 @@ MainWindow
 `paintEvent()`가 순수 가상이라 재정의하지 않으면 인스턴스를 만들 수 없다. 대신 클릭 · 키보드 · 포커스 · `clicked()` · 텍스트(`setText`) · 접근성을 준다.
 `MenuButton`과 `GenerationButton`이 이 클래스를 고른 이유다. 메뉴 문구는 지금 `setText(tr("도감 대백과"))`처럼 넣어 두면 A5에서 그릴 때 `text()`로 꺼내 쓴다.
 
-### 2-5. 겉모양(`PanelFrame`)과 내용(`IntroMenu`)
+### 2-5. 겉모양(`PanelFrame`)과 내용(`HomeMenu`)
 
 - `PanelFrame`은 내용 위젯 하나를 `setBody(QWidget *)` 같은 메서드로 받는다
 - 겉모양의 두께(테두리 + 머리 + 그림자)는 `PanelFrame` **자기 레이아웃의 contentsMargins**로 확보한다. 내용은 그 안쪽 사각형만 받는다
 - 메뉴 창은 머리가 없는 변형이다: 좌 · 위 · 우 테두리 2, 아래 테두리 2 + 그림자 4
-- `IntroMenu`는 자기가 창 안에 있다는 걸 모른다. A6에서 이 내용을 그대로 두고 키보드 이동만 넣는다
+- `HomeMenu`는 자기가 창 안에 있다는 걸 모른다. A6에서 이 내용을 그대로 두고 키보드 이동만 넣는다
 
 ### 2-6. 수치를 어디에 둘까
 
@@ -105,7 +106,7 @@ Qt 위젯은 자기 rect 밖에 그릴 수 없다. 그래서 아래로 떨어지
 ## 3. 임시 와이어프레임 (1440×900)
 
 ```
-┌──────────────────────────────── IntroPage (0,0 1440×900) ────────────────────────────────┐
+┌──────────────────────────────── HomePage (0,0 1440×900) ────────────────────────────────┐
 │  margins 좌 40 · 위 40 · 우 40 · 아래 24                                                    │
 │                                      (stretch 1)                                           │
 │                            ┌──────── Logo 560×160 ────────┐                                │
@@ -115,7 +116,7 @@ Qt 위젯은 자기 rect 밖에 그릴 수 없다. 그래서 아래로 떨어지
 │                              └─────────────────────────────┘                               │
 │                                   간격 28 − 3 = 25                                          │
 │                          ┌─────── PanelFrame 폭 400 ────────┐  margins 2 · 2 · 2 · 2+4      │
-│                          │ ┌──── IntroMenu ──────────────┐  │  margins 8 · spacing 4        │
+│                          │ ┌──── HomeMenu ──────────────┐  │  margins 8 · spacing 4        │
 │                          │ │ MenuButton  높이 52          │  │  도감 대백과                   │
 │                          │ │ MenuButton                   │  │  아이템 대백과                 │
 │                          │ │ MenuButton                   │  │  SixSquad                     │
@@ -143,18 +144,14 @@ Qt 위젯은 자기 rect 밖에 그릴 수 없다. 그래서 아래로 떨어지
 ## 4. 작업 순서
 
 **체크포인트 A — 두 단계 스택**
-1. `HomePage` → `IntroPage` 이름 변경
-   - 파일을 `src/ui/intro/intropage.h/.cpp`로 옮기고, 클래스 이름 · include · CMake 목록을 고친다
-   - 클래스 이름은 VS Code의 Rename Symbol(F2)로 바꾸면 쓰는 곳까지 한 번에 바뀐다
-   - git은 파일 이동을 알아서 rename으로 인식한다(커밋은 Claude가 한다)
-2. `MainWindow`: 2-1의 트리로 바꾼다. `m_pages`에는 임시로 빈 `QWidget` 하나를 넣는다
-   - 확인: 창 전체가 `…::IntroPage` 점선 상자다. `m_screens->setCurrentIndex(1)`로 잠깐 바꾸면 위에 `AppBar`(60)가 보인다. 확인이 끝나면 0으로 되돌린다
+1. `MainWindow`: 2-1의 트리로 바꾼다. `m_pages`에는 임시로 빈 `QWidget` 하나를 넣는다
+   - 확인: 창 전체가 `…::HomePage` 점선 상자다. `m_screens->setCurrentIndex(1)`로 잠깐 바꾸면 위에 `AppBar`(60)가 보인다. 확인이 끝나면 0으로 되돌린다
 
 **체크포인트 B — 인트로 뼈대**
-3. `widgets/`: `PanelFrame`(`setBody`), `Logo`, `GenerationButton`
-4. `intro/`: `MenuButton`, `IntroMenu`(메뉴 항목 4개 + 문구)
-5. `IntroPage`: 바깥 레이아웃, 위아래 stretch, 가운데 정렬, 정보 줄
-6. `src/ui/CMakeLists.txt`에 새 파일 추가. `scripts/linux/build.sh --clean --format` 경고 0 · 포맷 통과
+2. `widgets/`: `PanelFrame`(`setBody`), `Logo`, `GenerationButton`
+3. `home/`: `MenuButton`, `HomeMenu`(메뉴 항목 4개 + 문구)
+4. `HomePage`: 바깥 레이아웃, 위아래 stretch, 가운데 정렬, 정보 줄
+5. `src/ui/CMakeLists.txt`에 새 파일 추가. `scripts/linux/build.sh --clean --format` 경고 0 · 포맷 통과
 
 ## 5. 실험 (진단 때 결과를 알려 줄 것)
 
@@ -171,7 +168,7 @@ Qt 위젯은 자기 rect 밖에 그릴 수 없다. 그래서 아래로 떨어지
 - [ ] `m_screens`[인트로 │ 본 화면], 본 화면 = `AppBar` + `m_pages`
 - [ ] 1440×900에서 §3 좌표 표와 같다(±1px), 묶음이 세로 가운데에 있다
 - [ ] 창 크기를 바꿔도 묶음이 가운데를 유지하고, 정보 줄은 아래 모서리에 붙어 있다
-- [ ] 클래스 · 파일이 1절 표의 폴더에 있고, `widgets/`가 `intro/`를 include하지 않는다
+- [ ] 클래스 · 파일이 1절 표의 폴더에 있고, `widgets/`가 `home/`을 include하지 않는다
 - [ ] 수치가 각 `.cpp` 위쪽의 `constexpr` 블록에 모여 있다
 - [ ] 빌드 경고 0, `clang-format --dry-run --Werror` 통과, `ctest` 통과
 - [ ] 실험 1~4 결과를 설명할 수 있다

@@ -61,7 +61,7 @@ ui는 rviz 플러그인, app은 launch 파일이 하는 일(구성하고 연결�
 | `shell/` | 화면 틀: 인트로 │ 본 화면(앱 막대 + 페이지)의 두 단계 스택 | `MainWindow`, `AppBar`, `AppTabBar`, `ResponsiveController` |
 | `theme/` | 디자인 토큰, 글꼴, QSS 적용 | `Tokens`, `TypeColors`, `Theme`, `FontLoader` |
 | `widgets/` | 재사용 컴포넌트 | `PanelFrame`, `TypeChip`, `StatBar`, `HeatmapWidget` … |
-| `intro/` `dex/` `items/` `squad/` `settings/` | 화면(page)과 그 화면 전용 위젯 | `IntroPage`, `DexPage`, `DetailDrawer` … |
+| `home/` `dex/` `items/` `squad/` `settings/` | 화면(page)과 그 화면 전용 위젯. `home`은 전체 화면 인트로 | `HomePage`, `DexPage`, `DetailDrawer` … |
 
 컴포넌트 규칙([ADR 0007](decisions/0007-ui-component-structure.md)):
 - `widgets/`에는 디자인 시트 §5에 있거나 두 화면 이상에서 쓰는 것만 둔다. widgets는 화면 폴더를 include하지 않는다
@@ -88,7 +88,7 @@ composition root. 명령행 인자(`--gallery`, `--screenshot`), 로깅 초기�
 | `theme/` | `ui/theme` | QtGui(`QRgb`, `QFont`, `QPalette`)가 필요하므로 ui 레이어 |
 | `ui/MainWindow`, `AppBar` … | `ui/shell` | |
 | `ui/widgets` | `ui/widgets` | |
-| `ui/pages` | `ui/intro`, `ui/dex`, `ui/items`, `ui/squad`, `ui/settings` | 화면별 하위 위젯이 많아서 폴더로 나눔. 홈은 인트로로 바뀜([ADR 0008](decisions/0008-intro-screen-replaces-home.md)) |
+| `ui/pages` | `ui/home`, `ui/dex`, `ui/items`, `ui/squad`, `ui/settings` | 화면별 하위 위젯이 많아서 폴더로 나눔. `home`은 대시보드가 아니라 인트로([ADR 0008](decisions/0008-intro-screen-replaces-home.md)) |
 | CMake 타깃 `pokesix_core` 하나 | `pokesix_core` / `pokesix_data` / `pokesix_ui` / `pokesix_app` | 레이어 규칙을 링크 단계에서 강제 |
 | QtTest | GoogleTest | core는 Qt가 없으므로 GoogleTest. 04 문서의 표를 그대로 테스트 데이터로 쓴다 |
 | C++17 | C++20 | |

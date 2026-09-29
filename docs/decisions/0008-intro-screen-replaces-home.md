@@ -26,7 +26,7 @@
 - **선택지 2.** `MainWindow`의 central은 두 단계의 스택이다
   ```
   m_screens (QStackedWidget)
-   ├ IntroPage                    인트로: 로고 · 세대 버튼 · 메뉴
+   ├ HomePage                     인트로: 로고 · 세대 버튼 · 메뉴
    └ 본 화면 (QWidget)             AppBar + m_pages (도감 · 아이템 · 스쿼드 · 설정)
   ```
 - 앱 막대의 **"홈" 탭은 없앤다(탭 4개).** 마크 + 워드마크 버튼이 인트로로 돌아가는 길이다
@@ -41,5 +41,6 @@
 
 - [ADR 0007](0007-ui-component-structure.md)의 원칙(그리기 함수 · 동작으로 고르는 베이스 · 겉모양을 모르는 내용 · rect = 상자 + 그림자)은 그대로 쓴다. 예시로 든 홈 컴포넌트(`GenerationCard`, `ShortcutCard`)만 인트로 컴포넌트로 바뀐다
 - Phase A의 단계 구성이 바뀐다([roadmap.md](../roadmap.md)). 캡처 비교는 새 디자인이 도착한 뒤부터 한다
-- `ui/home/`은 `ui/intro/`로, `HomePage`는 `IntroPage`로 이름을 바꾼다
+- 이름은 `ui/home/` · `HomePage`를 그대로 쓴다. **이 리포에서 "홈"은 인트로 화면**이고, 핸드오프 문서의 SCR-01 "홈"(대시보드)과는 다른 것이다
+  (처음에는 `IntroPage`로 바꾸기로 했다가 같은 날 되돌렸다. 처음 켜면 보이고 마크로 돌아오는 화면이라 "홈"이 역할과 맞고, 바꿀 이득이 적다)
 - 다시 볼 조건: 새 디자인이 인트로에 다른 정보(최근 스쿼드 이어하기 등)를 넣자고 제안할 때
