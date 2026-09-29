@@ -1,5 +1,6 @@
 #include "ui/home/homepage.h"
 
+#include "data/update/dataupdater.h"
 #include "ui/home/introfooter.h"
 #include "ui/home/intromenu.h"
 #include "ui/theme/tokens.h"
@@ -129,6 +130,9 @@ HomePage::HomePage(QWidget *parent)
 
     // 메뉴 창 = 겉모양(PanelFrame) + 내용(IntroMenu). 폭은 쓰는 쪽(HomePage)이 정한다.
     m_menu = new IntroMenu;
+    // 첫 실행(쓸 수 있는 DB가 없음)이면 데이터가 필요한 메뉴를 잠근다. 푸는 일은 CP4에서
+    // DataUpdater와 잇는다.
+    m_menu->setDataLocked(!DataUpdater::hasData());
     PanelFrame *menuFrame = new PanelFrame;
     menuFrame->setPanelStyle(kMenuWindow);
     menuFrame->setFixedWidth(kMenuWidth);

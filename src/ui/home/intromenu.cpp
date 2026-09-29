@@ -18,6 +18,8 @@ constexpr int kDividerSpacing = 14 - kItemSpacing;
 constexpr int kDividerLine = 2;   // border-top: 2px dashed line
 constexpr int kDividerInsetX = 8; // margin: 4px 8px 의 좌우 8
 constexpr int kDividerInsetY = 4; // 〃 위 4
+// 데이터가 있어야 쓸 수 있는 메뉴 줄(도감 백과 · 아이템 백과 · SixSquad). 규칙을 if 대신 표로 둔다.
+constexpr int kNeedsData[] = {0, 1, 2};
 } // namespace
 
 namespace com::yamada::studio {
@@ -79,19 +81,40 @@ void IntroMenu::setCurrentIndex(int index)
 {
     if (index < 0 || index >= static_cast<int>(m_items.size()))
         return;
+    // TODO ③ 잠긴 줄이면 고르지 않고 돌아간다: m_items[index]->isEnabled()
+    //        (마우스 hover는 비활성 줄에서도 hovered()를 보내므로, 여기서 막아야 선택이 옮겨 가지
+    //        않는다)
     m_current = index;
     for (int i = 0; i < static_cast<int>(m_items.size()); ++i)
         m_items[i]->setSelected(i == m_current);
+}
+
+void IntroMenu::setDataLocked(bool locked)
+{
+    // TODO ① kNeedsData의 줄마다 setEnabled(!locked)
+
+    // TODO ② 잠갔으면: 지금 선택이 잠긴 줄이면 nextEnabled(m_current, +1)로 옮긴다
+    //        풀었으면: setCurrentIndex(0) (디자인: 완료되면 선택은 도감 백과)
+    Q_UNUSED(locked); // ← TODO ① · ②를 채우면 이 줄은 지운다
+}
+
+int IntroMenu::nextEnabled(int from, int direction) const
+{
+    // TODO ④ from + direction부터 한 칸씩 가며 isEnabled()인 첫 줄의 번호를 돌려준다.
+    //        목록 끝을 넘어가면(0보다 작거나 kQuitIndex보다 크면) 멈추고 from을 돌려준다(순환 없음)
+    Q_UNUSED(direction); // ← TODO ④를 채우면 이 줄은 지운다
+    return from;
 }
 
 void IntroMenu::keyPressEvent(QKeyEvent *event)
 {
     switch (event->key()) {
     case Qt::Key_Up:
-        setCurrentIndex(qMax(0, m_current - 1)); // 처음에서 멈춤(순환 없음)
+        // TODO ⑤ 잠긴 줄을 건너뛴다: setCurrentIndex(nextEnabled(m_current, -1))
+        setCurrentIndex(qMax(0, m_current - 1)); // ← nextEnabled(m_current, -1)로 바꾼다
         return;
     case Qt::Key_Down:
-        setCurrentIndex(qMin(kQuitIndex, m_current + 1)); // 끝에서 멈춤
+        setCurrentIndex(qMin(kQuitIndex, m_current + 1)); // ← nextEnabled(m_current, +1)로 바꾼다
         return;
     case Qt::Key_Return:
     case Qt::Key_Enter: // 숫자 키패드의 Enter
@@ -102,6 +125,7 @@ void IntroMenu::keyPressEvent(QKeyEvent *event)
     case Qt::Key_3:
     case Qt::Key_4: {
         const int index = event->key() - Qt::Key_1;
+        // TODO ⑥ 잠긴 줄의 번호 키는 무시한다: m_items[index]->isEnabled()가 아니면 return
         setCurrentIndex(index);
         emit activated(index);
         return;
