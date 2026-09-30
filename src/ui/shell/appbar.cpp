@@ -49,7 +49,7 @@ AppBar::AppBar(QWidget *parent)
     layout->addStretch();
 
     m_generation = new GenerationButton(GenerationButton::Size::Compact);
-    m_generation->setGeneration(4, tr("신오")); // TODO(A8): AppState와 연결
+    // 현재 세대 · 메뉴 범위는 MainWindow가 AppState와 연결한다(generationButton()).
     layout->addWidget(m_generation, 0, Qt::AlignVCenter);
     layout->addSpacing(kGap);
 

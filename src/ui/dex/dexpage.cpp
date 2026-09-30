@@ -4,6 +4,7 @@
 #include "data/models/speciestablemodel.h"
 #include "data/repository/repository.h"
 #include "data/sprites/spritecache.h"
+#include "data/state/appstate.h"
 #include "ui/dex/dexheaderview.h"
 #include "ui/dex/dexrowdelegate.h"
 #include "ui/dex/dexselector.h"
@@ -41,8 +42,6 @@ constexpr PanelStyle kListPanel {.outline = 2,
                                  .headerColor = tok::kRed};
 constexpr QMargins kBodyMargins {12, 8, 12, 0};
 constexpr int kSearchDebounceMs = 150; // 입력 즉시가 아니라 멈춘 뒤 150ms에 거른다(02 SCR-02)
-// TODO(A8): AppState의 현재 세대로 바꾼다. 지금은 세대 버튼과 같은 4(신오)로 고정.
-constexpr int kGeneration = 4;
 
 // 열 폭 — CSS grid의 "24px 52px 44px 3fr <타입 fit> 1fr ×7 + 끝 여유 8"과 같은 생각이다.
 // QHeaderView에는 비율(fr · %) 모드가 없어서, 표 폭이 바뀔 때마다 직접 나눈다(layoutColumns).
@@ -84,9 +83,10 @@ constexpr int kListMaxWidth = 1100;
 } // namespace
 
 namespace com::yamada::studio {
-DexPage::DexPage(Repository *repository, QWidget *parent)
+DexPage::DexPage(Repository *repository, AppState *state, QWidget *parent)
     : QWidget(parent)
     , m_repository(repository)
+    , m_state(state)
     , m_model(new SpeciesTableModel(this))
     , m_proxy(new SpeciesFilterProxy(this))
     , m_sprites(new SpriteCache(this))
@@ -103,6 +103,8 @@ DexPage::DexPage(Repository *repository, QWidget *parent)
     m_selector = new DexSelector;
     m_panel->setHeaderWidget(m_selector);
     connect(m_selector, &DexSelector::dexSelected, this, &DexPage::showDex);
+    // 세대가 바뀌면(인트로 · 앱 막대의 세대 메뉴) 도감 버튼과 목록을 그 세대로 다시 만든다.
+    connect(m_state, &AppState::generationChanged, this, &DexPage::onGenerationChanged);
     // 창은 페이지 폭을 채운다. 최대 폭(kListMaxWidth)은 resizeEvent가 좌우 여백으로 맞춘다.
     layout->addWidget(m_panel);
 
@@ -234,10 +236,19 @@ void DexPage::showEvent(QShowEvent *event)
         load();
 }
 
+void DexPage::onGenerationChanged()
+{
+    // 보이는 중이면 바로 다시 읽고, 숨어 있으면 다음에 보일 때(showEvent) 읽는다 — 안 보는 화면을
+    // 미리 채우지 않는다(lazy).
+    m_loaded = false;
+    if (isVisible())
+        load();
+}
+
 void DexPage::load()
 {
     // 이 세대의 지방 도감으로 버튼을 만들고, 전국 목록부터 보여 준다.
-    m_selector->setDexes(m_repository->dexesForGeneration(kGeneration));
+    m_selector->setDexes(m_repository->dexesForGeneration(m_state->generation()));
     showDex(DexSelector::kNational);
     m_loaded = m_model->rowCount() > 0; // 비어 있으면(DB가 아직 없음) 다음에 보일 때 다시 읽는다
 }
@@ -247,14 +258,14 @@ void DexPage::showDex(int pokedexId)
     // 전국 = 그 세대까지 나온 종(번호 = 전국 번호), 지방 = 그 도감의 종(번호 = 지방 번호).
     // 타입 · 종족값은 둘 다 지금 세대 기준.
     m_model->setRows(pokedexId == DexSelector::kNational
-                             ? m_repository->speciesForGeneration(kGeneration)
-                             : m_repository->speciesForDex(pokedexId, kGeneration));
+                             ? m_repository->speciesForGeneration(m_state->generation())
+                             : m_repository->speciesForDex(pokedexId, m_state->generation()));
     // 도감을 고른다 = 그 도감 순서로 본다 → 합계 순 등으로 보고 있었어도 번호 순으로 되돌린다.
     m_table->sortByColumn(SpeciesTableModel::NumberColumn, Qt::AscendingOrder);
     m_table->scrollToTop();
     updateTitle();
     qCInfo(lcUi) << "dex" << pokedexId << "shows" << m_model->rowCount() << "species (generation"
-                 << kGeneration << ")";
+                 << m_state->generation() << ")";
 }
 
 void DexPage::updateTitle()

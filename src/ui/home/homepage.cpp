@@ -137,10 +137,9 @@ HomePage::HomePage(DataUpdater *updater, QWidget *parent)
     layout->addWidget(generationLabel, 0, Qt::AlignHCenter);
     layout->addSpacing(kGenerationLabelToButton);
 
-    // TODO(A8): AppState의 현재 세대와 연결하고, 누르면 세대 메뉴(1–9) 팝업을 띄운다.
-    GenerationButton *generationButton = new GenerationButton;
-    generationButton->setGeneration(4, tr("신오"));
-    layout->addWidget(generationButton, 0, Qt::AlignHCenter);
+    // 세대 버튼. 현재 세대 · 메뉴 범위는 MainWindow가 AppState와 연결한다(generationButton()).
+    m_generationButton = new GenerationButton;
+    layout->addWidget(m_generationButton, 0, Qt::AlignHCenter);
     layout->addSpacing(kGenerationToMenu);
 
     // 첫 실행이면 메뉴 창 위에 패널을 끼운다. 패널과 그 아래 간격을 한 상자(m_firstRunBlock)에 담아

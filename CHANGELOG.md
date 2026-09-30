@@ -44,6 +44,11 @@ and the project uses [Semantic Versioning](https://semver.org/).
   numbering. Dexes per generation come from PokéAPI's dex ↔ version group ↔ generation links; four
   more CSV files are downloaded and the database schema is now version 2 (existing databases are
   re-imported on first run).
+- Generation menu and `AppState`: the intro and app bar generation buttons read "N세대 ▾" and open a
+  menu of generations 1–7; the choice is saved in the settings and the Dex list (regional dex buttons,
+  species, types and stats) follows it.
+- Regional dex buttons show split version badges (e.g. Sinnoh [D|P], Johto [HG|SS]); badge labels and
+  colours, hidden dexes and label overrides live in `resources/theme/dexstyle.json`.
 - Dex list icons: `SpriteCache` downloads small Pokémon icons from PokéAPI/sprites into the user cache
   folder on demand (never into the repository); the list sorts by number, uses taller rows and
   responsive columns: fixed columns (the type column fits any two chips) plus weighted columns for the

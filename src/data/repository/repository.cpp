@@ -98,13 +98,15 @@ QList<DexInfo> Repository::dexesForGeneration(int generation)
     // 줄마다 (도감, 버전) 하나. 게임이 나온 순서(sort_order)대로 읽으면서 도감별로 묶는다.
     // 본편 도감만(is_main_series), 지방이 있는 것만(전국 · conquest 제외 — 전국은 UI가 따로 단다).
     QSqlQuery query(QSqlDatabase::database(m_connection));
-    query.prepare(QStringLiteral("SELECT d.id, r.name_ko, v.name_en, v.name_ko FROM pokedexes d "
-                                 "JOIN pokedex_version_groups pvg ON pvg.pokedex_id = d.id "
-                                 "JOIN version_groups vg ON vg.id = pvg.version_group_id "
-                                 "JOIN versions v ON v.version_group_id = vg.id "
-                                 "JOIN regions r ON r.id = d.region_id "
-                                 "WHERE vg.generation = :g AND d.is_main_series = 1 "
-                                 "ORDER BY vg.sort_order, v.id"));
+    query.prepare(QStringLiteral(
+            "SELECT d.id, d.identifier, r.name_ko, v.identifier, v.name_en, v.name_ko "
+            "FROM pokedexes d "
+            "JOIN pokedex_version_groups pvg ON pvg.pokedex_id = d.id "
+            "JOIN version_groups vg ON vg.id = pvg.version_group_id "
+            "JOIN versions v ON v.version_group_id = vg.id "
+            "JOIN regions r ON r.id = d.region_id "
+            "WHERE vg.generation = :g AND d.is_main_series = 1 "
+            "ORDER BY vg.sort_order, v.id"));
     query.bindValue(QStringLiteral(":g"), generation);
     if (!query.exec()) {
         m_error = query.lastError().text();
@@ -118,13 +120,15 @@ QList<DexInfo> Repository::dexesForGeneration(int generation)
         if (it == indexOfDex.constEnd()) {
             DexInfo dex;
             dex.pokedexId = id;
-            dex.regionKo = query.value(1).toString();
+            dex.identifier = query.value(1).toString();
+            dex.regionKo = query.value(2).toString();
             it = indexOfDex.insert(id, dexes.size());
             dexes.append(dex);
         }
         DexInfo &dex = dexes[*it];
-        dex.versionsEn.append(query.value(2).toString());
-        dex.versionsKo.append(query.value(3).toString());
+        dex.versions.append(query.value(3).toString());
+        dex.versionsEn.append(query.value(4).toString());
+        dex.versionsKo.append(query.value(5).toString());
     }
     return dexes;
 }

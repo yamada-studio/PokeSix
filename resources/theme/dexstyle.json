@@ -1,0 +1,67 @@
+{
+  "_comment": [
+    "도감 선택 버튼의 표시 규칙 (DexSelector, ui/theme/dexstyle.h가 읽는다).",
+    "versions: PokéAPI versions.identifier → 약칭(short) · 배지 바탕(background) · 글자(text).",
+    "  색은 연한 바탕 + 진한 글자(대비 3:1 이상). 표에 없는 버전은 영어 이름 · 흰 바탕 · 먹 글자로 나온다.",
+    "  같은 도감에서 약칭이 겹치면 한 번만 보인다(관동도감: 일본판 레드 · 블루는 레드 · 블루와 같은 R · B).",
+    "pokedexes: PokéAPI pokedexes.identifier → hidden(버튼을 만들지 않음) · label(지방 이름 대신).",
+    "  알로라의 섬 도감은 지방 도감에 포함되므로 숨긴다. 칼로스는 도감이 셋이라 이름으로 나눈다.",
+    "세대를 늘릴 때(8세대~)는 이 파일에 버전을 더하고 AppState::kMaxGeneration을 올린다."
+  ],
+
+  "versions": {
+    "red":            { "short": "R",  "background": "#F9D9D6", "text": "#C0271F" },
+    "green-japan":    { "short": "G",  "background": "#DDEFD6", "text": "#2E7A2C" },
+    "blue":           { "short": "B",  "background": "#D9E4F8", "text": "#1E4DB0" },
+    "red-japan":      { "short": "R",  "background": "#F9D9D6", "text": "#C0271F" },
+    "blue-japan":     { "short": "B",  "background": "#D9E4F8", "text": "#1E4DB0" },
+    "yellow":         { "short": "Y",  "background": "#FFF1BF", "text": "#9A7400" },
+
+    "gold":           { "short": "G",  "background": "#F2E4BC", "text": "#9C7410" },
+    "silver":         { "short": "S",  "background": "#E4E6EB", "text": "#5F6773" },
+    "crystal":        { "short": "C",  "background": "#D8F0F5", "text": "#177F93" },
+
+    "ruby":           { "short": "R",  "background": "#F8D5D8", "text": "#AE1330" },
+    "sapphire":       { "short": "S",  "background": "#D7E0F7", "text": "#1C3C98" },
+    "emerald":        { "short": "E",  "background": "#D4EFDF", "text": "#12703E" },
+    "firered":        { "short": "FR", "background": "#FBDACB", "text": "#BF4413" },
+    "leafgreen":      { "short": "LG", "background": "#E0F1CE", "text": "#447F1A" },
+
+    "diamond":        { "short": "D",  "background": "#D8E7FA", "text": "#7B8593" },
+    "pearl":          { "short": "P",  "background": "#FADCE8", "text": "#AE2270" },
+    "platinum":       { "short": "Pt", "background": "#E3E4E8", "text": "#1B1B22" },
+    "heartgold":      { "short": "HG", "background": "#EEDDB0", "text": "#9A730C" },
+    "soulsilver":     { "short": "SS", "background": "#E4E6EB", "text": "#1C2B5A" },
+
+    "black":          { "short": "B",  "background": "#D9DADF", "text": "#1B1B22" },
+    "white":          { "short": "W",  "background": "#F5F5F5", "text": "#6A6A74" },
+    "black-2":        { "short": "B2", "background": "#D6D9E0", "text": "#1B2A4A" },
+    "white-2":        { "short": "W2", "background": "#F4EFEF", "text": "#A3303A" },
+
+    "x":              { "short": "X",  "background": "#DAE3F4", "text": "#1E4A98" },
+    "y":              { "short": "Y",  "background": "#F6D8DC", "text": "#AD1E35" },
+    "omega-ruby":     { "short": "OR", "background": "#F6D2D2", "text": "#9E1C1C" },
+    "alpha-sapphire": { "short": "AS", "background": "#D5DEF6", "text": "#1D3A8B" },
+
+    "sun":            { "short": "S",  "background": "#FDE5CB", "text": "#B8520A" },
+    "moon":           { "short": "M",  "background": "#E2DCF3", "text": "#48388A" },
+    "ultra-sun":      { "short": "US", "background": "#FCDAC3", "text": "#B2400C" },
+    "ultra-moon":     { "short": "UM", "background": "#DAD5EF", "text": "#392C79" },
+    "lets-go-pikachu":{ "short": "P",  "background": "#FFEFB5", "text": "#977100" },
+    "lets-go-eevee":  { "short": "E",  "background": "#F1E1CB", "text": "#835421" }
+  },
+
+  "pokedexes": {
+    "kalos-central":     { "label": "센트럴" },
+    "kalos-coastal":     { "label": "코스트" },
+    "kalos-mountain":    { "label": "마운틴" },
+    "original-melemele": { "hidden": true },
+    "original-akala":    { "hidden": true },
+    "original-ulaula":   { "hidden": true },
+    "original-poni":     { "hidden": true },
+    "updated-melemele":  { "hidden": true },
+    "updated-akala":     { "hidden": true },
+    "updated-ulaula":    { "hidden": true },
+    "updated-poni":      { "hidden": true }
+  }
+}

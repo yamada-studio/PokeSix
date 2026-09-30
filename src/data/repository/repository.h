@@ -25,8 +25,10 @@ struct SpeciesRow
 struct DexInfo
 {
     int pokedexId = 0; // PokéAPI pokedexes.id (신오 DP = 5, 신오 Pt = 6, 성도 HGSS = 7)
+    QString identifier; // "original-sinnoh" — UI 도감 표시 규칙(숨김 · 이름 바꾸기)의 키
     QString regionKo; // "신오" — 도감의 한국어 이름은 PokéAPI에 없어서 지방 이름을 쓴다
-    QStringList versionsEn; // {"Diamond", "Pearl"} — 약칭(D · P)은 UI가 붙인다
+    QStringList versions; // {"diamond", "pearl"} — UI 버전 색 · 약칭 표(dexstyle.json)의 키
+    QStringList versionsEn; // {"Diamond", "Pearl"} — 표에 없는 버전의 대체 글자
     QStringList versionsKo; // {"디아루가", "펄기아"}
 };
 

@@ -2,11 +2,13 @@
 
 #include "data/db/gamedatabase.h"
 #include "data/repository/repository.h"
+#include "data/state/appstate.h"
 #include "data/update/dataupdater.h"
 #include "ui/dex/dexpage.h"
 #include "ui/home/homepage.h"
 #include "ui/logging/logging.h"
 #include "ui/shell/appbar.h"
+#include "ui/widgets/generationbutton.h"
 #include "ui/widgets/searchfield.h"
 
 #include <QApplication>
@@ -35,6 +37,9 @@ MainWindow::MainWindow(QWidget *parent)
     DataUpdater *dataUpdater = new DataUpdater(this);
 
     m_screens = new QStackedWidget;
+    // 앱 상태(지금은 정주행 중인 세대). 화면들은 이 객체를 받아 generationChanged를 구독한다.
+    m_state = new AppState(this);
+
     HomePage *home = new HomePage(dataUpdater);
     m_screens->addWidget(home);
 
@@ -49,7 +54,7 @@ MainWindow::MainWindow(QWidget *parent)
     // 하나씩 채운다. 지금은 이름만 보이는 자리 표시.
     // Repository는 게임 데이터 DB 조회 창구다. 화면들은 포인터만 받아 쓴다(생성자 주입).
     m_repository = std::make_unique<Repository>(gamedatabase::defaultPath());
-    m_pages->addWidget(new DexPage(m_repository.get())); // [0] 도감
+    m_pages->addWidget(new DexPage(m_repository.get(), m_state)); // [0] 도감
     const QString names[] = {tr("아이템"), tr("스쿼드"), tr("설정")};
     for (const QString &name : names) {
         QLabel *placeholder = new QLabel(tr("%1 — 준비 중이에요").arg(name));
@@ -75,6 +80,16 @@ MainWindow::MainWindow(QWidget *parent)
     // 종료: 확인 대화 상자 여부는 열린 질문 9(roadmap). 지금은 바로 창을 닫는다(마지막 창 → 앱
     // 종료).
     connect(home, &HomePage::quitRequested, this, &QMainWindow::close);
+
+    // 세대 버튼 둘(인트로 · 앱 막대)을 AppState에 잇는다. 버튼은 "고름"만
+    // 알리고(generationSelected), 바뀐 값은 AppState가 generationChanged로 모두에게 돌려준다 →
+    // 한쪽에서 바꿔도 둘 다 같은 세대를 보인다.
+    for (GenerationButton *button : {home->generationButton(), m_appBar->generationButton()}) {
+        button->setGenerationRange(AppState::kMinGeneration, AppState::kMaxGeneration);
+        button->setGeneration(m_state->generation());
+        connect(button, &GenerationButton::generationSelected, m_state, &AppState::setGeneration);
+        connect(m_state, &AppState::generationChanged, button, &GenerationButton::setGeneration);
+    }
 
     // 본 화면의 단축키. shell에 달고 WidgetWithChildrenShortcut으로 두면 본 화면이 보일 때만
     // 동작한다 (인트로에서는 1–4 키가 메뉴에 있고, 잠긴 메뉴를 단축키로 우회하지 못한다).

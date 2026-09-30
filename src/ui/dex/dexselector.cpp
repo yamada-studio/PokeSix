@@ -1,32 +1,133 @@
 #include "ui/dex/dexselector.h"
 
-#include <QButtonGroup>
-#include <QHBoxLayout>
-#include <QPushButton>
+#include "ui/theme/dexstyle.h"
+#include "ui/theme/theme.h"
+#include "ui/theme/tokens.h"
 
-#include <utility>
+#include <QAbstractButton>
+#include <QButtonGroup>
+#include <QFontMetricsF>
+#include <QHBoxLayout>
+#include <QPainter>
+#include <QPainterPath>
+#include <QtMath>
 
 namespace {
+using namespace com::yamada::studio;
+
 constexpr int kSpacing = 6; // 버튼 사이
-// 버튼 높이: 빨강 띠 38 안에 위아래 6씩. 고정하지 않으면 글자(" · " 등 대체 글꼴)에 따라 1px씩
-// 달라진다.
-constexpr int kButtonHeight = 26;
+constexpr int kHeight = 26; // 빨강 띠 38 안에 위아래 6씩
+constexpr int kBorder = 2;  // 먹선
+constexpr int kRadius = 6;
+constexpr int kPaddingX = 9;
+constexpr int kLabelToBadge = 6; // 지방 이름 ↔ 배지
+constexpr int kBadgeHeight = 16;
+constexpr int kBadgeRadius = 3;
+constexpr int kBadgePaddingX = 5; // 배지 칸 하나의 좌우 여백
+constexpr qreal kBadgeBorder = 1.5;
 
-// 영어 버전 이름 → 약칭. 약칭은 PokéAPI에 없어서 여기 둔다(타입 색 표와 같은 "보여 주기 규칙").
-// 표에 없으면 영어 이름 그대로 — 새 게임이 추가돼도 깨지지 않고 조금 길어질 뿐이다.
-// TODO(A8): 세대 전환이 생기면 다른 세대의 약칭도 채운다.
-constexpr std::pair<const char *, const char *> kVersionShort[] = {
-        {"Diamond", "D"},    {"Pearl", "P"},       {"Platinum", "Pt"},
-        {"HeartGold", "HG"}, {"SoulSilver", "SS"},
-};
-
-QString shortName(const QString &english)
+// 도감 버튼 하나: "신오 [D|P]". 지방 이름(도현 15) + 버전 배지. 배지는 버전마다 칸을 나눠
+// 칸마다 그 버전의 바탕 · 글자색(dexstyle.json)으로 칠한다 — 레퍼런스의 반반 배지.
+// 켜짐(checked) = 노랑, hover = 연노랑, 키보드 포커스 = 파랑 테두리. 시그널이 없어서 Q_OBJECT는
+// 필요 없다(클릭 · 체크 · 포커스는 QAbstractButton이 한다).
+class DexButton : public QAbstractButton
 {
-    for (const auto &[name, abbreviation] : kVersionShort)
-        if (english == QLatin1String(name))
-            return QString::fromLatin1(abbreviation);
-    return english;
-}
+public:
+    DexButton(const QString &label, QList<dexstyle::VersionStyle> badges)
+        : m_badges(std::move(badges))
+        , m_labelFont(theme::font(theme::kFamilyTitle, 15))
+        , m_badgeFont(theme::font(theme::kFamilyBody, 11, QFont::ExtraBold))
+    {
+        QAbstractButton::setText(label);
+        QAbstractButton::setCheckable(true);
+        QAbstractButton::setCursor(Qt::PointingHandCursor);
+        QAbstractButton::setFocusPolicy(
+                Qt::TabFocus); // 마우스로 눌러도 검색 칸의 포커스를 뺏지 않는다
+        QAbstractButton::setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        QAbstractButton::setAttribute(
+                Qt::WA_Hover); // hover 모양을 그리려고 enter/leave 때 다시 그린다
+    }
+
+    QSize sizeHint() const override
+    {
+        qreal width
+                = 2 * (kBorder + kPaddingX) + QFontMetricsF(m_labelFont).horizontalAdvance(text());
+        if (!m_badges.isEmpty())
+            width += kLabelToBadge + badgesWidth();
+        return {qCeil(width), kHeight};
+    }
+
+protected:
+    void paintEvent(QPaintEvent *) override
+    {
+        QPainter painter(this);
+        painter.setRenderHint(QPainter::Antialiasing, true);
+
+        // 1) 본체
+        QColor fill(tok::kWhite);
+        if (isChecked())
+            fill = QColor(tok::kYellow);
+        else if (underMouse())
+            fill = QColor(tok::kYellowTint);
+        const QColor ink(hasFocus() ? tok::kBlue : tok::kInk);
+        const qreal half = kBorder / 2.0;
+        painter.setPen(QPen(ink, kBorder));
+        painter.setBrush(fill);
+        painter.drawRoundedRect(QRectF(rect()).adjusted(half, half, -half, -half), kRadius - half,
+                                kRadius - half);
+
+        // 2) 지방 이름
+        qreal x = kBorder + kPaddingX;
+        const qreal labelWidth = QFontMetricsF(m_labelFont).horizontalAdvance(text());
+        painter.setFont(m_labelFont);
+        painter.setPen(QColor(tok::kText1));
+        painter.drawText(QRectF(x, 0, labelWidth, height()), Qt::AlignLeft | Qt::AlignVCenter,
+                         text());
+        if (m_badges.isEmpty())
+            return;
+
+        // 3) 배지: 둥근 사각형 하나를 버전 수만큼 세로로 나눠 칸마다 칠하고, 칸 사이에 먹선 1
+        x += labelWidth + kLabelToBadge;
+        const QRectF badge(x, (height() - kBadgeHeight) / 2.0, badgesWidth(), kBadgeHeight);
+        QPainterPath outline;
+        outline.addRoundedRect(badge, kBadgeRadius, kBadgeRadius);
+        painter.save();
+        painter.setClipPath(outline); // 칸의 네모 모서리가 둥근 테 밖으로 나가지 않게
+        const QFontMetricsF metrics(m_badgeFont);
+        painter.setFont(m_badgeFont);
+        qreal cellX = badge.left();
+        for (qsizetype i = 0; i < m_badges.size(); ++i) {
+            const dexstyle::VersionStyle &style = m_badges.at(i);
+            const qreal cellWidth = metrics.horizontalAdvance(style.shortName) + 2 * kBadgePaddingX;
+            const QRectF cell(cellX, badge.top(), cellWidth, badge.height());
+            painter.fillRect(cell, style.background);
+            painter.setPen(style.text);
+            painter.drawText(cell, Qt::AlignCenter, style.shortName);
+            if (i > 0)
+                painter.fillRect(QRectF(cellX - 0.5, badge.top(), 1, badge.height()),
+                                 QColor(tok::kInk));
+            cellX += cellWidth;
+        }
+        painter.restore();
+        painter.setPen(QPen(QColor(tok::kInk), kBadgeBorder));
+        painter.setBrush(Qt::NoBrush);
+        painter.drawPath(outline);
+    }
+
+private:
+    qreal badgesWidth() const
+    {
+        const QFontMetricsF metrics(m_badgeFont);
+        qreal width = 0;
+        for (const dexstyle::VersionStyle &style : m_badges)
+            width += metrics.horizontalAdvance(style.shortName) + 2 * kBadgePaddingX;
+        return width;
+    }
+
+    QList<dexstyle::VersionStyle> m_badges;
+    QFont m_labelFont;
+    QFont m_badgeFont;
+};
 } // namespace
 
 namespace com::yamada::studio {
@@ -53,15 +154,25 @@ void DexSelector::setDexes(const QList<DexInfo> &dexes)
         delete button;
     }
 
-    // 2) [전국] + 지방 도감. 글자는 "신오 D · P", 툴팁은 한국어 버전 이름 "디아루가 · 펄기아".
-    addButton(tr("전국"), tr("그 세대까지 나온 포켓몬 전부"), kNational);
-    const QString separator = QStringLiteral(" · ");
+    // 2) [전국] + 지방 도감. 보이는 규칙(숨김 · 이름 · 배지 색)은 dexstyle.json이 정한다.
+    addButton(new DexButton(tr("전국"), {}), tr("그 세대까지 나온 포켓몬 전부"), kNational);
     for (const DexInfo &dex : dexes) {
-        QStringList shorts;
-        for (const QString &version : dex.versionsEn)
-            shorts.append(shortName(version));
-        addButton(dex.regionKo + QLatin1Char(' ') + shorts.join(separator),
-                  tr("%1도감 — %2").arg(dex.regionKo, dex.versionsKo.join(separator)),
+        const dexstyle::DexStyle rule = dexstyle::dex(dex.identifier);
+        if (rule.hidden)
+            continue;
+        QList<dexstyle::VersionStyle> badges;
+        QStringList shown; // 같은 약칭은 한 번만(관동도감: 일본판 레드 = 레드 = R)
+        for (qsizetype i = 0; i < dex.versions.size(); ++i) {
+            const dexstyle::VersionStyle style
+                    = dexstyle::version(dex.versions.at(i), dex.versionsEn.value(i));
+            if (shown.contains(style.shortName))
+                continue;
+            shown.append(style.shortName);
+            badges.append(style);
+        }
+        const QString label = rule.label.isEmpty() ? dex.regionKo : rule.label;
+        addButton(new DexButton(label, badges),
+                  tr("%1도감 — %2").arg(label, dex.versionsKo.join(QStringLiteral(" · "))),
                   dex.pokedexId);
     }
 
@@ -70,15 +181,9 @@ void DexSelector::setDexes(const QList<DexInfo> &dexes)
     QWidget::updateGeometry();
 }
 
-void DexSelector::addButton(const QString &text, const QString &toolTip, int id)
+void DexSelector::addButton(QAbstractButton *button, const QString &toolTip, int id)
 {
-    QPushButton *button = new QPushButton(text);
-    button->setObjectName(QStringLiteral("dexButton")); // app.qss
-    button->setCheckable(true);
-    button->setFixedHeight(kButtonHeight);
     button->setToolTip(toolTip);
-    button->setCursor(Qt::PointingHandCursor);
-    button->setFocusPolicy(Qt::TabFocus); // 마우스로 눌러도 포커스를 가져가지 않는다(검색 칸 유지)
     m_layout->addWidget(button);
     m_group->addButton(button, id);
 }

@@ -11,6 +11,7 @@ class QStackedWidget;
 
 namespace com::yamada::studio {
 class AppBar;
+class AppState;
 class Repository;
 
 class MainWindow : public QMainWindow
@@ -31,6 +32,7 @@ private:
     QStackedWidget *m_screens = nullptr; // [인트로 │ 본 화면]
     QStackedWidget *m_pages = nullptr;   // 본 화면의 페이지. 순서 = Page
     AppBar *m_appBar = nullptr;
+    AppState *m_state = nullptr; // object tree로 소유(this가 부모)
     // 게임 데이터 DB 조회 창구. QObject가 아니라서 object tree 대신 unique_ptr로 소유한다.
     // 화면들(DexPage …)은 포인터만 받아 쓴다(생성자 주입).
     std::unique_ptr<Repository> m_repository;

@@ -7,6 +7,7 @@
 <RCC version="1.0">
   <qresource prefix="/">
     <file>styles/app.qss</file>
+    <file>theme/dexstyle.json</file>
 
     <file>fonts/DoHyeon-Regular.ttf</file>
     <file>fonts/NanumGothic-Regular.ttf</file>
