@@ -6,6 +6,7 @@
 #include "data/update/dataupdater.h"
 #include "ui/dex/dexpage.h"
 #include "ui/home/homepage.h"
+#include "ui/items/itemspage.h"
 #include "ui/logging/logging.h"
 #include "ui/shell/appbar.h"
 #include "ui/widgets/generationbutton.h"
@@ -30,7 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
     //  └ [1] shell (본 화면)
     //         └ QVBoxLayout (margins 0, spacing 0)
     //            ├ AppBar    높이 60 — 마크 · 탭 4 · 세대 버튼 · 검색
-    //            └ m_pages   [도감(DexPage) · 아이템 · 스쿼드 · 설정(자리 표시)]
+    //            └ m_pages   [도감(DexPage) · 아이템(ItemsPage) · 스쿼드 · 설정(자리 표시)]
 
     // 첫 실행 데이터 받기 · 변환. 인트로가 쓰지만 MainWindow가 만들어 넘긴다(생성자 주입).
     // A3에서 앱 초기화 계층(pokesix_app)이 생기면 거기서 만들어 넘기게 된다.
@@ -54,8 +55,9 @@ MainWindow::MainWindow(QWidget *parent)
     // 하나씩 채운다. 지금은 이름만 보이는 자리 표시.
     // Repository는 게임 데이터 DB 조회 창구다. 화면들은 포인터만 받아 쓴다(생성자 주입).
     m_repository = std::make_unique<Repository>(gamedatabase::defaultPath());
-    m_pages->addWidget(new DexPage(m_repository.get(), m_state)); // [0] 도감
-    const QString names[] = {tr("아이템"), tr("스쿼드"), tr("설정")};
+    m_pages->addWidget(new DexPage(m_repository.get(), m_state));   // [0] 도감
+    m_pages->addWidget(new ItemsPage(m_repository.get(), m_state)); // [1] 아이템
+    const QString names[] = {tr("스쿼드"), tr("설정")};
     for (const QString &name : names) {
         QLabel *placeholder = new QLabel(tr("%1 — 준비 중이에요").arg(name));
         placeholder->setObjectName(QStringLiteral("pagePlaceholder"));

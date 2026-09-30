@@ -9,6 +9,7 @@
     <file>styles/app.qss</file>
     <file>theme/dexstyle.json</file>
     <file>theme/itemstyle.json</file>
+    <file>icons/ui/check-white.svg</file> <!-- QCheckBox 체크 표시 (app.qss) -->
 
     <file>fonts/DoHyeon-Regular.ttf</file>
     <file>fonts/NanumGothic-Regular.ttf</file>

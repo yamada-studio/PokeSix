@@ -99,6 +99,7 @@ A에서 만든 `PanelFrame`, 버튼 스타일도 갤러리에 올린다.
 
 - **D1의 CP1–CP3(CsvReader · 스키마 · 타입 · 상성 · 종 · 포켓몬 · 종족값)도 사용자 요청으로 Claude가 구현했다.** CP4(`pokesix-import-csv`)는 사용자가 구현했다. 기술 · 습득 기술 · 아이템과 `Repository`는 D1b로 나눴다
 - **D5**: CP1(`DataUpdater` · worker 스레드)은 사용자가, CP2–CP4(메뉴 잠금 · `FirstRunPanel` · 연결)는 사용자 요청으로 Claude가 구현했다
+- **E3 (분류 + 목록)**: 사용자가 뼈대를 시작했고, 사용자 요청("e3 너가 전부 해놓아봐")으로 Claude가 CP1–CP5를 구현했다
 - **D1b (아이템 부분)**: 사용자 요청("섞어서 — 화면은 내가")으로 Claude가 구현했다. 아이템 · 분류 · 세대별 존재 · 세대별 한국어 효과 문구(`item_flavor_text`, 한국어 줄만) · `ItemTableModel` · `ItemFilterProxy` · `itemstyle.json`. 기술 · 습득 기술은 남았다
 - **A8 (일부)**: 사용자 요청으로 Claude가 구현했다. `AppState`(`Q_PROPERTY generation`, `QSettings`), 세대 버튼 "N세대 ▾" + `QMenu` 1–9세대, 도감이 세대를 따라감. 남은 것: 디자인의 폭 300 팝업(▶ · ✓, 지방 · 게임 이름 줄), core의 세대 표
 - **D2b**: CP1–CP2 뼈대(목록 · 스키마 · 선언)와 CP4 · CP5-1 일부는 사용자가, 나머지(변환 본문 · 조회 · `DexSelector` · 연결 · 테스트)는 사용자 요청("이어서 다 해주라")으로 Claude가 구현했다
@@ -115,7 +116,7 @@ A에서 만든 `PanelFrame`, 버튼 스타일도 갤러리에 올린다.
 |---|---|---|---|---|
 | ⬜ | **E1** | 도감 (목록 · 그리드 · 상세) | `11_`, `12_dex_1440_*.png` | D2, B4 |
 | ⬜ | **E2** | SixSquad (슬롯 카드 · 히트맵 · 분포) | `14_squad_1440.png` | C4, D3 |
-| ⬜ | **E3** | 아이템 | `13_items_1440.png` | D1 |
+| 🟨 | **E3** | 아이템 ([가이드](guides/e3-items.md) — 분류 + 목록 ✅, 상세 창은 다음) | `13_items_1440.png` | D1 |
 | ⬜ | **E4** | 설정 | `15_settings_1440.png` | B3, F2 |
 
 ## Phase F — 반응형 · 설정 · 다크 테마 (PROMPT 4-6, 4-7) → v0.6.0

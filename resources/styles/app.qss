@@ -115,3 +115,9 @@ QLabel#pagePlaceholder { font-family: "Do Hyeon"; font-size: 28px; color: @text.
 
 /* ── 도감 목록 표 (DexPage). 칸은 DexRowDelegate가 그리고, 여기서는 표 바탕 · 머리만 ── */
 QTableView#dexTable { border: none; background: @white; }
+
+/* ── 아이템 대백과 (ItemsPage). 칸은 ItemRowDelegate · 머리는 ItemHeaderView가 그린다 ── */
+QTableView#itemsTable { border: none; background: @white; }
+QFrame#itemsFooter { border: none; border-top: 2px dashed @line; background: transparent; }
+QCheckBox#itemsOnlyGeneration { font-size: 13px; font-weight: 700; color: @text.1; spacing: 8px; }
+QLabel#itemsHint { font-size: 12px; color: @text.3; }

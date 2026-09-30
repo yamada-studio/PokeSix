@@ -30,6 +30,14 @@ qt_add_library(pokesix_ui STATIC
     widgets/searchfield.cpp
     widgets/typechip.h
     widgets/typechip.cpp
+    items/itemspage.h
+    items/itemspage.cpp
+    items/categorybutton.h
+    items/categorybutton.cpp
+    items/itemheaderview.h
+    items/itemheaderview.cpp
+    items/itemrowdelegate.h
+    items/itemrowdelegate.cpp
     home/homepage.h
     home/homepage.cpp
     home/intromenu.h

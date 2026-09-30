@@ -47,6 +47,11 @@ and the project uses [Semantic Versioning](https://semver.org/).
 - Generation menu and `AppState`: the intro and app bar generation buttons read "N세대 ▾" and open a
   menu of generations 1–9; the choice is saved in the settings and the Dex list (regional dex buttons,
   species, types and stats) follows it.
+- Items page (category and list panels): eight category groups, a "this generation only" check box,
+  search by name or effect, and a list painted by a row delegate with item icons, effect text, a faded
+  look and "n세대 없음" tag for items missing from the current generation, and nine per-generation
+  cells with the current generation outlined; the header numbers the generation cells. The page follows
+  the generation menu. Adds the missing check mark icon used by the check box style.
 - Item data for the Items page: categories, pockets, ko/en/ja names, per-generation availability and a
   Korean effect text per generation (the first game of each generation; generations 1–5 fall back to
   generation 6). `ItemTableModel` and `ItemFilterProxy` (search, category predicate, "this generation
