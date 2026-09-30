@@ -22,8 +22,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     QMainWindow::setWindowTitle(
             QStringLiteral("PokeSix %1").arg(QApplication::applicationVersion()));
-    QMainWindow::setMinimumSize(960, 640);
-    QMainWindow::resize(1440, 900);
 
     // m_screens (central)
     //  ├ [0] HomePage (인트로)
@@ -65,6 +63,10 @@ MainWindow::MainWindow(QWidget *parent)
     m_screens->addWidget(shell);
 
     QMainWindow::setCentralWidget(m_screens);
+    // 기본 크기가 레이아웃 최소(minimumSizeHint)보다 작으면 창이 알아서 최소로 커진다. 최소값은
+    // 글꼴 폭에 따라 OS마다 조금 다르고, QSS · 글꼴이 입혀지는(polish) show 시점에 확정된다 —
+    // 그래서 여기서 계산하지 않고 창에 맡긴다.
+    QMainWindow::resize(kDefaultSize);
 
     // 화면 전환은 전부 여기서 한다. 인트로 · 앱 막대는 "무엇을 원한다"만 신호로 알린다.
     connect(home, &HomePage::openRequested, this, &MainWindow::open);

@@ -17,8 +17,8 @@ constexpr int kHeight = tok::kSizeAppBar; // 60 (아래 먹선 3 포함)
 constexpr int kBottomLine = 3;
 constexpr int kPaddingX = 20; // padding: 0 20px
 constexpr int kGap = 24;      // 항목 사이 gap: 24px
-constexpr int kSearchWidth = 280;
-constexpr int kSearchHeight = 36;
+constexpr int kMinGap = 12; // 탭 ↔ 세대 버튼 최소 간격(디자인은 1fr 빈칸이라 최소값이 없다)
+
 // MarkButton은 hover 모양(안쪽 여백 3 · 8 + 점선 테 2 + 간격 2)이 들어갈 자리까지 위젯 크기에
 // 넣었다 (위젯 밖에는 그릴 수 없다). 디자인의 평소 배치에는 그 자리가 없으므로(마크 링크는 padding
 // 없음), 막대의 왼쪽 여백과 다음 간격에서 그만큼 뺀다 → 마크가 디자인과 같은 x=20에, 탭이 같은
@@ -44,6 +44,8 @@ AppBar::AppBar(QWidget *parent)
     // 탭은 막대의 아래 끝에 붙인다: 활성 탭(45)이 아래 먹선(3)을 덮어 본문과 이어져 보이게.
     m_tabs = new AppTabBar;
     layout->addWidget(m_tabs, 0, Qt::AlignBottom);
+    // 탭과 세대 버튼 사이: 창이 가장 좁아도 12는 띄운다(없으면 둘이 맞붙는다). 남는 폭은 stretch가.
+    layout->addSpacing(kMinGap);
     layout->addStretch();
 
     m_generation = new GenerationButton(GenerationButton::Size::Compact);
@@ -52,7 +54,6 @@ AppBar::AppBar(QWidget *parent)
     layout->addSpacing(kGap);
 
     m_search = new SearchField(tr("포켓몬 · 기술 · 아이템 검색"), QStringLiteral("Ctrl K"));
-    m_search->setFixedSize(kSearchWidth, kSearchHeight);
     layout->addWidget(m_search, 0, Qt::AlignVCenter);
 
     connect(m_mark, &MarkButton::clicked, this, &AppBar::homeRequested);

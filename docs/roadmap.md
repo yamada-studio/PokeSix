@@ -43,7 +43,7 @@ Qt의 기초(창, 레이아웃, 리소스, 테마, 커스텀 페인트, 시그�
 | 🟨 | **A7** 메뉴 동작 — 시그널/슬롯 | `QAbstractButton`, hover가 선택을 옮김, 키보드(↑↓ 순환 없음 · Enter · 1–4 · Esc), 포커스 이유(`Qt::TabFocusReason`), ▶ 커서와 노란 선택 칸, 눌림 2px, **시그널/슬롯**, 상자 바깥 포커스 링 | 메뉴로 본 화면에 들어가고(임시 되돌아가기 버튼으로) 인트로로 돌아온다. 종료 줄 · Esc 두 번 → 종료 |
 | ⬜ | **A8** 세대 버튼 · 세대 메뉴와 AppState | `Qt::Popup` 창, `Q_PROPERTY`, 첫 `pokesix_data` 타깃, core의 세대 표, `QSettings`(`gen`) | "GEN 4 신오 ▾" → 폭 300 · 9줄 팝업(▶ · ✓), 고른 세대가 `AppState`에 들어가고 다음 실행에도 남는다 |
 | ✅ | **A9** 앱 막대와 탭 | 폴더 탭 커스텀 페인트, 마크 버튼(스티커 변형 36, hover 점선 테), `QShortcut`(Ctrl+1…4), `enum class Page` + `MainWindow::open(Page)` | 빨강 앱 막대: 캡슐 마크 + POKESIX + 탭 4 + 세대 버튼(같은 `AppState`) · 검색 자리. 메뉴 선택 → 그 탭이 활성인 본 화면, 마크 → 인트로 |
-| 🟨 | **A9b** 창 크기를 도감 표에 맞추기 ([가이드](guides/a9b-window-size.md)) | `sizeHint` / `minimumSizeHint` / `QSizePolicy`, 레이아웃의 크기 협상, `resizeEvent`, `QMainWindow` 최소 크기 | 920×840으로 열리고, 좁히면 검색창만 280 → 160으로 줄어든다 |
+| ✅ | **A9b** 창 크기를 도감 표에 맞추기 ([가이드](guides/a9b-window-size.md)) | `sizeHint` / `minimumSizeHint` / `QSizePolicy`, 레이아웃의 크기 협상, `resizeEvent`, `QMainWindow` 최소 크기 | 920×840으로 열리고, 좁히면 검색창만 280 → 160으로 줄어든다 |
 | ⬜ | **A10** 마무리 | 캡처 차이 목록, 키보드만으로 왕복 확인 | `30` · `31`과의 차이 목록이 비어 있거나 설명 가능 → **v0.1.0** |
 
 - **A2 후반 · A4 · A5 · A6과 A3 · A7의 일부는 사용자 요청으로 Claude가 구현했다**([ADR 0010](decisions/0010-intro-implemented-by-claude.md)).

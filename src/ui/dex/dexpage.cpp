@@ -33,8 +33,6 @@ constexpr PanelStyle kListPanel {.outline = 2,
                                  .header = 38,
                                  .headerColor = tok::kRed};
 constexpr QMargins kBodyMargins {12, 8, 12, 0};
-constexpr int kSearchWidth = 280;
-constexpr int kSearchHeight = 36;
 constexpr int kSearchDebounceMs = 150; // 입력 즉시가 아니라 멈춘 뒤 150ms에 거른다(02 SCR-02)
 // TODO(A8): AppState의 현재 세대로 바꾼다. 지금은 세대 버튼과 같은 4(신오)로 고정.
 constexpr int kGeneration = 4;
@@ -100,7 +98,6 @@ DexPage::DexPage(Repository *repository, QWidget *parent)
 
     QHBoxLayout *toolbar = new QHBoxLayout;
     m_search = new SearchField(tr("이름 · 번호로 찾기"));
-    m_search->setFixedSize(kSearchWidth, kSearchHeight);
     toolbar->addWidget(m_search);
     toolbar->addStretch();
     bodyLayout->addLayout(toolbar);

@@ -44,6 +44,9 @@ and the project uses [Semantic Versioning](https://semver.org/).
   columns with taller rows and sits centred on the page.
 
 ### Changed
+- The main window opens at 920×840 (just wide enough for the Dex list); its minimum size now comes
+  from the layouts. The app bar search field shrinks from 280 to 160 px on narrow windows and hides its
+  `Ctrl K` badge below 220 px.
 - The paper background in `app.qss` applies to `QMainWindow` only, so plain container widgets no
   longer paint paper-coloured rectangles over panels.
 - The home screen is a full-screen intro instead of the v1 dashboard; the app bar will have four tabs.
