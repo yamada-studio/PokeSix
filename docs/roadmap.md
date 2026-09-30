@@ -92,13 +92,14 @@ A에서 만든 `PanelFrame`, 버튼 스타일도 갤러리에 올린다.
 | ✅ | **D1** | SQLite 스키마 + 개발 · 테스트용 시드 CSV(목업의 4세대 19종 · 기술 · 아이템, `tests/fixtures/`) + `CsvImporter`(CSV → SQLite) | QtSql, 트랜잭션, 세대 구간 쿼리, CSV 파싱 |
 | ⬜ | **D1b** | 기술 · 이름 · 변경 이력 · 습득 기술(63만 줄) · 아이템 변환 + `Repository` 조회 창구 | 대량 INSERT 성능, 버전 그룹 → 세대, 조회 API 설계 |
 | ✅ | **D2** | `Repository`(종 목록 조회) + `SpeciesTableModel` + `SpeciesFilterProxy` + 도감 목록 화면(`DexPage`, 행 delegate · 타입 칩) | **모델/뷰**, role, `QSortFilterProxyModel`, delegate |
-| 🟨 | **D2b** | ([가이드](guides/d2b-regional-dex.md)) 전국도감과 세대별 지역 도감(관동 · 성도 · 호연 · 신오 …) 분리: `pokedexes` · `pokemon_dex_numbers` · `pokedex_version_groups` CSV 변환, 도감 목록에 도감 선택(전국 / 그 세대 지역 도감)과 지역 번호 칸 | 스키마 확장, 버전 그룹 → 도감 매핑, 모델 칸 · 정렬 키 바꾸기 |
+| ✅ | **D2b** | ([가이드](guides/d2b-regional-dex.md)) 전국도감과 세대별 지역 도감(관동 · 성도 · 호연 · 신오 …) 분리: `pokedexes` · `pokemon_dex_numbers` · `pokedex_version_groups` CSV 변환, 도감 목록에 도감 선택(전국 / 그 세대 지역 도감)과 지역 번호 칸 | 스키마 확장, 버전 그룹 → 도감 매핑, 모델 칸 · 정렬 키 바꾸기 |
 | ⬜ | **D3** | `SquadSession` + `SquadStore`(JSON, 디바운스 저장) → 홈의 최근 스쿼드를 실제 데이터로 | `QJsonDocument`, `QSaveFile`, 디바운스 `QTimer` |
 | ✅ | **D4** | 데이터 받기: PokéAPI CSV 원본을 **고정 커밋**에서 다운로드, 파일별 **SHA-256 검증**, 파일 단위 이어받기 ([ADR 0011](decisions/0011-data-from-pinned-pokeapi-csv.md)) | `QNetworkAccessManager`, 비동기 흐름, `QCryptographicHash`, `QSaveFile` |
 | ✅ | **D5** | `DataUpdater`: 받기 → worker 스레드에서 `CsvImporter`로 변환 → 임시 DB 교체, 인트로 `FirstRunPanel`(받기 전 · 받는 중 · 실패, v2 `34` ③)과 메뉴 잠금 | `moveToThread`, 스레드별 `QSqlDatabase` 연결, 진행 시그널, 상태 전환 |
 
 - **D1의 CP1–CP3(CsvReader · 스키마 · 타입 · 상성 · 종 · 포켓몬 · 종족값)도 사용자 요청으로 Claude가 구현했다.** CP4(`pokesix-import-csv`)는 사용자가 구현했다. 기술 · 습득 기술 · 아이템과 `Repository`는 D1b로 나눴다
 - **D5**: CP1(`DataUpdater` · worker 스레드)은 사용자가, CP2–CP4(메뉴 잠금 · `FirstRunPanel` · 연결)는 사용자 요청으로 Claude가 구현했다
+- **D2b**: CP1–CP2 뼈대(목록 · 스키마 · 선언)와 CP4 · CP5-1 일부는 사용자가, 나머지(변환 본문 · 조회 · `DexSelector` · 연결 · 테스트)는 사용자 요청("이어서 다 해주라")으로 Claude가 구현했다
 - **D2는 사용자 요청("이어서해봐")으로 Claude가 구현했다**: 세대 4 고정(A8에서 `AppState`로), 필터 · 상세 창은 E1. 이후 아이콘 칸(실행 중에 사용자 캐시로 받기) · 번호 오름차순 · 고정 칸 폭을 더했다
 - **D4는 사용자 요청("섞어서")으로 Claude가 구현했다**: `CsvDownloader`, 고정 목록 `csvsource.h`, 개발 도구 `pokesix-fetch-csv`.
   D1(스키마 · CSV 파서 · `CsvImporter`)과 D5의 worker 스레드는 사용자가 가이드를 따라 구현한다

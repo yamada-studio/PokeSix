@@ -28,10 +28,15 @@ struct CsvFile
 };
 
 inline constexpr auto kFiles = std::to_array<CsvFile>({
-        // ── 공통: 언어(이름 표기 ko/en/ja) · 세대 · 버전 그룹(습득 기술이 어느 게임 기준인지)
+        // ── 공통: 언어(이름 표기 ko/en/ja) · 세대 · 버전 그룹(습득 기술 · 도감이 어느 게임
+        // 기준인지) · 버전과
+        // 지방 이름(도감 선택 버튼)
         {"languages", 291, "fbb60019a6a461783d5671a995d5f590db61792a273e90faa0ed630d102a19b8"},
         {"generations", 194, "d39634465251f1334aa0389b5adc4b4f2754eaec61f305fceb9432a3d4c96748"},
         {"version_groups", 726, "28da8d89d8eb4966941f81a9e62b3990510ed4d76dd774158246551a8e7707a7"},
+        {"versions", 907, "70083465865a6a69a9aad2be3fc3915078c6ff740f14a090b1367d8ec9cfc3cd"},
+        {"version_names", 8943, "23e3e9062f98e1f83d475b9eeac57ddff4375b46c175948a65c4fe8d3e1d87b4"},
+        {"region_names", 999, "9380d909d2179a7f3bbad09969a0c89f623be135a100686596b6284c10231b48"},
         // ── 타입과 상성. *_past = 옛 세대의 값(예: 1세대 상성, 6세대 전 강철 내성)
         {"types", 321, "37f039c8d722f47d51ba1c5c5ecf9b7007235b1a9a1af2827645c777b70307c8"},
         {"type_names", 2843, "685230c51074cf2f723debcf827a4df4c36ab0ec7e929c806ad65a3e40958705"},
@@ -66,6 +71,8 @@ inline constexpr auto kFiles = std::to_array<CsvFile>({
         {"pokemon_abilities_past", 6271,
          "cc77c6d85f8323f5f52047d45671140309d19ec0eb0e5e610b68971dc9c64e02"},
         {"pokedexes", 723, "aa6570e15092f80750431a59a8712410cc114d74ffffb75b3334df64b33b3d07"},
+        {"pokedex_version_groups", 274,
+         "e842691103129f6ad30b8a4de3503edfa5086f55a117630cbab6fddcfa83e82c"},
         {"pokemon_dex_numbers", 80383,
          "b8fe3353eec2b0ba4fc37e07e94ffa9f33ce96a7f9856c643a18b3ad518cd393"},
         {"evolution_chains", 2643,

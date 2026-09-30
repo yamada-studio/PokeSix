@@ -39,6 +39,11 @@ private:
     importPokemon(QSqlDatabase &db); // 폼이 처음 나온 세대(pokemon_forms + version_groups)도 여기서
     bool importPokemonTypes(QSqlDatabase &db);
     bool importPokemonStats(QSqlDatabase &db);
+    // 도감 선택(D2b): 지방 이름 · 게임 묶음 · 버전 이름 · 도감 목록과 도감별 번호
+    bool importRegions(QSqlDatabase &db);
+    bool importVersionGroups(QSqlDatabase &db);
+    bool importVersions(QSqlDatabase &db);
+    bool importPokedexes(QSqlDatabase &db); // pokedexes + pokedex_version_groups + dex_numbers
     bool writeMeta(QSqlDatabase &db);
 
     // CSV 파일 하나를 열어, 레코드마다 columns 순서대로 값을 뽑아 row(values)를 부른다.

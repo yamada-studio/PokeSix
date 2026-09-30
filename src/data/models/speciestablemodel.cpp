@@ -36,7 +36,7 @@ QVariant SpeciesTableModel::data(const QModelIndex &index, int role) const
     switch (role) {
     case Qt::DisplayRole:
         if (column == NumberColumn)
-            return row.speciesId;
+            return row.dexNumber;
         if (column == NameColumn)
             return row.nameKo;
         if (isStat)
@@ -50,14 +50,16 @@ QVariant SpeciesTableModel::data(const QModelIndex &index, int role) const
         if (column == TypesColumn)
             return row.types.value(0);
         if (column == CursorColumn || column == IconColumn)
-            return row.speciesId;
+            return row.dexNumber;
         return data(index, Qt::DisplayRole); // 숫자 칸은 숫자 그대로
     case TypesRole:
         return row.types;
     case PokemonIdRole:
         return row.pokemonId;
     case SearchTextRole:
-        return QStringLiteral("%1 %2 %3 %4")
+        // 지방 도감에서는 지방 번호와 전국 번호 둘 다로 찾는다(신오 111 = 전국 445 한카리아스)
+        return QStringLiteral("%1 %2 %3 %4 %5")
+                .arg(row.dexNumber)
                 .arg(row.speciesId)
                 .arg(row.nameKo, row.nameEn, row.nameJa);
     case Qt::TextAlignmentRole:

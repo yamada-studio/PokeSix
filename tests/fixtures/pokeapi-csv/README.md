@@ -4,8 +4,9 @@ PokéAPI 저장소([PokeAPI/pokeapi](https://github.com/PokeAPI/pokeapi), BSD-3-
 커밋 `168b1e89467054cda2e7df43ccebbb69b459497a`의 파일을 **머리줄 + 필요한 줄만** 잘라 둔 것이다.
 `CsvImporter` 테스트가 인터넷 없이 돌도록 하기 위함이다([ADR 0011](../../../docs/decisions/0011-data-from-pinned-pokeapi-csv.md)).
 
-- 통째로 둔 작은 표: `generations` · `version_groups` · `types` · `type_efficacy` · `type_efficacy_past` · `stats`
-- 이름 표는 ko(3) · en(9) · ja(11) 줄만
+- 통째로 둔 작은 표: `generations` · `version_groups` · `versions` · `pokedexes` · `pokedex_version_groups` · `types` · `type_efficacy` · `type_efficacy_past` · `stats`
+- 이름 표(`*_names`, `version_names` · `region_names` 포함)는 ko(3) · en(9) · ja(11) 줄만
+- 도감 번호(`pokemon_dex_numbers`)는 아래 시드 5종의 줄만
 - 포켓몬은 세대 규칙을 확인하기 좋은 것만:
   - 이상해씨(1): 1세대 전용 능력치 "특수"(stat 9)
   - 삐삐(35) · 픽시(36): 5세대까지 노말, 6세대부터 페어리

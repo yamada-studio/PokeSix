@@ -27,13 +27,23 @@ public:
     // 머리 글자(style.header > 0일 때): 제목(도현 20) + 옆 보조 글자(나눔고딕코딩 13 굵게). 흰색.
     void setTitle(const QString &title, const QString &detail = QString());
 
+    // 머리 띠 오른쪽에 위젯을 올린다(style.header > 0일 때. 예: 도감 선택 버튼). 소유권은
+    // PanelFrame. 머리 띠는 레이아웃 바깥이라(레이아웃은 chromeMargins 안쪽만 다룬다) 자리를 직접
+    // 잡는다.
+    void setHeaderWidget(QWidget *widget);
+
 protected:
     void paintEvent(QPaintEvent *event) override;
+    void resizeEvent(QResizeEvent *event) override; // 머리 위젯 자리를 다시 잡는다
+    bool event(QEvent *event) override;             // 머리 위젯의 LayoutRequest를 받는다
 
 private:
     QVBoxLayout *m_layout = nullptr;
     PanelStyle m_style;
     QString m_title;
     QString m_detail;
+    QWidget *m_headerWidget = nullptr;
+
+    void placeHeaderWidget(); // sizeHint 크기로 머리 띠 오른쪽 끝 · 세로 가운데에
 };
 } // namespace com::yamada::studio

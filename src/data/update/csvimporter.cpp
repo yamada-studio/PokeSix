@@ -8,6 +8,7 @@
 
 #include <QDateTime>
 #include <QFile>
+#include <QMap>
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
@@ -108,7 +109,9 @@ bool CsvImporter::run(const QString &csvDir, const QString &dbPath)
             ok = db.transaction() || fail(QStringLiteral("cannot begin a transaction"));
             ok = ok && createSchema(db) && importGenerations(db) && importTypes(db)
                  && importTypeChart(db) && importStats(db) && importSpecies(db) && importPokemon(db)
-                 && importPokemonTypes(db) && importPokemonStats(db) && writeMeta(db);
+                 && importPokemonTypes(db) && importPokemonStats(db) && importRegions(db)
+                 && importVersionGroups(db) && importVersions(db) && importPokedexes(db)
+                 && writeMeta(db);
             if (ok)
                 ok = db.commit()
                      || fail(QStringLiteral("commit failed: %1").arg(db.lastError().text()));
@@ -527,6 +530,127 @@ bool CsvImporter::importPokemonStats(QSqlDatabase &db)
         }
     }
     return true;
+}
+
+// ── 도감 · 게임 (D2b) ─────────────────────────────────────────────────────────────────────
+// 세대 → 게임 묶음(version_groups) → 도감(pokedex_version_groups) → 도감 번호(dex_numbers).
+// 버튼에 쓰는 이름은 지방(regions) · 버전(versions) 이름이다. 도감 자체의 한국어 이름은 PokéAPI에
+// 없다.
+
+bool CsvImporter::importRegions(QSqlDatabase &db)
+{
+    // region_names만 받는다(regions.csv에는 identifier뿐이라 쓸 곳이 없다). 이름이 하나라도 있는
+    // 지방 id가 곧 지방 목록이다.
+    QMap<int, Names> names; // id 순서대로 넣으려고 QMap
+    if (!forEachRecord(QStringLiteral("region_names"),
+                       {QStringLiteral("region_id"), QStringLiteral("local_language_id"),
+                        QStringLiteral("name")},
+                       [&](const QStringList &v) {
+                           const int column = nameColumnOf(v[1].toInt());
+                           if (column >= 0)
+                               names[v[0].toInt()][column] = v[2];
+                           return true;
+                       }))
+        return false;
+
+    Insert insert(db, QStringLiteral("INSERT INTO regions (id, name_ko, name_en, name_ja) "
+                                     "VALUES (?, ?, ?, ?)"));
+    if (!insert.isValid())
+        return fail(insert.error());
+    for (auto it = names.cbegin(); it != names.cend(); ++it) {
+        const Names &n = it.value();
+        if (!insert.exec({it.key(), textOrNull(n[0]), textOrNull(n[1]), textOrNull(n[2])}))
+            return fail(insert.error());
+    }
+    return true;
+}
+
+bool CsvImporter::importVersionGroups(QSqlDatabase &db)
+{
+    // CSV의 order 열은 SQL 예약어라서 sort_order로 저장한다.
+    Insert insert(db, QStringLiteral("INSERT INTO version_groups (id, identifier, generation, "
+                                     "sort_order) VALUES (?, ?, ?, ?)"));
+    if (!insert.isValid())
+        return fail(insert.error());
+    return forEachRecord(QStringLiteral("version_groups"),
+                         {QStringLiteral("id"), QStringLiteral("identifier"),
+                          QStringLiteral("generation_id"), QStringLiteral("order")},
+                         [&](const QStringList &v) {
+                             return insert.exec({v[0].toInt(), v[1], v[2].toInt(), v[3].toInt()})
+                                    || fail(insert.error());
+                         });
+}
+
+bool CsvImporter::importVersions(QSqlDatabase &db)
+{
+    QHash<int, Names> names;
+    if (!forEachRecord(QStringLiteral("version_names"),
+                       {QStringLiteral("version_id"), QStringLiteral("local_language_id"),
+                        QStringLiteral("name")},
+                       [&](const QStringList &v) {
+                           const int column = nameColumnOf(v[1].toInt());
+                           if (column >= 0)
+                               names[v[0].toInt()][column] = v[2];
+                           return true;
+                       }))
+        return false;
+
+    Insert insert(db, QStringLiteral("INSERT INTO versions (id, version_group_id, identifier, "
+                                     "name_ko, name_en, name_ja) VALUES (?, ?, ?, ?, ?, ?)"));
+    if (!insert.isValid())
+        return fail(insert.error());
+    return forEachRecord(QStringLiteral("versions"),
+                         {QStringLiteral("id"), QStringLiteral("version_group_id"),
+                          QStringLiteral("identifier")},
+                         [&](const QStringList &v) {
+                             const int id = v[0].toInt();
+                             const Names &n = names.value(id);
+                             return insert.exec({id, v[1].toInt(), v[2], textOrNull(n[0]),
+                                                 textOrNull(n[1]), textOrNull(n[2])})
+                                    || fail(insert.error());
+                         });
+}
+
+bool CsvImporter::importPokedexes(QSqlDatabase &db)
+{
+    // 1) 도감 목록. 전국 · conquest처럼 지방이 없는 도감은 region_id가 빈 칸 → NULL
+    Insert dexes(db, QStringLiteral("INSERT INTO pokedexes (id, identifier, region_id, "
+                                    "is_main_series) VALUES (?, ?, ?, ?)"));
+    if (!dexes.isValid())
+        return fail(dexes.error());
+    if (!forEachRecord(QStringLiteral("pokedexes"),
+                       {QStringLiteral("id"), QStringLiteral("identifier"),
+                        QStringLiteral("region_id"), QStringLiteral("is_main_series")},
+                       [&](const QStringList &v) {
+                           return dexes.exec({v[0].toInt(), v[1], intOrNull(v[2]), v[3].toInt()})
+                                  || fail(dexes.error());
+                       }))
+        return false;
+
+    // 2) 도감 ↔ 게임 묶음 (다대다: 관동도감 = 레드 · 블루 · 피카츄 …, 신오도감 = DP · BDSP)
+    Insert links(db, QStringLiteral("INSERT INTO pokedex_version_groups (pokedex_id, "
+                                    "version_group_id) VALUES (?, ?)"));
+    if (!links.isValid())
+        return fail(links.error());
+    if (!forEachRecord(QStringLiteral("pokedex_version_groups"),
+                       {QStringLiteral("pokedex_id"), QStringLiteral("version_group_id")},
+                       [&](const QStringList &v) {
+                           return links.exec({v[0].toInt(), v[1].toInt()}) || fail(links.error());
+                       }))
+        return false;
+
+    // 3) 도감별 번호 (8천 줄 — run()의 트랜잭션 안이라 한 번에 커밋된다)
+    Insert numbers(db, QStringLiteral("INSERT INTO dex_numbers (pokedex_id, species_id, number) "
+                                      "VALUES (?, ?, ?)"));
+    if (!numbers.isValid())
+        return fail(numbers.error());
+    return forEachRecord(QStringLiteral("pokemon_dex_numbers"),
+                         {QStringLiteral("pokedex_id"), QStringLiteral("species_id"),
+                          QStringLiteral("pokedex_number")},
+                         [&](const QStringList &v) {
+                             return numbers.exec({v[0].toInt(), v[1].toInt(), v[2].toInt()})
+                                    || fail(numbers.error());
+                         });
 }
 
 bool CsvImporter::writeMeta(QSqlDatabase &db)
