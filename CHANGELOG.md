@@ -40,8 +40,9 @@ and the project uses [Semantic Versioning](https://semver.org/).
   panel header shows the count. Generation 4 is fixed until the generation popup lands.
 - `PanelFrame` title header band and a reusable `typechip` painter.
 - Dex list icons: `SpriteCache` downloads small Pokémon icons from PokéAPI/sprites into the user cache
-  folder on demand (never into the repository); the list sorts by number, uses fixed, slightly wider
-  columns with taller rows and sits centred on the page.
+  folder on demand (never into the repository); the list sorts by number, uses taller rows and
+  responsive columns: fixed columns (the type column fits any two chips) plus weighted columns for the
+  name and stats, in a panel that fills the page up to 1100 px.
 
 ### Changed
 - The main window opens at 920×840 (just wide enough for the Dex list); its minimum size now comes

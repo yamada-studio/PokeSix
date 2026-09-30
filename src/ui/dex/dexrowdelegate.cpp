@@ -11,6 +11,7 @@
 #include <QPainterPath>
 #include <QPixmap>
 #include <QPixmapCache>
+#include <QtMath>
 
 #include <algorithm>
 
@@ -55,6 +56,22 @@ DexRowDelegate::DexRowDelegate(SpriteCache *sprites, QObject *parent)
     : QStyledItemDelegate(parent)
     , m_sprites(sprites)
 {
+}
+
+int DexRowDelegate::typesColumnWidth()
+{
+    qreal widest = 0;
+    qreal second = 0;
+    for (const tok::TypeColor &type : tok::kTypes) {
+        const qreal width = typechip::width(type);
+        if (width > widest) {
+            second = widest;
+            widest = width;
+        } else if (width > second) {
+            second = width;
+        }
+    }
+    return qCeil(2 * kCellPadding + widest + typechip::kGap + second);
 }
 
 void DexRowDelegate::paintIcon(QPainter *painter, const QRectF &cell, int pokemonId) const
