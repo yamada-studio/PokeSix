@@ -15,11 +15,8 @@
 #include "ui/widgets/searchfield.h"
 
 #include <QButtonGroup>
-#include <QCheckBox>
-#include <QFrame>
 #include <QHBoxLayout>
 #include <QHeaderView>
-#include <QLabel>
 #include <QLineEdit>
 #include <QTableView>
 #include <QTimer>
@@ -68,6 +65,9 @@ ItemsPage::ItemsPage(Repository *repository, AppState *state, QWidget *parent)
     , m_searchDelay(new QTimer(this))
 {
     m_proxy->setSourceModel(m_model);
+    // 목록은 늘 지금 세대에 있는 아이템만(도감과 같다). 세대를 바꾸면 load()가 다시 채운다.
+    // (디자인은 다른 세대 아이템도 흐리게 보여 주는 체크박스였지만 쓰지 않는다 — design/README.md)
+    m_proxy->setOnlyInGeneration(true);
 
     QHBoxLayout *layout = new QHBoxLayout(this);
     layout->setContentsMargins(kPageMargins);
@@ -109,25 +109,6 @@ QWidget *ItemsPage::buildCategoryBody()
         m_groups->buttons().first()->setChecked(true); // 전체
     layout->addStretch();
 
-    // 아래: "4세대에 있는 것만" — 끄면 다른 세대 아이템도 흐리게 함께 보인다(디자인 기본값: 끔)
-    QFrame *footer = new QFrame;
-    footer->setObjectName(QStringLiteral("itemsFooter")); // app.qss: 위 점선
-    QVBoxLayout *footerLayout = new QVBoxLayout(footer);
-    footerLayout->setContentsMargins(4, 14, 4, 14);
-    footerLayout->setSpacing(10);
-    m_onlyThisGeneration = new QCheckBox;
-    m_onlyThisGeneration->setObjectName(QStringLiteral("itemsOnlyGeneration"));
-    footerLayout->addWidget(m_onlyThisGeneration);
-    QLabel *hint = new QLabel(tr("끄면 다른 세대 아이템도 흐리게 함께 보여요."));
-    hint->setObjectName(QStringLiteral("itemsHint"));
-    hint->setWordWrap(true);
-    footerLayout->addWidget(hint);
-    layout->addWidget(footer);
-
-    connect(m_onlyThisGeneration, &QCheckBox::toggled, this, [this](bool on) {
-        m_proxy->setOnlyInGeneration(on);
-        updateTitle();
-    });
     return body;
 }
 
@@ -211,7 +192,6 @@ void ItemsPage::load()
     m_model->setRows(m_repository->itemsForGeneration(generation), generation);
     m_delegate->setGeneration(generation);
     m_header->setGeneration(generation);
-    m_onlyThisGeneration->setText(tr("%1세대에 있는 것만").arg(generation));
     m_loaded = m_model->rowCount() > 0; // 비어 있으면(DB가 아직 없음) 다음에 보일 때 다시
     updateTitle();
     qCInfo(lcUi) << "items loaded" << m_model->rowCount() << "for generation" << generation;
