@@ -4,13 +4,15 @@
 #include "data/sprites/spritecache.h"
 #include "ui/theme/theme.h"
 #include "ui/theme/tokens.h"
+#include "ui/widgets/typechip.h"
 
 #include <QFontMetricsF>
+#include <QLocale>
 #include <QPainter>
 #include <QPainterPath>
 #include <QPixmap>
 #include <QPixmapCache>
-#include <QtMath>
+#include <QRegularExpression>
 
 namespace {
 using namespace com::yamada::studio;
@@ -18,22 +20,27 @@ using namespace com::yamada::studio;
 constexpr qreal kCellPadding = 4; // 칸 좌우 여백(도감과 같다)
 constexpr QSizeF kCursor {9, 12}; // ▶
 constexpr qreal kPlaceholder = 26; // 아이콘이 없을 때의 원 지름(디자인의 아이콘 자리)
-constexpr QSizeF kGenCell {18, 16};
-constexpr qreal kGenGap = 2;
-constexpr qreal kGenRadius = 3;
+constexpr qreal kChipGap = 6;             // 타입 칩 ↔ 기술 이름 ↔ 설명
+constexpr int kLastBwStyleGeneration = 5; // 여기까지는 5세대(BW) 그림
 } // namespace
 
 namespace com::yamada::studio {
-int ItemRowDelegate::generationsColumnWidth()
+QString ItemRowDelegate::iconKey(const QString &identifier, const QString &machineType,
+                                 int generation)
 {
-    return qCeil(kGenerationCount * kGenCell.width() + (kGenerationCount - 1) * kGenGap
-                 + 2 * kCellPadding);
-}
-
-QRectF ItemRowDelegate::generationRect(const QRectF &cell, int generation)
-{
-    const qreal x = cell.left() + kCellPadding + (generation - 1) * (kGenCell.width() + kGenGap);
-    return {x, cell.center().y() - kGenCell.height() / 2, kGenCell.width(), kGenCell.height()};
+    QString name = identifier;
+    // 기술머신인데 타입을 모르면(2–4세대 저주의 ??? 타입, 데이터에만 있는 비전머신08) 노말 CD로
+    static const QRegularExpression machine(QStringLiteral("^(tm|hm|tr)\\d"));
+    const QString type = machineType.isEmpty() && machine.match(identifier).hasMatch()
+                                 ? QStringLiteral("normal")
+                                 : machineType;
+    if (!type.isEmpty()) {
+        // 기술머신은 아이템 하나("tm01")가 세대마다 다른 기술을 담는다 → 그림도 담긴 기술의 타입
+        // CD. 비전머신은 hm-, 나머지(기술머신 · 기술레코드)는 tm- 그림.
+        const bool hidden = identifier.startsWith(QLatin1String("hm"));
+        name = (hidden ? QStringLiteral("hm-") : QStringLiteral("tm-")) + type;
+    }
+    return generation <= kLastBwStyleGeneration ? QStringLiteral("gen5/") + name : name;
 }
 
 ItemRowDelegate::ItemRowDelegate(SpriteCache *sprites, QObject *parent)
@@ -54,7 +61,7 @@ void ItemRowDelegate::paint(QPainter *painter, const QStyleOptionViewItem &optio
     const QRectF cell = option.rect;
     const bool selected = option.state & QStyle::State_Selected;
 
-    // 1) 줄 바탕(선택 > 홀수 줄 > 흰색) + 아래 선
+    // 줄 바탕(선택 > 홀수 줄 > 흰색) + 아래 선
     QColor background(tok::kWhite);
     if (selected)
         background = QColor(tok::kYellowTint);
@@ -78,7 +85,7 @@ void ItemRowDelegate::paint(QPainter *painter, const QStyleOptionViewItem &optio
         }
         break;
     case ItemTableModel::IconColumn:
-        paintIcon(painter, cell, index.data(ItemTableModel::IdentifierRole).toString());
+        paintIcon(painter, cell, index);
         break;
     case ItemTableModel::NameColumn:
         painter->setFont(theme::font(theme::kFamilyBody, 14, QFont::ExtraBold));
@@ -89,16 +96,18 @@ void ItemRowDelegate::paint(QPainter *painter, const QStyleOptionViewItem &optio
                         .elidedText(index.data().toString(), Qt::ElideRight, content.width()));
         break;
     case ItemTableModel::EffectColumn:
-        painter->setFont(theme::font(theme::kFamilyBody, 13));
-        painter->setPen(QColor(tok::kText2));
-        painter->drawText(
-                content, Qt::AlignLeft | Qt::AlignVCenter,
-                QFontMetricsF(painter->font())
-                        .elidedText(index.data().toString(), Qt::ElideRight, content.width()));
+        paintEffect(painter, content, index);
         break;
-    case ItemTableModel::GenerationsColumn:
-        paintGenerations(painter, cell, index.data(ItemTableModel::GenerationsRole).toInt());
+    case ItemTableModel::PriceColumn: {
+        const int cost = index.data().toInt();
+        painter->setFont(theme::font(theme::kFamilyData, 13));
+        painter->setPen(QColor(cost > 0 ? tok::kText1 : tok::kTextDisabled));
+        // QLocale로 천 단위 쉼표("1,200"). 가격은 최신 게임 기준 하나뿐이다(PokéAPI)
+        painter->drawText(content, Qt::AlignRight | Qt::AlignVCenter,
+                          cost > 0 ? tr("%1원").arg(QLocale(QLocale::Korean).toString(cost))
+                                   : QStringLiteral("—"));
         break;
+    }
     default:
         break;
     }
@@ -106,47 +115,63 @@ void ItemRowDelegate::paint(QPainter *painter, const QStyleOptionViewItem &optio
 }
 
 void ItemRowDelegate::paintIcon(QPainter *painter, const QRectF &cell,
-                                const QString &identifier) const
+                                const QModelIndex &index) const
 {
-    const QString file = m_sprites->path(identifier);
+    const QString key
+            = iconKey(index.data(ItemTableModel::IdentifierRole).toString(),
+                      index.data(ItemTableModel::MachineTypeRole).toString(), m_generation);
+    const QString file = m_sprites->path(key);
     QPixmap pixmap;
     if (!file.isEmpty()) {
         // 파일 → QPixmap 디코딩은 한 번만(QPixmapCache: 앱 전역 LRU). 도감 아이콘과 key가 겹치지
         // 않게
-        const QString key = QStringLiteral("pokesix.item.%1").arg(identifier);
-        if (!QPixmapCache::find(key, &pixmap) && pixmap.load(file))
-            QPixmapCache::insert(key, pixmap);
+        const QString cacheKey = QStringLiteral("pokesix.item.") + key;
+        if (!QPixmapCache::find(cacheKey, &pixmap) && pixmap.load(file))
+            QPixmapCache::insert(cacheKey, pixmap);
     } else {
-        m_sprites->request(identifier); // 받으면 ready → ItemsPage가 표를 다시 그린다
+        m_sprites->request(key); // 받으면 ready → ItemsPage가 표를 다시 그린다
     }
     if (pixmap.isNull()) {
-        // 자리 표시: 원(기술머신은 아이콘 파일 이름이 타입별이라 아직 없다)
         painter->setPen(QPen(QColor(tok::kLineStrong), 1.5));
         painter->setBrush(QColor(tok::kPaperAlt));
         painter->drawEllipse(cell.center(), kPlaceholder / 2, kPlaceholder / 2);
         return;
     }
-    // 30×30 도트를 그대로(정수 배가 아니게 늘리면 흐려진다). 칸 가운데에.
+    // 도트를 그대로(정수 배가 아니게 늘리면 흐려진다). 칸 가운데에.
     const QPointF topLeft = cell.center() - QPointF(pixmap.width() / 2.0, pixmap.height() / 2.0);
     painter->drawPixmap(topLeft.toPoint(), pixmap);
 }
 
-void ItemRowDelegate::paintGenerations(QPainter *painter, const QRectF &cell, int bits) const
+void ItemRowDelegate::paintEffect(QPainter *painter, const QRectF &content,
+                                  const QModelIndex &index) const
 {
-    for (int g = 1; g <= kGenerationCount; ++g) {
-        const QRectF box = generationRect(cell, g);
-        const bool has = (bits >> (g - 1)) & 1;
-        const bool current = g == m_generation;
-        // 테 두께가 달라도 칸 바깥 크기는 같게: 펜 반 폭만큼 안쪽으로
-        const qreal width = current ? 2.0 : 1.5;
-        QPen pen(QColor(current ? tok::kYellow : (has ? tok::kInk : tok::kLineStrong)), width);
-        if (!has && !current)
-            pen.setStyle(Qt::DashLine);
-        painter->setPen(pen);
-        painter->setBrush(QColor(has ? tok::kGreen : tok::kWhite));
-        const qreal half = width / 2;
-        painter->drawRoundedRect(box.adjusted(half, half, -half, -half), kGenRadius - half,
-                                 kGenRadius - half);
+    qreal x = content.left();
+    // 기술머신: [타입 칩] 기술 이름 — 이 세대에 담긴 기술(기술머신01: 4세대 힘껏펀치, 5세대
+    // 손톱갈기)
+    const QString move = index.data(ItemTableModel::MachineMoveRole).toString();
+    if (!move.isEmpty()) {
+        if (const tok::TypeColor *type
+            = typechip::find(index.data(ItemTableModel::MachineTypeRole).toString())) {
+            const QPointF topLeft(x, content.center().y() - typechip::kHeight / 2);
+            x += typechip::paint(*painter, topLeft, *type) + kChipGap;
+        }
+        const QFont moveFont = theme::font(theme::kFamilyBody, 13, QFont::ExtraBold);
+        painter->setFont(moveFont);
+        painter->setPen(QColor(tok::kText1));
+        const QRectF moveRect(x, content.top(), content.right() - x, content.height());
+        const QString moveText
+                = QFontMetricsF(moveFont).elidedText(move, Qt::ElideRight, moveRect.width());
+        painter->drawText(moveRect, Qt::AlignLeft | Qt::AlignVCenter, moveText);
+        x += QFontMetricsF(moveFont).horizontalAdvance(moveText) + kChipGap;
     }
+    if (x >= content.right())
+        return;
+    const QFont font = theme::font(theme::kFamilyBody, 13);
+    painter->setFont(font);
+    painter->setPen(QColor(tok::kText2));
+    const QRectF rest(x, content.top(), content.right() - x, content.height());
+    painter->drawText(
+            rest, Qt::AlignLeft | Qt::AlignVCenter,
+            QFontMetricsF(font).elidedText(index.data().toString(), Qt::ElideRight, rest.width()));
 }
 } // namespace com::yamada::studio

@@ -40,10 +40,12 @@ QVariant ItemTableModel::data(const QModelIndex &index, int role) const
             return name;
         if (index.column() == EffectColumn)
             return row.effect;
+        if (index.column() == PriceColumn)
+            return row.cost;
         return {};
     case SortRole:
-        if (index.column() == GenerationsColumn)
-            return row.introGeneration();
+        if (index.column() == PriceColumn)
+            return row.cost;
         if (index.column() == EffectColumn)
             return row.effect;
         return name;
@@ -60,7 +62,13 @@ QVariant ItemTableModel::data(const QModelIndex &index, int role) const
     case IntroGenerationRole:
         return row.introGeneration();
     case SearchTextRole:
-        return QStringLiteral("%1 %2 %3 %4").arg(row.nameKo, row.nameEn, row.nameJa, row.effect);
+        return QStringLiteral("%1 %2 %3 %4 %5 %6")
+                .arg(row.nameKo, row.nameEn, row.nameJa, row.effect, row.machineMoveKo,
+                     row.machineMoveEn);
+    case MachineMoveRole:
+        return row.machineMoveKo.isEmpty() ? row.machineMoveEn : row.machineMoveKo;
+    case MachineTypeRole:
+        return row.machineType;
     default:
         return {};
     }
@@ -75,8 +83,8 @@ QVariant ItemTableModel::headerData(int section, Qt::Orientation orientation, in
         return tr("이름");
     case EffectColumn:
         return tr("효과");
-    case GenerationsColumn:
-        return tr("세대"); // 머리 칸은 1–9 숫자를 그리는 쪽이 이 글자 대신 쓸 수 있다
+    case PriceColumn:
+        return tr("가격");
     default:
         return {};
     }

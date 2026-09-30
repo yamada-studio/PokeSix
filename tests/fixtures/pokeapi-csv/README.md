@@ -7,6 +7,7 @@ PokéAPI 저장소([PokeAPI/pokeapi](https://github.com/PokeAPI/pokeapi), BSD-3-
 - 통째로 둔 작은 표: `generations` · `version_groups` · `versions` · `pokedexes` · `pokedex_version_groups` · `types` · `type_efficacy` · `type_efficacy_past` · `stats`
 - 이름 표(`*_names`, `version_names` · `region_names` 포함)는 ko(3) · en(9) · ja(11) 줄만
 - 도감 번호(`pokemon_dex_numbers`)는 아래 시드 5종의 줄만
+- 기술머신(`machines`)은 시드 아이템의 줄만(= 기술머신01), 기술(`moves` · `move_names` · `move_changelog`)은 거기 담긴 기술 8개의 줄만
 - 아이템(`items` · `item_names` · `item_game_indices` · `item_flavor_text`)은 시드 아이템 7개의 줄만(설명문은 ko · en). `item_categories` · `item_pockets`는 통째로
   - 마스터볼(1) · 상처약(17) · 불꽃의돌(82) · 각성의돌(109, 4세대~) · 먹다남은음식(211, 2세대~) · 기술머신01(305, 세대마다 문구가 다르다) · 얼음의돌(885, 7세대~)
 - 포켓몬은 세대 규칙을 확인하기 좋은 것만:

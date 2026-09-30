@@ -114,7 +114,8 @@ bool CsvImporter::run(const QString &csvDir, const QString &dbPath)
                  && importTypeChart(db) && importStats(db) && importSpecies(db) && importPokemon(db)
                  && importPokemonTypes(db) && importPokemonStats(db) && importRegions(db)
                  && importVersionGroups(db) && importVersions(db) && importPokedexes(db)
-                 && importItems(db) && importItemEffects(db) && writeMeta(db);
+                 && importItems(db) && importItemEffects(db) && importMoves(db)
+                 && importMachines(db) && writeMeta(db);
             if (ok)
                 ok = db.commit()
                      || fail(QStringLiteral("commit failed: %1").arg(db.lastError().text()));
@@ -722,6 +723,120 @@ bool CsvImporter::importItems(QSqlDatabase &db)
                              return generations.exec({v[0].toInt(), v[1].toInt()})
                                     || fail(generations.error());
                          });
+}
+
+bool CsvImporter::importMoves(QSqlDatabase &db)
+{
+    // 버전 그룹 → 세대(옛 타입이 "어느 세대까지"였는지 계산에 쓴다)
+    QHash<int, int> versionGroupGen;
+    if (!forEachRecord(QStringLiteral("version_groups"),
+                       {QStringLiteral("id"), QStringLiteral("generation_id")},
+                       [&](const QStringList &v) {
+                           versionGroupGen.insert(v[0].toInt(), v[1].toInt());
+                           return true;
+                       }))
+        return false;
+
+    // 옛 타입: move_changelog의 (기술, V, 타입) = "버전 그룹 V 전까지는 이 타입" → (gen(V) − 1,
+    // 타입)
+    QHash<int, std::vector<std::pair<int, int>>> pastTypes;
+    if (!forEachRecord(QStringLiteral("move_changelog"),
+                       {QStringLiteral("move_id"), QStringLiteral("changed_in_version_group_id"),
+                        QStringLiteral("type_id")},
+                       [&](const QStringList &v) {
+                           if (!v[2].isEmpty())
+                               pastTypes[v[0].toInt()].push_back(
+                                       {versionGroupGen.value(v[1].toInt()) - 1, v[2].toInt()});
+                           return true;
+                       }))
+        return false;
+
+    QHash<int, Names> names;
+    if (!forEachRecord(QStringLiteral("move_names"),
+                       {QStringLiteral("move_id"), QStringLiteral("local_language_id"),
+                        QStringLiteral("name")},
+                       [&](const QStringList &v) {
+                           const int column = nameColumnOf(v[1].toInt());
+                           if (column >= 0)
+                               names[v[0].toInt()][column] = v[2];
+                           return true;
+                       }))
+        return false;
+
+    Insert moves(db,
+                 QStringLiteral("INSERT INTO moves (id, identifier, intro_gen, name_ko, name_en, "
+                                "name_ja) VALUES (?, ?, ?, ?, ?, ?)"));
+    Insert types(db, QStringLiteral("INSERT INTO move_types (move_id, type_id, gen_from, gen_to) "
+                                    "VALUES (?, ?, ?, ?)"));
+    if (!moves.isValid() || !types.isValid())
+        return fail(moves.isValid() ? types.error() : moves.error());
+    return forEachRecord(
+            QStringLiteral("moves"),
+            {QStringLiteral("id"), QStringLiteral("identifier"), QStringLiteral("generation_id"),
+             QStringLiteral("type_id")},
+            [&](const QStringList &v) {
+                const int id = v[0].toInt();
+                const int intro = v[2].toInt();
+                const Names &n = names.value(id);
+                if (!moves.exec({id, v[1], intro, textOrNull(n[0]), textOrNull(n[1]),
+                                 textOrNull(n[2])}))
+                    return fail(moves.error());
+                for (const auto &range :
+                     genranges::toGenRanges<int>(intro, pastTypes.value(id), v[3].toInt())) {
+                    if (range.value >= kFirstNonBattleTypeId)
+                        continue; // ??? 타입(저주의 옛 타입)은 types 표에 없다
+                    if (!types.exec({id, range.value, range.from, genOrNull(range.to)}))
+                        return fail(types.error());
+                }
+                return true;
+            });
+}
+
+bool CsvImporter::importMachines(QSqlDatabase &db)
+{
+    // 기술머신 번호 · 담긴 기술은 게임마다 다르다. 세대마다 그 세대 첫 게임(버전 그룹 순서가 가장
+    // 이른 것)의 기술을 쓴다 — 효과 문구와 같은 규칙.
+    struct GroupInfo
+    {
+        int generation = 0;
+        int order = 0;
+    };
+    QHash<int, GroupInfo> groups;
+    if (!forEachRecord(
+                QStringLiteral("version_groups"),
+                {QStringLiteral("id"), QStringLiteral("generation_id"), QStringLiteral("order")},
+                [&](const QStringList &v) {
+                    groups.insert(v[0].toInt(), {v[1].toInt(), v[2].toInt()});
+                    return true;
+                }))
+        return false;
+    struct Chosen
+    {
+        int order = 0;
+        int move = 0;
+    };
+    QHash<QPair<int, int>, Chosen> chosen; // (item, 세대) → 기술
+    if (!forEachRecord(QStringLiteral("machines"),
+                       {QStringLiteral("item_id"), QStringLiteral("version_group_id"),
+                        QStringLiteral("move_id")},
+                       [&](const QStringList &v) {
+                           const GroupInfo group = groups.value(v[1].toInt());
+                           const QPair<int, int> key(v[0].toInt(), group.generation);
+                           const auto it = chosen.constFind(key);
+                           if (it == chosen.constEnd() || group.order < it->order)
+                               chosen.insert(key, {group.order, v[2].toInt()});
+                           return true;
+                       }))
+        return false;
+
+    Insert insert(db, QStringLiteral("INSERT INTO item_machines (item_id, generation, move_id) "
+                                     "VALUES (?, ?, ?)"));
+    if (!insert.isValid())
+        return fail(insert.error());
+    for (auto it = chosen.cbegin(); it != chosen.cend(); ++it)
+        if (!insert.exec({it.key().first, it.key().second, it->move}))
+            return fail(insert.error());
+    return true;
 }
 
 bool CsvImporter::importItemEffects(QSqlDatabase &db)

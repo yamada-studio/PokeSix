@@ -42,6 +42,10 @@ struct ItemRow
     QString nameKo, nameEn, nameJa;
     quint16 generations = 0;
     QString effect; // 조회한 세대의 한국어 효과 문구(없으면 빈 문자열)
+    int cost = 0; // 상점 가격(PokéAPI는 최신 게임 기준 하나뿐이다). 0 = 팔지 않음
+    // 기술머신 · 비전머신 · 기술레코드면 조회한 세대에 담긴 기술(아니면 비어 있다)
+    QString machineMoveKo, machineMoveEn;
+    QString machineType; // 그 기술의 그 세대 타입 identifier("fighting"). ??? 타입이면 비어 있다
 
     bool existsIn(int generation) const { return generations & (1u << (generation - 1)); }
     int introGeneration() const; // 처음 나온 세대(없으면 0)
