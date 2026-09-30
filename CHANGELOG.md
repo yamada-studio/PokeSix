@@ -45,7 +45,7 @@ and the project uses [Semantic Versioning](https://semver.org/).
   more CSV files are downloaded and the database schema is now version 2 (existing databases are
   re-imported on first run).
 - Generation menu and `AppState`: the intro and app bar generation buttons read "N세대 ▾" and open a
-  menu of generations 1–7; the choice is saved in the settings and the Dex list (regional dex buttons,
+  menu of generations 1–9; the choice is saved in the settings and the Dex list (regional dex buttons,
   species, types and stats) follows it.
 - Regional dex buttons show split version badges (e.g. Sinnoh [D|P], Johto [HG|SS]); badge labels and
   colours, hidden dexes and label overrides live in `resources/theme/dexstyle.json`.

@@ -171,9 +171,14 @@ void DexSelector::setDexes(const QList<DexInfo> &dexes)
             badges.append(style);
         }
         const QString label = rule.label.isEmpty() ? dex.regionKo : rule.label;
+        // 툴팁: 버전 한국어 이름(없으면 영어 — 9세대 DLC는 PokéAPI에 한국어 이름이 아직 없다)
+        QStringList names;
+        for (qsizetype i = 0; i < dex.versions.size(); ++i) {
+            const QString ko = dex.versionsKo.value(i);
+            names.append(ko.isEmpty() ? dex.versionsEn.value(i) : ko);
+        }
         addButton(new DexButton(label, badges),
-                  tr("%1도감 — %2").arg(label, dex.versionsKo.join(QStringLiteral(" · "))),
-                  dex.pokedexId);
+                  tr("%1 — %2").arg(label, names.join(QStringLiteral(" · "))), dex.pokedexId);
     }
 
     // 3) 전국을 켠다. 4) sizeHint가 바뀌었다고 알린다 → 부모(PanelFrame)가 자리를 다시 잡는다.

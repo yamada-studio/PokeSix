@@ -99,7 +99,7 @@ A에서 만든 `PanelFrame`, 버튼 스타일도 갤러리에 올린다.
 
 - **D1의 CP1–CP3(CsvReader · 스키마 · 타입 · 상성 · 종 · 포켓몬 · 종족값)도 사용자 요청으로 Claude가 구현했다.** CP4(`pokesix-import-csv`)는 사용자가 구현했다. 기술 · 습득 기술 · 아이템과 `Repository`는 D1b로 나눴다
 - **D5**: CP1(`DataUpdater` · worker 스레드)은 사용자가, CP2–CP4(메뉴 잠금 · `FirstRunPanel` · 연결)는 사용자 요청으로 Claude가 구현했다
-- **A8 (일부)**: 사용자 요청으로 Claude가 구현했다. `AppState`(`Q_PROPERTY generation`, `QSettings`), 세대 버튼 "N세대 ▾" + `QMenu` 1–7세대, 도감이 세대를 따라감. 남은 것: 디자인의 폭 300 팝업(▶ · ✓, 지방 · 게임 이름 줄), core의 세대 표
+- **A8 (일부)**: 사용자 요청으로 Claude가 구현했다. `AppState`(`Q_PROPERTY generation`, `QSettings`), 세대 버튼 "N세대 ▾" + `QMenu` 1–9세대, 도감이 세대를 따라감. 남은 것: 디자인의 폭 300 팝업(▶ · ✓, 지방 · 게임 이름 줄), core의 세대 표
 - **D2b**: CP1–CP2 뼈대(목록 · 스키마 · 선언)와 CP4 · CP5-1 일부는 사용자가, 나머지(변환 본문 · 조회 · `DexSelector` · 연결 · 테스트)는 사용자 요청("이어서 다 해주라")으로 Claude가 구현했다
 - **D2는 사용자 요청("이어서해봐")으로 Claude가 구현했다**: 세대 4 고정(A8에서 `AppState`로), 필터 · 상세 창은 E1. 이후 아이콘 칸(실행 중에 사용자 캐시로 받기) · 번호 오름차순 · 고정 칸 폭을 더했다
 - **D4는 사용자 요청("섞어서")으로 Claude가 구현했다**: `CsvDownloader`, 고정 목록 `csvsource.h`, 개발 도구 `pokesix-fetch-csv`.
