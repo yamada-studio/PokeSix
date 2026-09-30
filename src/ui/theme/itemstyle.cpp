@@ -43,16 +43,28 @@ Table load()
                                            : QJsonDocument();
     if (!document.isObject()) {
         qCWarning(lcUi) << "cannot read" << kPath << error.errorString();
-        table.groups.append(
-                {QString::fromLatin1(itemstyle::kAll), QObject::tr("전체"), QColor(Qt::white)});
+        table.groups.append({QString::fromLatin1(itemstyle::kAll),
+                             {QObject::tr("전체"), QStringLiteral("All"), QStringLiteral("すべて")},
+                             QColor(Qt::white)});
         return table;
     }
     const QJsonObject root = document.object();
     for (const QJsonValue &value : root.value(QStringLiteral("groups")).toArray()) {
         const QJsonObject g = value.toObject();
         const QString key = g.value(QStringLiteral("key")).toString();
-        table.groups.append({key, g.value(QStringLiteral("label")).toString(),
-                             QColor::fromString(g.value(QStringLiteral("color")).toString())});
+        // label: {"ko": …, "en": …, "ja": …} 또는 한국어 글자 하나
+        const QJsonValue label = g.value(QStringLiteral("label"));
+        LocalizedText text;
+        if (label.isObject()) {
+            const QJsonObject l = label.toObject();
+            text = {l.value(QStringLiteral("ko")).toString(),
+                    l.value(QStringLiteral("en")).toString(),
+                    l.value(QStringLiteral("ja")).toString()};
+        } else {
+            text.ko = label.toString();
+        }
+        table.groups.append(
+                {key, text, QColor::fromString(g.value(QStringLiteral("color")).toString())});
         for (const QString &category : strings(g.value(QStringLiteral("categories"))))
             table.groupOfCategory.insert(category, key);
         for (const QString &pocket : strings(g.value(QStringLiteral("pockets"))))

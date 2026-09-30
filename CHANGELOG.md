@@ -7,6 +7,12 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Display languages Korean, English and Japanese. Game data (Pokémon, item, move, region and version
+  names, item effects) is stored in all three languages and switches live through
+  `AppState::language`, falling back to another language when one is missing; Japanese uses the kana
+  spelling when there is no kanji one and half-width digits. UI strings have English and Japanese
+  translations (Qt Linguist) loaded at startup; `--language ko|en|ja` picks and saves the language.
+  Korean names for the generation 4 mail and HM08 fill gaps in PokéAPI. Schema version 5.
 - `MainWindow` in a new `pokesix_ui` library: 1440×900 default size, 960×640 minimum,
   title with the application version.
 - `pokesix.ui` logging category (info by default; debug via `QT_LOGGING_RULES`).

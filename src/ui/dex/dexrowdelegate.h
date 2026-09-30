@@ -1,5 +1,7 @@
 #pragma once
 
+#include "data/text/localizedtext.h"
+
 #include <QStyledItemDelegate>
 
 namespace com::yamada::studio {
@@ -28,7 +30,7 @@ public:
     // 타입 칸에 칩 두 개가 딱 들어가는 폭: 18타입 중 가장 넓은 칩 둘 + 칩 사이 간격 + 칸 좌우 여백.
     // 포켓몬은 타입이 최대 2개이므로 어느 조합이든 잘리지 않는다. 글꼴 폭으로 계산하니 px를 적지
     // 않는다.
-    static int typesColumnWidth();
+    static int typesColumnWidth(Language language = Language::Korean);
 
     // 칸 정렬 규칙: 글자 칸(번호 · 이름 · 타입)은 왼쪽, 숫자 칸(종족값 · 합계)은 오른쪽.
     // 숫자를 오른쪽에 두는 건 자릿수가 세로로 맞아야(45 / 100) 비교하기 쉬워서다(디자인 01 §3).
@@ -47,9 +49,12 @@ public:
                const QModelIndex &index) const override;
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const override;
 
+    void setLanguage(Language language) { m_language = language; } // 타입 칩 글자
+
 private:
     void paintIcon(QPainter *painter, const QRectF &cell, int pokemonId) const;
 
     SpriteCache *m_sprites = nullptr;
+    Language m_language = Language::Korean;
 };
 } // namespace com::yamada::studio

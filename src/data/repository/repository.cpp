@@ -13,6 +13,13 @@ namespace {
 //   gen_from <= :g AND (gen_to IS NULL OR gen_to >= :g)
 // 같은 이름의 자리표시(:g)를 두 번 써도 SQLite는 같은 값으로 채운다.
 constexpr int kSpecialStat = 9; // 1세대 전용 "특수"
+
+// 질의 결과의 column · column+1 · column+2 열(ko · en · ja)을 하나로
+com::yamada::studio::LocalizedText localized(const QSqlQuery &query, int column)
+{
+    return {query.value(column).toString(), query.value(column + 1).toString(),
+            query.value(column + 2).toString()};
+}
 } // namespace
 
 namespace com::yamada::studio {
@@ -99,7 +106,8 @@ QList<DexInfo> Repository::dexesForGeneration(int generation)
     // 본편 도감만(is_main_series), 지방이 있는 것만(전국 · conquest 제외 — 전국은 UI가 따로 단다).
     QSqlQuery query(QSqlDatabase::database(m_connection));
     query.prepare(QStringLiteral(
-            "SELECT d.id, d.identifier, r.name_ko, v.identifier, v.name_en, v.name_ko "
+            "SELECT d.id, d.identifier, r.name_ko, r.name_en, r.name_ja, v.identifier, v.name_ko, "
+            "v.name_en, v.name_ja "
             "FROM pokedexes d "
             "JOIN pokedex_version_groups pvg ON pvg.pokedex_id = d.id "
             "JOIN version_groups vg ON vg.id = pvg.version_group_id "
@@ -121,14 +129,13 @@ QList<DexInfo> Repository::dexesForGeneration(int generation)
             DexInfo dex;
             dex.pokedexId = id;
             dex.identifier = query.value(1).toString();
-            dex.regionKo = query.value(2).toString();
+            dex.region = localized(query, 2);
             it = indexOfDex.insert(id, dexes.size());
             dexes.append(dex);
         }
         DexInfo &dex = dexes[*it];
-        dex.versions.append(query.value(3).toString());
-        dex.versionsEn.append(query.value(4).toString());
-        dex.versionsKo.append(query.value(5).toString());
+        dex.versions.append(query.value(5).toString());
+        dex.versionNames.append(localized(query, 6));
     }
     return dexes;
 }
@@ -166,9 +173,7 @@ QList<ItemRow> Repository::itemsForGeneration(int generation)
         row.identifier = query.value(1).toString();
         row.category = query.value(2).toString();
         row.pocket = query.value(3).toString();
-        row.nameKo = query.value(4).toString();
-        row.nameEn = query.value(5).toString();
-        row.nameJa = query.value(6).toString();
+        row.name = localized(query, 4);
         row.cost = query.value(7).toInt();
         rowOfItem.insert(row.id, rows.size());
         rows.append(row);
@@ -185,13 +190,14 @@ QList<ItemRow> Repository::itemsForGeneration(int generation)
     }
 
     // 3) 기술머신: 이 세대에 담긴 기술 + 그 기술의 이 세대 타입(구간 질의)
-    query.prepare(QStringLiteral(
-            "SELECT im.item_id, m.name_ko, m.name_en, t.identifier FROM item_machines im "
-            "JOIN moves m ON m.id = im.move_id "
-            "LEFT JOIN move_types mt ON mt.move_id = m.id AND mt.gen_from <= :g "
-            "  AND (mt.gen_to IS NULL OR mt.gen_to >= :g) "
-            "LEFT JOIN types t ON t.id = mt.type_id "
-            "WHERE im.generation = :g"));
+    query.prepare(
+            QStringLiteral("SELECT im.item_id, m.name_ko, m.name_en, m.name_ja, t.identifier FROM "
+                           "item_machines im "
+                           "JOIN moves m ON m.id = im.move_id "
+                           "LEFT JOIN move_types mt ON mt.move_id = m.id AND mt.gen_from <= :g "
+                           "  AND (mt.gen_to IS NULL OR mt.gen_to >= :g) "
+                           "LEFT JOIN types t ON t.id = mt.type_id "
+                           "WHERE im.generation = :g"));
     query.bindValue(QStringLiteral(":g"), generation);
     if (query.exec()) {
         while (query.next()) {
@@ -199,35 +205,54 @@ QList<ItemRow> Repository::itemsForGeneration(int generation)
             if (it == rowOfItem.constEnd())
                 continue;
             ItemRow &row = rows[*it];
-            row.machineMoveKo = query.value(1).toString();
-            row.machineMoveEn = query.value(2).toString();
-            row.machineType = query.value(3).toString();
+            row.machineMove = localized(query, 1);
+            row.machineType = query.value(4).toString();
         }
     }
 
-    // 4) 효과 문구: 세대 오름차순으로 읽으면서, generation 이하면 계속 덮어쓰고(→ 가장 최근),
-    //    아직 아무것도 없으면 처음 것을 쥔다(→ generation보다 뒤 세대 중 가장 이른 것).
-    QHash<int, int> takenFrom; // item id → 문구를 가져온 세대
-    if (query.exec(QStringLiteral(
-                "SELECT item_id, generation, text_ko FROM item_effects ORDER BY generation"))) {
+    // 4) 효과 문구: 언어마다 따로 고른다(한국어는 6세대부터, 영어는 3세대부터 있다).
+    //    세대 오름차순으로 읽으면서, generation 이하면 계속 덮어쓰고(→ 가장 최근), 아직 아무것도
+    //    없으면 처음 것을 쥔다(→ generation보다 뒤 세대 중 가장 이른 것).
+    struct Taken
+    {
+        std::array<int, 3> from {}; // 언어별로 문구를 가져온 세대(0 = 아직 없음)
+    };
+    QHash<int, Taken> taken; // item id →
+    if (query.exec(QStringLiteral("SELECT item_id, generation, text_ko, text_en, text_ja "
+                                  "FROM item_effects ORDER BY generation"))) {
         while (query.next()) {
             const int id = query.value(0).toInt();
             const auto it = rowOfItem.constFind(id);
             if (it == rowOfItem.constEnd())
                 continue;
             const int g = query.value(1).toInt();
-            const int taken = takenFrom.value(id, 0);
-            if (taken == 0 || (g <= generation && taken <= generation)) {
-                rows[*it].effect = query.value(2).toString();
-                takenFrom.insert(id, g);
+            LocalizedText &effect = rows[*it].effect;
+            QString *byLanguage[3] = {&effect.ko, &effect.en, &effect.ja};
+            Taken &t = taken[id];
+            for (int language = 0; language < 3; ++language) {
+                const QString text = query.value(2 + language).toString();
+                if (text.isEmpty())
+                    continue;
+                const int from = t.from[language];
+                if (from == 0 || (g <= generation && from <= generation)) {
+                    *byLanguage[language] = text;
+                    t.from[language] = g;
+                }
             }
         }
     }
     // 기술머신의 설명문은 담긴 기술의 설명이다. 다른 세대 문구를 빌려 오면 기술과 설명이 어긋난다
-    // (4세대 기술머신01 = 힘껏펀치인데 6세대 문구는 손톱갈기) → 그 세대 문구가 아니면 비운다.
-    for (ItemRow &row : rows)
-        if (!row.machineMoveKo.isEmpty() && takenFrom.value(row.id) != generation)
-            row.effect.clear();
+    // (4세대 기술머신01 = 힘껏펀치인데 6세대 한국어 문구는 손톱갈기) → 그 세대 문구가 아닌 언어는
+    // 비운다.
+    for (ItemRow &row : rows) {
+        if (row.machineMove.isEmpty())
+            continue;
+        const Taken t = taken.value(row.id);
+        QString *byLanguage[3] = {&row.effect.ko, &row.effect.en, &row.effect.ja};
+        for (int language = 0; language < 3; ++language)
+            if (t.from[language] != generation)
+                byLanguage[language]->clear();
+    }
     return rows;
 }
 
@@ -243,9 +268,7 @@ bool Repository::readSpecies(QSqlQuery &query, QList<SpeciesRow> &rows)
         SpeciesRow row;
         row.speciesId = query.value(0).toInt();
         row.pokemonId = query.value(1).toInt();
-        row.nameKo = query.value(2).toString();
-        row.nameEn = query.value(3).toString();
-        row.nameJa = query.value(4).toString();
+        row.name = localized(query, 2);
         row.dexNumber = query.value(5).toInt();
         rows.append(row);
     }

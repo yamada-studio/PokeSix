@@ -105,6 +105,9 @@ DexPage::DexPage(Repository *repository, AppState *state, QWidget *parent)
     connect(m_selector, &DexSelector::dexSelected, this, &DexPage::showDex);
     // 세대가 바뀌면(인트로 · 앱 막대의 세대 메뉴) 도감 버튼과 목록을 그 세대로 다시 만든다.
     connect(m_state, &AppState::generationChanged, this, &DexPage::onGenerationChanged);
+    // 언어가 바뀌면 이름 · 타입 칩 · 지방 이름을 그 언어로(다시 읽을 필요 없다 — 행에 세 언어가 다
+    // 있다)
+    connect(m_state, &AppState::languageChanged, this, &DexPage::applyLanguage);
     // 창은 페이지 폭을 채운다. 최대 폭(kListMaxWidth)은 resizeEvent가 좌우 여백으로 맞춘다.
     layout->addWidget(m_panel);
 
@@ -124,8 +127,8 @@ DexPage::DexPage(Repository *repository, AppState *state, QWidget *parent)
     // 머리 칸은 직접 그리는 DexHeaderView로 바꾼다(데이터와 같은 자리 계산). 모델보다 먼저 단다.
     m_table->setHorizontalHeader(new DexHeaderView(m_table));
     m_table->setModel(m_proxy);
-    m_table->setItemDelegate(
-            new DexRowDelegate(m_sprites, m_table)); // 모든 칸을 이 delegate가 그린다
+    m_delegate = new DexRowDelegate(m_sprites, m_table);
+    m_table->setItemDelegate(m_delegate); // 모든 칸을 이 delegate가 그린다
     m_table->setSelectionBehavior(QAbstractItemView::SelectRows);
     m_table->setSelectionMode(QAbstractItemView::SingleSelection);
     m_table->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -137,14 +140,9 @@ DexPage::DexPage(Repository *repository, AppState *state, QWidget *parent)
     // 모든 칸을 Fixed로 두고 폭은 코드가 정한다(사용자가 머리 칸 경계를 끌어 바꾸지 못하게).
     QHeaderView *header = m_table->horizontalHeader();
     header->setSectionResizeMode(QHeaderView::Fixed);
-    m_fixedWidth = 0;
-    for (const FixedColumn &fixed : kFixedColumns) {
+    for (const FixedColumn &fixed : kFixedColumns)
         header->resizeSection(fixed.column, fixed.width);
-        m_fixedWidth += fixed.width;
-    }
-    const int typesWidth = DexRowDelegate::typesColumnWidth();
-    header->resizeSection(SpeciesTableModel::TypesColumn, typesWidth);
-    m_fixedWidth += typesWidth;
+    applyLanguage(); // 타입 칸 폭(칩 글자 길이) · 이름 언어 — 고정 칸 합(m_fixedWidth)도 여기서
     header->setHighlightSections(false);
     m_table->setSortingEnabled(true);
     // 기본은 도감 번호 오름차순(사용자 결정. 디자인 기본은 합계 높은 순). 머리 칸을 누르면 바뀐다.
@@ -155,12 +153,6 @@ DexPage::DexPage(Repository *repository, AppState *state, QWidget *parent)
     // 안정시킨다.
     m_table->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     m_table->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-    // 최소 폭 = 고정 칸 + 비율 칸 최소 + 세로 스크롤바. 이보다 좁아지지 않으니 칸이 잘리지 않는다.
-    int minimum = m_fixedWidth + m_table->style()->pixelMetric(QStyle::PM_ScrollBarExtent);
-    for (const FlexColumn &flex : kFlexColumns)
-        minimum += flex.minimum;
-    minimum += DexRowDelegate::kEndGap;
-    m_table->setMinimumWidth(minimum);
     // viewport(칸이 그려지는 안쪽 위젯)의 크기 변화를 엿본다 → 바뀔 때마다 비율 칸을 다시 나눈다.
     m_table->viewport()->installEventFilter(this);
     bodyLayout->addWidget(m_table, 1);
@@ -234,6 +226,29 @@ void DexPage::showEvent(QShowEvent *event)
     QWidget::showEvent(event);
     if (!m_loaded)
         load();
+}
+
+void DexPage::applyLanguage()
+{
+    const Language language = m_state->language();
+    m_model->setLanguage(language);
+    m_delegate->setLanguage(language);
+    m_selector->setLanguage(language);
+
+    // 타입 칸 폭은 칩 글자 길이에 따라 다르다(일본어 "フェアリー"가 가장 길다) → 고정 칸 합과
+    // 표 최소 폭을 다시 계산하고 비율 칸을 다시 나눈다.
+    QHeaderView *header = m_table->horizontalHeader();
+    const int typesWidth = DexRowDelegate::typesColumnWidth(language);
+    header->resizeSection(SpeciesTableModel::TypesColumn, typesWidth);
+    m_fixedWidth = typesWidth;
+    for (const FixedColumn &fixed : kFixedColumns)
+        m_fixedWidth += fixed.width;
+    // 최소 폭 = 고정 칸 + 비율 칸 최소 + 세로 스크롤바. 이보다 좁아지지 않으니 칸이 잘리지 않는다.
+    int minimum = m_fixedWidth + m_table->style()->pixelMetric(QStyle::PM_ScrollBarExtent);
+    for (const FlexColumn &flex : kFlexColumns)
+        minimum += flex.minimum;
+    m_table->setMinimumWidth(minimum + DexRowDelegate::kEndGap);
+    layoutColumns();
 }
 
 void DexPage::onGenerationChanged()

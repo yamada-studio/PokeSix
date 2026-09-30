@@ -27,12 +27,18 @@ CategoryButton::CategoryButton(const itemstyle::Group &group, QWidget *parent)
     , m_group(group)
     , m_font(theme::font(theme::kFamilyTitle, 18))
 {
-    QAbstractButton::setText(group.label);
+    QAbstractButton::setText(group.label.text(Language::Korean));
     QAbstractButton::setCheckable(true);
     QAbstractButton::setCursor(Qt::PointingHandCursor);
     QAbstractButton::setFocusPolicy(Qt::TabFocus); // 마우스로 눌러도 검색 칸 포커스를 뺏지 않는다
     QAbstractButton::setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed); // 가로는 창 폭만큼
     QAbstractButton::setAttribute(Qt::WA_Hover); // enter/leave 때 다시 그려 hover 모양을 보인다
+}
+
+void CategoryButton::setLanguage(Language language)
+{
+    QAbstractButton::setText(
+            m_group.label.text(language)); // setText가 다시 그리기 · 크기 알림을 한다
 }
 
 QSize CategoryButton::sizeHint() const

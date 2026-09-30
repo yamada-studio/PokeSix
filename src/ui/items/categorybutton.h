@@ -19,6 +19,7 @@ public:
     explicit CategoryButton(const itemstyle::Group &group, QWidget *parent = nullptr);
 
     const QString &groupKey() const { return m_group.key; }
+    void setLanguage(Language language); // 글자를 그 언어로(itemstyle.json의 label)
     QSize sizeHint() const override;
 
 protected:

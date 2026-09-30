@@ -12,6 +12,8 @@
 #include <QPainterPath>
 #include <QtMath>
 
+#include <utility>
+
 namespace {
 using namespace com::yamada::studio;
 
@@ -146,6 +148,21 @@ DexSelector::DexSelector(QWidget *parent)
 
 void DexSelector::setDexes(const QList<DexInfo> &dexes)
 {
+    m_dexes = dexes;
+    rebuild(kNational); // 세대가 바뀌면 전국부터
+}
+
+void DexSelector::setLanguage(Language language)
+{
+    if (language == m_language)
+        return;
+    m_language = language;
+    // 버튼 글자만 바뀐다 — 고른 도감은 그대로 둔다(목록도 그대로라 dexSelected는 보내지 않는다)
+    rebuild(m_group->checkedId() < 0 ? kNational : m_group->checkedId());
+}
+
+void DexSelector::rebuild(int checkedId)
+{
     // 1) 기존 버튼 지우기. delete하면 레이아웃과 버튼 그룹에서도 저절로 빠지지만(소멸자가 알린다),
     //    그룹에서 먼저 빼 두면 순서에 기대지 않아도 된다.
     const QList<QAbstractButton *> old = m_group->buttons();
@@ -156,33 +173,36 @@ void DexSelector::setDexes(const QList<DexInfo> &dexes)
 
     // 2) [전국] + 지방 도감. 보이는 규칙(숨김 · 이름 · 배지 색)은 dexstyle.json이 정한다.
     addButton(new DexButton(tr("전국"), {}), tr("그 세대까지 나온 포켓몬 전부"), kNational);
-    for (const DexInfo &dex : dexes) {
+    for (const DexInfo &dex : std::as_const(m_dexes)) {
         const dexstyle::DexStyle rule = dexstyle::dex(dex.identifier);
         if (rule.hidden)
             continue;
         QList<dexstyle::VersionStyle> badges;
         QStringList shown; // 같은 약칭은 한 번만(관동도감: 일본판 레드 = 레드 = R)
         for (qsizetype i = 0; i < dex.versions.size(); ++i) {
-            const dexstyle::VersionStyle style
-                    = dexstyle::version(dex.versions.at(i), dex.versionsEn.value(i));
+            const dexstyle::VersionStyle style = dexstyle::version(
+                    dex.versions.at(i), dex.versionNames.value(i).text(Language::English));
             if (shown.contains(style.shortName))
                 continue;
             shown.append(style.shortName);
             badges.append(style);
         }
-        const QString label = rule.label.isEmpty() ? dex.regionKo : rule.label;
-        // 툴팁: 버전 한국어 이름(없으면 영어 — 9세대 DLC는 PokéAPI에 한국어 이름이 아직 없다)
+        // 이름: dexstyle.json의 이름 바꾸기(칼로스 셋 · DLC 도감) > DB의 지방 이름. 둘 다 언어별.
+        const QString label
+                = rule.label.isEmpty() ? dex.region.text(m_language) : rule.label.text(m_language);
+        // 툴팁: 버전 이름(그 언어가 없으면 대체 순서 — 9세대 DLC는 PokéAPI에 한국어 이름이 아직
+        // 없다)
         QStringList names;
-        for (qsizetype i = 0; i < dex.versions.size(); ++i) {
-            const QString ko = dex.versionsKo.value(i);
-            names.append(ko.isEmpty() ? dex.versionsEn.value(i) : ko);
-        }
+        for (const LocalizedText &name : dex.versionNames)
+            names.append(name.text(m_language));
         addButton(new DexButton(label, badges),
                   tr("%1 — %2").arg(label, names.join(QStringLiteral(" · "))), dex.pokedexId);
     }
 
-    // 3) 전국을 켠다. 4) sizeHint가 바뀌었다고 알린다 → 부모(PanelFrame)가 자리를 다시 잡는다.
-    m_group->button(kNational)->setChecked(true);
+    // 3) 고른 도감을 켠다(없어졌으면 전국). 4) sizeHint가 바뀌었다 → 부모(PanelFrame)가 자리를 다시
+    // 잡는다.
+    QAbstractButton *checked = m_group->button(checkedId);
+    (checked ? checked : m_group->button(kNational))->setChecked(true);
     QWidget::updateGeometry();
 }
 

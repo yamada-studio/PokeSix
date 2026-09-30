@@ -25,14 +25,19 @@ public:
 
     // 버튼을 다시 만든다: [전국] + dexes. 선택은 전국으로 돌아간다(세대가 바뀔 때도 부른다 — A8).
     void setDexes(const QList<DexInfo> &dexes);
+    // 버튼 글자의 언어(AppState::language). 고른 도감은 그대로 둔다.
+    void setLanguage(Language language);
 
 signals:
     void dexSelected(int pokedexId); // 사용자가 누를 때만. kNational = 전국
 
 private:
+    void rebuild(int checkedId);
     void addButton(QAbstractButton *button, const QString &toolTip, int id);
 
     QButtonGroup *m_group = nullptr;
     QHBoxLayout *m_layout = nullptr;
+    QList<DexInfo> m_dexes; // 언어를 바꿀 때 버튼을 다시 만들려고 들고 있는다
+    Language m_language = Language::Korean;
 };
 } // namespace com::yamada::studio

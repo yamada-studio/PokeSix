@@ -32,6 +32,11 @@ public:
 
     explicit ItemTableModel(QObject *parent = nullptr);
 
+    // 이름 · 문구를 보일 언어(AppState::language). 바꾸면 모든 칸이 바뀌었다고 알린다(dataChanged)
+    // — 프록시가 이름순 정렬도 새 언어로 다시 한다.
+    void setLanguage(Language language);
+    Language language() const { return m_language; }
+
     // 통째로 바꾼다. generation = 지금 보는 세대(InGenerationRole의 기준).
     void setRows(QList<ItemRow> rows, int generation);
     int generation() const { return m_generation; }
@@ -44,6 +49,7 @@ public:
                         int role = Qt::DisplayRole) const override;
 
 private:
+    Language m_language = Language::Korean;
     QList<ItemRow> m_rows;
     int m_generation = 1;
 };

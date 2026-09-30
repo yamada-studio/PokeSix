@@ -1,5 +1,7 @@
 #pragma once
 
+#include "data/text/localizedtext.h"
+
 #include <QList>
 #include <QString>
 #include <QStringList>
@@ -15,7 +17,7 @@ struct SpeciesRow
     int speciesId = 0; // 전국도감 번호
     int dexNumber = 0; // 보고 있는 도감의 번호(전국이면 speciesId와 같다)
     int pokemonId = 0; // 기본 모습의 pokemon id
-    QString nameKo, nameEn, nameJa;
+    LocalizedText name;
     QStringList types; // 타입 identifier(슬롯 순): "dragon", "ground" — UI가 색 · 이름을 붙인다
     std::array<int, 6> stats {}; // HP · 공격 · 방어 · 특공 · 특방 · 스피드
     int total = 0;               // 합계
@@ -26,10 +28,10 @@ struct DexInfo
 {
     int pokedexId = 0; // PokéAPI pokedexes.id (신오 DP = 5, 신오 Pt = 6, 성도 HGSS = 7)
     QString identifier; // "original-sinnoh" — UI 도감 표시 규칙(숨김 · 이름 바꾸기)의 키
-    QString regionKo; // "신오" — 도감의 한국어 이름은 PokéAPI에 없어서 지방 이름을 쓴다
+    LocalizedText region; // "신오" — 도감 이름은 PokéAPI에 없어서 지방 이름을 쓴다
     QStringList versions; // {"diamond", "pearl"} — UI 버전 색 · 약칭 표(dexstyle.json)의 키
-    QStringList versionsEn; // {"Diamond", "Pearl"} — 표에 없는 버전의 대체 글자
-    QStringList versionsKo; // {"디아루가", "펄기아"}
+    QList<LocalizedText>
+            versionNames; // {디아루가 · Diamond · ダイヤモンド, …} (versions와 같은 순서)
 };
 
 // 아이템 대백과 한 줄. 세대별 존재는 비트로: bit (g − 1) = g세대에 있다.
@@ -39,12 +41,12 @@ struct ItemRow
     QString identifier; // "fire-stone" — 아이콘 파일 이름(SpriteCache::Kind::Item)
     QString category;   // PokéAPI item_categories.identifier("evolution", "healing" …)
     QString pocket;     // 가방 주머니("misc", "medicine", "machines" …)
-    QString nameKo, nameEn, nameJa;
+    LocalizedText name;
     quint16 generations = 0;
-    QString effect; // 조회한 세대의 한국어 효과 문구(없으면 빈 문자열)
+    LocalizedText effect; // 조회한 세대의 효과 문구(언어마다 가까운 세대 것. 없으면 빈 칸)
     int cost = 0; // 상점 가격(PokéAPI는 최신 게임 기준 하나뿐이다). 0 = 팔지 않음
     // 기술머신 · 비전머신 · 기술레코드면 조회한 세대에 담긴 기술(아니면 비어 있다)
-    QString machineMoveKo, machineMoveEn;
+    LocalizedText machineMove;
     QString machineType; // 그 기술의 그 세대 타입 identifier("fighting"). ??? 타입이면 비어 있다
 
     bool existsIn(int generation) const { return generations & (1u << (generation - 1)); }

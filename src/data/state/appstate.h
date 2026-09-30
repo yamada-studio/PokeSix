@@ -1,9 +1,11 @@
 #pragma once
 
+#include "data/text/localizedtext.h"
+
 #include <QObject>
 
 namespace com::yamada::studio {
-// 앱 전체가 함께 보는 상태. 지금은 "정주행 중인 세대" 하나다(로드맵 A8).
+// 앱 전체가 함께 보는 상태: 정주행 중인 세대(로드맵 A8)와 표기 언어.
 //
 // 화면들은 세대를 전역에서 몰래 읽지 않는다(architecture §9). 대신 이 객체의 generationChanged
 // 시그널을 받아 자기 화면을 다시 그린다. ROS 2로 치면 latched 토픽 하나 — 누가 바꾸든
@@ -13,7 +15,11 @@ namespace com::yamada::studio {
 // 등록해 두면 나중에 QML이 `appState.generation`으로 읽고 바인딩할 수 있다(data 계층을 QtCore로만
 // 두는 이유와 같다).
 //
-// 값은 QSettings("generation")에 저장된다 → 다음 실행에도 같은 세대로 시작한다.
+// 값은 QSettings("generation", "language")에 저장된다 → 다음 실행에도 같은 세대 · 언어로 시작한다.
+//
+// 언어: 게임 데이터 이름(포켓몬 · 아이템 · 기술 · 지방 · 효과 문구)은 languageChanged를 받은 화면이
+// 바로 바꿔 그린다. 화면 문구(tr() — 버튼 · 제목)는 앱을 시작할 때 번역 파일을 한 번 불러 정한다
+// (main.cpp). 실행 중에 바꾼 언어는 화면 문구에는 다음 실행부터 적용된다.
 class AppState : public QObject
 {
     Q_OBJECT
@@ -30,10 +36,18 @@ public:
     // 범위 밖이면 무시한다. 같은 값이면 시그널을 보내지 않는다(되먹임 고리 방지).
     void setGeneration(int generation);
 
+    Language language() const { return m_language; }
+    void setLanguage(Language language); // 같은 값이면 시그널 없음
+    // 저장된 언어(앱 시작 때 번역 파일을 고르려고 AppState를 만들기 전에 읽는다) · 저장하기
+    static Language savedLanguage();
+    static void saveLanguage(Language language);
+
 signals:
     void generationChanged(int generation);
+    void languageChanged(com::yamada::studio::Language language);
 
 private:
     int m_generation = kDefaultGeneration;
+    Language m_language = Language::Korean;
 };
 } // namespace com::yamada::studio

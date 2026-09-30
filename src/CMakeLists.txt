@@ -35,6 +35,22 @@ elseif(APPLE)
     set_target_properties(PokeSix PROPERTIES MACOSX_BUNDLE_ICON_FILE PokeSix.icns)
 endif()
 
+# ── 화면 문구 번역 (Qt Linguist) ──────────────────────────────────
+# 소스 언어는 한국어(tr("…")에 적은 글자). 영어 · 일본어 번역은 translations/*.ts에 있다.
+#   문구를 더하거나 바꾼 뒤:  cmake --build --preset linux-debug --target update_translations
+#   → lupdate가 ui · data · 이 실행 파일의 tr()을 모아 .ts를 갱신한다. 번역을 채우고 빌드하면
+#     lrelease가 .qm을 만들어 실행 파일 리소스(:/i18n/pokesix_en.qm …)에 넣는다.
+# 게임 데이터 이름(포켓몬 · 아이템 …)은 번역 파일이 아니라 DB의 ko/en/ja 열에서 온다.
+qt_add_translations(TARGETS PokeSix
+    SOURCE_TARGETS PokeSix pokesix_ui pokesix_data
+    TS_FILES
+        ${PROJECT_SOURCE_DIR}/translations/pokesix_en.ts
+        ${PROJECT_SOURCE_DIR}/translations/pokesix_ja.ts
+    NO_GENERATE_PLURALS_TS_FILE
+    RESOURCE_PREFIX /i18n
+    LUPDATE_OPTIONS -source-language ko_KR -locations none
+)
+
 target_compile_definitions(PokeSix PRIVATE
     POKESIX_VERSION="${PROJECT_VERSION}"
 )

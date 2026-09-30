@@ -1,6 +1,7 @@
 #pragma once
 
 #include "data/models/itemfilterproxy.h"
+#include "data/text/localizedtext.h"
 
 #include <QColor>
 #include <QList>
@@ -20,9 +21,9 @@ inline constexpr char kAll[] = "all"; // 첫 묶음 "전체"의 key
 
 struct Group
 {
-    QString key;   // "evolution"
-    QString label; // "진화"
-    QColor color;  // 분류 창의 색 견본
+    QString key;         // "evolution"
+    LocalizedText label; // 진화 · Evolution · しんか
+    QColor color;        // 분류 창의 색 견본
 };
 
 // 분류 창에 나올 묶음, 위에서부터. 첫째는 "전체"(kAll).

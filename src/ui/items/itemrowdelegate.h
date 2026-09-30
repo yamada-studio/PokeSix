@@ -1,5 +1,7 @@
 #pragma once
 
+#include "data/text/localizedtext.h"
+
 #include <QStyledItemDelegate>
 
 namespace com::yamada::studio {
@@ -29,6 +31,7 @@ public:
     explicit ItemRowDelegate(SpriteCache *sprites, QObject *parent = nullptr);
 
     void setGeneration(int generation) { m_generation = generation; } // 아이콘 모양의 기준
+    void setLanguage(Language language) { m_language = language; }    // 타입 칩 글자
 
     void paint(QPainter *painter, const QStyleOptionViewItem &option,
                const QModelIndex &index) const override;
@@ -40,5 +43,6 @@ private:
 
     SpriteCache *m_sprites = nullptr;
     int m_generation = 1;
+    Language m_language = Language::Korean;
 };
 } // namespace com::yamada::studio

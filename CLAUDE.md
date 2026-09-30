@@ -93,7 +93,8 @@ OS별 상세와 흔한 에러는 [docs/build.md](docs/build.md).
 - include 경로는 `src/` 기준: `#include "core/types/typechart.h"`
 - 포맷은 `.clang-format`이 기준. 손으로 맞추지 말고 `clang-format -i`
 - **`connect`는 함수 포인터 문법만.** `SIGNAL()/SLOT()` 문자열 매크로 금지
-- 사용자에게 보이는 문자열은 `tr()`로 감싼다. 소스 언어는 **한국어**(디자인 문구 그대로, 해요체)
+- 사용자에게 보이는 문자열은 `tr()`로 감싼다. 소스 언어는 **한국어**(디자인 문구 그대로, 해요체).
+  문구를 바꾸면 `update_translations` 타깃으로 `translations/*.ts`를 갱신하고 영어 · 일본어를 채운다
 - 색·크기를 하드코딩하지 않는다. `ui/theme` 토큰에서만 가져온다
 - 로깅은 `QLoggingCategory` (`pokesix.<layer>` 이름), `qDebug()` 남발 금지
 - 예외를 슬롯/이벤트 핸들러 밖으로 던지지 않는다. 실패는 반환값 또는 시그널로

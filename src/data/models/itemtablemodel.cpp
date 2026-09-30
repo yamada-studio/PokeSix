@@ -16,6 +16,15 @@ void ItemTableModel::setRows(QList<ItemRow> rows, int generation)
     emit headerDataChanged(Qt::Horizontal, 0, ColumnCount - 1);
 }
 
+void ItemTableModel::setLanguage(Language language)
+{
+    if (language == m_language)
+        return;
+    m_language = language;
+    if (!m_rows.isEmpty())
+        emit dataChanged(index(0, 0), index(rowCount() - 1, ColumnCount - 1));
+}
+
 int ItemTableModel::rowCount(const QModelIndex &parent) const
 {
     return parent.isValid() ? 0 : static_cast<int>(m_rows.size());
@@ -31,15 +40,15 @@ QVariant ItemTableModel::data(const QModelIndex &index, int role) const
     if (!index.isValid())
         return {};
     const ItemRow &row = m_rows.at(index.row());
-    // 9세대 아이템 일부는 PokéAPI에 한국어 이름이 아직 없다 → 영어로
-    const QString name = row.nameKo.isEmpty() ? row.nameEn : row.nameKo;
+    // 그 언어 이름이 없으면 LocalizedText의 대체 순서로(한국어판이 없던 3세대 아이템 → 영어)
+    const QString name = row.name.text(m_language);
 
     switch (role) {
     case Qt::DisplayRole:
         if (index.column() == NameColumn)
             return name;
         if (index.column() == EffectColumn)
-            return row.effect;
+            return row.effect.text(m_language);
         if (index.column() == PriceColumn)
             return row.cost;
         return {};
@@ -47,7 +56,7 @@ QVariant ItemTableModel::data(const QModelIndex &index, int role) const
         if (index.column() == PriceColumn)
             return row.cost;
         if (index.column() == EffectColumn)
-            return row.effect;
+            return row.effect.text(m_language);
         return name;
     case IdentifierRole:
         return row.identifier;
@@ -62,11 +71,10 @@ QVariant ItemTableModel::data(const QModelIndex &index, int role) const
     case IntroGenerationRole:
         return row.introGeneration();
     case SearchTextRole:
-        return QStringLiteral("%1 %2 %3 %4 %5 %6")
-                .arg(row.nameKo, row.nameEn, row.nameJa, row.effect, row.machineMoveKo,
-                     row.machineMoveEn);
+        return QStringLiteral("%1 %2 %3")
+                .arg(row.name.all(), row.effect.all(), row.machineMove.all());
     case MachineMoveRole:
-        return row.machineMoveKo.isEmpty() ? row.machineMoveEn : row.machineMoveKo;
+        return row.machineMove.text(m_language);
     case MachineTypeRole:
         return row.machineType;
     default:

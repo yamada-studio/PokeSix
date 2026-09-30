@@ -42,6 +42,11 @@ public:
 
     explicit SpeciesTableModel(QObject *parent = nullptr);
 
+    // 이름 · 문구를 보일 언어(AppState::language). 바꾸면 모든 칸이 바뀌었다고 알린다(dataChanged)
+    // — 프록시가 이름순 정렬도 새 언어로 다시 한다.
+    void setLanguage(Language language);
+    Language language() const { return m_language; }
+
     void setRows(QList<SpeciesRow> rows); // 통째로 바꾼다(세대가 바뀌면 다시 부른다)
     const SpeciesRow &rowAt(int row) const { return m_rows.at(row); }
 
@@ -52,6 +57,7 @@ public:
                         int role = Qt::DisplayRole) const override;
 
 private:
+    Language m_language = Language::Korean;
     QList<SpeciesRow> m_rows;
 };
 } // namespace com::yamada::studio

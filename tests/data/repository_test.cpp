@@ -115,15 +115,15 @@ TEST_F(RepositoryTest, ListsTheRegionalDexesOfAGeneration)
     EXPECT_EQ(dexes[0].pokedexId, 5);
     EXPECT_EQ(dexes[1].pokedexId, 6);
     EXPECT_EQ(dexes[2].pokedexId, 7);
-    EXPECT_EQ(dexes[0].regionKo, QStringLiteral("신오"));
-    EXPECT_EQ(dexes[2].regionKo, QStringLiteral("성도"));
+    EXPECT_EQ(dexes[0].region.ko, QStringLiteral("신오"));
+    EXPECT_EQ(dexes[2].region.ko, QStringLiteral("성도"));
     EXPECT_EQ(dexes[0].identifier, QStringLiteral("original-sinnoh"));
     EXPECT_EQ(dexes[0].versions,
               (QStringList {QStringLiteral("diamond"), QStringLiteral("pearl")}));
-    EXPECT_EQ(dexes[0].versionsEn,
-              (QStringList {QStringLiteral("Diamond"), QStringLiteral("Pearl")}));
-    EXPECT_EQ(dexes[2].versionsKo,
-              (QStringList {QStringLiteral("하트골드"), QStringLiteral("소울실버")}));
+    EXPECT_EQ(dexes[0].versionNames.at(0).en, QStringLiteral("Diamond"));
+    EXPECT_EQ(dexes[0].versionNames.at(1).ko, QStringLiteral("펄기아"));
+    EXPECT_EQ(dexes[2].versionNames.at(0).ko, QStringLiteral("하트골드"));
+    EXPECT_EQ(dexes[0].region.en, QStringLiteral("Sinnoh"));
 
     // 같은 신오도감(5)이 8세대(BDSP)에도 나온다 — 도감 목록은 게임 ↔ 세대 연결로 정해진다
     bool sinnohInGen8 = false;
@@ -192,7 +192,7 @@ TEST_F(RepositoryTest, ItemsKnowWhichGenerationsHaveThem)
 
     const ItemRow *dawn = findItem(items, QStringLiteral("dawn-stone"));
     ASSERT_NE(dawn, nullptr);
-    EXPECT_EQ(dawn->nameKo, QStringLiteral("각성의돌"));
+    EXPECT_EQ(dawn->name.ko, QStringLiteral("각성의돌"));
     EXPECT_EQ(dawn->category, QStringLiteral("evolution"));
     EXPECT_FALSE(dawn->existsIn(3));
     EXPECT_TRUE(dawn->existsIn(4));
@@ -211,7 +211,8 @@ TEST_F(RepositoryTest, ItemEffectFollowsTheGeneration)
     Repository repository(s_dbPath);
     // 기술머신01은 게임마다 담긴 기술이 달라 문구가 다르다. 세대마다 그 세대 첫 게임의 문구.
     auto tm01 = [&](int generation) {
-        return findItem(repository.itemsForGeneration(generation), QStringLiteral("tm01"))->effect;
+        return findItem(repository.itemsForGeneration(generation), QStringLiteral("tm01"))
+                ->effect.ko;
     };
     const QString xy
             = QStringLiteral("손톱을 갈아 날카롭게 만든다. 자신의 공격과 명중률을 올린다.");
@@ -223,7 +224,7 @@ TEST_F(RepositoryTest, ItemEffectFollowsTheGeneration)
     EXPECT_TRUE(tm01(4).isEmpty());
     EXPECT_TRUE(tm01(9).isEmpty());
     // 다른 아이템은 가장 가까운 세대의 문구를 빌린다(각성의돌: 4세대 → 6세대 문구)
-    EXPECT_EQ(findItem(repository.itemsForGeneration(4), QStringLiteral("dawn-stone"))->effect,
+    EXPECT_EQ(findItem(repository.itemsForGeneration(4), QStringLiteral("dawn-stone"))->effect.ko,
               QStringLiteral("어느 특정 포켓몬을 진화시키는 이상한 돌. 눈동자처럼 아름답다."));
 }
 
@@ -262,7 +263,7 @@ TEST_F(RepositoryTest, MachineHoldsTheMoveOfTheGeneration)
     auto tm01 = [&](int generation) {
         const ItemRow *row
                 = findItem(repository.itemsForGeneration(generation), QStringLiteral("tm01"));
-        return std::pair(row->machineMoveKo, row->machineType);
+        return std::pair(row->machineMove.ko, row->machineType);
     };
     EXPECT_EQ(tm01(1), std::pair(QStringLiteral("메가톤펀치"), QStringLiteral("normal")));
     EXPECT_EQ(tm01(4), std::pair(QStringLiteral("힘껏펀치"), QStringLiteral("fighting")));
@@ -272,6 +273,31 @@ TEST_F(RepositoryTest, MachineHoldsTheMoveOfTheGeneration)
 
     // 기술머신이 아닌 아이템은 비어 있고, 가격은 그대로
     const ItemRow *potion = findItem(repository.itemsForGeneration(4), QStringLiteral("potion"));
-    EXPECT_TRUE(potion->machineMoveKo.isEmpty());
+    EXPECT_TRUE(potion->machineMove.isEmpty());
     EXPECT_EQ(potion->cost, 200);
+}
+
+TEST_F(RepositoryTest, EffectsAreKeptPerLanguage)
+{
+    Repository repository(s_dbPath);
+    // 4세대 기술머신01(힘껏펀치): 한국어 문구는 4세대에 없어서 비지만, 영어 문구는 DP에 있다.
+    // 화면(한국어)에서는 LocalizedText의 대체 순서로 영어 문구가 보인다.
+    const ItemRow *tm01 = findItem(repository.itemsForGeneration(4), QStringLiteral("tm01"));
+    EXPECT_TRUE(tm01->effect.ko.isEmpty());
+    EXPECT_FALSE(tm01->effect.en.isEmpty());
+    EXPECT_EQ(tm01->effect.text(Language::Korean), tm01->effect.en);
+    EXPECT_EQ(tm01->machineMove.en, QStringLiteral("Focus Punch"));
+}
+
+TEST(LocalizedText, FallsBackInTheLanguageOrder)
+{
+    const LocalizedText onlyEnglish {QString(), QStringLiteral("Orange Mail"), QString()};
+    EXPECT_EQ(onlyEnglish.text(Language::Korean), QStringLiteral("Orange Mail"));
+    const LocalizedText noEnglish {QStringLiteral("마스터볼"), QString(),
+                                   QStringLiteral("マスターボール")};
+    EXPECT_EQ(noEnglish.text(Language::English),
+              QStringLiteral("마스터볼")); // 영어 → 한국어 → 일본어
+    EXPECT_EQ(noEnglish.text(Language::Japanese), QStringLiteral("マスターボール"));
+    EXPECT_EQ(languageFromCode(QStringLiteral("ja")), Language::Japanese);
+    EXPECT_EQ(languageFromCode(QStringLiteral("xx")), Language::Korean);
 }
