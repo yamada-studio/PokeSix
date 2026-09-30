@@ -8,6 +8,7 @@
   <qresource prefix="/">
     <file>styles/app.qss</file>
     <file>theme/dexstyle.json</file>
+    <file>theme/itemstyle.json</file>
 
     <file>fonts/DoHyeon-Regular.ttf</file>
     <file>fonts/NanumGothic-Regular.ttf</file>

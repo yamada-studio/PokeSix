@@ -9,6 +9,7 @@
 #include <QDateTime>
 #include <QFile>
 #include <QMap>
+#include <QPair>
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
@@ -24,6 +25,8 @@ namespace {
 using com::yamada::studio::genranges::toGenRanges;
 
 // PokéAPI languages.csv의 id → 우리 스키마의 이름 열 (0 = ko, 1 = en, 2 = ja)
+constexpr int kKorean = 3; // PokéAPI languages.id (설명문은 한국어 줄만 남긴다)
+
 int nameColumnOf(int languageId)
 {
     switch (languageId) {
@@ -111,7 +114,7 @@ bool CsvImporter::run(const QString &csvDir, const QString &dbPath)
                  && importTypeChart(db) && importStats(db) && importSpecies(db) && importPokemon(db)
                  && importPokemonTypes(db) && importPokemonStats(db) && importRegions(db)
                  && importVersionGroups(db) && importVersions(db) && importPokedexes(db)
-                 && writeMeta(db);
+                 && importItems(db) && importItemEffects(db) && writeMeta(db);
             if (ok)
                 ok = db.commit()
                      || fail(QStringLiteral("commit failed: %1").arg(db.lastError().text()));
@@ -651,6 +654,128 @@ bool CsvImporter::importPokedexes(QSqlDatabase &db)
                              return numbers.exec({v[0].toInt(), v[1].toInt(), v[2].toInt()})
                                     || fail(numbers.error());
                          });
+}
+
+// ── 아이템 (E3) ────────────────────────────────────────────────────────────────────────────
+
+bool CsvImporter::importItems(QSqlDatabase &db)
+{
+    // 1) 분류 + 주머니 이름(주머니 표는 id → identifier뿐이라 분류 줄에 합쳐 둔다)
+    QHash<int, QString> pockets;
+    if (!forEachRecord(QStringLiteral("item_pockets"),
+                       {QStringLiteral("id"), QStringLiteral("identifier")},
+                       [&](const QStringList &v) {
+                           pockets.insert(v[0].toInt(), v[1]);
+                           return true;
+                       }))
+        return false;
+    Insert categories(db, QStringLiteral("INSERT INTO item_categories (id, identifier, pocket) "
+                                         "VALUES (?, ?, ?)"));
+    if (!categories.isValid())
+        return fail(categories.error());
+    if (!forEachRecord(
+                QStringLiteral("item_categories"),
+                {QStringLiteral("id"), QStringLiteral("identifier"), QStringLiteral("pocket_id")},
+                [&](const QStringList &v) {
+                    return categories.exec({v[0].toInt(), v[1], pockets.value(v[2].toInt())})
+                           || fail(categories.error());
+                }))
+        return false;
+
+    // 2) 아이템 + 이름(ko/en/ja)
+    QHash<int, Names> names;
+    if (!forEachRecord(QStringLiteral("item_names"),
+                       {QStringLiteral("item_id"), QStringLiteral("local_language_id"),
+                        QStringLiteral("name")},
+                       [&](const QStringList &v) {
+                           const int column = nameColumnOf(v[1].toInt());
+                           if (column >= 0)
+                               names[v[0].toInt()][column] = v[2];
+                           return true;
+                       }))
+        return false;
+    Insert items(db,
+                 QStringLiteral("INSERT INTO items (id, identifier, category_id, cost, name_ko, "
+                                "name_en, name_ja) VALUES (?, ?, ?, ?, ?, ?, ?)"));
+    if (!items.isValid())
+        return fail(items.error());
+    if (!forEachRecord(QStringLiteral("items"),
+                       {QStringLiteral("id"), QStringLiteral("identifier"),
+                        QStringLiteral("category_id"), QStringLiteral("cost")},
+                       [&](const QStringList &v) {
+                           const int id = v[0].toInt();
+                           const Names &n = names.value(id);
+                           return items.exec({id, v[1], v[2].toInt(), intOrNull(v[3]),
+                                              textOrNull(n[0]), textOrNull(n[1]), textOrNull(n[2])})
+                                  || fail(items.error());
+                       }))
+        return false;
+
+    // 3) 세대별 존재: 그 세대 게임의 아이템 번호(game index)가 있으면 그 세대에 있다
+    Insert generations(db, QStringLiteral("INSERT OR IGNORE INTO item_generations (item_id, "
+                                          "generation) VALUES (?, ?)"));
+    if (!generations.isValid())
+        return fail(generations.error());
+    return forEachRecord(QStringLiteral("item_game_indices"),
+                         {QStringLiteral("item_id"), QStringLiteral("generation_id")},
+                         [&](const QStringList &v) {
+                             return generations.exec({v[0].toInt(), v[1].toInt()})
+                                    || fail(generations.error());
+                         });
+}
+
+bool CsvImporter::importItemEffects(QSqlDatabase &db)
+{
+    // 버전 그룹 → (세대, 순서). 세대마다 "그 세대 첫 게임"의 문구를 고르는 데 쓴다.
+    // (7세대: SM · USUM · LGPE 중 SM. 기술머신은 게임마다 담긴 기술이 달라 문구도 다르다)
+    struct GroupInfo
+    {
+        int generation = 0;
+        int order = 0;
+    };
+    QHash<int, GroupInfo> groups;
+    if (!forEachRecord(
+                QStringLiteral("version_groups"),
+                {QStringLiteral("id"), QStringLiteral("generation_id"), QStringLiteral("order")},
+                [&](const QStringList &v) {
+                    groups.insert(v[0].toInt(), {v[1].toInt(), v[2].toInt()});
+                    return true;
+                }))
+        return false;
+
+    // (item, 세대) → 가장 이른 게임의 문구. 설명문 6 MB 중 한국어 줄만 본다.
+    struct Chosen
+    {
+        int order = 0;
+        QString text;
+    };
+    QHash<QPair<int, int>, Chosen> chosen;
+    if (!forEachRecord(QStringLiteral("item_flavor_text"),
+                       {QStringLiteral("item_id"), QStringLiteral("version_group_id"),
+                        QStringLiteral("language_id"), QStringLiteral("flavor_text")},
+                       [&](const QStringList &v) {
+                           if (v[2].toInt() != kKorean)
+                               return true;
+                           const GroupInfo group = groups.value(v[1].toInt());
+                           const QPair<int, int> key(v[0].toInt(), group.generation);
+                           const auto it = chosen.constFind(key);
+                           if (it == chosen.constEnd() || group.order < it->order)
+                               chosen.insert(key, {group.order, v[3]});
+                           return true;
+                       }))
+        return false;
+
+    Insert insert(db, QStringLiteral("INSERT INTO item_effects (item_id, generation, text_ko) "
+                                     "VALUES (?, ?, ?)"));
+    if (!insert.isValid())
+        return fail(insert.error());
+    for (auto it = chosen.cbegin(); it != chosen.cend(); ++it) {
+        // 게임 화면의 줄바꿈(\n) · 쪽 넘김(\f)을 띄어쓰기로. 한 줄 목록에 그대로 쓴다.
+        const QString text = it->text.simplified();
+        if (!insert.exec({it.key().first, it.key().second, text}))
+            return fail(insert.error());
+    }
+    return true;
 }
 
 bool CsvImporter::writeMeta(QSqlDatabase &db)

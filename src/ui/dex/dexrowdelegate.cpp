@@ -88,9 +88,10 @@ int DexRowDelegate::typesColumnWidth()
 
 void DexRowDelegate::paintIcon(QPainter *painter, const QRectF &cell, int pokemonId) const
 {
-    const QString file = m_sprites->path(pokemonId);
+    const QString id = QString::number(pokemonId);
+    const QString file = m_sprites->path(id);
     if (file.isEmpty()) {
-        m_sprites->request(pokemonId); // 받으면 ready → DexPage가 표를 다시 그린다
+        m_sprites->request(id); // 받으면 ready → DexPage가 표를 다시 그린다
         return;
     }
     // 파일 → QPixmap 디코딩은 줄마다 매번 하면 스크롤이 버벅인다. QPixmapCache(앱 전역 LRU)에

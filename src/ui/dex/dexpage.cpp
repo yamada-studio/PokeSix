@@ -89,7 +89,7 @@ DexPage::DexPage(Repository *repository, AppState *state, QWidget *parent)
     , m_state(state)
     , m_model(new SpeciesTableModel(this))
     , m_proxy(new SpeciesFilterProxy(this))
-    , m_sprites(new SpriteCache(this))
+    , m_sprites(new SpriteCache(SpriteCache::Kind::PokemonIcon, this))
     , m_searchDelay(new QTimer(this))
 {
     m_proxy->setSourceModel(m_model); // 프록시는 원본 모델 위에 얹힌다. 뷰는 프록시를 본다

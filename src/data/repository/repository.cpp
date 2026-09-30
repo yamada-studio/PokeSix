@@ -133,6 +133,77 @@ QList<DexInfo> Repository::dexesForGeneration(int generation)
     return dexes;
 }
 
+int ItemRow::introGeneration() const
+{
+    for (int g = 1; g <= 16; ++g)
+        if (existsIn(g))
+            return g;
+    return 0;
+}
+
+QList<ItemRow> Repository::itemsForGeneration(int generation)
+{
+    QList<ItemRow> rows;
+    if (!open())
+        return rows;
+    QSqlQuery query(QSqlDatabase::database(m_connection));
+
+    // 1) 아이템 + 분류. 어느 세대에도 없던 아이템(미사용 데이터 등)은 뺀다.
+    if (!query.exec(QStringLiteral(
+                "SELECT i.id, i.identifier, c.identifier, c.pocket, i.name_ko, i.name_en, "
+                "i.name_ja "
+                "FROM items i JOIN item_categories c ON c.id = i.category_id "
+                "WHERE EXISTS (SELECT 1 FROM item_generations g WHERE g.item_id = i.id) "
+                "ORDER BY i.id"))) {
+        m_error = query.lastError().text();
+        qCWarning(lcData) << "item query failed:" << m_error;
+        return rows;
+    }
+    QHash<int, qsizetype> rowOfItem;
+    while (query.next()) {
+        ItemRow row;
+        row.id = query.value(0).toInt();
+        row.identifier = query.value(1).toString();
+        row.category = query.value(2).toString();
+        row.pocket = query.value(3).toString();
+        row.nameKo = query.value(4).toString();
+        row.nameEn = query.value(5).toString();
+        row.nameJa = query.value(6).toString();
+        rowOfItem.insert(row.id, rows.size());
+        rows.append(row);
+    }
+
+    // 2) 세대별 존재 → 비트
+    if (query.exec(QStringLiteral("SELECT item_id, generation FROM item_generations"))) {
+        while (query.next()) {
+            const auto it = rowOfItem.constFind(query.value(0).toInt());
+            const int g = query.value(1).toInt();
+            if (it != rowOfItem.constEnd() && g >= 1 && g <= 16)
+                rows[*it].generations |= quint16(1u << (g - 1));
+        }
+    }
+
+    // 3) 효과 문구: 세대 오름차순으로 읽으면서, generation 이하면 계속 덮어쓰고(→ 가장 최근),
+    //    아직 아무것도 없으면 처음 것을 쥔다(→ generation보다 뒤 세대 중 가장 이른 것).
+    QHash<int, int> takenFrom; // item id → 문구를 가져온 세대
+    if (query.exec(QStringLiteral(
+                "SELECT item_id, generation, text_ko FROM item_effects ORDER BY generation"))) {
+        while (query.next()) {
+            const int id = query.value(0).toInt();
+            const auto it = rowOfItem.constFind(id);
+            if (it == rowOfItem.constEnd())
+                continue;
+            const int g = query.value(1).toInt();
+            const int taken = takenFrom.value(id, 0);
+            if (taken == 0 || (g <= generation && taken <= generation)) {
+                rows[*it].effect = query.value(2).toString();
+                takenFrom.insert(id, g);
+            }
+        }
+    }
+    return rows;
+}
+
 bool Repository::readSpecies(QSqlQuery &query, QList<SpeciesRow> &rows)
 {
     // 열 순서: 종 id · 기본 모습 pokemon id · 이름 ko/en/ja · 도감 번호

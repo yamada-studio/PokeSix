@@ -6,6 +6,8 @@ qt_add_library(pokesix_ui STATIC
     theme/theme.cpp
     theme/dexstyle.h
     theme/dexstyle.cpp
+    theme/itemstyle.h
+    theme/itemstyle.cpp
     widgets/panelpainter.h
     widgets/panelpainter.cpp
     widgets/layoutguide.h

@@ -32,6 +32,21 @@ struct DexInfo
     QStringList versionsKo; // {"디아루가", "펄기아"}
 };
 
+// 아이템 대백과 한 줄. 세대별 존재는 비트로: bit (g − 1) = g세대에 있다.
+struct ItemRow
+{
+    int id = 0;
+    QString identifier; // "fire-stone" — 아이콘 파일 이름(SpriteCache::Kind::Item)
+    QString category;   // PokéAPI item_categories.identifier("evolution", "healing" …)
+    QString pocket;     // 가방 주머니("misc", "medicine", "machines" …)
+    QString nameKo, nameEn, nameJa;
+    quint16 generations = 0;
+    QString effect; // 조회한 세대의 한국어 효과 문구(없으면 빈 문자열)
+
+    bool existsIn(int generation) const { return generations & (1u << (generation - 1)); }
+    int introGeneration() const; // 처음 나온 세대(없으면 0)
+};
+
 // 게임 데이터 DB(pokesix.sqlite)의 조회 창구. 로컬 DB만 읽는다(네트워크 없음, ADR 0011).
 // UI 스레드에서 짧은 질의만 한다(architecture §6). QSqlDatabase 연결은 이 객체를 만든 스레드에서만
 // 쓴다. 모든 질의는 세대를 인자로 받는다 — 세대를 전역에서 몰래 읽지 않는다(architecture §9).
@@ -52,6 +67,11 @@ public:
     QList<DexInfo> dexesForGeneration(int generation);
     // 지방 도감 pokedexId의 종(도감 번호 순). 타입 · 종족값은 generation 기준.
     QList<SpeciesRow> speciesForDex(int pokedexId, int generation);
+
+    // 어느 세대에든 있었던 아이템 전부(id 순). 세대별 존재(generations)는 전부 담고, 효과 문구는
+    // generation 기준이다: 그 세대 이하에서 가장 최근 문구, 없으면(1–5세대) 가장 이른 문구(6세대).
+    // 그 세대에 없는 아이템도 넣는다 — 화면이 흐리게 보여 줄지 뺄지 정한다(프록시).
+    QList<ItemRow> itemsForGeneration(int generation);
 
     // 세대 generation까지 나온 종 전부(번호 순). 타입 · 종족값은 그 세대 기준.
     // 1세대는 "특수"(stat 9) 하나였으므로 특공 · 특방 칸에 같은 값을 넣고, 합계에는 한 번만 더한다.

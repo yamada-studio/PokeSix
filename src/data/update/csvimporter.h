@@ -44,6 +44,9 @@ private:
     bool importVersionGroups(QSqlDatabase &db);
     bool importVersions(QSqlDatabase &db);
     bool importPokedexes(QSqlDatabase &db); // pokedexes + pokedex_version_groups + dex_numbers
+    // 아이템(E3): 분류 · 아이템 + 이름 · 세대별 존재 · 세대별 한국어 효과 문구
+    bool importItems(QSqlDatabase &db);
+    bool importItemEffects(QSqlDatabase &db);
     bool writeMeta(QSqlDatabase &db);
 
     // CSV 파일 하나를 열어, 레코드마다 columns 순서대로 값을 뽑아 row(values)를 부른다.

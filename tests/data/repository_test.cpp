@@ -1,3 +1,5 @@
+#include "data/models/itemfilterproxy.h"
+#include "data/models/itemtablemodel.h"
 #include "data/models/speciesfilterproxy.h"
 #include "data/models/speciestablemodel.h"
 #include "data/repository/repository.h"
@@ -168,4 +170,82 @@ TEST_F(RepositoryTest, ProxyFindsRegionalAndNationalNumbers)
     EXPECT_EQ(proxy.rowCount(), 1);
     proxy.setSearchText(QStringLiteral("445"));
     EXPECT_EQ(proxy.rowCount(), 1);
+}
+
+// ── 아이템 (E3). 시드: 마스터볼 · 상처약 · 불꽃의돌 · 각성의돌(4세대~) · 얼음의돌(7세대~) ·
+// 기술머신01 · 먹다남은음식(2세대~)
+namespace {
+const ItemRow *findItem(const QList<ItemRow> &rows, const QString &identifier)
+{
+    for (const ItemRow &row : rows)
+        if (row.identifier == identifier)
+            return &row;
+    return nullptr;
+}
+} // namespace
+
+TEST_F(RepositoryTest, ItemsKnowWhichGenerationsHaveThem)
+{
+    Repository repository(s_dbPath);
+    const QList<ItemRow> items = repository.itemsForGeneration(4);
+    EXPECT_EQ(items.size(), 7);
+
+    const ItemRow *dawn = findItem(items, QStringLiteral("dawn-stone"));
+    ASSERT_NE(dawn, nullptr);
+    EXPECT_EQ(dawn->nameKo, QStringLiteral("각성의돌"));
+    EXPECT_EQ(dawn->category, QStringLiteral("evolution"));
+    EXPECT_FALSE(dawn->existsIn(3));
+    EXPECT_TRUE(dawn->existsIn(4));
+    EXPECT_TRUE(dawn->existsIn(9));
+    EXPECT_EQ(dawn->introGeneration(), 4);
+
+    const ItemRow *ice = findItem(items, QStringLiteral("ice-stone"));
+    ASSERT_NE(ice, nullptr);
+    EXPECT_FALSE(ice->existsIn(4)); // 4세대 목록에도 들어 있지만(흐리게 보인다) 4세대에는 없다
+    EXPECT_EQ(ice->introGeneration(), 7);
+    EXPECT_EQ(findItem(items, QStringLiteral("leftovers"))->introGeneration(), 2);
+}
+
+TEST_F(RepositoryTest, ItemEffectFollowsTheGeneration)
+{
+    Repository repository(s_dbPath);
+    // 기술머신01은 게임마다 담긴 기술이 달라 문구가 다르다. 세대마다 그 세대 첫 게임의 문구.
+    auto tm01 = [&](int generation) {
+        return findItem(repository.itemsForGeneration(generation), QStringLiteral("tm01"))->effect;
+    };
+    const QString xy
+            = QStringLiteral("손톱을 갈아 날카롭게 만든다. 자신의 공격과 명중률을 올린다.");
+    EXPECT_EQ(tm01(6), xy); // XY (줄바꿈 → 띄어쓰기)
+    EXPECT_EQ(tm01(7),
+              QStringLiteral("스스로 분발해서 공격과 특수공격을 올린다.")); // SM (LGPE 아님)
+    EXPECT_EQ(tm01(4), xy); // 1–5세대는 한국어 문구가 없어서 가장 이른 문구(6세대)
+    EXPECT_EQ(tm01(9),
+              QStringLiteral("굉장한 힘을 담은 킥으로 상대를 걷어차서 공격한다.")); // 8세대 문구
+}
+
+TEST_F(RepositoryTest, ItemProxyFiltersByCategoryGenerationAndText)
+{
+    Repository repository(s_dbPath);
+    ItemTableModel model;
+    model.setRows(repository.itemsForGeneration(4), 4);
+    ItemFilterProxy proxy;
+    proxy.setSourceModel(&model);
+    EXPECT_EQ(proxy.rowCount(), 7);
+
+    proxy.setCategoryFilter(
+            [](const QString &category, const QString &) { return category == "evolution"; });
+    EXPECT_EQ(proxy.rowCount(), 3); // 불꽃의돌 · 각성의돌 · 얼음의돌
+
+    proxy.setOnlyInGeneration(true);
+    EXPECT_EQ(proxy.rowCount(), 2); // 얼음의돌은 4세대에 없다
+
+    proxy.setCategoryFilter(nullptr);
+    proxy.setOnlyInGeneration(false);
+    proxy.setSearchText(QStringLiteral("회복")); // 효과 문구로도 찾는다: 상처약 · 먹다남은음식
+    EXPECT_EQ(proxy.rowCount(), 2);
+
+    proxy.setSearchText(QString());
+    proxy.sort(ItemTableModel::NameColumn, Qt::AscendingOrder); // 가나다순
+    EXPECT_EQ(proxy.index(0, ItemTableModel::NameColumn).data().toString(),
+              QStringLiteral("각성의돌"));
 }
