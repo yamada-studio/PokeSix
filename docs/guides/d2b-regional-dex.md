@@ -306,11 +306,13 @@ void PanelFrame::setHeaderWidget(QWidget *widget)
 void PanelFrame::resizeEvent(QResizeEvent *event)
 {
     QWidget::resizeEvent(event);
-    // TODO 17: m_headerWidget이 있으면 sizeHint() 크기로, 머리 띠 오른쪽 끝(안쪽 여백 8)에, 세로 가운데에:
+    // TODO 17: m_headerWidget이 없으면(nullptr) 그냥 돌아간다 — 머리 위젯이 없는 창도 이 함수를 탄다.
+    //   있으면 sizeHint() 크기로, 머리 띠 오른쪽 끝(안쪽 여백 8)에, 세로 가운데에:
     //   const QSize size = m_headerWidget->sizeHint();
-    //   x = width() - m_style.outline - 8 - size.width()
-    //   y = m_style.outline + (m_style.header - size.height()) / 2
-    //   m_headerWidget->setGeometry(x, y, size.width(), size.height());
+    //   const int left = width() - m_style.outline - 8 - size.width();
+    //   const int top = m_style.outline + (m_style.header - size.height()) / 2;
+    //   m_headerWidget->setGeometry(left, top, size.width(), size.height());
+    //   (이름을 x · y로 하지 말 것: QWidget::x() · y() 멤버 함수와 겹친다)
 }
 ```
 
