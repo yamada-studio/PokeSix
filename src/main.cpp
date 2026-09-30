@@ -1,8 +1,11 @@
+#include "data/state/appstate.h"
 #include "ui/shell/mainwindow.h"
 #include "ui/theme/theme.h"
 
 #include <QApplication>
+#include <QCommandLineParser>
 #include <QIcon>
+#include <QTranslator>
 
 int main(int argc, char *argv[])
 {
@@ -35,6 +38,32 @@ int main(int argc, char *argv[])
     // resources/platform/linux/com.yamada.studio.pokesix.desktop 의 파일 이름과 같아야 한다.
     QGuiApplication::setDesktopFileName(QStringLiteral("com.yamada.studio.pokesix"));
 #endif
+
+    // ── 언어 ──────────────────────────────────────────────────────────────────
+    // --language ko|en|ja 로 고르면 저장해 두고(다음 실행에도), 없으면 저장된 언어(처음엔 한국어).
+    //   화면 문구: 번역 파일(:/i18n/pokesix_<언어>.qm)을 설치하면 tr("…")이 그 언어 글자를
+    //   돌려준다.
+    //             소스 언어가 한국어라 한국어는 번역 파일 없이 그대로다. 위젯을 만들기 전에
+    //             설치해야 생성자의 tr()부터 적용된다(실행 중에 바꾸면 다음 실행부터).
+    //   게임 데이터 이름: AppState::language를 화면들이 따른다(실행 중에도 바로 바뀐다).
+    using com::yamada::studio::AppState;
+    using com::yamada::studio::Language;
+    QCommandLineParser parser;
+    parser.addHelpOption();
+    parser.addVersionOption();
+    const QCommandLineOption languageOption(QStringLiteral("language"),
+                                            QStringLiteral("Display language: ko, en or ja."),
+                                            QStringLiteral("code"));
+    parser.addOption(languageOption);
+    parser.process(app);
+    if (parser.isSet(languageOption))
+        AppState::saveLanguage(com::yamada::studio::languageFromCode(parser.value(languageOption)));
+    const Language language = AppState::savedLanguage();
+    QTranslator translator;
+    if (language != Language::Korean
+        && translator.load(QStringLiteral(":/i18n/pokesix_%1.qm")
+                                   .arg(com::yamada::studio::languageCode(language))))
+        QApplication::installTranslator(&translator);
 
     // 디자인 스타일: 번들 글꼴 등록 + app.qss(@token 치환) 적용. 위젯을 만들기 전에 불러야 한다.
     com::yamada::studio::theme::apply(app);

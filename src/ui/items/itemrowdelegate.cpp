@@ -153,7 +153,7 @@ void ItemRowDelegate::paintEffect(QPainter *painter, const QRectF &content,
         if (const tok::TypeColor *type
             = typechip::find(index.data(ItemTableModel::MachineTypeRole).toString())) {
             const QPointF topLeft(x, content.center().y() - typechip::kHeight / 2);
-            x += typechip::paint(*painter, topLeft, *type) + kChipGap;
+            x += typechip::paint(*painter, topLeft, *type, m_language) + kChipGap;
         }
         const QFont moveFont = theme::font(theme::kFamilyBody, 13, QFont::ExtraBold);
         painter->setFont(moveFont);

@@ -122,7 +122,9 @@ composition root. 명령행 인자(`--gallery`, `--screenshot`), 로깅 초기�
 - **스쿼드 편집**: `SquadSession::changed` → `SquadAnalyzer::analyze()`(core, 동기) → 분석 패널 갱신,
   `SquadStore`에 디바운스(800ms) 저장.
 - **이름 표기**: UI 문구는 `tr()`(한국어 소스)로, 포켓몬·기술·아이템 이름은 PokéAPI CSV의
-  다국어 이름(`*_names.csv`의 ko / en / ja)을 DB에 저장하고 설정(`nameLang`)에 따라 고른다. 두 경로는 별개다.
+  다국어 이름(`*_names.csv`의 ko / en / ja)을 DB에 저장하고 `AppState::language`에 따라 고른다(`LocalizedText`).
+  두 경로는 별개다. 게임 데이터는 실행 중에 바로 바뀌고, UI 문구는 시작할 때 번역 파일을 불러 정한다
+  ([ADR 0013](decisions/0013-localization.md)).
 
 ## 5. 세대별 규칙은 데이터로
 

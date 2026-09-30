@@ -27,7 +27,7 @@ include(PokeSixTargetDefaults)
 
 # ── Dependencies ─────────────────────────────────────────────
 # core 는 Qt 없이 빌드되지만, 앱 전체는 Qt 6.8 LTS 이상을 요구한다.
-find_package(Qt6 6.8 REQUIRED COMPONENTS Core Widgets Svg Sql Network)
+find_package(Qt6 6.8 REQUIRED COMPONENTS Core Widgets Svg Sql Network LinguistTools)
 
 # ── Targets ──────────────────────────────────────────────────
 add_subdirectory(src)

@@ -26,17 +26,16 @@
 // [아이템] 세대별 존재는 item_generations(PokéAPI item_game_indices: 그 세대 게임에 번호가 있으면
 // 존재).
 //   효과 문구는 item_effects에 세대마다 한 줄 — 그 세대 첫 게임(버전 그룹 순서가 가장 이른 것)의
-//   한국어 설명문이다. 한국어 설명문은 6세대(XY)부터 있어서, 1–5세대는 조회할 때 6세대 문구로
-//   대신한다. 분류(category)는 PokéAPI의 55가지 그대로 두고, 화면의 묶음(회복 · 기술머신 …)은 UI가
-//   정한다.
-//   기술머신은 게임마다 담긴 기술이 다르다 → item_machines에 세대마다 한 줄(그 세대 첫 게임 기준).
-//   기술의 타입도 세대에 따라 바뀐다(애교부리기: 5세대까지 노말, 6세대부터 페어리) → move_types
-//   구간.
+//   설명문을 언어마다(ko · en · ja) 고른다. 그 세대에 없는 언어는 조회할 때 가까운 세대 문구로
+//   대신한다(한국어는 6세대부터라 1–5세대는 6세대 문구). 분류(category)는 PokéAPI의 55가지 그대로
+//   두고, 화면의 묶음(회복 · 기술머신 …)은 UI가 정한다. 기술머신은 게임마다 담긴 기술이 다르다 →
+//   item_machines에 세대마다 한 줄(그 세대 첫 게임 기준). 기술의 타입도 세대에 따라
+//   바뀐다(애교부리기: 5세대까지 노말, 6세대부터 페어리) → move_types 구간.
 //
 // [이름] 포켓몬 · 타입 이름은 ko / en / ja 열로 둔다(PokéAPI languages: 3 = ko, 9 = en, 11 = ja).
 //   UI 문구(tr())와는 별개의 경로다(architecture.md §4).
 namespace com::yamada::studio::schema {
-inline constexpr int kVersion = 4; // 스키마를 바꾸면 올린다. meta 표에 기록된다
+inline constexpr int kVersion = 5; // 스키마를 바꾸면 올린다. meta 표에 기록된다
 
 inline constexpr std::array kStatements = {
         // 이 DB를 만든 원천과 스키마 버전 (key = 'schema_version', 'source_commit', 'imported_at')
@@ -128,8 +127,9 @@ inline constexpr std::array kStatements = {
         R"(CREATE TABLE item_machines (
         item_id INTEGER NOT NULL REFERENCES items(id), generation INTEGER NOT NULL,
         move_id INTEGER NOT NULL REFERENCES moves(id), PRIMARY KEY (item_id, generation)))",
+        // 언어마다 따로 고른 문구(한국어는 6세대부터, 영어는 3세대부터 있다). 없는 언어는 NULL
         R"(CREATE TABLE item_effects (
         item_id INTEGER NOT NULL REFERENCES items(id), generation INTEGER NOT NULL,
-        text_ko TEXT NOT NULL, PRIMARY KEY (item_id, generation)))",
+        text_ko TEXT, text_en TEXT, text_ja TEXT, PRIMARY KEY (item_id, generation)))",
 };
 } // namespace com::yamada::studio::schema

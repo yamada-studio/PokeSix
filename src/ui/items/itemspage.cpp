@@ -87,7 +87,9 @@ ItemsPage::ItemsPage(Repository *repository, AppState *state, QWidget *parent)
     layout->addWidget(m_listPanel, 1);
 
     connect(m_state, &AppState::generationChanged, this, &ItemsPage::onGenerationChanged);
+    connect(m_state, &AppState::languageChanged, this, &ItemsPage::applyLanguage);
     selectGroup(QString::fromLatin1(itemstyle::kAll)); // "전체"도 숨길 분류는 빼야 해서 꼭 한 번
+    applyLanguage();
 }
 
 QWidget *ItemsPage::buildCategoryBody()
@@ -171,6 +173,19 @@ QWidget *ItemsPage::buildListBody()
     return body;
 }
 
+void ItemsPage::applyLanguage()
+{
+    // 게임 데이터 이름 · 문구 · 타입 칩 · 분류 이름을 그 언어로. 행에 세 언어가 다 있어서 다시 읽지
+    // 않는다.
+    const Language language = m_state->language();
+    m_model->setLanguage(language);
+    m_delegate->setLanguage(language);
+    for (QAbstractButton *button : m_groups->buttons())
+        static_cast<CategoryButton *>(button)->setLanguage(language);
+    m_table->viewport()->update();
+    updateTitle();
+}
+
 void ItemsPage::showEvent(QShowEvent *event)
 {
     QWidget::showEvent(event);
@@ -210,7 +225,7 @@ void ItemsPage::updateTitle()
     QString label;
     for (const itemstyle::Group &group : itemstyle::groups())
         if (group.key == m_groupKey)
-            label = group.label;
+            label = group.label.text(m_state->language());
     m_listPanel->setTitle(tr("아이템 대백과"), tr("%1 · %2개").arg(label).arg(m_proxy->rowCount()));
 }
 } // namespace com::yamada::studio

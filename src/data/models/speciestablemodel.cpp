@@ -15,6 +15,15 @@ void SpeciesTableModel::setRows(QList<SpeciesRow> rows)
     endResetModel();
 }
 
+void SpeciesTableModel::setLanguage(Language language)
+{
+    if (language == m_language)
+        return;
+    m_language = language;
+    if (!m_rows.isEmpty())
+        emit dataChanged(index(0, 0), index(rowCount() - 1, ColumnCount - 1));
+}
+
 int SpeciesTableModel::rowCount(const QModelIndex &parent) const
 {
     return parent.isValid() ? 0 : static_cast<int>(m_rows.size()); // 표는 자식이 없다
@@ -38,7 +47,7 @@ QVariant SpeciesTableModel::data(const QModelIndex &index, int role) const
         if (column == NumberColumn)
             return row.dexNumber;
         if (column == NameColumn)
-            return row.nameKo;
+            return row.name.text(m_language);
         if (isStat)
             return row.stats[column - HpColumn];
         if (column == TotalColumn)
@@ -46,7 +55,7 @@ QVariant SpeciesTableModel::data(const QModelIndex &index, int role) const
         return {};
     case SortRole:
         if (column == NameColumn)
-            return row.nameKo;
+            return row.name.text(m_language);
         if (column == TypesColumn)
             return row.types.value(0);
         if (column == CursorColumn || column == IconColumn)
@@ -58,10 +67,7 @@ QVariant SpeciesTableModel::data(const QModelIndex &index, int role) const
         return row.pokemonId;
     case SearchTextRole:
         // 지방 도감에서는 지방 번호와 전국 번호 둘 다로 찾는다(신오 111 = 전국 445 한카리아스)
-        return QStringLiteral("%1 %2 %3 %4 %5")
-                .arg(row.dexNumber)
-                .arg(row.speciesId)
-                .arg(row.nameKo, row.nameEn, row.nameJa);
+        return QStringLiteral("%1 %2 %3").arg(row.dexNumber).arg(row.speciesId).arg(row.name.all());
     case Qt::TextAlignmentRole:
         if (isStat || column == TotalColumn)
             return QVariant::fromValue(Qt::AlignRight

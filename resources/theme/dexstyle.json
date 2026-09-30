@@ -4,7 +4,7 @@
     "versions: PokéAPI versions.identifier → 약칭(short) · 배지 바탕(background) · 글자(text).",
     "  색은 연한 바탕 + 진한 글자(대비 3:1 이상). 표에 없는 버전은 영어 이름 · 흰 바탕 · 먹 글자로 나온다.",
     "  같은 도감에서 약칭이 겹치면 한 번만 보인다(관동도감: 일본판 레드 · 블루는 레드 · 블루와 같은 R · B).",
-    "pokedexes: PokéAPI pokedexes.identifier → hidden(버튼을 만들지 않음) · label(지방 이름 대신).",
+    "pokedexes: PokéAPI pokedexes.identifier → hidden(버튼을 만들지 않음) · label(지방 이름 대신, 언어별 {ko, en, ja}).",
     "  알로라의 섬 도감은 지방 도감에 포함되므로 숨긴다. 한 지방에 도감이 여럿이면(칼로스 셋, 가라르 · 팔데아의",
     "  DLC 도감, Z-A의 미르시티 · 이차원) 이름으로 나눈다. 머리 띠 폭(최소 창 934)에 들어가게 짧게 쓴다.",
     "  DLC 버전(갑옷의 외딴섬 · 소드 등)은 본편과 같은 약칭 · 색이라 배지에는 한 번만 보인다.",
@@ -73,9 +73,9 @@
   },
 
   "pokedexes": {
-    "kalos-central":     { "label": "센트럴" },
-    "kalos-coastal":     { "label": "코스트" },
-    "kalos-mountain":    { "label": "마운틴" },
+    "kalos-central":     { "label": { "ko": "센트럴", "en": "Central", "ja": "セントラル" } },
+    "kalos-coastal":     { "label": { "ko": "코스트", "en": "Coastal", "ja": "コースト" } },
+    "kalos-mountain":    { "label": { "ko": "마운틴", "en": "Mountain", "ja": "マウンテン" } },
     "original-melemele": { "hidden": true },
     "original-akala":    { "hidden": true },
     "original-ulaula":   { "hidden": true },
@@ -85,11 +85,11 @@
     "updated-ulaula":    { "hidden": true },
     "updated-poni":      { "hidden": true },
 
-    "isle-of-armor":     { "label": "외딴섬" },
-    "crown-tundra":      { "label": "설원" },
-    "kitakami":          { "label": "북신" },
-    "blueberry":         { "label": "블루베리" },
-    "lumiose-city":      { "label": "미르시티" },
-    "hyperspace":        { "label": "이차원" }
+    "isle-of-armor":     { "label": { "ko": "외딴섬", "en": "Isle of Armor", "ja": "鎧の孤島" } },
+    "crown-tundra":      { "label": { "ko": "설원", "en": "Crown Tundra", "ja": "冠の雪原" } },
+    "kitakami":          { "label": { "ko": "북신", "en": "Kitakami", "ja": "キタカミ" } },
+    "blueberry":         { "label": { "ko": "블루베리", "en": "Blueberry", "ja": "ブルーベリー" } },
+    "lumiose-city":      { "label": { "ko": "미르시티", "en": "Lumiose City", "ja": "ミアレシティ" } },
+    "hyperspace":        { "label": { "ko": "이차원", "en": "Hyperspace", "ja": "異次元" } }
   }
 }

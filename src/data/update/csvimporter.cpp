@@ -5,6 +5,7 @@
 #include "data/update/csvreader.h"
 #include "data/update/csvsource.h"
 #include "data/update/genranges.h"
+#include "data/update/namesupplement.h"
 
 #include <QDateTime>
 #include <QFile>
@@ -23,9 +24,11 @@
 
 namespace {
 using com::yamada::studio::genranges::toGenRanges;
+namespace namesupplement = com::yamada::studio::namesupplement;
 
 // PokéAPI languages.csv의 id → 우리 스키마의 이름 열 (0 = ko, 1 = en, 2 = ja)
-constexpr int kKorean = 3; // PokéAPI languages.id (설명문은 한국어 줄만 남긴다)
+
+constexpr int kJapaneseKana = 1; // ja-Hrkt: 가나만 쓴 표기. 한자 표기(11)가 없을 때만 쓴다
 
 int nameColumnOf(int languageId)
 {
@@ -35,12 +38,40 @@ int nameColumnOf(int languageId)
     case 9:
         return 1; // en
     case 11:
-        return 2; // ja (한자 · 가나 표기)
+    case kJapaneseKana:
+        return 2; // ja — 한자 · 가나 표기(11). 옛 아이템 일부는 가나 표기(1)만 있다
     default:
         return -1; // 다른 언어는 저장하지 않는다
     }
 }
 using Names = std::array<QString, 3>; // ko, en, ja
+
+// PokéAPI에 없는 아이템 한국어 이름(namesupplement.h). 없으면 null QString → NULL.
+QString supplementNameKo(const QString &identifier)
+{
+    for (const auto &entry : namesupplement::kItemNamesKo)
+        if (identifier == QLatin1StringView(entry.identifier.data(), entry.identifier.size()))
+            return QString::fromUtf8(entry.nameKo.data(), qsizetype(entry.nameKo.size()));
+    return {};
+}
+
+constexpr int kJapaneseColumn = 2;
+
+// 일본어 옛 표기는 숫자 · 영문을 전각으로 쓴다("ひでんマシン０１", "１ごうしつのカギ"). 한 줄
+// 목록에서는 글자 사이가 벌어져 보이므로 NFKC 정규화로 반각으로 바꾼다(가나 · 한자는 그대로).
+QString toHalfWidth(const QString &text)
+{
+    return text.normalized(QString::NormalizationForm_KC);
+}
+
+// 이름 한 줄을 알맞은 열에 넣는다. 가나 표기(1)는 한자 표기(11)를 덮지 않는다(줄 순서와 상관없이).
+void setName(Names &names, int languageId, const QString &text)
+{
+    const int column = nameColumnOf(languageId);
+    if (column < 0 || (languageId == kJapaneseKana && !names[column].isEmpty()))
+        return;
+    names[column] = column == kJapaneseColumn ? toHalfWidth(text) : text;
+}
 
 // 세대에 따라 존재가 달라지는 능력치 — 세대 규칙을 코드 곳곳의 if 대신 표로 둔다(architecture §5).
 //   1세대의 "특수"(stat 9)는 2세대부터 특수공격(4) · 특수방어(5)로 나뉘었다.
@@ -227,9 +258,7 @@ bool CsvImporter::importTypes(QSqlDatabase &db)
                             {QStringLiteral("type_id"), QStringLiteral("local_language_id"),
                              QStringLiteral("name")},
                             [&](const QStringList &v) {
-                                const int column = nameColumnOf(v[1].toInt());
-                                if (column >= 0)
-                                    names[v[0].toInt()][column] = v[2];
+                                setName(names[v[0].toInt()], v[1].toInt(), v[2]);
                                 return true;
                             });
     if (!namesOk)
@@ -330,11 +359,8 @@ bool CsvImporter::importSpecies(QSqlDatabase &db)
                        {QStringLiteral("pokemon_species_id"), QStringLiteral("local_language_id"),
                         QStringLiteral("name"), QStringLiteral("genus")},
                        [&](const QStringList &v) {
-                           const int column = nameColumnOf(v[1].toInt());
-                           if (column >= 0) {
-                               names[v[0].toInt()][column] = v[2];
-                               genera[v[0].toInt()][column] = v[3];
-                           }
+                           setName(names[v[0].toInt()], v[1].toInt(), v[2]);
+                           setName(genera[v[0].toInt()], v[1].toInt(), v[3]);
                            return true;
                        }))
         return false;
@@ -550,9 +576,7 @@ bool CsvImporter::importRegions(QSqlDatabase &db)
                        {QStringLiteral("region_id"), QStringLiteral("local_language_id"),
                         QStringLiteral("name")},
                        [&](const QStringList &v) {
-                           const int column = nameColumnOf(v[1].toInt());
-                           if (column >= 0)
-                               names[v[0].toInt()][column] = v[2];
+                           setName(names[v[0].toInt()], v[1].toInt(), v[2]);
                            return true;
                        }))
         return false;
@@ -592,9 +616,7 @@ bool CsvImporter::importVersions(QSqlDatabase &db)
                        {QStringLiteral("version_id"), QStringLiteral("local_language_id"),
                         QStringLiteral("name")},
                        [&](const QStringList &v) {
-                           const int column = nameColumnOf(v[1].toInt());
-                           if (column >= 0)
-                               names[v[0].toInt()][column] = v[2];
+                           setName(names[v[0].toInt()], v[1].toInt(), v[2]);
                            return true;
                        }))
         return false;
@@ -689,9 +711,7 @@ bool CsvImporter::importItems(QSqlDatabase &db)
                        {QStringLiteral("item_id"), QStringLiteral("local_language_id"),
                         QStringLiteral("name")},
                        [&](const QStringList &v) {
-                           const int column = nameColumnOf(v[1].toInt());
-                           if (column >= 0)
-                               names[v[0].toInt()][column] = v[2];
+                           setName(names[v[0].toInt()], v[1].toInt(), v[2]);
                            return true;
                        }))
         return false;
@@ -705,7 +725,9 @@ bool CsvImporter::importItems(QSqlDatabase &db)
                         QStringLiteral("category_id"), QStringLiteral("cost")},
                        [&](const QStringList &v) {
                            const int id = v[0].toInt();
-                           const Names &n = names.value(id);
+                           Names n = names.value(id);
+                           if (n[0].isEmpty()) // PokéAPI에 한국어 이름이 없으면 보충 표에서
+                               n[0] = supplementNameKo(v[1]);
                            return items.exec({id, v[1], v[2].toInt(), intOrNull(v[3]),
                                               textOrNull(n[0]), textOrNull(n[1]), textOrNull(n[2])})
                                   || fail(items.error());
@@ -756,9 +778,7 @@ bool CsvImporter::importMoves(QSqlDatabase &db)
                        {QStringLiteral("move_id"), QStringLiteral("local_language_id"),
                         QStringLiteral("name")},
                        [&](const QStringList &v) {
-                           const int column = nameColumnOf(v[1].toInt());
-                           if (column >= 0)
-                               names[v[0].toInt()][column] = v[2];
+                           setName(names[v[0].toInt()], v[1].toInt(), v[2]);
                            return true;
                        }))
         return false;
@@ -858,36 +878,51 @@ bool CsvImporter::importItemEffects(QSqlDatabase &db)
                 }))
         return false;
 
-    // (item, 세대) → 가장 이른 게임의 문구. 설명문 6 MB 중 한국어 줄만 본다.
+    // (item, 세대) → 언어마다 가장 이른 게임의 문구. 설명문 6 MB 중 ko · en · ja 줄만 본다.
     struct Chosen
     {
-        int order = 0;
-        QString text;
+        std::array<int, 3> order {}; // 0 = 아직 없음
+        std::array<QString, 3> text; // ko, en, ja
     };
     QHash<QPair<int, int>, Chosen> chosen;
     if (!forEachRecord(QStringLiteral("item_flavor_text"),
                        {QStringLiteral("item_id"), QStringLiteral("version_group_id"),
                         QStringLiteral("language_id"), QStringLiteral("flavor_text")},
                        [&](const QStringList &v) {
-                           if (v[2].toInt() != kKorean)
+                           const int language = v[2].toInt();
+                           const int column = nameColumnOf(language);
+                           if (column < 0)
                                return true;
                            const GroupInfo group = groups.value(v[1].toInt());
-                           const QPair<int, int> key(v[0].toInt(), group.generation);
-                           const auto it = chosen.constFind(key);
-                           if (it == chosen.constEnd() || group.order < it->order)
-                               chosen.insert(key, {group.order, v[3]});
+                           Chosen &slot = chosen[QPair<int, int>(v[0].toInt(), group.generation)];
+                           // 더 이른 게임이면 바꾼다. 같은 게임의 가나 표기(1)는 한자 표기(11)를
+                           // 덮지 않는다
+                           const bool earlier
+                                   = slot.order[column] == 0 || group.order < slot.order[column];
+                           const bool sameGameKana
+                                   = group.order == slot.order[column] && language == kJapaneseKana;
+                           if (earlier && !sameGameKana) {
+                               slot.order[column] = group.order;
+                               slot.text[column] = v[3];
+                           }
                            return true;
                        }))
         return false;
 
-    Insert insert(db, QStringLiteral("INSERT INTO item_effects (item_id, generation, text_ko) "
-                                     "VALUES (?, ?, ?)"));
+    Insert insert(db, QStringLiteral("INSERT INTO item_effects (item_id, generation, text_ko, "
+                                     "text_en, text_ja) VALUES (?, ?, ?, ?, ?)"));
     if (!insert.isValid())
         return fail(insert.error());
     for (auto it = chosen.cbegin(); it != chosen.cend(); ++it) {
-        // 게임 화면의 줄바꿈(\n) · 쪽 넘김(\f)을 띄어쓰기로. 한 줄 목록에 그대로 쓴다.
-        const QString text = it->text.simplified();
-        if (!insert.exec({it.key().first, it.key().second, text}))
+        // 게임 화면의 줄바꿈(\n) · 쪽 넘김(\f)을 한 줄로. 한국어 · 영어는 띄어쓰기로 잇고, 일본어는
+        // 띄어쓰기를 쓰지 않는 글이라 그냥 붙인다.
+        const auto oneLine = [](QString text, bool spaced) {
+            if (!spaced)
+                text = toHalfWidth(text.remove(QLatin1Char('\n')).remove(QLatin1Char('\f')));
+            return textOrNull(text.isNull() ? text : text.simplified());
+        };
+        if (!insert.exec({it.key().first, it.key().second, oneLine(it->text[0], true),
+                          oneLine(it->text[1], true), oneLine(it->text[2], false)}))
             return fail(insert.error());
     }
     return true;

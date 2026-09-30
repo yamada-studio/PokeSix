@@ -1,5 +1,7 @@
 #pragma once
 
+#include "data/text/localizedtext.h"
+
 #include <QColor>
 #include <QString>
 
@@ -23,7 +25,7 @@ VersionStyle version(const QString &identifier, const QString &fallbackName);
 
 struct DexStyle
 {
-    QString label;       // 비어 있으면 지방 이름을 쓴다
+    LocalizedText label; // 비어 있으면 지방 이름을 쓴다. JSON에서는 {ko, en, ja} 또는 글자 하나(ko)
     bool hidden = false; // 버튼을 만들지 않는다(알로라 섬 도감 등)
 };
 

@@ -17,6 +17,7 @@ qt_add_library(pokesix_data STATIC
     update/csvreader.h
     update/csvreader.cpp
     update/genranges.h
+    update/namesupplement.h
     update/csvimporter.h
     update/csvimporter.cpp
     update/dataupdater.h
@@ -26,6 +27,7 @@ qt_add_library(pokesix_data STATIC
     db/gamedatabase.cpp
     repository/repository.h
     repository/repository.cpp
+    text/localizedtext.h
     state/appstate.h
     state/appstate.cpp
     sprites/spritecache.h

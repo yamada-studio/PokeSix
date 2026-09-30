@@ -51,8 +51,18 @@ Table load()
     const QJsonObject dexes = root.value(QStringLiteral("pokedexes")).toObject();
     for (auto it = dexes.begin(); it != dexes.end(); ++it) {
         const QJsonObject d = it.value().toObject();
-        table.dexes.insert(it.key(), {d.value(QStringLiteral("label")).toString(),
-                                      d.value(QStringLiteral("hidden")).toBool(false)});
+        // label: {"ko": …, "en": …, "ja": …} 또는 한국어 글자 하나
+        const QJsonValue label = d.value(QStringLiteral("label"));
+        LocalizedText text;
+        if (label.isObject()) {
+            const QJsonObject l = label.toObject();
+            text = {l.value(QStringLiteral("ko")).toString(),
+                    l.value(QStringLiteral("en")).toString(),
+                    l.value(QStringLiteral("ja")).toString()};
+        } else {
+            text.ko = label.toString();
+        }
+        table.dexes.insert(it.key(), {text, d.value(QStringLiteral("hidden")).toBool(false)});
     }
     return table;
 }

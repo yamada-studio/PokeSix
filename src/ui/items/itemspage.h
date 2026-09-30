@@ -44,6 +44,7 @@ private:
     QWidget *buildListBody();
     void load();
     void onGenerationChanged();
+    void applyLanguage(); // AppState 언어 → 모델 · delegate · 분류 이름 · 제목
     void selectGroup(const QString &key);
     void updateTitle();
 

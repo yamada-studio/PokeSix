@@ -70,12 +70,12 @@ QRectF DexRowDelegate::contentRect(const QRectF &cell, int column)
     return cell.adjusted(kCellPadding, 0, -right, 0);
 }
 
-int DexRowDelegate::typesColumnWidth()
+int DexRowDelegate::typesColumnWidth(Language language)
 {
     qreal widest = 0;
     qreal second = 0;
     for (const tok::TypeColor &type : tok::kTypes) {
-        const qreal width = typechip::width(type);
+        const qreal width = typechip::width(type, language); // 일본어 칩은 글자가 길다
         if (width > widest) {
             second = widest;
             widest = width;
@@ -172,7 +172,7 @@ void DexRowDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option
         const qreal y = cell.center().y() - typechip::kHeight / 2;
         for (const QString &identifier : index.data(SpeciesTableModel::TypesRole).toStringList()) {
             if (const tok::TypeColor *type = typechip::find(identifier))
-                x += typechip::paint(*painter, QPointF(x, y), *type) + typechip::kGap;
+                x += typechip::paint(*painter, QPointF(x, y), *type, m_language) + typechip::kGap;
         }
         break;
     }

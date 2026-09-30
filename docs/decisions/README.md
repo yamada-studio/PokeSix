@@ -20,3 +20,4 @@
 | [0010](0010-intro-implemented-by-claude.md) | 인트로 화면을 Claude가 구현하고, 그 과정의 기술 결정을 확정한다 | Accepted |
 | [0011](0011-data-from-pinned-pokeapi-csv.md) | 게임 데이터는 첫 실행에 PokéAPI CSV 원본(고정 커밋)을 받아 로컬 SQLite로 변환한다 | Accepted |
 | [0012](0012-dex-presentation-in-json.md) | 도감 선택 버튼의 표시 규칙(버전 색 · 약칭 · 도감 숨김)은 JSON 설정 파일로 둔다 | Accepted |
+| [0013](0013-localization.md) | 표기 언어 — 게임 데이터는 DB 3열 + 대체 순서, 화면 문구는 Qt Linguist | Accepted |

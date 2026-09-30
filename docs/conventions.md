@@ -64,10 +64,13 @@
 ## 5. 국제화 (i18n)
 
 - 사용자에게 보이는 문구는 전부 `tr()`로 감싼다.
-- **소스 언어는 한국어**다. 디자인의 문구(해요체)를 그대로 쓴다. 영어·일본어 UI는 나중에
-  `.ts` 번역 파일로 추가한다(`qt_add_translations`).
+- **소스 언어는 한국어**다. 디자인의 문구(해요체)를 그대로 쓴다. 영어·일본어는 `translations/pokesix_en.ts`
+  · `pokesix_ja.ts`(Qt Linguist, `qt_add_translations`)에 있다.
+- **`tr()` 문구를 더하거나 바꾸면** `cmake --build --preset linux-debug --target update_translations`로 `.ts`를
+  갱신하고, 새 줄(`type="unfinished"`)에 영어 · 일본어를 채운다. 비어 있으면 그 언어에서 한국어가 보인다.
 - 포켓몬·기술·아이템 **이름**은 번역이 아니라 데이터다. PokéAPI의 다국어 이름을 DB에 저장하고
-  설정(`nameLang`)으로 고른다.
+  `AppState::language`로 고른다(`LocalizedText::text()` — 빈 언어는 정해진 순서로 대신한다).
+- 설정 파일(`resources/theme/*.json`)의 화면 글자(도감 이름 바꾸기 · 아이템 묶음 이름)는 `{ko, en, ja}`로 쓴다.
 
 ## 6. 로깅
 

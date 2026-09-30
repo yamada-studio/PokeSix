@@ -6,6 +6,7 @@
 
 namespace {
 constexpr char kGenerationKey[] = "generation";
+constexpr char kLanguageKey[] = "language"; // "ko" · "en" · "ja"
 } // namespace
 
 namespace com::yamada::studio {
@@ -17,6 +18,27 @@ AppState::AppState(QObject *parent)
     const int saved = QSettings().value(kGenerationKey, kDefaultGeneration).toInt();
     m_generation
             = (saved >= kMinGeneration && saved <= kMaxGeneration) ? saved : kDefaultGeneration;
+    m_language = savedLanguage();
+}
+
+Language AppState::savedLanguage()
+{
+    return languageFromCode(QSettings().value(kLanguageKey).toString());
+}
+
+void AppState::saveLanguage(Language language)
+{
+    QSettings().setValue(kLanguageKey, languageCode(language));
+}
+
+void AppState::setLanguage(Language language)
+{
+    if (language == m_language)
+        return;
+    m_language = language;
+    saveLanguage(language);
+    qCInfo(lcData) << "language" << languageCode(language);
+    emit languageChanged(language);
 }
 
 void AppState::setGeneration(int generation)
