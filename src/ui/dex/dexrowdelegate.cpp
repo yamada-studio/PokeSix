@@ -58,6 +58,18 @@ DexRowDelegate::DexRowDelegate(SpriteCache *sprites, QObject *parent)
 {
 }
 
+Qt::Alignment DexRowDelegate::alignment(int column)
+{
+    const bool numeric = column >= SpeciesTableModel::HpColumn;
+    return (numeric ? Qt::AlignRight : Qt::AlignLeft) | Qt::AlignVCenter;
+}
+
+QRectF DexRowDelegate::contentRect(const QRectF &cell, int column)
+{
+    const qreal right = kCellPadding + (column == SpeciesTableModel::TotalColumn ? kEndGap : 0);
+    return cell.adjusted(kCellPadding, 0, -right, 0);
+}
+
 int DexRowDelegate::typesColumnWidth()
 {
     qreal widest = 0;
@@ -123,8 +135,9 @@ void DexRowDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option
     painter->fillRect(QRectF(cell.left(), cell.bottom(), cell.width(), 1),
                       QColor(tok::kLineSoft)); // 아래 선
 
-    const QRectF content = cell.adjusted(kCellPadding, 0, -kCellPadding, 0);
     const int column = index.column();
+    const QRectF content = contentRect(cell, column);
+    const Qt::Alignment align = alignment(column);
     const QVariant value = index.data(Qt::DisplayRole);
 
     switch (column) {
@@ -143,7 +156,7 @@ void DexRowDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option
     case SpeciesTableModel::NumberColumn:
         painter->setFont(theme::font(theme::kFamilyData, 13, QFont::Bold));
         painter->setPen(QColor(tok::kText3));
-        painter->drawText(content, Qt::AlignLeft | Qt::AlignVCenter, value.toString());
+        painter->drawText(content, align, value.toString());
         break;
     case SpeciesTableModel::IconColumn:
         paintIcon(painter, cell, index.data(SpeciesTableModel::PokemonIdRole).toInt());
@@ -151,7 +164,7 @@ void DexRowDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option
     case SpeciesTableModel::NameColumn:
         painter->setFont(theme::font(theme::kFamilyBody, 14, QFont::ExtraBold));
         painter->setPen(QColor(tok::kText1));
-        painter->drawText(content, Qt::AlignLeft | Qt::AlignVCenter, value.toString());
+        painter->drawText(content, align, value.toString());
         break;
     case SpeciesTableModel::TypesColumn: {
         qreal x = content.left();
@@ -165,14 +178,14 @@ void DexRowDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option
     case SpeciesTableModel::TotalColumn:
         painter->setFont(theme::font(theme::kFamilyData, 14, QFont::Bold));
         painter->setPen(QColor(tok::kRed));
-        painter->drawText(content, Qt::AlignRight | Qt::AlignVCenter, value.toString());
+        painter->drawText(content, align, value.toString());
         break;
     default: { // 종족값 6칸
         const int stat = value.toInt();
         painter->setFont(
                 theme::font(theme::kFamilyData, 13, stat >= 100 ? QFont::Bold : QFont::Normal));
         painter->setPen(statColor(stat));
-        painter->drawText(content, Qt::AlignRight | Qt::AlignVCenter, value.toString());
+        painter->drawText(content, align, value.toString());
         break;
     }
     }

@@ -42,7 +42,9 @@ and the project uses [Semantic Versioning](https://semver.org/).
 - Dex list icons: `SpriteCache` downloads small Pokémon icons from PokéAPI/sprites into the user cache
   folder on demand (never into the repository); the list sorts by number, uses taller rows and
   responsive columns: fixed columns (the type column fits any two chips) plus weighted columns for the
-  name and stats, in a panel that fills the page up to 1100 px.
+  name and stats, in a panel that fills the page up to 1100 px. A custom header view places its labels
+  with the same alignment rule and padding as the cells (text left, numbers right) and keeps the sort
+  arrow from shifting the label.
 
 ### Changed
 - The main window opens at 920×840 (just wide enough for the Dex list); its minimum size now comes

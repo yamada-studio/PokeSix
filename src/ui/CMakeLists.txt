@@ -38,6 +38,8 @@ qt_add_library(pokesix_ui STATIC
     home/firstrunpanel.cpp
     dex/dexpage.h
     dex/dexpage.cpp
+    dex/dexheaderview.h
+    dex/dexheaderview.cpp
     dex/dexrowdelegate.h
     dex/dexrowdelegate.cpp
     shell/page.h
