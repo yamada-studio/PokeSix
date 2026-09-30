@@ -3,7 +3,6 @@
 #include <QWidget>
 
 class QButtonGroup;
-class QCheckBox;
 class QTableView;
 class QTimer;
 
@@ -23,11 +22,12 @@ class SpriteCache;
 //   ┌ 분류(초록 머리) ┐ ┌ 아이템 대백과 · 진화 · 39개 (빨강 머리) ─────────────┐
 //   │ 전체 · 회복 …   │ │ [검색]                                              │
 //   │                │ │ ▶ 아이콘 이름 효과 [1 … 9 세대 칸]                    │
-//   │ ☐ 4세대에만     │ │                                                     │
+//   │                │ │                                                     │
 //   └────────────────┘ └─────────────────────────────────────────────────────┘
 //
 // 구조는 DexPage와 같다: Repository → ItemTableModel(원본) → ItemFilterProxy(검색 · 분류 · 세대) →
-// QTableView + ItemRowDelegate. 분류 묶음은 itemstyle.json, 세대는 AppState를 따른다.
+// QTableView + ItemRowDelegate. 분류 묶음은 itemstyle.json, 세대는 AppState를 따른다 — 목록에는 늘
+// 지금 세대에 있는 아이템만 나오고, 세대를 바꾸면 다시 채운다(도감과 같다).
 // 오른쪽 상세 창(세대별 존재 · 효과 · 진화 대상)은 다음 단계.
 class ItemsPage : public QWidget
 {
@@ -55,7 +55,6 @@ private:
     PanelFrame *m_categoryPanel = nullptr;
     PanelFrame *m_listPanel = nullptr;
     QButtonGroup *m_groups = nullptr;
-    QCheckBox *m_onlyThisGeneration = nullptr;
     SearchField *m_search = nullptr;
     QTableView *m_table = nullptr;
     ItemHeaderView *m_header = nullptr;
