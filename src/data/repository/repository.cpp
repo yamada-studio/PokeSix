@@ -151,7 +151,7 @@ QList<ItemRow> Repository::itemsForGeneration(int generation)
     // 1) 아이템 + 분류. 어느 세대에도 없던 아이템(미사용 데이터 등)은 뺀다.
     if (!query.exec(QStringLiteral(
                 "SELECT i.id, i.identifier, c.identifier, c.pocket, i.name_ko, i.name_en, "
-                "i.name_ja "
+                "i.name_ja, i.cost "
                 "FROM items i JOIN item_categories c ON c.id = i.category_id "
                 "WHERE EXISTS (SELECT 1 FROM item_generations g WHERE g.item_id = i.id) "
                 "ORDER BY i.id"))) {
@@ -169,6 +169,7 @@ QList<ItemRow> Repository::itemsForGeneration(int generation)
         row.nameKo = query.value(4).toString();
         row.nameEn = query.value(5).toString();
         row.nameJa = query.value(6).toString();
+        row.cost = query.value(7).toInt();
         rowOfItem.insert(row.id, rows.size());
         rows.append(row);
     }
@@ -183,7 +184,28 @@ QList<ItemRow> Repository::itemsForGeneration(int generation)
         }
     }
 
-    // 3) 효과 문구: 세대 오름차순으로 읽으면서, generation 이하면 계속 덮어쓰고(→ 가장 최근),
+    // 3) 기술머신: 이 세대에 담긴 기술 + 그 기술의 이 세대 타입(구간 질의)
+    query.prepare(QStringLiteral(
+            "SELECT im.item_id, m.name_ko, m.name_en, t.identifier FROM item_machines im "
+            "JOIN moves m ON m.id = im.move_id "
+            "LEFT JOIN move_types mt ON mt.move_id = m.id AND mt.gen_from <= :g "
+            "  AND (mt.gen_to IS NULL OR mt.gen_to >= :g) "
+            "LEFT JOIN types t ON t.id = mt.type_id "
+            "WHERE im.generation = :g"));
+    query.bindValue(QStringLiteral(":g"), generation);
+    if (query.exec()) {
+        while (query.next()) {
+            const auto it = rowOfItem.constFind(query.value(0).toInt());
+            if (it == rowOfItem.constEnd())
+                continue;
+            ItemRow &row = rows[*it];
+            row.machineMoveKo = query.value(1).toString();
+            row.machineMoveEn = query.value(2).toString();
+            row.machineType = query.value(3).toString();
+        }
+    }
+
+    // 4) 효과 문구: 세대 오름차순으로 읽으면서, generation 이하면 계속 덮어쓰고(→ 가장 최근),
     //    아직 아무것도 없으면 처음 것을 쥔다(→ generation보다 뒤 세대 중 가장 이른 것).
     QHash<int, int> takenFrom; // item id → 문구를 가져온 세대
     if (query.exec(QStringLiteral(
@@ -201,6 +223,11 @@ QList<ItemRow> Repository::itemsForGeneration(int generation)
             }
         }
     }
+    // 기술머신의 설명문은 담긴 기술의 설명이다. 다른 세대 문구를 빌려 오면 기술과 설명이 어긋난다
+    // (4세대 기술머신01 = 힘껏펀치인데 6세대 문구는 손톱갈기) → 그 세대 문구가 아니면 비운다.
+    for (ItemRow &row : rows)
+        if (!row.machineMoveKo.isEmpty() && takenFrom.value(row.id) != generation)
+            row.effect.clear();
     return rows;
 }
 

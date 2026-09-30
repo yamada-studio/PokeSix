@@ -1,0 +1,9 @@
+id,identifier,generation_id,type_id,power,pp,accuracy,priority,target_id,damage_class_id,effect_id,effect_chance,contest_type_id,contest_effect_id,super_contest_effect_id
+5,mega-punch,1,1,80,20,85,0,10,2,1,,5,1,18
+25,mega-kick,1,1,120,5,75,0,10,2,1,,1,1,18
+29,headbutt,1,1,70,15,100,0,10,2,32,30,5,9,5
+36,take-down,1,1,90,20,85,0,10,2,49,,5,3,5
+223,dynamic-punch,2,2,100,5,50,0,10,2,77,100,1,10,18
+264,focus-punch,3,2,150,20,100,-3,10,2,171,,5,31,6
+468,hone-claws,5,17,,15,,0,7,1,278,,,,
+526,work-up,5,1,,30,,0,7,1,328,,,,

@@ -8,36 +8,31 @@ namespace com::yamada::studio {
 // 아이템 대백과 목록의 표 모델 (E3). SpeciesTableModel과 같은 구조다 — 값만 주고, 어떻게 그릴지는
 // ui의 delegate가 정한다(QtCore만 쓴다).
 //
-// 칸: ▶ · 아이콘 · 이름 · 효과 · 세대(1–9 존재 칸을 한 칸에). 세대 칸의 값은
-// GenerationsRole(비트)로 주고, delegate가 작은 네모 9개로 그린다(디자인 SCR-03: 존재 = 초록, 없음
-// = 점선, 현재 세대 = 노랑 테).
+// 칸: ▶ · 아이콘 · 이름 · 효과 · 가격. 목록에는 지금 세대 아이템만 나오므로(ItemFilterProxy)
+// 디자인의 세대 존재 칸(1–9)은 두지 않는다. 기술머신은 담긴 기술(MachineMoveRole ·
+// MachineTypeRole)도 준다.
 class ItemTableModel : public QAbstractTableModel
 {
     Q_OBJECT
 public:
-    enum Column {
-        CursorColumn,
-        IconColumn,
-        NameColumn,
-        EffectColumn,
-        GenerationsColumn,
-        ColumnCount
-    };
+    enum Column { CursorColumn, IconColumn, NameColumn, EffectColumn, PriceColumn, ColumnCount };
 
     enum Role {
-        SortRole = Qt::UserRole, // 정렬용 값(이름은 한국어 가나다, 세대 칸은 처음 나온 세대)
-        IdentifierRole,      // QString "fire-stone" — 아이콘 파일 이름
-        CategoryRole,        // QString PokéAPI 분류 "evolution"
-        PocketRole,          // QString 가방 주머니 "misc"
-        GenerationsRole,     // int 비트: bit (g − 1) = g세대에 있다
-        InGenerationRole,    // bool 지금 보는 세대에 있다(없으면 화면이 흐리게)
+        SortRole = Qt::UserRole, // 정렬용 값(이름은 한국어 가나다, 가격은 숫자)
+        IdentifierRole,          // QString "fire-stone" — 아이콘 파일 이름
+        CategoryRole,            // QString PokéAPI 분류 "evolution"
+        PocketRole,              // QString 가방 주머니 "misc", "machines" …
+        GenerationsRole,         // int 비트: bit (g − 1) = g세대에 있다
+        InGenerationRole, // bool 지금 보는 세대에 있다(프록시가 이걸로 거른다)
         IntroGenerationRole, // int 처음 나온 세대
-        SearchTextRole,      // QString 이름 ko/en/ja + 효과 문구
+        SearchTextRole, // QString 이름 ko/en/ja + 효과 문구 + 기술머신의 기술 이름
+        MachineMoveRole, // QString 기술머신에 담긴 기술(한국어, 없으면 영어). 아니면 빈 문자열
+        MachineTypeRole, // QString 그 기술의 그 세대 타입 identifier("fighting")
     };
 
     explicit ItemTableModel(QObject *parent = nullptr);
 
-    // 통째로 바꾼다. generation = 지금 보는 세대(InGenerationRole · 헤더 강조의 기준).
+    // 통째로 바꾼다. generation = 지금 보는 세대(InGenerationRole의 기준).
     void setRows(QList<ItemRow> rows, int generation);
     int generation() const { return m_generation; }
     const ItemRow &rowAt(int row) const { return m_rows.at(row); }

@@ -46,6 +46,8 @@ private:
     bool importPokedexes(QSqlDatabase &db); // pokedexes + pokedex_version_groups + dex_numbers
     // 아이템(E3): 분류 · 아이템 + 이름 · 세대별 존재 · 세대별 한국어 효과 문구
     bool importItems(QSqlDatabase &db);
+    bool importMoves(QSqlDatabase &db); // 기술 + 이름 + 세대별 타입(기술머신 아이콘 · 타입 칩)
+    bool importMachines(QSqlDatabase &db); // 기술머신 → 세대별로 담긴 기술
     bool importItemEffects(QSqlDatabase &db);
     bool writeMeta(QSqlDatabase &db);
 

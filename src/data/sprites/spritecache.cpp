@@ -4,6 +4,7 @@
 
 #include <QDir>
 #include <QFile>
+#include <QFileInfo>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QSaveFile>
@@ -31,7 +32,12 @@ SpriteCache::SpriteCache(Kind kind, QObject *parent)
         folder = QStringLiteral("icons");
         break;
     case Kind::Item:
-        m_sources = {base + QStringLiteral("items/%1.png")};
+        // key는 "gen5/fire-stone"처럼 그림 모양(폴더)을 앞에 붙일 수 있다(%1 = key 전체, %2 =
+        // 이름만). 그 폴더에 없으면 기본 그림 → 새 세대 폴더 순으로 찾는다(9세대 · 8세대 신규
+        // 아이템은 거기에만).
+        m_sources = {base + QStringLiteral("items/%1.png"), base + QStringLiteral("items/%2.png"),
+                     base + QStringLiteral("items/gen9/%2.png"),
+                     base + QStringLiteral("items/gen8/%2.png")};
         folder = QStringLiteral("items");
         break;
     }
@@ -66,9 +72,34 @@ void SpriteCache::request(const QString &key)
     fetch(key, 0);
 }
 
+QString SpriteCache::urlOf(const QString &key, int attempt) const
+{
+    // "gen5/tm-fire" → %1 = gen5/tm-fire, %2 = tm-fire. QString::arg를 쓰지 않는 이유: 틀에 %2만
+    // 있으면 arg(a, b)는 "가장 낮은 번호"인 %2에 a를 넣는다 → 폴더가 남는다. 그래서 글자를 직접
+    // 바꾼다.
+    QString url = m_sources.at(attempt);
+    url.replace(QLatin1String("%1"), key);
+    url.replace(QLatin1String("%2"), key.section(QLatin1Char('/'), -1));
+    return url;
+}
+
 void SpriteCache::fetch(const QString &key, int attempt)
 {
-    const QUrl url(m_sources.at(attempt).arg(key));
+    // 앞에서 이미 시도한 주소와 같으면 건너뛴다(폴더 없는 key는 1 · 2번 주소가 같다)
+    while (attempt > 0 && attempt < m_sources.size()) {
+        bool seen = false;
+        for (int i = 0; i < attempt; ++i)
+            seen = seen || urlOf(key, i) == urlOf(key, attempt);
+        if (!seen)
+            break;
+        ++attempt;
+    }
+    if (attempt >= m_sources.size()) {
+        m_pending.remove(key);
+        m_failed.insert(key);
+        return;
+    }
+    const QUrl url(urlOf(key, attempt));
     QNetworkReply *reply = m_network->get(QNetworkRequest(url));
     connect(reply, &QNetworkReply::finished, this,
             [this, reply, key, attempt] { onFinished(reply, key, attempt); });
@@ -88,6 +119,8 @@ void SpriteCache::onFinished(QNetworkReply *reply, const QString &key, int attem
         return;
     }
     // QSaveFile: 다 쓴 뒤에 이름을 바꾼다 → 받다 끊겨도 반쪽 PNG가 캐시에 남지 않는다
+    // key에 폴더가 있으면("gen5/…") 그 폴더도 만든다
+    QDir().mkpath(QFileInfo(filePath(key)).absolutePath());
     QSaveFile file(filePath(key));
     if (!file.open(QIODevice::WriteOnly) || file.write(reply->readAll()) < 0 || !file.commit()) {
         m_pending.remove(key);

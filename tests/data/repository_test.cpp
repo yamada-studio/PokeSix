@@ -218,9 +218,13 @@ TEST_F(RepositoryTest, ItemEffectFollowsTheGeneration)
     EXPECT_EQ(tm01(6), xy); // XY (줄바꿈 → 띄어쓰기)
     EXPECT_EQ(tm01(7),
               QStringLiteral("스스로 분발해서 공격과 특수공격을 올린다.")); // SM (LGPE 아님)
-    EXPECT_EQ(tm01(4), xy); // 1–5세대는 한국어 문구가 없어서 가장 이른 문구(6세대)
-    EXPECT_EQ(tm01(9),
-              QStringLiteral("굉장한 힘을 담은 킥으로 상대를 걷어차서 공격한다.")); // 8세대 문구
+    // 1–5세대 · 9세대는 그 세대 한국어 문구가 없다. 기술머신의 문구는 담긴 기술의 설명이라 다른
+    // 세대 문구를 빌리지 않는다(4세대 기술머신01 = 힘껏펀치인데 6세대 문구는 손톱갈기) → 비어 있다.
+    EXPECT_TRUE(tm01(4).isEmpty());
+    EXPECT_TRUE(tm01(9).isEmpty());
+    // 다른 아이템은 가장 가까운 세대의 문구를 빌린다(각성의돌: 4세대 → 6세대 문구)
+    EXPECT_EQ(findItem(repository.itemsForGeneration(4), QStringLiteral("dawn-stone"))->effect,
+              QStringLiteral("어느 특정 포켓몬을 진화시키는 이상한 돌. 눈동자처럼 아름답다."));
 }
 
 TEST_F(RepositoryTest, ItemProxyFiltersByCategoryGenerationAndText)
@@ -248,4 +252,26 @@ TEST_F(RepositoryTest, ItemProxyFiltersByCategoryGenerationAndText)
     proxy.sort(ItemTableModel::NameColumn, Qt::AscendingOrder); // 가나다순
     EXPECT_EQ(proxy.index(0, ItemTableModel::NameColumn).data().toString(),
               QStringLiteral("각성의돌"));
+}
+
+TEST_F(RepositoryTest, MachineHoldsTheMoveOfTheGeneration)
+{
+    Repository repository(s_dbPath);
+    // 기술머신01에 담긴 기술은 세대마다 다르다(그 세대 첫 게임 기준). 타입은 아이콘 CD 색 · 타입
+    // 칩.
+    auto tm01 = [&](int generation) {
+        const ItemRow *row
+                = findItem(repository.itemsForGeneration(generation), QStringLiteral("tm01"));
+        return std::pair(row->machineMoveKo, row->machineType);
+    };
+    EXPECT_EQ(tm01(1), std::pair(QStringLiteral("메가톤펀치"), QStringLiteral("normal")));
+    EXPECT_EQ(tm01(4), std::pair(QStringLiteral("힘껏펀치"), QStringLiteral("fighting")));
+    EXPECT_EQ(tm01(5), std::pair(QStringLiteral("손톱갈기"), QStringLiteral("dark")));
+    EXPECT_EQ(tm01(7),
+              std::pair(QStringLiteral("분발"), QStringLiteral("normal"))); // SM(LGPE 아님)
+
+    // 기술머신이 아닌 아이템은 비어 있고, 가격은 그대로
+    const ItemRow *potion = findItem(repository.itemsForGeneration(4), QStringLiteral("potion"));
+    EXPECT_TRUE(potion->machineMoveKo.isEmpty());
+    EXPECT_EQ(potion->cost, 200);
 }

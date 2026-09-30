@@ -1,7 +1,6 @@
 #include "ui/items/itemheaderview.h"
 
 #include "data/models/itemtablemodel.h"
-#include "ui/items/itemrowdelegate.h"
 #include "ui/theme/theme.h"
 #include "ui/theme/tokens.h"
 
@@ -26,12 +25,6 @@ ItemHeaderView::ItemHeaderView(QWidget *parent)
     QHeaderView::setHighlightSections(false);
 }
 
-void ItemHeaderView::setGeneration(int generation)
-{
-    m_generation = generation;
-    viewport()->update(); // 노란 숫자가 옮겨 간다
-}
-
 void ItemHeaderView::paintSection(QPainter *painter, const QRect &rect, int logicalIndex) const
 {
     painter->save();
@@ -41,37 +34,24 @@ void ItemHeaderView::paintSection(QPainter *painter, const QRect &rect, int logi
     painter->fillRect(
             QRectF(cell.left(), cell.bottom() - kBottomLine + 1, cell.width(), kBottomLine),
             QColor(tok::kInk));
-    const QRectF line = cell.adjusted(0, 0, 0, -kBottomLine);
-    const QFont font = theme::font(theme::kFamilyBody, 11, QFont::ExtraBold);
-    painter->setFont(font);
-
-    if (logicalIndex == ItemTableModel::GenerationsColumn) {
-        // 1–9: 세대 칸과 같은 x에. 지금 세대는 노란 바탕(반경 3).
-        for (int g = 1; g <= ItemRowDelegate::kGenerationCount; ++g) {
-            const QRectF box = ItemRowDelegate::generationRect(line, g);
-            if (g == m_generation) {
-                painter->setPen(Qt::NoPen);
-                painter->setBrush(QColor(tok::kYellow));
-                painter->drawRoundedRect(box, 3, 3);
-            }
-            painter->setPen(QColor(tok::kText2));
-            painter->drawText(box, Qt::AlignCenter, QString::number(g));
-        }
-        painter->restore();
-        return;
-    }
 
     const QString text = model()->headerData(logicalIndex, orientation()).toString();
     const bool sorted = isSortIndicatorShown() && sortIndicatorSection() == logicalIndex;
+    const bool right = logicalIndex == ItemTableModel::PriceColumn; // 숫자 칸은 오른쪽
     const QColor color(sorted ? tok::kRed : tok::kText2);
+    const QRectF line = cell.adjusted(0, 0, 0, -kBottomLine);
     const QRectF content = line.adjusted(kPadding, 0, -kPadding, 0);
+    const QFont font = theme::font(theme::kFamilyBody, 11, QFont::ExtraBold);
+    painter->setFont(font);
     painter->setPen(color);
-    painter->drawText(content, Qt::AlignLeft | Qt::AlignVCenter, text);
+    painter->drawText(content, (right ? Qt::AlignRight : Qt::AlignLeft) | Qt::AlignVCenter, text);
+
     if (sorted && !text.isEmpty()) {
-        // 화살표는 글자 뒤에. Ascending = 위 삼각형.
-        const qreal x = content.left() + QFontMetricsF(font).horizontalAdvance(text) + kArrowGap;
+        const qreal textWidth = QFontMetricsF(font).horizontalAdvance(text);
+        const qreal x = right ? content.right() - textWidth - kArrowGap - kArrow.width()
+                              : content.left() + textWidth + kArrowGap;
         const qreal top = line.center().y() - kArrow.height() / 2;
-        const bool ascending = sortIndicatorOrder() == Qt::AscendingOrder;
+        const bool ascending = sortIndicatorOrder() == Qt::AscendingOrder; // 위 삼각형
         QPainterPath arrow;
         arrow.moveTo(x, ascending ? top + kArrow.height() : top);
         arrow.lineTo(x + kArrow.width(), ascending ? top + kArrow.height() : top);

@@ -103,6 +103,7 @@ inline constexpr auto kFiles = std::to_array<CsvFile>({
         {"item_pockets", 87, "8ba8329ca4a72fca13df87cebe1b67ea389ed61ac856d2c9b8073e6bd077aff4"},
         {"item_game_indices", 75060,
          "ad7576a23dea4e136ea887f5f04b680abc4f72131812fa011bdddeb54760c653"},
+        {"machines", 32831, "f9df7faaf0a60896fa344abd2b639f83f79c2a24e1fd4bb3560ca7da76e9a6ad"},
         {"item_flavor_text", 6281294,
          "f85281c97e4a423fb6ae673a3d2cfab116ac2e7bb9fcdecfb43ac8b1e1fb8676"},
 });

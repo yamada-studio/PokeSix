@@ -46,11 +46,12 @@ constexpr PanelStyle kListPanel {.outline = 2,
                                  .headerColor = tok::kRed};
 constexpr int kSearchDebounceMs = 150;
 
-// 목록 칸 폭(칸 좌우 여백 4 포함). 효과 칸이 남는 폭을 갖는다. 디자인: 18 · 28 · 112 · 1fr · 178 +
-// gap 10
+// 목록 칸 폭(칸 좌우 여백 4 포함). 효과 칸이 남는 폭을 갖는다. 디자인의 세대 칸(178)은 두지 않고
+// 가격 칸을 둔다 — 목록이 이미 지금 세대 아이템만이라서.
 constexpr int kCursorWidth = 24;
 constexpr int kIconWidth = 40;
 constexpr int kNameWidth = 132;
+constexpr int kPriceWidth = 84; // "10,000원"
 } // namespace
 
 namespace com::yamada::studio {
@@ -149,8 +150,7 @@ QWidget *ItemsPage::buildListBody()
     m_header->resizeSection(ItemTableModel::CursorColumn, kCursorWidth);
     m_header->resizeSection(ItemTableModel::IconColumn, kIconWidth);
     m_header->resizeSection(ItemTableModel::NameColumn, kNameWidth);
-    m_header->resizeSection(ItemTableModel::GenerationsColumn,
-                            ItemRowDelegate::generationsColumnWidth());
+    m_header->resizeSection(ItemTableModel::PriceColumn, kPriceWidth);
     m_header->setStretchLastSection(false);
     m_table->setSortingEnabled(true);
     m_table->sortByColumn(ItemTableModel::NameColumn, Qt::AscendingOrder); // 가나다순
@@ -191,7 +191,6 @@ void ItemsPage::load()
     const int generation = m_state->generation();
     m_model->setRows(m_repository->itemsForGeneration(generation), generation);
     m_delegate->setGeneration(generation);
-    m_header->setGeneration(generation);
     m_loaded = m_model->rowCount() > 0; // 비어 있으면(DB가 아직 없음) 다음에 보일 때 다시
     updateTitle();
     qCInfo(lcUi) << "items loaded" << m_model->rowCount() << "for generation" << generation;

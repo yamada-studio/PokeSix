@@ -49,8 +49,10 @@ and the project uses [Semantic Versioning](https://semver.org/).
   species, types and stats) follows it.
 - Items page (category and list panels): eight category groups, search by name or effect, and a list
   of the items that exist in the current generation, painted by a row delegate with item icons, effect
-  text and nine per-generation cells with the current generation outlined; the header numbers the
-  generation cells. The list reloads when the generation changes, like the Dex page. Adds the missing
+  text and price. Machines show the move they hold in that generation (type chip and name) with a
+  type-coloured disc icon; generations 1–5 use the BW item art. The list reloads when the generation
+  changes, like the Dex page. Moves (names and per-generation types) and machines are imported;
+  schema version 4. Adds the missing
   check mark icon used by the check box style.
 - Item data for the Items page: categories, pockets, ko/en/ja names, per-generation availability and a
   Korean effect text per generation (the first game of each generation; generations 1–5 fall back to

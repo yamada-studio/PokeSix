@@ -29,11 +29,14 @@
 //   한국어 설명문이다. 한국어 설명문은 6세대(XY)부터 있어서, 1–5세대는 조회할 때 6세대 문구로
 //   대신한다. 분류(category)는 PokéAPI의 55가지 그대로 두고, 화면의 묶음(회복 · 기술머신 …)은 UI가
 //   정한다.
+//   기술머신은 게임마다 담긴 기술이 다르다 → item_machines에 세대마다 한 줄(그 세대 첫 게임 기준).
+//   기술의 타입도 세대에 따라 바뀐다(애교부리기: 5세대까지 노말, 6세대부터 페어리) → move_types
+//   구간.
 //
 // [이름] 포켓몬 · 타입 이름은 ko / en / ja 열로 둔다(PokéAPI languages: 3 = ko, 9 = en, 11 = ja).
 //   UI 문구(tr())와는 별개의 경로다(architecture.md §4).
 namespace com::yamada::studio::schema {
-inline constexpr int kVersion = 3; // 스키마를 바꾸면 올린다. meta 표에 기록된다
+inline constexpr int kVersion = 4; // 스키마를 바꾸면 올린다. meta 표에 기록된다
 
 inline constexpr std::array kStatements = {
         // 이 DB를 만든 원천과 스키마 버전 (key = 'schema_version', 'source_commit', 'imported_at')
@@ -113,6 +116,18 @@ inline constexpr std::array kStatements = {
         R"(CREATE TABLE item_generations (
         item_id INTEGER NOT NULL REFERENCES items(id), generation INTEGER NOT NULL,
         PRIMARY KEY (item_id, generation)))",
+        R"(CREATE TABLE moves (
+        id INTEGER PRIMARY KEY, identifier TEXT NOT NULL, intro_gen INTEGER NOT NULL,
+        name_ko TEXT, name_en TEXT, name_ja TEXT))",
+        // 기술 타입의 세대 구간(move_changelog의 옛 타입 → genranges). ??? 타입(저주 2–4세대)은
+        // 빠진다
+        R"(CREATE TABLE move_types (
+        move_id INTEGER NOT NULL REFERENCES moves(id), type_id INTEGER NOT NULL REFERENCES types(id),
+        gen_from INTEGER NOT NULL, gen_to INTEGER))",
+        R"(CREATE INDEX move_types_move ON move_types (move_id))",
+        R"(CREATE TABLE item_machines (
+        item_id INTEGER NOT NULL REFERENCES items(id), generation INTEGER NOT NULL,
+        move_id INTEGER NOT NULL REFERENCES moves(id), PRIMARY KEY (item_id, generation)))",
         R"(CREATE TABLE item_effects (
         item_id INTEGER NOT NULL REFERENCES items(id), generation INTEGER NOT NULL,
         text_ko TEXT NOT NULL, PRIMARY KEY (item_id, generation)))",
