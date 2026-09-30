@@ -1,0 +1,30 @@
+{
+  "_comment": [
+    "아이템 대백과의 분류 묶음 (ui/theme/itemstyle.h가 읽는다. ADR 0012와 같은 방식).",
+    "groups: 분류 창에 위에서부터 나오는 순서. key는 코드가 쓰는 이름, label · color는 화면 글자와 색 견본.",
+    "  아이템 하나가 어느 묶음에 드는지: categories(PokéAPI item_categories.identifier)에 있으면 그 묶음 →",
+    "  아니면 pockets(가방 주머니)에 있으면 그 묶음 → 아니면 rest인 묶음(기타). categories가 pockets보다 먼저다.",
+    "  첫 묶음 all은 '전체'(거르지 않음)다.",
+    "hiddenCategories: 목록에 아예 넣지 않는 분류(쓰지 않는 데이터 · 레이드 결정 · 요리 재료 등).",
+    "디자인(SCR-03)의 여섯 묶음에 볼 · 나무열매를 더했다(design/README.md '의도한 차이')."
+  ],
+
+  "groups": [
+    { "key": "all",       "label": "전체",     "color": "#FFFFFF" },
+    { "key": "medicine",  "label": "회복",     "color": "#E86A4F", "pockets": ["medicine"] },
+    { "key": "balls",     "label": "볼",       "color": "#E3A33A", "pockets": ["pokeballs"] },
+    { "key": "machines",  "label": "기술머신", "color": "#2C64B0", "pockets": ["machines"] },
+    { "key": "evolution", "label": "진화",     "color": "#2A7D38", "categories": ["evolution"] },
+    { "key": "battle",    "label": "배틀",     "color": "#D8322B", "pockets": ["battle"],
+      "categories": ["held-items", "choice", "type-enhancement", "jewels", "plates", "bad-held-items",
+                     "scarves", "mega-stones", "z-crystals", "memories", "species-specific",
+                     "effort-training", "training"] },
+    { "key": "berries",   "label": "나무열매", "color": "#7C9A34", "pockets": ["berries"] },
+    { "key": "other",     "label": "기타",     "color": "#BDBBA6", "rest": true }
+  ],
+
+  "hiddenCategories": [
+    "unused", "dynamax-crystals", "data-cards", "curry-ingredients", "sandwich-ingredients",
+    "picnic", "tm-materials", "species-candies"
+  ]
+}

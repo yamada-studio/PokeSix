@@ -1,0 +1,322 @@
+item_id,version_group_id,language_id,flavor_text
+1,5,9,"The best BALL that
+catches a POKéMON
+without fail."
+1,6,9,"The best BALL that
+catches a POKéMON
+without fail."
+1,7,9,"The best BALL with the ultimate
+performance. It will catch any wild
+POKéMON without fail."
+1,8,9,"The best Ball with the ultimate level of
+performance. It will catch any wild
+Pokémon without fail."
+1,9,9,"The best Ball with the ultimate level of
+performance. It will catch any wild
+Pokémon without fail."
+1,10,9,"The best Ball with the ultimate level of
+performance. It will catch any wild
+Pokémon without fail."
+1,11,9,"The best Ball with the ultimate level of
+performance. It will catch any wild
+Pokémon without fail."
+1,14,9,"The best Ball with the ultimate level of
+performance. It will catch any wild
+Pokémon without fail."
+1,15,3,"야생 포켓몬을 반드시
+잡을 수 있는
+최고 성능의 볼."
+1,15,9,"The best Poké Ball with the ultimate
+level of performance. With it, you will
+catch any wild Pokémon without fail."
+1,17,3,"야생 포켓몬을 반드시
+잡을 수 있는
+최고 성능의 볼."
+1,17,9,"The best Poké Ball with the ultimate level of
+performance. With it, you will catch any wild
+Pokémon without fail."
+1,18,3,"야생 포켓몬을 반드시
+잡을 수 있는
+최고 성능의 볼."
+1,18,9,"The best Poké Ball with the ultimate level of
+performance. With it, you will catch any wild
+Pokémon without fail."
+1,19,3,"야생 포켓몬을 반드시
+잡을 수 있는
+최고 성능의 볼."
+1,19,9,"The best Poké Ball with the ultimate level of
+performance. With it, you will catch any wild
+Pokémon without fail."
+1,20,3,"야생 포켓몬을 반드시
+잡을 수 있는
+최고 성능의 볼."
+1,20,9,"The best Poké Ball with the ultimate level of
+performance. With it, you will catch any wild
+Pokémon without fail."
+17,5,9,"Restores the HP of
+a POKéMON by
+20 points."
+17,6,9,"Restores the HP of
+a POKéMON by
+20 points."
+17,7,9,"A spray-type wound medicine.
+It restores the HP of one POKéMON
+by 20 points."
+17,8,9,"A spray-type medicine for wounds.
+It restores the HP of one Pokémon by
+just 20 points."
+17,9,9,"A spray-type medicine for wounds.
+It restores the HP of one Pokémon by
+just 20 points."
+17,10,9,"A spray-type medicine for wounds.
+It restores the HP of one Pokémon by
+just 20 points."
+17,11,9,"A spray-type medicine for wounds.
+It restores the HP of one Pokémon by
+just 20 points."
+17,14,9,"A spray-type medicine for wounds.
+It restores the HP of one Pokémon by
+just 20 points."
+17,15,3,"스프레이식의 상처약.
+포켓몬 1마리의 HP를
+20만큼 회복한다."
+17,15,9,"A spray-type medicine for treating
+wounds. It can be used to restore
+20 HP to an injured Pokémon."
+17,17,3,"스프레이식의 상처약.
+포켓몬 1마리의 HP를
+20만큼 회복한다."
+17,17,9,"A spray-type medicine for treating wounds. It can
+be used to restore 20 HP to an injured Pokémon."
+17,18,3,"스프레이식의 상처약.
+포켓몬 1마리의 HP를
+20만큼 회복한다."
+17,18,9,"A spray-type medicine for treating wounds. It can
+be used to restore 20 HP to an injured Pokémon."
+17,19,3,"스프레이식의 상처약.
+포켓몬 1마리의 HP를
+20만큼 회복한다."
+17,19,9,"A spray-type medicine for treating wounds. It can
+be used to restore 20 HP to a single Pokémon."
+17,20,3,"스프레이식의 상처약.
+포켓몬 1마리의 HP를
+20만큼 회복한다."
+17,20,9,"A spray-type medicine for treating wounds. It can
+be used to restore 20 HP to a single Pokémon."
+82,5,9,"Makes certain
+species of POKéMON
+evolve."
+82,6,9,"Makes certain
+species of POKéMON
+evolve."
+82,7,9,"A peculiar stone that makes certain
+species of POKéMON evolve.
+It is colored orange."
+82,8,9,"A peculiar stone that makes certain
+species of Pokémon evolve.
+It is colored orange."
+82,9,9,"A peculiar stone that makes certain
+species of Pokémon evolve.
+It is colored orange."
+82,10,9,"A peculiar stone that makes certain
+species of Pokémon evolve.
+It is colored orange."
+82,11,9,"A peculiar stone that makes certain
+species of Pokémon evolve.
+It is colored orange."
+82,14,9,"A peculiar stone that makes certain
+species of Pokémon evolve.
+It is colored orange."
+82,15,3,"어느 특정 포켓몬을
+진화시키는 이상한 돌.
+주황색을 띠고 있다."
+82,15,9,"A peculiar stone that can make
+certain species of Pokémon evolve.
+The stone has a fiery orange heart."
+82,17,3,"어느 특정 포켓몬을
+진화시키는 이상한 돌.
+주황색을 띠고 있다."
+82,17,9,"A peculiar stone that can make certain species of
+Pokémon evolve. The stone has a fiery
+orange heart."
+82,18,3,"어느 특정 포켓몬을
+진화시키는 이상한 돌.
+주황색을 띠고 있다."
+82,18,9,"A peculiar stone that can make certain species of
+Pokémon evolve. The stone has a fiery
+orange heart."
+82,19,3,"어느 특정 포켓몬을
+진화시키는 이상한 돌.
+주황색을 띠고 있다."
+82,19,9,"A peculiar stone that can make certain species of
+Pokémon evolve. The stone has a fiery orange heart."
+82,20,3,"어느 특정 포켓몬을
+진화시키는 이상한 돌.
+주황색을 띠고 있다."
+82,20,9,"A peculiar stone that can make certain species of
+Pokémon evolve. The stone has a fiery orange heart."
+109,8,9,"A peculiar stone that makes certain
+species of Pokémon evolve.
+It sparkles like eyes."
+109,9,9,"A peculiar stone that makes certain
+species of Pokémon evolve.
+It sparkles like eyes."
+109,10,9,"A peculiar stone that makes certain
+species of Pokémon evolve.
+It sparkles like eyes."
+109,11,9,"A peculiar stone that makes certain
+species of Pokémon evolve.
+It sparkles like eyes."
+109,14,9,"A peculiar stone that makes certain
+species of Pokémon evolve.
+It sparkles like eyes."
+109,15,3,"어느 특정 포켓몬을
+진화시키는 이상한 돌.
+눈동자처럼 아름답다."
+109,15,9,"A peculiar stone that can make
+certain species of Pokémon evolve.
+It sparkles like a glittering eye."
+109,17,3,"어느 특정 포켓몬을
+진화시키는 이상한 돌.
+눈동자처럼 아름답다."
+109,17,9,"A peculiar stone that can make certain species of
+Pokémon evolve. It sparkles like a glittering eye."
+109,18,3,"어느 특정 포켓몬을
+진화시키는 이상한 돌.
+눈동자처럼 아름답다."
+109,18,9,"A peculiar stone that can make certain species of
+Pokémon evolve. It sparkles like a glittering eye."
+109,19,3,"어느 특정 포켓몬을
+진화시키는 이상한 돌.
+눈동자처럼 아름답다."
+109,19,9,"A peculiar stone that can make certain species of
+Pokémon evolve. It sparkles like a glittering eye."
+109,20,3,"어느 특정 포켓몬을
+진화시키는 이상한 돌.
+눈동자처럼 아름답다."
+109,20,9,"A peculiar stone that can make certain species of
+Pokémon evolve. It sparkles like a glittering eye."
+211,5,9,"A hold item that
+gradually restores
+HP in battle."
+211,6,9,"A hold item that
+gradually restores
+HP in battle."
+211,7,9,"An item to be held by a POKéMON.
+The holding POKéMON gradually
+regains HP during battle."
+211,8,9,"An item to be held by a Pokémon.
+The holder’s HP is gradually restored
+during battle."
+211,9,9,"An item to be held by a Pokémon.
+The holder’s HP is gradually restored
+during battle."
+211,10,9,"An item to be held by a Pokémon.
+The holder’s HP is gradually restored
+during battle."
+211,11,9,"An item to be held by a Pokémon.
+The holder’s HP is gradually restored
+during battle."
+211,14,9,"An item to be held by a Pokémon.
+The holder’s HP is gradually restored
+during battle."
+211,15,3,"지니게 하면 포켓몬의 HP가
+배틀을 하는 동안 조금씩
+회복된다."
+211,15,9,"An item to be held by a Pokémon.
+The holder’s HP is slowly but steadily
+restored throughout every battle."
+211,17,3,"지니게 하면 포켓몬의 HP가
+배틀을 하는 동안 조금씩
+회복된다."
+211,17,9,"An item to be held by a Pokémon. The holder’s HP
+is slowly but steadily restored throughout
+every battle."
+211,18,3,"지니게 하면 포켓몬의 HP가
+배틀을 하는 동안 조금씩
+회복된다."
+211,18,9,"An item to be held by a Pokémon. The holder’s HP
+is slowly but steadily restored throughout
+every battle."
+211,19,3,"지니게 하면 포켓몬의 HP가
+배틀을 하는 동안 조금씩
+회복된다."
+211,19,9,"An item to be held by a Pokémon. The holder’s HP
+is slowly but steadily restored throughout
+every battle."
+211,20,3,"지니게 하면 포켓몬의 HP가
+배틀을 하는 동안 조금씩
+회복된다."
+211,20,9,"An item to be held by a Pokémon. The holder’s HP
+is slowly but steadily restored throughout
+every battle."
+305,5,9,"Powerful, but makes
+the user flinch if
+hit by the foe."
+305,6,9,"Powerful, but makes
+the user flinch if
+hit by the foe."
+305,7,9,"An attack that is
+executed last.
+The user flinches
+if hit beforehand."
+305,8,9,"The user focuses its mind before
+launching this attack. It will fail if
+the user is hit before it is used."
+305,9,9,"The user focuses its mind before
+launching this attack. It will fail if
+the user is hit before it is used."
+305,10,9,"The user focuses its mind before
+launching this attack. It will fail if
+the user is hit before it is used."
+305,11,9,"The user sharpens its claws to
+boost its Attack stat and accuracy."
+305,14,9,"The user sharpens its claws to
+boost its Attack stat and accuracy."
+305,15,3,"손톱을 갈아 날카롭게 만든다.
+자신의 공격과
+명중률을 올린다."
+305,15,9,"The user sharpens its claws to
+boost its Attack stat and accuracy."
+305,17,3,"스스로 분발해서
+공격과 특수공격을 올린다."
+305,17,9,"The user is roused, and its Attack and Sp. Atk
+stats increase."
+305,18,3,"스스로 분발해서
+공격과 특수공격을 올린다."
+305,18,9,"The user is roused, and its Attack and Sp. Atk
+stats increase."
+305,19,3,"머리를 내밀어
+곧장 돌진하여 공격한다.
+상대를 풀죽게 만들 때가 있다."
+305,19,9,"The user sticks out its head and attacks by charging
+straight into the target. This may also make the
+target flinch."
+305,20,3,"굉장한 힘을 담은 킥으로
+상대를 걷어차서 공격한다."
+305,20,9,"The target is attacked by a kick launched with
+muscle-packed power."
+885,17,3,"어느 특정 포켓몬을
+진화시키는 이상한 돌.
+눈송이 무늬가 있다."
+885,17,9,"A peculiar stone that can make certain species of
+Pokémon evolve. It has an unmistakable
+snowflake pattern."
+885,18,3,"어느 특정 포켓몬을
+진화시키는 이상한 돌.
+눈송이 무늬가 있다."
+885,18,9,"A peculiar stone that can make certain species of
+Pokémon evolve. It has an unmistakable
+snowflake pattern."
+885,19,3,"어느 특정 포켓몬을
+진화시키는 이상한 돌.
+눈송이 무늬가 있다."
+885,19,9,"A peculiar stone that can make certain species of
+Pokémon evolve. It has an unmistakable
+snowflake pattern."
+885,20,3,"어느 특정 포켓몬을
+진화시키는 이상한 돌.
+눈송이 무늬가 있다."
+885,20,9,"A peculiar stone that can make certain species of
+Pokémon evolve. It has an unmistakable
+snowflake pattern."

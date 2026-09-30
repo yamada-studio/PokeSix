@@ -93,8 +93,9 @@ inline constexpr auto kFiles = std::to_array<CsvFile>({
          "78b75acfcf6dca4c82da9d4851357cbbd65e61b08154eddfc2ace0efd00e408e"},
         {"pokemon_moves", 10733699,
          "22a807cef26891eeac0d0c900bd363e66baf421f7ee795bc7bc3e718f23b939e"},
-        // ── 아이템: 아이템 · 이름 · 분류 · 주머니 · 세대별 존재(game indices). 효과
-        // 설명문(item_flavor_text, 6 MB)은 E3에서 필요해지면 추가
+        // ── 아이템: 아이템 · 이름 · 분류 · 주머니 · 세대별 존재(game indices) · 게임
+        // 설명문(한국어는
+        // XY~소드실드. 변환할 때 한국어 줄만 남긴다)
         {"items", 59564, "f08cd6dc30b447cb91cbe9232c79052e8521f32f6105bb1489b5bfabf4ca3241"},
         {"item_names", 498386, "e286953dda52ceddb72c85079641f965bde6eab6fed2a576e292dce053a1af67"},
         {"item_categories", 922,
@@ -102,9 +103,11 @@ inline constexpr auto kFiles = std::to_array<CsvFile>({
         {"item_pockets", 87, "8ba8329ca4a72fca13df87cebe1b67ea389ed61ac856d2c9b8073e6bd077aff4"},
         {"item_game_indices", 75060,
          "ad7576a23dea4e136ea887f5f04b680abc4f72131812fa011bdddeb54760c653"},
+        {"item_flavor_text", 6281294,
+         "f85281c97e4a423fb6ae673a3d2cfab116ac2e7bb9fcdecfb43ac8b1e1fb8676"},
 });
 
-// 전부 합친 크기. 첫 실행 화면의 "예상 크기"와 진행 막대에 쓴다. (12.5 MB)
+// 전부 합친 크기. 첫 실행 화면의 "예상 크기"와 진행 막대에 쓴다. (18.8 MB)
 inline constexpr qint64 kTotalSize = [] {
     qint64 sum = 0;
     for (const CsvFile &file : kFiles)

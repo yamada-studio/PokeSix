@@ -1,0 +1,8 @@
+id,identifier,category_id,cost,fling_power,fling_effect_id
+1,master-ball,34,0,,
+17,potion,27,200,30,
+82,fire-stone,10,3000,30,
+109,dawn-stone,10,3000,80,
+211,leftovers,12,4000,10,
+305,tm01,37,40000,,
+885,ice-stone,10,3000,30,

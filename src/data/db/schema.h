@@ -23,10 +23,17 @@
 //   없어서 지방 이름(regions)과 버전 이름(versions)으로 나타낸다. 전국도감은 표로 조회하지
 //   않는다(species).
 //
+// [아이템] 세대별 존재는 item_generations(PokéAPI item_game_indices: 그 세대 게임에 번호가 있으면
+// 존재).
+//   효과 문구는 item_effects에 세대마다 한 줄 — 그 세대 첫 게임(버전 그룹 순서가 가장 이른 것)의
+//   한국어 설명문이다. 한국어 설명문은 6세대(XY)부터 있어서, 1–5세대는 조회할 때 6세대 문구로
+//   대신한다. 분류(category)는 PokéAPI의 55가지 그대로 두고, 화면의 묶음(회복 · 기술머신 …)은 UI가
+//   정한다.
+//
 // [이름] 포켓몬 · 타입 이름은 ko / en / ja 열로 둔다(PokéAPI languages: 3 = ko, 9 = en, 11 = ja).
 //   UI 문구(tr())와는 별개의 경로다(architecture.md §4).
 namespace com::yamada::studio::schema {
-inline constexpr int kVersion = 2; // 스키마를 바꾸면 올린다. meta 표에 기록된다
+inline constexpr int kVersion = 3; // 스키마를 바꾸면 올린다. meta 표에 기록된다
 
 inline constexpr std::array kStatements = {
         // 이 DB를 만든 원천과 스키마 버전 (key = 'schema_version', 'source_commit', 'imported_at')
@@ -94,5 +101,20 @@ inline constexpr std::array kStatements = {
         pokedex_id INTEGER NOT NULL REFERENCES pokedexes(id),
         species_id INTEGER NOT NULL REFERENCES species(id), number INTEGER NOT NULL))",
         R"(CREATE INDEX dex_numbers_dex ON dex_numbers (pokedex_id, number))",
+
+        // pocket: 가방 주머니 identifier("medicine", "machines" …)를 그대로 둔다(주머니 표는
+        // 이름뿐이라)
+        R"(CREATE TABLE item_categories (id INTEGER PRIMARY KEY, identifier TEXT NOT NULL,
+        pocket TEXT NOT NULL))",
+        R"(CREATE TABLE items (
+        id INTEGER PRIMARY KEY, identifier TEXT NOT NULL,
+        category_id INTEGER NOT NULL REFERENCES item_categories(id), cost INTEGER,
+        name_ko TEXT, name_en TEXT, name_ja TEXT))",
+        R"(CREATE TABLE item_generations (
+        item_id INTEGER NOT NULL REFERENCES items(id), generation INTEGER NOT NULL,
+        PRIMARY KEY (item_id, generation)))",
+        R"(CREATE TABLE item_effects (
+        item_id INTEGER NOT NULL REFERENCES items(id), generation INTEGER NOT NULL,
+        text_ko TEXT NOT NULL, PRIMARY KEY (item_id, generation)))",
 };
 } // namespace com::yamada::studio::schema

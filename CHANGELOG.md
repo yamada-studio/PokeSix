@@ -47,6 +47,12 @@ and the project uses [Semantic Versioning](https://semver.org/).
 - Generation menu and `AppState`: the intro and app bar generation buttons read "N세대 ▾" and open a
   menu of generations 1–9; the choice is saved in the settings and the Dex list (regional dex buttons,
   species, types and stats) follows it.
+- Item data for the Items page: categories, pockets, ko/en/ja names, per-generation availability and a
+  Korean effect text per generation (the first game of each generation; generations 1–5 fall back to
+  generation 6). `ItemTableModel` and `ItemFilterProxy` (search, category predicate, "this generation
+  only"), and `resources/theme/itemstyle.json` that groups PokéAPI's 55 categories into the Items page
+  groups and hides unused data. `SpriteCache` now also fetches item icons. The first download grows to
+  18.8 MB and the database schema is version 3.
 - Regional dex buttons show split version badges (e.g. Sinnoh [D|P], Johto [HG|SS]); badge labels and
   colours, hidden dexes and label overrides live in `resources/theme/dexstyle.json`.
 - Dex list icons: `SpriteCache` downloads small Pokémon icons from PokéAPI/sprites into the user cache
