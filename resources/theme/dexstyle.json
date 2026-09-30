@@ -5,8 +5,10 @@
     "  색은 연한 바탕 + 진한 글자(대비 3:1 이상). 표에 없는 버전은 영어 이름 · 흰 바탕 · 먹 글자로 나온다.",
     "  같은 도감에서 약칭이 겹치면 한 번만 보인다(관동도감: 일본판 레드 · 블루는 레드 · 블루와 같은 R · B).",
     "pokedexes: PokéAPI pokedexes.identifier → hidden(버튼을 만들지 않음) · label(지방 이름 대신).",
-    "  알로라의 섬 도감은 지방 도감에 포함되므로 숨긴다. 칼로스는 도감이 셋이라 이름으로 나눈다.",
-    "세대를 늘릴 때(8세대~)는 이 파일에 버전을 더하고 AppState::kMaxGeneration을 올린다."
+    "  알로라의 섬 도감은 지방 도감에 포함되므로 숨긴다. 한 지방에 도감이 여럿이면(칼로스 셋, 가라르 · 팔데아의",
+    "  DLC 도감, Z-A의 미르시티 · 이차원) 이름으로 나눈다. 머리 띠 폭(최소 창 934)에 들어가게 짧게 쓴다.",
+    "  DLC 버전(갑옷의 외딴섬 · 소드 등)은 본편과 같은 약칭 · 색이라 배지에는 한 번만 보인다.",
+    "세대를 늘릴 때는 이 파일에 버전을 더하고 AppState::kMaxGeneration을 올린다."
   ],
 
   "versions": {
@@ -48,7 +50,26 @@
     "ultra-sun":      { "short": "US", "background": "#FCDAC3", "text": "#B2400C" },
     "ultra-moon":     { "short": "UM", "background": "#DAD5EF", "text": "#392C79" },
     "lets-go-pikachu":{ "short": "P",  "background": "#FFEFB5", "text": "#977100" },
-    "lets-go-eevee":  { "short": "E",  "background": "#F1E1CB", "text": "#835421" }
+    "lets-go-eevee":  { "short": "E",  "background": "#F1E1CB", "text": "#835421" },
+
+    "sword":                    { "short": "Sw",  "background": "#D8ECF8", "text": "#1A6AA3" },
+    "shield":                   { "short": "Sh",  "background": "#F8DAE4", "text": "#AB2150" },
+    "the-isle-of-armor-sword":  { "short": "Sw",  "background": "#D8ECF8", "text": "#1A6AA3" },
+    "the-isle-of-armor-shield": { "short": "Sh",  "background": "#F8DAE4", "text": "#AB2150" },
+    "the-crown-tundra-sword":   { "short": "Sw",  "background": "#D8ECF8", "text": "#1A6AA3" },
+    "the-crown-tundra-shield":  { "short": "Sh",  "background": "#F8DAE4", "text": "#AB2150" },
+    "brilliant-diamond":        { "short": "BD",  "background": "#DCE5FA", "text": "#2F4EA3" },
+    "shining-pearl":            { "short": "SP",  "background": "#F9DCEA", "text": "#A83674" },
+    "legends-arceus":           { "short": "LA",  "background": "#ECE4D2", "text": "#665230" },
+
+    "scarlet":                  { "short": "S",   "background": "#FAD8D0", "text": "#B92F1B" },
+    "violet":                   { "short": "V",   "background": "#E5D9F5", "text": "#662CA2" },
+    "the-teal-mask-scarlet":    { "short": "S",   "background": "#FAD8D0", "text": "#B92F1B" },
+    "the-teal-mask-violet":     { "short": "V",   "background": "#E5D9F5", "text": "#662CA2" },
+    "the-indigo-disk-scarlet":  { "short": "S",   "background": "#FAD8D0", "text": "#B92F1B" },
+    "the-indigo-disk-violet":   { "short": "V",   "background": "#E5D9F5", "text": "#662CA2" },
+    "legends-za":               { "short": "Z-A", "background": "#DFF1D6", "text": "#2C7337" },
+    "mega-dimension":           { "short": "MD",  "background": "#E6DEF3", "text": "#57388F" }
   },
 
   "pokedexes": {
@@ -62,6 +83,13 @@
     "updated-melemele":  { "hidden": true },
     "updated-akala":     { "hidden": true },
     "updated-ulaula":    { "hidden": true },
-    "updated-poni":      { "hidden": true }
+    "updated-poni":      { "hidden": true },
+
+    "isle-of-armor":     { "label": "외딴섬" },
+    "crown-tundra":      { "label": "설원" },
+    "kitakami":          { "label": "북신" },
+    "blueberry":         { "label": "블루베리" },
+    "lumiose-city":      { "label": "미르시티" },
+    "hyperspace":        { "label": "이차원" }
   }
 }

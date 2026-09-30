@@ -19,9 +19,9 @@ class AppState : public QObject
     Q_OBJECT
     Q_PROPERTY(int generation READ generation WRITE setGeneration NOTIFY generationChanged)
 public:
-    // 고를 수 있는 세대. 8세대부터는 데이터(도감 · 약칭 표)를 확인한 뒤에 연다.
+    // 고를 수 있는 세대. 늘릴 때는 dexstyle.json(버전 약칭 · 색, 도감 이름)을 먼저 채운다.
     static constexpr int kMinGeneration = 1;
-    static constexpr int kMaxGeneration = 7;
+    static constexpr int kMaxGeneration = 9;
     static constexpr int kDefaultGeneration = 4; // 디자인 목업의 기준(신오)
 
     explicit AppState(QObject *parent = nullptr);
