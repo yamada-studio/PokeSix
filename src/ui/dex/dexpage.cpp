@@ -4,6 +4,7 @@
 #include "data/models/speciestablemodel.h"
 #include "data/repository/repository.h"
 #include "data/sprites/spritecache.h"
+#include "ui/dex/dexheaderview.h"
 #include "ui/dex/dexrowdelegate.h"
 #include "ui/logging/logging.h"
 #include "ui/theme/tokens.h"
@@ -42,7 +43,7 @@ constexpr int kSearchDebounceMs = 150; // 입력 즉시가 아니라 멈춘 뒤 
 // TODO(A8): AppState의 현재 세대로 바꾼다. 지금은 세대 버튼과 같은 4(신오)로 고정.
 constexpr int kGeneration = 4;
 
-// 열 폭 — CSS grid의 "24px 52px 44px 3fr <타입 fit> 1fr 1fr 1fr 1fr 1fr 1fr 1.2fr"와 같은 생각이다.
+// 열 폭 — CSS grid의 "24px 52px 44px 3fr <타입 fit> 1fr ×7 + 끝 여유 8"과 같은 생각이다.
 // QHeaderView에는 비율(fr · %) 모드가 없어서, 표 폭이 바뀔 때마다 직접 나눈다(layoutColumns).
 //   고정 칸: 내용 폭이 정해진 칸(▶ · 번호 · 아이콘, 타입은 칩 두 개 폭을 계산)
 //   비율 칸: 남는 폭을 가중치대로 나눠 갖는 칸(이름 · 종족값 · 합계). 최소 폭 아래로는 줄지 않는다.
@@ -73,7 +74,7 @@ constexpr FlexColumn kFlexColumns[] = {
         {SpeciesTableModel::SpAttackColumn, 1, 44},
         {SpeciesTableModel::SpDefenseColumn, 1, 44},
         {SpeciesTableModel::SpeedColumn, 1, 44},
-        {SpeciesTableModel::TotalColumn, 1.2, 52}, // 세 자리 굵은 14 — 조금 넓게
+        {SpeciesTableModel::TotalColumn, 1, 52}, // 종족값과 같은 폭 → 칸 사이 간격이 고르다
 };
 
 // 목록 창의 최대 폭(CSS max-width). 이보다 넓은 창에서는 가운데에 두고 좌우 여백이 늘어난다 —
@@ -113,6 +114,8 @@ DexPage::DexPage(Repository *repository, QWidget *parent)
 
     m_table = new QTableView;
     m_table->setObjectName(QStringLiteral("dexTable"));
+    // 머리 칸은 직접 그리는 DexHeaderView로 바꾼다(데이터와 같은 자리 계산). 모델보다 먼저 단다.
+    m_table->setHorizontalHeader(new DexHeaderView(m_table));
     m_table->setModel(m_proxy);
     m_table->setItemDelegate(
             new DexRowDelegate(m_sprites, m_table)); // 모든 칸을 이 delegate가 그린다
@@ -149,6 +152,7 @@ DexPage::DexPage(Repository *repository, QWidget *parent)
     int minimum = m_fixedWidth + m_table->style()->pixelMetric(QStyle::PM_ScrollBarExtent);
     for (const FlexColumn &flex : kFlexColumns)
         minimum += flex.minimum;
+    minimum += DexRowDelegate::kEndGap;
     m_table->setMinimumWidth(minimum);
     // viewport(칸이 그려지는 안쪽 위젯)의 크기 변화를 엿본다 → 바뀔 때마다 비율 칸을 다시 나눈다.
     m_table->viewport()->installEventFilter(this);
@@ -192,22 +196,29 @@ void DexPage::resizeEvent(QResizeEvent *event)
 
 void DexPage::layoutColumns()
 {
-    // 남는 폭 = viewport 폭(스크롤바 제외) − 고정 칸. 이걸 가중치대로 나누고, 반올림으로 남거나
-    // 모자란 몇 px는 마지막 칸(합계)이 가져간다 → 칸 합이 viewport 폭과 정확히 같다.
+    // 남는 폭 = viewport 폭(스크롤바 제외) − 고정 칸 − 끝 여유. 이걸 가중치대로 나눈다.
+    // 반올림으로 남거나 모자란 몇 px는 이름 칸이 가져간다 — 왼쪽 정렬이라 폭이 1–2px 달라도 티가
+    // 나지 않는다(숫자 칸이 가져가면 그 칸만 간격이 달라 보인다). 합계 칸은 끝 여유 kEndGap을 더
+    // 갖는다(글자 자리는 DexRowDelegate::contentRect가 그만큼 들인다) → 칸 합 = viewport 폭.
     QHeaderView *header = m_table->horizontalHeader();
-    const int free = m_table->viewport()->width() - m_fixedWidth;
+    const int free = m_table->viewport()->width() - m_fixedWidth - DexRowDelegate::kEndGap;
     qreal totalWeight = 0;
     for (const FlexColumn &flex : kFlexColumns)
         totalWeight += flex.weight;
 
+    int widths[std::size(kFlexColumns)] = {};
     int used = 0;
-    const int last = static_cast<int>(std::size(kFlexColumns)) - 1;
-    for (int i = 0; i <= last; ++i) {
+    for (std::size_t i = 0; i < std::size(kFlexColumns); ++i) {
         const FlexColumn &flex = kFlexColumns[i];
-        const int share = i == last ? free - used : qFloor(free * flex.weight / totalWeight);
-        const int width = std::max(flex.minimum, share);
-        header->resizeSection(flex.column, width);
-        used += width;
+        widths[i] = std::max(flex.minimum, qFloor(free * flex.weight / totalWeight));
+        used += widths[i];
+    }
+    widths[0] = std::max(kFlexColumns[0].minimum, widths[0] + free - used); // [0] = 이름 칸
+
+    for (std::size_t i = 0; i < std::size(kFlexColumns); ++i) {
+        const bool isTotal = kFlexColumns[i].column == SpeciesTableModel::TotalColumn;
+        header->resizeSection(kFlexColumns[i].column,
+                              widths[i] + (isTotal ? DexRowDelegate::kEndGap : 0));
     }
 }
 
