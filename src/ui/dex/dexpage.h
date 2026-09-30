@@ -28,10 +28,13 @@ public:
 
 protected:
     void showEvent(QShowEvent *event) override;
+    void resizeEvent(QResizeEvent *event) override; // 최대 폭: 넓으면 좌우 여백을 늘린다
+    bool eventFilter(QObject *watched, QEvent *event) override; // 표 viewport의 크기 변화 → 칸 폭
 
 private:
     void load();
     void updateTitle();
+    void layoutColumns(); // 비율 칸(이름 · 종족값 · 합계)에 남는 폭을 가중치대로 나눈다
 
     Repository *m_repository = nullptr; // 소유하지 않는다(MainWindow가 소유)
     SpeciesTableModel *m_model = nullptr;
@@ -42,5 +45,6 @@ private:
     SpriteCache *m_sprites = nullptr; // 이름 옆 아이콘 파일 캐시
     QTimer *m_searchDelay = nullptr;
     bool m_loaded = false;
+    int m_fixedWidth = 0; // 고정 칸(▶ · 번호 · 아이콘 · 타입) 폭의 합
 };
 } // namespace com::yamada::studio

@@ -19,6 +19,11 @@ class DexRowDelegate : public QStyledItemDelegate
 public:
     static constexpr int kRowHeight = 40;
 
+    // 타입 칸에 칩 두 개가 딱 들어가는 폭: 18타입 중 가장 넓은 칩 둘 + 칩 사이 간격 + 칸 좌우 여백.
+    // 포켓몬은 타입이 최대 2개이므로 어느 조합이든 잘리지 않는다. 글꼴 폭으로 계산하니 px를 적지
+    // 않는다.
+    static int typesColumnWidth();
+
     // sprites: 아이콘 파일 캐시(소유하지 않는다). 파일이 아직 없으면 받기를 부탁하고 빈 칸으로
     // 둔다.
     explicit DexRowDelegate(SpriteCache *sprites, QObject *parent = nullptr);
