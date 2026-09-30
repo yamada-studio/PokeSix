@@ -3,6 +3,7 @@
 #include "ui/shell/page.h"
 
 #include <QMainWindow>
+#include <QSize>
 
 #include <memory>
 
@@ -33,5 +34,9 @@ private:
     // 게임 데이터 DB 조회 창구. QObject가 아니라서 object tree 대신 unique_ptr로 소유한다.
     // 화면들(DexPage …)은 포인터만 받아 쓴다(생성자 주입).
     std::unique_ptr<Repository> m_repository;
+
+    // 처음 여는 크기: 도감 표(840) + 창 테두리 · 여백이 딱 들어가는 폭, 인트로(최소 높이 804)가 다
+    // 들어가는 높이. 최소 크기는 따로 정하지 않는다 — 레이아웃이 계산한 minimumSizeHint가 최소다.
+    static constexpr QSize kDefaultSize {920, 840};
 };
 } // namespace com::yamada::studio

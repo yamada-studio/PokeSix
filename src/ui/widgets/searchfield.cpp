@@ -9,6 +9,7 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QPainter>
+#include <QResizeEvent>
 
 namespace {
 constexpr int kBorder = 2;
@@ -43,11 +44,27 @@ SearchField::SearchField(const QString &placeholder, const QString &shortcutText
     layout->addWidget(m_edit, 1);
 
     if (!shortcutText.isEmpty()) {
-        QLabel *shortcut = new QLabel(shortcutText);
-        shortcut->setObjectName(QStringLiteral("searchFieldShortcut"));
-        layout->addWidget(shortcut, 0, Qt::AlignVCenter); // 정렬이 없으면 칸 높이(36)로 늘어난다
+        m_shortcut = new QLabel(shortcutText);
+        m_shortcut->setObjectName(QStringLiteral("searchFieldShortcut"));
+        layout->addWidget(m_shortcut, 0, Qt::AlignVCenter); // 정렬이 없으면 칸 높이(36)로 늘어난다
     }
     QWidget::setFocusProxy(m_edit); // 이 위젯에 setFocus()하면 입력이 포커스를 받는다
+
+    // 가로는 hint(280)에서 줄거나 늘 수 있고(Preferred), 세로는 36 고정(Fixed).
+    // 최소 폭은 setMinimumSize가 아니라 minimumSizeHint() override로 말한다 — setMinimumSize를
+    // 부르면 그 값이 hint보다 우선해서 override가 쓰이지 않는다.
+    QWidget::setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+    QWidget::setMaximumWidth(kPreferredWidth);
+}
+
+QSize SearchField::sizeHint() const
+{
+    return QSize(kPreferredWidth, kHeight);
+}
+
+QSize SearchField::minimumSizeHint() const
+{
+    return QSize(kMinimumWidth, kHeight);
 }
 
 bool SearchField::eventFilter(QObject *watched, QEvent *event)
@@ -68,5 +85,16 @@ void SearchField::paintEvent(QPaintEvent *event)
     painter.setBrush(QColor(tok::kWhite));
     painter.drawRoundedRect(QRectF(rect()).adjusted(half, half, -half, -half), kRadius - half,
                             kRadius - half);
+}
+
+void SearchField::resizeEvent(QResizeEvent *event)
+{
+    QWidget::resizeEvent(event);
+    if (m_shortcut) {
+        // 폭이 220 이상일 때만 배지를 보인다. 숨긴 라벨은 안쪽 레이아웃에서 자리를 내놓고, 그 폭은
+        // 입력 칸(stretch 1)이 가져간다. 이 위젯 자신의 크기는 바깥 레이아웃이 hint만 보고 정하므로
+        // 숨기기가 다시 resize를 부르지 않는다(루프 없음).
+        m_shortcut->setVisible(event->size().width() >= kShortcutMinWidth);
+    }
 }
 } // namespace com::yamada::studio
