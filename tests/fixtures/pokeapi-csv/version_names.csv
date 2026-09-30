@@ -1,0 +1,103 @@
+version_id,local_language_id,name
+1,3,레드
+1,9,Red
+2,3,블루
+2,9,Blue
+3,3,피카츄
+3,9,Yellow
+4,3,골드
+4,9,Gold
+5,3,실버
+5,9,Silver
+6,3,크리스탈
+6,9,Crystal
+7,3,루비
+7,9,Ruby
+8,3,사파이어
+8,9,Sapphire
+9,3,에메랄드
+9,9,Emerald
+10,3,파이어레드
+10,9,FireRed
+11,3,리프그린
+11,9,LeafGreen
+12,3,디아루가
+12,9,Diamond
+13,3,펄기아
+13,9,Pearl
+14,3,기라티나
+14,9,Platinum
+15,3,하트골드
+15,9,HeartGold
+16,3,소울실버
+16,9,SoulSilver
+17,3,블랙
+17,9,Black
+18,3,화이트
+18,9,White
+19,3,콜로세움
+19,9,Colosseum
+20,3,XD
+20,9,XD
+21,3,블랙 2
+21,9,Black 2
+22,3,화이트 2
+22,9,White 2
+23,3,X
+23,9,X
+24,3,Y
+24,9,Y
+25,3,오메가루비
+25,9,Omega Ruby
+26,3,알파사파이어
+26,9,Alpha Sapphire
+27,3,썬
+27,9,Sun
+28,3,문
+28,9,Moon
+29,3,울트라썬
+29,9,Ultra Sun
+30,3,울트라문
+30,9,Ultra Moon
+31,3,레츠고! 피카츄
+31,9,"Let’s Go, Pikachu!"
+32,3,레츠고! 이브이
+32,9,"Let’s Go, Eevee!"
+33,3,소드
+33,9,Sword
+34,3,실드
+34,9,Shield
+35,3,소드: 갑옷의 외딴섬
+35,9,Sword: The Isle of Armor
+36,3,소드: 왕관의 설원
+36,9,Sword: The Crown Tundra
+37,3,브릴리언트 다이아몬드
+37,9,Brilliant Diamond
+38,3,샤이닝 펄
+38,9,Shining Pearl
+39,3,LEGENDS 아르세우스
+39,9,Legends: Arceus
+40,3,스칼렛
+40,9,Scarlet
+41,3,바이올렛
+41,9,Violet
+42,9,Scarlet: The Teal Mask
+43,9,Scarlet: The Indigo Disk
+44,3,레드
+44,9,Red
+45,3,그린
+45,9,Green
+46,3,블루
+46,9,Blue
+47,3,LEGENDS Z-A
+47,9,Legends: Z-A
+47,11,レジェンズ Z-A
+48,3,메가 차원 러시
+48,9,Mega Dimension
+49,9,Champions
+50,3,실드: 갑옷의 외딴섬
+50,9,Shield: The Isle of Armor
+51,3,실드: 왕관의 설원
+51,9,Shield: The Crown Tundra
+52,9,Violet: The Teal Mask
+53,9,Violet: The Indigo Disk

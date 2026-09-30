@@ -104,3 +104,65 @@ TEST_F(RepositoryTest, ProxySortsNumbersAsNumbers)
     EXPECT_EQ(proxy.index(0, SpeciesTableModel::NumberColumn).data().toInt(),
               445); // 합계 600이 맨 위
 }
+
+TEST_F(RepositoryTest, ListsTheRegionalDexesOfAGeneration)
+{
+    Repository repository(s_dbPath);
+    const QList<DexInfo> dexes = repository.dexesForGeneration(4);
+    ASSERT_EQ(dexes.size(), 3); // 신오(DP) · 신오(Pt) · 성도(HGSS) — 게임이 나온 순서
+    EXPECT_EQ(dexes[0].pokedexId, 5);
+    EXPECT_EQ(dexes[1].pokedexId, 6);
+    EXPECT_EQ(dexes[2].pokedexId, 7);
+    EXPECT_EQ(dexes[0].regionKo, QStringLiteral("신오"));
+    EXPECT_EQ(dexes[2].regionKo, QStringLiteral("성도"));
+    EXPECT_EQ(dexes[0].versionsEn,
+              (QStringList {QStringLiteral("Diamond"), QStringLiteral("Pearl")}));
+    EXPECT_EQ(dexes[2].versionsKo,
+              (QStringList {QStringLiteral("하트골드"), QStringLiteral("소울실버")}));
+
+    // 같은 신오도감(5)이 8세대(BDSP)에도 나온다 — 도감 목록은 게임 ↔ 세대 연결로 정해진다
+    bool sinnohInGen8 = false;
+    for (const DexInfo &dex : repository.dexesForGeneration(8))
+        sinnohInGen8 = sinnohInGen8 || dex.pokedexId == 5;
+    EXPECT_TRUE(sinnohInGen8);
+}
+
+TEST_F(RepositoryTest, RegionalDexUsesItsOwnNumbers)
+{
+    Repository repository(s_dbPath);
+    auto numbers = [](const QList<SpeciesRow> &rows) {
+        QList<int> result;
+        for (const SpeciesRow &row : rows)
+            result.append(row.dexNumber);
+        return result;
+    };
+
+    // 신오(DP): 시드 5종 중 삐삐 100 · 픽시 101 · 한카리아스 111만 있다
+    const QList<SpeciesRow> sinnoh = repository.speciesForDex(5, 4);
+    EXPECT_EQ(numbers(sinnoh), (QList<int> {100, 101, 111}));
+    const SpeciesRow *garchomp = find(sinnoh, 445);
+    ASSERT_NE(garchomp, nullptr);
+    EXPECT_EQ(garchomp->types, (QStringList {QStringLiteral("dragon"), QStringLiteral("ground")}));
+    EXPECT_EQ(garchomp->total, 600); // 타입 · 종족값도 채워졌다
+
+    // 성도(HGSS): 삐삐 41 · 픽시 42 · 식스테일 127 · 이상해씨 231
+    EXPECT_EQ(numbers(repository.speciesForDex(7, 4)), (QList<int> {41, 42, 127, 231}));
+
+    // 전국 목록에서는 도감 번호 = 종 번호
+    EXPECT_EQ(find(repository.speciesForGeneration(4), 445)->dexNumber, 445);
+}
+
+TEST_F(RepositoryTest, ProxyFindsRegionalAndNationalNumbers)
+{
+    Repository repository(s_dbPath);
+    SpeciesTableModel model;
+    model.setRows(repository.speciesForDex(5, 4));
+    SpeciesFilterProxy proxy;
+    proxy.setSourceModel(&model);
+
+    EXPECT_EQ(proxy.index(0, SpeciesTableModel::NumberColumn).data().toInt(), 100); // 지방 번호
+    proxy.setSearchText(QStringLiteral("111"));
+    EXPECT_EQ(proxy.rowCount(), 1);
+    proxy.setSearchText(QStringLiteral("445"));
+    EXPECT_EQ(proxy.rowCount(), 1);
+}

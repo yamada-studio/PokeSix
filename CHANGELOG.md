@@ -39,6 +39,11 @@ and the project uses [Semantic Versioning](https://semver.org/).
   number or ko/en/ja name, numeric sort) feed a table drawn by a row delegate with type chips; the
   panel header shows the count. Generation 4 is fixed until the generation popup lands.
 - `PanelFrame` title header band and a reusable `typechip` painter.
+- Regional Pokédexes: the Dex list header has a selector (National, then the generation's regional
+  dexes, e.g. Sinnoh D·P, Sinnoh Pt, Johto HG·SS in generation 4) that switches to the regional
+  numbering. Dexes per generation come from PokéAPI's dex ↔ version group ↔ generation links; four
+  more CSV files are downloaded and the database schema is now version 2 (existing databases are
+  re-imported on first run).
 - Dex list icons: `SpriteCache` downloads small Pokémon icons from PokéAPI/sprites into the user cache
   folder on demand (never into the repository); the list sorts by number, uses taller rows and
   responsive columns: fixed columns (the type column fits any two chips) plus weighted columns for the

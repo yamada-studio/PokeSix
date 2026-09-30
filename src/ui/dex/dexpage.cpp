@@ -6,6 +6,7 @@
 #include "data/sprites/spritecache.h"
 #include "ui/dex/dexheaderview.h"
 #include "ui/dex/dexrowdelegate.h"
+#include "ui/dex/dexselector.h"
 #include "ui/logging/logging.h"
 #include "ui/theme/tokens.h"
 #include "ui/widgets/panelframe.h"
@@ -98,6 +99,10 @@ DexPage::DexPage(Repository *repository, QWidget *parent)
 
     m_panel = new PanelFrame;
     m_panel->setPanelStyle(kListPanel);
+    // 머리 띠 오른쪽: 도감 선택 [전국] [신오 D · P] … 버튼은 load()에서 DB를 읽어 만든다.
+    m_selector = new DexSelector;
+    m_panel->setHeaderWidget(m_selector);
+    connect(m_selector, &DexSelector::dexSelected, this, &DexPage::showDex);
     // 창은 페이지 폭을 채운다. 최대 폭(kListMaxWidth)은 resizeEvent가 좌우 여백으로 맞춘다.
     layout->addWidget(m_panel);
 
@@ -231,10 +236,25 @@ void DexPage::showEvent(QShowEvent *event)
 
 void DexPage::load()
 {
-    m_model->setRows(m_repository->speciesForGeneration(kGeneration));
+    // 이 세대의 지방 도감으로 버튼을 만들고, 전국 목록부터 보여 준다.
+    m_selector->setDexes(m_repository->dexesForGeneration(kGeneration));
+    showDex(DexSelector::kNational);
     m_loaded = m_model->rowCount() > 0; // 비어 있으면(DB가 아직 없음) 다음에 보일 때 다시 읽는다
-    qCInfo(lcUi) << "dex loaded" << m_model->rowCount() << "species for generation" << kGeneration;
+}
+
+void DexPage::showDex(int pokedexId)
+{
+    // 전국 = 그 세대까지 나온 종(번호 = 전국 번호), 지방 = 그 도감의 종(번호 = 지방 번호).
+    // 타입 · 종족값은 둘 다 지금 세대 기준.
+    m_model->setRows(pokedexId == DexSelector::kNational
+                             ? m_repository->speciesForGeneration(kGeneration)
+                             : m_repository->speciesForDex(pokedexId, kGeneration));
+    // 도감을 고른다 = 그 도감 순서로 본다 → 합계 순 등으로 보고 있었어도 번호 순으로 되돌린다.
+    m_table->sortByColumn(SpeciesTableModel::NumberColumn, Qt::AscendingOrder);
+    m_table->scrollToTop();
     updateTitle();
+    qCInfo(lcUi) << "dex" << pokedexId << "shows" << m_model->rowCount() << "species (generation"
+                 << kGeneration << ")";
 }
 
 void DexPage::updateTitle()

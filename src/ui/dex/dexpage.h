@@ -10,6 +10,7 @@ class PanelFrame;
 class Repository;
 class SearchField;
 class SpriteCache;
+class DexSelector;
 class SpeciesFilterProxy;
 class SpeciesTableModel;
 
@@ -33,6 +34,7 @@ protected:
 
 private:
     void load();
+    void showDex(int pokedexId); // 도감 선택 버튼 → 그 도감의 목록(DexSelector::kNational = 전국)
     void updateTitle();
     void layoutColumns(); // 비율 칸(이름 · 종족값 · 합계)에 남는 폭을 가중치대로 나눈다
 
@@ -42,7 +44,8 @@ private:
     PanelFrame *m_panel = nullptr;
     SearchField *m_search = nullptr;
     QTableView *m_table = nullptr;
-    SpriteCache *m_sprites = nullptr; // 이름 옆 아이콘 파일 캐시
+    SpriteCache *m_sprites = nullptr;  // 이름 옆 아이콘 파일 캐시
+    DexSelector *m_selector = nullptr; // 머리 띠 오른쪽 도감 선택
     QTimer *m_searchDelay = nullptr;
     bool m_loaded = false;
     int m_fixedWidth = 0; // 고정 칸(▶ · 번호 · 아이콘 · 타입) 폭의 합

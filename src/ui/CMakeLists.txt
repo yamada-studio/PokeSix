@@ -40,6 +40,8 @@ qt_add_library(pokesix_ui STATIC
     dex/dexpage.cpp
     dex/dexheaderview.h
     dex/dexheaderview.cpp
+    dex/dexselector.h
+    dex/dexselector.cpp
     dex/dexrowdelegate.h
     dex/dexrowdelegate.cpp
     shell/page.h

@@ -17,10 +17,16 @@
 //   id 10001~). 타입 · 종족값은 pokemon에 붙는다. 기본형은 is_default = 1.
 //   pokemon.intro_gen은 그 모습이 처음 나온 세대다(알로라 식스테일 = 7, 식스테일 = 1).
 //
+// [도감] 세대 → 게임 묶음(version_groups) → 도감(pokedex_version_groups, 다대다) → 도감 번호
+//   (dex_numbers). "그 세대의 지방 도감" = 그 세대 게임 묶음에 연결된 도감이라서, 세대별 도감
+//   목록을 따로 적지 않는다(4세대: 신오 DP · 신오 Pt · 성도 HGSS). 도감의 한국어 이름은 PokéAPI에
+//   없어서 지방 이름(regions)과 버전 이름(versions)으로 나타낸다. 전국도감은 표로 조회하지
+//   않는다(species).
+//
 // [이름] 포켓몬 · 타입 이름은 ko / en / ja 열로 둔다(PokéAPI languages: 3 = ko, 9 = en, 11 = ja).
 //   UI 문구(tr())와는 별개의 경로다(architecture.md §4).
 namespace com::yamada::studio::schema {
-inline constexpr int kVersion = 1; // 스키마를 바꾸면 올린다. meta 표에 기록된다
+inline constexpr int kVersion = 2; // 스키마를 바꾸면 올린다. meta 표에 기록된다
 
 inline constexpr std::array kStatements = {
         // 이 DB를 만든 원천과 스키마 버전 (key = 'schema_version', 'source_commit', 'imported_at')
@@ -63,5 +69,30 @@ inline constexpr std::array kStatements = {
         pokemon_id INTEGER NOT NULL REFERENCES pokemon(id), stat_id INTEGER NOT NULL REFERENCES stats(id),
         value INTEGER NOT NULL, gen_from INTEGER NOT NULL, gen_to INTEGER))",
         R"(CREATE INDEX pokemon_stats_pokemon ON pokemon_stats (pokemon_id))",
+
+        R"(CREATE TABLE regions (id INTEGER PRIMARY KEY, name_ko TEXT, name_en TEXT, name_ja TEXT))",
+
+        // sort_order: 게임이 나온 순서(version_groups.order). 버튼 순서에 쓴다
+        R"(CREATE TABLE version_groups (
+        id INTEGER PRIMARY KEY, identifier TEXT NOT NULL, generation INTEGER NOT NULL,
+        sort_order INTEGER NOT NULL))",
+
+        R"(CREATE TABLE versions (
+        id INTEGER PRIMARY KEY, version_group_id INTEGER NOT NULL REFERENCES version_groups(id),
+        identifier TEXT NOT NULL, name_ko TEXT, name_en TEXT, name_ja TEXT))",
+
+        R"(CREATE TABLE pokedexes (
+        id INTEGER PRIMARY KEY, identifier TEXT NOT NULL, region_id INTEGER REFERENCES regions(id),
+        is_main_series INTEGER NOT NULL))",
+
+        R"(CREATE TABLE pokedex_version_groups (
+        pokedex_id INTEGER NOT NULL REFERENCES pokedexes(id),
+        version_group_id INTEGER NOT NULL REFERENCES version_groups(id)))",
+
+        // 도감별 번호. 목록은 (pokedex_id, number) 순서로 읽는다
+        R"(CREATE TABLE dex_numbers (
+        pokedex_id INTEGER NOT NULL REFERENCES pokedexes(id),
+        species_id INTEGER NOT NULL REFERENCES species(id), number INTEGER NOT NULL))",
+        R"(CREATE INDEX dex_numbers_dex ON dex_numbers (pokedex_id, number))",
 };
 } // namespace com::yamada::studio::schema
