@@ -115,13 +115,3 @@ QLabel#pagePlaceholder { font-family: "Do Hyeon"; font-size: 28px; color: @text.
 
 /* ── 도감 목록 표 (DexPage). 칸은 DexRowDelegate가 그리고, 여기서는 표 바탕 · 머리만 ── */
 QTableView#dexTable { border: none; background: @white; }
-
-/* ── 도감 선택 (도감 백과 머리 띠 오른쪽, DexSelector). 빨강 띠 38 안에 들어가는 한 줄 버튼 ── */
-QPushButton#dexButton {
-  font-family: "Do Hyeon"; font-size: 15px; color: @text.1;
-  background: @white; border: 2px solid @ink; border-radius: 6px;
-  padding: 0 10px;
-}
-QPushButton#dexButton:hover   { background: @yellow.tint; }
-QPushButton#dexButton:checked { background: @yellow; }
-QPushButton#dexButton:focus   { border-color: @blue; }

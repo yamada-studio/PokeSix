@@ -115,6 +115,9 @@ TEST_F(RepositoryTest, ListsTheRegionalDexesOfAGeneration)
     EXPECT_EQ(dexes[2].pokedexId, 7);
     EXPECT_EQ(dexes[0].regionKo, QStringLiteral("신오"));
     EXPECT_EQ(dexes[2].regionKo, QStringLiteral("성도"));
+    EXPECT_EQ(dexes[0].identifier, QStringLiteral("original-sinnoh"));
+    EXPECT_EQ(dexes[0].versions,
+              (QStringList {QStringLiteral("diamond"), QStringLiteral("pearl")}));
     EXPECT_EQ(dexes[0].versionsEn,
               (QStringList {QStringLiteral("Diamond"), QStringLiteral("Pearl")}));
     EXPECT_EQ(dexes[2].versionsKo,

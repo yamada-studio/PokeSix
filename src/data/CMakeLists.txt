@@ -26,6 +26,8 @@ qt_add_library(pokesix_data STATIC
     db/gamedatabase.cpp
     repository/repository.h
     repository/repository.cpp
+    state/appstate.h
+    state/appstate.cpp
     sprites/spritecache.h
     sprites/spritecache.cpp
     models/speciestablemodel.h

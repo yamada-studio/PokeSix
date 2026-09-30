@@ -10,6 +10,7 @@ class QSpacerItem;
 namespace com::yamada::studio {
 class DataUpdater;
 class FirstRunPanel;
+class GenerationButton;
 class IntroMenu;
 class MarkWidget;
 
@@ -29,6 +30,8 @@ class HomePage : public QWidget
 public:
     explicit HomePage(DataUpdater *updater, QWidget *parent = nullptr);
 
+    GenerationButton *generationButton() const { return m_generationButton; }
+
 signals:
     void openRequested(com::yamada::studio::Page page); // 메뉴 1–4
     void quitRequested();                               // 메뉴 "종료"
@@ -44,6 +47,7 @@ private:
 
     DataUpdater *m_updater = nullptr; // 소유하지 않는다(MainWindow가 소유)
     IntroMenu *m_menu = nullptr;
+    GenerationButton *m_generationButton = nullptr;
     MarkWidget *m_mark = nullptr;
     QLabel *m_subtitle = nullptr;
     QSpacerItem *m_subtitleGap = nullptr; // 워드마크 ↔ 부제 간격 (compact에서 0)

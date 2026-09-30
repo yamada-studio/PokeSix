@@ -10,6 +10,7 @@ class PanelFrame;
 class Repository;
 class SearchField;
 class SpriteCache;
+class AppState;
 class DexSelector;
 class SpeciesFilterProxy;
 class SpeciesTableModel;
@@ -25,7 +26,8 @@ class DexPage : public QWidget
 {
     Q_OBJECT
 public:
-    explicit DexPage(Repository *repository, QWidget *parent = nullptr);
+    // repository · state는 소유하지 않는다(MainWindow가 소유). 세대는 state를 따라간다.
+    explicit DexPage(Repository *repository, AppState *state, QWidget *parent = nullptr);
 
 protected:
     void showEvent(QShowEvent *event) override;
@@ -34,11 +36,13 @@ protected:
 
 private:
     void load();
+    void onGenerationChanged();
     void showDex(int pokedexId); // 도감 선택 버튼 → 그 도감의 목록(DexSelector::kNational = 전국)
     void updateTitle();
     void layoutColumns(); // 비율 칸(이름 · 종족값 · 합계)에 남는 폭을 가중치대로 나눈다
 
     Repository *m_repository = nullptr; // 소유하지 않는다(MainWindow가 소유)
+    AppState *m_state = nullptr;        // 〃
     SpeciesTableModel *m_model = nullptr;
     SpeciesFilterProxy *m_proxy = nullptr;
     PanelFrame *m_panel = nullptr;
