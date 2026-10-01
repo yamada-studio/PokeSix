@@ -36,6 +36,7 @@ public:
     void setSelected(bool selected);
     void setAlert(bool alert); // 문제 행에 마우스가 올라왔다 → 빨강 테
     void setSuggestion(const QString &text); // 빈 자리의 제안 문구
+    void setWarning(const QString &text); // 같은 포켓몬 · 스타팅 둘 → 머리에 "!" + 툴팁
 
     QSize sizeHint() const override { return {300, kHeight}; }
     QSize minimumSizeHint() const override { return {kMinimumWidth, kHeight}; }
@@ -64,6 +65,7 @@ private:
         QRect card;   // 링(선택 · 경고) 자리를 뺀 카드
         QRect header; // 머리 띠
         QRect menu;   // ⋯
+        QRect warn;   // ! (경고가 있을 때)
         QRect types;
         QRect memo;
         QRect traits[3]; // 특성 · 성격 · 물건
@@ -89,6 +91,7 @@ private:
     bool m_selected = false;
     bool m_alert = false;
     QString m_suggestion;
+    QString m_warning;
     Hit m_hot = Hit::None;
 };
 } // namespace com::yamada::studio

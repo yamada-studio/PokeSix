@@ -106,6 +106,14 @@ void SlotCard::setAlert(bool alert)
     QWidget::update();
 }
 
+void SlotCard::setWarning(const QString &text)
+{
+    if (m_warning == text)
+        return;
+    m_warning = text;
+    QWidget::update();
+}
+
 void SlotCard::setSuggestion(const QString &text)
 {
     if (m_suggestion == text)
@@ -120,6 +128,7 @@ SlotCard::Geometry SlotCard::geometry() const
     g.card = rect().adjusted(kRing, kRing, -kRing, -kRing);
     g.header = QRect(g.card.left() + 2, g.card.top() + 2, g.card.width() - 4, kHeader);
     g.menu = QRect(g.header.right() - 34, g.header.top(), 34, kHeader);
+    g.warn = QRect(g.menu.left() - 20, g.header.top() + (kHeader - 20) / 2, 20, 20);
     const int left = g.card.left() + kPadding;
     const int inner = g.card.width() - 2 * kPadding - 3; // 3 = 그림자
     int y = g.header.bottom() + 10;
@@ -247,6 +256,10 @@ bool SlotCard::event(QEvent *event)
     if (event->type() == QEvent::ToolTip && !isEmptySlot()) {
         const QPoint pos = static_cast<QHelpEvent *>(event)->pos();
         const Geometry g = geometry();
+        if (!m_warning.isEmpty() && g.warn.contains(pos)) {
+            QToolTip::showText(static_cast<QHelpEvent *>(event)->globalPos(), m_warning, this);
+            return true;
+        }
         for (int i = 0; i < 4; ++i) {
             const auto &slotMove = m_session->slotMoves(m_slot)[std::size_t(i)];
             if (!g.moves[i].contains(pos) || !slotMove)
@@ -339,7 +352,7 @@ void SlotCard::paintFilled(QPainter &painter, const Geometry &g)
     x = iconBox.right() + 6;
     painter.setFont(theme::font(theme::kFamilyTitle, 19));
     painter.setPen(QColor(headerText));
-    const int nameWidth = g.menu.left() - x - 4;
+    const int nameWidth = (m_warning.isEmpty() ? g.menu.left() : g.warn.left()) - x - 4;
     painter.drawText(QRect(x, g.header.top(), nameWidth, kHeader), Qt::AlignLeft | Qt::AlignVCenter,
                      QFontMetricsF(painter.font())
                              .elidedText(detail.name.text(m_language), Qt::ElideRight, nameWidth));
@@ -353,6 +366,14 @@ void SlotCard::paintFilled(QPainter &painter, const Geometry &g)
     painter.setPen(QColor(headerText));
     painter.setFont(theme::font(theme::kFamilyBody, 16, QFont::ExtraBold));
     painter.drawText(g.menu, Qt::AlignCenter, QStringLiteral("⋯"));
+    if (!m_warning.isEmpty()) { // 경고: 빨강 원 "!"(흰 테 — 어떤 타입 색 머리 위에서도 보이게)
+        painter.setPen(QPen(QColor(tok::kWhite), 2));
+        painter.setBrush(QColor(tok::kRed));
+        painter.drawEllipse(QRectF(g.warn).adjusted(1, 1, -1, -1));
+        painter.setFont(theme::font(theme::kFamilyBody, 12, QFont::ExtraBold));
+        painter.setPen(QColor(tok::kWhite));
+        painter.drawText(g.warn, Qt::AlignCenter, QStringLiteral("!"));
+    }
 
     // 타입 칩
     qreal chipX = g.types.left();

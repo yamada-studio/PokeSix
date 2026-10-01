@@ -1011,6 +1011,14 @@
         <source>%1세대 상성표 · %2타입</source>
         <translation>Gen %1 type chart · %2 types</translation>
     </message>
+    <message>
+        <source>이미 멤버에 있어요(%1번 자리)</source>
+        <translation>Already in the squad (slot %1)</translation>
+    </message>
+    <message>
+        <source>이미 스타팅 포켓몬(%1)이 있어요</source>
+        <translation>Already has a starter (%1)</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::SquadSession</name>
