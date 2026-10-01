@@ -34,13 +34,16 @@ void EncounterList::setEncounters(const QList<EncounterEntry> &encounters, Langu
 
 QSize EncounterList::sizeHint() const
 {
-    return {320, int(std::max<qsizetype>(m_encounters.size(), 1)) * kRowHeight};
+    // 빈 상태 문구는 두세 줄로 접힐 수 있어서 넉넉히
+    return {320, m_encounters.isEmpty() ? 3 * kRowHeight : int(m_encounters.size()) * kRowHeight};
 }
 
 void EncounterList::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing, true);
+    // 카드 안 스크롤 영역에 들어 있다 — 스크롤 viewport의 회색 바탕이 비치지 않게 흰 바탕부터
+    painter.fillRect(rect(), QColor(tok::kWhite));
     const QFont font = theme::font(theme::kFamilyBody, 12, QFont::Bold);
     const QFont dataFont = theme::font(theme::kFamilyData, 12, QFont::Bold);
     if (m_encounters.isEmpty()) {
@@ -69,7 +72,7 @@ void EncounterList::paintEvent(QPaintEvent *)
 
         int x = kBadgeWidth + kGap + 2;
         const int placeWidth
-                = std::max(60, width() - x - kMethodWidth - kLevelWidth - kRateWidth - 3 * kGap);
+                = std::max(60, width() - x - kMethodWidth - kLevelWidth - kRateWidth - 4 * kGap);
         painter.setFont(font);
         painter.setPen(QColor(tok::kText1));
         const QString place = guidebook::placeName(e.location, e.locationName, m_language);
