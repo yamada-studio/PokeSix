@@ -28,6 +28,15 @@ bool RowHover::eventFilter(QObject *watched, QEvent *event)
         if (event->type() == QEvent::MouseMove) {
             const QPoint pos = static_cast<QMouseEvent *>(event)->position().toPoint();
             setRow(m_view->indexAt(pos).row()); // 빈 곳이면 −1
+        } else if (event->type() == QEvent::MouseButtonPress) {
+            // 줄을 눌렀다: 꾹꾹(쥠 · 폄 두 번) 하고 가리키기 장갑으로 쉰다
+            const auto *mouse = static_cast<QMouseEvent *>(event);
+            if (mouse->button() == Qt::LeftButton
+                && m_view->indexAt(mouse->position().toPoint()).isValid()) {
+                m_frame = 0;
+                m_view->viewport()->setCursor(cursors::grab());
+                m_animation.start();
+            }
         } else if (event->type() == QEvent::Leave) {
             setRow(-1);
         }
@@ -46,10 +55,9 @@ void RowHover::setRow(int row)
         m_view->viewport()->unsetCursor();
         return;
     }
-    // 새 줄에 올라갔다: 꾹꾹(쥠 · 폄 두 번) 하고 가리키기 장갑으로 쉰다
-    m_frame = 0;
-    m_view->viewport()->setCursor(cursors::grab());
-    m_animation.start();
+    // 줄 위에서는 가리키기 장갑. 누르는 중의 꾹꾹 애니메이션은 끊지 않는다
+    if (!m_animation.isActive())
+        m_view->viewport()->setCursor(cursors::pointer());
 }
 
 void RowHover::nextFrame()
