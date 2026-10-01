@@ -1,0 +1,37 @@
+{
+  "_comment": [
+    "장소 이름 사전 (도감 상세의 획득법, ui/dex/guidebook.h가 읽는다).",
+    "PokéAPI에는 신오 · 성도 · 관동 장소의 한국어 이름이 없다. 도로 · 수로 번호는 코드가 바꾼다(201번 도로 · 220번 수로).",
+    "여기에는 확인된 한국어 이름만 넣는다(출처: 기술머신 획득처 블로그 · 포딕 본문). 없는 장소는 영어로 대신 보인다.",
+    "형식: PokéAPI locations.identifier → 한국어 이름(글자) 또는 {ko, en, ja}."
+  ],
+  "places": {
+    "oreburgh-gate": "무쇠게이트",
+    "mt-coronet": "천관산",
+    "ravaged-path": "거친샛길",
+    "veilstone-city": "장막시티",
+    "lake-acuity": "예지호수",
+    "lake-valor": "입지호수",
+    "lake-verity": "진실호수",
+    "iron-island": "강철섬",
+    "valley-windworks": "골짜기발전소",
+    "wayward-cave": "미혹의동굴",
+    "lost-tower": "로스트타워",
+    "eterna-city": "영원시티",
+    "eterna-forest": "영원의숲",
+    "old-chateau": "숲의양관",
+    "fuego-ironworks": "골풀무제철소",
+    "sinnoh-victory-road": "챔피언로드",
+    "hearthome-city": "연고시티",
+    "canalave-city": "운하시티",
+    "stark-mountain": "하드마운틴",
+    "pastoria-city": "들판시티",
+    "sunyshore-city": "물가시티",
+    "snowpoint-city": "선단시티",
+    "oreburgh-city": "무쇠시티",
+    "celestic-town": "신수마을",
+    "ruin-maniac-cave": "유적매니아의 동굴",
+    "pallet-town": "태초마을",
+    "mt-silver": "은빛산"
+  }
+}

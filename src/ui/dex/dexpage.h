@@ -2,6 +2,8 @@
 
 #include <QWidget>
 
+class QModelIndex;
+class QStackedWidget;
 class QTableView;
 class QTimer;
 
@@ -11,6 +13,7 @@ class Repository;
 class SearchField;
 class SpriteCache;
 class AppState;
+class DexDetailPage;
 class DexRowDelegate;
 class DexSelector;
 class SpeciesFilterProxy;
@@ -30,6 +33,8 @@ public:
     // repository · state는 소유하지 않는다(MainWindow가 소유). 세대는 state를 따라간다.
     explicit DexPage(Repository *repository, AppState *state, QWidget *parent = nullptr);
 
+    void showList(); // 상세 → 목록
+
 protected:
     void showEvent(QShowEvent *event) override;
     void resizeEvent(QResizeEvent *event) override; // 최대 폭: 넓으면 좌우 여백을 늘린다
@@ -38,7 +43,10 @@ protected:
 private:
     void load();
     void onGenerationChanged();
-    void applyLanguage(); // AppState 언어 → 모델 · delegate · 도감 버튼 · 타입 칸 폭
+    void applyLanguage();
+    void
+    openDetail(const QModelIndex &proxyIndex); // 목록의 줄 → 상세 화면             // AppState 언어
+                                               // → 모델 · delegate · 도감 버튼 · 타입 칸 폭
     void showDex(int pokedexId); // 도감 선택 버튼 → 그 도감의 목록(DexSelector::kNational = 전국)
     void updateTitle();
     void layoutColumns(); // 비율 칸(이름 · 종족값 · 합계)에 남는 폭을 가중치대로 나눈다
@@ -48,6 +56,8 @@ private:
     SpeciesTableModel *m_model = nullptr;
     SpeciesFilterProxy *m_proxy = nullptr;
     PanelFrame *m_panel = nullptr;
+    QStackedWidget *m_views = nullptr; // [목록 창 │ 상세]
+    DexDetailPage *m_detail = nullptr;
     SearchField *m_search = nullptr;
     QTableView *m_table = nullptr;
     SpriteCache *m_sprites = nullptr;  // 이름 옆 아이콘 파일 캐시

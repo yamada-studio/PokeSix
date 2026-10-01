@@ -3,10 +3,14 @@
 #include "data/logging/logging.h"
 
 #include <QHash>
+#include <QSet>
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QVariant>
+
+#include <algorithm>
+#include <iterator>
 
 namespace {
 // 세대 g의 값 = 구간 [gen_from, gen_to]에 g가 들어가는 줄 (ADR 0011, schema.h):
@@ -20,6 +24,18 @@ com::yamada::studio::LocalizedText localized(const QSqlQuery &query, int column)
     return {query.value(column).toString(), query.value(column + 1).toString(),
             query.value(column + 2).toString()};
 }
+
+// 3세대까지는 기술마다가 아니라 타입마다 물리 · 특수가 정해져 있었다(4세대 DP에서 기술별로 나뉨).
+// 세대 규칙을 if 대신 표로 둔다(architecture §5).
+constexpr int kHiddenMachineOffset = 100; // machines.machine_number: 비전머신 n = 100 + n
+constexpr int kLastTypeBasedDamageClassGeneration = 3;
+constexpr int kStatusClass = 1;
+constexpr int kPhysicalClass = 2;
+constexpr int kSpecialClass = 3;
+const QSet<QString> kPhysicalTypesBeforeSplit
+        = {QStringLiteral("normal"), QStringLiteral("fighting"), QStringLiteral("flying"),
+           QStringLiteral("poison"), QStringLiteral("ground"),   QStringLiteral("rock"),
+           QStringLiteral("bug"),    QStringLiteral("ghost"),    QStringLiteral("steel")};
 } // namespace
 
 namespace com::yamada::studio {
@@ -254,6 +270,245 @@ QList<ItemRow> Repository::itemsForGeneration(int generation)
                 byLanguage[language]->clear();
     }
     return rows;
+}
+
+QString Repository::representativeVersionGroup(int generation)
+{
+    // 세대마다 기술 · 기술머신 번호의 기준 게임. 그 세대를 가장 넓게 담는 셋째 판 · 확장판을 고른다
+    // (4세대 = 플래티넘: DP에 없던 기술 가르침이 있고, 기술머신 획득처 사전도 Pt 기준이다).
+    // 리메이크(FRLG · HGSS · ORAS · BDSP)는 그 세대의 대표로 쓰지 않는다.
+    static constexpr const char *kGroups[] = {"yellow",
+                                              "crystal",
+                                              "emerald",
+                                              "platinum",
+                                              "black-2-white-2",
+                                              "x-y",
+                                              "ultra-sun-ultra-moon",
+                                              "sword-shield",
+                                              "scarlet-violet"};
+    if (generation < 1 || generation > int(std::size(kGroups)))
+        return {};
+    return QString::fromLatin1(kGroups[generation - 1]);
+}
+
+TypeChart Repository::typeChart(int generation)
+{
+    TypeChart chart;
+    if (!open())
+        return chart;
+    QSqlQuery query(QSqlDatabase::database(m_connection));
+    query.prepare(QStringLiteral("SELECT identifier FROM types WHERE intro_gen <= :g ORDER BY id"));
+    query.bindValue(QStringLiteral(":g"), generation);
+    if (query.exec())
+        while (query.next())
+            chart.types.append(query.value(0).toString());
+    query.prepare(
+            QStringLiteral("SELECT a.identifier, d.identifier, c.multiplier FROM type_chart c "
+                           "JOIN types a ON a.id = c.atk_type JOIN types d ON d.id = c.def_type "
+                           "WHERE c.gen_from <= :g AND (c.gen_to IS NULL OR c.gen_to >= :g)"));
+    query.bindValue(QStringLiteral(":g"), generation);
+    if (query.exec())
+        while (query.next())
+            chart.multipliers.insert(query.value(0).toString() + QLatin1Char('/')
+                                             + query.value(1).toString(),
+                                     query.value(2).toDouble());
+    return chart;
+}
+
+PokemonDetail Repository::pokemonDetail(int pokemonId, int generation)
+{
+    PokemonDetail detail;
+    if (!open())
+        return detail;
+    QSqlQuery query(QSqlDatabase::database(m_connection));
+
+    // 1) 이름 · 분류 · 키 · 몸무게
+    query.prepare(QStringLiteral(
+            "SELECT s.id, s.name_ko, s.name_en, s.name_ja, s.genus_ko, s.genus_en, s.genus_ja, "
+            "p.height, p.weight FROM pokemon p JOIN species s ON s.id = p.species_id "
+            "WHERE p.id = :p"));
+    query.bindValue(QStringLiteral(":p"), pokemonId);
+    if (!query.exec() || !query.next())
+        return detail;
+    detail.pokemonId = pokemonId;
+    detail.speciesId = query.value(0).toInt();
+    detail.name = localized(query, 1);
+    detail.genus = localized(query, 4);
+    detail.height = query.value(7).toInt();
+    detail.weight = query.value(8).toInt();
+    detail.generation = generation;
+
+    // 2) 타입 · 종족값: 목록과 같은 함수로(1세대 특수 규칙도 같이)
+    QList<SpeciesRow> one(1);
+    one[0].pokemonId = pokemonId;
+    fillTypesAndStats(one, generation);
+    detail.types = one[0].types;
+    detail.stats = one[0].stats;
+    detail.total = one[0].total;
+
+    // 3) 기술 기준 게임 묶음과 그 버전 이름
+    detail.versionGroup = representativeVersionGroup(generation);
+    int groupId = 0;
+    query.prepare(QStringLiteral("SELECT id FROM version_groups WHERE identifier = :vg"));
+    query.bindValue(QStringLiteral(":vg"), detail.versionGroup);
+    if (query.exec() && query.next())
+        groupId = query.value(0).toInt();
+    query.prepare(QStringLiteral("SELECT name_ko, name_en, name_ja FROM versions WHERE "
+                                 "version_group_id = :id ORDER BY id"));
+    query.bindValue(QStringLiteral(":id"), groupId);
+    if (query.exec())
+        while (query.next())
+            detail.groupGames.append(localized(query, 0));
+
+    // 4) 습득 기술: 레벨업(1) · 기술머신(4, 번호 · 아이템과 함께)
+    query.prepare(
+            QStringLiteral("SELECT move_id, level FROM pokemon_moves WHERE pokemon_id = :p "
+                           "AND version_group_id = :vg AND method = 1 ORDER BY level, move_id"));
+    query.bindValue(QStringLiteral(":p"), pokemonId);
+    query.bindValue(QStringLiteral(":vg"), groupId);
+    if (query.exec()) {
+        while (query.next()) {
+            MoveEntry move;
+            move.moveId = query.value(0).toInt();
+            move.level = query.value(1).toInt();
+            detail.levelMoves.append(move);
+        }
+    }
+    query.prepare(QStringLiteral(
+            "SELECT pm.move_id, m.machine_number, i.identifier FROM pokemon_moves pm "
+            "JOIN machines m ON m.version_group_id = pm.version_group_id AND m.move_id = "
+            "pm.move_id "
+            "JOIN items i ON i.id = m.item_id "
+            "WHERE pm.pokemon_id = :p AND pm.version_group_id = :vg AND pm.method = 4"));
+    query.bindValue(QStringLiteral(":p"), pokemonId);
+    query.bindValue(QStringLiteral(":vg"), groupId);
+    if (query.exec()) {
+        while (query.next()) {
+            MoveEntry move;
+            move.moveId = query.value(0).toInt();
+            move.machineNumber = query.value(1).toInt();
+            move.machineItem = query.value(2).toString();
+            move.hiddenMachine = move.machineItem.startsWith(QLatin1String("hm"));
+            if (move.hiddenMachine && move.machineNumber > kHiddenMachineOffset)
+                move.machineNumber -= kHiddenMachineOffset; // PokéAPI는 비전머신을 101–108로 센다
+            detail.machineMoves.append(move);
+        }
+    }
+    // 기술머신 → 비전머신 순, 번호 순(기술레코드 등 다른 머신은 기술머신 뒤에 이름순으로 섞이지
+    // 않게 아이템 이름까지)
+    std::sort(detail.machineMoves.begin(), detail.machineMoves.end(),
+              [](const MoveEntry &a, const MoveEntry &b) {
+                  if (a.hiddenMachine != b.hiddenMachine)
+                      return !a.hiddenMachine;
+                  if (a.machineItem.left(2) != b.machineItem.left(2))
+                      return a.machineItem < b.machineItem;
+                  return a.machineNumber < b.machineNumber;
+              });
+    fillMoves(detail.levelMoves, generation);
+    fillMoves(detail.machineMoves, generation);
+
+    // 5) 야생 출현: 그 세대의 모든 버전(DP · Pt · HGSS)
+    query.prepare(QStringLiteral(
+            "SELECT v.identifier, v.name_ko, v.name_en, v.name_ja, l.identifier, l.name_ko, "
+            "l.name_en, l.name_ja, em.identifier, e.min_level, e.max_level, e.rarity "
+            "FROM encounters e JOIN versions v ON v.id = e.version_id "
+            "JOIN version_groups vg ON vg.id = v.version_group_id "
+            "JOIN locations l ON l.id = e.location_id "
+            "JOIN encounter_methods em ON em.id = e.method_id "
+            "WHERE e.pokemon_id = :p AND vg.generation = :g "
+            "ORDER BY v.id, l.id, em.id"));
+    query.bindValue(QStringLiteral(":p"), pokemonId);
+    query.bindValue(QStringLiteral(":g"), generation);
+    if (query.exec()) {
+        while (query.next()) {
+            EncounterEntry e;
+            e.version = query.value(0).toString();
+            e.versionName = localized(query, 1);
+            e.location = query.value(4).toString();
+            e.locationName = localized(query, 5);
+            e.method = query.value(8).toString();
+            e.minLevel = query.value(9).toInt();
+            e.maxLevel = query.value(10).toInt();
+            e.rarity = query.value(11).toInt();
+            detail.encounters.append(e);
+        }
+    }
+    return detail;
+}
+
+void Repository::fillMoves(QList<MoveEntry> &moves, int generation)
+{
+    if (moves.isEmpty())
+        return;
+    QSqlQuery query(QSqlDatabase::database(m_connection));
+
+    // 지금 값 + 그 세대 타입(구간)
+    QHash<int, MoveEntry> info;
+    query.prepare(
+            QStringLiteral("SELECT m.id, m.name_ko, m.name_en, m.name_ja, t.identifier, m.power, "
+                           "m.pp, m.accuracy, "
+                           "m.damage_class FROM moves m "
+                           "LEFT JOIN move_types mt ON mt.move_id = m.id AND mt.gen_from <= :g "
+                           "  AND (mt.gen_to IS NULL OR mt.gen_to >= :g) "
+                           "LEFT JOIN types t ON t.id = mt.type_id"));
+    query.bindValue(QStringLiteral(":g"), generation);
+    QSet<int> wanted;
+    for (const MoveEntry &move : moves)
+        wanted.insert(move.moveId);
+    if (query.exec()) {
+        while (query.next()) {
+            const int id = query.value(0).toInt();
+            if (!wanted.contains(id))
+                continue;
+            MoveEntry m;
+            m.name = localized(query, 1);
+            m.type = query.value(4).toString();
+            m.power = query.value(5).toInt();
+            m.pp = query.value(6).toInt();
+            m.accuracy = query.value(7).toInt();
+            m.damageClass = query.value(8).toInt();
+            info.insert(id, m);
+        }
+    }
+
+    // 옛 값: until_gen이 generation 이상인 줄 중 가장 이른 것이 그 세대의 값이다(항목마다 따로).
+    struct Past
+    {
+        int until = 0;
+        QVariant power, pp, accuracy;
+    };
+    QHash<int, QList<Past>> past;
+    if (query.exec(QStringLiteral("SELECT move_id, until_gen, power, pp, accuracy FROM "
+                                  "move_changelog ORDER BY until_gen"))) {
+        while (query.next())
+            past[query.value(0).toInt()].append(
+                    {query.value(1).toInt(), query.value(2), query.value(3), query.value(4)});
+    }
+
+    for (MoveEntry &move : moves) {
+        const MoveEntry base = info.value(move.moveId);
+        move.name = base.name;
+        move.type = base.type;
+        move.power = base.power;
+        move.pp = base.pp;
+        move.accuracy = base.accuracy;
+        move.damageClass = base.damageClass;
+        bool powerSet = false, ppSet = false, accuracySet = false;
+        for (const Past &p : past.value(move.moveId)) {
+            if (p.until < generation)
+                continue;
+            if (!powerSet && !p.power.isNull())
+                move.power = p.power.toInt(), powerSet = true;
+            if (!ppSet && !p.pp.isNull())
+                move.pp = p.pp.toInt(), ppSet = true;
+            if (!accuracySet && !p.accuracy.isNull())
+                move.accuracy = p.accuracy.toInt(), accuracySet = true;
+        }
+        // 3세대까지는 물리 · 특수를 타입이 정했다(변화 기술은 그대로)
+        if (generation <= kLastTypeBasedDamageClassGeneration && move.damageClass != kStatusClass)
+            move.damageClass = kPhysicalTypesBeforeSplit.contains(move.type) ? kPhysicalClass
+                                                                             : kSpecialClass;
+    }
 }
 
 bool Repository::readSpecies(QSqlQuery &query, QList<SpeciesRow> &rows)

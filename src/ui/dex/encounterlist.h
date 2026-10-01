@@ -1,0 +1,28 @@
+#pragma once
+
+#include "data/repository/repository.h"
+
+#include <QWidget>
+
+namespace com::yamada::studio {
+// 획득법(야생 출현) 목록 (도감 상세): 그 세대 모든 버전을 버전 배지로 구분해 한 줄씩.
+//   [Pt] 201번 도로     풀숲 · 동굴   Lv 2–4   25%
+// 장소 · 방법 이름은 공략 사전(guidebook)으로 옮긴다. 출현이 없으면(스타팅 · 진화로만 얻는 포켓몬)
+// 그렇다고 한 줄로 알린다.
+class EncounterList : public QWidget
+{
+    Q_OBJECT
+public:
+    explicit EncounterList(QWidget *parent = nullptr);
+
+    void setEncounters(const QList<EncounterEntry> &encounters, Language language);
+    QSize sizeHint() const override;
+
+protected:
+    void paintEvent(QPaintEvent *event) override;
+
+private:
+    QList<EncounterEntry> m_encounters;
+    Language m_language = Language::Korean;
+};
+} // namespace com::yamada::studio

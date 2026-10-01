@@ -31,6 +31,8 @@ public:
     enum class Kind {
         PokemonIcon, // 8세대 박스 아이콘(68×56), 없으면 정면 스프라이트(96×96)
         Item,        // 아이템 아이콘(30×30). 기술머신은 타입별 CD("tm-fire")
+        PokemonFront, // 게임 정면 그림. key = "generation-iv/platinum/1"(세대 그림), 없으면
+                      // 기본(96×96)
     };
 
     explicit SpriteCache(Kind kind, QObject *parent = nullptr);

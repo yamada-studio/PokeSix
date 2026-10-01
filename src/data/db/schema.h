@@ -35,7 +35,7 @@
 // [이름] 포켓몬 · 타입 이름은 ko / en / ja 열로 둔다(PokéAPI languages: 3 = ko, 9 = en, 11 = ja).
 //   UI 문구(tr())와는 별개의 경로다(architecture.md §4).
 namespace com::yamada::studio::schema {
-inline constexpr int kVersion = 5; // 스키마를 바꾸면 올린다. meta 표에 기록된다
+inline constexpr int kVersion = 6; // 스키마를 바꾸면 올린다. meta 표에 기록된다
 
 inline constexpr std::array kStatements = {
         // 이 DB를 만든 원천과 스키마 버전 (key = 'schema_version', 'source_commit', 'imported_at')
@@ -115,9 +115,39 @@ inline constexpr std::array kStatements = {
         R"(CREATE TABLE item_generations (
         item_id INTEGER NOT NULL REFERENCES items(id), generation INTEGER NOT NULL,
         PRIMARY KEY (item_id, generation)))",
+        // 지금(최신 게임) 값. 옛 세대 값은 move_changelog에서 고른다(Repository). damage_class: 1
+        // 변화 ·
+        // 2 물리 · 3 특수 — 3세대까지는 기술이 아니라 타입이 물리/특수를 정했다(core 규칙이 아니라
+        // UI 표).
         R"(CREATE TABLE moves (
         id INTEGER PRIMARY KEY, identifier TEXT NOT NULL, intro_gen INTEGER NOT NULL,
+        name_ko TEXT, name_en TEXT, name_ja TEXT, type_id INTEGER, power INTEGER, pp INTEGER,
+        accuracy INTEGER, damage_class INTEGER))",
+        // 옛 값: until_gen 세대까지는 이 값이었다(NULL 칸 = 그 항목은 이때 바뀌지 않았다)
+        R"(CREATE TABLE move_changelog (
+        move_id INTEGER NOT NULL REFERENCES moves(id), until_gen INTEGER NOT NULL,
+        type_id INTEGER, power INTEGER, pp INTEGER, accuracy INTEGER))",
+        R"(CREATE INDEX move_changelog_move ON move_changelog (move_id))",
+        // 습득 기술(게임마다). method: 1 레벨업 · 2 교배 · 3 NPC(가르침) · 4 기술머신
+        R"(CREATE TABLE pokemon_moves (
+        pokemon_id INTEGER NOT NULL, version_group_id INTEGER NOT NULL, move_id INTEGER NOT NULL,
+        method INTEGER NOT NULL, level INTEGER NOT NULL))",
+        R"(CREATE INDEX pokemon_moves_pokemon ON pokemon_moves (pokemon_id, version_group_id))",
+        // 기술머신(게임마다): 번호 · 아이템 · 담긴 기술
+        R"(CREATE TABLE machines (
+        version_group_id INTEGER NOT NULL, machine_number INTEGER NOT NULL,
+        item_id INTEGER NOT NULL, move_id INTEGER NOT NULL))",
+        R"(CREATE INDEX machines_group ON machines (version_group_id))",
+        // 장소 · 야생 출현(버전 · 장소 · 방법마다 한 줄로 묶었다: 레벨 범위 · 출현 칸 확률 합)
+        R"(CREATE TABLE locations (
+        id INTEGER PRIMARY KEY, identifier TEXT NOT NULL, region_id INTEGER,
         name_ko TEXT, name_en TEXT, name_ja TEXT))",
+        R"(CREATE TABLE encounter_methods (id INTEGER PRIMARY KEY, identifier TEXT NOT NULL))",
+        R"(CREATE TABLE encounters (
+        pokemon_id INTEGER NOT NULL, version_id INTEGER NOT NULL, location_id INTEGER NOT NULL,
+        method_id INTEGER NOT NULL, min_level INTEGER NOT NULL, max_level INTEGER NOT NULL,
+        rarity INTEGER NOT NULL))",
+        R"(CREATE INDEX encounters_pokemon ON encounters (pokemon_id))",
         // 기술 타입의 세대 구간(move_changelog의 옛 타입 → genranges). ??? 타입(저주 2–4세대)은
         // 빠진다
         R"(CREATE TABLE move_types (

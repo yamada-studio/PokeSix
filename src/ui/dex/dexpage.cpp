@@ -5,6 +5,7 @@
 #include "data/repository/repository.h"
 #include "data/sprites/spritecache.h"
 #include "data/state/appstate.h"
+#include "ui/dex/dexdetailpage.h"
 #include "ui/dex/dexheaderview.h"
 #include "ui/dex/dexrowdelegate.h"
 #include "ui/dex/dexselector.h"
@@ -18,6 +19,7 @@
 #include <QLineEdit>
 #include <QResizeEvent>
 #include <QScrollBar>
+#include <QStackedWidget>
 #include <QStyle>
 #include <QTableView>
 #include <QTimer>
@@ -109,7 +111,13 @@ DexPage::DexPage(Repository *repository, AppState *state, QWidget *parent)
     // 있다)
     connect(m_state, &AppState::languageChanged, this, &DexPage::applyLanguage);
     // 창은 페이지 폭을 채운다. 최대 폭(kListMaxWidth)은 resizeEvent가 좌우 여백으로 맞춘다.
-    layout->addWidget(m_panel);
+    // 목록 창과 상세 화면을 겹쳐 두고 하나만 보인다: [0] 목록 · [1] 상세(포켓몬을 누르면)
+    m_views = new QStackedWidget;
+    m_views->addWidget(m_panel);
+    m_detail = new DexDetailPage(m_repository, m_state);
+    m_views->addWidget(m_detail);
+    layout->addWidget(m_views);
+    connect(m_detail, &DexDetailPage::backRequested, this, &DexPage::showList);
 
     QWidget *body = new QWidget;
     QVBoxLayout *bodyLayout = new QVBoxLayout(body);
@@ -162,6 +170,10 @@ DexPage::DexPage(Repository *repository, AppState *state, QWidget *parent)
     // 아이콘 파일이 하나 받아질 때마다 표를 다시 그린다. update()는 그리기를 "예약"만 하고, 이벤트
     // 루프가 여러 번의 예약을 한 번의 paintEvent로 합친다 → 수백 개가 연달아 와도 부담이 없다.
     connect(m_sprites, &SpriteCache::ready, m_table->viewport(), qOverload<>(&QWidget::update));
+
+    // 포켓몬을 누르면(클릭 · Enter) 상세 화면으로. activated = 더블클릭 · Enter(스타일에 따라 클릭)
+    connect(m_table, &QTableView::clicked, this, &DexPage::openDetail);
+    connect(m_table, &QTableView::activated, this, &DexPage::openDetail);
 
     // 검색: 글자가 바뀔 때마다 타이머를 다시 건다 → 입력이 150ms 멈추면 한 번만 거른다(디바운스).
     m_searchDelay->setSingleShot(true);
@@ -226,6 +238,22 @@ void DexPage::showEvent(QShowEvent *event)
     QWidget::showEvent(event);
     if (!m_loaded)
         load();
+}
+
+void DexPage::openDetail(const QModelIndex &proxyIndex)
+{
+    if (!proxyIndex.isValid())
+        return;
+    // 뷰의 줄(프록시: 정렬 · 검색 뒤 순서) → 원본 모델의 줄
+    const QModelIndex source = m_proxy->mapToSource(proxyIndex);
+    m_detail->showPokemon(m_model->rowAt(source.row()).pokemonId);
+    m_views->setCurrentWidget(m_detail);
+}
+
+void DexPage::showList()
+{
+    m_views->setCurrentWidget(m_panel);
+    m_table->setFocus(Qt::OtherFocusReason); // 키보드로 이어서 고를 수 있게
 }
 
 void DexPage::applyLanguage()
