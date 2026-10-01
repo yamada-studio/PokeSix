@@ -51,6 +51,11 @@ private:
     bool importPokemonMoves(QSqlDatabase &db); // 습득 기술(레벨업 · 교배 · NPC · 기술머신)
     bool importEncounters(QSqlDatabase &db); // 장소 · 방법 · 야생 출현(묶어서)
     bool importEvolutions(QSqlDatabase &db); // 진화 방법(세대마다)
+    bool importAbilities(QSqlDatabase &db); // 특성 · 포켓몬 특성(세대 구간) · 설명문
+    bool importNatures(QSqlDatabase &db);   // 성격(오르는 · 내리는 능력치)
+    // 게임 설명문(item_flavor_text · ability_flavor_text) → table(idField, generation, text_*)
+    bool importFlavorTexts(QSqlDatabase &db, const QString &csv, const QString &idColumn,
+                           const QString &table, const QString &idField);
     bool importItemEffects(QSqlDatabase &db);
     bool writeMeta(QSqlDatabase &db);
 

@@ -10,7 +10,9 @@ class QScrollArea;
 namespace com::yamada::studio {
 class AppState;
 class EncounterList;
+class AbilityList;
 class EvolutionView;
+class NatureButton;
 class MatchupView;
 class MoveList;
 class PanelFrame;
@@ -45,6 +47,8 @@ private:
     QWidget *buildContent();
     void reload();        // 같은 포켓몬을 지금 세대로 다시 읽는다
     void applyLanguage(); // 읽은 값을 지금 언어로 다시 그린다
+    void showNaturePicker();
+    void applyNature(); // 고른 성격 → 버튼 글자 · 레이더 ▲▼
 
     Repository *m_repository = nullptr;
     AppState *m_state = nullptr;
@@ -60,6 +64,10 @@ private:
     ProfileCard *m_profile = nullptr;
     StatRadar *m_stats = nullptr;
     PanelFrame *m_statsPanel = nullptr;
+    NatureButton *m_natureButton = nullptr; // 종족값 카드 머리 [성격 ▾]
+    AbilityList *m_abilities = nullptr;
+    QList<Nature> m_natures; // 처음 성격표를 열 때 읽는다
+    int m_natureId = 0; // 고른 성격(포켓몬을 바꿔도 그대로 — 같은 성격으로 견줘 보게). 0 = 없음
     EncounterList *m_encounters = nullptr;
     QLabel *m_evolutionLabel = nullptr;
     EvolutionView *m_evolution = nullptr;

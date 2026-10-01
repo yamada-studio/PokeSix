@@ -422,6 +422,7 @@ PokemonDetail Repository::pokemonDetail(int pokemonId, int generation, const QSt
     fillMoves(detail.levelMoves, generation);
     fillMoves(detail.machineMoves, generation);
     fillEvolution(detail, groupId);
+    fillAbilities(detail);
 
     // 5) 야생 출현: 그 세대의 모든 버전(DP · Pt · HGSS)
     query.prepare(QStringLiteral(
@@ -606,6 +607,90 @@ void Repository::fillEvolution(PokemonDetail &detail, int versionGroupId)
     };
     for (const int root : std::as_const(roots))
         visit(root, 0);
+}
+
+void Repository::fillAbilities(PokemonDetail &detail)
+{
+    QSqlQuery query(QSqlDatabase::database(m_connection));
+    const int generation = detail.generation;
+    query.prepare(
+            QStringLiteral("SELECT pa.slot, pa.is_hidden, a.id, a.name_ko, a.name_en, a.name_ja "
+                           "FROM pokemon_abilities pa JOIN abilities a ON a.id = pa.ability_id "
+                           "WHERE pa.pokemon_id = :p AND pa.gen_from <= :g AND (pa.gen_to IS NULL "
+                           "OR pa.gen_to >= :g) "
+                           "ORDER BY pa.slot"));
+    query.bindValue(QStringLiteral(":p"), detail.pokemonId);
+    query.bindValue(QStringLiteral(":g"), generation);
+    QHash<int, qsizetype> indexOf; // 특성 id → 위치
+    if (query.exec()) {
+        while (query.next()) {
+            AbilityEntry ability;
+            ability.slot = query.value(0).toInt();
+            ability.hidden = query.value(1).toInt() != 0;
+            ability.abilityId = query.value(2).toInt();
+            ability.name = localized(query, 3);
+            indexOf.insert(ability.abilityId, detail.abilities.size());
+            detail.abilities.append(ability);
+        }
+    }
+    if (detail.abilities.isEmpty())
+        return;
+
+    // 효과 문구: 아이템과 같은 규칙 — 언어마다 generation 이하에서 가장 최근, 없으면 가장 이른 세대
+    QStringList ids;
+    for (const AbilityEntry &ability : std::as_const(detail.abilities))
+        ids.append(QString::number(ability.abilityId));
+    QHash<int, std::array<int, 3>> takenFrom;
+    // id 목록은 DB에서 읽은 정수라 SQL에 이어 붙여도 안전하다
+    if (query.exec(QStringLiteral("SELECT ability_id, generation, text_ko, text_en, text_ja FROM "
+                                  "ability_effects WHERE ability_id IN (%1) ORDER BY generation")
+                           .arg(ids.join(QLatin1Char(','))))) {
+        while (query.next()) {
+            const int id = query.value(0).toInt();
+            const int g = query.value(1).toInt();
+            LocalizedText &effect = detail.abilities[indexOf.value(id)].effect;
+            QString *byLanguage[3] = {&effect.ko, &effect.en, &effect.ja};
+            std::array<int, 3> &from = takenFrom[id];
+            for (int language = 0; language < 3; ++language) {
+                const QString text = query.value(2 + language).toString();
+                if (text.isEmpty())
+                    continue;
+                if (from[language] == 0 || (g <= generation && from[language] <= generation)) {
+                    *byLanguage[language] = text;
+                    from[language] = g;
+                }
+            }
+        }
+    }
+    // 같은 특성이 두 칸에 있으면(1 · 2번 칸이 같은 포켓몬) 한 번만
+    QList<AbilityEntry> unique;
+    QSet<int> seen;
+    for (const AbilityEntry &ability : std::as_const(detail.abilities))
+        if (!seen.contains(ability.abilityId) || ability.hidden) {
+            seen.insert(ability.abilityId);
+            unique.append(ability);
+        }
+    detail.abilities = unique;
+}
+
+QList<Nature> Repository::natures()
+{
+    QList<Nature> natures;
+    if (!open())
+        return natures;
+    QSqlQuery query(QSqlDatabase::database(m_connection));
+    if (query.exec(QStringLiteral("SELECT id, name_ko, name_en, name_ja, increased_stat, "
+                                  "decreased_stat FROM natures ORDER BY id"))) {
+        while (query.next()) {
+            Nature nature;
+            nature.id = query.value(0).toInt();
+            nature.name = localized(query, 1);
+            nature.increasedStat = query.value(4).toInt();
+            nature.decreasedStat = query.value(5).toInt();
+            natures.append(nature);
+        }
+    }
+    return natures;
 }
 
 void Repository::fillMoves(QList<MoveEntry> &moves, int generation)

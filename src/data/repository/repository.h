@@ -127,6 +127,27 @@ struct EvolutionStep
     QList<EvolutionCondition> conditions; // 진화 전 종에서 이 종이 되는 방법(여럿이면 그중 하나)
 };
 
+// 특성 하나(상세 화면). 효과 문구는 그 세대 · 언어의 게임 설명문(없으면 가까운 세대).
+struct AbilityEntry
+{
+    int abilityId = 0;
+    int slot = 0;        // 1 · 2 = 일반, 3 = 숨겨진 특성
+    bool hidden = false; // 숨겨진 특성(5세대부터)
+    LocalizedText name;
+    LocalizedText effect;
+};
+
+// 성격 하나. 능력치는 stats.id(2 공격 · 3 방어 · 4 특공 · 5 특방 · 6 스피드). 같으면 무보정.
+struct Nature
+{
+    int id = 0;
+    LocalizedText name;
+    int increasedStat = 0; // +10%
+    int decreasedStat = 0; // −10%
+
+    bool isNeutral() const { return increasedStat == decreasedStat; }
+};
+
 // 포켓몬 상세(도감 상세 화면). 세대 g 기준. 기술은 그 세대 대표 게임(versionGroup) 기준이다.
 struct PokemonDetail
 {
@@ -147,6 +168,7 @@ struct PokemonDetail
     QList<MoveEntry> levelMoves;      // 레벨 순
     QList<MoveEntry> machineMoves;    // 기술머신 번호 순, 비전머신은 뒤에
     QList<EvolutionStep> evolution; // 그 세대에 있는 종만. 진화하지 않는 포켓몬은 비어 있다
+    QList<AbilityEntry> abilities; // 그 세대의 특성(칸 순). 1–2세대는 비어 있다(특성이 없었다)
 
     bool isValid() const { return pokemonId > 0; }
 };
@@ -198,6 +220,8 @@ public:
     // 세대마다 기술 기준으로 쓰는 게임 묶음("platinum"). 셋째 판 · 확장판이 그 세대를 가장 넓게
     // 담는다.
     static QString representativeVersionGroup(int generation);
+    // 성격 25가지(id 순). 성격은 3세대부터 — 1–2세대 화면은 쓰지 않는다
+    QList<Nature> natures();
 
     // 세대 generation까지 나온 종 전부(번호 순). 타입 · 종족값은 그 세대 기준.
     // 1세대는 "특수"(stat 9) 하나였으므로 특공 · 특방 칸에 같은 값을 넣고, 합계에는 한 번만 더한다.
@@ -216,5 +240,7 @@ private:
     void fillMoves(QList<MoveEntry> &moves, int generation);
     // 진화 트리(그 세대 기준)와 레벨업 기술의 하트비늘 표시(진화 전 단계의 레벨업 기술과 견준다)
     void fillEvolution(PokemonDetail &detail, int versionGroupId);
+    // 그 세대의 특성(칸 · 숨겨진 특성)과 효과 문구
+    void fillAbilities(PokemonDetail &detail);
 };
 } // namespace com::yamada::studio
