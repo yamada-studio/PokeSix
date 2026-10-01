@@ -114,6 +114,10 @@
         <source>%1개</source>
         <translation>%1個</translation>
     </message>
+    <message>
+        <source>합계 %1</source>
+        <translation>合計 %1</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::DexPage</name>
@@ -471,7 +475,7 @@
     </message>
 </context>
 <context>
-    <name>com::yamada::studio::StatBars</name>
+    <name>com::yamada::studio::StatRadar</name>
     <message>
         <source>HP</source>
         <translation>HP</translation>
@@ -495,10 +499,6 @@
     <message>
         <source>스피드</source>
         <translation>すばやさ</translation>
-    </message>
-    <message>
-        <source>합계</source>
-        <translation>合計</translation>
     </message>
 </context>
 </TS>

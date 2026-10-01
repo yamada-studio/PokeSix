@@ -5,7 +5,7 @@
 #include "ui/dex/encounterlist.h"
 #include "ui/dex/matchupview.h"
 #include "ui/dex/movelist.h"
-#include "ui/dex/statbars.h"
+#include "ui/dex/statradar.h"
 #include "ui/logging/logging.h"
 #include "ui/theme/theme.h"
 #include "ui/theme/tokens.h"
@@ -53,8 +53,9 @@ PanelFrame *section(QRgb headerColor, QWidget *content, QMargins margins = {12, 
     QWidget *body = new QWidget;
     QVBoxLayout *layout = new QVBoxLayout(body);
     layout->setContentsMargins(margins);
-    // 스크롤 영역은 남는 높이를 채우고(stretch 1), 고정 높이 위젯은 위에 붙인다(아래는 빈칸)
-    const bool fills = qobject_cast<QScrollArea *>(content) != nullptr;
+    // 스크롤 영역 · 세로로 늘어나는 위젯(레이더)은 남는 높이를 채우고, 나머지는 위에 붙인다
+    const bool fills = content->sizePolicy().verticalPolicy() == QSizePolicy::Expanding
+                       || qobject_cast<QScrollArea *>(content) != nullptr;
     layout->addWidget(content, fills ? 1 : 0);
     if (!fills)
         layout->addStretch();
@@ -234,11 +235,10 @@ QWidget *DexDetailPage::buildContent()
     row->setSpacing(kGap);
     m_profile = new ProfileCard(m_fronts);
     row->addWidget(m_profile);
-    m_stats = new StatBars;
-    PanelFrame *stats = section(tok::kBlue, m_stats);
-    stats->setTitle(tr("종족값"));
-    stats->setFixedSize(kStatsWidth, kTopRowHeight);
-    row->addWidget(stats);
+    m_stats = new StatRadar;
+    m_statsPanel = section(tok::kBlue, m_stats, {6, 4, 6, 6});
+    m_statsPanel->setFixedSize(kStatsWidth, kTopRowHeight);
+    row->addWidget(m_statsPanel);
     // 획득법: 줄이 많으면(캐이시 27줄) 카드 높이 안에서 스크롤
     m_encounters = new EncounterList;
     QScrollArea *encounterScroll = new QScrollArea;
@@ -305,7 +305,8 @@ void DexDetailPage::applyLanguage()
         games.append(game.text(language));
     m_basis->setText(tr("기술 기준: %1").arg(games.join(QStringLiteral(" · "))));
     m_profile->setDetail(m_detail, language);
-    m_stats->setStats(m_detail.stats, m_detail.total);
+    m_stats->setStats(m_detail.stats);
+    m_statsPanel->setTitle(tr("종족값"), tr("합계 %1").arg(m_detail.total));
     m_encounters->setEncounters(m_detail.encounters, language);
     m_matchups->setMatchups(m_detail.types, m_chart, language);
     m_levelMoves->setMoves(m_detail.levelMoves, m_detail.versionGroup, m_detail.generation,

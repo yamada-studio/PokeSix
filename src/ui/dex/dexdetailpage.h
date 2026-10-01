@@ -15,12 +15,12 @@ class MoveList;
 class PanelFrame;
 class ProfileCard;
 class SpriteCache;
-class StatBars;
+class StatRadar;
 
 // 도감 상세 화면 (로드맵 E1, 레퍼런스: 포딕 4세대 상세). 도감 목록에서 포켓몬을 누르면 열린다.
 //
 //   [← 목록]                                          기술 기준: 기라티나(Pt)
-//   ┌ 그림 · 이름 ┐ ┌ 종족값 ┐ ┌ 획득법(야생 출현) ─────────────┐
+//   ┌ 그림 · 이름 ┐ ┌ 종족값(레이더) ┐ ┌ 획득법(야생 출현) ──────┐
 //   └────────────┘ └───────┘ └──────────────────────────────┘
 //   ┌ 타입 상성 (받을 때 · 줄 때) ────────────────────────────┐
 //   ┌ 레벨업으로 익히는 기술 (Lv 1 = 하트비늘) ────────────────┐
@@ -54,7 +54,8 @@ private:
     QScrollArea *m_scroll = nullptr;
     QLabel *m_basis = nullptr;
     ProfileCard *m_profile = nullptr;
-    StatBars *m_stats = nullptr;
+    StatRadar *m_stats = nullptr;
+    PanelFrame *m_statsPanel = nullptr;
     EncounterList *m_encounters = nullptr;
     MatchupView *m_matchups = nullptr;
     MoveList *m_levelMoves = nullptr;
