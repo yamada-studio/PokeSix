@@ -13,6 +13,7 @@ class EncounterList;
 class AbilityList;
 class EvolutionView;
 class DropdownButton;
+class GameSelector;
 class MatchupView;
 class MoveList;
 class PanelFrame;
@@ -60,7 +61,9 @@ private:
     TypeChart m_chart;
 
     QScrollArea *m_scroll = nullptr;
-    QLabel *m_basis = nullptr;
+    GameSelector *m_games = nullptr; // 기준 게임 칩 [BW][B2W2]
+    QList<GameInfo> m_gameList;      // 지금 세대의 게임(칩)
+    int m_gameGeneration = 0;        // m_gameList를 읽은 세대
     ProfileCard *m_profile = nullptr;
     StatRadar *m_stats = nullptr;
     PanelFrame *m_statsPanel = nullptr;
