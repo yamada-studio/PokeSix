@@ -333,12 +333,10 @@ void SlotCard::paintFilled(QPainter &painter, const Geometry &g)
     painter.drawText(QRect(x, g.header.top(), 22, kHeader), Qt::AlignLeft | Qt::AlignVCenter,
                      QStringLiteral("%1").arg(m_slot + 1, 2, 10, QLatin1Char('0')));
     x += 24;
-    const QRect iconBox(x, g.header.top() + 4, 34, kHeader - 8);
-    painter.setPen(QPen(QColor(tok::kInk), 1.5));
-    painter.setBrush(QColor(tok::kWhite));
-    painter.drawRoundedRect(QRectF(iconBox).adjusted(0.75, 0.75, -0.75, -0.75), 4, 4);
+    // 아이콘만(바탕 칸 없이) 머리 띠 색 위에 바로 그린다
+    const QRect iconBox(x, g.header.top() + 2, 36, kHeader - 4);
     DexRowDelegate::paintPokemonIcon(&painter, QRectF(iconBox), detail.pokemonId, m_pokemonIcons);
-    x = iconBox.right() + 8;
+    x = iconBox.right() + 6;
     painter.setFont(theme::font(theme::kFamilyTitle, 19));
     painter.setPen(QColor(headerText));
     const int nameWidth = g.menu.left() - x - 4;

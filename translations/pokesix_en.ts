@@ -1023,8 +1023,8 @@
 <context>
     <name>com::yamada::studio::SquadSession</name>
     <message>
-        <source>%1세대 정주행</source>
-        <translation>Gen %1 run</translation>
+        <source>%1세대 스쿼드</source>
+        <translation>Gen %1 squad</translation>
     </message>
 </context>
 <context>

@@ -51,7 +51,7 @@ QString SquadSession::versionGroup() const
 
 QString SquadSession::defaultName() const
 {
-    return tr("%1세대 정주행").arg(m_generation);
+    return tr("%1세대 스쿼드").arg(m_generation);
 }
 
 const QList<Nature> &SquadSession::natures()

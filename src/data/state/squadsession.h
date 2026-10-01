@@ -74,7 +74,7 @@ public:
     void setNature(int slot, int natureId);
     void setItem(int slot, int itemId);
 
-    QString defaultName() const; // 이름을 비워 두면 보이는 이름("4세대 정주행")
+    QString defaultName() const; // 이름을 비워 두면 보이는 이름("4세대 스쿼드")
 
 signals:
     void changed();
