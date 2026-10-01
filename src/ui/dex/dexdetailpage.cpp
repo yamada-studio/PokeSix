@@ -5,6 +5,7 @@
 #include "ui/dex/abilitylist.h"
 #include "ui/dex/encounterlist.h"
 #include "ui/dex/evolutionview.h"
+#include "ui/dex/gameselector.h"
 #include "ui/dex/matchupview.h"
 #include "ui/dex/movelist.h"
 #include "ui/dex/naturepicker.h"
@@ -209,9 +210,17 @@ DexDetailPage::DexDetailPage(Repository *repository, AppState *state, QWidget *p
     back->setFocusPolicy(Qt::TabFocus);
     top->addWidget(back);
     top->addStretch();
-    m_basis = new QLabel;
-    m_basis->setObjectName(QStringLiteral("dexDetailBasis"));
-    top->addWidget(m_basis);
+    // 기준 게임 칩: 고르면 기술 · 기술머신 · 진화 조건 · 야생 출현이 그 게임 기준으로 바뀐다
+    QLabel *basis = new QLabel(tr("기준 게임"));
+    basis->setObjectName(QStringLiteral("dexDetailBasis"));
+    top->addWidget(basis);
+    top->addSpacing(6);
+    m_games = new GameSelector;
+    top->addWidget(m_games);
+    connect(m_games, &GameSelector::gameSelected, this, [this](const QString &versionGroup) {
+        m_versionGroup = versionGroup;
+        reload();
+    });
     layout->addLayout(top);
 
     // 나머지는 한 장으로 세로 스크롤(기술 목록이 길다)
@@ -379,19 +388,12 @@ void DexDetailPage::applyLanguage()
     if (!m_detail.isValid())
         return;
     const Language language = m_state->language();
-    // "기술 기준: 하트골드 · 소울실버 (HG · SS)" — 한국어판 제목(기라티나 = 플래티넘)만으로는
-    // 헷갈려서 도감 버튼과 같은 약칭을 붙인다
-    QStringList games;
-    QStringList shorts;
-    for (qsizetype i = 0; i < m_detail.groupGames.size(); ++i) {
-        games.append(m_detail.groupGames.at(i).text(language));
-        shorts.append(dexstyle::version(m_detail.groupVersions.value(i),
-                                        m_detail.groupGames.at(i).text(Language::English))
-                              .shortName);
+    // 기준 게임 칩: 세대가 바뀌었을 때만 게임 목록을 다시 읽는다(언어가 바뀌면 툴팁만 다시)
+    if (m_gameGeneration != m_detail.generation) {
+        m_gameList = m_repository->gamesForGeneration(m_detail.generation);
+        m_gameGeneration = m_detail.generation;
     }
-    m_basis->setText(
-            tr("기술 기준: %1 (%2)")
-                    .arg(games.join(QStringLiteral(" · ")), shorts.join(QStringLiteral(" · "))));
+    m_games->setGames(m_gameList, language, m_detail.versionGroup);
     m_profile->setDetail(m_detail, language);
     m_stats->setStats(m_detail.stats);
     m_statsPanel->setTitle(tr("종족값"), tr("합계 %1").arg(m_detail.total));
@@ -402,7 +404,12 @@ void DexDetailPage::applyLanguage()
     bool evolvedForm = false; // 진화 전 단계가 있다(야생에 없으면 그 단계에서 진화시킨다)
     for (const EvolutionStep &step : std::as_const(m_detail.evolution))
         evolvedForm = evolvedForm || (step.speciesId == m_detail.speciesId && step.depth > 0);
-    m_encounters->setEncounters(m_detail.encounters, language, evolvedForm);
+    // 야생 출현: 고른 게임의 버전만(성도 HGSS를 고르면 신오 DP · Pt 출현은 빠진다)
+    QList<EncounterEntry> encounters;
+    for (const EncounterEntry &e : std::as_const(m_detail.encounters))
+        if (m_detail.groupVersions.contains(e.version))
+            encounters.append(e);
+    m_encounters->setEncounters(encounters, language, evolvedForm);
     m_matchups->setMatchups(m_detail.types, m_chart, language);
     m_abilities->setAbilities(m_detail.abilities, m_detail.generation, language);
     applyNature();

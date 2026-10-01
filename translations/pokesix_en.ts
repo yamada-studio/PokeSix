@@ -134,16 +134,16 @@
         <translation>Evolution</translation>
     </message>
     <message>
-        <source>기술 기준: %1 (%2)</source>
-        <translation>Moves from: %1 (%2)</translation>
-    </message>
-    <message>
         <source>특성</source>
         <translation>Abilities</translation>
     </message>
     <message>
         <source>성격</source>
         <translation>Nature</translation>
+    </message>
+    <message>
+        <source>기준 게임</source>
+        <translation>Game</translation>
     </message>
 </context>
 <context>

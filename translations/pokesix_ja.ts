@@ -134,16 +134,16 @@
         <translation>進化</translation>
     </message>
     <message>
-        <source>기술 기준: %1 (%2)</source>
-        <translation>わざの基準: %1 (%2)</translation>
-    </message>
-    <message>
         <source>특성</source>
         <translation>とくせい</translation>
     </message>
     <message>
         <source>성격</source>
         <translation>せいかく</translation>
+    </message>
+    <message>
+        <source>기준 게임</source>
+        <translation>基準のゲーム</translation>
     </message>
 </context>
 <context>

@@ -8,6 +8,7 @@
     "  알로라의 섬 도감은 지방 도감에 포함되므로 숨긴다. 한 지방에 도감이 여럿이면(칼로스 셋, 가라르 · 팔데아의",
     "  DLC 도감, Z-A의 미르시티 · 이차원) 이름으로 나눈다. 머리 띠 폭(최소 창 934)에 들어가게 짧게 쓴다.",
     "  DLC 버전(갑옷의 외딴섬 · 소드 등)은 본편과 같은 약칭 · 색이라 배지에는 한 번만 보인다.",
+    "versionGroups: PokéAPI version_groups.identifier → label(기준 게임 칩의 약칭이 겹칠 때 뒤에 붙는 짧은 이름, {ko, en, ja}).",
     "세대를 늘릴 때는 이 파일에 버전을 더하고 AppState::kMaxGeneration을 올린다."
   ],
 
@@ -91,5 +92,12 @@
     "blueberry":         { "label": { "ko": "블루베리", "en": "Blueberry", "ja": "ブルーベリー" } },
     "lumiose-city":      { "label": { "ko": "미르시티", "en": "Lumiose City", "ja": "ミアレシティ" } },
     "hyperspace":        { "label": { "ko": "이차원", "en": "Hyperspace", "ja": "異次元" } }
+  },
+
+  "versionGroups": {
+    "the-isle-of-armor": { "label": {"ko": "외딴섬", "en": "Isle of Armor", "ja": "鎧の孤島"} },
+    "the-crown-tundra": { "label": {"ko": "설원", "en": "Crown Tundra", "ja": "冠の雪原"} },
+    "the-teal-mask": { "label": {"ko": "벽록의 가면", "en": "Teal Mask", "ja": "碧の仮面"} },
+    "the-indigo-disk": { "label": {"ko": "남청의 원반", "en": "Indigo Disk", "ja": "藍の円盤"} }
   }
 }

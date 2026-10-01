@@ -7,6 +7,10 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Game chips in the Pokédex detail page ("기준 게임 [BW][B2W2]", the same version-colored chips as
+  the squad's dex filter) replace the "기술 기준" label: choosing a game switches level-up moves,
+  TM/HM numbers and locations, evolution conditions and wild encounters (only that game's versions)
+  to it. DLC chips get short names from `dexstyle.json` (외딴섬 · 설원 · 벽록의 가면 · 남청의 원반).
 - Status move effects in the Pokédex move lists ("효과" column), the squad move picker (a second
   line, also searchable) and slot card tooltips: stat stages with red ▲ / blue ▼ (prefixed "상대"
   when they hit the target), ailments ("상대 마비") and healing ("HP ½ 회복"), from PokéAPI move

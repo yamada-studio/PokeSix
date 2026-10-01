@@ -32,6 +32,8 @@ qt_add_library(pokesix_ui STATIC
     widgets/searchfield.cpp
     widgets/rowhover.h
     widgets/rowhover.cpp
+    widgets/versionchip.h
+    widgets/versionchip.cpp
     widgets/dropdownbutton.h
     widgets/dropdownbutton.cpp
     widgets/typechip.h
@@ -78,6 +80,8 @@ qt_add_library(pokesix_ui STATIC
     dex/naturepicker.cpp
     dex/encounterlist.h
     dex/encounterlist.cpp
+    dex/gameselector.h
+    dex/gameselector.cpp
     dex/dexselector.h
     dex/dexselector.cpp
     dex/dexrowdelegate.h

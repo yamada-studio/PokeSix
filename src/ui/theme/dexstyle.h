@@ -31,4 +31,7 @@ struct DexStyle
 
 // identifier("kalos-central")의 표시 규칙. 표에 없으면 기본값.
 DexStyle dex(const QString &identifier);
+
+// 게임 묶음(version_groups)의 짧은 이름(DLC: 외딴섬 · 설원 …). 없으면 빈 칸
+LocalizedText groupLabel(const QString &versionGroup);
 } // namespace com::yamada::studio::dexstyle

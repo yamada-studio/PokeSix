@@ -17,7 +17,22 @@ struct Table
 {
     QHash<QString, dexstyle::VersionStyle> versions;
     QHash<QString, dexstyle::DexStyle> dexes;
+    QHash<QString, LocalizedText> groups;
 };
+
+// label: {"ko": …, "en": …, "ja": …} 또는 한국어 글자 하나
+LocalizedText labelOf(const QJsonValue &label)
+{
+    LocalizedText text;
+    if (label.isObject()) {
+        const QJsonObject l = label.toObject();
+        text = {l.value(QStringLiteral("ko")).toString(), l.value(QStringLiteral("en")).toString(),
+                l.value(QStringLiteral("ja")).toString()};
+    } else {
+        text.ko = label.toString();
+    }
+    return text;
+}
 
 // JSON을 한 번 읽어 표로 만든다. 파일이 없거나 깨졌으면 경고만 남기고 빈 표(모두 기본값)로 간다 —
 // 버튼 색이 밋밋해질 뿐 앱은 돈다.
@@ -51,19 +66,14 @@ Table load()
     const QJsonObject dexes = root.value(QStringLiteral("pokedexes")).toObject();
     for (auto it = dexes.begin(); it != dexes.end(); ++it) {
         const QJsonObject d = it.value().toObject();
-        // label: {"ko": …, "en": …, "ja": …} 또는 한국어 글자 하나
-        const QJsonValue label = d.value(QStringLiteral("label"));
-        LocalizedText text;
-        if (label.isObject()) {
-            const QJsonObject l = label.toObject();
-            text = {l.value(QStringLiteral("ko")).toString(),
-                    l.value(QStringLiteral("en")).toString(),
-                    l.value(QStringLiteral("ja")).toString()};
-        } else {
-            text.ko = label.toString();
-        }
-        table.dexes.insert(it.key(), {text, d.value(QStringLiteral("hidden")).toBool(false)});
+        table.dexes.insert(it.key(), {labelOf(d.value(QStringLiteral("label"))),
+                                      d.value(QStringLiteral("hidden")).toBool(false)});
     }
+
+    const QJsonObject groups = root.value(QStringLiteral("versionGroups")).toObject();
+    for (auto it = groups.begin(); it != groups.end(); ++it)
+        table.groups.insert(it.key(),
+                            labelOf(it.value().toObject().value(QStringLiteral("label"))));
     return table;
 }
 
@@ -92,5 +102,10 @@ VersionStyle version(const QString &identifier, const QString &fallbackName)
 DexStyle dex(const QString &identifier)
 {
     return table().dexes.value(identifier);
+}
+
+LocalizedText groupLabel(const QString &versionGroup)
+{
+    return table().groups.value(versionGroup);
 }
 } // namespace com::yamada::studio::dexstyle
