@@ -68,6 +68,8 @@ public:
     void setPokemon(int slot, int pokemonId); // 기술 · 메모 · 특성 · 물건은 비운다
     void clearSlot(int slot);
     void swapSlots(int a, int b);
+    // from 자리를 빼서 to 자리에 끼운다(사이의 자리는 한 칸씩 당겨지거나 밀린다). 카드 끌기
+    void moveSlot(int from, int to);
     void setMove(int slot, int index, int moveId); // 0 = 비우기
     void setMemo(int slot, const QString &memo);
     void setAbility(int slot, int abilityId);

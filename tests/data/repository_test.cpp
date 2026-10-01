@@ -506,6 +506,20 @@ TEST_F(RepositoryTest, SquadSessionResolvesAndAnalyzesTheGeneration)
     ASSERT_NE(session.ability(0), nullptr);
     EXPECT_EQ(session.ability(0)->name.en, QStringLiteral("Sand Veil"));
 
+    // 끌어서 옮기기: 0번을 2번 자리로 → 1 · 2번이 한 칸씩 당겨진다
+    session.setPokemon(1, 36);
+    session.setPokemon(2, 37);
+    session.moveSlot(0, 2);
+    EXPECT_EQ(session.squad().members[0].pokemonId, 36);
+    EXPECT_EQ(session.squad().members[1].pokemonId, 37);
+    EXPECT_EQ(session.squad().members[2].pokemonId, 445);
+    EXPECT_EQ(session.detail(2).speciesId, 445);         // 풀어 둔 값도 같이 옮겨진다
+    EXPECT_EQ(store.squad(4).members[2].pokemonId, 445); // 저장소에도
+    session.moveSlot(2, 0);                              // 되돌리기
+    EXPECT_EQ(session.squad().members[0].pokemonId, 445);
+    session.clearSlot(1);
+    session.clearSlot(2);
+
     // 세대를 바꾸면 그 세대 스쿼드(비어 있음), 돌아오면 다시
     state.setGeneration(3);
     EXPECT_EQ(session.squad().filled(), 0);

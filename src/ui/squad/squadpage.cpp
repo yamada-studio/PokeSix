@@ -30,6 +30,7 @@
 
 #include <QBoxLayout>
 #include <QFontMetricsF>
+#include <QGraphicsDropShadowEffect>
 #include <QGridLayout>
 #include <QLabel>
 #include <QLineEdit>
@@ -37,8 +38,10 @@
 #include <QMenu>
 #include <QPainter>
 #include <QPixmapCache>
+#include <QPropertyAnimation>
 #include <QResizeEvent>
 #include <QScrollArea>
+#include <QScrollBar>
 #include <QStyle>
 
 namespace {
@@ -47,6 +50,11 @@ using namespace com::yamada::studio;
 constexpr QMargins kPageMargins {20, 16, 20, 20}; // 화면 공통 여백(02 SCR 공통)
 constexpr int kCardGap = 12;
 constexpr int kWideCardAreaWidth = 2 * 300 + kCardGap; // 넓은 화면: 슬롯 그리드 600
+// 카드 끌기 애니메이션: 밀려나는 카드 · 놓은 카드가 칸에 들어가는 시간, 끝에 닿을 때 굴리는 양
+constexpr int kShiftMs = 180;
+constexpr int kDropMs = 140;
+constexpr int kAutoScrollMargin = 40;
+constexpr int kAutoScrollStep = 18;
 constexpr PanelStyle kAnalysisPanel {.outline = 2,
                                      .radius = 8,
                                      .shadow = 3,
@@ -161,6 +169,9 @@ SquadPage::SquadPage(Repository *repository, AppState *state, QWidget *parent)
         connect(card, &SlotCard::moveRequested, this, &SquadPage::pickMove);
         connect(card, &SlotCard::abilityRequested, this, &SquadPage::pickAbility);
         connect(card, &SlotCard::natureRequested, this, &SquadPage::pickNature);
+        connect(card, &SlotCard::dragStarted, this, &SquadPage::onDragStarted);
+        connect(card, &SlotCard::dragMoved, this, &SquadPage::onDragMoved);
+        connect(card, &SlotCard::dragFinished, this, &SquadPage::onDragFinished);
         connect(card, &SlotCard::itemRequested, this,
                 [this](int s, const QPoint &) { pickItem(s); });
         m_cards.append(card);
@@ -535,6 +546,129 @@ void SquadPage::selectSlot(int slot)
     for (int i = 0; i < m_cards.size(); ++i)
         m_cards.at(i)->setSelected(i == m_selected);
     m_heatmap->setSelectedSlot(m_selected);
+}
+
+void SquadPage::slideTo(QWidget *card, const QPoint &target, int durationMs)
+{
+    // 카드마다 애니메이션 하나: 이미 움직이는 중이면 그 자리에서 새 목표로 다시 출발한다
+    QPropertyAnimation *slide = m_slides.value(card);
+    if (!slide) {
+        slide = new QPropertyAnimation(card, "pos", this);
+        slide->setEasingCurve(QEasingCurve::OutCubic);
+        m_slides.insert(card, slide);
+    }
+    slide->stop();
+    if (card->pos() == target)
+        return;
+    slide->setDuration(durationMs);
+    slide->setStartValue(card->pos());
+    slide->setEndValue(target);
+    slide->start();
+}
+
+void SquadPage::onDragStarted(int slot, const QPoint &globalPos)
+{
+    if (m_dragging)
+        return;
+    m_dragging = true;
+    // 지금 자리(레이아웃이 잡아 둔 칸)를 재고 레이아웃을 멈춘다 — 끄는 동안 카드는 직접 옮긴다
+    m_cells.clear();
+    m_order.clear();
+    for (int i = 0; i < m_cards.size(); ++i) {
+        m_cells.append(m_cards.at(i)->geometry());
+        m_order.append(i);
+    }
+    m_grid->setEnabled(false);
+    SlotCard *card = m_cards.at(slot);
+    card->raise(); // 다른 카드 위로
+    // 들어 올린 느낌: 먹색 그림자(아래로 8px, 흐림 18)
+    auto *shadow = new QGraphicsDropShadowEffect(card);
+    shadow->setBlurRadius(18);
+    shadow->setOffset(0, 8);
+    QColor ink(tok::kInk);
+    ink.setAlpha(110);
+    shadow->setColor(ink);
+    card->setGraphicsEffect(shadow);
+    m_dragOffset = m_cardArea->mapFromGlobal(globalPos) - card->pos();
+}
+
+void SquadPage::onDragMoved(int slot, const QPoint &globalPos)
+{
+    if (!m_dragging)
+        return;
+    SlotCard *card = m_cards.at(slot);
+    if (QPropertyAnimation *slide = m_slides.value(card))
+        slide->stop();
+    // 카드는 마우스를 따라가되 카드 영역 밖으로는 나가지 않는다
+    const QPoint mouse = m_cardArea->mapFromGlobal(globalPos);
+    QPoint topLeft = mouse - m_dragOffset;
+    topLeft.setX(std::clamp(topLeft.x(), 0, std::max(0, m_cardArea->width() - card->width())));
+    topLeft.setY(std::clamp(topLeft.y(), 0, std::max(0, m_cardArea->height() - card->height())));
+    card->move(topLeft);
+
+    // 끄는 카드의 가운데에서 가장 가까운 칸 = 놓일 자리. 바뀌면 나머지 카드가 밀리거나 당겨진다
+    const QPoint center = QRect(topLeft, card->size()).center();
+    int target = 0;
+    for (int i = 1; i < m_cells.size(); ++i)
+        if ((m_cells.at(i).center() - center).manhattanLength()
+            < (m_cells.at(target).center() - center).manhattanLength())
+            target = i;
+    const int current = int(m_order.indexOf(slot));
+    if (target != current) {
+        m_order.move(current, target);
+        for (int i = 0; i < m_order.size(); ++i)
+            if (m_order.at(i) != slot)
+                slideTo(m_cards.at(m_order.at(i)), m_cells.at(i).topLeft(), kShiftMs);
+    }
+
+    // 스크롤 영역 위 · 아래 끝에 닿으면 그쪽으로 조금씩 굴린다(좁은 창: 분석 창이 카드 아래)
+    const QPoint inViewport = m_scroll->viewport()->mapFromGlobal(globalPos);
+    QScrollBar *bar = m_scroll->verticalScrollBar();
+    if (inViewport.y() < kAutoScrollMargin)
+        bar->setValue(bar->value() - kAutoScrollStep);
+    else if (inViewport.y() > m_scroll->viewport()->height() - kAutoScrollMargin)
+        bar->setValue(bar->value() + kAutoScrollStep);
+}
+
+void SquadPage::onDragFinished(int slot)
+{
+    if (!m_dragging)
+        return;
+    // 놓은 자리로 미끄러져 들어간 뒤 순서를 저장한다
+    const int to = int(m_order.indexOf(slot));
+    SlotCard *card = m_cards.at(slot);
+    slideTo(card, m_cells.at(to).topLeft(), kDropMs);
+    QPropertyAnimation *slide = m_slides.value(card);
+    if (slide && slide->state() == QAbstractAnimation::Running)
+        connect(
+                slide, &QPropertyAnimation::finished, this,
+                [this, slot, to] { finishDrag(slot, to); }, Qt::SingleShotConnection);
+    else
+        finishDrag(slot, to);
+}
+
+void SquadPage::finishDrag(int from, int to)
+{
+    for (QPropertyAnimation *slide : std::as_const(m_slides))
+        slide->stop();
+    m_cards.at(from)->setGraphicsEffect(nullptr); // 그림자를 지운다(효과 객체도 함께 지워진다)
+    // 선택한 자리도 같이 옮긴다
+    if (m_selected == from)
+        m_selected = to;
+    else if (from < to && m_selected > from && m_selected <= to)
+        --m_selected;
+    else if (to < from && m_selected >= to && m_selected < from)
+        ++m_selected;
+    // 카드 위젯은 자리 번호에 묶여 있다(n번 카드 = n번 자리). 데이터를 옮기고 레이아웃을 되살리면
+    // 각 카드가 제 칸으로 돌아가며 새 자리의 내용을 그린다 — 화면에는 놓은 모습 그대로 보인다
+    m_session->moveSlot(from, to);
+    m_grid->setEnabled(true);
+    m_grid->invalidate();
+    m_grid->activate();
+    m_dragging = false;
+    if (from == to)
+        refresh(); // 데이터가 그대로라 changed가 오지 않는다 → 선택 표시만 다시
+    qCInfo(lcUi) << "squad slot" << from << "moved to" << to;
 }
 
 void SquadPage::onProblemHovered(int row)

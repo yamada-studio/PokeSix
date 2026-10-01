@@ -714,6 +714,10 @@
         <source>+ 개체 추가</source>
         <translation>+ Add Pokémon</translation>
     </message>
+    <message>
+        <source>누르면 선택, 끌면 순서를 바꿔요</source>
+        <translation>Click to select, drag to reorder</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::SpeciesTableModel</name>

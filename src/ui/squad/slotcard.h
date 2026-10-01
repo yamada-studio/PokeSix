@@ -49,12 +49,17 @@ signals:
     void abilityRequested(int slot, const QPoint &globalPos);
     void natureRequested(int slot, const QPoint &globalPos);
     void itemRequested(int slot, const QPoint &globalPos);
+    // 머리를 잡고 끈다(누른 채 조금 움직이면 시작). 자리 계산 · 애니메이션은 SquadPage가 한다
+    void dragStarted(int slot, const QPoint &globalPos);
+    void dragMoved(int slot, const QPoint &globalPos);
+    void dragFinished(int slot);
 
 protected:
     void paintEvent(QPaintEvent *event) override;
     void resizeEvent(QResizeEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
     void mousePressEvent(QMouseEvent *event) override;
+    void mouseReleaseEvent(QMouseEvent *event) override;
     void leaveEvent(QEvent *event) override;
     bool event(QEvent *event) override; // 기술 칸 툴팁
 
@@ -73,7 +78,7 @@ private:
         QRect weak;
         QRect add; // 빈 자리의 [+ 개체 추가]
     };
-    Geometry geometry() const;
+    Geometry areas() const;
     Hit hitAt(const QPoint &pos) const;
     bool isEmptySlot() const;
     void paintFilled(QPainter &painter, const Geometry &g);
@@ -93,5 +98,8 @@ private:
     QString m_suggestion;
     QString m_warning;
     Hit m_hot = Hit::None;
+    bool m_headerPressed = false; // 머리를 눌렀다(놓으면 선택, 끌면 옮기기)
+    bool m_dragging = false;
+    QPoint m_pressPos;
 };
 } // namespace com::yamada::studio

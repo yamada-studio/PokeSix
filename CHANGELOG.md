@@ -33,6 +33,8 @@ and the project uses [Semantic Versioning](https://semver.org/).
   The picker also warns, in red, about Pokémon already in the squad and about a second starter
   of the chosen game (starters come from `resources/data/starters.json`, per game: HGSS offers the
   Johto three, FRLG the Kanto three); slot cards in such a clash show a red "!" with the reason.
+  Slot cards can be dragged by their header to reorder the squad: the card lifts with a shadow and
+  follows the mouse, the cards in between slide aside, and the dropped card glides into place.
   Hovering a problem outlines the affected slots; empty slots suggest what kind of Pokémon would
   fix the current problems. The analysis lives in core (`SquadAnalyzer`, tested against the
   design's sample squad), and generation differences come from one feature table.

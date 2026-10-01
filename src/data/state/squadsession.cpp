@@ -240,6 +240,20 @@ void SquadSession::swapSlots(int a, int b)
     commit();
 }
 
+void SquadSession::moveSlot(int from, int to)
+{
+    if (from == to || from < 0 || to < 0 || from >= int(kSquadSize) || to >= int(kSquadSize))
+        return;
+    // 한 칸씩 이웃과 바꿔 가며 옮긴다 = 빼서 끼우기(rotate)
+    const int step = from < to ? 1 : -1;
+    for (int i = from; i != to; i += step) {
+        std::swap(m_squad.members[std::size_t(i)], m_squad.members[std::size_t(i + step)]);
+        std::swap(m_details[std::size_t(i)], m_details[std::size_t(i + step)]);
+        std::swap(m_moves[std::size_t(i)], m_moves[std::size_t(i + step)]);
+    }
+    commit();
+}
+
 void SquadSession::setMove(int slot, int index, int moveId)
 {
     SquadMember &member = m_squad.members[std::size_t(slot)];
