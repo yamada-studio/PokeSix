@@ -5,6 +5,7 @@
 #include <QStyledItemDelegate>
 
 namespace com::yamada::studio {
+class RowHover;
 class SpriteCache;
 
 // 아이템 대백과 목록의 한 칸을 그린다 (Items.dc.html 목록 표, 02 SCR-03, E3).
@@ -37,7 +38,11 @@ public:
                const QModelIndex &index) const override;
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const override;
 
+    // 마우스가 올라간 줄(RowHover)을 옅은 노랑으로 칠한다. 소유하지 않는다.
+    void setHover(const RowHover *hover) { m_hover = hover; }
+
 private:
+    const RowHover *m_hover = nullptr;
     void paintIcon(QPainter *painter, const QRectF &cell, const QModelIndex &index) const;
     void paintEffect(QPainter *painter, const QRectF &content, const QModelIndex &index) const;
 

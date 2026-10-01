@@ -1,5 +1,6 @@
 #include "ui/widgets/generationbutton.h"
 
+#include "ui/theme/cursors.h"
 #include "ui/theme/theme.h"
 #include "ui/theme/tokens.h"
 
@@ -40,7 +41,7 @@ GenerationButton::GenerationButton(Size size, QWidget *parent)
     , m_font(theme::font(theme::kFamilyTitle, metricsOf(size).labelPx))
 {
     QAbstractButton::setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    QAbstractButton::setCursor(Qt::PointingHandCursor);
+    QAbstractButton::setCursor(cursors::pointer());
     connect(this, &QAbstractButton::clicked, this, &GenerationButton::showMenu);
 }
 

@@ -5,6 +5,7 @@
 #include <QStyledItemDelegate>
 
 namespace com::yamada::studio {
+class RowHover;
 class SpriteCache;
 
 // 도감 목록의 한 칸을 디자인대로 그린다 (Dex.dc.html 목록 표, 01 §5-4 · 02 SCR-02).
@@ -56,7 +57,11 @@ public:
     static void paintPokemonIcon(QPainter *painter, const QRectF &cell, int pokemonId,
                                  SpriteCache *sprites);
 
+    // 마우스가 올라간 줄(RowHover)을 옅은 노랑으로 칠한다. 소유하지 않는다.
+    void setHover(const RowHover *hover) { m_hover = hover; }
+
 private:
+    const RowHover *m_hover = nullptr;
     SpriteCache *m_sprites = nullptr;
     Language m_language = Language::Korean;
 };

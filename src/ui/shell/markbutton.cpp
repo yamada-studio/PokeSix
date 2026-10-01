@@ -1,5 +1,6 @@
 #include "ui/shell/markbutton.h"
 
+#include "ui/theme/cursors.h"
 #include "ui/theme/theme.h"
 #include "ui/theme/tokens.h"
 #include "ui/widgets/svgicon.h"
@@ -32,7 +33,7 @@ MarkButton::MarkButton(QWidget *parent)
     , m_font(theme::font(theme::kFamilyPixel, kWordmarkPx, QFont::Bold))
 {
     m_mark = svgicon::pixmap(QString::fromLatin1(kStickerMarkSvg), kMarkSize, devicePixelRatioF());
-    QAbstractButton::setCursor(Qt::PointingHandCursor);
+    QAbstractButton::setCursor(cursors::pointer());
     QAbstractButton::setToolTip(tr("처음 화면으로"));
     QAbstractButton::setAccessibleName(tr("처음 화면으로"));
     QAbstractButton::setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);

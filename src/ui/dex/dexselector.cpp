@@ -1,5 +1,6 @@
 #include "ui/dex/dexselector.h"
 
+#include "ui/theme/cursors.h"
 #include "ui/theme/dexstyle.h"
 #include "ui/theme/theme.h"
 #include "ui/theme/tokens.h"
@@ -42,7 +43,7 @@ public:
     {
         QAbstractButton::setText(label);
         QAbstractButton::setCheckable(true);
-        QAbstractButton::setCursor(Qt::PointingHandCursor);
+        QAbstractButton::setCursor(cursors::pointer());
         QAbstractButton::setFocusPolicy(
                 Qt::TabFocus); // 마우스로 눌러도 검색 칸의 포커스를 뺏지 않는다
         QAbstractButton::setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);

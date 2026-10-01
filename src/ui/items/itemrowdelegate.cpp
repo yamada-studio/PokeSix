@@ -4,6 +4,7 @@
 #include "data/sprites/spritecache.h"
 #include "ui/theme/theme.h"
 #include "ui/theme/tokens.h"
+#include "ui/widgets/rowhover.h"
 #include "ui/widgets/typechip.h"
 
 #include <QFontMetricsF>
@@ -65,6 +66,8 @@ void ItemRowDelegate::paint(QPainter *painter, const QStyleOptionViewItem &optio
     QColor background(tok::kWhite);
     if (selected)
         background = QColor(tok::kYellowTint);
+    else if (m_hover && m_hover->row() == index.row())
+        background = QColor(tok::kYellowRowSel); // 호버: 선택보다 옅은 노랑
     else if (index.row() % 2 == 1)
         background = QColor(tok::kPaperAlt);
     painter->fillRect(cell, background);

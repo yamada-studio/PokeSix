@@ -7,6 +7,9 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- White glove mouse cursor (original SVG art, pointing and grabbing) for everything clickable, and row
+  hover in the Dex and Items lists: the row under the mouse is tinted and the glove squeezes twice
+  when it moves onto a new row.
 - Evolution tree in the detail page's acquisition card: the chain from its base stage with each
   step's method for the current generation (level, item, trade, friendship, time of day, place,
   known move …; e.g. Leafeon evolves at Eterna Forest in generation 4 and with a Leaf Stone from

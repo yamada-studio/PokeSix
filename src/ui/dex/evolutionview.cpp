@@ -3,6 +3,7 @@
 #include "data/sprites/spritecache.h"
 #include "ui/dex/dexrowdelegate.h"
 #include "ui/dex/guidebook.h"
+#include "ui/theme/cursors.h"
 #include "ui/theme/theme.h"
 #include "ui/theme/tokens.h"
 #include "ui/widgets/typechip.h"
@@ -178,7 +179,7 @@ void EvolutionView::mouseMoveEvent(QMouseEvent *event)
 {
     const int row = rowAt(int(event->position().y()));
     const bool clickable = row >= 0 && m_steps.at(row).speciesId != m_current;
-    QWidget::setCursor(clickable ? Qt::PointingHandCursor : Qt::ArrowCursor);
+    QWidget::setCursor(clickable ? cursors::pointer() : QCursor(Qt::ArrowCursor));
 }
 
 void EvolutionView::mousePressEvent(QMouseEvent *event)
