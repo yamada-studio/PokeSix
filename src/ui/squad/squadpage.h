@@ -13,7 +13,7 @@ class QScrollArea;
 
 namespace com::yamada::studio {
 class AppState;
-class DropdownButton;
+class GameSelector;
 class HeatmapView;
 class PanelFrame;
 class ProblemList;
@@ -60,7 +60,6 @@ private:
 
     void selectSlot(int slot);
     void showSlotMenu(int slot, const QPoint &globalPos);
-    void showGameMenu();
     void pickPokemon(int slot);
     void pickMove(int slot, int index);
     void pickAbility(int slot, const QPoint &globalPos);
@@ -90,7 +89,7 @@ private:
 
     QLineEdit *m_name = nullptr;
     QLabel *m_rule = nullptr;
-    DropdownButton *m_game = nullptr;
+    GameSelector *m_game = nullptr; // 게임 칩 [DP][Pt][HGSS] — 게임마다 스쿼드가 따로
     SquadPips *m_pips = nullptr;
     QLabel *m_count = nullptr;
     QLabel *m_saveStatus = nullptr;

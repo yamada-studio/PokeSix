@@ -804,10 +804,6 @@
         <translation>押して名前を変更</translation>
     </message>
     <message>
-        <source>기술 기준 게임 — 배울 수 있는 기술 · 기술머신 번호가 게임마다 달라요</source>
-        <translation>技の基準ゲーム — 覚える技・わざマシン番号はゲームごとに違います</translation>
-    </message>
-    <message>
         <source>✓ 자동 저장</source>
         <translation>✓ 自動保存</translation>
     </message>
@@ -830,10 +826,6 @@
     <message>
         <source>%1세대 규칙</source>
         <translation>第%1世代ルール</translation>
-    </message>
-    <message>
-        <source>게임</source>
-        <translation>ゲーム</translation>
     </message>
     <message>
         <source>실시간 분석</source>

@@ -58,12 +58,13 @@ public:
     const ItemRow *item(int slot) const;
     const SquadAnalysis &analysis() const { return m_analysis; }
     const TypeChart &chart() const { return m_chart; }
-    QString versionGroup() const; // 실제로 쓰는 기술 기준 게임(비어 있지 않다)
+    QString versionGroup() const { return m_versionGroup; } // 지금 게임(비어 있지 않다)
     const QList<GameInfo> &games() const { return m_games; }
     const QList<Nature> &natures();
     const QList<ItemRow> &items(); // 그 세대의 아이템(지닌 물건 선택지)
 
     void setName(const QString &name);
+    // 게임을 바꾼다 = 그 게임의 스쿼드로 바꾼다(게임마다 스쿼드가 따로 저장된다)
     void setVersionGroup(const QString &versionGroup);
     void setPokemon(int slot, int pokemonId); // 기술 · 메모 · 특성 · 물건은 비운다
     void clearSlot(int slot);
@@ -93,6 +94,7 @@ private:
     SquadStore *m_store = nullptr;
     AppState *m_state = nullptr;
     int m_generation = 0;
+    QString m_versionGroup;
     Squad m_squad;
     std::array<PokemonDetail, kSquadSize> m_details;
     std::array<std::array<std::optional<SlotMove>, 4>, kSquadSize> m_moves;

@@ -1,6 +1,7 @@
 #include "data/store/squadstore.h"
 
 #include "data/logging/logging.h"
+#include "data/repository/repository.h"
 
 #include <QDir>
 #include <QFile>
@@ -14,7 +15,7 @@
 namespace {
 using namespace com::yamada::studio;
 
-constexpr int kFormatVersion = 1;
+constexpr int kFormatVersion = 2;
 
 QJsonObject toJson(const Squad &squad)
 {
@@ -30,16 +31,13 @@ QJsonObject toJson(const Squad &squad)
                                     {QStringLiteral("nature"), m.natureId},
                                     {QStringLiteral("item"), m.itemId}});
     }
-    return {{QStringLiteral("name"), squad.name},
-            {QStringLiteral("versionGroup"), squad.versionGroup},
-            {QStringLiteral("members"), members}};
+    return {{QStringLiteral("name"), squad.name}, {QStringLiteral("members"), members}};
 }
 
 Squad fromJson(const QJsonObject &object)
 {
     Squad squad;
     squad.name = object.value(QStringLiteral("name")).toString();
-    squad.versionGroup = object.value(QStringLiteral("versionGroup")).toString();
     const QJsonArray members = object.value(QStringLiteral("members")).toArray();
     for (qsizetype i = 0; i < members.size() && i < qsizetype(squad.members.size()); ++i) {
         const QJsonObject m = members.at(i).toObject();
@@ -76,16 +74,29 @@ SquadStore::~SquadStore()
         write(); // 시그널은 보내지 않는다(받을 위젯이 이미 없을 수 있다)
 }
 
-Squad SquadStore::squad(int generation) const
+Squad SquadStore::squad(int generation, const QString &versionGroup) const
 {
-    return m_squads.value(generation);
+    return m_squads.value(generation).value(versionGroup);
 }
 
-void SquadStore::setSquad(int generation, const Squad &squad)
+void SquadStore::setSquad(int generation, const QString &versionGroup, const Squad &squad)
 {
-    if (m_squads.value(generation) == squad)
+    if (m_squads.value(generation).value(versionGroup) == squad)
         return;
-    m_squads.insert(generation, squad);
+    m_squads[generation].insert(versionGroup, squad);
+    schedule();
+}
+
+void SquadStore::setCurrentGame(int generation, const QString &versionGroup)
+{
+    if (m_current.value(generation) == versionGroup)
+        return;
+    m_current.insert(generation, versionGroup);
+    schedule();
+}
+
+void SquadStore::schedule()
+{
     m_timer.start(); // 다시 걸면 처음부터 센다 → 입력이 멈춘 뒤 한 번
     emit saveScheduled();
 }
@@ -111,12 +122,27 @@ void SquadStore::load()
         qCWarning(lcData) << "squads.json is broken:" << error.errorString();
         return;
     }
+    const int version = document.object().value(QStringLiteral("version")).toInt(1);
     const QJsonObject squads = document.object().value(QStringLiteral("squads")).toObject();
     for (auto it = squads.begin(); it != squads.end(); ++it) {
         bool ok = false;
         const int generation = it.key().toInt(&ok);
-        if (ok)
-            m_squads.insert(generation, fromJson(it.value().toObject()));
+        if (!ok)
+            continue;
+        const QJsonObject entry = it.value().toObject();
+        if (version < 2) {
+            // version 1: 세대마다 스쿼드 하나 → 그 스쿼드의 게임(비어 있으면 대표 게임)으로 옮긴다
+            QString game = entry.value(QStringLiteral("versionGroup")).toString();
+            if (game.isEmpty())
+                game = Repository::representativeVersionGroup(generation);
+            m_squads[generation].insert(game, fromJson(entry));
+            m_current.insert(generation, game);
+            continue;
+        }
+        const QJsonObject games = entry.value(QStringLiteral("games")).toObject();
+        for (auto game = games.begin(); game != games.end(); ++game)
+            m_squads[generation].insert(game.key(), fromJson(game.value().toObject()));
+        m_current.insert(generation, entry.value(QStringLiteral("current")).toString());
     }
     qCInfo(lcData) << "loaded" << m_squads.size() << "squads from" << m_path;
 }
@@ -124,8 +150,19 @@ void SquadStore::load()
 bool SquadStore::write()
 {
     QJsonObject squads;
-    for (auto it = m_squads.cbegin(); it != m_squads.cend(); ++it)
-        squads.insert(QString::number(it.key()), toJson(it.value()));
+    QList<int> generations = m_squads.keys();
+    for (const int generation : m_current.keys())
+        if (!generations.contains(generation))
+            generations.append(generation);
+    for (const int generation : generations) {
+        QJsonObject games;
+        const QHash<QString, Squad> &bySeries = m_squads[generation];
+        for (auto it = bySeries.cbegin(); it != bySeries.cend(); ++it)
+            games.insert(it.key(), toJson(it.value()));
+        squads.insert(QString::number(generation),
+                      QJsonObject {{QStringLiteral("current"), m_current.value(generation)},
+                                   {QStringLiteral("games"), games}});
+    }
     const QJsonObject root {{QStringLiteral("version"), kFormatVersion},
                             {QStringLiteral("squads"), squads}};
 
