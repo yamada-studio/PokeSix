@@ -27,11 +27,12 @@ namespace {
 using namespace com::yamada::studio;
 
 constexpr int kGap = 16;
-constexpr int kProfileWidth = 236;
+constexpr int kTopRowGap = 10; // 위 줄 카드 사이(아래 섹션 사이 kGap보다 좁게)
+constexpr int kCardMinWidth
+        = 236; // 위 줄 카드 셋은 같은 폭(1 : 1 : 1)으로 나누고, 이보다 좁아지지 않는다
 // 위 줄 카드 셋(그림 · 종족값 · 획득법)의 높이 — 그림 카드의 내용 높이에 맞춘다. 획득법이 더 길면
 // 카드 안에서 스크롤한다.
 constexpr int kTopRowHeight = 340;
-constexpr int kStatsWidth = 300;
 constexpr int kSpriteScale = 2; // 80×80 도트를 2배(정수 배라 흐려지지 않는다)
 
 PanelStyle sectionStyle(QRgb headerColor)
@@ -90,7 +91,8 @@ public:
         : QWidget(parent)
         , m_fronts(fronts)
     {
-        QWidget::setFixedSize(kProfileWidth, kTopRowHeight);
+        QWidget::setFixedHeight(kTopRowHeight);
+        QWidget::setMinimumWidth(kCardMinWidth);
         connect(m_fronts, &SpriteCache::ready, this, qOverload<>(&QWidget::update));
     }
 
@@ -232,13 +234,14 @@ QWidget *DexDetailPage::buildContent()
 
     // 1) 그림 · 종족값 · 획득법
     QHBoxLayout *row = new QHBoxLayout;
-    row->setSpacing(kGap);
+    row->setSpacing(kTopRowGap);
     m_profile = new ProfileCard(m_fronts);
-    row->addWidget(m_profile);
+    row->addWidget(m_profile, 1);
     m_stats = new StatRadar;
     m_statsPanel = section(tok::kBlue, m_stats, {6, 4, 6, 6});
-    m_statsPanel->setFixedSize(kStatsWidth, kTopRowHeight);
-    row->addWidget(m_statsPanel);
+    m_statsPanel->setFixedHeight(kTopRowHeight);
+    m_statsPanel->setMinimumWidth(kCardMinWidth);
+    row->addWidget(m_statsPanel, 1);
     // 획득법: 줄이 많으면(캐이시 27줄) 카드 높이 안에서 스크롤
     m_encounters = new EncounterList;
     QScrollArea *encounterScroll = new QScrollArea;
@@ -250,6 +253,7 @@ QWidget *DexDetailPage::buildContent()
     PanelFrame *encounters = section(tok::kGreen, encounterScroll, {12, 10, 6, 10});
     encounters->setTitle(tr("획득법"), tr("야생 출현"));
     encounters->setFixedHeight(kTopRowHeight);
+    encounters->setMinimumWidth(kCardMinWidth);
     row->addWidget(encounters, 1);
     layout->addLayout(row);
 
