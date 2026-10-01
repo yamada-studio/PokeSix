@@ -2,10 +2,12 @@
 
 #include "data/sprites/spritecache.h"
 #include "data/state/appstate.h"
+#include "ui/dex/abilitylist.h"
 #include "ui/dex/encounterlist.h"
 #include "ui/dex/evolutionview.h"
 #include "ui/dex/matchupview.h"
 #include "ui/dex/movelist.h"
+#include "ui/dex/naturepicker.h"
 #include "ui/dex/statradar.h"
 #include "ui/logging/logging.h"
 #include "ui/theme/dexstyle.h"
@@ -29,6 +31,7 @@ namespace {
 using namespace com::yamada::studio;
 
 constexpr int kGap = 16;
+constexpr int kFirstNatureGeneration = 3; // 성격 · 특성은 3세대(RS)부터
 constexpr int kTopRowGap = 10; // 위 줄 카드 사이(아래 섹션 사이 kGap보다 좁게)
 constexpr int kCardMinWidth
         = 236; // 위 줄 카드 셋은 같은 폭(1 : 1 : 1)으로 나누고, 이보다 좁아지지 않는다
@@ -243,6 +246,10 @@ QWidget *DexDetailPage::buildContent()
     m_stats = new StatRadar;
     m_statsPanel = section(tok::kBlue, m_stats, {6, 4, 6, 6});
     m_statsPanel->setFixedHeight(kTopRowHeight);
+    // 머리 띠 오른쪽 [성격 ▾]: 5×5 성격표 팝업 → 레이더에 ▲▼
+    m_natureButton = new NatureButton;
+    m_statsPanel->setHeaderWidget(m_natureButton);
+    connect(m_natureButton, &NatureButton::clicked, this, &DexDetailPage::showNaturePicker);
     m_statsPanel->setMinimumWidth(kCardMinWidth);
     row->addWidget(m_statsPanel, 1);
     // 획득법: [진화 트리] + [야생 출현]. 줄이 많으면(캐이시 27줄) 카드 높이 안에서 스크롤
@@ -279,7 +286,13 @@ QWidget *DexDetailPage::buildContent()
     row->addWidget(encounters, 1);
     layout->addLayout(row);
 
-    // 2) 상성 · 3) 레벨업 기술 · 4) 기술머신
+    // 2) 특성(그 세대 · 숨겨진 특성은 5세대부터)
+    m_abilities = new AbilityList;
+    PanelFrame *abilities = section(tok::kBlueDeep, m_abilities);
+    abilities->setTitle(tr("특성"));
+    layout->addWidget(abilities);
+
+    // 3) 상성 · 4) 레벨업 기술 · 5) 기술머신
     m_matchups = new MatchupView;
     PanelFrame *matchups = section(tok::kRed, m_matchups);
     matchups->setTitle(tr("타입 상성"));
@@ -324,6 +337,42 @@ void DexDetailPage::reload()
     applyLanguage();
 }
 
+void DexDetailPage::showNaturePicker()
+{
+    if (m_natures.isEmpty())
+        m_natures = m_repository->natures();
+    // 팝업은 한 번 쓰고 버린다(WA_DeleteOnClose). 버튼 바로 아래, 버튼 오른쪽 끝에 맞춰 연다.
+    NaturePicker *picker = new NaturePicker(m_natures, m_natureId, m_state->language(), this);
+    connect(picker, &NaturePicker::natureChosen, this, [this](int id) {
+        m_natureId = id;
+        applyNature();
+    });
+    const QPoint bottomRight = m_natureButton->mapToGlobal(
+            QPoint(m_natureButton->width(), m_natureButton->height() + 4));
+    picker->move(bottomRight - QPoint(picker->width(), 0));
+    picker->show();
+}
+
+void DexDetailPage::applyNature()
+{
+    // 성격은 3세대부터 — 1 · 2세대에서는 버튼을 숨기고 표시도 지운다
+    const bool available = m_detail.generation >= kFirstNatureGeneration;
+    m_natureButton->setVisible(available);
+    const Nature *nature = nullptr;
+    for (const Nature &n : std::as_const(m_natures))
+        if (n.id == m_natureId)
+            nature = &n;
+    if (!available || !nature) {
+        m_natureButton->setText(tr("성격"));
+        m_stats->setNature(-1, -1);
+    } else {
+        m_natureButton->setText(nature->name.text(m_state->language()));
+        m_stats->setNature(nature->increasedStat - 1,
+                           nature->decreasedStat - 1); // stats.id → 배열 위치
+    }
+    m_natureButton->updateGeometry(); // 글자 폭이 바뀌었다 → PanelFrame이 자리를 다시 잡는다
+}
+
 void DexDetailPage::applyLanguage()
 {
     if (!m_detail.isValid())
@@ -354,6 +403,8 @@ void DexDetailPage::applyLanguage()
         evolvedForm = evolvedForm || (step.speciesId == m_detail.speciesId && step.depth > 0);
     m_encounters->setEncounters(m_detail.encounters, language, evolvedForm);
     m_matchups->setMatchups(m_detail.types, m_chart, language);
+    m_abilities->setAbilities(m_detail.abilities, m_detail.generation, language);
+    applyNature();
     m_levelMoves->setMoves(m_detail.levelMoves, m_detail.versionGroup, m_detail.generation,
                            language);
     m_machineMoves->setMoves(m_detail.machineMoves, m_detail.versionGroup, m_detail.generation,

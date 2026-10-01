@@ -23,6 +23,9 @@ public:
 
     // stats: HP · 공격 · 방어 · 특공 · 특방 · 스피드(Repository 순서). 1세대는 특공 = 특방 = 특수.
     void setStats(const std::array<int, 6> &stats);
+    // 성격 보정 표시: 오르는 · 내리는 능력치(stats 배열의 위치 1–5, 없으면 −1). 축 이름 옆에 ▲ 빨강
+    // · ▼ 파랑
+    void setNature(int increased, int decreased);
     QSize sizeHint() const override;
 
 protected:
@@ -30,5 +33,7 @@ protected:
 
 private:
     std::array<int, 6> m_stats {};
+    int m_increased = -1;
+    int m_decreased = -1;
 };
 } // namespace com::yamada::studio

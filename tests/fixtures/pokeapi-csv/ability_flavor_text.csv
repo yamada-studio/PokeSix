@@ -1,0 +1,422 @@
+ability_id,version_group_id,language_id,flavor_text
+8,5,9,Ups evasion in a sandstorm.
+8,6,9,Ups evasion in a sandstorm.
+8,7,9,Ups evasion in a sandstorm.
+8,8,9,"Boosts the Pokémon’s
+evasion in a sandstorm."
+8,9,9,"Boosts the Pokémon’s
+evasion in a sandstorm."
+8,10,9,"Boosts the Pokémon’s
+evasion in a sandstorm."
+8,11,9,"Boosts the Pokémon’s
+evasion in a sandstorm."
+8,14,9,"Boosts the Pokémon’s
+evasion in a sandstorm."
+8,15,3,"모래바람으로
+회피율이 올라간다."
+8,15,9,"Boosts the Pokémon’s
+evasion in a sandstorm."
+8,16,3,"모래바람으로
+회피율이 올라간다."
+8,16,9,"Boosts the Pokémon’s
+evasion in a sandstorm."
+8,17,3,"모래바람일 때
+회피율이 올라간다."
+8,17,9,Boosts the Pokémon’s evasion in a sandstorm.
+8,18,3,"모래바람일 때
+회피율이 올라간다."
+8,18,9,Boosts the Pokémon’s evasion in a sandstorm.
+8,19,3,"모래바람일 때
+회피율이 올라간다."
+8,19,9,Boosts the Pokémon’s evasion in a sandstorm.
+8,20,3,"모래바람일 때
+회피율이 올라간다."
+8,20,9,Boosts the Pokémon’s evasiveness in a sandstorm.
+8,25,9,Boosts the Pokémon's evasiveness in a sandstorm.
+18,5,9,Powers up if hit by fire.
+18,6,9,Powers up if hit by fire.
+18,7,9,Powers up if hit by fire.
+18,8,9,"Powers up Fire-type moves
+if hit by a fire move."
+18,9,9,"Powers up Fire-type moves
+if hit by a fire move."
+18,10,9,"It powers up Fire-type
+moves if it’s hit by one."
+18,11,9,"It powers up Fire-type
+moves if it’s hit by one."
+18,14,9,"It powers up Fire-type
+moves if it’s hit by one."
+18,15,3,"불꽃을 받으면
+불꽃 기술이 강해진다."
+18,15,9,"Powers up the Pokémon’s Fire-
+type moves if it’s hit by one."
+18,16,3,"불꽃을 받으면
+불꽃 기술이 강해진다."
+18,16,9,"Powers up the Pokémon’s
+Fire-type moves if it’s hit by one."
+18,17,3,"불꽃타입의 기술을 받으면
+불꽃을 받아서 자신이 사용하는
+불꽃타입의 기술이 강해진다."
+18,17,9,"Powers up the Pokémon’s Fire-type moves if it’s hit
+by one."
+18,18,3,"불꽃타입의 기술을 받으면
+불꽃을 받아서 자신이 사용하는
+불꽃타입의 기술이 강해진다."
+18,18,9,"Powers up the Pokémon’s Fire-type moves if it’s hit
+by one."
+18,19,3,"불꽃타입의 기술을 받으면
+불꽃을 받아서 자신이 사용하는
+불꽃타입의 기술이 강해진다."
+18,19,9,"Powers up the Pokémon’s Fire-type moves if it’s hit
+by one."
+18,20,3,"불꽃타입의 기술을 받으면
+불꽃을 받아서 자신이 사용하는
+불꽃타입의 기술이 강해진다."
+18,20,9,"Powers up the Pokémon’s Fire-type moves if it’s hit
+by one."
+18,25,9,"If hit by a Fire-type move, the Pokémon absorbs the flames and uses them to power up its own Fire-type moves."
+24,5,9,Hurts to touch.
+24,6,9,Hurts to touch.
+24,7,9,Hurts to touch.
+24,8,9,"Inflicts damage to the
+foe on contact."
+24,9,9,"Inflicts damage to the
+foe on contact."
+24,10,9,"Inflicts damage to the
+foe on contact."
+24,11,9,"Inflicts damage to the
+attacker on contact."
+24,14,9,"Inflicts damage to the
+attacker on contact."
+24,15,3,"접촉한 상대에게
+상처를 입힌다."
+24,15,9,"Inflicts damage to the
+attacker on contact."
+24,16,3,"접촉한 상대에게
+상처를 입힌다."
+24,16,9,"Inflicts damage to the
+attacker on contact."
+24,17,3,"공격을 받았을 때
+자신에게 접촉한 상대를
+까칠까칠한 피부로 상처를 입힌다."
+24,17,9,"This Pokémon inflicts damage with its rough skin
+to the attacker on contact."
+24,18,3,"공격을 받았을 때
+자신에게 접촉한 상대를
+까칠까칠한 피부로 상처를 입힌다."
+24,18,9,"This Pokémon inflicts damage with its rough skin
+to the attacker on contact."
+24,19,3,"공격을 받았을 때
+자신에게 접촉한 상대를
+까칠까칠한 피부로 상처를 입힌다."
+24,19,9,"This Pokémon inflicts damage with its rough skin
+to the attacker on contact."
+24,20,3,"공격을 받았을 때
+자신에게 접촉한 상대를
+까칠까칠한 피부로 상처를 입힌다."
+24,20,9,"This Pokémon inflicts damage with its rough skin
+to the attacker on contact."
+24,25,9,The Pokémon's rough skin damages attackers that make direct contact with it.
+34,5,9,Raises SPEED in sunshine.
+34,6,9,Raises SPEED in sunshine.
+34,7,9,Raises SPEED in sunshine.
+34,8,9,"Boosts the Pokémon’s
+Speed in sunshine."
+34,9,9,"Boosts the Pokémon’s
+Speed in sunshine."
+34,10,9,"Boosts the Pokémon’s
+Speed in sunshine."
+34,11,9,"Boosts the Pokémon’s
+Speed in sunshine."
+34,14,9,"Boosts the Pokémon’s
+Speed in sunshine."
+34,15,3,"맑을 때 스피드가
+올라간다."
+34,15,9,"Boosts the Pokémon’s
+Speed stat in sunshine."
+34,16,3,"맑을 때 스피드가
+올라간다."
+34,16,9,"Boosts the Pokémon’s
+Speed stat in sunshine."
+34,17,3,"날씨가 맑을 때
+스피드가 올라간다."
+34,17,9,Boosts the Pokémon’s Speed stat in sunshine.
+34,18,3,"날씨가 맑을 때
+스피드가 올라간다."
+34,18,9,Boosts the Pokémon’s Speed stat in harsh sunlight.
+34,19,3,"날씨가 맑을 때
+스피드가 올라간다."
+34,19,9,Boosts the Pokémon’s Speed stat in harsh sunlight.
+34,20,3,"날씨가 맑을 때
+스피드가 올라간다."
+34,20,9,Boosts the Pokémon’s Speed stat in harsh sunlight.
+34,25,9,Boosts the Pokémon's Speed stat in harsh sunlight.
+56,5,9,Infatuates on contact.
+56,6,9,Infatuates on contact.
+56,7,9,Infatuates on contact.
+56,8,9,"Contact with the Pokémon
+may cause infatuation."
+56,9,9,"Contact with the Pokémon
+may cause infatuation."
+56,10,9,"Contact with the Pokémon
+may cause infatuation."
+56,11,9,"Contact with the Pokémon
+may cause infatuation."
+56,14,9,"Contact with the Pokémon
+may cause infatuation."
+56,15,3,"스치면 헤롱헤롱 상태가
+될 때가 있다."
+56,15,9,"Contact with the Pokémon
+may cause infatuation."
+56,16,3,"스치면 헤롱헤롱 상태가
+될 때가 있다."
+56,16,9,"Contact with the Pokémon
+may cause infatuation."
+56,17,3,"자신과 접촉한 상대를
+헤롱헤롱 상태로 만들 때가 있다."
+56,17,9,Contact with the Pokémon may cause infatuation.
+56,18,3,"자신과 접촉한 상대를
+헤롱헤롱 상태로 만들 때가 있다."
+56,18,9,Contact with the Pokémon may cause infatuation.
+56,19,3,"자신과 접촉한 상대를
+헤롱헤롱 상태로 만들 때가 있다."
+56,19,9,Contact with the Pokémon may cause infatuation.
+56,20,3,"자신과 접촉한 상대를
+헤롱헤롱 상태로 만들 때가 있다."
+56,20,9,Contact with the Pokémon may cause infatuation.
+56,25,9,The Pokémon may infatuate attackers that make direct contact with it.
+65,5,9,Ups GRASS moves in a pinch.
+65,6,9,Ups GRASS moves in a pinch.
+65,7,9,Ups GRASS moves in a pinch.
+65,8,9,"Powers up Grass-type
+moves in a pinch."
+65,9,9,"Powers up Grass-type
+moves in a pinch."
+65,10,9,"Powers up Grass-type
+moves in a pinch."
+65,11,9,"Powers up Grass-type
+moves in a pinch."
+65,14,9,"Powers up Grass-type
+moves in a pinch."
+65,15,3,"위급할 때 풀타입의
+위력이 올라간다."
+65,15,9,"Powers up Grass-type moves
+when the Pokémon is in trouble."
+65,16,3,"위급할 때 풀타입의
+위력이 올라간다."
+65,16,9,"Powers up Grass-type moves
+when the Pokémon is in trouble."
+65,17,3,"HP가 줄었을 때
+풀타입 기술의
+위력이 올라간다."
+65,17,9,"Powers up Grass-type moves when the Pokémon’s
+HP is low."
+65,18,3,"HP가 줄었을 때
+풀타입 기술의
+위력이 올라간다."
+65,18,9,"Powers up Grass-type moves when the Pokémon’s
+HP is low."
+65,19,3,"HP가 줄었을 때
+풀타입 기술의
+위력이 올라간다."
+65,19,9,"Powers up Grass-type moves when the Pokémon’s
+HP is low."
+65,20,3,"HP가 줄었을 때
+풀타입 기술의
+위력이 올라간다."
+65,20,9,"Powers up Grass-type moves when the Pokémon’s
+HP is low."
+65,25,9,Powers up Grass-type moves when the Pokémon's HP is low.
+70,5,9,Summons sunlight in battle.
+70,6,9,Summons sunlight in battle.
+70,7,9,Summons sunlight in battle.
+70,8,9,"The Pokémon makes it
+sunny if it is in battle."
+70,9,9,"The Pokémon makes it
+sunny if it is in battle."
+70,10,9,"The Pokémon makes it
+sunny if it is in battle."
+70,11,9,"Turns the sunlight harsh
+if it is in battle."
+70,14,9,"Turns the sunlight harsh
+if it is in battle."
+70,15,3,"배틀에 나가면
+햇살이 강해진다."
+70,15,9,"Turns the sunlight harsh when
+the Pokémon enters a battle."
+70,16,3,"배틀에 나가면
+햇살이 강해진다."
+70,16,9,"Turns the sunlight harsh when
+the Pokémon enters a battle."
+70,17,3,"등장했을 때
+날씨를 맑음으로 만든다."
+70,17,9,"Turns the sunlight harsh when the Pokémon enters
+a battle."
+70,18,3,"등장했을 때
+날씨를 맑음으로 만든다."
+70,18,9,"Turns the sunlight harsh when the Pokémon enters
+a battle."
+70,19,3,"등장했을 때
+날씨를 맑음으로 만든다."
+70,19,9,"Turns the sunlight harsh when the Pokémon enters
+a battle."
+70,20,3,"등장했을 때
+날씨를 맑음으로 만든다."
+70,20,9,"Turns the sunlight harsh when the Pokémon enters
+a battle."
+70,25,9,Turns the sunlight harsh when the Pokémon enters a battle.
+81,8,9,"Raises evasion in a
+hailstorm."
+81,9,9,"Raises evasion in a
+hailstorm."
+81,10,9,"Raises evasion in a
+hailstorm."
+81,11,9,"Raises evasion in a
+hailstorm."
+81,14,9,"Raises evasion in a
+hailstorm."
+81,15,3,"날씨가 싸라기눈일 때
+회피율이 올라간다."
+81,15,9,"Boosts evasion in a
+hailstorm."
+81,16,3,"날씨가 싸라기눈일 때
+회피율이 올라간다."
+81,16,9,Boosts evasion in a hailstorm.
+81,17,3,"날씨가 싸라기눈일 때
+회피율이 올라간다."
+81,17,9,Boosts evasion in a hailstorm.
+81,18,3,"날씨가 싸라기눈일 때
+회피율이 올라간다."
+81,18,9,Boosts evasion in a hailstorm.
+81,19,3,"날씨가 싸라기눈일 때
+회피율이 올라간다."
+81,19,9,Boosts evasion in a hailstorm.
+81,20,3,"날씨가 싸라기눈일 때
+회피율이 올라간다."
+81,20,9,Boosts evasiveness in a hailstorm.
+81,25,9,Boosts the Pokémon's evasiveness in snow.
+98,8,9,"The Pokémon only takes
+damage from attacks."
+98,9,9,"The Pokémon only takes
+damage from attacks."
+98,10,9,"The Pokémon only takes
+damage from attacks."
+98,11,9,"The Pokémon only takes
+damage from attacks."
+98,14,9,"The Pokémon only takes
+damage from attacks."
+98,15,3,"공격 이외에는
+데미지를 입지 않는다."
+98,15,9,"The Pokémon only takes
+damage from attacks."
+98,16,3,"공격 이외에는
+데미지를 입지 않는다."
+98,16,9,"The Pokémon only takes
+damage from attacks."
+98,17,3,"공격 이외에는
+데미지를 입지 않는다."
+98,17,9,The Pokémon only takes damage from attacks.
+98,18,3,"공격 이외에는
+데미지를 입지 않는다."
+98,18,9,The Pokémon only takes damage from attacks.
+98,19,3,"공격 이외에는
+데미지를 입지 않는다."
+98,19,9,The Pokémon only takes damage from attacks.
+98,20,3,"공격 이외에는
+데미지를 입지 않는다."
+98,20,9,The Pokémon only takes damage from attacks.
+98,26,9,The Pokémon only takes damage from attacks.
+109,8,9,"Ignores any change in
+ability by the foe."
+109,9,9,"Ignores any change in
+ability by the foe."
+109,10,9,"Ignores any change in
+ability by the foe."
+109,11,9,"Ignores any stat changes
+in the Pokémon."
+109,14,9,"Ignores any stat changes
+in the Pokémon."
+109,15,3,"상대의 능력
+변화를 무시한다."
+109,15,9,"Ignores the opposing
+Pokémon’s stat changes."
+109,16,3,"상대의 능력
+변화를 무시한다."
+109,16,9,"Ignores the opposing
+Pokémon’s stat changes."
+109,17,3,"상대의 능력 변화를
+무시하고 공격할 수 있다."
+109,17,9,"When attacking, the Pokémon ignores the target
+Pokémon’s stat changes."
+109,18,3,"상대의 능력 변화를
+무시하고 공격할 수 있다."
+109,18,9,"When attacking, the Pokémon ignores the target
+Pokémon’s stat changes."
+109,19,3,"상대의 능력 변화를
+무시하고 공격할 수 있다."
+109,19,9,"When attacking, the Pokémon ignores the target
+Pokémon’s stat changes."
+109,20,3,"상대의 능력 변화를
+무시하고 공격할 수 있다."
+109,20,9,"When attacking, the Pokémon ignores the target
+Pokémon’s stat changes."
+109,25,9,"When attacking, the Pokémon ignores the target's stat changes."
+117,8,9,"The Pokémon summons a
+hailstorm in battle."
+117,9,9,"The Pokémon summons a
+hailstorm in battle."
+117,10,9,"The Pokémon summons a
+hailstorm in battle."
+117,11,9,"The Pokémon summons a
+hailstorm in battle."
+117,14,9,"The Pokémon summons a
+hailstorm in battle."
+117,15,3,"배틀에 나가면
+싸라기눈을 내리게 한다."
+117,15,9,"The Pokémon summons a
+hailstorm when it enters a battle."
+117,16,3,"배틀에 나가면
+싸라기눈을 내리게 한다."
+117,16,9,"The Pokémon summons a
+hailstorm when it enters a battle."
+117,17,3,"등장했을 때
+날씨를 싸라기눈으로 만든다."
+117,17,9,"The Pokémon summons a hailstorm when it enters
+a battle."
+117,18,3,"등장했을 때
+날씨를 싸라기눈으로 만든다."
+117,18,9,"The Pokémon summons a hailstorm when it enters
+a battle."
+117,19,3,"등장했을 때
+날씨를 싸라기눈으로 만든다."
+117,19,9,"The Pokémon summons a hailstorm when it enters
+a battle."
+117,20,3,"등장했을 때
+날씨를 싸라기눈으로 만든다."
+117,20,9,"The Pokémon summons a hailstorm when it enters
+a battle."
+117,25,9,The Pokémon makes it snow when it enters a battle.
+132,11,9,"Reduces damage done
+to allies."
+132,14,9,"Reduces damage done
+to allies."
+132,15,3,"같은 편의 데미지를
+줄일 수 있다."
+132,15,9,"Reduces damage done
+to allies."
+132,16,3,"같은 편의 데미지를
+줄일 수 있다."
+132,16,9,Reduces damage done to allies.
+132,17,3,"같은 편의 데미지를
+줄일 수 있다."
+132,17,9,Reduces damage done to allies.
+132,18,3,"같은 편의 데미지를
+줄일 수 있다."
+132,18,9,Reduces damage done to allies.
+132,19,3,"같은 편의 데미지를
+줄일 수 있다."
+132,19,9,Reduces damage done to allies.
+132,20,3,"같은 편의 데미지를
+줄일 수 있다."
+132,20,9,Reduces damage done to allies.
+132,25,9,Reduces damage dealt to allies.

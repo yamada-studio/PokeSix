@@ -35,7 +35,7 @@
 // [이름] 포켓몬 · 타입 이름은 ko / en / ja 열로 둔다(PokéAPI languages: 3 = ko, 9 = en, 11 = ja).
 //   UI 문구(tr())와는 별개의 경로다(architecture.md §4).
 namespace com::yamada::studio::schema {
-inline constexpr int kVersion = 7; // 스키마를 바꾸면 올린다. meta 표에 기록된다
+inline constexpr int kVersion = 8; // 스키마를 바꾸면 올린다. meta 표에 기록된다
 
 inline constexpr std::array kStatements = {
         // 이 DB를 만든 원천과 스키마 버전 (key = 'schema_version', 'source_commit', 'imported_at')
@@ -154,6 +154,23 @@ inline constexpr std::array kStatements = {
         relative_stats INTEGER, party_species_id INTEGER, party_type_id INTEGER,
         trade_species_id INTEGER, needs_rain INTEGER, upside_down INTEGER))",
         R"(CREATE INDEX evolutions_species ON evolutions (evolved_species_id))",
+        // 특성(3세대부터). pokemon_abilities는 칸(1 · 2 = 일반, 3 = 숨겨진 특성)마다 세대 구간 —
+        // 숨겨진 특성은 5세대부터, 팬텀의 1번 칸은 6세대까지 부유. 설명문은 아이템처럼 세대 ·
+        // 언어마다.
+        R"(CREATE TABLE abilities (
+        id INTEGER PRIMARY KEY, identifier TEXT NOT NULL, intro_gen INTEGER NOT NULL,
+        name_ko TEXT, name_en TEXT, name_ja TEXT))",
+        R"(CREATE TABLE pokemon_abilities (
+        pokemon_id INTEGER NOT NULL, slot INTEGER NOT NULL, ability_id INTEGER NOT NULL,
+        is_hidden INTEGER NOT NULL, gen_from INTEGER NOT NULL, gen_to INTEGER))",
+        R"(CREATE INDEX pokemon_abilities_pokemon ON pokemon_abilities (pokemon_id))",
+        R"(CREATE TABLE ability_effects (
+        ability_id INTEGER NOT NULL, generation INTEGER NOT NULL,
+        text_ko TEXT, text_en TEXT, text_ja TEXT, PRIMARY KEY (ability_id, generation)))",
+        // 성격: 오르는 · 내리는 능력치(stats.id 2–6). 둘이 같으면 무보정(노력 · 수줍음 …)
+        R"(CREATE TABLE natures (
+        id INTEGER PRIMARY KEY, identifier TEXT NOT NULL, increased_stat INTEGER NOT NULL,
+        decreased_stat INTEGER NOT NULL, name_ko TEXT, name_en TEXT, name_ja TEXT))",
         R"(CREATE TABLE encounters (
         pokemon_id INTEGER NOT NULL, version_id INTEGER NOT NULL, location_id INTEGER NOT NULL,
         method_id INTEGER NOT NULL, min_level INTEGER NOT NULL, max_level INTEGER NOT NULL,

@@ -385,3 +385,41 @@ TEST_F(RepositoryTest, DetailUsesTheChosenGame)
     EXPECT_EQ(repository.dexesForGeneration(4).first().versionGroups,
               QStringList {QStringLiteral("diamond-pearl")});
 }
+
+TEST_F(RepositoryTest, AbilitiesFollowTheGeneration)
+{
+    Repository repository(s_dbPath);
+    auto names = [&](int pokemonId, int generation) {
+        QStringList list;
+        for (const AbilityEntry &a : repository.pokemonDetail(pokemonId, generation).abilities)
+            list.append((a.hidden ? QStringLiteral("*") : QString()) + a.name.en);
+        return list;
+    };
+    EXPECT_TRUE(names(36, 2).isEmpty()); // 특성은 3세대부터
+    // 픽시: 3세대는 헤롱헤롱바디 하나, 4세대부터 매직가드, 5세대부터 숨겨진 특성(천진)
+    EXPECT_EQ(names(36, 3), QStringList {QStringLiteral("Cute Charm")});
+    EXPECT_EQ(names(36, 4),
+              (QStringList {QStringLiteral("Cute Charm"), QStringLiteral("Magic Guard")}));
+    EXPECT_EQ(names(36, 5).size(), 3);
+    EXPECT_TRUE(names(36, 5).last().startsWith(QLatin1Char('*')));
+    // 효과 문구: 한국어는 6세대부터라 3세대에서는 6세대 문구를 빌린다
+    EXPECT_FALSE(repository.pokemonDetail(36, 3).abilities.first().effect.ko.isEmpty());
+}
+
+TEST_F(RepositoryTest, NaturesRaiseOneStatAndLowerAnother)
+{
+    Repository repository(s_dbPath);
+    const QList<Nature> natures = repository.natures();
+    ASSERT_EQ(natures.size(), 25);
+    int neutral = 0;
+    for (const Nature &n : natures)
+        neutral += n.isNeutral() ? 1 : 0;
+    EXPECT_EQ(neutral, 5); // 노력 · 온순 · 수줍음 · 변덕 · 성실
+    for (const Nature &n : natures) {
+        if (n.name.en == QLatin1String("Timid")) { // 겁쟁이: 스피드 ▲ · 공격 ▼
+            EXPECT_EQ(n.increasedStat, 6);
+            EXPECT_EQ(n.decreasedStat, 2);
+            EXPECT_EQ(n.name.ko, QStringLiteral("겁쟁이"));
+        }
+    }
+}

@@ -9,6 +9,21 @@
     </message>
 </context>
 <context>
+    <name>com::yamada::studio::AbilityList</name>
+    <message>
+        <source>특성은 3세대부터 있어요.</source>
+        <translation>とくせいは第3世代からです。</translation>
+    </message>
+    <message>
+        <source>특성 정보가 없어요.</source>
+        <translation>とくせいの情報がありません。</translation>
+    </message>
+    <message>
+        <source>숨겨진 특성</source>
+        <translation>隠れ特性</translation>
+    </message>
+</context>
+<context>
     <name>com::yamada::studio::AppBar</name>
     <message>
         <source>포켓몬 · 기술 · 아이템 검색</source>
@@ -121,6 +136,14 @@
     <message>
         <source>기술 기준: %1 (%2)</source>
         <translation>わざの基準: %1 (%2)</translation>
+    </message>
+    <message>
+        <source>특성</source>
+        <translation>とくせい</translation>
+    </message>
+    <message>
+        <source>성격</source>
+        <translation>せいかく</translation>
     </message>
 </context>
 <context>
@@ -544,6 +567,40 @@
     <message>
         <source>진화 전 단계에서는 배우지 않는 기술이에요. 진화한 뒤 기술 떠올리기(하트비늘)로 배워요.</source>
         <translation>進化前は覚えないわざです。進化したあと、わざ思い出し(ハートのウロコ)で覚えます。</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::NatureButton</name>
+    <message>
+        <source>성격</source>
+        <translation>せいかく</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::NaturePicker</name>
+    <message>
+        <source>공격</source>
+        <translation>こうげき</translation>
+    </message>
+    <message>
+        <source>방어</source>
+        <translation>ぼうぎょ</translation>
+    </message>
+    <message>
+        <source>특공</source>
+        <translation>とくこう</translation>
+    </message>
+    <message>
+        <source>특방</source>
+        <translation>とくぼう</translation>
+    </message>
+    <message>
+        <source>스피드</source>
+        <translation>すばやさ</translation>
+    </message>
+    <message>
+        <source>성격 없음</source>
+        <translation>せいかくなし</translation>
     </message>
 </context>
 <context>

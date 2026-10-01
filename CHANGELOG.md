@@ -7,6 +7,13 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Abilities and natures in the Pokédex detail page. An "특성" card lists the Pokémon's abilities for
+  the current generation with their effects: none before generation 3, hidden abilities from
+  generation 5, and past changes applied (Clefable gains Magic Guard in generation 4, Gengar's
+  Levitate becomes Cursed Body in generation 7). A "성격" button on the base-stat card opens a 5×5
+  nature table (raised stat by row, lowered stat by column); the chosen nature marks the radar axes
+  with ▲/▼ and stays selected while browsing other Pokémon. Abilities, ability effects and natures
+  are imported (schema version 8).
 - White glove mouse cursor (original SVG art, pointing and grabbing) for everything clickable, and row
   hover in the Dex and Items lists: the row under the mouse is tinted and the glove squeezes twice
   when it moves onto a new row.

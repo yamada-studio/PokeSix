@@ -85,6 +85,7 @@ constexpr StatFirstGen kStatFirstGen[] = {{4, 2}, {5, 2}};
 
 // PokéAPI의 id가 10000 이상인 타입(unknown, shadow)은 배틀 타입이 아니다. 저장하지 않는다.
 constexpr int kFirstNonBattleTypeId = 10000;
+constexpr int kFirstAbilityGeneration = 3; // 특성은 3세대(RS)부터
 
 // CSV 값 → SQL 값. 빈 칸(null QString)은 SQL NULL.
 QVariant intOrNull(const QString &text)
@@ -147,7 +148,8 @@ bool CsvImporter::run(const QString &csvDir, const QString &dbPath)
                  && importVersionGroups(db) && importVersions(db) && importPokedexes(db)
                  && importItems(db) && importItemEffects(db) && importMoves(db)
                  && importMachines(db) && importPokemonMoves(db) && importEncounters(db)
-                 && importEvolutions(db) && writeMeta(db);
+                 && importEvolutions(db) && importAbilities(db) && importNatures(db)
+                 && writeMeta(db);
             if (ok)
                 ok = db.commit()
                      || fail(QStringLiteral("commit failed: %1").arg(db.lastError().text()));
@@ -1072,8 +1074,10 @@ bool CsvImporter::importEvolutions(QSqlDatabase &db)
                          });
 }
 
-bool CsvImporter::importItemEffects(QSqlDatabase &db)
+bool CsvImporter::importFlavorTexts(QSqlDatabase &db, const QString &csv, const QString &idColumn,
+                                    const QString &table, const QString &idField)
 {
+    // 게임 설명문(*_flavor_text) → 세대 · 언어마다 한 줄. 아이템 · 특성이 같이 쓴다.
     // 버전 그룹 → (세대, 순서). 세대마다 "그 세대 첫 게임"의 문구를 고르는 데 쓴다.
     // (7세대: SM · USUM · LGPE 중 SM. 기술머신은 게임마다 담긴 기술이 달라 문구도 다르다)
     struct GroupInfo
@@ -1091,16 +1095,16 @@ bool CsvImporter::importItemEffects(QSqlDatabase &db)
                 }))
         return false;
 
-    // (item, 세대) → 언어마다 가장 이른 게임의 문구. 설명문 6 MB 중 ko · en · ja 줄만 본다.
+    // (대상, 세대) → 언어마다 가장 이른 게임의 문구. 설명문 중 ko · en · ja 줄만 본다.
     struct Chosen
     {
         std::array<int, 3> order {}; // 0 = 아직 없음
         std::array<QString, 3> text; // ko, en, ja
     };
     QHash<QPair<int, int>, Chosen> chosen;
-    if (!forEachRecord(QStringLiteral("item_flavor_text"),
-                       {QStringLiteral("item_id"), QStringLiteral("version_group_id"),
-                        QStringLiteral("language_id"), QStringLiteral("flavor_text")},
+    if (!forEachRecord(csv,
+                       {idColumn, QStringLiteral("version_group_id"), QStringLiteral("language_id"),
+                        QStringLiteral("flavor_text")},
                        [&](const QStringList &v) {
                            const int language = v[2].toInt();
                            const int column = nameColumnOf(language);
@@ -1122,8 +1126,9 @@ bool CsvImporter::importItemEffects(QSqlDatabase &db)
                        }))
         return false;
 
-    Insert insert(db, QStringLiteral("INSERT INTO item_effects (item_id, generation, text_ko, "
-                                     "text_en, text_ja) VALUES (?, ?, ?, ?, ?)"));
+    Insert insert(db, QStringLiteral("INSERT INTO %1 (%2, generation, text_ko, text_en, text_ja) "
+                                     "VALUES (?, ?, ?, ?, ?)")
+                              .arg(table, idField));
     if (!insert.isValid())
         return fail(insert.error());
     for (auto it = chosen.cbegin(); it != chosen.cend(); ++it) {
@@ -1139,6 +1144,124 @@ bool CsvImporter::importItemEffects(QSqlDatabase &db)
             return fail(insert.error());
     }
     return true;
+}
+
+bool CsvImporter::importItemEffects(QSqlDatabase &db)
+{
+    return importFlavorTexts(db, QStringLiteral("item_flavor_text"), QStringLiteral("item_id"),
+                             QStringLiteral("item_effects"), QStringLiteral("item_id"));
+}
+
+bool CsvImporter::importAbilities(QSqlDatabase &db)
+{
+    // 1) 특성 + 이름
+    QHash<int, Names> names;
+    if (!forEachRecord(QStringLiteral("ability_names"),
+                       {QStringLiteral("ability_id"), QStringLiteral("local_language_id"),
+                        QStringLiteral("name")},
+                       [&](const QStringList &v) {
+                           setName(names[v[0].toInt()], v[1].toInt(), v[2]);
+                           return true;
+                       }))
+        return false;
+    Insert abilities(db,
+                     QStringLiteral("INSERT INTO abilities (id, identifier, intro_gen, name_ko, "
+                                    "name_en, name_ja) VALUES (?, ?, ?, ?, ?, ?)"));
+    if (!abilities.isValid())
+        return fail(abilities.error());
+    if (!forEachRecord(QStringLiteral("abilities"),
+                       {QStringLiteral("id"), QStringLiteral("identifier"),
+                        QStringLiteral("generation_id"), QStringLiteral("is_main_series")},
+                       [&](const QStringList &v) {
+                           if (v[3].toInt() != 1)
+                               return true; // 본편이 아닌 특성(포켓몬 콜로세움 등)은 뺀다
+                           const Names &n = names.value(v[0].toInt());
+                           return abilities.exec({v[0].toInt(), v[1], v[2].toInt(),
+                                                  textOrNull(n[0]), textOrNull(n[1]),
+                                                  textOrNull(n[2])})
+                                  || fail(abilities.error());
+                       }))
+        return false;
+
+    // 2) 포켓몬 특성: 칸마다 (지금 값 + 옛 값) → 세대 구간. 옛 값의 빈 칸 = 그 세대까지 그 칸이
+    // 없었다
+    //    (숨겨진 특성 3번 칸은 대개 4세대까지 비어 있다). 특성은 3세대부터라 구간도 3세대부터.
+    struct Slot
+    {
+        std::optional<int> current;            // 지금 특성(없으면 nullopt)
+        std::vector<std::pair<int, int>> past; // (그 세대까지, 특성 — 0 = 칸 없음)
+        bool hidden = false;
+    };
+    QMap<QPair<int, int>, Slot> abilitySlots; // (pokemon, 칸)
+    if (!forEachRecord(QStringLiteral("pokemon_abilities"),
+                       {QStringLiteral("pokemon_id"), QStringLiteral("ability_id"),
+                        QStringLiteral("is_hidden"), QStringLiteral("slot")},
+                       [&](const QStringList &v) {
+                           Slot &slot = abilitySlots[QPair<int, int>(v[0].toInt(), v[3].toInt())];
+                           slot.current = v[1].toInt();
+                           slot.hidden = v[2].toInt() != 0;
+                           return true;
+                       }))
+        return false;
+    if (!forEachRecord(QStringLiteral("pokemon_abilities_past"),
+                       {QStringLiteral("pokemon_id"), QStringLiteral("generation_id"),
+                        QStringLiteral("ability_id"), QStringLiteral("is_hidden"),
+                        QStringLiteral("slot")},
+                       [&](const QStringList &v) {
+                           Slot &slot = abilitySlots[QPair<int, int>(v[0].toInt(), v[4].toInt())];
+                           slot.past.push_back({v[1].toInt(), v[2].isEmpty() ? 0 : v[2].toInt()});
+                           slot.hidden = slot.hidden || v[3].toInt() != 0;
+                           return true;
+                       }))
+        return false;
+    Insert insert(db, QStringLiteral("INSERT INTO pokemon_abilities (pokemon_id, slot, ability_id, "
+                                     "is_hidden, gen_from, gen_to) VALUES (?, ?, ?, ?, ?, ?)"));
+    if (!insert.isValid())
+        return fail(insert.error());
+    for (auto it = abilitySlots.cbegin(); it != abilitySlots.cend(); ++it) {
+        const int pokemonId = it.key().first;
+        const int firstGen = std::max(kFirstAbilityGeneration, pokemonIntro(pokemonId));
+        for (const auto &range : toGenRanges<int>(firstGen, it->past, it->current)) {
+            if (range.value == 0)
+                continue; // 이 구간에는 그 칸이 없었다
+            if (!insert.exec({pokemonId, it.key().second, range.value, it->hidden ? 1 : 0,
+                              range.from, genOrNull(range.to)}))
+                return fail(insert.error());
+        }
+    }
+
+    // 3) 설명문(게임 문구, 세대 · 언어마다)
+    return importFlavorTexts(db, QStringLiteral("ability_flavor_text"),
+                             QStringLiteral("ability_id"), QStringLiteral("ability_effects"),
+                             QStringLiteral("ability_id"));
+}
+
+bool CsvImporter::importNatures(QSqlDatabase &db)
+{
+    QHash<int, Names> names;
+    if (!forEachRecord(QStringLiteral("nature_names"),
+                       {QStringLiteral("nature_id"), QStringLiteral("local_language_id"),
+                        QStringLiteral("name")},
+                       [&](const QStringList &v) {
+                           setName(names[v[0].toInt()], v[1].toInt(), v[2]);
+                           return true;
+                       }))
+        return false;
+    Insert insert(db, QStringLiteral("INSERT INTO natures (id, identifier, increased_stat, "
+                                     "decreased_stat, name_ko, name_en, name_ja) "
+                                     "VALUES (?, ?, ?, ?, ?, ?, ?)"));
+    if (!insert.isValid())
+        return fail(insert.error());
+    return forEachRecord(QStringLiteral("natures"),
+                         {QStringLiteral("id"), QStringLiteral("identifier"),
+                          QStringLiteral("increased_stat_id"), QStringLiteral("decreased_stat_id")},
+                         [&](const QStringList &v) {
+                             const Names &n = names.value(v[0].toInt());
+                             return insert.exec({v[0].toInt(), v[1], v[2].toInt(), v[3].toInt(),
+                                                 textOrNull(n[0]), textOrNull(n[1]),
+                                                 textOrNull(n[2])})
+                                    || fail(insert.error());
+                         });
 }
 
 bool CsvImporter::writeMeta(QSqlDatabase &db)

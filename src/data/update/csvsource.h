@@ -70,6 +70,11 @@ inline constexpr auto kFiles = std::to_array<CsvFile>({
          "4a79ee53d386a8ad3a89657483ddfd31594e05a5d52400fe131e5e4dfd7ec04a"},
         {"pokemon_abilities_past", 6271,
          "cc77c6d85f8323f5f52047d45671140309d19ec0eb0e5e610b68971dc9c64e02"},
+        {"ability_flavor_text", 1261989,
+         "5ab2165547dce3897b1d88e654f0159511680b1d84f93fd4f265752b66904adb"},
+        // ── 성격(3세대부터): 오르는 · 내리는 능력치와 이름
+        {"natures", 586, "3536990f6adeaa1735551a6afe798649d22426e161c937da09d3ae9a5381309c"},
+        {"nature_names", 3650, "a6bf8bedb9822d0e966a3036885e33e1306172b3a6566edc22d02ff2e7155031"},
         {"pokedexes", 723, "aa6570e15092f80750431a59a8712410cc114d74ffffb75b3334df64b33b3d07"},
         {"pokedex_version_groups", 274,
          "e842691103129f6ad30b8a4de3503edfa5086f55a117630cbab6fddcfa83e82c"},

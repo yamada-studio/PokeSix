@@ -30,6 +30,13 @@ void StatRadar::setStats(const std::array<int, 6> &stats)
     QWidget::update();
 }
 
+void StatRadar::setNature(int increased, int decreased)
+{
+    m_increased = increased == decreased ? -1 : increased; // 무보정 성격은 표시하지 않는다
+    m_decreased = increased == decreased ? -1 : decreased;
+    QWidget::update();
+}
+
 QSize StatRadar::sizeHint() const
 {
     return {260, 260};
@@ -101,10 +108,20 @@ void StatRadar::paintEvent(QPaintEvent *)
         const Qt::Alignment horizontal = top || bottom ? Qt::AlignHCenter
                                          : right       ? Qt::AlignLeft
                                                        : Qt::AlignRight;
+        // 성격 보정: 오르는 능력치 "특공 ▲"(빨강) · 내리는 능력치 "공격 ▼"(파랑)
+        QString name = names[stat];
+        QColor nameColor(tok::kText2);
+        if (stat == m_increased) {
+            name += QStringLiteral(" ▲");
+            nameColor = QColor(tok::kRed);
+        } else if (stat == m_decreased) {
+            name += QStringLiteral(" ▼");
+            nameColor = QColor(tok::kBlueDeep);
+        }
         painter.setFont(nameFont);
-        painter.setPen(QColor(tok::kText2));
+        painter.setPen(nameColor);
         painter.drawText(QRectF(box.left(), box.top(), box.width(), 16),
-                         horizontal | Qt::AlignVCenter, names[stat]);
+                         horizontal | Qt::AlignVCenter, name);
         painter.setFont(valueFont);
         painter.setPen(QColor(m_stats[stat] >= 100 ? tok::kText1 : tok::kText3));
         painter.drawText(QRectF(box.left(), box.top() + 16, box.width(), 18),

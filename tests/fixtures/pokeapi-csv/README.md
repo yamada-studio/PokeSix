@@ -9,6 +9,7 @@ PokéAPI 저장소([PokeAPI/pokeapi](https://github.com/PokeAPI/pokeapi), BSD-3-
 - 도감 번호(`pokemon_dex_numbers`)는 아래 시드 5종의 줄만
 - 기술머신(`machines`)은 플래티넘 전체 + 시드 아이템의 줄, 그 기술머신 아이템(`items` · `item_names` · `item_game_indices`)
 - 습득 기술(`pokemon_moves`)은 시드 포켓몬의 DP · Pt 줄, 기술(`moves` · `move_names` · `move_changelog`)은 거기 나오는 기술만
+- 특성(`pokemon_abilities` · `_past` · `abilities` · `ability_names` · `ability_flavor_text`)은 시드 포켓몬 것만(설명문은 ko · en), 성격(`natures` · `nature_names`)은 통째로
 - 진화 방법(`pokemon_evolution`)은 시드 종으로 진화하는 줄만
 - 야생 출현(`encounters`)은 시드 포켓몬의 4세대 줄, 그 칸 · 구역 · 장소(`encounter_slots` · `location_areas` · `locations` · `location_names`), `encounter_methods`는 통째로
 - 아이템(`items` · `item_names` · `item_game_indices` · `item_flavor_text`)은 시드 아이템 7개의 줄만(설명문은 ko · en). `item_categories` · `item_pockets`는 통째로
