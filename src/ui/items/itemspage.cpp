@@ -136,8 +136,8 @@ QWidget *ItemsPage::buildListBody()
     m_table->setModel(m_proxy);
     m_delegate = new ItemRowDelegate(m_sprites, m_table);
     m_table->setItemDelegate(m_delegate);
-    // 줄 호버: 마우스가 올라간 줄을 칠하고 장갑 커서로 꾹꾹(RowHover). 아이템 목록은 아직 누를 곳이
-    // 없지만(상세는 다음 단계) 같은 손맛을 준다.
+    // 줄 호버: 마우스가 올라간 줄을 칠하고, 누르면 장갑 커서로 꾹꾹(RowHover). 아이템 목록은 아직
+    // 누를 곳이 없지만(상세는 다음 단계) 같은 손맛을 준다.
     m_delegate->setHover(new RowHover(m_table));
     m_table->setSelectionBehavior(QAbstractItemView::SelectRows);
     m_table->setSelectionMode(QAbstractItemView::SingleSelection);

@@ -6,8 +6,8 @@
 class QAbstractItemView;
 
 namespace com::yamada::studio {
-// 목록(QTableView 등)의 "마우스가 올라간 줄"을 기억하고, 줄에 올라갈 때 장갑 커서로 꾹꾹 쥐는
-// 애니메이션을 한다. 도감 · 아이템 목록이 같이 쓴다.
+// 목록(QTableView 등)의 "마우스가 올라간 줄"을 기억하고(줄 위에서는 가리키기 장갑), 줄을 누르면
+// 장갑 커서로 꾹꾹 쥐는 애니메이션을 한다. 도감 · 아이템 목록 · 스쿼드 선택 창이 같이 쓴다.
 //
 // 표 뷰는 칸 하나에만 hover 상태(State_MouseOver)를 주고 줄 전체는 모른다 → 뷰의 viewport에서
 // 마우스 움직임을 엿보고(이벤트 필터) 줄 번호를 들고 있다가, delegate가 row()로 물어 줄 전체를

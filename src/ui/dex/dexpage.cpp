@@ -138,7 +138,7 @@ DexPage::DexPage(Repository *repository, AppState *state, QWidget *parent)
     m_table->setModel(m_proxy);
     m_delegate = new DexRowDelegate(m_sprites, m_table);
     m_table->setItemDelegate(m_delegate); // 모든 칸을 이 delegate가 그린다
-    // 줄 호버: 마우스가 올라간 줄을 칠하고 장갑 커서로 꾹꾹(RowHover)
+    // 줄 호버: 마우스가 올라간 줄을 칠하고, 누르면 장갑 커서로 꾹꾹(RowHover)
     m_delegate->setHover(new RowHover(m_table));
     m_table->setSelectionBehavior(QAbstractItemView::SelectRows);
     m_table->setSelectionMode(QAbstractItemView::SingleSelection);
