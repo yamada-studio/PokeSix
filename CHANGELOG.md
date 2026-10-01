@@ -30,7 +30,8 @@ and the project uses [Semantic Versioning](https://semver.org/).
   rows, and the physical/special/status split with what it would be under the other split rule.
   The Pokémon picker has dex chips at the top right ([전국][DP][Pt][HGSS] in generation 4, each
   in its versions' colors); it opens on the dex of the squad's game and remembers the last choice.
-  The picker also warns, in red, about Pokémon already in the squad and about a second starter
+  The picker also warns, in red, about Pokémon already in the squad, about the evolution or
+  pre-evolution of a member (branches such as two Eeveelutions are not flagged), and about a second starter
   of the chosen game (starters come from `resources/data/starters.json`, per game: HGSS offers the
   Johto three, FRLG the Kanto three); slot cards in such a clash show a red "!" with the reason.
   Slot cards can be dragged by their header to reorder the squad: the card lifts with a shadow and

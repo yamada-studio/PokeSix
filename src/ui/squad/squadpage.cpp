@@ -331,6 +331,7 @@ void SquadPage::placeCards(bool wide)
 
 void SquadPage::reloadData()
 {
+    m_evolvesFrom.clear();
     m_session->reload();
 }
 
@@ -527,6 +528,24 @@ QString SquadPage::warningFor(int slot, int speciesId) const
             continue;
         if (detail.speciesId == speciesId)
             return tr("이미 멤버에 있어요(%1번 자리)").arg(other + 1);
+    }
+    // 진화 전 · 후 관계(갈래가 다른 형제 — 블래키 · 에브이 진화형끼리 — 는 경고하지 않는다)
+    if (m_evolvesFrom.isEmpty())
+        m_evolvesFrom = m_repository->evolvesFrom();
+    auto isAncestor = [this](int ancestor, int species) {
+        for (int s = m_evolvesFrom.value(species); s > 0; s = m_evolvesFrom.value(s))
+            if (s == ancestor)
+                return true;
+        return false;
+    };
+    for (int other = 0; other < int(kSquadSize); ++other) {
+        const PokemonDetail &detail = m_session->detail(other);
+        if (other == slot || !detail.isValid())
+            continue;
+        if (isAncestor(speciesId, detail.speciesId))
+            return tr("진화한 모습(%1)이 이미 있어요").arg(detail.name.text(language));
+        if (isAncestor(detail.speciesId, speciesId))
+            return tr("진화 전 모습(%1)이 이미 있어요").arg(detail.name.text(language));
     }
     if (line < 0)
         return {};
