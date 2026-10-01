@@ -51,9 +51,12 @@ public:
 
     void setLanguage(Language language) { m_language = language; } // 타입 칩 글자
 
-private:
-    void paintIcon(QPainter *painter, const QRectF &cell, int pokemonId) const;
+    // 포켓몬 아이콘(박스 아이콘, 투명 여백을 잘라 cell 가운데 34×28에). 파일이 없으면 받기를
+    // 부탁하고 아무것도 그리지 않는다. 진화 트리(EvolutionView)도 같이 쓴다.
+    static void paintPokemonIcon(QPainter *painter, const QRectF &cell, int pokemonId,
+                                 SpriteCache *sprites);
 
+private:
     SpriteCache *m_sprites = nullptr;
     Language m_language = Language::Korean;
 };

@@ -86,12 +86,13 @@ int DexRowDelegate::typesColumnWidth(Language language)
     return qCeil(2 * kCellPadding + widest + typechip::kGap + second);
 }
 
-void DexRowDelegate::paintIcon(QPainter *painter, const QRectF &cell, int pokemonId) const
+void DexRowDelegate::paintPokemonIcon(QPainter *painter, const QRectF &cell, int pokemonId,
+                                      SpriteCache *sprites)
 {
     const QString id = QString::number(pokemonId);
-    const QString file = m_sprites->path(id);
+    const QString file = sprites->path(id);
     if (file.isEmpty()) {
-        m_sprites->request(id); // 받으면 ready → DexPage가 표를 다시 그린다
+        sprites->request(id); // 받으면 ready → DexPage가 표를 다시 그린다
         return;
     }
     // 파일 → QPixmap 디코딩은 줄마다 매번 하면 스크롤이 버벅인다. QPixmapCache(앱 전역 LRU)에
@@ -160,7 +161,8 @@ void DexRowDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option
         painter->drawText(content, align, value.toString());
         break;
     case SpeciesTableModel::IconColumn:
-        paintIcon(painter, cell, index.data(SpeciesTableModel::PokemonIdRole).toInt());
+        paintPokemonIcon(painter, cell, index.data(SpeciesTableModel::PokemonIdRole).toInt(),
+                         m_sprites);
         break;
     case SpeciesTableModel::NameColumn:
         painter->setFont(theme::font(theme::kFamilyBody, 14, QFont::ExtraBold));

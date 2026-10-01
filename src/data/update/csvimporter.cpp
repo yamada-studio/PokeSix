@@ -147,7 +147,7 @@ bool CsvImporter::run(const QString &csvDir, const QString &dbPath)
                  && importVersionGroups(db) && importVersions(db) && importPokedexes(db)
                  && importItems(db) && importItemEffects(db) && importMoves(db)
                  && importMachines(db) && importPokemonMoves(db) && importEncounters(db)
-                 && writeMeta(db);
+                 && importEvolutions(db) && writeMeta(db);
             if (ok)
                 ok = db.commit()
                      || fail(QStringLiteral("commit failed: %1").arg(db.lastError().text()));
@@ -1000,6 +1000,76 @@ bool CsvImporter::importEncounters(QSqlDatabase &db)
             return fail(encounters.error());
     }
     return true;
+}
+
+bool CsvImporter::importEvolutions(QSqlDatabase &db)
+{
+    QHash<int, int> versionGroupGen;
+    if (!forEachRecord(QStringLiteral("version_groups"),
+                       {QStringLiteral("id"), QStringLiteral("generation_id")},
+                       [&](const QStringList &v) {
+                           versionGroupGen.insert(v[0].toInt(), v[1].toInt());
+                           return true;
+                       }))
+        return false;
+    Insert insert(
+            db, QStringLiteral(
+                        "INSERT INTO evolutions (evolved_species_id, generation, trigger, item_id, "
+                        "min_level, gender, location_id, held_item_id, time_of_day, known_move_id, "
+                        "known_move_type_id, min_happiness, min_beauty, min_affection, "
+                        "relative_stats, party_species_id, party_type_id, trade_species_id, "
+                        "needs_rain, upside_down) "
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"));
+    if (!insert.isValid())
+        return fail(insert.error());
+    return forEachRecord(QStringLiteral("pokemon_evolution"),
+                         {QStringLiteral("evolved_species_id"),
+                          QStringLiteral("version_group_id"),
+                          QStringLiteral("evolution_trigger_id"),
+                          QStringLiteral("trigger_item_id"),
+                          QStringLiteral("minimum_level"),
+                          QStringLiteral("gender_id"),
+                          QStringLiteral("location_id"),
+                          QStringLiteral("held_item_id"),
+                          QStringLiteral("time_of_day"),
+                          QStringLiteral("known_move_id"),
+                          QStringLiteral("known_move_type_id"),
+                          QStringLiteral("minimum_happiness"),
+                          QStringLiteral("minimum_beauty"),
+                          QStringLiteral("minimum_affection"),
+                          QStringLiteral("relative_physical_stats"),
+                          QStringLiteral("party_species_id"),
+                          QStringLiteral("party_type_id"),
+                          QStringLiteral("trade_species_id"),
+                          QStringLiteral("needs_overworld_rain"),
+                          QStringLiteral("turn_upside_down")},
+                         [&](const QStringList &v) {
+                             // version_group_id가 비어 있는 줄은 그 방법이 처음부터(1세대) 있던
+                             // 것으로 본다
+                             const int generation
+                                     = v[1].isEmpty() ? 1 : versionGroupGen.value(v[1].toInt(), 1);
+                             return insert.exec({v[0].toInt(),
+                                                 generation,
+                                                 v[2].toInt(),
+                                                 intOrNull(v[3]),
+                                                 intOrNull(v[4]),
+                                                 intOrNull(v[5]),
+                                                 intOrNull(v[6]),
+                                                 intOrNull(v[7]),
+                                                 textOrNull(v[8].isEmpty() ? QString() : v[8]),
+                                                 intOrNull(v[9]),
+                                                 intOrNull(v[10]),
+                                                 intOrNull(v[11]),
+                                                 intOrNull(v[12]),
+                                                 intOrNull(v[13]),
+                                                 intOrNull(v[14]),
+                                                 intOrNull(v[15]),
+                                                 intOrNull(v[16]),
+                                                 intOrNull(v[17]),
+                                                 v[18].toInt(),
+                                                 v[19].toInt()})
+                                    || fail(insert.error());
+                         });
 }
 
 bool CsvImporter::importItemEffects(QSqlDatabase &db)

@@ -69,6 +69,10 @@ struct MoveEntry
     int machineNumber = 0;      // 기술머신: 번호
     bool hiddenMachine = false; // 비전머신
     QString machineItem; // 기술머신 아이템 identifier("tm01") — UI의 획득처 사전 키
+    // 하트비늘(기술 떠올리기)이 있어야 배우는 기술: Lv 1로 배우지만 진화 전 단계가 레벨업으로
+    // 배우지 않는 기술(가디안의 치유소원). 기본 단계의 Lv 1 기술(태어날 때 가진 몸통박치기 등)은
+    // 아니다.
+    bool needsReminder = false;
 };
 
 // 야생 출현 한 줄: 버전 · 장소 · 방법마다 레벨 범위와 출현 칸 확률의 합.
@@ -82,6 +86,42 @@ struct EncounterEntry
     int minLevel = 0;
     int maxLevel = 0;
     int rarity = 0; // 출현 칸 확률(%)의 합 — 시간대 · 층 칸이 묶여 있어서 100을 넘을 수 있다
+};
+
+// 진화 조건 하나(그 세대에 적용되는 방법). 비어 있는 칸은 조건이 아니다.
+struct EvolutionCondition
+{
+    static constexpr int kNoRelativeStats = 99;
+    int trigger = 0; // 1 레벨업 · 2 통신교환 · 3 도구 사용 · 4 빈자리 · 그 밖 = 특별
+    int minLevel = 0;
+    LocalizedText item;     // 쓰는 도구(진화의 돌 등)
+    LocalizedText heldItem; // 지닌 도구(통신교환 · 레벨업)
+    int gender = 0;         // 1 암컷 · 2 수컷
+    QString location; // 그곳에서 레벨업(이끼바위 · 얼음바위 · 천관산) — UI 장소 사전 키
+    LocalizedText locationName;
+    QString timeOfDay;       // "day" · "night" · "dusk"
+    LocalizedText knownMove; // 그 기술을 배운 채로
+    QString knownMoveType;   // 그 타입 기술을 배운 채로(님피아: 페어리)
+    int minHappiness = 0;
+    int minBeauty = 0;
+    int minAffection = 0;
+    int relativeStats = kNoRelativeStats; // 배루키: 1 공격 > 방어 · 0 같음 · −1 공격 < 방어
+    LocalizedText partySpecies; // 그 포켓몬이 파티에 있을 때(만타인: 총어)
+    QString partyType;          // 그 타입 포켓몬이 파티에 있을 때(판짱: 악)
+    LocalizedText tradeSpecies; // 그 포켓몬과 교환할 때(쪼마리 · 딱정곤)
+    bool needsRain = false;
+    bool upsideDown = false;
+};
+
+// 진화 트리의 한 마디. 뿌리(기본 단계)부터 깊이 우선 순서로 늘어놓는다.
+struct EvolutionStep
+{
+    int speciesId = 0;
+    int pokemonId = 0;     // 기본 모습(아이콘 · 누르면 그 상세로)
+    int fromSpeciesId = 0; // 진화 전 종(뿌리는 0)
+    int depth = 0;         // 뿌리 0
+    LocalizedText name;
+    QList<EvolutionCondition> conditions; // 진화 전 종에서 이 종이 되는 방법(여럿이면 그중 하나)
 };
 
 // 포켓몬 상세(도감 상세 화면). 세대 g 기준. 기술은 그 세대 대표 게임(versionGroup) 기준이다.
@@ -102,6 +142,7 @@ struct PokemonDetail
     QList<EncounterEntry> encounters; // 그 세대 모든 버전(DP · Pt · HGSS)
     QList<MoveEntry> levelMoves;      // 레벨 순
     QList<MoveEntry> machineMoves;    // 기술머신 번호 순, 비전머신은 뒤에
+    QList<EvolutionStep> evolution; // 그 세대에 있는 종만. 진화하지 않는 포켓몬은 비어 있다
 
     bool isValid() const { return pokemonId > 0; }
 };
@@ -167,5 +208,7 @@ private:
     void fillTypesAndStats(QList<SpeciesRow> &rows, int generation);
     // moves의 moveId로 이름 · 타입 · 분류 · 위력 · 명중 · PP를 세대 generation 기준으로 채운다
     void fillMoves(QList<MoveEntry> &moves, int generation);
+    // 진화 트리(그 세대 기준)와 레벨업 기술의 하트비늘 표시(진화 전 단계의 레벨업 기술과 견준다)
+    void fillEvolution(PokemonDetail &detail, int versionGroupId);
 };
 } // namespace com::yamada::studio

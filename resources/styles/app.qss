@@ -124,3 +124,5 @@ QScrollArea#dexDetailScroll, QScrollArea#dexDetailScroll > QWidget > QWidget#dex
 QScrollArea#dexDetailScroll > QWidget { background: transparent; }
 QLabel#dexDetailBasis { font-size: 13px; font-weight: 700; color: @text.2; }
 QScrollArea#dexEncounterScroll, QScrollArea#dexEncounterScroll > QWidget { background: transparent; border: none; }
+QWidget#dexAcquisition { background: @white; }
+QLabel#dexSectionLabel { font-family: "Do Hyeon"; font-size: 15px; color: @text.1; }

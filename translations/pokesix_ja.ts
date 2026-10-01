@@ -118,6 +118,10 @@
         <source>합계 %1</source>
         <translation>合計 %1</translation>
     </message>
+    <message>
+        <source>진화</source>
+        <translation>進化</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::DexPage</name>
@@ -152,8 +156,119 @@
 <context>
     <name>com::yamada::studio::EncounterList</name>
     <message>
-        <source>이 세대에는 야생에서 만날 수 없어요. 진화 · 교배 · 교환으로 얻어요.</source>
-        <translation>この世代では野生で出会えません。進化・タマゴ・交換で手に入れます。</translation>
+        <source>야생에서는 만날 수 없어요. 위의 진화 전 단계를 잡아 진화시켜요.</source>
+        <translation>野生では出会えません。上の進化前を捕まえて進化させましょう。</translation>
+    </message>
+    <message>
+        <source>이 세대에는 야생에서 만날 수 없어요. 교배 · 교환 · 이벤트로 얻어요.</source>
+        <translation>この世代では野生で出会えません。タマゴ・交換・イベントで手に入れます。</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::EvolutionView</name>
+    <message>
+        <source>Lv %1</source>
+        <translation>Lv %1</translation>
+    </message>
+    <message>
+        <source>레벨업</source>
+        <translation>レベルアップ</translation>
+    </message>
+    <message>
+        <source>%1 지니고 통신교환</source>
+        <translation>%1を持たせて通信交換</translation>
+    </message>
+    <message>
+        <source>%1과(와) 통신교환</source>
+        <translation>%1と通信交換</translation>
+    </message>
+    <message>
+        <source>통신교환</source>
+        <translation>通信交換</translation>
+    </message>
+    <message>
+        <source>%1 사용</source>
+        <translation>%1を使う</translation>
+    </message>
+    <message>
+        <source>파티 빈자리 · 몬스터볼</source>
+        <translation>手持ちの空き・モンスターボール</translation>
+    </message>
+    <message>
+        <source>특별한 조건</source>
+        <translation>特別な条件</translation>
+    </message>
+    <message>
+        <source>%1 지님</source>
+        <translation>%1を持たせる</translation>
+    </message>
+    <message>
+        <source>%1에서</source>
+        <translation>%1で</translation>
+    </message>
+    <message>
+        <source>친밀도</source>
+        <translation>なつき度</translation>
+    </message>
+    <message>
+        <source>아름다움</source>
+        <translation>うつくしさ</translation>
+    </message>
+    <message>
+        <source>낮</source>
+        <translation>昼</translation>
+    </message>
+    <message>
+        <source>밤</source>
+        <translation>夜</translation>
+    </message>
+    <message>
+        <source>황혼</source>
+        <translation>夕方</translation>
+    </message>
+    <message>
+        <source>암컷</source>
+        <translation>メス</translation>
+    </message>
+    <message>
+        <source>수컷</source>
+        <translation>オス</translation>
+    </message>
+    <message>
+        <source>%1 배운 상태</source>
+        <translation>%1を覚えている</translation>
+    </message>
+    <message>
+        <source>%1 타입 기술 배운 상태</source>
+        <translation>%1タイプのわざを覚えている</translation>
+    </message>
+    <message>
+        <source>공격 &gt; 방어</source>
+        <translation>こうげき &gt; ぼうぎょ</translation>
+    </message>
+    <message>
+        <source>공격 = 방어</source>
+        <translation>こうげき = ぼうぎょ</translation>
+    </message>
+    <message>
+        <source>공격 &lt; 방어</source>
+        <translation>こうげき &lt; ぼうぎょ</translation>
+    </message>
+    <message>
+        <source>파티에 %1</source>
+        <translation>手持ちに%1</translation>
+    </message>
+    <message>
+        <source>파티에 %1 타입</source>
+        <translation>手持ちに%1タイプ</translation>
+    </message>
+    <message>
+        <source>비 오는 날</source>
+        <translation>雨の日</translation>
+    </message>
+    <message>
+        <source>기기 뒤집기</source>
+        <translation>本体を逆さに</translation>
     </message>
 </context>
 <context>
@@ -427,8 +542,8 @@
         <translation>入手場所の情報なし</translation>
     </message>
     <message>
-        <source>레벨업으로 다시 배울 수 없어요. 잊으면 기술 떠올리기(하트비늘)로 되찾아요.</source>
-        <translation>レベルアップでは覚え直せません。わざ思い出し(ハートのウロコ)で思い出せます。</translation>
+        <source>진화 전 단계에서는 배우지 않는 기술이에요. 진화한 뒤 기술 떠올리기(하트비늘)로 배워요.</source>
+        <translation>進化前は覚えないわざです。進化したあと、わざ思い出し(ハートのウロコ)で覚えます。</translation>
     </message>
 </context>
 <context>

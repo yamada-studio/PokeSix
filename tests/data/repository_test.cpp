@@ -344,3 +344,28 @@ TEST_F(RepositoryTest, TypeChartFollowsTheGeneration)
     EXPECT_EQ(repository.typeChart(6).at(QStringLiteral("ghost"), QStringLiteral("steel")), 1.0);
     EXPECT_EQ(repository.typeChart(1).types.size(), 15); // 악 · 강철 · 페어리 없음
 }
+
+TEST_F(RepositoryTest, EvolutionTreeAndReminderMoves)
+{
+    Repository repository(s_dbPath);
+    // 삐삐 → 픽시(달의돌 사용). 시드에 없는 삐(173)는 빠지고, 삐삐가 뿌리가 된다.
+    const PokemonDetail clefable = repository.pokemonDetail(36, 4);
+    ASSERT_EQ(clefable.evolution.size(), 2);
+    EXPECT_EQ(clefable.evolution[0].speciesId, 35);
+    EXPECT_EQ(clefable.evolution[0].depth, 0);
+    EXPECT_EQ(clefable.evolution[1].speciesId, 36);
+    EXPECT_EQ(clefable.evolution[1].depth, 1);
+    ASSERT_FALSE(clefable.evolution[1].conditions.isEmpty());
+    EXPECT_EQ(clefable.evolution[1].conditions.first().trigger, 3); // 도구 사용
+
+    // 픽시의 Lv 1 기술(노래하기 · 연속뺨치기 …)은 삐삐가 레벨업으로 배운다 → 하트비늘 아님
+    for (const MoveEntry &move : clefable.levelMoves) {
+        EXPECT_FALSE(move.needsReminder) << move.name.en.toStdString();
+    }
+    // 기본 단계의 Lv 1 기술(이상해씨 몸통박치기)도 아님. 진화하지 않는 시드(한카리아스만 있는
+    // 사슬)는 트리 없음
+    for (const MoveEntry &move : repository.pokemonDetail(1, 4).levelMoves) {
+        EXPECT_FALSE(move.needsReminder);
+    }
+    EXPECT_TRUE(repository.pokemonDetail(445, 4).evolution.isEmpty());
+}

@@ -10,6 +10,7 @@
 #include <QVariant>
 
 #include <algorithm>
+#include <functional>
 #include <iterator>
 
 namespace {
@@ -406,6 +407,7 @@ PokemonDetail Repository::pokemonDetail(int pokemonId, int generation)
               });
     fillMoves(detail.levelMoves, generation);
     fillMoves(detail.machineMoves, generation);
+    fillEvolution(detail, groupId);
 
     // 5) 야생 출현: 그 세대의 모든 버전(DP · Pt · HGSS)
     query.prepare(QStringLiteral(
@@ -434,6 +436,162 @@ PokemonDetail Repository::pokemonDetail(int pokemonId, int generation)
         }
     }
     return detail;
+}
+
+void Repository::fillEvolution(PokemonDetail &detail, int versionGroupId)
+{
+    QSqlQuery query(QSqlDatabase::database(m_connection));
+    const int generation = detail.generation;
+
+    // 1) 같은 진화 사슬의 종(그 세대에 있는 것만)
+    int chain = 0;
+    query.prepare(QStringLiteral("SELECT evolution_chain FROM species WHERE id = :s"));
+    query.bindValue(QStringLiteral(":s"), detail.speciesId);
+    if (query.exec() && query.next())
+        chain = query.value(0).toInt();
+    QHash<int, EvolutionStep> steps;
+    query.prepare(QStringLiteral(
+            "SELECT s.id, s.evolves_from, s.name_ko, s.name_en, s.name_ja, p.id FROM species s "
+            "JOIN pokemon p ON p.species_id = s.id AND p.is_default = 1 "
+            "WHERE s.evolution_chain = :c AND s.intro_gen <= :g ORDER BY s.id"));
+    query.bindValue(QStringLiteral(":c"), chain);
+    query.bindValue(QStringLiteral(":g"), generation);
+    QList<int> order;
+    if (query.exec()) {
+        while (query.next()) {
+            EvolutionStep step;
+            step.speciesId = query.value(0).toInt();
+            step.fromSpeciesId = query.value(1).toInt();
+            step.name = localized(query, 2);
+            step.pokemonId = query.value(5).toInt();
+            steps.insert(step.speciesId, step);
+            order.append(step.speciesId);
+        }
+    }
+    // 진화 전 종이 이 세대에 없으면(1세대의 피카츄: 피츄는 2세대부터) 그 종이 뿌리다
+    for (EvolutionStep &step : steps)
+        if (!steps.contains(step.fromSpeciesId))
+            step.fromSpeciesId = 0;
+
+    // 2) 하트비늘: 진화 전 단계(뿌리까지)가 레벨업으로 배우는 기술과 견준다
+    QList<int> ancestors; // 기본 모습 pokemon id
+    for (int from = steps.value(detail.speciesId).fromSpeciesId; from != 0;
+         from = steps.value(from).fromSpeciesId)
+        ancestors.append(steps.value(from).pokemonId);
+    if (!ancestors.isEmpty()) {
+        QSet<int> inherited; // 진화 전 단계가 레벨업으로 배우는 기술
+        for (const int pokemonId : std::as_const(ancestors)) {
+            query.prepare(QStringLiteral("SELECT move_id FROM pokemon_moves WHERE pokemon_id = :p "
+                                         "AND version_group_id = :vg AND method = 1"));
+            query.bindValue(QStringLiteral(":p"), pokemonId);
+            query.bindValue(QStringLiteral(":vg"), versionGroupId);
+            if (query.exec())
+                while (query.next())
+                    inherited.insert(query.value(0).toInt());
+        }
+        QSet<int> laterLevels; // 이 포켓몬이 Lv 2 이상에서도 배우는 기술
+        for (const MoveEntry &move : std::as_const(detail.levelMoves))
+            if (move.level > 1)
+                laterLevels.insert(move.moveId);
+        for (MoveEntry &move : detail.levelMoves)
+            move.needsReminder = move.level <= 1 && !inherited.contains(move.moveId)
+                                 && !laterLevels.contains(move.moveId);
+    }
+
+    if (steps.size() < 2)
+        return; // 진화하지 않는 포켓몬
+
+    // 3) 진화 방법: 종마다 "그 세대 이하에서 방법이 있는 가장 최근 세대"의 줄만
+    QStringList ids;
+    for (const int id : std::as_const(order))
+        ids.append(QString::number(id));
+    QHash<int, int> latest; // 종 → 쓸 세대
+    QList<QList<QVariant>> rows;
+    // id 목록은 DB에서 읽은 정수라 SQL에 이어 붙여도 안전하다(사용자 입력이 아니다)
+    if (query.exec(
+                QStringLiteral(
+                        "SELECT evolved_species_id, generation, trigger, item_id, min_level, "
+                        "gender, "
+                        "location_id, held_item_id, time_of_day, known_move_id, "
+                        "known_move_type_id, "
+                        "min_happiness, min_beauty, min_affection, relative_stats, "
+                        "party_species_id, "
+                        "party_type_id, trade_species_id, needs_rain, upside_down FROM evolutions "
+                        "WHERE generation <= %1 AND evolved_species_id IN (%2)")
+                        .arg(generation)
+                        .arg(ids.join(QLatin1Char(','))))) {
+        while (query.next()) {
+            QList<QVariant> row;
+            for (int c = 0; c < 20; ++c)
+                row.append(query.value(c));
+            const int species = row[0].toInt();
+            latest[species] = std::max(latest.value(species), row[1].toInt());
+            rows.append(row);
+        }
+    }
+    // 이름 찾기(도구 · 기술 · 장소 · 종 · 타입). 줄이 몇 개뿐이라 그때그때 묻는다.
+    auto nameOf = [&](const char *table, const QVariant &id) {
+        if (id.isNull())
+            return LocalizedText();
+        QSqlQuery q(QSqlDatabase::database(m_connection));
+        q.prepare(QStringLiteral("SELECT name_ko, name_en, name_ja FROM %1 WHERE id = :id")
+                          .arg(QLatin1String(table)));
+        q.bindValue(QStringLiteral(":id"), id);
+        return q.exec() && q.next() ? localized(q, 0) : LocalizedText();
+    };
+    auto identifierOf = [&](const char *table, const QVariant &id) {
+        if (id.isNull())
+            return QString();
+        QSqlQuery q(QSqlDatabase::database(m_connection));
+        q.prepare(QStringLiteral("SELECT identifier FROM %1 WHERE id = :id")
+                          .arg(QLatin1String(table)));
+        q.bindValue(QStringLiteral(":id"), id);
+        return q.exec() && q.next() ? q.value(0).toString() : QString();
+    };
+    for (const QList<QVariant> &row : std::as_const(rows)) {
+        const int species = row[0].toInt();
+        if (row[1].toInt() != latest.value(species) || !steps.contains(species))
+            continue;
+        EvolutionCondition c;
+        c.trigger = row[2].toInt();
+        c.item = nameOf("items", row[3]);
+        c.minLevel = row[4].toInt();
+        c.gender = row[5].toInt();
+        c.location = identifierOf("locations", row[6]);
+        c.locationName = nameOf("locations", row[6]);
+        c.heldItem = nameOf("items", row[7]);
+        c.timeOfDay = row[8].toString();
+        c.knownMove = nameOf("moves", row[9]);
+        c.knownMoveType = identifierOf("types", row[10]);
+        c.minHappiness = row[11].toInt();
+        c.minBeauty = row[12].toInt();
+        c.minAffection = row[13].toInt();
+        if (!row[14].isNull())
+            c.relativeStats = row[14].toInt();
+        c.partySpecies = nameOf("species", row[15]);
+        c.partyType = identifierOf("types", row[16]);
+        c.tradeSpecies = nameOf("species", row[17]);
+        c.needsRain = row[18].toInt() != 0;
+        c.upsideDown = row[19].toInt() != 0;
+        steps[species].conditions.append(c);
+    }
+
+    // 4) 뿌리부터 깊이 우선(형제는 종 번호 순): 랄토스 → 킬리아 → 가디안 · 엘레이드
+    QHash<int, QList<int>> children;
+    QList<int> roots;
+    for (const int id : std::as_const(order)) {
+        const int from = steps.value(id).fromSpeciesId;
+        (from == 0 ? roots : children[from]).append(id);
+    }
+    std::function<void(int, int)> visit = [&](int id, int depth) {
+        EvolutionStep step = steps.value(id);
+        step.depth = depth;
+        detail.evolution.append(step);
+        for (const int child : children.value(id))
+            visit(child, depth + 1);
+    };
+    for (const int root : std::as_const(roots))
+        visit(root, 0);
 }
 
 void Repository::fillMoves(QList<MoveEntry> &moves, int generation)
