@@ -11,10 +11,14 @@
 namespace {
 constexpr int kRowHeight = 26;
 constexpr int kBadgeWidth = 34;
-constexpr int kMethodWidth = 110;
-constexpr int kLevelWidth = 70;
+constexpr int kMethodWidth = 80;
+constexpr int kLevelWidth = 64;
 constexpr int kRateWidth = 44;
 constexpr int kGap = 8;
+// 이보다 좁으면(카드 셋이 같은 폭이라 기본 창 폭에서는 좁다) 확률 칸을 빼고 방법 · 레벨 칸을 줄인다
+constexpr int kRoomForRate = 330;
+constexpr int kNarrowMethodWidth = 66;
+constexpr int kNarrowLevelWidth = 56;
 } // namespace
 
 namespace com::yamada::studio {
@@ -71,8 +75,13 @@ void EncounterList::paintEvent(QPaintEvent *)
         painter.drawText(badge, Qt::AlignCenter, style.shortName);
 
         int x = kBadgeWidth + kGap + 2;
+        // 좁으면(기본 창 폭) 확률 칸을 빼고 방법 · 레벨 칸을 줄여 장소 이름에 먼저 자리를 준다
+        const bool showRate = width() >= kRoomForRate;
+        const int rateSpace = showRate ? kRateWidth + kGap : 0;
+        const int methodWidth = showRate ? kMethodWidth : kNarrowMethodWidth;
+        const int levelWidth = showRate ? kLevelWidth : kNarrowLevelWidth;
         const int placeWidth
-                = std::max(60, width() - x - kMethodWidth - kLevelWidth - kRateWidth - 4 * kGap);
+                = std::max(48, width() - x - methodWidth - levelWidth - rateSpace - 3 * kGap);
         painter.setFont(font);
         painter.setPen(QColor(tok::kText1));
         const QString place = guidebook::placeName(e.location, e.locationName, m_language);
@@ -80,17 +89,20 @@ void EncounterList::paintEvent(QPaintEvent *)
                          QFontMetricsF(font).elidedText(place, Qt::ElideRight, placeWidth));
         x += placeWidth + kGap;
         painter.setPen(QColor(tok::kText2));
-        painter.drawText(QRect(x, top, kMethodWidth, kRowHeight), Qt::AlignLeft | Qt::AlignVCenter,
-                         guidebook::methodName(e.method, m_language));
-        x += kMethodWidth + kGap;
+        painter.drawText(QRect(x, top, methodWidth, kRowHeight), Qt::AlignLeft | Qt::AlignVCenter,
+                         QFontMetricsF(font).elidedText(guidebook::methodName(e.method, m_language),
+                                                        Qt::ElideRight, methodWidth));
+        x += methodWidth + kGap;
         painter.setFont(dataFont);
         painter.setPen(QColor(tok::kText1));
         const QString level = e.minLevel == e.maxLevel
                                       ? QStringLiteral("Lv %1").arg(e.minLevel)
                                       : QStringLiteral("Lv %1–%2").arg(e.minLevel).arg(e.maxLevel);
-        painter.drawText(QRect(x, top, kLevelWidth, kRowHeight), Qt::AlignLeft | Qt::AlignVCenter,
+        painter.drawText(QRect(x, top, levelWidth, kRowHeight), Qt::AlignLeft | Qt::AlignVCenter,
                          level);
-        x += kLevelWidth + kGap;
+        x += levelWidth + kGap;
+        if (!showRate)
+            continue;
         painter.setPen(QColor(tok::kText3));
         painter.drawText(QRect(x, top, kRateWidth, kRowHeight), Qt::AlignRight | Qt::AlignVCenter,
                          QStringLiteral("%1%").arg(std::min(e.rarity, 100)));
