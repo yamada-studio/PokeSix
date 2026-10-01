@@ -27,6 +27,8 @@ public:
     void setDexes(const QList<DexInfo> &dexes);
     // 버튼 글자의 언어(AppState::language). 고른 도감은 그대로 둔다.
     void setLanguage(Language language);
+    // 고른 도감의 게임 묶음(상세 화면의 기술 기준). 전국이면 빈 문자열 → 세대의 대표 게임
+    QString currentVersionGroup() const;
 
 signals:
     void dexSelected(int pokedexId); // 사용자가 누를 때만. kNational = 전국

@@ -94,6 +94,10 @@ and the project uses [Semantic Versioning](https://semver.org/).
   arrow from shifting the label.
 
 ### Changed
+- The Pokédex detail page takes its moves and TMs from the game of the dex chosen in the list
+  (HeartGold/SoulSilver from the Johto dex, Diamond/Pearl from the Sinnoh D·P dex); only the national
+  dex falls back to the generation's representative game. The basis label adds version abbreviations
+  ("기라티나 (Pt)").
 - Search fields filter while the first Korean syllable is still being composed (IME preedit), not
   only after the next keystroke commits it; lone jamo are ignored so results do not flash empty.
 - The main window opens at 920×840 (just wide enough for the Dex list); its minimum size now comes

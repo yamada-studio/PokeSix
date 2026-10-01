@@ -124,7 +124,7 @@ QList<DexInfo> Repository::dexesForGeneration(int generation)
     QSqlQuery query(QSqlDatabase::database(m_connection));
     query.prepare(QStringLiteral(
             "SELECT d.id, d.identifier, r.name_ko, r.name_en, r.name_ja, v.identifier, v.name_ko, "
-            "v.name_en, v.name_ja "
+            "v.name_en, v.name_ja, vg.identifier "
             "FROM pokedexes d "
             "JOIN pokedex_version_groups pvg ON pvg.pokedex_id = d.id "
             "JOIN version_groups vg ON vg.id = pvg.version_group_id "
@@ -153,6 +153,9 @@ QList<DexInfo> Repository::dexesForGeneration(int generation)
         DexInfo &dex = dexes[*it];
         dex.versions.append(query.value(5).toString());
         dex.versionNames.append(localized(query, 6));
+        const QString group = query.value(9).toString();
+        if (!dex.versionGroups.contains(group))
+            dex.versionGroups.append(group);
     }
     return dexes;
 }
@@ -316,7 +319,7 @@ TypeChart Repository::typeChart(int generation)
     return chart;
 }
 
-PokemonDetail Repository::pokemonDetail(int pokemonId, int generation)
+PokemonDetail Repository::pokemonDetail(int pokemonId, int generation, const QString &versionGroup)
 {
     PokemonDetail detail;
     if (!open())
@@ -347,19 +350,30 @@ PokemonDetail Repository::pokemonDetail(int pokemonId, int generation)
     detail.stats = one[0].stats;
     detail.total = one[0].total;
 
-    // 3) 기술 기준 게임 묶음과 그 버전 이름
-    detail.versionGroup = representativeVersionGroup(generation);
+    // 3) 기술 기준 게임 묶음: 고른 도감의 게임(그 세대 것일 때만), 아니면 세대의 대표 게임
     int groupId = 0;
-    query.prepare(QStringLiteral("SELECT id FROM version_groups WHERE identifier = :vg"));
-    query.bindValue(QStringLiteral(":vg"), detail.versionGroup);
-    if (query.exec() && query.next())
-        groupId = query.value(0).toInt();
-    query.prepare(QStringLiteral("SELECT name_ko, name_en, name_ja FROM versions WHERE "
+    for (const QString &candidate : {versionGroup, representativeVersionGroup(generation)}) {
+        if (candidate.isEmpty())
+            continue;
+        query.prepare(QStringLiteral(
+                "SELECT id FROM version_groups WHERE identifier = :vg AND generation = :g"));
+        query.bindValue(QStringLiteral(":vg"), candidate);
+        query.bindValue(QStringLiteral(":g"), generation);
+        if (query.exec() && query.next()) {
+            groupId = query.value(0).toInt();
+            detail.versionGroup = candidate;
+            break;
+        }
+    }
+    query.prepare(QStringLiteral("SELECT identifier, name_ko, name_en, name_ja FROM versions WHERE "
                                  "version_group_id = :id ORDER BY id"));
     query.bindValue(QStringLiteral(":id"), groupId);
-    if (query.exec())
-        while (query.next())
-            detail.groupGames.append(localized(query, 0));
+    if (query.exec()) {
+        while (query.next()) {
+            detail.groupVersions.append(query.value(0).toString());
+            detail.groupGames.append(localized(query, 1));
+        }
+    }
 
     // 4) 습득 기술: 레벨업(1) · 기술머신(4, 번호 · 아이템과 함께)
     query.prepare(

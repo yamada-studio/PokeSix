@@ -162,6 +162,15 @@ void DexSelector::setLanguage(Language language)
     rebuild(m_group->checkedId() < 0 ? kNational : m_group->checkedId());
 }
 
+QString DexSelector::currentVersionGroup() const
+{
+    const int id = m_group->checkedId();
+    for (const DexInfo &dex : m_dexes)
+        if (dex.pokedexId == id && !dex.versionGroups.isEmpty())
+            return dex.versionGroups.last(); // 그 세대에서 가장 나중 게임(관동 1세대 → 피카츄)
+    return {};
+}
+
 void DexSelector::rebuild(int checkedId)
 {
     // 1) 기존 버튼 지우기. delete하면 레이아웃과 버튼 그룹에서도 저절로 빠지지만(소멸자가 알린다),

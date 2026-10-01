@@ -8,6 +8,7 @@
 #include "ui/dex/movelist.h"
 #include "ui/dex/statradar.h"
 #include "ui/logging/logging.h"
+#include "ui/theme/dexstyle.h"
 #include "ui/theme/theme.h"
 #include "ui/theme/tokens.h"
 #include "ui/widgets/panelframe.h"
@@ -271,7 +272,8 @@ QWidget *DexDetailPage::buildContent()
     PanelFrame *encounters = section(tok::kGreen, encounterScroll, {12, 8, 6, 10});
     encounters->setTitle(tr("획득법"));
     // 진화 트리의 다른 포켓몬을 누르면 그 상세로
-    connect(m_evolution, &EvolutionView::pokemonClicked, this, &DexDetailPage::showPokemon);
+    connect(m_evolution, &EvolutionView::pokemonClicked, this,
+            [this](int pokemonId) { showPokemon(pokemonId, m_versionGroup); });
     encounters->setFixedHeight(kTopRowHeight);
     encounters->setMinimumWidth(kCardMinWidth);
     row->addWidget(encounters, 1);
@@ -295,9 +297,10 @@ QWidget *DexDetailPage::buildContent()
     return content;
 }
 
-void DexDetailPage::showPokemon(int pokemonId)
+void DexDetailPage::showPokemon(int pokemonId, const QString &versionGroup)
 {
     m_detail.pokemonId = pokemonId;
+    m_versionGroup = versionGroup;
     reload();
     m_scroll->verticalScrollBar()->setValue(0);
 }
@@ -307,7 +310,9 @@ void DexDetailPage::reload()
     if (m_detail.pokemonId <= 0)
         return;
     const int generation = m_state->generation();
-    PokemonDetail detail = m_repository->pokemonDetail(m_detail.pokemonId, generation);
+    // 받은 기준 게임이 이 세대 것이 아니면(세대를 바꿨다) Repository가 대표 게임으로 대신한다
+    PokemonDetail detail
+            = m_repository->pokemonDetail(m_detail.pokemonId, generation, m_versionGroup);
     if (detail.types.isEmpty()) { // 이 세대에는 없는 포켓몬(세대를 앞으로 돌렸다)
         emit backRequested();
         return;
@@ -324,10 +329,19 @@ void DexDetailPage::applyLanguage()
     if (!m_detail.isValid())
         return;
     const Language language = m_state->language();
+    // "기술 기준: 하트골드 · 소울실버 (HG · SS)" — 한국어판 제목(기라티나 = 플래티넘)만으로는
+    // 헷갈려서 도감 버튼과 같은 약칭을 붙인다
     QStringList games;
-    for (const LocalizedText &game : m_detail.groupGames)
-        games.append(game.text(language));
-    m_basis->setText(tr("기술 기준: %1").arg(games.join(QStringLiteral(" · "))));
+    QStringList shorts;
+    for (qsizetype i = 0; i < m_detail.groupGames.size(); ++i) {
+        games.append(m_detail.groupGames.at(i).text(language));
+        shorts.append(dexstyle::version(m_detail.groupVersions.value(i),
+                                        m_detail.groupGames.at(i).text(Language::English))
+                              .shortName);
+    }
+    m_basis->setText(
+            tr("기술 기준: %1 (%2)")
+                    .arg(games.join(QStringLiteral(" · ")), shorts.join(QStringLiteral(" · "))));
     m_profile->setDetail(m_detail, language);
     m_stats->setStats(m_detail.stats);
     m_statsPanel->setTitle(tr("종족값"), tr("합계 %1").arg(m_detail.total));

@@ -33,6 +33,9 @@ struct DexInfo
     QStringList versions; // {"diamond", "pearl"} — UI 버전 색 · 약칭 표(dexstyle.json)의 키
     QList<LocalizedText>
             versionNames; // {디아루가 · Diamond · ダイヤモンド, …} (versions와 같은 순서)
+    // 이 도감을 쓰는 게임 묶음(그 세대, 나온 순서). 마지막 것이 상세 화면의 기술 기준이 된다
+    // (관동도감 1세대: 레드·그린(일) · 블루(일) · 레드·블루 · 피카츄 → 피카츄)
+    QStringList versionGroups;
 };
 
 // 아이템 대백과 한 줄. 세대별 존재는 비트로: bit (g − 1) = g세대에 있다.
@@ -137,8 +140,9 @@ struct PokemonDetail
     int height = 0; // 10 cm 단위(PokéAPI)
     int weight = 0; // 100 g 단위
     int generation = 0;
-    QString versionGroup;             // 기술 기준 게임 묶음 identifier("platinum")
-    QList<LocalizedText> groupGames;  // 그 묶음의 버전 이름들(기라티나)
+    QString versionGroup;            // 기술 기준 게임 묶음 identifier("platinum")
+    QList<LocalizedText> groupGames; // 그 묶음의 버전 이름들(기라티나)
+    QStringList groupVersions; // 그 묶음의 버전 identifier("platinum") — UI가 약칭(Pt)을 붙인다
     QList<EncounterEntry> encounters; // 그 세대 모든 버전(DP · Pt · HGSS)
     QList<MoveEntry> levelMoves;      // 레벨 순
     QList<MoveEntry> machineMoves;    // 기술머신 번호 순, 비전머신은 뒤에
@@ -186,7 +190,9 @@ public:
     QList<ItemRow> itemsForGeneration(int generation);
 
     // 포켓몬 하나의 상세(기본 모습 pokemonId, 세대 generation). 없으면 isValid() == false.
-    PokemonDetail pokemonDetail(int pokemonId, int generation);
+    // versionGroup: 기술 · 기술머신의 기준 게임 묶음("heartgold-soulsilver"). 비었거나 그 세대
+    // 게임이 아니면 세대의 대표 게임(representativeVersionGroup).
+    PokemonDetail pokemonDetail(int pokemonId, int generation, const QString &versionGroup = {});
     // 세대 generation의 타입 상성표(그 세대에 있는 타입끼리)
     TypeChart typeChart(int generation);
     // 세대마다 기술 기준으로 쓰는 게임 묶음("platinum"). 셋째 판 · 확장판이 그 세대를 가장 넓게
