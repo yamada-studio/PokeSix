@@ -828,18 +828,6 @@
         <translation>ゲーム</translation>
     </message>
     <message>
-        <source>%1세대 상성표</source>
-        <translation>第%1世代の相性表</translation>
-    </message>
-    <message>
-        <source> · 악 · 강철 · 페어리 없음</source>
-        <translation>・あく・はがね・フェアリーなし</translation>
-    </message>
-    <message>
-        <source> · 강철이 고스트/악 반감 · 페어리 없음</source>
-        <translation>・はがねがゴースト/あくを半減・フェアリーなし</translation>
-    </message>
-    <message>
         <source>실시간 분석</source>
         <translation>リアルタイム分析</translation>
     </message>
@@ -1018,6 +1006,10 @@
     <message>
         <source>%1세대 포켓몬 고르기</source>
         <translation>第%1世代のポケモンを選ぶ</translation>
+    </message>
+    <message>
+        <source>%1세대 상성표 · %2타입</source>
+        <translation>第%1世代の相性表・%2タイプ</translation>
     </message>
 </context>
 <context>

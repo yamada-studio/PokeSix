@@ -509,3 +509,46 @@ TEST_F(RepositoryTest, SquadSessionResolvesAndAnalyzesTheGeneration)
     state.setGeneration(4);
     EXPECT_EQ(session.squad().members[0].pokemonId, 445);
 }
+
+TEST_F(RepositoryTest, TypeChartChangesAcrossGenerations)
+{
+    Repository repository(s_dbPath);
+    auto at = [&](int generation, const char *attack, const char *defense) {
+        return repository.typeChart(generation).at(QLatin1String(attack), QLatin1String(defense));
+    };
+    // 04 §4 T2-6 · T2-7: 1세대 표 → 2세대 표
+    EXPECT_EQ(at(1, "ghost", "psychic"), 0.0); // 1세대 버그: 고스트 → 에스퍼 무효
+    EXPECT_EQ(at(2, "ghost", "psychic"), 2.0);
+    EXPECT_EQ(at(1, "bug", "poison"), 2.0);
+    EXPECT_EQ(at(2, "bug", "poison"), 0.5);
+    EXPECT_EQ(at(1, "poison", "bug"), 2.0);
+    EXPECT_EQ(at(2, "poison", "bug"), 1.0);
+    EXPECT_EQ(at(1, "ice", "fire"), 1.0);
+    EXPECT_EQ(at(2, "ice", "fire"), 0.5);
+    // T2-5: 강철의 고스트 · 악 반감은 5세대까지
+    EXPECT_EQ(at(5, "dark", "steel"), 0.5);
+    EXPECT_EQ(at(6, "dark", "steel"), 1.0);
+    // 페어리는 6세대(XY)부터: 타입 수 15(1세대) → 17(2–5세대) → 18
+    EXPECT_EQ(repository.typeChart(2).types.size(), 17);
+    EXPECT_EQ(repository.typeChart(5).types.size(), 17);
+    EXPECT_EQ(repository.typeChart(6).types.size(), 18);
+    EXPECT_EQ(at(6, "dragon", "fairy"), 0.0);
+}
+
+TEST_F(RepositoryTest, DamageClassFollowsTheTypeUntilGeneration3)
+{
+    Repository repository(s_dbPath);
+    // 불꽃펀치(불꽃 · 물리) · 역린(드래곤 · 물리) · 화염방사(불꽃 · 특수)
+    auto classes = [&](int generation) {
+        QList<int> result;
+        for (const MoveEntry &m : repository.moves({7, 200, 53}, generation))
+            result.append(m.damageClass);
+        return result;
+    };
+    // 3세대까지: 불꽃 · 드래곤은 특수 타입 → 셋 다 특수
+    EXPECT_EQ(classes(3), (QList<int> {3, 3, 3}));
+    // 4세대(DP)부터 기술마다
+    EXPECT_EQ(classes(4), (QList<int> {2, 2, 3}));
+    // 기술 자체의 분류는 세대와 상관없이 남아 있다("4세대 이후 규칙이었다면"에 쓴다)
+    EXPECT_EQ(repository.moves({7}, 3).first().ownDamageClass, 2);
+}
