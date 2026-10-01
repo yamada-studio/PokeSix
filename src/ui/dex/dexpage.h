@@ -33,8 +33,10 @@ public:
     // repository · state는 소유하지 않는다(MainWindow가 소유). 세대는 state를 따라간다.
     explicit DexPage(Repository *repository, AppState *state, QWidget *parent = nullptr);
 
-    void showList();                 // 상세 → 목록
-    void openPokemon(int pokemonId); // 다른 화면(스쿼드)에서 바로 그 포켓몬의 상세로
+    void showList(); // 상세 → 목록
+    // 다른 화면(스쿼드)에서 바로 그 포켓몬의 상세로. versionGroup = 그 화면이 고른 게임 — 상세의
+    // 기준 게임이 되고, 목록도 그 게임의 도감으로 바꿔 둔다(← 목록으로 돌아와도 같은 게임)
+    void openPokemon(int pokemonId, const QString &versionGroup);
 
 protected:
     void showEvent(QShowEvent *event) override;

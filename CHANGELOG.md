@@ -138,6 +138,10 @@ and the project uses [Semantic Versioning](https://semver.org/).
   arrow from shifting the label.
 
 ### Fixed
+- "도감에서 보기" from a squad slot opened the Pokémon in the game last chosen in the Pokédex
+  (Emerald) instead of the squad's game (FireRed/LeafGreen). It now opens the detail in the
+  squad's game and switches the Pokédex list to that game's dex, unless the national dex or a dex
+  of that game is already selected.
 - After a schema upgrade, moves showed blank names and types and every move as special until the
   app was restarted: the squad screen opened the old database at startup and kept that connection
   after the update replaced the file. The repository now refuses a database with another schema

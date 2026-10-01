@@ -701,7 +701,7 @@ void SquadPage::showSlotMenu(int slot, const QPoint &globalPos)
             [this, slot] { pickPokemon(slot); });
     const int pokemonId = m_session->member(slot).pokemonId;
     connect(menu.addAction(tr("도감에서 보기")), &QAction::triggered, this,
-            [this, pokemonId] { emit dexRequested(pokemonId); });
+            [this, pokemonId] { emit dexRequested(pokemonId, m_session->versionGroup()); });
     menu.addSeparator();
     QAction *up = menu.addAction(tr("앞으로"));
     up->setEnabled(slot > 0);
