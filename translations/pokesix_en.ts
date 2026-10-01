@@ -828,18 +828,6 @@
         <translation>Game</translation>
     </message>
     <message>
-        <source>%1세대 상성표</source>
-        <translation>Gen %1 type chart</translation>
-    </message>
-    <message>
-        <source> · 악 · 강철 · 페어리 없음</source>
-        <translation> · no Dark, Steel or Fairy</translation>
-    </message>
-    <message>
-        <source> · 강철이 고스트/악 반감 · 페어리 없음</source>
-        <translation> · Steel resists Ghost/Dark · no Fairy</translation>
-    </message>
-    <message>
         <source>실시간 분석</source>
         <translation>Live analysis</translation>
     </message>
@@ -1018,6 +1006,10 @@
     <message>
         <source>%1세대 포켓몬 고르기</source>
         <translation>Choose a Gen %1 Pokémon</translation>
+    </message>
+    <message>
+        <source>%1세대 상성표 · %2타입</source>
+        <translation>Gen %1 type chart · %2 types</translation>
     </message>
 </context>
 <context>

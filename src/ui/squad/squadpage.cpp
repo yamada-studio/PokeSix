@@ -376,13 +376,10 @@ void SquadPage::refreshAnalysis()
     const SquadAnalysis &analysis = m_session->analysis();
     const TypeChart &chart = m_session->chart();
 
-    // 머리: "4세대 상성표 · 강철이 고스트/악 반감 · 페어리 없음"
-    QString rule = tr("%1세대 상성표").arg(generation);
-    if (!features.darkAndSteel)
-        rule += tr(" · 악 · 강철 · 페어리 없음");
-    else if (!features.fairy)
-        rule += tr(" · 강철이 고스트/악 반감 · 페어리 없음");
-    m_analysis->setTitle(tr("실시간 분석"), rule);
+    // 머리: "4세대 상성표 · 17타입" — 그 세대에 없는 것(페어리 등)을 굳이 적지 않는다. 표 자체가
+    // 세대별이고(Repository::typeChart), 없는 타입은 히트맵에서 사선 열로 보인다
+    m_analysis->setTitle(tr("실시간 분석"),
+                         tr("%1세대 상성표 · %2타입").arg(generation).arg(chart.types.size()));
     m_emptyAnalysis->setVisible(analysis.filled == 0);
     m_analysisBody->setVisible(analysis.filled > 0);
 
