@@ -22,11 +22,11 @@ struct SquadMember
     bool operator==(const SquadMember &) const = default;
 };
 
-// 세대마다 스쿼드 하나(정주행 하나 = 세대 하나). 세대를 바꾸면 그 세대의 스쿼드로 바뀐다.
+// 게임(시리즈)마다 스쿼드 하나 — 세대 → 게임 묶음(version group) → 스쿼드. 같은 세대라도 게임마다
+// 도감 · 나오는 포켓몬 · 기술이 달라 정주행이 따로다(4세대: DP · Pt · HGSS).
 struct Squad
 {
     QString name;
-    QString versionGroup; // 기술 기준 게임("platinum"). 비어 있으면 세대의 대표 게임
     std::array<SquadMember, 6> members;
 
     int filled() const

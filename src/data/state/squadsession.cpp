@@ -22,9 +22,15 @@ SquadSession::SquadSession(Repository *repository, SquadStore *store, AppState *
 void SquadSession::reload()
 {
     m_generation = m_state->generation();
-    m_squad = m_store->squad(m_generation);
     m_chart = m_repository->typeChart(m_generation);
     m_games = m_repository->gamesForGeneration(m_generation);
+    // 게임: 그 세대에서 마지막에 본 게임, 없거나 그 세대 게임이 아니면 대표 게임
+    m_versionGroup = Repository::representativeVersionGroup(m_generation);
+    const QString last = m_store->currentGame(m_generation);
+    for (const GameInfo &game : m_games)
+        if (game.versionGroup == last)
+            m_versionGroup = last;
+    m_squad = m_store->squad(m_generation, m_versionGroup);
     m_items.clear();
     m_itemsLoaded = false;
     for (int slot = 0; slot < int(kSquadSize); ++slot)
@@ -36,17 +42,9 @@ void SquadSession::reload()
             items();
     }
     analyze();
-    qCInfo(lcData) << "squad of generation" << m_generation << "has" << m_squad.filled()
-                   << "members";
+    qCInfo(lcData) << "squad of" << m_versionGroup << "(generation" << m_generation << ") has"
+                   << m_squad.filled() << "members";
     emit changed();
-}
-
-QString SquadSession::versionGroup() const
-{
-    for (const GameInfo &game : m_games)
-        if (game.versionGroup == m_squad.versionGroup)
-            return game.versionGroup;
-    return Repository::representativeVersionGroup(m_generation);
 }
 
 QString SquadSession::defaultName() const
@@ -127,7 +125,7 @@ void SquadSession::analyze()
 
 void SquadSession::commit()
 {
-    m_store->setSquad(m_generation, m_squad);
+    m_store->setSquad(m_generation, m_versionGroup, m_squad);
     analyze();
     emit changed();
 }
@@ -202,12 +200,10 @@ void SquadSession::setName(const QString &name)
 
 void SquadSession::setVersionGroup(const QString &versionGroup)
 {
-    if (m_squad.versionGroup == versionGroup)
+    if (m_versionGroup == versionGroup)
         return;
-    m_squad.versionGroup = versionGroup;
-    for (int slot = 0; slot < int(kSquadSize); ++slot)
-        resolve(slot); // 게임마다 배울 수 있는 기술이 다르다
-    commit();
+    m_store->setCurrentGame(m_generation, versionGroup);
+    reload(); // 그 게임의 스쿼드를 읽고 풀어 분석한다
 }
 
 void SquadSession::setPokemon(int slot, int pokemonId)
@@ -275,7 +271,8 @@ void SquadSession::setMemo(int slot, const QString &memo)
     if (member.memo == trimmed)
         return;
     member.memo = trimmed;
-    m_store->setSquad(m_generation, m_squad); // 분석과 상관없다 → 다시 그리지 않는다
+    m_store->setSquad(m_generation, m_versionGroup,
+                      m_squad); // 분석과 상관없다 → 다시 그리지 않는다
 }
 
 void SquadSession::setAbility(int slot, int abilityId)

@@ -23,9 +23,28 @@ GameSelector::GameSelector(QWidget *parent)
 
 void GameSelector::setGames(const QList<GameInfo> &games, Language language, const QString &current)
 {
+    // 같은 게임 목록이면 버튼은 그대로 두고 켤 칩 · 툴팁(언어)만 바꾼다. 칩을 눌러 이 함수가 불리는
+    // 경우(→ 다시 읽기 → 다시 그리기) 지금 눌린 버튼을 그 클릭 처리 도중에 지우면 안 된다
+    bool same = games.size() == m_games.size() && !m_group->buttons().isEmpty();
+    for (qsizetype i = 0; same && i < games.size(); ++i)
+        same = games.at(i).versionGroup == m_games.at(i).versionGroup;
+    if (same) {
+        m_games = games;
+        for (qsizetype i = 0; i < games.size(); ++i) {
+            QAbstractButton *chip = m_group->button(int(i));
+            QStringList names;
+            for (const LocalizedText &name : games.at(i).versionNames)
+                names.append(name.text(language));
+            chip->setToolTip(names.join(QStringLiteral(" · ")));
+            chip->setChecked(games.at(i).versionGroup == current);
+        }
+        return;
+    }
     for (QAbstractButton *button : m_group->buttons()) {
         m_group->removeButton(button);
-        delete button;
+        m_layout->removeWidget(button);
+        button->hide();
+        button->deleteLater(); // 신호 처리 중일 수 있다 → 이벤트 루프로 돌아간 뒤 지운다
     }
     m_games = games;
     // 약칭이 겹치는 게임(소드 · 실드 본편과 DLC: 모두 SwSh)은 dexstyle의 짧은 이름(외딴섬 · 설원)을

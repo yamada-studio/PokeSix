@@ -432,26 +432,47 @@ TEST_F(RepositoryTest, NaturesRaiseOneStatAndLowerAnother)
     }
 }
 
-TEST(SquadStore, SavesAndLoadsSquadsPerGeneration)
+TEST(SquadStore, SavesAndLoadsSquadsPerGame)
 {
     QTemporaryDir dir;
     const QString path = dir.filePath(QStringLiteral("squads.json"));
     Squad squad;
     squad.name = QStringLiteral("신오 정주행");
-    squad.versionGroup = QStringLiteral("platinum");
     squad.members[0].pokemonId = 445;
     squad.members[0].moves = {89, 200, 444, 14};
     squad.members[0].memo = QStringLiteral("에이스");
     squad.members[0].natureId = 4;
     {
         SquadStore store(path);
-        store.setSquad(4, squad);
+        store.setSquad(4, QStringLiteral("platinum"), squad);
+        store.setCurrentGame(4, QStringLiteral("platinum"));
         EXPECT_TRUE(store.hasPendingSave()); // 바로 쓰지 않는다(디바운스)
         EXPECT_TRUE(store.flush());
     }
     SquadStore reloaded(path);
-    EXPECT_EQ(reloaded.squad(4), squad);
-    EXPECT_EQ(reloaded.squad(3).filled(), 0); // 다른 세대는 따로
+    EXPECT_EQ(reloaded.squad(4, QStringLiteral("platinum")), squad);
+    EXPECT_EQ(reloaded.squad(4, QStringLiteral("heartgold-soulsilver")).filled(),
+              0); // 게임마다 따로
+    EXPECT_EQ(reloaded.squad(3, QStringLiteral("emerald")).filled(), 0);
+    EXPECT_EQ(reloaded.currentGame(4), QStringLiteral("platinum"));
+}
+
+TEST(SquadStore, MovesVersion1SquadsToTheirGame)
+{
+    // version 1: 세대마다 스쿼드 하나. versionGroup이 있으면 그 게임, 없으면 세대의 대표 게임으로
+    QTemporaryDir dir;
+    const QString path = dir.filePath(QStringLiteral("squads.json"));
+    QFile file(path);
+    ASSERT_TRUE(file.open(QIODevice::WriteOnly));
+    file.write(R"({"version": 1, "squads": {
+        "3": {"name": "", "versionGroup": "firered-leafgreen", "members": [{"pokemon": 6}]},
+        "4": {"name": "신오", "versionGroup": "", "members": [{"pokemon": 445}]}}})");
+    file.close();
+    SquadStore store(path);
+    EXPECT_EQ(store.squad(3, QStringLiteral("firered-leafgreen")).members[0].pokemonId, 6);
+    EXPECT_EQ(store.currentGame(3), QStringLiteral("firered-leafgreen"));
+    EXPECT_EQ(store.squad(4, QStringLiteral("platinum")).name, QStringLiteral("신오"));
+    EXPECT_EQ(store.currentGame(4), QStringLiteral("platinum"));
 }
 
 TEST_F(RepositoryTest, SquadSessionResolvesAndAnalyzesTheGeneration)
@@ -513,12 +534,20 @@ TEST_F(RepositoryTest, SquadSessionResolvesAndAnalyzesTheGeneration)
     EXPECT_EQ(session.squad().members[0].pokemonId, 36);
     EXPECT_EQ(session.squad().members[1].pokemonId, 37);
     EXPECT_EQ(session.squad().members[2].pokemonId, 445);
-    EXPECT_EQ(session.detail(2).speciesId, 445);         // 풀어 둔 값도 같이 옮겨진다
-    EXPECT_EQ(store.squad(4).members[2].pokemonId, 445); // 저장소에도
-    session.moveSlot(2, 0);                              // 되돌리기
+    EXPECT_EQ(session.detail(2).speciesId, 445); // 풀어 둔 값도 같이 옮겨진다
+    EXPECT_EQ(store.squad(4, QStringLiteral("platinum")).members[2].pokemonId, 445); // 저장소에도
+    session.moveSlot(2, 0);                                                          // 되돌리기
     EXPECT_EQ(session.squad().members[0].pokemonId, 445);
     session.clearSlot(1);
     session.clearSlot(2);
+
+    // 게임을 바꾸면 그 게임의 스쿼드(비어 있음), 돌아오면 다시
+    session.setVersionGroup(QStringLiteral("heartgold-soulsilver"));
+    EXPECT_EQ(session.versionGroup(), QStringLiteral("heartgold-soulsilver"));
+    EXPECT_EQ(session.squad().filled(), 0);
+    session.setVersionGroup(QStringLiteral("platinum"));
+    EXPECT_EQ(session.squad().members[0].pokemonId, 445);
+    EXPECT_EQ(store.currentGame(4), QStringLiteral("platinum"));
 
     // 세대를 바꾸면 그 세대 스쿼드(비어 있음), 돌아오면 다시
     state.setGeneration(3);

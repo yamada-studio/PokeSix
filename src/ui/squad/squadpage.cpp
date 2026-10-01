@@ -8,6 +8,7 @@
 #include "data/state/squadsession.h"
 #include "data/store/squadstore.h"
 #include "ui/dex/dexrowdelegate.h"
+#include "ui/dex/gameselector.h"
 #include "ui/dex/moveeffect.h"
 #include "ui/dex/naturepicker.h"
 #include "ui/items/itemrowdelegate.h"
@@ -24,7 +25,6 @@
 #include "ui/theme/itemstyle.h"
 #include "ui/theme/theme.h"
 #include "ui/theme/tokens.h"
-#include "ui/widgets/dropdownbutton.h"
 #include "ui/widgets/panelframe.h"
 #include "ui/widgets/typechip.h"
 
@@ -73,21 +73,6 @@ QString times(double multiplier)
 {
     const QString text = squadpaint::multiplierText(multiplier);
     return QStringLiteral("×") + (text.isEmpty() ? QStringLiteral("1") : text);
-}
-
-// 게임 이름 + 도감 버튼과 같은 약칭: "기라티나 (Pt)", "하트골드 · 소울실버 (HG · SS)"
-QString gameLabel(const GameInfo &game, Language language)
-{
-    QStringList names;
-    QStringList shorts;
-    for (qsizetype i = 0; i < game.versions.size(); ++i) {
-        names.append(game.versionNames.value(i).text(language));
-        shorts.append(dexstyle::version(game.versions.at(i),
-                                        game.versionNames.value(i).text(Language::English))
-                              .shortName);
-    }
-    return QStringLiteral("%1 (%2)").arg(names.join(QStringLiteral(" · ")),
-                                         shorts.join(QStringLiteral(" · ")));
 }
 
 QPixmap itemPixmap(SpriteCache *icons, const ItemRow &item, int generation)
@@ -231,9 +216,9 @@ QWidget *SquadPage::buildTopBar()
     m_rule = new QLabel;
     m_rule->setObjectName(QStringLiteral("squadRulePill"));
     layout->addWidget(m_rule);
-    m_game = new DropdownButton;
-    m_game->setToolTip(tr("기술 기준 게임 — 배울 수 있는 기술 · 기술머신 번호가 게임마다 달라요"));
-    connect(m_game, &DropdownButton::clicked, this, &SquadPage::showGameMenu);
+    // 게임 칩: 게임마다 스쿼드가 따로 저장된다(도감 · 나오는 포켓몬 · 기술이 게임마다 다르다)
+    m_game = new GameSelector;
+    connect(m_game, &GameSelector::gameSelected, m_session, &SquadSession::setVersionGroup);
     layout->addWidget(m_game);
     m_pips = new SquadPips(m_session);
     layout->addWidget(m_pips);
@@ -365,13 +350,8 @@ void SquadPage::refresh()
     if (!m_name->hasFocus())
         m_name->setText(squad.name.isEmpty() ? m_session->defaultName() : squad.name);
     m_rule->setText(tr("%1세대 규칙").arg(generation));
-    QString game;
-    for (const GameInfo &info : m_session->games())
-        if (info.versionGroup == m_session->versionGroup())
-            game = gameLabel(info, language);
-    m_game->setText(game.isEmpty() ? tr("게임") : game);
+    m_game->setGames(m_session->games(), language, m_session->versionGroup());
     m_game->setVisible(m_session->games().size() > 1); // 게임이 하나뿐인 세대는 고를 것이 없다
-    m_game->updateGeometry();
     m_pips->update();
     m_count->setText(QStringLiteral("%1 / 6").arg(squad.filled()));
 
@@ -712,19 +692,6 @@ void SquadPage::onProblemClicked(int row)
         return;
     m_scroll->ensureWidgetVisible(m_heatmap, 0, 40);
     m_heatmap->flashType(keyOf(problems[std::size_t(row)].type));
-}
-
-void SquadPage::showGameMenu()
-{
-    QMenu menu(this);
-    for (const GameInfo &game : m_session->games()) {
-        QAction *action = menu.addAction(gameLabel(game, m_state->language()));
-        action->setCheckable(true);
-        action->setChecked(game.versionGroup == m_session->versionGroup());
-        connect(action, &QAction::triggered, this,
-                [this, group = game.versionGroup] { m_session->setVersionGroup(group); });
-    }
-    menu.exec(m_game->mapToGlobal(QPoint(0, m_game->height() + 4)));
 }
 
 void SquadPage::showSlotMenu(int slot, const QPoint &globalPos)

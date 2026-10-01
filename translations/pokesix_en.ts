@@ -804,10 +804,6 @@
         <translation>Click to rename</translation>
     </message>
     <message>
-        <source>기술 기준 게임 — 배울 수 있는 기술 · 기술머신 번호가 게임마다 달라요</source>
-        <translation>Game for moves — learnable moves and TM numbers differ by game</translation>
-    </message>
-    <message>
         <source>✓ 자동 저장</source>
         <translation>✓ Autosave</translation>
     </message>
@@ -830,10 +826,6 @@
     <message>
         <source>%1세대 규칙</source>
         <translation>Gen %1 rules</translation>
-    </message>
-    <message>
-        <source>게임</source>
-        <translation>Game</translation>
     </message>
     <message>
         <source>실시간 분석</source>

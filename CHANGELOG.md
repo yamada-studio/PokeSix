@@ -22,8 +22,9 @@ and the project uses [Semantic Versioning](https://semver.org/).
   "HP ¼로 대타 생성" …); the rest show the first sentence of the generation's game text, with the
   full text in the tooltip. The squad move picker labels
   level-up moves "자력(n레벨)".
-- SixSquad editor (Squad tab). Each generation keeps its own squad of six, saved to `squads.json`
-  in the app data folder shortly after every change. Slot cards show the Pokémon in the
+- SixSquad editor (Squad tab). Each game keeps its own squad of six (generation → game, e.g. DP,
+  Platinum and HGSS separately), picked with version chips at the top and saved to `squads.json`
+  in the app data folder shortly after every change; the generation reopens on the last game used. Slot cards show the Pokémon in the
   generation's types, a role note, ability, nature and held item (only where the generation has
   them) and four moves; the Pokémon, move and held item pickers list only what exists in the
   generation, and moves only what the Pokémon learns in the chosen game (level-up, TM/HM, tutor,
