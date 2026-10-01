@@ -128,6 +128,10 @@ and the project uses [Semantic Versioning](https://semver.org/).
   arrow from shifting the label.
 
 ### Fixed
+- After a schema upgrade, moves showed blank names and types and every move as special until the
+  app was restarted: the squad screen opened the old database at startup and kept that connection
+  after the update replaced the file. The repository now refuses a database with another schema
+  version and closes its connection when the data update finishes, and the squad reloads.
 - TM and HM descriptions in the Items page were shown in English with the Korean language selected
   for generations 1–5: Korean item descriptions only exist from generation 6, so machines now use
   their move's description, borrowed from the nearest generation when needed (the move is the same,

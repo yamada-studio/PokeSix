@@ -41,6 +41,8 @@ public:
 
     static constexpr int kWideWidth = 1240;
 
+    void reloadData(); // 게임 데이터 DB가 새로 생겼다(데이터 받기 끝) → 스쿼드를 다시 읽는다
+
 signals:
     void dexRequested(int pokemonId); // 슬롯 메뉴 "도감에서 보기"
 

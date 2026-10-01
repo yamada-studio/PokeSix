@@ -62,6 +62,12 @@ MainWindow::MainWindow(QWidget *parent)
     SquadPage *squad = new SquadPage(m_repository.get(), m_state);
     m_pages->addWidget(squad); // [2] 스쿼드
     // 슬롯 메뉴 "도감에서 보기" → 도감 탭으로 옮겨 그 포켓몬의 상세를 연다
+    // 데이터 받기가 끝나 DB 파일이 바뀌었다 → 옛 연결을 닫고(다음 조회가 새 파일을 연다) 앱 시작
+    // 때부터 살아 있던 스쿼드를 새 데이터로 다시 읽는다
+    connect(dataUpdater, &DataUpdater::finished, this, [this, squad] {
+        m_repository->close();
+        squad->reloadData();
+    });
     connect(squad, &SquadPage::dexRequested, this, [this](int pokemonId) {
         open(Page::Dex);
         m_dexPage->openPokemon(pokemonId);

@@ -216,7 +216,13 @@ public:
     Repository(const Repository &) = delete; // 연결 이름을 하나씩 가지므로 복사하지 않는다
     Repository &operator=(const Repository &) = delete;
 
-    bool open(); // 이미 열려 있으면 true. 실패하면 errorString()
+    // 이미 열려 있으면 true. 파일이 없거나 스키마 버전이 이 앱과 다르면(옛 DB) 열지 않는다 —
+    // 첫 실행 · 스키마가 바뀐 뒤의 데이터 받기가 끝나기 전에 옛 표를 읽지 않게. 실패하면
+    // errorString()
+    bool open();
+    // 연결을 닫는다. DB 파일이 새것으로 바뀌었을 때(데이터 받기 끝) 부른다 — 열린 연결은 바꿔치기
+    // 전의 옛 파일을 계속 보므로, 닫아야 다음 open()이 새 파일을 연다
+    void close();
     QString errorString() const { return m_error; }
 
     // 세대 generation 게임들의 지방 도감(본편, 게임이 나온 순서). 전국도감은 넣지 않는다.
