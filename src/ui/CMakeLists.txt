@@ -6,6 +6,8 @@ qt_add_library(pokesix_ui STATIC
     theme/theme.cpp
     theme/dexstyle.h
     theme/dexstyle.cpp
+    theme/cursors.h
+    theme/cursors.cpp
     theme/itemstyle.h
     theme/itemstyle.cpp
     widgets/panelpainter.h
@@ -28,6 +30,8 @@ qt_add_library(pokesix_ui STATIC
     widgets/svgicon.cpp
     widgets/searchfield.h
     widgets/searchfield.cpp
+    widgets/rowhover.h
+    widgets/rowhover.cpp
     widgets/typechip.h
     widgets/typechip.cpp
     items/itemspage.h

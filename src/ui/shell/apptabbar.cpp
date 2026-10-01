@@ -1,5 +1,6 @@
 #include "ui/shell/apptabbar.h"
 
+#include "ui/theme/cursors.h"
 #include "ui/theme/theme.h"
 #include "ui/theme/tokens.h"
 #include "ui/widgets/svgicon.h"
@@ -55,7 +56,7 @@ public:
     {
         QAbstractButton::setText(label);
         QAbstractButton::setCheckable(true);
-        QAbstractButton::setCursor(Qt::PointingHandCursor);
+        QAbstractButton::setCursor(cursors::pointer());
         QAbstractButton::setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         const QString source = QString::fromLatin1(svg);
         m_iconOn = svgicon::pixmap(

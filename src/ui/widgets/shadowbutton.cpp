@@ -1,5 +1,6 @@
 #include "ui/widgets/shadowbutton.h"
 
+#include "ui/theme/cursors.h"
 #include "ui/theme/theme.h"
 #include "ui/theme/tokens.h"
 
@@ -26,7 +27,7 @@ ShadowButton::ShadowButton(Variant variant, QWidget *parent)
     , m_variant(variant)
     , m_font(theme::font(theme::kFamilyTitle, variant == Variant::Primary ? 18 : 17))
 {
-    QAbstractButton::setCursor(Qt::PointingHandCursor);
+    QAbstractButton::setCursor(cursors::pointer());
     // 가로는 들어갈 칸만큼 늘어나도 되고(패널에서는 폭 전체), 세로는 버튼 높이 + 그림자로 고정.
     QAbstractButton::setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
     QAbstractButton::setIconSize(QSize(kIconSize, kIconSize));

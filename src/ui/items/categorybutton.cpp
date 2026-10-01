@@ -1,5 +1,6 @@
 #include "ui/items/categorybutton.h"
 
+#include "ui/theme/cursors.h"
 #include "ui/theme/theme.h"
 #include "ui/theme/tokens.h"
 
@@ -29,7 +30,7 @@ CategoryButton::CategoryButton(const itemstyle::Group &group, QWidget *parent)
 {
     QAbstractButton::setText(group.label.text(Language::Korean));
     QAbstractButton::setCheckable(true);
-    QAbstractButton::setCursor(Qt::PointingHandCursor);
+    QAbstractButton::setCursor(cursors::pointer());
     QAbstractButton::setFocusPolicy(Qt::TabFocus); // 마우스로 눌러도 검색 칸 포커스를 뺏지 않는다
     QAbstractButton::setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed); // 가로는 창 폭만큼
     QAbstractButton::setAttribute(Qt::WA_Hover); // enter/leave 때 다시 그려 hover 모양을 보인다

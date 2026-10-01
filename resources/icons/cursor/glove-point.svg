@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- 흰 장갑 커서(가리키기): 검지를 세운 만화 장갑. 핫스폿 = 검지 끝(13, 1) -->
+  <g fill="#FFFFFF" stroke="#2A2A33" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M10.5 3.2c0-1.4 1-2.4 2.3-2.4s2.3 1 2.3 2.4v9.3c.3-1.2 1.2-1.9 2.3-1.9 1.3 0 2.2.9 2.3 2.2.3-1 1.2-1.6 2.2-1.6 1.3 0 2.2 1 2.2 2.3.4-.8 1.1-1.2 2-1.2 1.2 0 2.1 1 2.1 2.3v6.2c0 4.6-3 7.7-7.6 7.7h-3.2c-2.8 0-4.6-1.2-6-3.4l-4.5-7c-.7-1.1-.4-2.5.6-3.1 1-.6 2.2-.3 2.9.6l1.7 2.3z"/>
+    <rect x="11.5" y="27.2" width="14" height="4" rx="1.6"/>
+  </g>
+  <path d="M15.1 12.5v3.6M19.7 12.8v3.4M24.1 13.8v3.2" fill="none" stroke="#2A2A33" stroke-width="1.2" stroke-linecap="round"/>
+  <path d="M15.8 21.4h6.6M16.3 23.5h5.6" fill="none" stroke="#B9B6C2" stroke-width="1" stroke-linecap="round"/>
+</svg>

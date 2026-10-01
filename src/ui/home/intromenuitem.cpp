@@ -1,5 +1,6 @@
 #include "ui/home/intromenuitem.h"
 
+#include "ui/theme/cursors.h"
 #include "ui/theme/theme.h"
 #include "ui/theme/tokens.h"
 
@@ -62,7 +63,7 @@ IntroMenuItem::IntroMenuItem(Kind kind, QWidget *parent)
     , m_kind(kind)
 {
     QAbstractButton::setFocusPolicy(Qt::NoFocus); // 키보드는 IntroMenu가 받는다
-    QAbstractButton::setCursor(Qt::PointingHandCursor);
+    QAbstractButton::setCursor(cursors::pointer());
 }
 
 void IntroMenuItem::setDescription(const QString &description)
@@ -90,10 +91,10 @@ void IntroMenuItem::changeEvent(QEvent *event)
 {
     QAbstractButton::changeEvent(event);
     // 활성 상태가 바뀌면(event->type() == QEvent::EnabledChange) 커서를 바꾼다:
-    //        활성 = Qt::PointingHandCursor(손가락), 비활성 = Qt::ArrowCursor(보통 화살표)
+    //        활성 = 흰 장갑(cursors::pointer()), 비활성 = Qt::ArrowCursor(보통 화살표)
     if (event->type() == QEvent::EnabledChange)
-        QAbstractButton::setCursor(QAbstractButton::isEnabled() ? Qt::PointingHandCursor
-                                                                : Qt::ArrowCursor);
+        QAbstractButton::setCursor(QAbstractButton::isEnabled() ? cursors::pointer()
+                                                                : QCursor(Qt::ArrowCursor));
 }
 
 void IntroMenuItem::enterEvent(QEnterEvent *event)

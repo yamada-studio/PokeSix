@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- 흰 장갑 커서(움켜쥐기): 손가락을 말아 쥔 주먹. 가리키기와 같은 핫스폿(13, 1)을 쓴다 -->
+  <g fill="#FFFFFF" stroke="#2A2A33" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M7.6 15.2c0-1.5 1.1-2.6 2.5-2.6 1.1 0 2 .7 2.3 1.6.3-1.2 1.3-2 2.5-2s2.2.8 2.5 2c.3-1.1 1.3-1.9 2.5-1.9s2.2.8 2.4 1.9c.4-.9 1.2-1.4 2.2-1.4 1.4 0 2.4 1.1 2.4 2.5v5.6c0 4.6-3 7.7-7.6 7.7h-3.4c-3.4 0-6.1-2.3-6.6-5.6z"/>
+    <rect x="11.5" y="27.2" width="14" height="4" rx="1.6"/>
+  </g>
+  <path d="M12.4 14.4v2.8M17.4 14.2v2.8M22.3 14.4v2.6" fill="none" stroke="#2A2A33" stroke-width="1.2" stroke-linecap="round"/>
+  <path d="M8.4 19.8c2.2-1.1 4.7-1.1 6.8 0" fill="none" stroke="#2A2A33" stroke-width="1.3" stroke-linecap="round"/>
+  <path d="M16.3 22.6h6.2" fill="none" stroke="#B9B6C2" stroke-width="1" stroke-linecap="round"/>
+</svg>
