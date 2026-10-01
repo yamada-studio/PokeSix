@@ -1,0 +1,92 @@
+{
+  "_comment": [
+    "야생 출현 방법 이름 (PokéAPI encounter_methods.identifier → {ko, en, ja}). 없는 방법은 identifier로 보인다."
+  ],
+  "methods": {
+    "walk": {
+      "ko": "풀숲 · 동굴",
+      "en": "Walking",
+      "ja": "くさむら・どうくつ"
+    },
+    "dark-grass": {
+      "ko": "짙은 풀숲",
+      "en": "Dark grass",
+      "ja": "こいくさむら"
+    },
+    "old-rod": {
+      "ko": "낡은낚싯대",
+      "en": "Old Rod",
+      "ja": "ボロのつりざお"
+    },
+    "good-rod": {
+      "ko": "좋은낚싯대",
+      "en": "Good Rod",
+      "ja": "いいつりざお"
+    },
+    "super-rod": {
+      "ko": "대단한낚싯대",
+      "en": "Super Rod",
+      "ja": "すごいつりざお"
+    },
+    "surf": {
+      "ko": "파도타기",
+      "en": "Surfing",
+      "ja": "なみのり"
+    },
+    "rock-smash": {
+      "ko": "바위깨기",
+      "en": "Rock Smash",
+      "ja": "いわくだき"
+    },
+    "headbutt": {
+      "ko": "박치기",
+      "en": "Headbutt",
+      "ja": "ずつき"
+    },
+    "gift": {
+      "ko": "받기",
+      "en": "Gift",
+      "ja": "もらう"
+    },
+    "gift-egg": {
+      "ko": "알 받기",
+      "en": "Gift egg",
+      "ja": "タマゴをもらう"
+    },
+    "static": {
+      "ko": "고정 출현",
+      "en": "Static",
+      "ja": "シンボル"
+    },
+    "npc-trade": {
+      "ko": "교환",
+      "en": "In-game trade",
+      "ja": "こうかん"
+    },
+    "honey-tree": {
+      "ko": "달콤한꿀 나무",
+      "en": "Honey tree",
+      "ja": "あまいミツの木"
+    },
+    "roaming-grass": {
+      "ko": "배회",
+      "en": "Roaming",
+      "ja": "はいかい"
+    },
+    "roaming-water": {
+      "ko": "배회(물 위)",
+      "en": "Roaming (water)",
+      "ja": "はいかい(水上)"
+    },
+    "pokeflute": {
+      "ko": "포켓몬피리",
+      "en": "Poké Flute",
+      "ja": "ポケモンのふえ"
+    },
+    "squirt-bottle": {
+      "ko": "물뿌리개",
+      "en": "Squirt Bottle",
+      "ja": "ゼニガメじょうろ"
+    }
+  }
+}

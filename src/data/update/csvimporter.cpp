@@ -146,7 +146,8 @@ bool CsvImporter::run(const QString &csvDir, const QString &dbPath)
                  && importPokemonTypes(db) && importPokemonStats(db) && importRegions(db)
                  && importVersionGroups(db) && importVersions(db) && importPokedexes(db)
                  && importItems(db) && importItemEffects(db) && importMoves(db)
-                 && importMachines(db) && writeMeta(db);
+                 && importMachines(db) && importPokemonMoves(db) && importEncounters(db)
+                 && writeMeta(db);
             if (ok)
                 ok = db.commit()
                      || fail(QStringLiteral("commit failed: %1").arg(db.lastError().text()));
@@ -761,15 +762,24 @@ bool CsvImporter::importMoves(QSqlDatabase &db)
 
     // 옛 타입: move_changelog의 (기술, V, 타입) = "버전 그룹 V 전까지는 이 타입" → (gen(V) − 1,
     // 타입)
+    // 위력 · PP · 명중의 옛 값은 그대로 move_changelog 표에 옮긴다(조회할 때 세대에 맞춰 고른다).
     QHash<int, std::vector<std::pair<int, int>>> pastTypes;
+    Insert changelog(db, QStringLiteral("INSERT INTO move_changelog (move_id, until_gen, type_id, "
+                                        "power, pp, accuracy) VALUES (?, ?, ?, ?, ?, ?)"));
+    if (!changelog.isValid())
+        return fail(changelog.error());
     if (!forEachRecord(QStringLiteral("move_changelog"),
                        {QStringLiteral("move_id"), QStringLiteral("changed_in_version_group_id"),
-                        QStringLiteral("type_id")},
+                        QStringLiteral("type_id"), QStringLiteral("power"), QStringLiteral("pp"),
+                        QStringLiteral("accuracy")},
                        [&](const QStringList &v) {
+                           const int until = versionGroupGen.value(v[1].toInt()) - 1;
                            if (!v[2].isEmpty())
-                               pastTypes[v[0].toInt()].push_back(
-                                       {versionGroupGen.value(v[1].toInt()) - 1, v[2].toInt()});
-                           return true;
+                               pastTypes[v[0].toInt()].push_back({until, v[2].toInt()});
+                           return changelog.exec({v[0].toInt(), until, intOrNull(v[2]),
+                                                  intOrNull(v[3]), intOrNull(v[4]),
+                                                  intOrNull(v[5])})
+                                  || fail(changelog.error());
                        }))
         return false;
 
@@ -785,7 +795,8 @@ bool CsvImporter::importMoves(QSqlDatabase &db)
 
     Insert moves(db,
                  QStringLiteral("INSERT INTO moves (id, identifier, intro_gen, name_ko, name_en, "
-                                "name_ja) VALUES (?, ?, ?, ?, ?, ?)"));
+                                "name_ja, type_id, power, pp, accuracy, damage_class) "
+                                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"));
     Insert types(db, QStringLiteral("INSERT INTO move_types (move_id, type_id, gen_from, gen_to) "
                                     "VALUES (?, ?, ?, ?)"));
     if (!moves.isValid() || !types.isValid())
@@ -793,13 +804,15 @@ bool CsvImporter::importMoves(QSqlDatabase &db)
     return forEachRecord(
             QStringLiteral("moves"),
             {QStringLiteral("id"), QStringLiteral("identifier"), QStringLiteral("generation_id"),
-             QStringLiteral("type_id")},
+             QStringLiteral("type_id"), QStringLiteral("power"), QStringLiteral("pp"),
+             QStringLiteral("accuracy"), QStringLiteral("damage_class_id")},
             [&](const QStringList &v) {
                 const int id = v[0].toInt();
                 const int intro = v[2].toInt();
                 const Names &n = names.value(id);
                 if (!moves.exec({id, v[1], intro, textOrNull(n[0]), textOrNull(n[1]),
-                                 textOrNull(n[2])}))
+                                 textOrNull(n[2]), intOrNull(v[3]), intOrNull(v[4]),
+                                 intOrNull(v[5]), intOrNull(v[6]), intOrNull(v[7])}))
                     return fail(moves.error());
                 for (const auto &range :
                      genranges::toGenRanges<int>(intro, pastTypes.value(id), v[3].toInt())) {
@@ -836,10 +849,18 @@ bool CsvImporter::importMachines(QSqlDatabase &db)
         int move = 0;
     };
     QHash<QPair<int, int>, Chosen> chosen; // (item, 세대) → 기술
+    // 게임마다의 기술머신 번호 표(상세 화면의 "기술머신으로 익히는 기술")는 그대로 옮긴다
+    Insert machines(db, QStringLiteral("INSERT INTO machines (version_group_id, machine_number, "
+                                       "item_id, move_id) VALUES (?, ?, ?, ?)"));
+    if (!machines.isValid())
+        return fail(machines.error());
     if (!forEachRecord(QStringLiteral("machines"),
                        {QStringLiteral("item_id"), QStringLiteral("version_group_id"),
-                        QStringLiteral("move_id")},
+                        QStringLiteral("move_id"), QStringLiteral("machine_number")},
                        [&](const QStringList &v) {
+                           if (!machines.exec(
+                                       {v[1].toInt(), v[3].toInt(), v[0].toInt(), v[2].toInt()}))
+                               return fail(machines.error());
                            const GroupInfo group = groups.value(v[1].toInt());
                            const QPair<int, int> key(v[0].toInt(), group.generation);
                            const auto it = chosen.constFind(key);
@@ -856,6 +877,128 @@ bool CsvImporter::importMachines(QSqlDatabase &db)
     for (auto it = chosen.cbegin(); it != chosen.cend(); ++it)
         if (!insert.exec({it.key().first, it.key().second, it->move}))
             return fail(insert.error());
+    return true;
+}
+
+bool CsvImporter::importPokemonMoves(QSqlDatabase &db)
+{
+    // 습득 기술 63만 줄 중 레벨업 · 교배 · NPC · 기술머신(1–4)만. 나머지(스타디움 · 특별 이벤트
+    // 등)는 뺀다.
+    Insert insert(db, QStringLiteral("INSERT INTO pokemon_moves (pokemon_id, version_group_id, "
+                                     "move_id, method, level) VALUES (?, ?, ?, ?, ?)"));
+    if (!insert.isValid())
+        return fail(insert.error());
+    return forEachRecord(
+            QStringLiteral("pokemon_moves"),
+            {QStringLiteral("pokemon_id"), QStringLiteral("version_group_id"),
+             QStringLiteral("move_id"), QStringLiteral("pokemon_move_method_id"),
+             QStringLiteral("level")},
+            [&](const QStringList &v) {
+                const int method = v[3].toInt();
+                if (method < 1 || method > 4)
+                    return true;
+                return insert.exec({v[0].toInt(), v[1].toInt(), v[2].toInt(), method, v[4].toInt()})
+                       || fail(insert.error());
+            });
+}
+
+bool CsvImporter::importEncounters(QSqlDatabase &db)
+{
+    // 1) 장소 + 이름(한국어는 신오 · 성도 · 관동에 없다 — UI가 장소 사전으로 채운다)
+    QHash<int, Names> names;
+    if (!forEachRecord(QStringLiteral("location_names"),
+                       {QStringLiteral("location_id"), QStringLiteral("local_language_id"),
+                        QStringLiteral("name")},
+                       [&](const QStringList &v) {
+                           setName(names[v[0].toInt()], v[1].toInt(), v[2]);
+                           return true;
+                       }))
+        return false;
+    Insert locations(db, QStringLiteral("INSERT INTO locations (id, identifier, region_id, "
+                                        "name_ko, name_en, name_ja) VALUES (?, ?, ?, ?, ?, ?)"));
+    if (!locations.isValid())
+        return fail(locations.error());
+    if (!forEachRecord(
+                QStringLiteral("locations"),
+                {QStringLiteral("id"), QStringLiteral("identifier"), QStringLiteral("region_id")},
+                [&](const QStringList &v) {
+                    const Names &n = names.value(v[0].toInt());
+                    return locations.exec({v[0].toInt(), v[1], intOrNull(v[2]), textOrNull(n[0]),
+                                           textOrNull(n[1]), textOrNull(n[2])})
+                           || fail(locations.error());
+                }))
+        return false;
+
+    // 2) 방법 표 · 구역 → 장소 · 출현 칸 → (방법, 확률)
+    Insert methods(db,
+                   QStringLiteral("INSERT INTO encounter_methods (id, identifier) VALUES (?, ?)"));
+    if (!methods.isValid())
+        return fail(methods.error());
+    if (!forEachRecord(QStringLiteral("encounter_methods"),
+                       {QStringLiteral("id"), QStringLiteral("identifier")},
+                       [&](const QStringList &v) {
+                           return methods.exec({v[0].toInt(), v[1]}) || fail(methods.error());
+                       }))
+        return false;
+    QHash<int, int> locationOfArea;
+    if (!forEachRecord(QStringLiteral("location_areas"),
+                       {QStringLiteral("id"), QStringLiteral("location_id")},
+                       [&](const QStringList &v) {
+                           locationOfArea.insert(v[0].toInt(), v[1].toInt());
+                           return true;
+                       }))
+        return false;
+    struct Slot
+    {
+        int method = 0;
+        int rarity = 0;
+    };
+    QHash<int, Slot> encounterSlots;
+    if (!forEachRecord(QStringLiteral("encounter_slots"),
+                       {QStringLiteral("id"), QStringLiteral("encounter_method_id"),
+                        QStringLiteral("rarity")},
+                       [&](const QStringList &v) {
+                           encounterSlots.insert(v[0].toInt(), {v[1].toInt(), v[2].toInt()});
+                           return true;
+                       }))
+        return false;
+
+    // 3) 출현: (포켓몬, 버전, 장소, 방법)마다 레벨 범위 · 확률 합으로 묶는다. 같은 장소의 층 ·
+    // 시간대 ·
+    //    계절 칸이 여러 줄로 나뉘어 있어서(1만 줄 넘게), 화면에 쓰기 좋은 단위로 줄인다.
+    struct Summary
+    {
+        int minLevel = 1000;
+        int maxLevel = 0;
+        int rarity = 0;
+    };
+    QMap<std::array<int, 4>, Summary> summary;
+    if (!forEachRecord(QStringLiteral("encounters"),
+                       {QStringLiteral("pokemon_id"), QStringLiteral("version_id"),
+                        QStringLiteral("location_area_id"), QStringLiteral("encounter_slot_id"),
+                        QStringLiteral("min_level"), QStringLiteral("max_level")},
+                       [&](const QStringList &v) {
+                           const Slot slot = encounterSlots.value(v[3].toInt());
+                           const std::array<int, 4> key {v[0].toInt(), v[1].toInt(),
+                                                         locationOfArea.value(v[2].toInt()),
+                                                         slot.method};
+                           Summary &s = summary[key];
+                           s.minLevel = std::min(s.minLevel, v[4].toInt());
+                           s.maxLevel = std::max(s.maxLevel, v[5].toInt());
+                           s.rarity += slot.rarity;
+                           return true;
+                       }))
+        return false;
+    Insert encounters(db, QStringLiteral("INSERT INTO encounters (pokemon_id, version_id, "
+                                         "location_id, method_id, min_level, max_level, rarity) "
+                                         "VALUES (?, ?, ?, ?, ?, ?, ?)"));
+    if (!encounters.isValid())
+        return fail(encounters.error());
+    for (auto it = summary.cbegin(); it != summary.cend(); ++it) {
+        const auto &k = it.key();
+        if (!encounters.exec({k[0], k[1], k[2], k[3], it->minLevel, it->maxLevel, it->rarity}))
+            return fail(encounters.error());
+    }
     return true;
 }
 

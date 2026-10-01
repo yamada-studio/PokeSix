@@ -188,7 +188,8 @@ TEST_F(RepositoryTest, ItemsKnowWhichGenerationsHaveThem)
 {
     Repository repository(s_dbPath);
     const QList<ItemRow> items = repository.itemsForGeneration(4);
-    EXPECT_EQ(items.size(), 7);
+    // 시드 아이템 7개 + 플래티넘 기술머신 · 비전머신(도감 상세의 기술머신 번호에 쓴다)
+    EXPECT_EQ(items.size(), 106);
 
     const ItemRow *dawn = findItem(items, QStringLiteral("dawn-stone"));
     ASSERT_NE(dawn, nullptr);
@@ -235,7 +236,7 @@ TEST_F(RepositoryTest, ItemProxyFiltersByCategoryGenerationAndText)
     model.setRows(repository.itemsForGeneration(4), 4);
     ItemFilterProxy proxy;
     proxy.setSourceModel(&model);
-    EXPECT_EQ(proxy.rowCount(), 7);
+    EXPECT_EQ(proxy.rowCount(), 106);
 
     proxy.setCategoryFilter(
             [](const QString &category, const QString &) { return category == "evolution"; });
@@ -244,9 +245,11 @@ TEST_F(RepositoryTest, ItemProxyFiltersByCategoryGenerationAndText)
     proxy.setOnlyInGeneration(true);
     EXPECT_EQ(proxy.rowCount(), 2); // 얼음의돌은 4세대에 없다
 
-    proxy.setCategoryFilter(nullptr);
+    // 기술머신을 뺀 나머지에서 효과 문구로 찾는다: 상처약 · 먹다남은음식
+    proxy.setCategoryFilter(
+            [](const QString &, const QString &pocket) { return pocket != "machines"; });
     proxy.setOnlyInGeneration(false);
-    proxy.setSearchText(QStringLiteral("회복")); // 효과 문구로도 찾는다: 상처약 · 먹다남은음식
+    proxy.setSearchText(QStringLiteral("회복"));
     EXPECT_EQ(proxy.rowCount(), 2);
 
     proxy.setSearchText(QString());
@@ -282,7 +285,9 @@ TEST_F(RepositoryTest, EffectsAreKeptPerLanguage)
     Repository repository(s_dbPath);
     // 4세대 기술머신01(힘껏펀치): 한국어 문구는 4세대에 없어서 비지만, 영어 문구는 DP에 있다.
     // 화면(한국어)에서는 LocalizedText의 대체 순서로 영어 문구가 보인다.
-    const ItemRow *tm01 = findItem(repository.itemsForGeneration(4), QStringLiteral("tm01"));
+    const QList<ItemRow> items
+            = repository.itemsForGeneration(4); // 포인터가 가리킬 목록을 살려 둔다
+    const ItemRow *tm01 = findItem(items, QStringLiteral("tm01"));
     EXPECT_TRUE(tm01->effect.ko.isEmpty());
     EXPECT_FALSE(tm01->effect.en.isEmpty());
     EXPECT_EQ(tm01->effect.text(Language::Korean), tm01->effect.en);
@@ -300,4 +305,41 @@ TEST(LocalizedText, FallsBackInTheLanguageOrder)
     EXPECT_EQ(noEnglish.text(Language::Japanese), QStringLiteral("マスターボール"));
     EXPECT_EQ(languageFromCode(QStringLiteral("ja")), Language::Japanese);
     EXPECT_EQ(languageFromCode(QStringLiteral("xx")), Language::Korean);
+}
+
+TEST_F(RepositoryTest, DetailFollowsTheRepresentativeGame)
+{
+    Repository repository(s_dbPath);
+    // 4세대 대표 게임 = 플래티넘. 레벨업 · 기술머신은 Pt 습득 기술, 획득법은 DP · Pt · HGSS 전부.
+    EXPECT_EQ(Repository::representativeVersionGroup(4), QStringLiteral("platinum"));
+    const PokemonDetail bulbasaur = repository.pokemonDetail(1, 4);
+    ASSERT_TRUE(bulbasaur.isValid());
+    EXPECT_EQ(bulbasaur.genus.ko, QStringLiteral("씨앗포켓몬"));
+    EXPECT_EQ(bulbasaur.total, 318);
+    ASSERT_EQ(bulbasaur.levelMoves.size(), 14); // 포딕 4세대와 같다
+    EXPECT_EQ(bulbasaur.levelMoves.first().level, 1);
+    EXPECT_EQ(bulbasaur.levelMoves.first().name.ko, QStringLiteral("몸통박치기"));
+    EXPECT_EQ(bulbasaur.levelMoves.first().power, 35); // 4세대 위력(지금은 40) — move_changelog
+    EXPECT_EQ(bulbasaur.machineMoves.size(), 28);      // 기술머신 25 + 비전머신 3
+    EXPECT_EQ(bulbasaur.machineMoves.first().machineNumber, 6); // TM06 맹독
+    EXPECT_TRUE(bulbasaur.machineMoves.last().hiddenMachine);
+    EXPECT_EQ(bulbasaur.machineMoves.last().machineNumber, 6); // HM06 바위깨기(101–108 → 1–8)
+
+    // 획득법: HGSS 태초마을에서 받는다(선물)
+    ASSERT_FALSE(bulbasaur.encounters.isEmpty());
+    EXPECT_EQ(bulbasaur.encounters.first().location, QStringLiteral("pallet-town"));
+    EXPECT_EQ(bulbasaur.encounters.first().method, QStringLiteral("gift"));
+
+    // 1세대: 물리 · 특수는 타입이 정한다(덩굴채찍 = 풀 → 특수)
+    for (const MoveEntry &move : repository.pokemonDetail(1, 4).levelMoves)
+        if (move.name.en == QLatin1String("Vine Whip"))
+            EXPECT_EQ(move.damageClass, 2); // 4세대부터는 물리
+}
+
+TEST_F(RepositoryTest, TypeChartFollowsTheGeneration)
+{
+    Repository repository(s_dbPath);
+    EXPECT_EQ(repository.typeChart(4).at(QStringLiteral("ghost"), QStringLiteral("steel")), 0.5);
+    EXPECT_EQ(repository.typeChart(6).at(QStringLiteral("ghost"), QStringLiteral("steel")), 1.0);
+    EXPECT_EQ(repository.typeChart(1).types.size(), 15); // 악 · 강철 · 페어리 없음
 }

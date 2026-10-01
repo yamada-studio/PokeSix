@@ -7,6 +7,14 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Pokédex detail page: clicking a Pokémon opens its sprite (generation art), names, genus, types,
+  size, base stat bars, wild encounters for every version of the generation, defensive and STAB
+  offensive type matchups, level-up moves (Heart Scale marker for level 1) and TM/HM moves with their
+  numbers and locations. Moves follow the generation's representative game (Platinum for generation
+  4) with per-generation power, accuracy, PP, type and, up to generation 3, type-based category.
+  Learnsets, machines, locations and encounters are imported (schema version 6); TM locations,
+  Korean place names and encounter method names come from bundled dictionaries. Without
+  `--language` the app starts in Korean.
 - Display languages Korean, English and Japanese. Game data (Pokémon, item, move, region and version
   names, item effects) is stored in all three languages and switches live through
   `AppState::language`, falling back to another language when one is missing; Japanese uses the kana

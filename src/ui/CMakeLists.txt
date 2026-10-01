@@ -52,6 +52,18 @@ qt_add_library(pokesix_ui STATIC
     dex/dexpage.cpp
     dex/dexheaderview.h
     dex/dexheaderview.cpp
+    dex/guidebook.h
+    dex/guidebook.cpp
+    dex/dexdetailpage.h
+    dex/dexdetailpage.cpp
+    dex/statbars.h
+    dex/statbars.cpp
+    dex/matchupview.h
+    dex/matchupview.cpp
+    dex/movelist.h
+    dex/movelist.cpp
+    dex/encounterlist.h
+    dex/encounterlist.cpp
     dex/dexselector.h
     dex/dexselector.cpp
     dex/dexrowdelegate.h

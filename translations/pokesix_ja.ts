@@ -77,6 +77,45 @@
     </message>
 </context>
 <context>
+    <name>com::yamada::studio::DexDetailPage</name>
+    <message>
+        <source>← 목록</source>
+        <translation>← 一覧</translation>
+    </message>
+    <message>
+        <source>종족값</source>
+        <translation>種族値</translation>
+    </message>
+    <message>
+        <source>획득법</source>
+        <translation>入手方法</translation>
+    </message>
+    <message>
+        <source>야생 출현</source>
+        <translation>野生</translation>
+    </message>
+    <message>
+        <source>타입 상성</source>
+        <translation>タイプ相性</translation>
+    </message>
+    <message>
+        <source>레벨업으로 익히는 기술</source>
+        <translation>レベルで覚えるわざ</translation>
+    </message>
+    <message>
+        <source>기술 기준: %1</source>
+        <translation>わざの基準: %1</translation>
+    </message>
+    <message>
+        <source>기술머신 · 비전머신</source>
+        <translation>わざマシン・ひでんマシン</translation>
+    </message>
+    <message>
+        <source>%1개</source>
+        <translation>%1個</translation>
+    </message>
+</context>
+<context>
     <name>com::yamada::studio::DexPage</name>
     <message>
         <source>이름 · 번호로 찾기</source>
@@ -104,6 +143,13 @@
     <message>
         <source>%1 — %2</source>
         <translation>%1 — %2</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::EncounterList</name>
+    <message>
+        <source>이 세대에는 야생에서 만날 수 없어요. 진화 · 교배 · 교환으로 얻어요.</source>
+        <translation>この世代では野生で出会えません。進化・タマゴ・交換で手に入れます。</translation>
     </message>
 </context>
 <context>
@@ -304,6 +350,84 @@
     </message>
 </context>
 <context>
+    <name>com::yamada::studio::MatchupView</name>
+    <message>
+        <source>받을 때</source>
+        <translation>受ける</translation>
+    </message>
+    <message>
+        <source>줄 때</source>
+        <translation>与える</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::MoveList</name>
+    <message>
+        <source>물리</source>
+        <translation>物理</translation>
+    </message>
+    <message>
+        <source>특수</source>
+        <translation>特殊</translation>
+    </message>
+    <message>
+        <source>변화</source>
+        <translation>変化</translation>
+    </message>
+    <message>
+        <source>Lv</source>
+        <translation>Lv</translation>
+    </message>
+    <message>
+        <source>번호</source>
+        <translation>番号</translation>
+    </message>
+    <message>
+        <source>기술</source>
+        <translation>わざ</translation>
+    </message>
+    <message>
+        <source>타입</source>
+        <translation>タイプ</translation>
+    </message>
+    <message>
+        <source>분류</source>
+        <translation>分類</translation>
+    </message>
+    <message>
+        <source>위력</source>
+        <translation>威力</translation>
+    </message>
+    <message>
+        <source>명중</source>
+        <translation>命中</translation>
+    </message>
+    <message>
+        <source>PP</source>
+        <translation>PP</translation>
+    </message>
+    <message>
+        <source>획득처</source>
+        <translation>入手場所</translation>
+    </message>
+    <message>
+        <source>이 게임에서는 배울 수 없어요</source>
+        <translation>このゲームでは覚えません</translation>
+    </message>
+    <message>
+        <source>변동</source>
+        <translation>変動</translation>
+    </message>
+    <message>
+        <source>획득처 정보 없음</source>
+        <translation>入手場所の情報なし</translation>
+    </message>
+    <message>
+        <source>레벨업으로 다시 배울 수 없어요. 잊으면 기술 떠올리기(하트비늘)로 되찾아요.</source>
+        <translation>レベルアップでは覚え直せません。わざ思い出し(ハートのウロコ)で思い出せます。</translation>
+    </message>
+</context>
+<context>
     <name>com::yamada::studio::SpeciesTableModel</name>
     <message>
         <source>No.</source>
@@ -317,6 +441,37 @@
         <source>타입</source>
         <translation>タイプ</translation>
     </message>
+    <message>
+        <source>HP</source>
+        <translation>HP</translation>
+    </message>
+    <message>
+        <source>공격</source>
+        <translation>こうげき</translation>
+    </message>
+    <message>
+        <source>방어</source>
+        <translation>ぼうぎょ</translation>
+    </message>
+    <message>
+        <source>특공</source>
+        <translation>とくこう</translation>
+    </message>
+    <message>
+        <source>특방</source>
+        <translation>とくぼう</translation>
+    </message>
+    <message>
+        <source>스피드</source>
+        <translation>すばやさ</translation>
+    </message>
+    <message>
+        <source>합계</source>
+        <translation>合計</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::StatBars</name>
     <message>
         <source>HP</source>
         <translation>HP</translation>

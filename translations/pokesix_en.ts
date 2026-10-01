@@ -77,6 +77,45 @@
     </message>
 </context>
 <context>
+    <name>com::yamada::studio::DexDetailPage</name>
+    <message>
+        <source>← 목록</source>
+        <translation>← List</translation>
+    </message>
+    <message>
+        <source>종족값</source>
+        <translation>Base stats</translation>
+    </message>
+    <message>
+        <source>획득법</source>
+        <translation>Where to find</translation>
+    </message>
+    <message>
+        <source>야생 출현</source>
+        <translation>Wild</translation>
+    </message>
+    <message>
+        <source>타입 상성</source>
+        <translation>Type matchups</translation>
+    </message>
+    <message>
+        <source>레벨업으로 익히는 기술</source>
+        <translation>Level-up moves</translation>
+    </message>
+    <message>
+        <source>기술 기준: %1</source>
+        <translation>Moves from: %1</translation>
+    </message>
+    <message>
+        <source>기술머신 · 비전머신</source>
+        <translation>TMs · HMs</translation>
+    </message>
+    <message>
+        <source>%1개</source>
+        <translation>%1</translation>
+    </message>
+</context>
+<context>
     <name>com::yamada::studio::DexPage</name>
     <message>
         <source>이름 · 번호로 찾기</source>
@@ -104,6 +143,13 @@
     <message>
         <source>%1 — %2</source>
         <translation>%1 — %2</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::EncounterList</name>
+    <message>
+        <source>이 세대에는 야생에서 만날 수 없어요. 진화 · 교배 · 교환으로 얻어요.</source>
+        <translation>Not found in the wild in this generation. Get it by evolving, breeding or trading.</translation>
     </message>
 </context>
 <context>
@@ -304,6 +350,84 @@
     </message>
 </context>
 <context>
+    <name>com::yamada::studio::MatchupView</name>
+    <message>
+        <source>받을 때</source>
+        <translation>Taken</translation>
+    </message>
+    <message>
+        <source>줄 때</source>
+        <translation>Dealt</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::MoveList</name>
+    <message>
+        <source>물리</source>
+        <translation>Phys.</translation>
+    </message>
+    <message>
+        <source>특수</source>
+        <translation>Spec.</translation>
+    </message>
+    <message>
+        <source>변화</source>
+        <translation>Status</translation>
+    </message>
+    <message>
+        <source>Lv</source>
+        <translation>Lv</translation>
+    </message>
+    <message>
+        <source>번호</source>
+        <translation>No.</translation>
+    </message>
+    <message>
+        <source>기술</source>
+        <translation>Move</translation>
+    </message>
+    <message>
+        <source>타입</source>
+        <translation>Type</translation>
+    </message>
+    <message>
+        <source>분류</source>
+        <translation>Cat.</translation>
+    </message>
+    <message>
+        <source>위력</source>
+        <translation>Pow.</translation>
+    </message>
+    <message>
+        <source>명중</source>
+        <translation>Acc.</translation>
+    </message>
+    <message>
+        <source>PP</source>
+        <translation>PP</translation>
+    </message>
+    <message>
+        <source>획득처</source>
+        <translation>Location</translation>
+    </message>
+    <message>
+        <source>이 게임에서는 배울 수 없어요</source>
+        <translation>Cannot be learned in this game</translation>
+    </message>
+    <message>
+        <source>변동</source>
+        <translation>Varies</translation>
+    </message>
+    <message>
+        <source>획득처 정보 없음</source>
+        <translation>No location data</translation>
+    </message>
+    <message>
+        <source>레벨업으로 다시 배울 수 없어요. 잊으면 기술 떠올리기(하트비늘)로 되찾아요.</source>
+        <translation>Cannot be relearned by leveling up. Use the Move Reminder (Heart Scale) to get it back.</translation>
+    </message>
+</context>
+<context>
     <name>com::yamada::studio::SpeciesTableModel</name>
     <message>
         <source>No.</source>
@@ -317,6 +441,37 @@
         <source>타입</source>
         <translation>Type</translation>
     </message>
+    <message>
+        <source>HP</source>
+        <translation>HP</translation>
+    </message>
+    <message>
+        <source>공격</source>
+        <translation>Atk</translation>
+    </message>
+    <message>
+        <source>방어</source>
+        <translation>Def</translation>
+    </message>
+    <message>
+        <source>특공</source>
+        <translation>SpA</translation>
+    </message>
+    <message>
+        <source>특방</source>
+        <translation>SpD</translation>
+    </message>
+    <message>
+        <source>스피드</source>
+        <translation>Spe</translation>
+    </message>
+    <message>
+        <source>합계</source>
+        <translation>Total</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::StatBars</name>
     <message>
         <source>HP</source>
         <translation>HP</translation>

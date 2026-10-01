@@ -55,7 +55,8 @@ MainWindow::MainWindow(QWidget *parent)
     // 하나씩 채운다. 지금은 이름만 보이는 자리 표시.
     // Repository는 게임 데이터 DB 조회 창구다. 화면들은 포인터만 받아 쓴다(생성자 주입).
     m_repository = std::make_unique<Repository>(gamedatabase::defaultPath());
-    m_pages->addWidget(new DexPage(m_repository.get(), m_state));   // [0] 도감
+    m_dexPage = new DexPage(m_repository.get(), m_state);
+    m_pages->addWidget(m_dexPage);                                  // [0] 도감
     m_pages->addWidget(new ItemsPage(m_repository.get(), m_state)); // [1] 아이템
     const QString names[] = {tr("스쿼드"), tr("설정")};
     for (const QString &name : names) {
@@ -114,6 +115,10 @@ MainWindow::~MainWindow() = default;
 
 void MainWindow::open(Page page)
 {
+    // 이미 도감에 있을 때 도감 탭을 다시 누르면(상세를 보는 중이면) 목록으로 돌아간다
+    if (page == Page::Dex && m_screens->currentIndex() == MainScreen
+        && m_pages->currentIndex() == static_cast<int>(Page::Dex))
+        m_dexPage->showList();
     m_pages->setCurrentIndex(static_cast<int>(page)); // 페이지 순서 = Page 순서
     m_appBar->setCurrentPage(page);
     m_screens->setCurrentIndex(MainScreen);

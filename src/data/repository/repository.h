@@ -2,6 +2,7 @@
 
 #include "data/text/localizedtext.h"
 
+#include <QHash>
 #include <QList>
 #include <QString>
 #include <QStringList>
@@ -53,6 +54,70 @@ struct ItemRow
     int introGeneration() const; // 처음 나온 세대(없으면 0)
 };
 
+// 상세 화면의 기술 한 줄(레벨업 · 기술머신). 값은 조회한 세대 기준(위력 · 명중 · PP · 타입 · 분류).
+struct MoveEntry
+{
+    int moveId = 0;
+    LocalizedText name;
+    QString type; // 타입 identifier. ??? 타입(저주 2–4세대)이면 비어 있다
+    int damageClass
+            = 0; // 1 변화 · 2 물리 · 3 특수 — 3세대까지는 타입이 정한다(Repository가 바꿔 둔다)
+    int power = 0;    // 0 = 없음(변화 기술 · 위력이 바뀌는 기술)
+    int accuracy = 0; // 0 = 반드시 맞음
+    int pp = 0;
+    int level = 0;              // 레벨업: 배우는 레벨(1 = 처음부터)
+    int machineNumber = 0;      // 기술머신: 번호
+    bool hiddenMachine = false; // 비전머신
+    QString machineItem; // 기술머신 아이템 identifier("tm01") — UI의 획득처 사전 키
+};
+
+// 야생 출현 한 줄: 버전 · 장소 · 방법마다 레벨 범위와 출현 칸 확률의 합.
+struct EncounterEntry
+{
+    QString version;            // "platinum"
+    LocalizedText versionName;  // 기라티나 · Platinum · プラチナ
+    QString location;           // "sinnoh-route-201" — UI 장소 사전의 키
+    LocalizedText locationName; // PokéAPI 이름(신오 · 성도 · 관동은 한국어가 없다)
+    QString method;             // "walk", "surf", "old-rod" …
+    int minLevel = 0;
+    int maxLevel = 0;
+    int rarity = 0; // 출현 칸 확률(%)의 합 — 시간대 · 층 칸이 묶여 있어서 100을 넘을 수 있다
+};
+
+// 포켓몬 상세(도감 상세 화면). 세대 g 기준. 기술은 그 세대 대표 게임(versionGroup) 기준이다.
+struct PokemonDetail
+{
+    int speciesId = 0;
+    int pokemonId = 0;
+    LocalizedText name;
+    LocalizedText genus; // 씨앗포켓몬
+    QStringList types;
+    std::array<int, 6> stats {};
+    int total = 0;
+    int height = 0; // 10 cm 단위(PokéAPI)
+    int weight = 0; // 100 g 단위
+    int generation = 0;
+    QString versionGroup;             // 기술 기준 게임 묶음 identifier("platinum")
+    QList<LocalizedText> groupGames;  // 그 묶음의 버전 이름들(기라티나)
+    QList<EncounterEntry> encounters; // 그 세대 모든 버전(DP · Pt · HGSS)
+    QList<MoveEntry> levelMoves;      // 레벨 순
+    QList<MoveEntry> machineMoves;    // 기술머신 번호 순, 비전머신은 뒤에
+
+    bool isValid() const { return pokemonId > 0; }
+};
+
+// 세대 g의 타입 상성표: (공격 타입, 방어 타입) → 배율. 표에 없는 쌍은 1배.
+struct TypeChart
+{
+    QStringList types;                  // 그 세대에 있는 타입(id 순)
+    QHash<QString, double> multipliers; // key = "공격/방어"
+
+    double at(const QString &attack, const QString &defense) const
+    {
+        return multipliers.value(attack + QLatin1Char('/') + defense, 1.0);
+    }
+};
+
 // 게임 데이터 DB(pokesix.sqlite)의 조회 창구. 로컬 DB만 읽는다(네트워크 없음, ADR 0011).
 // UI 스레드에서 짧은 질의만 한다(architecture §6). QSqlDatabase 연결은 이 객체를 만든 스레드에서만
 // 쓴다. 모든 질의는 세대를 인자로 받는다 — 세대를 전역에서 몰래 읽지 않는다(architecture §9).
@@ -79,6 +144,14 @@ public:
     // 그 세대에 없는 아이템도 넣는다 — 화면이 흐리게 보여 줄지 뺄지 정한다(프록시).
     QList<ItemRow> itemsForGeneration(int generation);
 
+    // 포켓몬 하나의 상세(기본 모습 pokemonId, 세대 generation). 없으면 isValid() == false.
+    PokemonDetail pokemonDetail(int pokemonId, int generation);
+    // 세대 generation의 타입 상성표(그 세대에 있는 타입끼리)
+    TypeChart typeChart(int generation);
+    // 세대마다 기술 기준으로 쓰는 게임 묶음("platinum"). 셋째 판 · 확장판이 그 세대를 가장 넓게
+    // 담는다.
+    static QString representativeVersionGroup(int generation);
+
     // 세대 generation까지 나온 종 전부(번호 순). 타입 · 종족값은 그 세대 기준.
     // 1세대는 "특수"(stat 9) 하나였으므로 특공 · 특방 칸에 같은 값을 넣고, 합계에는 한 번만 더한다.
     QList<SpeciesRow> speciesForGeneration(int generation);
@@ -92,5 +165,7 @@ private:
     bool readSpecies(QSqlQuery &query, QList<SpeciesRow> &rows);
     // rows의 기본 모습에 세대 generation의 타입 · 종족값을 채운다(전국 · 지방 목록 공통).
     void fillTypesAndStats(QList<SpeciesRow> &rows, int generation);
+    // moves의 moveId로 이름 · 타입 · 분류 · 위력 · 명중 · PP를 세대 generation 기준으로 채운다
+    void fillMoves(QList<MoveEntry> &moves, int generation);
 };
 } // namespace com::yamada::studio

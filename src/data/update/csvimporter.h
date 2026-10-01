@@ -47,7 +47,9 @@ private:
     // 아이템(E3): 분류 · 아이템 + 이름 · 세대별 존재 · 세대별 한국어 효과 문구
     bool importItems(QSqlDatabase &db);
     bool importMoves(QSqlDatabase &db); // 기술 + 이름 + 세대별 타입(기술머신 아이콘 · 타입 칩)
-    bool importMachines(QSqlDatabase &db); // 기술머신 → 세대별로 담긴 기술
+    bool importMachines(QSqlDatabase &db); // 기술머신 → 세대별로 담긴 기술 + 게임마다의 번호 표
+    bool importPokemonMoves(QSqlDatabase &db); // 습득 기술(레벨업 · 교배 · NPC · 기술머신)
+    bool importEncounters(QSqlDatabase &db); // 장소 · 방법 · 야생 출현(묶어서)
     bool importItemEffects(QSqlDatabase &db);
     bool writeMeta(QSqlDatabase &db);
 

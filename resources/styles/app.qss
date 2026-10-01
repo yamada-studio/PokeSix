@@ -118,3 +118,8 @@ QTableView#dexTable { border: none; background: @white; }
 
 /* ── 아이템 대백과 (ItemsPage). 칸은 ItemRowDelegate · 머리는 ItemHeaderView가 그린다 ── */
 QTableView#itemsTable { border: none; background: @white; }
+
+/* ── 도감 상세 (DexDetailPage). 섹션은 PanelFrame · 직접 그리는 위젯이 그린다 ── */
+QScrollArea#dexDetailScroll, QScrollArea#dexDetailScroll > QWidget > QWidget#dexDetailContent { background: transparent; border: none; }
+QScrollArea#dexDetailScroll > QWidget { background: transparent; }
+QLabel#dexDetailBasis { font-size: 13px; font-weight: 700; color: @text.2; }
