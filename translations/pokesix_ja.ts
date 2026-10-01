@@ -447,10 +447,6 @@
         <translation>回復・わざマシン・進化・バトル・その他</translation>
     </message>
     <message>
-        <source>SixSquad</source>
-        <translation>SixSquad</translation>
-    </message>
-    <message>
         <source>여섯 자리 파티 편성과 타입 분석</source>
         <translation>6匹のパーティ編成とタイプ分析</translation>
     </message>
@@ -465,6 +461,10 @@
     <message>
         <source>종료</source>
         <translation>終了</translation>
+    </message>
+    <message>
+        <source>스쿼드</source>
+        <translation>スクワッド</translation>
     </message>
 </context>
 <context>

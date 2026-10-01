@@ -447,10 +447,6 @@
         <translation>Medicine · TMs · evolution · battle · other</translation>
     </message>
     <message>
-        <source>SixSquad</source>
-        <translation>SixSquad</translation>
-    </message>
-    <message>
         <source>여섯 자리 파티 편성과 타입 분석</source>
         <translation>Build a party of six and check its types</translation>
     </message>
@@ -465,6 +461,10 @@
     <message>
         <source>종료</source>
         <translation>Quit</translation>
+    </message>
+    <message>
+        <source>스쿼드</source>
+        <translation>Squad</translation>
     </message>
 </context>
 <context>

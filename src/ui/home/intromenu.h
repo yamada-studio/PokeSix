@@ -19,14 +19,14 @@ class IntroMenu : public QWidget
 {
     Q_OBJECT
 public:
-    static constexpr int kQuitIndex = 4; // 0–3 = 도감 · 아이템 · SixSquad · 설정, 4 = 종료
+    static constexpr int kQuitIndex = 4; // 0–3 = 도감 · 아이템 · 스쿼드 · 설정, 4 = 종료
 
     explicit IntroMenu(QWidget *parent = nullptr);
 
     int currentIndex() const { return m_current; }
     void setCurrentIndex(int index); // 잠긴(비활성) 줄은 고를 수 없다 — 부르면 무시한다
 
-    // 데이터가 없으면 도감 · 아이템 · SixSquad를 잠근다(설정 · 종료는 데이터 없이도 쓸 수 있다).
+    // 데이터가 없으면 도감 · 아이템 · 스쿼드를 잠근다(설정 · 종료는 데이터 없이도 쓸 수 있다).
     // 선택이 잠긴 줄에 있었으면 쓸 수 있는 첫 줄로 옮긴다. 잠금이 풀리면 선택은 도감으로 간다.
     void setDataLocked(bool locked);
 
