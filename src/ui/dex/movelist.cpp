@@ -2,6 +2,7 @@
 
 #include "data/sprites/spritecache.h"
 #include "ui/dex/guidebook.h"
+#include "ui/dex/moveeffect.h"
 #include "ui/items/itemrowdelegate.h"
 #include "ui/theme/theme.h"
 #include "ui/theme/tokens.h"
@@ -27,7 +28,8 @@ constexpr int kNumberWidth = 44; // 위력 · 명중 · PP
 constexpr int kFirstWidth = 56;  // Lv · 번호
 constexpr char kHeartScale[] = "heart-scale";
 constexpr int kVariablePower = 1;
-constexpr int kPlacesGap = 14; // PP ↔ 획득처
+constexpr int kPlacesGap = 14; // PP ↔ 효과 · 효과 ↔ 획득처
+constexpr int kEffectMinWidth = 150;
 
 // 분류 칩: 물리 · 특수 · 변화 (cat.physical · cat.special · cat.status)
 void paintClass(QPainter &painter, const QRectF &cell, int damageClass)
@@ -62,9 +64,10 @@ MoveList::MoveList(Mode mode, SpriteCache *icons, QWidget *parent)
 }
 
 void MoveList::setMoves(const QList<MoveEntry> &moves, const QString &versionGroup, int generation,
-                        Language language)
+                        const QStringList &userTypes, Language language)
 {
     m_moves = moves;
+    m_userTypes = userTypes;
     m_versionGroup = versionGroup;
     m_generation = generation;
     m_language = language;
@@ -79,7 +82,8 @@ QSize MoveList::sizeHint() const
 
 QList<MoveList::Column> MoveList::columns() const
 {
-    // [첫 칸] [기술] [타입] [분류] [위력] [명중] [PP] ([획득처] — 기술머신만, 남는 폭)
+    // [첫 칸] [기술] [타입] [분류] [위력] [명중] [PP] [효과] ([획득처] — 기술머신만)
+    // 남는 폭: 레벨업은 효과가 다 갖고, 기술머신은 효과 · 획득처가 반씩
     QList<Column> c;
     int x = kPadding;
     auto add = [&](int w) {
@@ -93,9 +97,15 @@ QList<MoveList::Column> MoveList::columns() const
     add(kNumberWidth);
     add(kNumberWidth);
     add(kNumberWidth);
+    x += kPlacesGap;
+    const int rest = std::max(kEffectMinWidth, width() - x - kPadding);
     if (m_mode == Mode::Machine) {
+        const int effect = std::max(kEffectMinWidth, (rest - kPlacesGap) / 2);
+        add(effect);
         x += kPlacesGap;
         add(std::max(80, width() - x - kPadding));
+    } else {
+        add(rest);
     }
     return c;
 }
@@ -131,6 +141,7 @@ void MoveList::paintEvent(QPaintEvent *)
                                tr("위력"),
                                tr("명중"),
                                tr("PP"),
+                               tr("효과"),
                                tr("획득처")};
     for (qsizetype i = 0; i < c.size(); ++i) {
         const bool numeric = i >= 4 && i <= 6;
@@ -205,10 +216,15 @@ void MoveList::paintEvent(QPaintEvent *)
             painter.setPen(QColor(values[k] > 0 && !variable ? tok::kText1 : tok::kText3));
             painter.drawText(cell(4 + k, top, kRowHeight), Qt::AlignRight | Qt::AlignVCenter, text);
         }
+        // 효과: 변화 기술만("공격 ▲2" · "상대 마비" · 그 세대의 게임 설명문)
+        if (move.damageClass == 1)
+            moveeffect::paint(painter, cell(effectColumn(), top, kRowHeight),
+                              moveeffect::describe(move, m_generation, m_userTypes, m_language),
+                              placeFont);
         // 획득처(기술머신)
         if (m_mode == Mode::Machine) {
             const QString places = placesOf(move);
-            const QRectF where = cell(7, top, kRowHeight);
+            const QRectF where = cell(placesColumn(), top, kRowHeight);
             painter.setFont(placeFont);
             painter.setPen(QColor(places.isEmpty() ? tok::kTextDisabled : tok::kText2));
             painter.drawText(where, Qt::AlignLeft | Qt::AlignVCenter,
@@ -228,7 +244,18 @@ bool MoveList::event(QEvent *event)
         QString tip;
         if (row >= 0) {
             const MoveEntry &move = m_moves.at(row);
-            if (m_mode == Mode::Machine)
+            const Column effect = columns().at(effectColumn());
+            const bool overEffect
+                    = help->pos().x() >= effect.x && help->pos().x() < effect.x + effect.width;
+            if (overEffect && move.damageClass == 1) {
+                // 효과 전체 + (뼈대로 그렸다면) 게임 설명문
+                const moveeffect::Parts parts
+                        = moveeffect::describe(move, m_generation, m_userTypes, m_language);
+                tip = moveeffect::plainText(parts);
+                const QString flavor = move.effect.text(m_language);
+                if (!flavor.isEmpty() && flavor != tip)
+                    tip += QStringLiteral("\n") + flavor;
+            } else if (m_mode == Mode::Machine)
                 tip = placesOf(move).replace(QStringLiteral(" · "), QStringLiteral("\n"));
             else if (move.needsReminder && help->pos().x() < columns().at(0).x + kFirstWidth)
                 tip = tr("진화 전 단계에서는 배우지 않는 기술이에요. 진화한 뒤 기술 "

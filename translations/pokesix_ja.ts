@@ -621,6 +621,10 @@
         <source>진화 전 단계에서는 배우지 않는 기술이에요. 진화한 뒤 기술 떠올리기(하트비늘)로 배워요.</source>
         <translation>進化前は覚えないわざです。進化したあと、わざ思い出し(ハートのウロコ)で覚えます。</translation>
     </message>
+    <message>
+        <source>효과</source>
+        <translation>効果</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::NaturePicker</name>

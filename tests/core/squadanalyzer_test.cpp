@@ -167,6 +167,8 @@ TEST(SquadAnalyzer, EmptySquadHasNoProblems)
 TEST(GenerationFeatures, FollowTheGenerationTable)
 {
     EXPECT_FALSE(featuresOf(1).heldItems);
+    EXPECT_FALSE(featuresOf(1).specialSplit); // 1세대는 "특수" 하나
+    EXPECT_TRUE(featuresOf(2).specialSplit);
     EXPECT_TRUE(featuresOf(2).heldItems);
     EXPECT_FALSE(featuresOf(2).abilities);
     EXPECT_TRUE(featuresOf(3).natures);

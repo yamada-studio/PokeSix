@@ -7,6 +7,15 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Status move effects in the Pokédex move lists ("효과" column), the squad move picker (a second
+  line, also searchable) and slot card tooltips: stat stages with red ▲ / blue ▼ (prefixed "상대"
+  when they hit the target), ailments ("상대 마비") and healing ("HP ½ 회복"), from PokéAPI move
+  meta (schema version 10). Generation differences and special cases live in
+  `resources/data/move-effects.json` (Growth raises only Sp. Atk up to generation 4, String Shot
+  −1 up to 5, Minimize, Sweet Scent, Charge, Stockpile, Toxic, and Curse — a different effect when
+  a Ghost uses it); generation 1 shows one "특수" stat. Moves without stat, ailment or healing data
+  (screens, weather, Substitute …) show the generation's game text. The squad move picker labels
+  level-up moves "자력(n레벨)".
 - SixSquad editor (Squad tab). Each generation keeps its own squad of six, saved to `squads.json`
   in the app data folder shortly after every change. Slot cards show the Pokémon in the
   generation's types, a role note, ability, nature and held item (only where the generation has

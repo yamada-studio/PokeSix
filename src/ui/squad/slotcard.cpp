@@ -5,6 +5,7 @@
 #include "data/sprites/spritecache.h"
 #include "data/state/squadsession.h"
 #include "ui/dex/dexrowdelegate.h"
+#include "ui/dex/moveeffect.h"
 #include "ui/items/itemrowdelegate.h"
 #include "ui/squad/squadpaint.h"
 #include "ui/theme/cursors.h"
@@ -265,15 +266,19 @@ bool SlotCard::event(QEvent *event)
             if (!g.moves[i].contains(pos) || !slotMove)
                 continue;
             const MoveEntry &m = slotMove->move;
-            const QString text
-                    = slotMove->learnable
-                              ? tr("위력 %1 · 명중 %2 · PP %3")
-                                        .arg(m.power > 0 ? QString::number(m.power)
-                                                         : QStringLiteral("—"),
-                                             m.accuracy > 0 ? QString::number(m.accuracy)
-                                                            : QStringLiteral("—"))
-                                        .arg(m.pp)
-                              : tr("이 게임에서는 배울 수 없는 기술이에요. 다시 골라 주세요.");
+            QString text = slotMove->learnable
+                                   ? tr("위력 %1 · 명중 %2 · PP %3")
+                                             .arg(m.power > 0 ? QString::number(m.power)
+                                                              : QStringLiteral("—"),
+                                                  m.accuracy > 0 ? QString::number(m.accuracy)
+                                                                 : QStringLiteral("—"))
+                                             .arg(m.pp)
+                                   : tr("이 게임에서는 배울 수 없는 기술이에요. 다시 골라 주세요.");
+            if (slotMove->learnable && m.damageClass == 1) // 변화 기술: 효과 줄을 앞에
+                text = moveeffect::plainText(moveeffect::describe(m, m_session->generation(),
+                                                                  m_session->detail(m_slot).types,
+                                                                  m_language))
+                       + QStringLiteral("\n") + text;
             QToolTip::showText(static_cast<QHelpEvent *>(event)->globalPos(), text, this);
             return true;
         }

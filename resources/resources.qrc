@@ -13,6 +13,7 @@
     <file>data/place-names.json</file>       <!-- 장소 한국어 이름 사전 -->
     <file>data/encounter-methods.json</file> <!-- 야생 출현 방법 이름 -->
     <file>data/starters.json</file>          <!-- 게임별 스타팅 포켓몬 -->
+    <file>data/move-effects.json</file>      <!-- 변화 기술 설명의 세대 차이 · 예외 -->
     <file>icons/cursor/glove-point.svg</file> <!-- 흰 장갑 커서(가리키기) -->
     <file>icons/cursor/glove-grab.svg</file>  <!-- 흰 장갑 커서(움켜쥐기) -->
     <file>icons/ui/check-white.svg</file> <!-- QCheckBox 체크 표시 (app.qss) -->

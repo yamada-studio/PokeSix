@@ -24,8 +24,9 @@ public:
     MoveList(Mode mode, SpriteCache *icons, QWidget *parent = nullptr);
 
     // versionGroup: 기술머신 획득처 사전의 키("platinum"). generation: 아이콘 모양(1–5세대 BW 그림)
+    // userTypes: 이 포켓몬의 타입(저주처럼 쓰는 쪽 타입에 따라 효과가 다른 변화 기술)
     void setMoves(const QList<MoveEntry> &moves, const QString &versionGroup, int generation,
-                  Language language);
+                  const QStringList &userTypes, Language language);
 
     QSize sizeHint() const override;
 
@@ -42,11 +43,14 @@ private:
     QList<Column> columns() const; // 지금 폭에서 칸 위치
     int rowAt(int y) const;
     QString placesOf(const MoveEntry &move) const;
+    int effectColumn() const { return 7; } // 효과(변화 기술만)
+    int placesColumn() const { return 8; } // 획득처(기술머신만)
 
     Mode m_mode;
     SpriteCache *m_icons = nullptr;
     QList<MoveEntry> m_moves;
     QString m_versionGroup;
+    QStringList m_userTypes;
     int m_generation = 1;
     Language m_language = Language::Korean;
 };

@@ -35,7 +35,7 @@
 // [이름] 포켓몬 · 타입 이름은 ko / en / ja 열로 둔다(PokéAPI languages: 3 = ko, 9 = en, 11 = ja).
 //   UI 문구(tr())와는 별개의 경로다(architecture.md §4).
 namespace com::yamada::studio::schema {
-inline constexpr int kVersion = 9; // 스키마를 바꾸면 올린다. meta 표에 기록된다
+inline constexpr int kVersion = 10; // 스키마를 바꾸면 올린다. meta 표에 기록된다
 
 inline constexpr std::array kStatements = {
         // 이 DB를 만든 원천과 스키마 버전 (key = 'schema_version', 'source_commit', 'imported_at')
@@ -189,6 +189,16 @@ inline constexpr std::array kStatements = {
         R"(CREATE TABLE item_effects (
         item_id INTEGER NOT NULL REFERENCES items(id), generation INTEGER NOT NULL,
         text_ko TEXT, text_en TEXT, text_ja TEXT, PRIMARY KEY (item_id, generation)))",
+        // 기술 효과의 뼈대(PokéAPI move_meta · moves.target_id): 대상 · 분류 · 상태이상 ·
+        // 회복량(%).
+        // 능력치 변화는 move_stat_changes에 기술마다 여러 줄. 둘 다 지금(최신 게임) 값이다 — 옛
+        // 세대 차이(성장 · 실뿜기 …)는 UI의 move-effects.json이 덮는다
+        R"(CREATE TABLE move_meta (
+        move_id INTEGER PRIMARY KEY REFERENCES moves(id), target INTEGER NOT NULL,
+        category INTEGER NOT NULL, ailment INTEGER NOT NULL, healing INTEGER NOT NULL))",
+        R"(CREATE TABLE move_stat_changes (
+        move_id INTEGER NOT NULL REFERENCES moves(id), stat_id INTEGER NOT NULL,
+        change INTEGER NOT NULL))",
         // 기술 설명문(item_effects와 같은 꼴). 기술머신 설명에 쓴다 — 아이템 설명문의 한국어는
         // 6세대부터라 앞 세대 기술머신은 담긴 기술의 설명문을 가까운 세대에서 빌려 온다
         R"(CREATE TABLE move_effects (

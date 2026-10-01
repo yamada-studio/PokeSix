@@ -1,0 +1,37 @@
+{
+  "_comment": [
+    "변화 기술 설명의 세대 차이 · 예외 (ui/dex/moveeffect.cpp가 읽는다).",
+    "기본은 PokéAPI move_meta · move_meta_stat_changes(지금 게임 값)로 \"공격 ▲2\" · \"상대 마비\" · \"HP ½ 회복\"을 만든다.",
+    "history: untilGen 세대까지는 stats가 이 값이었다([stat id, 단계]; 2 공격 3 방어 4 특공 5 특방 6 스피드 7 명중률 8 회피율).",
+    "  출처: PokéAPI move_changelog의 effect 변경(성장 · 실뿜기 · 반딧불) + PokéAPI에 기록이 없는 것(작아지기 5세대 +2,",
+    "  달콤한향기 6세대 −2, 충전 4세대부터 특방 +1, 비축하기 4세대부터 방어 · 특방 +1).",
+    "stats: 모든 세대에서 이 능력치 변화(PokéAPI에 없는 고유 효과 기술: 저주).",
+    "note: 능력치 · 상태이상 뒤에 붙는 설명. ailment: 상태이상 이름 바꾸기(맹독은 PokéAPI에서 '독'이다).",
+    "userType + userTypeNote: 쓰는 포켓몬이 그 타입이면 다른 효과(저주 — 고스트)."
+  ],
+  "moves": {
+    "growth":      { "history": [{ "untilGen": 4, "stats": [[4, 1]] }] },
+    "string-shot": { "history": [{ "untilGen": 5, "stats": [[6, -1]] }] },
+    "tail-glow":   { "history": [{ "untilGen": 4, "stats": [[4, 2]] }] },
+    "minimize":    { "history": [{ "untilGen": 4, "stats": [[8, 1]] }] },
+    "sweet-scent": { "history": [{ "untilGen": 5, "stats": [[8, -1]] }] },
+    "charge": {
+      "note": { "ko": "다음 전기 기술 위력 2배", "en": "next Electric move ×2", "ja": "次のでんき技の威力2倍" },
+      "history": [{ "untilGen": 3, "stats": [] }]
+    },
+    "stockpile": {
+      "note": { "ko": "비축 +1(최대 3)", "en": "Stockpile +1 (max 3)", "ja": "たくわえ +1(最大3)" },
+      "history": [{ "untilGen": 3, "stats": [] }]
+    },
+    "toxic": { "ailment": { "ko": "맹독", "en": "badly poisoned", "ja": "もうどく" } },
+    "curse": {
+      "stats": [[2, 1], [3, 1], [6, -1]],
+      "userType": "ghost",
+      "userTypeNote": {
+        "ko": "HP ½을 깎아 상대를 저주(매 턴 ¼ 피해)",
+        "en": "cuts own HP by ½ to curse the target (¼ damage each turn)",
+        "ja": "HPを½けずって相手をのろう(毎ターン¼ダメージ)"
+      }
+    }
+  }
+}
