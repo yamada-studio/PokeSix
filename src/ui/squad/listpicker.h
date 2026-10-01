@@ -4,6 +4,8 @@
 
 #include <functional>
 
+class QHBoxLayout;
+class QLabel;
 class QListView;
 class QSortFilterProxyModel;
 class QStringListModel;
@@ -34,6 +36,11 @@ public:
     void setCurrentRow(int row); // 처음에 고른 줄(지금 값)
     // 목록 위 칸 제목 띠. painter가 row = −1로 불린다(줄과 같은 rect 계산으로 제목을 맞춘다)
     void showHeader(int height = 24);
+    // 제목 줄 오른쪽에 위젯(포켓몬 선택의 도감 칩). 소유권은 ListPicker
+    void setHeadingWidget(QWidget *widget);
+    void setHeading(const QString &text); // 제목 글자만 바꾼다(창 제목은 그대로)
+    // 줄을 통째로 바꾼다(도감을 바꿨다). painter가 보는 목록을 먼저 바꾼 뒤 부른다. 검색어는 남는다
+    void setSearchTexts(const QStringList &searchTexts);
     int chosenRow() const { return m_chosen; }
     QListView *view() const { return m_view; } // 그림이 받아지면 다시 그리기용
 
@@ -50,6 +57,8 @@ private:
     RowHover *m_hover = nullptr;
     QWidget *m_noneButton = nullptr;
     QWidget *m_header = nullptr;
+    QLabel *m_heading = nullptr;
+    QHBoxLayout *m_headingRow = nullptr;
     Painter m_painter;
     int m_chosen = -1;
 };

@@ -147,6 +147,21 @@
     </message>
 </context>
 <context>
+    <name>com::yamada::studio::DexFilterBar</name>
+    <message>
+        <source>전국</source>
+        <translation>National</translation>
+    </message>
+    <message>
+        <source>그 세대까지 나온 포켓몬 전부</source>
+        <translation>Every Pokémon up to this generation</translation>
+    </message>
+    <message>
+        <source>%1 도감 — %2</source>
+        <translation>%1 Pokédex — %2</translation>
+    </message>
+</context>
+<context>
     <name>com::yamada::studio::DexPage</name>
     <message>
         <source>이름 · 번호로 찾기</source>
@@ -929,10 +944,6 @@
         <translation>Clear</translation>
     </message>
     <message>
-        <source>%1세대 포켓몬 고르기 · %2마리</source>
-        <translation>Choose a Gen %1 Pokémon · %2</translation>
-    </message>
-    <message>
         <source>No.</source>
         <translation>No.</translation>
     </message>
@@ -999,6 +1010,14 @@
     <message>
         <source>물건 없음</source>
         <translation>No item</translation>
+    </message>
+    <message>
+        <source>포켓몬 고르기 · %1마리</source>
+        <translation>Choose a Pokémon · %1</translation>
+    </message>
+    <message>
+        <source>%1세대 포켓몬 고르기</source>
+        <translation>Choose a Gen %1 Pokémon</translation>
     </message>
 </context>
 <context>

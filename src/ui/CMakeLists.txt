@@ -86,6 +86,8 @@ qt_add_library(pokesix_ui STATIC
     squad/squadpaint.cpp
     squad/slotcard.h
     squad/slotcard.cpp
+    squad/dexfilterbar.h
+    squad/dexfilterbar.cpp
     squad/listpicker.h
     squad/listpicker.cpp
     squad/heatmapview.h

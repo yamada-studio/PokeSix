@@ -11,6 +11,7 @@
 #include "ui/dex/naturepicker.h"
 #include "ui/items/itemrowdelegate.h"
 #include "ui/logging/logging.h"
+#include "ui/squad/dexfilterbar.h"
 #include "ui/squad/heatmapview.h"
 #include "ui/squad/listpicker.h"
 #include "ui/squad/problemlist.h"
@@ -574,18 +575,45 @@ void SquadPage::pickPokemon(int slot)
 {
     const Language language = m_state->language();
     const int generation = m_session->generation();
-    const QList<SpeciesRow> rows = m_repository->speciesForGeneration(generation);
+    // 도감 칩: 그 세대의 지방 도감. 처음엔 스쿼드 게임의 도감(Pt → 신오 Pt), 한 번 바꾸면 그 게임
+    // 동안은 마지막에 고른 도감을 기억한다
+    const QList<DexInfo> dexes = m_repository->dexesForGeneration(generation);
+    const QString game = m_session->versionGroup();
+    int dexId = m_pickerDex.value(game, -1);
+    if (dexId < 0) {
+        dexId = DexFilterBar::kNational;
+        for (const DexInfo &dex : dexes)
+            if (dex.versionGroups.contains(game) && !dexstyle::dex(dex.identifier).hidden) {
+                dexId = dex.pokedexId;
+                break;
+            }
+    }
+    QList<SpeciesRow> rows; // painter가 참조로 본다 → 도감을 바꾸면 이 목록을 먼저 바꾼다
     QStringList search;
     int current = -1;
-    for (qsizetype i = 0; i < rows.size(); ++i) {
-        const SpeciesRow &row = rows.at(i);
-        search.append(QStringLiteral("%1 %2").arg(row.speciesId).arg(row.name.all()));
-        if (row.pokemonId == m_session->member(slot).pokemonId)
-            current = int(i);
-    }
+    auto load = [&](int id) {
+        rows = id == DexFilterBar::kNational ? m_repository->speciesForGeneration(generation)
+                                             : m_repository->speciesForDex(id, generation);
+        search.clear();
+        current = -1;
+        for (qsizetype i = 0; i < rows.size(); ++i) {
+            const SpeciesRow &row = rows.at(i);
+            // 지방 번호 · 전국 번호 둘 다로 찾을 수 있게
+            search.append(QStringLiteral("%1 %2 %3")
+                                  .arg(row.dexNumber)
+                                  .arg(row.speciesId)
+                                  .arg(row.name.all()));
+            if (row.pokemonId == m_session->member(slot).pokemonId)
+                current = int(i);
+        }
+    };
+    load(dexId);
+    auto heading = [&] {
+        return tr("포켓몬 고르기 · %1마리").arg(rows.size());
+    };
     SpriteCache *icons = m_pokemonIcons;
     ListPicker picker(
-            tr("%1세대 포켓몬 고르기 · %2마리").arg(generation).arg(rows.size()), search,
+            tr("%1세대 포켓몬 고르기").arg(generation), search,
             [this, &rows, icons, language](QPainter &painter, const QRect &r, int i, bool) {
                 if (i < 0) { // 칸 제목
                     painter.setFont(theme::font(theme::kFamilyBody, 11, QFont::ExtraBold));
@@ -605,7 +633,7 @@ void SquadPage::pickPokemon(int slot)
                 painter.setPen(QColor(tok::kText3));
                 painter.drawText(QRect(r.left() + 14, r.top(), 52, r.height()),
                                  Qt::AlignLeft | Qt::AlignVCenter,
-                                 QStringLiteral("%1").arg(row.speciesId, 3, 10, QLatin1Char('0')));
+                                 QStringLiteral("%1").arg(row.dexNumber, 3, 10, QLatin1Char('0')));
                 DexRowDelegate::paintPokemonIcon(
                         &painter, QRectF(r.left() + 62, r.top() + 3, 40, r.height() - 6),
                         row.pokemonId, icons);
@@ -628,6 +656,17 @@ void SquadPage::pickPokemon(int slot)
             },
             DexRowDelegate::kRowHeight, this);
     connect(icons, &SpriteCache::ready, picker.view()->viewport(), qOverload<>(&QWidget::update));
+    picker.setHeading(heading());
+    DexFilterBar *filter = new DexFilterBar;
+    filter->setDexes(dexes, language, dexId);
+    picker.setHeadingWidget(filter);
+    connect(filter, &DexFilterBar::dexSelected, &picker, [&, game](int id) {
+        load(id);
+        picker.setSearchTexts(search);
+        picker.setHeading(heading());
+        picker.setCurrentRow(current);
+        m_pickerDex.insert(game, id);
+    });
     picker.showHeader();
     picker.setCurrentRow(current);
     if (picker.exec() != QDialog::Accepted || picker.chosenRow() < 0)

@@ -147,6 +147,21 @@
     </message>
 </context>
 <context>
+    <name>com::yamada::studio::DexFilterBar</name>
+    <message>
+        <source>전국</source>
+        <translation>全国</translation>
+    </message>
+    <message>
+        <source>그 세대까지 나온 포켓몬 전부</source>
+        <translation>この世代までのすべてのポケモン</translation>
+    </message>
+    <message>
+        <source>%1 도감 — %2</source>
+        <translation>%1図鑑 — %2</translation>
+    </message>
+</context>
+<context>
     <name>com::yamada::studio::DexPage</name>
     <message>
         <source>이름 · 번호로 찾기</source>
@@ -929,10 +944,6 @@
         <translation>空にする</translation>
     </message>
     <message>
-        <source>%1세대 포켓몬 고르기 · %2마리</source>
-        <translation>第%1世代のポケモンを選ぶ・%2匹</translation>
-    </message>
-    <message>
         <source>No.</source>
         <translation>No.</translation>
     </message>
@@ -999,6 +1010,14 @@
     <message>
         <source>물건 없음</source>
         <translation>持ち物なし</translation>
+    </message>
+    <message>
+        <source>포켓몬 고르기 · %1마리</source>
+        <translation>ポケモンを選ぶ・%1匹</translation>
+    </message>
+    <message>
+        <source>%1세대 포켓몬 고르기</source>
+        <translation>第%1世代のポケモンを選ぶ</translation>
     </message>
 </context>
 <context>

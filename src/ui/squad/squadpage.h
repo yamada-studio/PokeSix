@@ -1,5 +1,6 @@
 #pragma once
 
+#include <QHash>
 #include <QList>
 #include <QWidget>
 
@@ -100,5 +101,6 @@ private:
     SplitBar *m_split = nullptr;
 
     int m_selected = -1;
+    QHash<QString, int> m_pickerDex; // 게임(버전 그룹) → 포켓몬 선택 창에서 마지막에 고른 도감
 };
 } // namespace com::yamada::studio

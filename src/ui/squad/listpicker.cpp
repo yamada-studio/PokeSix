@@ -111,9 +111,12 @@ ListPicker::ListPicker(const QString &title, const QStringList &searchTexts, Pai
     QVBoxLayout *layout = new QVBoxLayout(this);
     layout->setContentsMargins(16, 14, 16, 14);
     layout->setSpacing(10);
-    QLabel *heading = new QLabel(title);
-    heading->setObjectName(QStringLiteral("dexSectionLabel"));
-    layout->addWidget(heading);
+    m_headingRow = new QHBoxLayout;
+    m_heading = new QLabel(title);
+    m_heading->setObjectName(QStringLiteral("dexSectionLabel"));
+    m_headingRow->addWidget(m_heading);
+    m_headingRow->addStretch();
+    layout->addLayout(m_headingRow);
     m_search = new SearchField(tr("이름으로 찾기"));
     m_search->lineEdit()->installEventFilter(this);
     layout->addWidget(m_search);
@@ -167,6 +170,23 @@ void ListPicker::showHeader(int height)
 {
     m_header->setFixedHeight(height);
     m_header->show();
+}
+
+void ListPicker::setHeadingWidget(QWidget *widget)
+{
+    m_headingRow->addWidget(widget);
+}
+
+void ListPicker::setHeading(const QString &text)
+{
+    m_heading->setText(text);
+}
+
+void ListPicker::setSearchTexts(const QStringList &searchTexts)
+{
+    // QStringListModel::setStringList는 모델 리셋 → 프록시 · 뷰가 처음부터 다시 읽는다
+    m_model->setStringList(searchTexts);
+    m_view->scrollToTop();
 }
 
 void ListPicker::setCurrentRow(int row)
