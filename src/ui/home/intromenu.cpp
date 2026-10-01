@@ -18,7 +18,7 @@ constexpr int kDividerSpacing = 14 - kItemSpacing;
 constexpr int kDividerLine = 2;   // border-top: 2px dashed line
 constexpr int kDividerInsetX = 8; // margin: 4px 8px 의 좌우 8
 constexpr int kDividerInsetY = 4; // 〃 위 4
-// 데이터가 있어야 쓸 수 있는 메뉴 줄(도감 백과 · 아이템 백과 · SixSquad). 규칙을 if 대신 표로 둔다.
+// 데이터가 있어야 쓸 수 있는 메뉴 줄(도감 백과 · 아이템 백과 · 스쿼드). 규칙을 if 대신 표로 둔다.
 constexpr int kNeedsData[] = {0, 1, 2};
 } // namespace
 
@@ -41,7 +41,7 @@ IntroMenu::IntroMenu(QWidget *parent)
     const Entry entries[] = {
             {tr("도감 백과"), tr("종족값 · 타입 상성 · 습득 기술")},
             {tr("아이템 백과"), tr("회복 · 기술머신 · 진화 · 배틀 · 기타")},
-            {tr("SixSquad"), tr("여섯 자리 파티 편성과 타입 분석")},
+            {tr("스쿼드"), tr("여섯 자리 파티 편성과 타입 분석")},
             {tr("설정"), tr("세대 규칙 · 데이터 · 언어 · 테마")},
     };
 

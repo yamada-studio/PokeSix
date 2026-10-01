@@ -157,7 +157,7 @@ HomePage::HomePage(DataUpdater *updater, QWidget *parent)
 
     // 메뉴 창 = 겉모양(PanelFrame) + 내용(IntroMenu). 폭은 쓰는 쪽(HomePage)이 정한다.
     m_menu = new IntroMenu;
-    m_menu->setDataLocked(firstRun); // 데이터가 필요한 줄(도감 · 아이템 · SixSquad)을 잠근다
+    m_menu->setDataLocked(firstRun); // 데이터가 필요한 줄(도감 · 아이템 · 스쿼드)을 잠근다
     PanelFrame *menuFrame = new PanelFrame;
     menuFrame->setPanelStyle(kMenuWindow);
     menuFrame->setFixedWidth(kMenuWidth);
