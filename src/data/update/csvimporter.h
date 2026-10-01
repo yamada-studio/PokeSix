@@ -58,6 +58,7 @@ private:
                            const QString &table, const QString &idField);
     bool importItemEffects(QSqlDatabase &db);
     bool importMoveEffects(QSqlDatabase &db); // 기술 설명문(기술머신 설명)
+    bool importMoveMeta(QSqlDatabase &db); // 기술 효과 뼈대(대상 · 상태이상 · 회복 · 능력치 변화)
     bool writeMeta(QSqlDatabase &db);
 
     // CSV 파일 하나를 열어, 레코드마다 columns 순서대로 값을 뽑아 row(values)를 부른다.

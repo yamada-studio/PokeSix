@@ -8,6 +8,7 @@
 #include "data/state/squadsession.h"
 #include "data/store/squadstore.h"
 #include "ui/dex/dexrowdelegate.h"
+#include "ui/dex/moveeffect.h"
 #include "ui/dex/naturepicker.h"
 #include "ui/items/itemrowdelegate.h"
 #include "ui/logging/logging.h"
@@ -731,6 +732,8 @@ void SquadPage::pickMove(int slot, int index)
     const auto &current = m_session->slotMoves(slot)[std::size_t(index)];
     QStringList search;
     QStringList methods; // "자력(1레벨) · TM26 · 가르침 · 알"
+    QList<moveeffect::Parts> effects; // 변화 기술의 효과 줄(공격 ▲2 …). 공격 기술은 비어 있다
+    const QStringList userTypes = m_session->detail(slot).types;
     int currentRow = -1;
     for (qsizetype i = 0; i < rows.size(); ++i) {
         const SquadSession::LearnableMove &row = rows.at(i);
@@ -744,8 +747,14 @@ void SquadPage::pickMove(int slot, int index)
         if (row.egg)
             parts.append(tr("알"));
         methods.append(parts.join(QStringLiteral(" · ")));
+        effects.append(row.move.damageClass == 1
+                               ? moveeffect::describe(row.move, m_session->generation(), userTypes,
+                                                      language)
+                               : moveeffect::Parts());
+        // 효과 글자로도 찾을 수 있게("회피율" · "마비")
         search.append(row.move.name.all() + QLatin1Char(' ') + typeName(row.move.type)
-                      + QLatin1Char(' ') + methods.last());
+                      + QLatin1Char(' ') + methods.last() + QLatin1Char(' ')
+                      + moveeffect::plainText(effects.last()));
         if (current && current->move.moveId == row.move.moveId)
             currentRow = int(i);
     }
@@ -754,7 +763,8 @@ void SquadPage::pickMove(int slot, int index)
                                   .arg(rows.size());
     ListPicker picker(
             title, search,
-            [this, &rows, &methods, language](QPainter &painter, const QRect &r, int i, bool) {
+            [this, &rows, &methods, &effects, language](QPainter &painter, const QRect &r, int i,
+                                                        bool) {
                 if (i < 0) { // 칸 제목
                     painter.setFont(theme::font(theme::kFamilyBody, 11, QFont::ExtraBold));
                     painter.setPen(QColor(tok::kText3));
@@ -773,6 +783,10 @@ void SquadPage::pickMove(int slot, int index)
                     return;
                 }
                 const MoveEntry &move = rows.at(i).move;
+                // 변화 기술은 두 줄: 위 = 이름 · 분류 · 수치, 아래 = 효과(공격 ▲2 · 상대 마비 …)
+                const moveeffect::Parts &effect = effects.at(i);
+                const QRect line
+                        = effect.isEmpty() ? r : QRect(r.left(), r.top() + 1, r.width(), 20);
                 if (const tok::TypeColor *type = typechip::find(move.type))
                     typechip::paint(painter,
                                     QPointF(r.left() + 14, r.center().y() - typechip::kHeight / 2),
@@ -780,12 +794,12 @@ void SquadPage::pickMove(int slot, int index)
                 painter.setFont(theme::font(theme::kFamilyBody, 13, QFont::ExtraBold));
                 painter.setPen(QColor(tok::kText1));
                 painter.drawText(
-                        QRect(r.left() + 96, r.top(), 140, r.height()),
+                        QRect(r.left() + 96, line.top(), 140, line.height()),
                         Qt::AlignLeft | Qt::AlignVCenter,
                         QFontMetricsF(painter.font())
                                 .elidedText(move.name.text(language), Qt::ElideRight, 140));
                 squadpaint::paintDamageClass(painter,
-                                             QRectF(r.left() + 240, r.center().y() - 9, 22, 18),
+                                             QRectF(r.left() + 240, line.center().y() - 9, 22, 18),
                                              move.damageClass);
                 painter.setFont(theme::font(theme::kFamilyData, 12, QFont::Bold));
                 painter.setPen(QColor(tok::kText2));
@@ -795,8 +809,11 @@ void SquadPage::pickMove(int slot, int index)
                 const QString stats[3]
                         = {number(move.power), number(move.accuracy), QString::number(move.pp)};
                 for (int s = 0; s < 3; ++s)
-                    painter.drawText(QRect(r.left() + 270 + s * 46, r.top(), 40, r.height()),
+                    painter.drawText(QRect(r.left() + 270 + s * 46, line.top(), 40, line.height()),
                                      Qt::AlignRight | Qt::AlignVCenter, stats[s]);
+                if (!effect.isEmpty())
+                    moveeffect::paint(painter, QRectF(r.left() + 96, r.top() + 19, 314, 15), effect,
+                                      theme::font(theme::kFamilyBody, 11, QFont::Bold));
                 painter.setFont(theme::font(theme::kFamilyBody, 11, QFont::Bold));
                 painter.setPen(QColor(tok::kText3));
                 const int left = r.left() + 420;

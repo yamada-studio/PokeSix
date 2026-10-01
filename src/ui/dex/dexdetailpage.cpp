@@ -407,9 +407,9 @@ void DexDetailPage::applyLanguage()
     m_abilities->setAbilities(m_detail.abilities, m_detail.generation, language);
     applyNature();
     m_levelMoves->setMoves(m_detail.levelMoves, m_detail.versionGroup, m_detail.generation,
-                           language);
+                           m_detail.types, language);
     m_machineMoves->setMoves(m_detail.machineMoves, m_detail.versionGroup, m_detail.generation,
-                             language);
+                             m_detail.types, language);
     m_machinePanel->setTitle(tr("기술머신 · 비전머신"),
                              tr("%1개").arg(m_detail.machineMoves.size()));
 }

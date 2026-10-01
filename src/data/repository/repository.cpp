@@ -779,7 +779,8 @@ void Repository::fillMoves(QList<MoveEntry> &moves, int generation)
     query.prepare(
             QStringLiteral("SELECT m.id, m.name_ko, m.name_en, m.name_ja, t.identifier, m.power, "
                            "m.pp, m.accuracy, "
-                           "m.damage_class FROM moves m "
+                           "m.damage_class, m.identifier, mm.target, mm.ailment, mm.healing "
+                           "FROM moves m LEFT JOIN move_meta mm ON mm.move_id = m.id "
                            "LEFT JOIN move_types mt ON mt.move_id = m.id AND mt.gen_from <= :g "
                            "  AND (mt.gen_to IS NULL OR mt.gen_to >= :g) "
                            "LEFT JOIN types t ON t.id = mt.type_id"));
@@ -799,6 +800,10 @@ void Repository::fillMoves(QList<MoveEntry> &moves, int generation)
             m.pp = query.value(6).toInt();
             m.accuracy = query.value(7).toInt();
             m.damageClass = query.value(8).toInt();
+            m.identifier = query.value(9).toString();
+            m.target = query.value(10).toInt();
+            m.ailment = query.value(11).toInt();
+            m.healing = query.value(12).toInt();
             info.insert(id, m);
         }
     }
@@ -817,6 +822,38 @@ void Repository::fillMoves(QList<MoveEntry> &moves, int generation)
                     {query.value(1).toInt(), query.value(2), query.value(3), query.value(4)});
     }
 
+    // 능력치 변화 · 그 세대 설명문(언어마다: generation 이하 중 가장 최근, 없으면 이후 중 가장 이른
+    // 것)
+    if (query.exec(QStringLiteral("SELECT move_id, stat_id, change FROM move_stat_changes "
+                                  "ORDER BY move_id, stat_id"))) {
+        while (query.next()) {
+            const auto it = info.find(query.value(0).toInt());
+            if (it != info.end())
+                it->statChanges.append({query.value(1).toInt(), query.value(2).toInt()});
+        }
+    }
+    QHash<int, std::array<int, 3>> effectFrom; // move id → 언어별로 문구를 가져온 세대(0 = 없음)
+    if (query.exec(QStringLiteral("SELECT move_id, generation, text_ko, text_en, text_ja FROM "
+                                  "move_effects ORDER BY generation"))) {
+        while (query.next()) {
+            const auto it = info.find(query.value(0).toInt());
+            if (it == info.end())
+                continue;
+            const int g = query.value(1).toInt();
+            std::array<int, 3> &from = effectFrom[it.key()];
+            QString *byLanguage[3] = {&it->effect.ko, &it->effect.en, &it->effect.ja};
+            for (int language = 0; language < 3; ++language) {
+                const QString text = query.value(2 + language).toString();
+                if (text.isEmpty())
+                    continue;
+                if (from[language] == 0 || (g <= generation && from[language] <= generation)) {
+                    *byLanguage[language] = text;
+                    from[language] = g;
+                }
+            }
+        }
+    }
+
     for (MoveEntry &move : moves) {
         const MoveEntry base = info.value(move.moveId);
         move.name = base.name;
@@ -826,6 +863,12 @@ void Repository::fillMoves(QList<MoveEntry> &moves, int generation)
         move.accuracy = base.accuracy;
         move.damageClass = base.damageClass;
         move.ownDamageClass = base.damageClass;
+        move.identifier = base.identifier;
+        move.target = base.target;
+        move.ailment = base.ailment;
+        move.healing = base.healing;
+        move.statChanges = base.statChanges;
+        move.effect = base.effect;
         bool powerSet = false, ppSet = false, accuracySet = false;
         for (const Past &p : past.value(move.moveId)) {
             if (p.until < generation)

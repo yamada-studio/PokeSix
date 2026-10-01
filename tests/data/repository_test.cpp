@@ -552,3 +552,24 @@ TEST_F(RepositoryTest, DamageClassFollowsTheTypeUntilGeneration3)
     // 기술 자체의 분류는 세대와 상관없이 남아 있다("4세대 이후 규칙이었다면"에 쓴다)
     EXPECT_EQ(repository.moves({7}, 3).first().ownDamageClass, 2);
 }
+
+TEST_F(RepositoryTest, MovesCarryTheirEffectSkeleton)
+{
+    Repository repository(s_dbPath);
+    const QList<MoveEntry> moves = repository.moves({14, 86, 174, 74}, 4);
+    ASSERT_EQ(moves.size(), 4);
+    // 칼춤: 자신(대상 7) 공격 +2
+    EXPECT_EQ(moves[0].identifier, QStringLiteral("swords-dance"));
+    EXPECT_EQ(moves[0].target, 7);
+    EXPECT_EQ(moves[0].statChanges, (QList<std::pair<int, int>> {{2, 2}}));
+    // 전기자석파: 상대 마비
+    EXPECT_EQ(moves[1].ailment, 1);
+    EXPECT_TRUE(moves[1].statChanges.isEmpty());
+    // 저주: PokéAPI에는 고유 효과(분류 13)라 능력치 변화가 없다 — 고스트 / 그 밖 두 경우를 UI
+    // 사전(move-effects.json)이 정한다
+    EXPECT_TRUE(moves[2].statChanges.isEmpty());
+    // 성장: DB는 지금 값(공격 · 특공 +1). 4세대까지 특공만이었던 차이는 UI 사전(move-effects.json)
+    EXPECT_EQ(moves[3].statChanges, (QList<std::pair<int, int>> {{2, 1}, {4, 1}}));
+    // 그 세대 설명문: 한국어는 XY부터라 4세대는 6세대 문구를 빌린다
+    EXPECT_FALSE(moves[0].effect.ko.isEmpty());
+}

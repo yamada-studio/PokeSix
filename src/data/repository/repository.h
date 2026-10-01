@@ -79,6 +79,13 @@ struct MoveEntry
     // 기술 자체의 분류(세대 규칙을 적용하기 전). 3세대까지 damageClass는 타입이 정한 값이라, "4세대
     // 이후 규칙이었다면"(스쿼드 물리 · 특수 분포)을 셀 때 이 값을 쓴다
     int ownDamageClass = 0;
+    // 효과 뼈대(지금 게임 값 — 옛 세대 차이는 UI의 move-effects.json이 덮는다)
+    QString identifier; // "swords-dance" — UI 효과 사전의 키
+    int target = 0;     // PokéAPI move_targets.id: 7 자신, 10 고른 상대 …
+    int ailment = 0; // move_meta_ailments.id: 1 마비 · 2 잠듦 · 3 얼음 · 4 화상 · 5 독 · 6 혼란 …
+    int healing = 0;                        // HP 회복 %(음수 = 소모)
+    QList<std::pair<int, int>> statChanges; // (stat id 2–8, 단계 ±n)
+    LocalizedText effect; // 그 세대의 게임 설명문(언어마다 가까운 세대 것)
 };
 
 // 야생 출현 한 줄: 버전 · 장소 · 방법마다 레벨 범위와 출현 칸 확률의 합.

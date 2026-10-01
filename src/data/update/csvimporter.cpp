@@ -11,6 +11,7 @@
 #include <QFile>
 #include <QMap>
 #include <QPair>
+#include <QSet>
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
@@ -147,9 +148,9 @@ bool CsvImporter::run(const QString &csvDir, const QString &dbPath)
                  && importPokemonTypes(db) && importPokemonStats(db) && importRegions(db)
                  && importVersionGroups(db) && importVersions(db) && importPokedexes(db)
                  && importItems(db) && importItemEffects(db) && importMoves(db)
-                 && importMoveEffects(db) && importMachines(db) && importPokemonMoves(db)
-                 && importEncounters(db) && importEvolutions(db) && importAbilities(db)
-                 && importNatures(db) && writeMeta(db);
+                 && importMoveEffects(db) && importMoveMeta(db) && importMachines(db)
+                 && importPokemonMoves(db) && importEncounters(db) && importEvolutions(db)
+                 && importAbilities(db) && importNatures(db) && writeMeta(db);
             if (ok)
                 ok = db.commit()
                      || fail(QStringLiteral("commit failed: %1").arg(db.lastError().text()));
@@ -1156,6 +1157,52 @@ bool CsvImporter::importMoveEffects(QSqlDatabase &db)
 {
     return importFlavorTexts(db, QStringLiteral("move_flavor_text"), QStringLiteral("move_id"),
                              QStringLiteral("move_effects"), QStringLiteral("move_id"));
+}
+
+bool CsvImporter::importMoveMeta(QSqlDatabase &db)
+{
+    // 1) 대상(moves.target_id): 7 = 자신, 10 = 고른 상대 … 능력치 변화가 누구 것인지 가른다
+    QHash<int, int> targets;
+    if (!forEachRecord(QStringLiteral("moves"), {QStringLiteral("id"), QStringLiteral("target_id")},
+                       [&](const QStringList &v) {
+                           targets.insert(v[0].toInt(), v[1].toInt());
+                           return true;
+                       }))
+        return false;
+    // 2) move_meta: 분류 · 상태이상 · 회복량(%, 음수 = 소모). 표에 없는 기술(Z기술 등)은 대상만
+    Insert meta(db, QStringLiteral("INSERT INTO move_meta (move_id, target, category, ailment, "
+                                   "healing) VALUES (?, ?, ?, ?, ?)"));
+    if (!meta.isValid())
+        return fail(meta.error());
+    QSet<int> seen;
+    if (!forEachRecord(QStringLiteral("move_meta"),
+                       {QStringLiteral("move_id"), QStringLiteral("meta_category_id"),
+                        QStringLiteral("meta_ailment_id"), QStringLiteral("healing")},
+                       [&](const QStringList &v) {
+                           const int id = v[0].toInt();
+                           seen.insert(id);
+                           return meta.exec({id, targets.value(id), v[1].toInt(), v[2].toInt(),
+                                             v[3].toInt()})
+                                  || fail(meta.error());
+                       }))
+        return false;
+    for (auto it = targets.cbegin(); it != targets.cend(); ++it)
+        if (!seen.contains(it.key()) && !meta.exec({it.key(), it.value(), 0, 0, 0}))
+            return fail(meta.error());
+    // 3) 능력치 변화(stat_id: 2 공격 … 6 스피드 · 7 명중률 · 8 회피율)
+    Insert stats(
+            db,
+            QStringLiteral(
+                    "INSERT INTO move_stat_changes (move_id, stat_id, change) VALUES (?, ?, ?)"));
+    if (!stats.isValid())
+        return fail(stats.error());
+    return forEachRecord(
+            QStringLiteral("move_meta_stat_changes"),
+            {QStringLiteral("move_id"), QStringLiteral("stat_id"), QStringLiteral("change")},
+            [&](const QStringList &v) {
+                return stats.exec({v[0].toInt(), v[1].toInt(), v[2].toInt()})
+                       || fail(stats.error());
+            });
 }
 
 bool CsvImporter::importAbilities(QSqlDatabase &db)

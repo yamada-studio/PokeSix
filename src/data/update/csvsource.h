@@ -122,6 +122,9 @@ inline constexpr auto kFiles = std::to_array<CsvFile>({
         {"machines", 32831, "f9df7faaf0a60896fa344abd2b639f83f79c2a24e1fd4bb3560ca7da76e9a6ad"},
         {"item_flavor_text", 6281294,
          "f85281c97e4a423fb6ae673a3d2cfab116ac2e7bb9fcdecfb43ac8b1e1fb8676"},
+        {"move_meta", 20555, "93b92d5bddf4fc1536ca0a647c20453bf92e6389010f33ca6fc4c5e9c54363be"},
+        {"move_meta_stat_changes", 2091,
+         "489edd9ee45ea7e60c99c5a860c4c0957b337af21f8ae9bf03dd121fd548d5ab"},
         {"move_flavor_text", 5392794,
          "43177df8d76dac477fc837aa19b2a50d74ee2c94e47fb827506768c58b360087"},
 });
