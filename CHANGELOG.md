@@ -17,6 +17,8 @@ and the project uses [Semantic Versioning](https://semver.org/).
   4× weaknesses, defending types no move hits super-effectively), then a defensive heatmap over
   all 18 types (types missing from the generation hatched) with weakness, resistance and coverage
   rows, and the physical/special/status split with what it would be under the other split rule.
+  The Pokémon picker has dex chips at the top right ([전국][DP][Pt][HGSS] in generation 4, each
+  in its versions' colors); it opens on the dex of the squad's game and remembers the last choice.
   Hovering a problem outlines the affected slots; empty slots suggest what kind of Pokémon would
   fix the current problems. The analysis lives in core (`SquadAnalyzer`, tested against the
   design's sample squad), and generation differences come from one feature table.
