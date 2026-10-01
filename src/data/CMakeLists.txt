@@ -6,6 +6,7 @@
 #   store/       사용자 데이터 저장 (SquadStore — squads.json)
 #   state/       앱 상태 QObject (AppState, SquadSession, Settings)
 #   models/      QAbstractItemModel 파생 + 필터 프록시
+#   analysis/    DB 값 → core 분석 입력(SquadInput) 변환
 # Qt::Core / Sql / Network 에만 의존한다. Qt::Widgets · Qt::Gui 금지
 # (state/ 와 models/ 를 QML 에서도 그대로 쓸 수 있게 하기 위함).
 qt_add_library(pokesix_data STATIC
@@ -30,6 +31,13 @@ qt_add_library(pokesix_data STATIC
     text/localizedtext.h
     state/appstate.h
     state/appstate.cpp
+    state/squadsession.h
+    state/squadsession.cpp
+    store/squad.h
+    store/squadstore.h
+    store/squadstore.cpp
+    analysis/squadinput.h
+    analysis/squadinput.cpp
     sprites/spritecache.h
     sprites/spritecache.cpp
     models/speciestablemodel.h

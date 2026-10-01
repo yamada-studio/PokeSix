@@ -255,6 +255,14 @@ void DexPage::openDetail(const QModelIndex &proxyIndex)
     m_views->setCurrentWidget(m_detail);
 }
 
+void DexPage::openPokemon(int pokemonId)
+{
+    if (!m_loaded)
+        load(); // 목록을 아직 안 읽었으면(처음 여는 화면) 도감 버튼부터 만든다
+    m_detail->showPokemon(pokemonId, m_selector->currentVersionGroup());
+    m_views->setCurrentWidget(m_detail);
+}
+
 void DexPage::showList()
 {
     m_views->setCurrentWidget(m_panel);

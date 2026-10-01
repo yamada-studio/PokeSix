@@ -83,7 +83,7 @@ A에서 만든 `PanelFrame`, 버튼 스타일도 갤러리에 올린다.
 | ⬜ | **C1** | 세대 표현 + `TypeChart::forGeneration` — **"규칙을 데이터로" 설계 과제** | T2-5, T2-6, T2-7 |
 | ⬜ | **C2** | `GenerationRules`: 존재 타입, 물리/특수 판정, 설정 토글 반영 | 04 §2 규칙 표 |
 | ⬜ | **C3** | 값 타입: `Species`, `Move`, `Squad` / 복합 타입 방어 배율 | T2-1, T2-2, T2-4 |
-| ⬜ | **C4** | `SquadAnalyzer` — 약점·내성 집계, 문제 판정, 커버리지, 물리/특수 분포 | **T1 전체** |
+| ✅ | **C4** | `SquadAnalyzer` — 약점·내성 집계, 문제 판정, 커버리지, 물리/특수 분포 | **T1 전체** |
 
 ## Phase D — 데이터 (PROMPT 4-4, 4-7 일부) → v0.4.0
 
@@ -93,7 +93,7 @@ A에서 만든 `PanelFrame`, 버튼 스타일도 갤러리에 올린다.
 | 🟨 | **D1b** | 기술 · 이름 · 변경 이력 · 습득 기술(63만 줄) · 아이템 변환 + `Repository` 조회 창구 | 대량 INSERT 성능, 버전 그룹 → 세대, 조회 API 설계 |
 | ✅ | **D2** | `Repository`(종 목록 조회) + `SpeciesTableModel` + `SpeciesFilterProxy` + 도감 목록 화면(`DexPage`, 행 delegate · 타입 칩) | **모델/뷰**, role, `QSortFilterProxyModel`, delegate |
 | ✅ | **D2b** | ([가이드](guides/d2b-regional-dex.md)) 전국도감과 세대별 지역 도감(관동 · 성도 · 호연 · 신오 …) 분리: `pokedexes` · `pokemon_dex_numbers` · `pokedex_version_groups` CSV 변환, 도감 목록에 도감 선택(전국 / 그 세대 지역 도감)과 지역 번호 칸 | 스키마 확장, 버전 그룹 → 도감 매핑, 모델 칸 · 정렬 키 바꾸기 |
-| ⬜ | **D3** | `SquadSession` + `SquadStore`(JSON, 디바운스 저장) → 홈의 최근 스쿼드를 실제 데이터로 | `QJsonDocument`, `QSaveFile`, 디바운스 `QTimer` |
+| ✅ | **D3** | `SquadSession` + `SquadStore`(JSON, 디바운스 저장) → 홈의 최근 스쿼드를 실제 데이터로 | `QJsonDocument`, `QSaveFile`, 디바운스 `QTimer` |
 | ✅ | **D4** | 데이터 받기: PokéAPI CSV 원본을 **고정 커밋**에서 다운로드, 파일별 **SHA-256 검증**, 파일 단위 이어받기 ([ADR 0011](decisions/0011-data-from-pinned-pokeapi-csv.md)) | `QNetworkAccessManager`, 비동기 흐름, `QCryptographicHash`, `QSaveFile` |
 | ✅ | **D5** | `DataUpdater`: 받기 → worker 스레드에서 `CsvImporter`로 변환 → 임시 DB 교체, 인트로 `FirstRunPanel`(받기 전 · 받는 중 · 실패, v2 `34` ③)과 메뉴 잠금 | `moveToThread`, 스레드별 `QSqlDatabase` 연결, 진행 시그널, 상태 전환 |
 
@@ -107,6 +107,7 @@ A에서 만든 `PanelFrame`, 버튼 스타일도 갤러리에 올린다.
 - **D2는 사용자 요청("이어서해봐")으로 Claude가 구현했다**: 세대 4 고정(A8에서 `AppState`로), 필터 · 상세 창은 E1. 이후 아이콘 칸(실행 중에 사용자 캐시로 받기) · 번호 오름차순 · 고정 칸 폭을 더했다
 - **D4는 사용자 요청("섞어서")으로 Claude가 구현했다**: `CsvDownloader`, 고정 목록 `csvsource.h`, 개발 도구 `pokesix-fetch-csv`.
   D1(스키마 · CSV 파서 · `CsvImporter`)과 D5의 worker 스레드는 사용자가 가이드를 따라 구현한다
+- **C4 · D3 · E2 (SixSquad)**: 사용자 요청("일단 구현해봐")으로 Claude가 구현했다. core `SquadAnalyzer`는 상성표를 입력으로 받는다(T1 표가 테스트) — C1의 `TypeChart::forGeneration` 설계 과제는 그대로 남겨 두었고, 세대별 차이는 `core/rules/generationfeatures.h` 표 하나에 둔다. 스쿼드는 **세대마다 하나**(`squads.json`)이고, 포켓몬 · 기술(고른 게임에서 배울 수 있는 것) · 특성 · 성격 · 지닌 물건은 그 세대에 있는 것만 고른다. 남은 것: 드래그로 순서 바꾸기, 복제 · 내보내기, 여러 스쿼드 목록, 특성의 상성 효과(부유 등), 좁은 화면의 분석 탭(F1)
 - Phase D를 Phase A · C보다 먼저 시작했다. D1은 core의 타입(`core/types`)만 있으면 되므로 순서에 막히지 않는다
 
 ## Phase E — 나머지 화면 (PROMPT 4-5) → v0.5.0
@@ -116,7 +117,7 @@ A에서 만든 `PanelFrame`, 버튼 스타일도 갤러리에 올린다.
 | | 단계 | 화면 | 기준 이미지 | 필요한 선행 단계 |
 |---|---|---|---|---|
 | 🟨 | **E1** | 도감 (목록 · 그리드 · 상세) | `11_`, `12_dex_1440_*.png` | D2, B4 |
-| ⬜ | **E2** | SixSquad (슬롯 카드 · 히트맵 · 분포) | `14_squad_1440.png` | C4, D3 |
+| 🟨 | **E2** | SixSquad (슬롯 카드 · 히트맵 · 분포) | `14_squad_1440.png` | C4, D3 |
 | 🟨 | **E3** | 아이템 ([가이드](guides/e3-items.md) — 분류 + 목록 ✅, 상세 창은 다음) | `13_items_1440.png` | D1 |
 | ⬜ | **E4** | 설정 | `15_settings_1440.png` | B3, F2 |
 

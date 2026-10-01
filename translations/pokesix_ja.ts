@@ -349,6 +349,37 @@
     </message>
 </context>
 <context>
+    <name>com::yamada::studio::HeatmapView</name>
+    <message>
+        <source>빈 슬롯</source>
+        <translation>空き</translation>
+    </message>
+    <message>
+        <source>약점 수</source>
+        <translation>弱点の数</translation>
+    </message>
+    <message>
+        <source>내성 · 무효</source>
+        <translation>半減・無効</translation>
+    </message>
+    <message>
+        <source>공격 커버</source>
+        <translation>攻撃範囲</translation>
+    </message>
+    <message>
+        <source>무효</source>
+        <translation>無効</translation>
+    </message>
+    <message>
+        <source>문제 열</source>
+        <translation>問題の列</translation>
+    </message>
+    <message>
+        <source>이름을 누르면 행이 노랗게 강조돼요</source>
+        <translation>名前を押すと行が黄色くなります</translation>
+    </message>
+</context>
+<context>
     <name>com::yamada::studio::HomePage</name>
     <message>
         <source>도감 · 파티 도우미</source>
@@ -470,11 +501,18 @@
     </message>
 </context>
 <context>
-    <name>com::yamada::studio::MainWindow</name>
+    <name>com::yamada::studio::ListPicker</name>
     <message>
-        <source>스쿼드</source>
-        <translation>スクワッド</translation>
+        <source>이름으로 찾기</source>
+        <translation>名前で探す</translation>
     </message>
+    <message>
+        <source>닫기</source>
+        <translation>閉じる</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::MainWindow</name>
     <message>
         <source>설정</source>
         <translation>設定</translation>
@@ -570,13 +608,6 @@
     </message>
 </context>
 <context>
-    <name>com::yamada::studio::NatureButton</name>
-    <message>
-        <source>성격</source>
-        <translation>せいかく</translation>
-    </message>
-</context>
-<context>
     <name>com::yamada::studio::NaturePicker</name>
     <message>
         <source>공격</source>
@@ -601,6 +632,68 @@
     <message>
         <source>성격 없음</source>
         <translation>せいかくなし</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::ProblemList</name>
+    <message>
+        <source>공격</source>
+        <translation>攻撃</translation>
+    </message>
+    <message>
+        <source>방어</source>
+        <translation>防御</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::SlotCard</name>
+    <message>
+        <source>역할 메모 (예: 선봉 · 고속 스위퍼)</source>
+        <translation>役割メモ(例:先発・高速アタッカー)</translation>
+    </message>
+    <message>
+        <source>위력 %1 · 명중 %2 · PP %3</source>
+        <translation>威力 %1・命中 %2・PP %3</translation>
+    </message>
+    <message>
+        <source>이 게임에서는 배울 수 없는 기술이에요. 다시 골라 주세요.</source>
+        <translation>このゲームでは覚えられない技です。選び直してください。</translation>
+    </message>
+    <message>
+        <source>1세대에는 특성 · 성격 · 지닌 물건이 없어요</source>
+        <translation>第1世代には特性・性格・持ち物がありません</translation>
+    </message>
+    <message>
+        <source>특성</source>
+        <translation>特性</translation>
+    </message>
+    <message>
+        <source>성격</source>
+        <translation>性格</translation>
+    </message>
+    <message>
+        <source>물건</source>
+        <translation>持ち物</translation>
+    </message>
+    <message>
+        <source>약점</source>
+        <translation>弱点</translation>
+    </message>
+    <message>
+        <source>없음</source>
+        <translation>なし</translation>
+    </message>
+    <message>
+        <source>+ 기술 추가</source>
+        <translation>+ 技を追加</translation>
+    </message>
+    <message>
+        <source>%1 빈 슬롯</source>
+        <translation>%1 空き</translation>
+    </message>
+    <message>
+        <source>+ 개체 추가</source>
+        <translation>+ ポケモンを追加</translation>
     </message>
 </context>
 <context>
@@ -647,6 +740,275 @@
     </message>
 </context>
 <context>
+    <name>com::yamada::studio::SplitBar</name>
+    <message>
+        <source>물리</source>
+        <translation>物理</translation>
+    </message>
+    <message>
+        <source>특수</source>
+        <translation>特殊</translation>
+    </message>
+    <message>
+        <source>변화</source>
+        <translation>変化</translation>
+    </message>
+    <message>
+        <source>빈칸</source>
+        <translation>空き</translation>
+    </message>
+    <message>
+        <source>물리 %1 · 특수 %2</source>
+        <translation>物理 %1・特殊 %2</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::SquadPage</name>
+    <message>
+        <source>저장 중…</source>
+        <translation>保存中…</translation>
+    </message>
+    <message>
+        <source>✓ 자동 저장됨</source>
+        <translation>✓ 保存しました</translation>
+    </message>
+    <message>
+        <source>저장하지 못했어요</source>
+        <translation>保存できませんでした</translation>
+    </message>
+    <message>
+        <source>눌러서 이름을 바꿔요</source>
+        <translation>押して名前を変更</translation>
+    </message>
+    <message>
+        <source>기술 기준 게임 — 배울 수 있는 기술 · 기술머신 번호가 게임마다 달라요</source>
+        <translation>技の基準ゲーム — 覚える技・わざマシン番号はゲームごとに違います</translation>
+    </message>
+    <message>
+        <source>✓ 자동 저장</source>
+        <translation>✓ 自動保存</translation>
+    </message>
+    <message>
+        <source>첫 포켓몬을 추가하면 분석이 시작돼요</source>
+        <translation>最初のポケモンを追加すると分析が始まります</translation>
+    </message>
+    <message>
+        <source>방어 상성 히트맵</source>
+        <translation>防御相性ヒートマップ</translation>
+    </message>
+    <message>
+        <source>행 = 포켓몬 · 열 = 공격 타입 · 숫자 = 받는 배율</source>
+        <translation>行 = ポケモン・列 = 攻撃タイプ・数字 = 受ける倍率</translation>
+    </message>
+    <message>
+        <source>물리 · 특수 분포</source>
+        <translation>物理・特殊の分布</translation>
+    </message>
+    <message>
+        <source>%1세대 규칙</source>
+        <translation>第%1世代ルール</translation>
+    </message>
+    <message>
+        <source>게임</source>
+        <translation>ゲーム</translation>
+    </message>
+    <message>
+        <source>%1세대 상성표</source>
+        <translation>第%1世代の相性表</translation>
+    </message>
+    <message>
+        <source> · 악 · 강철 · 페어리 없음</source>
+        <translation>・あく・はがね・フェアリーなし</translation>
+    </message>
+    <message>
+        <source> · 강철이 고스트/악 반감 · 페어리 없음</source>
+        <translation>・はがねがゴースト/あくを半減・フェアリーなし</translation>
+    </message>
+    <message>
+        <source>실시간 분석</source>
+        <translation>リアルタイム分析</translation>
+    </message>
+    <message>
+        <source>%1 — 효과가 굉장한 기술 없음</source>
+        <translation>%1 — 効果抜群の技なし</translation>
+    </message>
+    <message>
+        <source>%1 타입 공격 기술이 스쿼드에 없어요</source>
+        <translation>%1タイプの攻撃技がパーティにありません</translation>
+    </message>
+    <message>
+        <source>%1 — 약점 %2, 받아낼 포켓몬 %3</source>
+        <translation>%1 — 弱点 %2、受けられるポケモン %3</translation>
+    </message>
+    <message>
+        <source>%1 — 약점 %2, 받아낼 포켓몬 없음</source>
+        <translation>%1 — 弱点 %2、受けられるポケモンなし</translation>
+    </message>
+    <message>
+        <source>%1 — 4배 약점</source>
+        <translation>%1 — 4倍弱点</translation>
+    </message>
+    <message>
+        <source>받아낼 포켓몬이 없어요</source>
+        <translation>受けられるポケモンがいません</translation>
+    </message>
+    <message>
+        <source>받아냄: %1</source>
+        <translation>受け: %1</translation>
+    </message>
+    <message>
+        <source>문제가 없어요 — 약점이 고르게 나뉘어 있어요</source>
+        <translation>問題なし — 弱点がうまく分かれています</translation>
+    </message>
+    <message>
+        <source>✓ 문제 없음</source>
+        <translation>✓ 問題なし</translation>
+    </message>
+    <message>
+        <source>⚠ 문제 %1</source>
+        <translation>⚠ 問題 %1</translation>
+    </message>
+    <message>
+        <source>4세대~ 기술마다 판정</source>
+        <translation>第4世代〜 技ごとに判定</translation>
+    </message>
+    <message>
+        <source>1–3세대 타입마다 판정</source>
+        <translation>第1–3世代 タイプごとに判定</translation>
+    </message>
+    <message>
+        <source>기술 %1 / %2</source>
+        <translation>技 %1 / %2</translation>
+    </message>
+    <message>
+        <source>1–3세대 규칙(타입 기준)이었다면</source>
+        <translation>第1–3世代ルール(タイプ基準)なら</translation>
+    </message>
+    <message>
+        <source>4세대 이후 규칙(기술 기준)이었다면</source>
+        <translation>第4世代以降のルール(技基準)なら</translation>
+    </message>
+    <message>
+        <source>%1 공격에 강하고 %2 기술을 가진 포켓몬이면 문제 %3건이 함께 풀려요.</source>
+        <translation>%1に強く%2の技を持つポケモンなら問題が%3件まとめて解決します。</translation>
+    </message>
+    <message>
+        <source>%1 공격에 강한 포켓몬이면 문제 %2건이 풀려요.</source>
+        <translation>%1に強いポケモンなら問題が%2件解決します。</translation>
+    </message>
+    <message>
+        <source>%1 기술을 가진 포켓몬이면 문제 %2건이 풀려요.</source>
+        <translation>%1の技を持つポケモンなら問題が%2件解決します。</translation>
+    </message>
+    <message>
+        <source>이 세대의 포켓몬만 고를 수 있어요.</source>
+        <translation>この世代のポケモンだけ選べます。</translation>
+    </message>
+    <message>
+        <source>빈 자리에 포켓몬을 더해 보세요.</source>
+        <translation>空きにポケモンを追加しましょう。</translation>
+    </message>
+    <message>
+        <source>포켓몬 바꾸기</source>
+        <translation>ポケモンを変更</translation>
+    </message>
+    <message>
+        <source>도감에서 보기</source>
+        <translation>図鑑で見る</translation>
+    </message>
+    <message>
+        <source>앞으로</source>
+        <translation>前へ</translation>
+    </message>
+    <message>
+        <source>뒤로</source>
+        <translation>後ろへ</translation>
+    </message>
+    <message>
+        <source>비우기</source>
+        <translation>空にする</translation>
+    </message>
+    <message>
+        <source>%1세대 포켓몬 고르기 · %2마리</source>
+        <translation>第%1世代のポケモンを選ぶ・%2匹</translation>
+    </message>
+    <message>
+        <source>No.</source>
+        <translation>No.</translation>
+    </message>
+    <message>
+        <source>이름</source>
+        <translation>名前</translation>
+    </message>
+    <message>
+        <source>타입</source>
+        <translation>タイプ</translation>
+    </message>
+    <message>
+        <source>합계</source>
+        <translation>合計</translation>
+    </message>
+    <message>
+        <source>가르침</source>
+        <translation>教え技</translation>
+    </message>
+    <message>
+        <source>알</source>
+        <translation>タマゴ</translation>
+    </message>
+    <message>
+        <source>%1의 기술 · %2개</source>
+        <translation>%1の技・%2</translation>
+    </message>
+    <message>
+        <source>기술</source>
+        <translation>技</translation>
+    </message>
+    <message>
+        <source>분류</source>
+        <translation>分類</translation>
+    </message>
+    <message>
+        <source>위력</source>
+        <translation>威力</translation>
+    </message>
+    <message>
+        <source>명중</source>
+        <translation>命中</translation>
+    </message>
+    <message>
+        <source>PP</source>
+        <translation>PP</translation>
+    </message>
+    <message>
+        <source>배우는 방법</source>
+        <translation>覚え方</translation>
+    </message>
+    <message>
+        <source>기술 비우기</source>
+        <translation>技を外す</translation>
+    </message>
+    <message>
+        <source> (숨겨진 특성)</source>
+        <translation>(隠れ特性)</translation>
+    </message>
+    <message>
+        <source>지닌 물건 고르기 · %1개</source>
+        <translation>持ち物を選ぶ・%1</translation>
+    </message>
+    <message>
+        <source>물건 없음</source>
+        <translation>持ち物なし</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::SquadSession</name>
+    <message>
+        <source>%1세대 정주행</source>
+        <translation>第%1世代の旅</translation>
+    </message>
+</context>
+<context>
     <name>com::yamada::studio::StatRadar</name>
     <message>
         <source>HP</source>
@@ -671,6 +1033,21 @@
     <message>
         <source>스피드</source>
         <translation>すばやさ</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::squadpaint</name>
+    <message>
+        <source>물</source>
+        <translation>物</translation>
+    </message>
+    <message>
+        <source>특</source>
+        <translation>特</translation>
+    </message>
+    <message>
+        <source>변</source>
+        <translation>変</translation>
     </message>
 </context>
 </TS>

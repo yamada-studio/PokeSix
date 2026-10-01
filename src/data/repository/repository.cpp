@@ -433,8 +433,27 @@ PokemonDetail Repository::pokemonDetail(int pokemonId, int generation, const QSt
                       return a.machineItem < b.machineItem;
                   return a.machineNumber < b.machineNumber;
               });
+    // 기술 가르침(3) · 알 기술(2)
+    for (const auto &[method, list] :
+         {std::pair(3, &detail.tutorMoves), std::pair(2, &detail.eggMoves)}) {
+        query.prepare(
+                QStringLiteral("SELECT DISTINCT move_id FROM pokemon_moves WHERE pokemon_id = :p "
+                               "AND version_group_id = :vg AND method = :m ORDER BY move_id"));
+        query.bindValue(QStringLiteral(":p"), pokemonId);
+        query.bindValue(QStringLiteral(":vg"), groupId);
+        query.bindValue(QStringLiteral(":m"), method);
+        if (query.exec()) {
+            while (query.next()) {
+                MoveEntry move;
+                move.moveId = query.value(0).toInt();
+                list->append(move);
+            }
+        }
+    }
     fillMoves(detail.levelMoves, generation);
     fillMoves(detail.machineMoves, generation);
+    fillMoves(detail.tutorMoves, generation);
+    fillMoves(detail.eggMoves, generation);
     fillEvolution(detail, groupId);
     fillAbilities(detail);
 
@@ -707,6 +726,48 @@ QList<Nature> Repository::natures()
     return natures;
 }
 
+QList<GameInfo> Repository::gamesForGeneration(int generation)
+{
+    QList<GameInfo> games;
+    if (!open())
+        return games;
+    QSqlQuery query(QSqlDatabase::database(m_connection));
+    query.prepare(
+            QStringLiteral("SELECT vg.identifier, v.identifier, v.name_ko, v.name_en, v.name_ja "
+                           "FROM version_groups vg "
+                           "JOIN versions v ON v.version_group_id = vg.id WHERE vg.generation = :g "
+                           "AND EXISTS (SELECT 1 FROM pokedex_version_groups pvg WHERE "
+                           "pvg.version_group_id = vg.id) "
+                           "ORDER BY vg.sort_order, v.id"));
+    query.bindValue(QStringLiteral(":g"), generation);
+    if (query.exec()) {
+        while (query.next()) {
+            const QString group = query.value(0).toString();
+            if (games.isEmpty() || games.last().versionGroup != group)
+                games.append(GameInfo {group, {}, {}});
+            games.last().versions.append(query.value(1).toString());
+            games.last().versionNames.append(localized(query, 2));
+        }
+    }
+    return games;
+}
+
+QList<MoveEntry> Repository::moves(const QList<int> &ids, int generation)
+{
+    QList<MoveEntry> moves;
+    if (ids.isEmpty() || !open())
+        return moves;
+    for (const int id : ids) {
+        MoveEntry move;
+        move.moveId = id;
+        moves.append(move);
+    }
+    fillMoves(moves, generation);
+    // fillMoves는 없는 id도 그대로 둔다(이름이 빈 채로) → 뺀다
+    moves.removeIf([](const MoveEntry &move) { return move.name.isEmpty(); });
+    return moves;
+}
+
 void Repository::fillMoves(QList<MoveEntry> &moves, int generation)
 {
     if (moves.isEmpty())
@@ -764,6 +825,7 @@ void Repository::fillMoves(QList<MoveEntry> &moves, int generation)
         move.pp = base.pp;
         move.accuracy = base.accuracy;
         move.damageClass = base.damageClass;
+        move.ownDamageClass = base.damageClass;
         bool powerSet = false, ppSet = false, accuracySet = false;
         for (const Past &p : past.value(move.moveId)) {
             if (p.until < generation)

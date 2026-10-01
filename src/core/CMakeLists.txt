@@ -4,6 +4,12 @@ add_library(pokesix_core STATIC
     types/type.h
     types/typechart.h
     types/typechart.cpp
+    types/typekey.h
+    types/typekey.cpp
+    rules/generationfeatures.h
+    rules/damageclass.h
+    analysis/squadanalyzer.h
+    analysis/squadanalyzer.cpp
 )
 add_library(PokeSix::core ALIAS pokesix_core)
 

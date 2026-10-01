@@ -4,7 +4,6 @@
 #include "ui/theme/theme.h"
 #include "ui/theme/tokens.h"
 
-#include <QFontMetricsF>
 #include <QMouseEvent>
 #include <QPainter>
 
@@ -136,29 +135,4 @@ void NaturePicker::mousePressEvent(QMouseEvent *event)
     QWidget::close();
 }
 
-NatureButton::NatureButton(QWidget *parent)
-    : QAbstractButton(parent)
-{
-    QAbstractButton::setCursor(cursors::pointer());
-    QAbstractButton::setFocusPolicy(Qt::TabFocus);
-    QAbstractButton::setText(tr("성격"));
-}
-
-QSize NatureButton::sizeHint() const
-{
-    const QFont font = theme::font(theme::kFamilyBody, 12, QFont::ExtraBold);
-    return {int(QFontMetricsF(font).horizontalAdvance(text() + QStringLiteral("  ▾"))) + 20, 24};
-}
-
-void NatureButton::paintEvent(QPaintEvent *)
-{
-    QPainter painter(this);
-    painter.setRenderHint(QPainter::Antialiasing, true);
-    painter.setPen(QPen(QColor(hasFocus() ? tok::kBlue : tok::kInk), 1.5));
-    painter.setBrush(QColor(underMouse() || isDown() ? tok::kYellowTint : tok::kWhite));
-    painter.drawRoundedRect(QRectF(rect()).adjusted(0.75, 0.75, -0.75, -0.75), 5, 5);
-    painter.setFont(theme::font(theme::kFamilyBody, 12, QFont::ExtraBold));
-    painter.setPen(QColor(tok::kText1));
-    painter.drawText(rect(), Qt::AlignCenter, text() + QStringLiteral("  ▾"));
-}
 } // namespace com::yamada::studio

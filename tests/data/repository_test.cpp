@@ -3,8 +3,12 @@
 #include "data/models/speciesfilterproxy.h"
 #include "data/models/speciestablemodel.h"
 #include "data/repository/repository.h"
+#include "data/state/appstate.h"
+#include "data/state/squadsession.h"
+#include "data/store/squadstore.h"
 #include "data/update/csvimporter.h"
 
+#include <QSettings>
 #include <QTemporaryDir>
 
 #include <gtest/gtest.h>
@@ -420,4 +424,85 @@ TEST_F(RepositoryTest, NaturesRaiseOneStatAndLowerAnother)
             EXPECT_EQ(n.name.ko, QStringLiteral("겁쟁이"));
         }
     }
+}
+
+TEST(SquadStore, SavesAndLoadsSquadsPerGeneration)
+{
+    QTemporaryDir dir;
+    const QString path = dir.filePath(QStringLiteral("squads.json"));
+    Squad squad;
+    squad.name = QStringLiteral("신오 정주행");
+    squad.versionGroup = QStringLiteral("platinum");
+    squad.members[0].pokemonId = 445;
+    squad.members[0].moves = {89, 200, 444, 14};
+    squad.members[0].memo = QStringLiteral("에이스");
+    squad.members[0].natureId = 4;
+    {
+        SquadStore store(path);
+        store.setSquad(4, squad);
+        EXPECT_TRUE(store.hasPendingSave()); // 바로 쓰지 않는다(디바운스)
+        EXPECT_TRUE(store.flush());
+    }
+    SquadStore reloaded(path);
+    EXPECT_EQ(reloaded.squad(4), squad);
+    EXPECT_EQ(reloaded.squad(3).filled(), 0); // 다른 세대는 따로
+}
+
+TEST_F(RepositoryTest, SquadSessionResolvesAndAnalyzesTheGeneration)
+{
+    // AppState는 QSettings에 세대를 쓴다 → 사용자 설정을 건드리지 않게 임시 폴더로
+    QTemporaryDir settings;
+    QSettings::setPath(QSettings::NativeFormat, QSettings::UserScope, settings.path());
+    QTemporaryDir dir;
+    Repository repository(s_dbPath);
+    SquadStore store(dir.filePath(QStringLiteral("squads.json")));
+    AppState state;
+    state.setGeneration(4);
+    SquadSession session(&repository, &store, &state);
+
+    // 4세대 게임: DP · Pt · HGSS (외전은 도감이 없어 빠진다)
+    QStringList games;
+    for (const GameInfo &game : session.games())
+        games.append(game.versionGroup);
+    EXPECT_EQ(games, (QStringList {QStringLiteral("diamond-pearl"), QStringLiteral("platinum"),
+                                   QStringLiteral("heartgold-soulsilver")}));
+    EXPECT_EQ(session.versionGroup(), QStringLiteral("platinum")); // 고르지 않으면 대표 게임
+
+    session.setPokemon(0, 445); // 한카리아스
+    EXPECT_EQ(session.detail(0).types,
+              (QStringList {QStringLiteral("dragon"), QStringLiteral("ground")}));
+    // 지진(기술머신) · 역린(가르침) · 스톤에지(기술머신) · 칼춤(기술머신)
+    for (int i = 0; i < 4; ++i)
+        session.setMove(0, i, std::array {89, 200, 444, 14}[std::size_t(i)]);
+    ASSERT_TRUE(session.slotMoves(0)[1].has_value());
+    EXPECT_TRUE(session.slotMoves(0)[1]->learnable);
+    EXPECT_EQ(session.slotMoves(0)[1]->move.name.en, QStringLiteral("Outrage"));
+
+    // 배우는 방법을 한 줄로: 지진 = TM26, 역린 = 가르침
+    bool earthquake = false, outrage = false;
+    for (const SquadSession::LearnableMove &m : session.learnableMoves(0)) {
+        earthquake = earthquake || (m.move.moveId == 89 && m.machine == QStringLiteral("TM26"));
+        outrage = outrage || (m.move.moveId == 200 && m.tutor);
+    }
+    EXPECT_TRUE(earthquake);
+    EXPECT_TRUE(outrage);
+
+    // 분석: ×4 얼음 · 물리 3 · 변화 1
+    const SquadAnalysis &a = session.analysis();
+    EXPECT_EQ(a.filled, 1);
+    EXPECT_DOUBLE_EQ(a.received[0][std::size_t(Type::Ice)], 4);
+    EXPECT_EQ(a.split.physical, 3);
+    EXPECT_EQ(a.split.status, 1);
+    ASSERT_FALSE(a.problems.empty());
+    EXPECT_EQ(a.problems.front().kind, ProblemKind::Quad);
+
+    // 특성은 첫 칸(모래숨기)으로 미리 골라 둔다
+    ASSERT_NE(session.ability(0), nullptr);
+    EXPECT_EQ(session.ability(0)->name.en, QStringLiteral("Sand Veil"));
+
+    // 세대를 바꾸면 그 세대 스쿼드(비어 있음), 돌아오면 다시
+    state.setGeneration(3);
+    EXPECT_EQ(session.squad().filled(), 0);
+    state.setGeneration(4);
+    EXPECT_EQ(session.squad().members[0].pokemonId, 445);
 }

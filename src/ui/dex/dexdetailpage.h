@@ -12,7 +12,7 @@ class AppState;
 class EncounterList;
 class AbilityList;
 class EvolutionView;
-class NatureButton;
+class DropdownButton;
 class MatchupView;
 class MoveList;
 class PanelFrame;
@@ -64,7 +64,7 @@ private:
     ProfileCard *m_profile = nullptr;
     StatRadar *m_stats = nullptr;
     PanelFrame *m_statsPanel = nullptr;
-    NatureButton *m_natureButton = nullptr; // 종족값 카드 머리 [성격 ▾]
+    DropdownButton *m_natureButton = nullptr; // 종족값 카드 머리 [성격 ▾]
     AbilityList *m_abilities = nullptr;
     QList<Nature> m_natures; // 처음 성격표를 열 때 읽는다
     int m_natureId = 0; // 고른 성격(포켓몬을 바꿔도 그대로 — 같은 성격으로 견줘 보게). 0 = 없음

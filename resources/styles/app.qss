@@ -126,3 +126,33 @@ QLabel#dexDetailBasis { font-size: 13px; font-weight: 700; color: @text.2; }
 QScrollArea#dexEncounterScroll, QScrollArea#dexEncounterScroll > QWidget { background: transparent; border: none; }
 QWidget#dexAcquisition { background: @white; }
 QLabel#dexSectionLabel { font-family: "Do Hyeon"; font-size: 15px; color: @text.1; }
+
+/* ── 스쿼드(SquadPage) ── */
+QDialog { background: @paper; }
+QScrollArea#squadScroll, QScrollArea#squadScroll > QWidget, QWidget#squadContent { background: transparent; border: none; }
+QLineEdit#squadName {
+  min-height: 36px; padding: 0 2px; border: none; border-bottom: 2px solid transparent; border-radius: 0;
+  background: transparent; font-family: "Do Hyeon"; font-size: 28px; color: @text.1;
+}
+QLineEdit#squadName:hover { border-bottom-color: @line.strong; }
+QLineEdit#squadName:focus { border-bottom-color: @blue; }
+QLabel#squadRulePill {
+  background: @yellow.soft; border: 2px solid @ink; border-radius: 12px; padding: 1px 10px;
+  font-family: "Do Hyeon"; font-size: 15px; color: @text.1;
+}
+QLabel#squadSplitPill {
+  background: @yellow.tint; border: 1.5px solid @ink; border-radius: 4px; padding: 1px 6px;
+  font-size: 11px; font-weight: 800; color: @text.1;
+}
+QLabel#squadCount { font-family: "NanumGothicCoding"; font-size: 13px; font-weight: 700; color: @text.2; }
+QLabel#squadSaveStatus { font-size: 13px; font-weight: 700; color: @green; }
+QLabel#squadSaveStatus[state="pending"] { color: @text.3; }
+QLabel#squadSaveStatus[state="error"] { color: @red; }
+QLabel#squadProblemPill {
+  background: @red; color: @white; border: 2px solid @white; border-radius: 12px; padding: 1px 10px;
+  font-family: "Do Hyeon"; font-size: 15px;
+}
+QLabel#squadProblemPill[ok="true"] { background: @green; }
+QLabel#squadNote { font-size: 11px; color: @text.3; }
+QLabel#squadEmpty { font-family: "Do Hyeon"; font-size: 20px; color: @text.3; }
+QListView#squadPickerList { border: 2px solid @ink; border-radius: 6px; background: @white; outline: none; }
