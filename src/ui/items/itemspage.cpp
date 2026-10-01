@@ -164,10 +164,10 @@ QWidget *ItemsPage::buildListBody()
     // 검색 디바운스: 입력이 150ms 멈추면 한 번만 거른다
     m_searchDelay->setSingleShot(true);
     m_searchDelay->setInterval(kSearchDebounceMs);
-    connect(m_search->lineEdit(), &QLineEdit::textChanged, m_searchDelay,
-            qOverload<>(&QTimer::start));
+    // searchTextChanged: 한글 조합 중 글자까지(첫 글자 "이"만 쳐도) — SearchField 참고
+    connect(m_search, &SearchField::searchTextChanged, m_searchDelay, qOverload<>(&QTimer::start));
     connect(m_searchDelay, &QTimer::timeout, this, [this] {
-        m_proxy->setSearchText(m_search->lineEdit()->text());
+        m_proxy->setSearchText(m_search->searchText());
         updateTitle();
     });
     return body;

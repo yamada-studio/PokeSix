@@ -23,8 +23,18 @@ public:
     static constexpr int kHeight = 36;
 
     QLineEdit *lineEdit() const { return m_edit; }
+
+    // 검색에 쓸 글자 = 확정된 글자 + 한글 입력기가 조합 중인 글자. 한글은 첫 글자를 치는 동안 아직
+    // "조합 중"이라 QLineEdit::text()에 들어가지 않는다(다음 글자 · 스페이스를 쳐야 확정). 조합 중
+    // 글자까지 합쳐야 "이"만 쳐도 바로 거를 수 있다.
+    QString searchText() const;
+
     QSize sizeHint() const override;
     QSize minimumSizeHint() const override;
+
+signals:
+    // searchText()가 바뀔 때마다: 글자 확정(textChanged) · 조합 중 글자 변화(입력기 이벤트) 둘 다
+    void searchTextChanged(const QString &text);
 
 protected:
     void paintEvent(QPaintEvent *event) override;
@@ -35,6 +45,7 @@ protected:
 private:
     QLineEdit *m_edit = nullptr;
     QLabel *m_shortcut = nullptr; // "Ctrl K" 배지. 단축키 문구가 없으면 nullptr
+    QString m_preedit; // 입력기가 조합 중인 글자(예: 첫 글자 "이"를 치는 동안)
     // 이보다 좁으면 배지를 숨긴다: 160 폭에 배지(약 40 + 간격 8)까지 넣으면 입력 칸이 60px 남짓만
     // 남는다
     static constexpr int kShortcutMinWidth = 220;
