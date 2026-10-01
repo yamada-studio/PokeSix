@@ -28,6 +28,9 @@ using namespace com::yamada::studio;
 
 constexpr int kGap = 16;
 constexpr int kProfileWidth = 236;
+// 위 줄 카드 셋(그림 · 종족값 · 획득법)의 높이 — 그림 카드의 내용 높이에 맞춘다. 획득법이 더 길면
+// 카드 안에서 스크롤한다.
+constexpr int kTopRowHeight = 340;
 constexpr int kStatsWidth = 300;
 constexpr int kSpriteScale = 2; // 80×80 도트를 2배(정수 배라 흐려지지 않는다)
 
@@ -50,8 +53,11 @@ PanelFrame *section(QRgb headerColor, QWidget *content, QMargins margins = {12, 
     QWidget *body = new QWidget;
     QVBoxLayout *layout = new QVBoxLayout(body);
     layout->setContentsMargins(margins);
-    layout->addWidget(content);
-    layout->addStretch();
+    // 스크롤 영역은 남는 높이를 채우고(stretch 1), 고정 높이 위젯은 위에 붙인다(아래는 빈칸)
+    const bool fills = qobject_cast<QScrollArea *>(content) != nullptr;
+    layout->addWidget(content, fills ? 1 : 0);
+    if (!fills)
+        layout->addStretch();
     frame->setBody(body);
     return frame;
 }
@@ -83,8 +89,7 @@ public:
         : QWidget(parent)
         , m_fronts(fronts)
     {
-        QWidget::setFixedWidth(kProfileWidth);
-        QWidget::setMinimumHeight(330);
+        QWidget::setFixedSize(kProfileWidth, kTopRowHeight);
         connect(m_fronts, &SpriteCache::ready, this, qOverload<>(&QWidget::update));
     }
 
@@ -228,16 +233,24 @@ QWidget *DexDetailPage::buildContent()
     QHBoxLayout *row = new QHBoxLayout;
     row->setSpacing(kGap);
     m_profile = new ProfileCard(m_fronts);
-    row->addWidget(m_profile, 0, Qt::AlignTop);
+    row->addWidget(m_profile);
     m_stats = new StatBars;
     PanelFrame *stats = section(tok::kBlue, m_stats);
     stats->setTitle(tr("종족값"));
-    stats->setFixedWidth(kStatsWidth);
-    row->addWidget(stats, 0, Qt::AlignTop);
+    stats->setFixedSize(kStatsWidth, kTopRowHeight);
+    row->addWidget(stats);
+    // 획득법: 줄이 많으면(캐이시 27줄) 카드 높이 안에서 스크롤
     m_encounters = new EncounterList;
-    PanelFrame *encounters = section(tok::kGreen, m_encounters);
+    QScrollArea *encounterScroll = new QScrollArea;
+    encounterScroll->setObjectName(QStringLiteral("dexEncounterScroll")); // app.qss: 투명
+    encounterScroll->setWidgetResizable(true);
+    encounterScroll->setFrameShape(QFrame::NoFrame);
+    encounterScroll->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    encounterScroll->setWidget(m_encounters);
+    PanelFrame *encounters = section(tok::kGreen, encounterScroll, {12, 10, 6, 10});
     encounters->setTitle(tr("획득법"), tr("야생 출현"));
-    row->addWidget(encounters, 1, Qt::AlignTop);
+    encounters->setFixedHeight(kTopRowHeight);
+    row->addWidget(encounters, 1);
     layout->addLayout(row);
 
     // 2) 상성 · 3) 레벨업 기술 · 4) 기술머신

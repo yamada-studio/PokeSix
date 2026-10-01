@@ -332,8 +332,9 @@ TEST_F(RepositoryTest, DetailFollowsTheRepresentativeGame)
 
     // 1세대: 물리 · 특수는 타입이 정한다(덩굴채찍 = 풀 → 특수)
     for (const MoveEntry &move : repository.pokemonDetail(1, 4).levelMoves)
-        if (move.name.en == QLatin1String("Vine Whip"))
+        if (move.name.en == QLatin1String("Vine Whip")) {
             EXPECT_EQ(move.damageClass, 2); // 4세대부터는 물리
+        }
 }
 
 TEST_F(RepositoryTest, TypeChartFollowsTheGeneration)

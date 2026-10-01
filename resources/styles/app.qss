@@ -123,3 +123,4 @@ QTableView#itemsTable { border: none; background: @white; }
 QScrollArea#dexDetailScroll, QScrollArea#dexDetailScroll > QWidget > QWidget#dexDetailContent { background: transparent; border: none; }
 QScrollArea#dexDetailScroll > QWidget { background: transparent; }
 QLabel#dexDetailBasis { font-size: 13px; font-weight: 700; color: @text.2; }
+QScrollArea#dexEncounterScroll, QScrollArea#dexEncounterScroll > QWidget { background: transparent; border: none; }
