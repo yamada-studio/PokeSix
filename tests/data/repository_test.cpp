@@ -72,7 +72,9 @@ TEST_F(RepositoryTest, TypesAndStatsFollowTheGeneration)
 TEST_F(RepositoryTest, Gen1SpecialFillsBothSpecialColumnsButCountsOnce)
 {
     Repository repository(s_dbPath);
-    const SpeciesRow *bulbasaur = find(repository.speciesForGeneration(1), 1);
+    const QList<SpeciesRow> gen1
+            = repository.speciesForGeneration(1); // 포인터가 가리킬 목록을 살려 둔다
+    const SpeciesRow *bulbasaur = find(gen1, 1);
     ASSERT_NE(bulbasaur, nullptr);
     EXPECT_EQ(bulbasaur->stats[3], 65);
     EXPECT_EQ(bulbasaur->stats[4], 65);
@@ -267,8 +269,8 @@ TEST_F(RepositoryTest, MachineHoldsTheMoveOfTheGeneration)
     // 기술머신01에 담긴 기술은 세대마다 다르다(그 세대 첫 게임 기준). 타입은 아이콘 CD 색 · 타입
     // 칩.
     auto tm01 = [&](int generation) {
-        const ItemRow *row
-                = findItem(repository.itemsForGeneration(generation), QStringLiteral("tm01"));
+        const QList<ItemRow> items = repository.itemsForGeneration(generation);
+        const ItemRow *row = findItem(items, QStringLiteral("tm01"));
         return std::pair(row->machineMove.ko, row->machineType);
     };
     EXPECT_EQ(tm01(1), std::pair(QStringLiteral("메가톤펀치"), QStringLiteral("normal")));
@@ -278,7 +280,8 @@ TEST_F(RepositoryTest, MachineHoldsTheMoveOfTheGeneration)
               std::pair(QStringLiteral("분발"), QStringLiteral("normal"))); // SM(LGPE 아님)
 
     // 기술머신이 아닌 아이템은 비어 있고, 가격은 그대로
-    const ItemRow *potion = findItem(repository.itemsForGeneration(4), QStringLiteral("potion"));
+    const QList<ItemRow> items = repository.itemsForGeneration(4);
+    const ItemRow *potion = findItem(items, QStringLiteral("potion"));
     EXPECT_TRUE(potion->machineMove.isEmpty());
     EXPECT_EQ(potion->cost, 200);
 }
