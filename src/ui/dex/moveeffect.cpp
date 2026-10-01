@@ -148,6 +148,16 @@ QString ailmentName(int ailment)
     }
 }
 
+// "A한다. B한다." → "A한다." (일본어 。도). 한 문장뿐이면 그대로
+QString firstSentence(const QString &text)
+{
+    for (qsizetype i = 0; i + 1 < text.size(); ++i)
+        if ((text.at(i) == QLatin1Char('.') && text.at(i + 1) == QLatin1Char(' '))
+            || text.at(i) == QChar(0x3002))
+            return text.left(i + 1);
+    return text;
+}
+
 QString healingText(int healing)
 {
     const int amount = healing < 0 ? -healing : healing;
@@ -221,9 +231,9 @@ Parts describe(const MoveEntry &move, int generation, const QStringList &userTyp
         parts.append({rule.note.text(language), tok::kText2});
     }
 
-    // 4) 뼈대로 그릴 것이 없다 → 그 세대의 게임 설명문
+    // 4) 뼈대 · 요약이 없다 → 그 세대의 게임 설명문 첫 문장(전체는 툴팁에서)
     if (parts.isEmpty() && !move.effect.isEmpty())
-        parts.append({move.effect.text(language), tok::kText3});
+        parts.append({firstSentence(move.effect.text(language)), tok::kText3});
     return parts;
 }
 

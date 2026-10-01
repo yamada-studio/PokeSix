@@ -7,30 +7,1094 @@
     "  달콤한향기 6세대 −2, 충전 4세대부터 특방 +1, 비축하기 4세대부터 방어 · 특방 +1).",
     "stats: 모든 세대에서 이 능력치 변화(PokéAPI에 없는 고유 효과 기술: 저주).",
     "note: 능력치 · 상태이상 뒤에 붙는 설명. ailment: 상태이상 이름 바꾸기(맹독은 PokéAPI에서 '독'이다).",
-    "userType + userTypeNote: 쓰는 포켓몬이 그 타입이면 다른 효과(저주 — 고스트)."
+    "userType + userTypeNote: 쓰는 포켓몬이 그 타입이면 다른 효과(저주 — 고스트).",
+    "note만 있는 기술: 능력치 · 상태이상 데이터가 없는 변화 기술(벽 · 날씨 · 교체 …)의 짧은 요약. 없으면 게임 설명문의 첫 문장."
   ],
   "moves": {
-    "growth":      { "history": [{ "untilGen": 4, "stats": [[4, 1]] }] },
-    "string-shot": { "history": [{ "untilGen": 5, "stats": [[6, -1]] }] },
-    "tail-glow":   { "history": [{ "untilGen": 4, "stats": [[4, 2]] }] },
-    "minimize":    { "history": [{ "untilGen": 4, "stats": [[8, 1]] }] },
-    "sweet-scent": { "history": [{ "untilGen": 5, "stats": [[8, -1]] }] },
+    "growth": {
+      "history": [
+        {
+          "untilGen": 4,
+          "stats": [
+            [
+              4,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    "string-shot": {
+      "history": [
+        {
+          "untilGen": 5,
+          "stats": [
+            [
+              6,
+              -1
+            ]
+          ]
+        }
+      ]
+    },
+    "tail-glow": {
+      "history": [
+        {
+          "untilGen": 4,
+          "stats": [
+            [
+              4,
+              2
+            ]
+          ]
+        }
+      ]
+    },
+    "minimize": {
+      "history": [
+        {
+          "untilGen": 4,
+          "stats": [
+            [
+              8,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    "sweet-scent": {
+      "history": [
+        {
+          "untilGen": 5,
+          "stats": [
+            [
+              8,
+              -1
+            ]
+          ]
+        }
+      ]
+    },
     "charge": {
-      "note": { "ko": "다음 전기 기술 위력 2배", "en": "next Electric move ×2", "ja": "次のでんき技の威力2倍" },
-      "history": [{ "untilGen": 3, "stats": [] }]
+      "note": {
+        "ko": "다음 전기 기술 위력 2배",
+        "en": "next Electric move ×2",
+        "ja": "次のでんき技の威力2倍"
+      },
+      "history": [
+        {
+          "untilGen": 3,
+          "stats": []
+        }
+      ]
     },
     "stockpile": {
-      "note": { "ko": "비축 +1(최대 3)", "en": "Stockpile +1 (max 3)", "ja": "たくわえ +1(最大3)" },
-      "history": [{ "untilGen": 3, "stats": [] }]
+      "note": {
+        "ko": "비축 +1(최대 3)",
+        "en": "Stockpile +1 (max 3)",
+        "ja": "たくわえ +1(最大3)"
+      },
+      "history": [
+        {
+          "untilGen": 3,
+          "stats": []
+        }
+      ]
     },
-    "toxic": { "ailment": { "ko": "맹독", "en": "badly poisoned", "ja": "もうどく" } },
+    "toxic": {
+      "ailment": {
+        "ko": "맹독",
+        "en": "badly poisoned",
+        "ja": "もうどく"
+      }
+    },
     "curse": {
-      "stats": [[2, 1], [3, 1], [6, -1]],
+      "stats": [
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          6,
+          -1
+        ]
+      ],
       "userType": "ghost",
       "userTypeNote": {
-        "ko": "HP ½을 깎아 상대를 저주(매 턴 ¼ 피해)",
-        "en": "cuts own HP by ½ to curse the target (¼ damage each turn)",
-        "ja": "HPを½けずって相手をのろう(毎ターン¼ダメージ)"
+        "ko": "HP ½ 깎아 저주(매 턴 ¼ 피해)",
+        "en": "cuts ½ HP to curse (¼ damage each turn)",
+        "ja": "HP½けずってのろい(毎ターン¼ダメージ)"
+      }
+    },
+    "whirlwind": {
+      "note": {
+        "ko": "상대 강제 교체",
+        "en": "forces the target to switch",
+        "ja": "相手を強制交代"
+      }
+    },
+    "roar": {
+      "note": {
+        "ko": "상대 강제 교체",
+        "en": "forces the target to switch",
+        "ja": "相手を強制交代"
+      }
+    },
+    "disable": {
+      "note": {
+        "ko": "상대 기술 하나 봉인",
+        "en": "disables one of the target's moves",
+        "ja": "相手の技を1つ封じる"
+      }
+    },
+    "mist": {
+      "note": {
+        "ko": "능력 하락 막기",
+        "en": "prevents stat drops",
+        "ja": "能力ダウンを防ぐ"
+      }
+    },
+    "leech-seed": {
+      "note": {
+        "ko": "매 턴 HP 흡수",
+        "en": "drains HP every turn",
+        "ja": "毎ターンHPを吸い取る"
+      }
+    },
+    "teleport": {
+      "note": {
+        "ko": "도망 · 교체",
+        "en": "flees or switches out",
+        "ja": "にげる・交代"
+      }
+    },
+    "mimic": {
+      "note": {
+        "ko": "상대 기술 따라 배움",
+        "en": "copies the target's last move",
+        "ja": "相手の技をまねて覚える"
+      }
+    },
+    "light-screen": {
+      "note": {
+        "ko": "특수 피해 반감(벽)",
+        "en": "halves special damage (screen)",
+        "ja": "特殊ダメージ半減(かべ)"
+      }
+    },
+    "haze": {
+      "note": {
+        "ko": "모두의 능력 변화 초기화",
+        "en": "resets all stat changes",
+        "ja": "全員の能力変化を元に戻す"
+      }
+    },
+    "reflect": {
+      "note": {
+        "ko": "물리 피해 반감(벽)",
+        "en": "halves physical damage (screen)",
+        "ja": "物理ダメージ半減(かべ)"
+      }
+    },
+    "focus-energy": {
+      "note": {
+        "ko": "급소율 ▲",
+        "en": "raises critical-hit ratio",
+        "ja": "急所率アップ"
+      }
+    },
+    "metronome": {
+      "note": {
+        "ko": "무작위 기술 사용",
+        "en": "uses a random move",
+        "ja": "ランダムな技を出す"
+      }
+    },
+    "mirror-move": {
+      "note": {
+        "ko": "상대 기술 되받기",
+        "en": "uses the target's last move",
+        "ja": "相手の技をまねて出す"
+      }
+    },
+    "transform": {
+      "note": {
+        "ko": "상대로 변신",
+        "en": "transforms into the target",
+        "ja": "相手に変身"
+      }
+    },
+    "splash": {
+      "note": {
+        "ko": "효과 없음",
+        "en": "no effect",
+        "ja": "効果なし"
+      }
+    },
+    "rest": {
+      "note": {
+        "ko": "잠들고 HP 전부 회복",
+        "en": "sleeps and fully heals",
+        "ja": "ねむってHP全回復"
+      }
+    },
+    "conversion": {
+      "note": {
+        "ko": "자신 타입 바꾸기",
+        "en": "changes own type",
+        "ja": "自分のタイプを変える"
+      }
+    },
+    "substitute": {
+      "note": {
+        "ko": "HP ¼로 대타 생성",
+        "en": "makes a substitute with ¼ HP",
+        "ja": "HP¼でみがわりを出す"
+      }
+    },
+    "sketch": {
+      "note": {
+        "ko": "상대 기술 영구 복사",
+        "en": "permanently copies a move",
+        "ja": "技を永久にコピー"
+      }
+    },
+    "spider-web": {
+      "note": {
+        "ko": "상대 도망 · 교체 불가",
+        "en": "target can't flee or switch",
+        "ja": "相手はにげる・交代できない"
+      }
+    },
+    "mind-reader": {
+      "note": {
+        "ko": "다음 기술 반드시 명중",
+        "en": "next move always hits",
+        "ja": "次の技が必ず当たる"
+      }
+    },
+    "nightmare": {
+      "note": {
+        "ko": "잠든 상대 매 턴 피해",
+        "en": "sleeping target loses HP each turn",
+        "ja": "ねむる相手に毎ターンダメージ"
+      }
+    },
+    "conversion-2": {
+      "note": {
+        "ko": "상대 기술에 강한 타입으로",
+        "en": "changes to a type resisting the last move",
+        "ja": "受けた技に強いタイプになる"
+      }
+    },
+    "spite": {
+      "note": {
+        "ko": "상대 기술 PP 감소",
+        "en": "cuts the PP of the target's last move",
+        "ja": "相手の技のPPを減らす"
+      }
+    },
+    "protect": {
+      "note": {
+        "ko": "그 턴 공격 막기",
+        "en": "protects from moves this turn",
+        "ja": "そのターン攻撃を防ぐ"
+      }
+    },
+    "belly-drum": {
+      "note": {
+        "ko": "HP ½ 소모 · 공격 최대",
+        "en": "costs ½ HP, maximizes Attack",
+        "ja": "HP½を使いこうげき最大"
+      }
+    },
+    "spikes": {
+      "note": {
+        "ko": "압정 설치(교체 시 피해)",
+        "en": "sets spikes (damage on switch-in)",
+        "ja": "まきびしを設置(交代時ダメージ)"
+      }
+    },
+    "foresight": {
+      "note": {
+        "ko": "고스트에 노말 · 격투 명중",
+        "en": "Normal/Fighting hit Ghost",
+        "ja": "ゴーストにノーマル・かくとうが当たる"
+      }
+    },
+    "destiny-bond": {
+      "note": {
+        "ko": "기절시킨 상대도 기절",
+        "en": "target faints if it KOs the user",
+        "ja": "倒した相手も道連れ"
+      }
+    },
+    "perish-song": {
+      "note": {
+        "ko": "3턴 뒤 모두 기절",
+        "en": "all faint after three turns",
+        "ja": "3ターン後に全員ひんし"
+      }
+    },
+    "detect": {
+      "note": {
+        "ko": "그 턴 공격 막기",
+        "en": "protects from moves this turn",
+        "ja": "そのターン攻撃を防ぐ"
+      }
+    },
+    "lock-on": {
+      "note": {
+        "ko": "다음 기술 반드시 명중",
+        "en": "next move always hits",
+        "ja": "次の技が必ず当たる"
+      }
+    },
+    "sandstorm": {
+      "note": {
+        "ko": "모래바람(5턴): 매 턴 피해",
+        "en": "sandstorm (5 turns): damage each turn",
+        "ja": "すなあらし(5ターン): 毎ターンダメージ"
+      }
+    },
+    "endure": {
+      "note": {
+        "ko": "HP 1로 버팀",
+        "en": "survives with 1 HP",
+        "ja": "HP1で耐える"
+      }
+    },
+    "mean-look": {
+      "note": {
+        "ko": "상대 도망 · 교체 불가",
+        "en": "target can't flee or switch",
+        "ja": "相手はにげる・交代できない"
+      }
+    },
+    "sleep-talk": {
+      "note": {
+        "ko": "잠든 채 기술 사용",
+        "en": "uses a move while asleep",
+        "ja": "ねむったまま技を出す"
+      }
+    },
+    "heal-bell": {
+      "note": {
+        "ko": "아군 상태이상 회복",
+        "en": "cures the party's status",
+        "ja": "味方の状態異常を回復"
+      }
+    },
+    "safeguard": {
+      "note": {
+        "ko": "상태이상 막기(5턴)",
+        "en": "prevents status (5 turns)",
+        "ja": "状態異常を防ぐ(5ターン)"
+      }
+    },
+    "pain-split": {
+      "note": {
+        "ko": "서로 HP 나눠 갖기",
+        "en": "shares HP with the target",
+        "ja": "HPを分け合う"
+      }
+    },
+    "baton-pass": {
+      "note": {
+        "ko": "능력 변화 넘기고 교체",
+        "en": "switches, passing stat changes",
+        "ja": "能力変化を引き継いで交代"
+      }
+    },
+    "encore": {
+      "note": {
+        "ko": "상대가 같은 기술만 쓰게",
+        "en": "target repeats its last move",
+        "ja": "相手に同じ技を出させる"
+      }
+    },
+    "rain-dance": {
+      "note": {
+        "ko": "비(5턴): 물 1.5배 · 불꽃 반감",
+        "en": "rain (5 turns): Water ×1.5, Fire ×½",
+        "ja": "あめ(5ターン): みず1.5倍・ほのお半減"
+      }
+    },
+    "sunny-day": {
+      "note": {
+        "ko": "햇살(5턴): 불꽃 1.5배 · 물 반감",
+        "en": "sun (5 turns): Fire ×1.5, Water ×½",
+        "ja": "ひざし(5ターン): ほのお1.5倍・みず半減"
+      }
+    },
+    "psych-up": {
+      "note": {
+        "ko": "상대 능력 변화 복사",
+        "en": "copies the target's stat changes",
+        "ja": "相手の能力変化をコピー"
+      }
+    },
+    "hail": {
+      "note": {
+        "ko": "싸라기눈(5턴): 매 턴 피해",
+        "en": "hail (5 turns): damage each turn",
+        "ja": "あられ(5ターン): 毎ターンダメージ"
+      }
+    },
+    "torment": {
+      "note": {
+        "ko": "같은 기술 연속 금지",
+        "en": "target can't use a move twice in a row",
+        "ja": "同じ技を続けて出せない"
+      }
+    },
+    "follow-me": {
+      "note": {
+        "ko": "공격을 자신에게 모음",
+        "en": "draws attacks to the user",
+        "ja": "攻撃を自分に集める"
+      }
+    },
+    "nature-power": {
+      "note": {
+        "ko": "지형에 따른 기술",
+        "en": "uses a move based on terrain",
+        "ja": "地形によって技が変わる"
+      }
+    },
+    "taunt": {
+      "note": {
+        "ko": "상대 변화 기술 봉인",
+        "en": "target can only use attacks",
+        "ja": "相手の変化技を封じる"
+      }
+    },
+    "helping-hand": {
+      "note": {
+        "ko": "아군 기술 위력 1.5배",
+        "en": "boosts an ally's move ×1.5",
+        "ja": "味方の技の威力1.5倍"
+      }
+    },
+    "trick": {
+      "note": {
+        "ko": "도구 맞바꾸기",
+        "en": "swaps held items",
+        "ja": "持ち物を入れ替える"
+      }
+    },
+    "role-play": {
+      "note": {
+        "ko": "상대 특성 복사",
+        "en": "copies the target's ability",
+        "ja": "相手の特性をコピー"
+      }
+    },
+    "wish": {
+      "note": {
+        "ko": "다음 턴 HP ½ 회복",
+        "en": "heals ½ HP next turn",
+        "ja": "次のターンHP½回復"
+      }
+    },
+    "assist": {
+      "note": {
+        "ko": "아군의 기술 무작위 사용",
+        "en": "uses a random party move",
+        "ja": "味方の技をランダムに出す"
+      }
+    },
+    "ingrain": {
+      "note": {
+        "ko": "매 턴 HP 회복 · 교체 불가",
+        "en": "heals each turn, can't switch",
+        "ja": "毎ターン回復・交代できない"
+      }
+    },
+    "magic-coat": {
+      "note": {
+        "ko": "변화 기술 반사",
+        "en": "reflects status moves",
+        "ja": "変化技をはね返す"
+      }
+    },
+    "recycle": {
+      "note": {
+        "ko": "쓴 도구 되살림",
+        "en": "restores a used item",
+        "ja": "使った道具を戻す"
+      }
+    },
+    "skill-swap": {
+      "note": {
+        "ko": "특성 맞바꾸기",
+        "en": "swaps abilities",
+        "ja": "特性を入れ替える"
+      }
+    },
+    "imprison": {
+      "note": {
+        "ko": "내가 가진 기술 상대 사용 금지",
+        "en": "foes can't use the user's moves",
+        "ja": "自分の技を相手が出せない"
+      }
+    },
+    "refresh": {
+      "note": {
+        "ko": "자신 상태이상 회복",
+        "en": "cures own poison/paralysis/burn",
+        "ja": "自分の状態異常を回復"
+      }
+    },
+    "grudge": {
+      "note": {
+        "ko": "기절시킨 기술 PP 0",
+        "en": "KO move loses all PP",
+        "ja": "倒した技のPPが0に"
+      }
+    },
+    "snatch": {
+      "note": {
+        "ko": "상대 변화 기술 가로챔",
+        "en": "steals the target's status move",
+        "ja": "相手の変化技を横取り"
+      }
+    },
+    "camouflage": {
+      "note": {
+        "ko": "지형에 맞춰 타입 변경",
+        "en": "changes type to match terrain",
+        "ja": "地形に合わせてタイプ変更"
+      }
+    },
+    "mud-sport": {
+      "note": {
+        "ko": "전기 기술 위력 약화",
+        "en": "weakens Electric moves",
+        "ja": "でんき技の威力ダウン"
+      }
+    },
+    "aromatherapy": {
+      "note": {
+        "ko": "아군 상태이상 회복",
+        "en": "cures the party's status",
+        "ja": "味方の状態異常を回復"
+      }
+    },
+    "odor-sleuth": {
+      "note": {
+        "ko": "고스트에 노말 · 격투 명중",
+        "en": "Normal/Fighting hit Ghost",
+        "ja": "ゴーストにノーマル・かくとうが当たる"
+      }
+    },
+    "block": {
+      "note": {
+        "ko": "상대 도망 · 교체 불가",
+        "en": "target can't flee or switch",
+        "ja": "相手はにげる・交代できない"
+      }
+    },
+    "water-sport": {
+      "note": {
+        "ko": "불꽃 기술 위력 약화",
+        "en": "weakens Fire moves",
+        "ja": "ほのお技の威力ダウン"
+      }
+    },
+    "gravity": {
+      "note": {
+        "ko": "중력(5턴): 공중 기술 불가 · 명중 ▲",
+        "en": "gravity (5 turns): grounds all, accuracy up",
+        "ja": "じゅうりょく(5ターン)"
+      }
+    },
+    "miracle-eye": {
+      "note": {
+        "ko": "악에 에스퍼 명중",
+        "en": "Psychic hits Dark",
+        "ja": "あくにエスパーが当たる"
+      }
+    },
+    "healing-wish": {
+      "note": {
+        "ko": "기절하고 교대할 포켓몬 완전 회복",
+        "en": "faints; replacement fully heals",
+        "ja": "ひんしになり交代先を全回復"
+      }
+    },
+    "tailwind": {
+      "note": {
+        "ko": "아군 스피드 2배(4턴)",
+        "en": "doubles the team's Speed (4 turns)",
+        "ja": "味方のすばやさ2倍(4ターン)"
+      }
+    },
+    "acupressure": {
+      "note": {
+        "ko": "무작위 능력 ▲2",
+        "en": "sharply raises a random stat",
+        "ja": "ランダムな能力を2段階アップ"
+      }
+    },
+    "embargo": {
+      "note": {
+        "ko": "상대 도구 사용 금지",
+        "en": "target can't use items",
+        "ja": "相手は道具を使えない"
+      }
+    },
+    "psycho-shift": {
+      "note": {
+        "ko": "내 상태이상을 상대에게",
+        "en": "passes own status to the target",
+        "ja": "自分の状態異常を相手に移す"
+      }
+    },
+    "heal-block": {
+      "note": {
+        "ko": "상대 회복 금지",
+        "en": "target can't heal",
+        "ja": "相手は回復できない"
+      }
+    },
+    "power-trick": {
+      "note": {
+        "ko": "공격 · 방어 맞바꾸기",
+        "en": "swaps own Attack and Defense",
+        "ja": "こうげきとぼうぎょを入れ替え"
+      }
+    },
+    "gastro-acid": {
+      "note": {
+        "ko": "상대 특성 없애기",
+        "en": "suppresses the target's ability",
+        "ja": "相手の特性を消す"
+      }
+    },
+    "lucky-chant": {
+      "note": {
+        "ko": "급소 맞지 않음(5턴)",
+        "en": "prevents critical hits (5 turns)",
+        "ja": "急所に当たらない(5ターン)"
+      }
+    },
+    "me-first": {
+      "note": {
+        "ko": "상대 기술 먼저 1.5배로",
+        "en": "uses the target's move first ×1.5",
+        "ja": "相手の技を先に1.5倍で出す"
+      }
+    },
+    "copycat": {
+      "note": {
+        "ko": "직전 기술 따라 하기",
+        "en": "copies the last move used",
+        "ja": "直前の技をまねる"
+      }
+    },
+    "power-swap": {
+      "note": {
+        "ko": "공격 · 특공 변화 맞바꾸기",
+        "en": "swaps Attack/Sp. Atk changes",
+        "ja": "こうげき・とくこうの変化を交換"
+      }
+    },
+    "guard-swap": {
+      "note": {
+        "ko": "방어 · 특방 변화 맞바꾸기",
+        "en": "swaps Defense/Sp. Def changes",
+        "ja": "ぼうぎょ・とくぼうの変化を交換"
+      }
+    },
+    "worry-seed": {
+      "note": {
+        "ko": "상대 특성을 불면으로",
+        "en": "changes the target's ability to Insomnia",
+        "ja": "相手の特性をふみんに"
+      }
+    },
+    "toxic-spikes": {
+      "note": {
+        "ko": "독압정 설치",
+        "en": "sets toxic spikes",
+        "ja": "どくびしを設置"
+      }
+    },
+    "heart-swap": {
+      "note": {
+        "ko": "능력 변화 전부 맞바꾸기",
+        "en": "swaps all stat changes",
+        "ja": "能力変化をすべて交換"
+      }
+    },
+    "aqua-ring": {
+      "note": {
+        "ko": "매 턴 HP 회복",
+        "en": "heals a little every turn",
+        "ja": "毎ターンHP回復"
+      }
+    },
+    "magnet-rise": {
+      "note": {
+        "ko": "땅 기술 무효(5턴)",
+        "en": "immune to Ground (5 turns)",
+        "ja": "じめん技無効(5ターン)"
+      }
+    },
+    "switcheroo": {
+      "note": {
+        "ko": "도구 맞바꾸기",
+        "en": "swaps held items",
+        "ja": "持ち物を入れ替える"
+      }
+    },
+    "trick-room": {
+      "note": {
+        "ko": "느린 순서로 행동(5턴)",
+        "en": "slower Pokémon move first (5 turns)",
+        "ja": "遅い順に行動(5ターン)"
+      }
+    },
+    "stealth-rock": {
+      "note": {
+        "ko": "스텔스록 설치(교체 시 바위 상성 피해)",
+        "en": "sets Stealth Rock (Rock-type damage on switch-in)",
+        "ja": "ステルスロックを設置"
+      }
+    },
+    "lunar-dance": {
+      "note": {
+        "ko": "기절하고 교대할 포켓몬 완전 회복",
+        "en": "faints; replacement fully heals",
+        "ja": "ひんしになり交代先を全回復"
+      }
+    },
+    "wide-guard": {
+      "note": {
+        "ko": "아군 전체 공격 막기",
+        "en": "protects allies from spread moves",
+        "ja": "味方を全体技から守る"
+      }
+    },
+    "guard-split": {
+      "note": {
+        "ko": "방어 · 특방 평균 나누기",
+        "en": "averages Defense and Sp. Def",
+        "ja": "ぼうぎょ・とくぼうを平均"
+      }
+    },
+    "power-split": {
+      "note": {
+        "ko": "공격 · 특공 평균 나누기",
+        "en": "averages Attack and Sp. Atk",
+        "ja": "こうげき・とくこうを平均"
+      }
+    },
+    "wonder-room": {
+      "note": {
+        "ko": "방어 · 특방 바뀜(5턴)",
+        "en": "swaps Defense and Sp. Def (5 turns)",
+        "ja": "ぼうぎょ・とくぼう入れ替え(5ターン)"
+      }
+    },
+    "rage-powder": {
+      "note": {
+        "ko": "공격을 자신에게 모음",
+        "en": "draws attacks to the user",
+        "ja": "攻撃を自分に集める"
+      }
+    },
+    "telekinesis": {
+      "note": {
+        "ko": "상대 띄우기(3턴, 반드시 명중)",
+        "en": "lifts the target (3 turns, moves always hit)",
+        "ja": "相手を浮かせる(3ターン)"
+      }
+    },
+    "magic-room": {
+      "note": {
+        "ko": "지닌 도구 효과 없음(5턴)",
+        "en": "held items have no effect (5 turns)",
+        "ja": "持ち物の効果なし(5ターン)"
+      }
+    },
+    "soak": {
+      "note": {
+        "ko": "상대를 물 타입으로",
+        "en": "makes the target Water type",
+        "ja": "相手をみずタイプに"
+      }
+    },
+    "simple-beam": {
+      "note": {
+        "ko": "상대 특성을 단순으로",
+        "en": "changes the target's ability to Simple",
+        "ja": "相手の特性をたんじゅんに"
+      }
+    },
+    "entrainment": {
+      "note": {
+        "ko": "상대 특성을 내 특성으로",
+        "en": "gives the target the user's ability",
+        "ja": "相手の特性を自分と同じに"
+      }
+    },
+    "after-you": {
+      "note": {
+        "ko": "상대가 바로 다음에 행동",
+        "en": "target moves right after",
+        "ja": "相手をすぐ後に行動させる"
+      }
+    },
+    "quick-guard": {
+      "note": {
+        "ko": "선제 기술 막기",
+        "en": "protects allies from priority moves",
+        "ja": "味方を先制技から守る"
+      }
+    },
+    "ally-switch": {
+      "note": {
+        "ko": "아군과 자리 바꾸기",
+        "en": "swaps places with an ally",
+        "ja": "味方と場所を入れ替える"
+      }
+    },
+    "quash": {
+      "note": {
+        "ko": "상대를 맨 나중에 행동",
+        "en": "target moves last",
+        "ja": "相手を最後に行動させる"
+      }
+    },
+    "reflect-type": {
+      "note": {
+        "ko": "상대와 같은 타입으로",
+        "en": "copies the target's type",
+        "ja": "相手と同じタイプになる"
+      }
+    },
+    "bestow": {
+      "note": {
+        "ko": "내 도구를 상대에게",
+        "en": "gives the user's item to the target",
+        "ja": "持ち物を相手に渡す"
+      }
+    },
+    "mat-block": {
+      "note": {
+        "ko": "아군 공격 막기(첫 턴만)",
+        "en": "protects allies from attacks (first turn)",
+        "ja": "味方を攻撃から守る(最初のターン)"
+      }
+    },
+    "sticky-web": {
+      "note": {
+        "ko": "끈적끈적네트 설치(교체 시 스피드 ▼1)",
+        "en": "sets Sticky Web (Speed −1 on switch-in)",
+        "ja": "ねばねばネットを設置"
+      }
+    },
+    "trick-or-treat": {
+      "note": {
+        "ko": "상대에 고스트 타입 추가",
+        "en": "adds Ghost type to the target",
+        "ja": "相手にゴーストタイプを追加"
+      }
+    },
+    "forests-curse": {
+      "note": {
+        "ko": "상대에 풀 타입 추가",
+        "en": "adds Grass type to the target",
+        "ja": "相手にくさタイプを追加"
+      }
+    },
+    "topsy-turvy": {
+      "note": {
+        "ko": "상대 능력 변화 뒤집기",
+        "en": "inverts the target's stat changes",
+        "ja": "相手の能力変化を逆にする"
+      }
+    },
+    "crafty-shield": {
+      "note": {
+        "ko": "아군 변화 기술 막기",
+        "en": "protects allies from status moves",
+        "ja": "味方を変化技から守る"
+      }
+    },
+    "grassy-terrain": {
+      "note": {
+        "ko": "그래스필드(5턴)",
+        "en": "Grassy Terrain (5 turns)",
+        "ja": "グラスフィールド(5ターン)"
+      }
+    },
+    "misty-terrain": {
+      "note": {
+        "ko": "미스트필드(5턴)",
+        "en": "Misty Terrain (5 turns)",
+        "ja": "ミストフィールド(5ターン)"
+      }
+    },
+    "electric-terrain": {
+      "note": {
+        "ko": "일렉트릭필드(5턴)",
+        "en": "Electric Terrain (5 turns)",
+        "ja": "エレキフィールド(5ターン)"
+      }
+    },
+    "psychic-terrain": {
+      "note": {
+        "ko": "사이코필드(5턴)",
+        "en": "Psychic Terrain (5 turns)",
+        "ja": "サイコフィールド(5ターン)"
+      }
+    },
+    "fairy-lock": {
+      "note": {
+        "ko": "다음 턴 모두 도망 · 교체 불가",
+        "en": "no one can flee next turn",
+        "ja": "次のターン全員にげられない"
+      }
+    },
+    "kings-shield": {
+      "note": {
+        "ko": "공격 막기 · 접촉하면 상대 공격 ▼",
+        "en": "protects; contact lowers Attack",
+        "ja": "攻撃を防ぐ・接触でこうげきダウン"
+      }
+    },
+    "spiky-shield": {
+      "note": {
+        "ko": "공격 막기 · 접촉하면 상대 피해",
+        "en": "protects; contact hurts the attacker",
+        "ja": "攻撃を防ぐ・接触でダメージ"
+      }
+    },
+    "baneful-bunker": {
+      "note": {
+        "ko": "공격 막기 · 접촉하면 상대 독",
+        "en": "protects; contact poisons",
+        "ja": "攻撃を防ぐ・接触でどく"
+      }
+    },
+    "spotlight": {
+      "note": {
+        "ko": "공격을 그 상대에게 모음",
+        "en": "draws attacks to the target",
+        "ja": "攻撃を相手に集める"
+      }
+    },
+    "laser-focus": {
+      "note": {
+        "ko": "다음 공격 반드시 급소",
+        "en": "next attack is a critical hit",
+        "ja": "次の攻撃が必ず急所"
+      }
+    },
+    "speed-swap": {
+      "note": {
+        "ko": "스피드 맞바꾸기",
+        "en": "swaps Speed with the target",
+        "ja": "すばやさを入れ替える"
+      }
+    },
+    "instruct": {
+      "note": {
+        "ko": "상대가 같은 기술 한 번 더",
+        "en": "target repeats its move",
+        "ja": "相手に同じ技をもう一度"
+      }
+    },
+    "aurora-veil": {
+      "note": {
+        "ko": "물리 · 특수 피해 반감(싸라기눈 · 설경)",
+        "en": "halves damage (in hail/snow)",
+        "ja": "ダメージ半減(あられ・ゆき)"
+      }
+    },
+    "snowscape": {
+      "note": {
+        "ko": "설경(5턴): 얼음 방어 1.5배",
+        "en": "snow (5 turns): Ice Defense ×1.5",
+        "ja": "ゆき(5ターン): こおりのぼうぎょ1.5倍"
+      }
+    },
+    "shed-tail": {
+      "note": {
+        "ko": "HP ½로 대타 만들고 교체",
+        "en": "makes a substitute with ½ HP and switches",
+        "ja": "HP½でみがわりを出し交代"
+      }
+    },
+    "chilly-reception": {
+      "note": {
+        "ko": "설경 · 교체",
+        "en": "snow, then switches out",
+        "ja": "ゆきにして交代"
+      }
+    },
+    "court-change": {
+      "note": {
+        "ko": "양쪽 필드 효과 맞바꾸기",
+        "en": "swaps field effects",
+        "ja": "場の効果を入れ替える"
+      }
+    },
+    "obstruct": {
+      "note": {
+        "ko": "공격 막기 · 접촉하면 상대 방어 ▼2",
+        "en": "protects; contact lowers Defense",
+        "ja": "攻撃を防ぐ・接触でぼうぎょダウン"
+      }
+    },
+    "burning-bulwark": {
+      "note": {
+        "ko": "공격 막기 · 접촉하면 상대 화상",
+        "en": "protects; contact burns",
+        "ja": "攻撃を防ぐ・接触でやけど"
+      }
+    },
+    "octolock": {
+      "note": {
+        "ko": "상대 교체 불가 · 매 턴 방어 · 특방 ▼1",
+        "en": "traps; lowers Def/Sp. Def each turn",
+        "ja": "交代不可・毎ターン防御ダウン"
+      }
+    },
+    "revival-blessing": {
+      "note": {
+        "ko": "기절한 아군 HP ½로 부활",
+        "en": "revives an ally at ½ HP",
+        "ja": "ひんしの味方をHP½で復活"
+      }
+    },
+    "celebrate": {
+      "note": {
+        "ko": "효과 없음",
+        "en": "no effect",
+        "ja": "効果なし"
+      }
+    },
+    "hold-hands": {
+      "note": {
+        "ko": "효과 없음",
+        "en": "no effect",
+        "ja": "効果なし"
+      }
+    },
+    "happy-hour": {
+      "note": {
+        "ko": "받는 돈 2배",
+        "en": "doubles prize money",
+        "ja": "もらえるお金2倍"
       }
     }
   }

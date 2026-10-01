@@ -14,7 +14,9 @@ and the project uses [Semantic Versioning](https://semver.org/).
   `resources/data/move-effects.json` (Growth raises only Sp. Atk up to generation 4, String Shot
   −1 up to 5, Minimize, Sweet Scent, Charge, Stockpile, Toxic, and Curse — a different effect when
   a Ghost uses it); generation 1 shows one "특수" stat. Moves without stat, ailment or healing data
-  (screens, weather, Substitute …) show the generation's game text. The squad move picker labels
+  get a short note instead (about 140 moves: "물리 피해 반감(벽)", "햇살(5턴): 불꽃 1.5배 · 물 반감",
+  "HP ¼로 대타 생성" …); the rest show the first sentence of the generation's game text, with the
+  full text in the tooltip. The squad move picker labels
   level-up moves "자력(n레벨)".
 - SixSquad editor (Squad tab). Each generation keeps its own squad of six, saved to `squads.json`
   in the app data folder shortly after every change. Slot cards show the Pokémon in the
