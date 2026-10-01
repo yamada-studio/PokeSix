@@ -171,6 +171,29 @@ QString DexSelector::currentVersionGroup() const
     return {};
 }
 
+int DexSelector::currentDex() const
+{
+    return std::max(kNational, m_group->checkedId());
+}
+
+bool DexSelector::selectVersionGroup(const QString &versionGroup)
+{
+    const int current = m_group->checkedId();
+    if (current <= kNational)
+        return false; // 전국은 모든 게임을 덮는다
+    int target = kNational;
+    for (const DexInfo &dex : std::as_const(m_dexes)) {
+        if (!dex.versionGroups.contains(versionGroup) || !m_group->button(dex.pokedexId))
+            continue; // 그 게임이 아니거나 숨긴 도감
+        if (dex.pokedexId == current)
+            return false;
+        if (target == kNational)
+            target = dex.pokedexId; // 같은 게임의 도감이 여럿이면(칼로스 셋) 첫째
+    }
+    m_group->button(target)->setChecked(true);
+    return true;
+}
+
 void DexSelector::rebuild(int checkedId)
 {
     // 1) 기존 버튼 지우기. delete하면 레이아웃과 버튼 그룹에서도 저절로 빠지지만(소멸자가 알린다),

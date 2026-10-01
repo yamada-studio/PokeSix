@@ -29,6 +29,10 @@ public:
     void setLanguage(Language language);
     // 고른 도감의 게임 묶음(상세 화면의 기술 기준). 전국이면 빈 문자열 → 세대의 대표 게임
     QString currentVersionGroup() const;
+    int currentDex() const; // 켠 도감의 pokedexId(전국 = kNational)
+    // 그 게임의 도감을 켠다(지금 켠 도감이 이미 그 게임 것이거나 전국이면 그대로). 바뀌었으면 true
+    // — dexSelected는 보내지 않는다(부른 쪽이 목록을 다시 읽는다)
+    bool selectVersionGroup(const QString &versionGroup);
 
 signals:
     void dexSelected(int pokedexId); // 사용자가 누를 때만. kNational = 전국
