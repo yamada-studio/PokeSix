@@ -107,7 +107,7 @@ A에서 만든 `PanelFrame`, 버튼 스타일도 갤러리에 올린다.
 - **D2는 사용자 요청("이어서해봐")으로 Claude가 구현했다**: 세대 4 고정(A8에서 `AppState`로), 필터 · 상세 창은 E1. 이후 아이콘 칸(실행 중에 사용자 캐시로 받기) · 번호 오름차순 · 고정 칸 폭을 더했다
 - **D4는 사용자 요청("섞어서")으로 Claude가 구현했다**: `CsvDownloader`, 고정 목록 `csvsource.h`, 개발 도구 `pokesix-fetch-csv`.
   D1(스키마 · CSV 파서 · `CsvImporter`)과 D5의 worker 스레드는 사용자가 가이드를 따라 구현한다
-- **C4 · D3 · E2 (SixSquad)**: 사용자 요청("일단 구현해봐")으로 Claude가 구현했다. core `SquadAnalyzer`는 상성표를 입력으로 받는다(T1 표가 테스트) — C1의 `TypeChart::forGeneration` 설계 과제는 그대로 남겨 두었고, 세대별 차이는 `core/rules/generationfeatures.h` 표 하나에 둔다. 스쿼드는 **세대마다 하나**(`squads.json`)이고, 포켓몬 · 기술(고른 게임에서 배울 수 있는 것) · 특성 · 성격 · 지닌 물건은 그 세대에 있는 것만 고른다. 남은 것: 드래그로 순서 바꾸기, 복제 · 내보내기, 여러 스쿼드 목록, 특성의 상성 효과(부유 등), 좁은 화면의 분석 탭(F1)
+- **C4 · D3 · E2 (SixSquad)**: 사용자 요청("일단 구현해봐")으로 Claude가 구현했다. core `SquadAnalyzer`는 상성표를 입력으로 받는다(T1 표가 테스트) — C1의 `TypeChart::forGeneration` 설계 과제는 그대로 남겨 두었고, 세대별 차이는 `core/rules/generationfeatures.h` 표 하나에 둔다. 스쿼드는 **세대마다 하나**(`squads.json`)이고, 포켓몬 · 기술(고른 게임에서 배울 수 있는 것) · 특성 · 성격 · 지닌 물건은 그 세대에 있는 것만 고른다. 남은 것: 복제 · 내보내기, 여러 스쿼드 목록, 특성의 상성 효과(부유 등), 좁은 화면의 분석 탭(F1)
 - Phase D를 Phase A · C보다 먼저 시작했다. D1은 core의 타입(`core/types`)만 있으면 되므로 순서에 막히지 않는다
 
 ## Phase E — 나머지 화면 (PROMPT 4-5) → v0.5.0

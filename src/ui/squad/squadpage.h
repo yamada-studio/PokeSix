@@ -8,6 +8,7 @@ class QBoxLayout;
 class QGridLayout;
 class QLabel;
 class QLineEdit;
+class QPropertyAnimation;
 class QScrollArea;
 
 namespace com::yamada::studio {
@@ -65,6 +66,12 @@ private:
     void pickAbility(int slot, const QPoint &globalPos);
     void pickNature(int slot, const QPoint &globalPos);
     void pickItem(int slot);
+    // 카드 끌기: 끄는 동안 레이아웃을 멈추고 카드를 직접 옮긴다(놓으면 순서를 저장하고 되돌린다)
+    void onDragStarted(int slot, const QPoint &globalPos);
+    void onDragMoved(int slot, const QPoint &globalPos);
+    void onDragFinished(int slot);
+    void finishDrag(int from, int to);
+    void slideTo(QWidget *card, const QPoint &target, int durationMs);
     void onProblemHovered(int row);
     void onProblemClicked(int row);
 
@@ -106,6 +113,13 @@ private:
     SplitBar *m_split = nullptr;
 
     int m_selected = -1;
-    QHash<QString, int> m_pickerDex; // 게임(버전 그룹) → 포켓몬 선택 창에서 마지막에 고른 도감
+    QHash<QString, int> m_pickerDex;
+
+    bool m_dragging = false;
+    QList<QRect> m_cells; // 자리(위치 번호)마다 카드 칸 — 끌기를 시작할 때 레이아웃에서 잰다
+    QList<int> m_order;  // 위치 → 카드(= 원래 슬롯 번호). 끄는 동안 바뀐다
+    QPoint m_dragOffset; // 카드 왼쪽 위 ↔ 마우스
+    QHash<QWidget *, class QPropertyAnimation *>
+            m_slides; // 게임(버전 그룹) → 포켓몬 선택 창에서 마지막에 고른 도감
 };
 } // namespace com::yamada::studio

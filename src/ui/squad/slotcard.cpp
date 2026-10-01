@@ -14,6 +14,7 @@
 #include "ui/widgets/panelpainter.h"
 #include "ui/widgets/typechip.h"
 
+#include <QApplication>
 #include <QFontMetricsF>
 #include <QHelpEvent>
 #include <QLineEdit>
@@ -123,7 +124,7 @@ void SlotCard::setSuggestion(const QString &text)
     QWidget::update();
 }
 
-SlotCard::Geometry SlotCard::geometry() const
+SlotCard::Geometry SlotCard::areas() const
 {
     Geometry g;
     g.card = rect().adjusted(kRing, kRing, -kRing, -kRing);
@@ -165,7 +166,7 @@ SlotCard::Geometry SlotCard::geometry() const
 
 SlotCard::Hit SlotCard::hitAt(const QPoint &pos) const
 {
-    const Geometry g = geometry();
+    const Geometry g = areas();
     if (isEmptySlot())
         return g.card.contains(pos) ? Hit::Add : Hit::None;
     if (g.menu.contains(pos))
@@ -186,11 +187,25 @@ SlotCard::Hit SlotCard::hitAt(const QPoint &pos) const
 void SlotCard::resizeEvent(QResizeEvent *event)
 {
     QWidget::resizeEvent(event);
-    m_memo->setGeometry(geometry().memo);
+    m_memo->setGeometry(areas().memo);
 }
 
 void SlotCard::mouseMoveEvent(QMouseEvent *event)
 {
+    // 머리를 누른 채 시작 거리(플랫폼 기본값, 보통 10px)만큼 움직이면 끌기
+    if (m_headerPressed && (event->buttons() & Qt::LeftButton)) {
+        if (!m_dragging
+            && (event->position().toPoint() - m_pressPos).manhattanLength()
+                       >= QApplication::startDragDistance()) {
+            m_dragging = true;
+            QWidget::setCursor(cursors::grab());
+            emit dragStarted(m_slot, event->globalPosition().toPoint());
+        }
+        if (m_dragging) {
+            emit dragMoved(m_slot, event->globalPosition().toPoint());
+            return;
+        }
+    }
     const Hit hit = hitAt(event->position().toPoint());
     if (hit != m_hot) {
         m_hot = hit;
@@ -216,7 +231,7 @@ void SlotCard::mousePressEvent(QMouseEvent *event)
         QWidget::mousePressEvent(event);
         return;
     }
-    const Geometry g = geometry();
+    const Geometry g = areas();
     const QPoint pos = event->position().toPoint();
     auto below = [this](const QRect &rect) {
         return mapToGlobal(rect.bottomLeft() + QPoint(0, 4));
@@ -225,8 +240,9 @@ void SlotCard::mousePressEvent(QMouseEvent *event)
     case Hit::Add:
         emit addRequested(m_slot);
         break;
-    case Hit::Header:
-        emit selectRequested(m_slot);
+    case Hit::Header: // 선택은 놓을 때(끌기로 이어지면 선택하지 않는다)
+        m_headerPressed = true;
+        m_pressPos = pos;
         break;
     case Hit::Menu:
         emit menuRequested(m_slot, below(g.menu));
@@ -252,11 +268,34 @@ void SlotCard::mousePressEvent(QMouseEvent *event)
     }
 }
 
+void SlotCard::mouseReleaseEvent(QMouseEvent *event)
+{
+    const bool wasPressed = m_headerPressed;
+    m_headerPressed = false;
+    if (m_dragging) {
+        m_dragging = false;
+        QWidget::setCursor(cursors::pointer());
+        emit dragFinished(m_slot);
+        return;
+    }
+    if (wasPressed && event->button() == Qt::LeftButton
+        && hitAt(event->position().toPoint()) == Hit::Header)
+        emit selectRequested(m_slot);
+    else
+        QWidget::mouseReleaseEvent(event);
+}
+
 bool SlotCard::event(QEvent *event)
 {
     if (event->type() == QEvent::ToolTip && !isEmptySlot()) {
         const QPoint pos = static_cast<QHelpEvent *>(event)->pos();
-        const Geometry g = geometry();
+        const Geometry g = areas();
+        if (g.header.contains(pos) && !g.menu.contains(pos)
+            && (m_warning.isEmpty() || !g.warn.contains(pos))) {
+            QToolTip::showText(static_cast<QHelpEvent *>(event)->globalPos(),
+                               tr("누르면 선택, 끌면 순서를 바꿔요"), this);
+            return true;
+        }
         if (!m_warning.isEmpty() && g.warn.contains(pos)) {
             QToolTip::showText(static_cast<QHelpEvent *>(event)->globalPos(), m_warning, this);
             return true;
@@ -312,7 +351,7 @@ void SlotCard::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing, true);
-    const Geometry g = geometry();
+    const Geometry g = areas();
     if (m_selected || m_alert) { // 바깥 테: 경고(빨강)가 선택(노랑)보다 앞선다
         painter.setPen(QPen(QColor(m_alert ? tok::kRed : tok::kYellow), kRing));
         painter.setBrush(Qt::NoBrush);
