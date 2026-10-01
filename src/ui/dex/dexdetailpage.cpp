@@ -3,6 +3,7 @@
 #include "data/sprites/spritecache.h"
 #include "data/state/appstate.h"
 #include "ui/dex/encounterlist.h"
+#include "ui/dex/evolutionview.h"
 #include "ui/dex/matchupview.h"
 #include "ui/dex/movelist.h"
 #include "ui/dex/statradar.h"
@@ -190,6 +191,7 @@ DexDetailPage::DexDetailPage(Repository *repository, AppState *state, QWidget *p
     , m_state(state)
     , m_fronts(new SpriteCache(SpriteCache::Kind::PokemonFront, this))
     , m_icons(new SpriteCache(SpriteCache::Kind::Item, this))
+    , m_pokemonIcons(new SpriteCache(SpriteCache::Kind::PokemonIcon, this))
 {
     QVBoxLayout *layout = new QVBoxLayout(this);
     layout->setContentsMargins(0, 0, 0, 0);
@@ -242,16 +244,34 @@ QWidget *DexDetailPage::buildContent()
     m_statsPanel->setFixedHeight(kTopRowHeight);
     m_statsPanel->setMinimumWidth(kCardMinWidth);
     row->addWidget(m_statsPanel, 1);
-    // 획득법: 줄이 많으면(캐이시 27줄) 카드 높이 안에서 스크롤
+    // 획득법: [진화 트리] + [야생 출현]. 줄이 많으면(캐이시 27줄) 카드 높이 안에서 스크롤
+    QWidget *acquisition = new QWidget;
+    acquisition->setObjectName(QStringLiteral("dexAcquisition")); // app.qss: 흰 바탕
+    QVBoxLayout *acquisitionLayout = new QVBoxLayout(acquisition);
+    acquisitionLayout->setContentsMargins(0, 0, 0, 0);
+    acquisitionLayout->setSpacing(4);
+    m_evolutionLabel = new QLabel(tr("진화"));
+    m_evolutionLabel->setObjectName(QStringLiteral("dexSectionLabel"));
+    acquisitionLayout->addWidget(m_evolutionLabel);
+    m_evolution = new EvolutionView(m_pokemonIcons);
+    acquisitionLayout->addWidget(m_evolution);
+    QLabel *wildLabel = new QLabel(tr("야생 출현"));
+    wildLabel->setObjectName(QStringLiteral("dexSectionLabel"));
+    acquisitionLayout->addSpacing(6);
+    acquisitionLayout->addWidget(wildLabel);
     m_encounters = new EncounterList;
+    acquisitionLayout->addWidget(m_encounters);
+    acquisitionLayout->addStretch();
     QScrollArea *encounterScroll = new QScrollArea;
     encounterScroll->setObjectName(QStringLiteral("dexEncounterScroll")); // app.qss: 투명
     encounterScroll->setWidgetResizable(true);
     encounterScroll->setFrameShape(QFrame::NoFrame);
     encounterScroll->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    encounterScroll->setWidget(m_encounters);
-    PanelFrame *encounters = section(tok::kGreen, encounterScroll, {12, 10, 6, 10});
-    encounters->setTitle(tr("획득법"), tr("야생 출현"));
+    encounterScroll->setWidget(acquisition);
+    PanelFrame *encounters = section(tok::kGreen, encounterScroll, {12, 8, 6, 10});
+    encounters->setTitle(tr("획득법"));
+    // 진화 트리의 다른 포켓몬을 누르면 그 상세로
+    connect(m_evolution, &EvolutionView::pokemonClicked, this, &DexDetailPage::showPokemon);
     encounters->setFixedHeight(kTopRowHeight);
     encounters->setMinimumWidth(kCardMinWidth);
     row->addWidget(encounters, 1);
@@ -311,7 +331,14 @@ void DexDetailPage::applyLanguage()
     m_profile->setDetail(m_detail, language);
     m_stats->setStats(m_detail.stats);
     m_statsPanel->setTitle(tr("종족값"), tr("합계 %1").arg(m_detail.total));
-    m_encounters->setEncounters(m_detail.encounters, language);
+    const bool evolves = !m_detail.evolution.isEmpty();
+    m_evolutionLabel->setVisible(evolves);
+    m_evolution->setVisible(evolves);
+    m_evolution->setEvolution(m_detail.evolution, m_detail.speciesId, language);
+    bool evolvedForm = false; // 진화 전 단계가 있다(야생에 없으면 그 단계에서 진화시킨다)
+    for (const EvolutionStep &step : std::as_const(m_detail.evolution))
+        evolvedForm = evolvedForm || (step.speciesId == m_detail.speciesId && step.depth > 0);
+    m_encounters->setEncounters(m_detail.encounters, language, evolvedForm);
     m_matchups->setMatchups(m_detail.types, m_chart, language);
     m_levelMoves->setMoves(m_detail.levelMoves, m_detail.versionGroup, m_detail.generation,
                            language);

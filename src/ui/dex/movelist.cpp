@@ -163,7 +163,8 @@ void MoveList::paintEvent(QPaintEvent *)
         if (m_mode == Mode::LevelUp) {
             const QRectF first = cell(0, top, kRowHeight);
             painter.drawText(first, Qt::AlignLeft | Qt::AlignVCenter, QString::number(move.level));
-            if (move.level <= 1) {
+            if (move.needsReminder) { // 진화 전 단계에 없는 Lv 1 기술만(기본 기술은 표시하지
+                                      // 않는다)
                 const QString key = ItemRowDelegate::iconKey(QString::fromLatin1(kHeartScale), {},
                                                              m_generation);
                 const QString file = m_icons->path(key);
@@ -229,9 +230,10 @@ bool MoveList::event(QEvent *event)
             const MoveEntry &move = m_moves.at(row);
             if (m_mode == Mode::Machine)
                 tip = placesOf(move).replace(QStringLiteral(" · "), QStringLiteral("\n"));
-            else if (move.level <= 1 && help->pos().x() < columns().at(0).x + kFirstWidth)
-                tip = tr("레벨업으로 다시 배울 수 없어요. 잊으면 기술 떠올리기(하트비늘)로 "
-                         "되찾아요.");
+            else if (move.needsReminder && help->pos().x() < columns().at(0).x + kFirstWidth)
+                tip = tr("진화 전 단계에서는 배우지 않는 기술이에요. 진화한 뒤 기술 "
+                         "떠올리기(하트비늘)로 "
+                         "배워요.");
         }
         if (tip.isEmpty())
             QToolTip::hideText();

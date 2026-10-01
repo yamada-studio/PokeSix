@@ -62,6 +62,8 @@ qt_add_library(pokesix_ui STATIC
     dex/matchupview.cpp
     dex/movelist.h
     dex/movelist.cpp
+    dex/evolutionview.h
+    dex/evolutionview.cpp
     dex/encounterlist.h
     dex/encounterlist.cpp
     dex/dexselector.h

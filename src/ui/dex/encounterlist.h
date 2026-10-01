@@ -15,7 +15,9 @@ class EncounterList : public QWidget
 public:
     explicit EncounterList(QWidget *parent = nullptr);
 
-    void setEncounters(const QList<EncounterEntry> &encounters, Language language);
+    // evolvedForm: 진화 전 단계가 있는 포켓몬 — 야생에 없을 때 안내가 달라진다
+    void setEncounters(const QList<EncounterEntry> &encounters, Language language,
+                       bool evolvedForm = false);
     QSize sizeHint() const override;
 
 protected:
@@ -24,5 +26,6 @@ protected:
 private:
     QList<EncounterEntry> m_encounters;
     Language m_language = Language::Korean;
+    bool m_evolvedForm = false;
 };
 } // namespace com::yamada::studio

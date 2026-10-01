@@ -28,10 +28,12 @@ EncounterList::EncounterList(QWidget *parent)
     QWidget::setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
 }
 
-void EncounterList::setEncounters(const QList<EncounterEntry> &encounters, Language language)
+void EncounterList::setEncounters(const QList<EncounterEntry> &encounters, Language language,
+                                  bool evolvedForm)
 {
     m_encounters = encounters;
     m_language = language;
+    m_evolvedForm = evolvedForm;
     QWidget::updateGeometry();
     QWidget::update();
 }
@@ -53,8 +55,12 @@ void EncounterList::paintEvent(QPaintEvent *)
     if (m_encounters.isEmpty()) {
         painter.setFont(theme::font(theme::kFamilyBody, 13));
         painter.setPen(QColor(tok::kText3));
-        painter.drawText(rect(), Qt::AlignLeft | Qt::AlignTop | Qt::TextWordWrap,
-                         tr("이 세대에는 야생에서 만날 수 없어요. 진화 · 교배 · 교환으로 얻어요."));
+        painter.drawText(
+                rect(), Qt::AlignLeft | Qt::AlignTop | Qt::TextWordWrap,
+                m_evolvedForm
+                        ? tr("야생에서는 만날 수 없어요. 위의 진화 전 단계를 잡아 진화시켜요.")
+                        : tr("이 세대에는 야생에서 만날 수 없어요. 교배 · 교환 · 이벤트로 "
+                             "얻어요."));
         return;
     }
     for (qsizetype i = 0; i < m_encounters.size(); ++i) {

@@ -10,6 +10,7 @@ class QScrollArea;
 namespace com::yamada::studio {
 class AppState;
 class EncounterList;
+class EvolutionView;
 class MatchupView;
 class MoveList;
 class PanelFrame;
@@ -47,7 +48,8 @@ private:
     Repository *m_repository = nullptr;
     AppState *m_state = nullptr;
     SpriteCache *m_fronts = nullptr;
-    SpriteCache *m_icons = nullptr;
+    SpriteCache *m_icons = nullptr;        // 아이템 아이콘(하트비늘)
+    SpriteCache *m_pokemonIcons = nullptr; // 포켓몬 박스 아이콘(진화 트리)
     PokemonDetail m_detail;
     TypeChart m_chart;
 
@@ -57,6 +59,8 @@ private:
     StatRadar *m_stats = nullptr;
     PanelFrame *m_statsPanel = nullptr;
     EncounterList *m_encounters = nullptr;
+    QLabel *m_evolutionLabel = nullptr;
+    EvolutionView *m_evolution = nullptr;
     MatchupView *m_matchups = nullptr;
     MoveList *m_levelMoves = nullptr;
     MoveList *m_machineMoves = nullptr;

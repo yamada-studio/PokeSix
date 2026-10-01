@@ -7,6 +7,13 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Evolution tree in the detail page's acquisition card: the chain from its base stage with each
+  step's method for the current generation (level, item, trade, friendship, time of day, place,
+  known move …; e.g. Leafeon evolves at Eterna Forest in generation 4 and with a Leaf Stone from
+  generation 8). Rows show the Pokémon's icon and open its detail when clicked. Evolution methods are
+  imported per generation (schema version 7).
+- The Heart Scale marker now appears only on level-1 moves that earlier stages do not learn by
+  level-up (Gardevoir's Healing Wish, Garchomp's Fire Fang), not on a base stage's starting moves.
 - Pokédex detail page: clicking a Pokémon opens its sprite (generation art), names, genus, types,
   size, base stat bars, wild encounters for every version of the generation, defensive and STAB
   offensive type matchups, level-up moves (Heart Scale marker for level 1) and TM/HM moves with their

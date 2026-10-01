@@ -35,7 +35,7 @@
 // [이름] 포켓몬 · 타입 이름은 ko / en / ja 열로 둔다(PokéAPI languages: 3 = ko, 9 = en, 11 = ja).
 //   UI 문구(tr())와는 별개의 경로다(architecture.md §4).
 namespace com::yamada::studio::schema {
-inline constexpr int kVersion = 6; // 스키마를 바꾸면 올린다. meta 표에 기록된다
+inline constexpr int kVersion = 7; // 스키마를 바꾸면 올린다. meta 표에 기록된다
 
 inline constexpr std::array kStatements = {
         // 이 DB를 만든 원천과 스키마 버전 (key = 'schema_version', 'source_commit', 'imported_at')
@@ -143,6 +143,17 @@ inline constexpr std::array kStatements = {
         id INTEGER PRIMARY KEY, identifier TEXT NOT NULL, region_id INTEGER,
         name_ko TEXT, name_en TEXT, name_ja TEXT))",
         R"(CREATE TABLE encounter_methods (id INTEGER PRIMARY KEY, identifier TEXT NOT NULL))",
+        // 진화 방법: 종(evolved_species)이 진화 전 종(species.evolves_from)에서 어떻게 진화하는지.
+        // generation = 이 방법이 적용되기 시작한 게임의 세대(리피아: 4 이끼바위 → 8 리프의돌).
+        // trigger: 1 레벨업 · 2 통신교환 · 3 도구 사용 · 4 빈자리(껍질) · 그 밖 = 특별한 조건
+        R"(CREATE TABLE evolutions (
+        evolved_species_id INTEGER NOT NULL REFERENCES species(id), generation INTEGER NOT NULL,
+        trigger INTEGER NOT NULL, item_id INTEGER, min_level INTEGER, gender INTEGER,
+        location_id INTEGER, held_item_id INTEGER, time_of_day TEXT, known_move_id INTEGER,
+        known_move_type_id INTEGER, min_happiness INTEGER, min_beauty INTEGER, min_affection INTEGER,
+        relative_stats INTEGER, party_species_id INTEGER, party_type_id INTEGER,
+        trade_species_id INTEGER, needs_rain INTEGER, upside_down INTEGER))",
+        R"(CREATE INDEX evolutions_species ON evolutions (evolved_species_id))",
         R"(CREATE TABLE encounters (
         pokemon_id INTEGER NOT NULL, version_id INTEGER NOT NULL, location_id INTEGER NOT NULL,
         method_id INTEGER NOT NULL, min_level INTEGER NOT NULL, max_level INTEGER NOT NULL,

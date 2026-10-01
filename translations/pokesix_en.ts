@@ -118,6 +118,10 @@
         <source>합계 %1</source>
         <translation>Total %1</translation>
     </message>
+    <message>
+        <source>진화</source>
+        <translation>Evolution</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::DexPage</name>
@@ -152,8 +156,119 @@
 <context>
     <name>com::yamada::studio::EncounterList</name>
     <message>
-        <source>이 세대에는 야생에서 만날 수 없어요. 진화 · 교배 · 교환으로 얻어요.</source>
-        <translation>Not found in the wild in this generation. Get it by evolving, breeding or trading.</translation>
+        <source>야생에서는 만날 수 없어요. 위의 진화 전 단계를 잡아 진화시켜요.</source>
+        <translation>Not found in the wild. Catch an earlier stage above and evolve it.</translation>
+    </message>
+    <message>
+        <source>이 세대에는 야생에서 만날 수 없어요. 교배 · 교환 · 이벤트로 얻어요.</source>
+        <translation>Not found in the wild in this generation. Get it by breeding, trading or events.</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::EvolutionView</name>
+    <message>
+        <source>Lv %1</source>
+        <translation>Lv %1</translation>
+    </message>
+    <message>
+        <source>레벨업</source>
+        <translation>Level up</translation>
+    </message>
+    <message>
+        <source>%1 지니고 통신교환</source>
+        <translation>Trade holding %1</translation>
+    </message>
+    <message>
+        <source>%1과(와) 통신교환</source>
+        <translation>Trade for %1</translation>
+    </message>
+    <message>
+        <source>통신교환</source>
+        <translation>Trade</translation>
+    </message>
+    <message>
+        <source>%1 사용</source>
+        <translation>Use %1</translation>
+    </message>
+    <message>
+        <source>파티 빈자리 · 몬스터볼</source>
+        <translation>Empty party slot · Poké Ball</translation>
+    </message>
+    <message>
+        <source>특별한 조건</source>
+        <translation>Special</translation>
+    </message>
+    <message>
+        <source>%1 지님</source>
+        <translation>holding %1</translation>
+    </message>
+    <message>
+        <source>%1에서</source>
+        <translation>at %1</translation>
+    </message>
+    <message>
+        <source>친밀도</source>
+        <translation>friendship</translation>
+    </message>
+    <message>
+        <source>아름다움</source>
+        <translation>beauty</translation>
+    </message>
+    <message>
+        <source>낮</source>
+        <translation>day</translation>
+    </message>
+    <message>
+        <source>밤</source>
+        <translation>night</translation>
+    </message>
+    <message>
+        <source>황혼</source>
+        <translation>dusk</translation>
+    </message>
+    <message>
+        <source>암컷</source>
+        <translation>female</translation>
+    </message>
+    <message>
+        <source>수컷</source>
+        <translation>male</translation>
+    </message>
+    <message>
+        <source>%1 배운 상태</source>
+        <translation>knowing %1</translation>
+    </message>
+    <message>
+        <source>%1 타입 기술 배운 상태</source>
+        <translation>knowing a %1 move</translation>
+    </message>
+    <message>
+        <source>공격 &gt; 방어</source>
+        <translation>Atk &gt; Def</translation>
+    </message>
+    <message>
+        <source>공격 = 방어</source>
+        <translation>Atk = Def</translation>
+    </message>
+    <message>
+        <source>공격 &lt; 방어</source>
+        <translation>Atk &lt; Def</translation>
+    </message>
+    <message>
+        <source>파티에 %1</source>
+        <translation>%1 in party</translation>
+    </message>
+    <message>
+        <source>파티에 %1 타입</source>
+        <translation>%1 type in party</translation>
+    </message>
+    <message>
+        <source>비 오는 날</source>
+        <translation>in rain</translation>
+    </message>
+    <message>
+        <source>기기 뒤집기</source>
+        <translation>upside down</translation>
     </message>
 </context>
 <context>
@@ -427,8 +542,8 @@
         <translation>No location data</translation>
     </message>
     <message>
-        <source>레벨업으로 다시 배울 수 없어요. 잊으면 기술 떠올리기(하트비늘)로 되찾아요.</source>
-        <translation>Cannot be relearned by leveling up. Use the Move Reminder (Heart Scale) to get it back.</translation>
+        <source>진화 전 단계에서는 배우지 않는 기술이에요. 진화한 뒤 기술 떠올리기(하트비늘)로 배워요.</source>
+        <translation>Earlier stages do not learn this move. After evolving, learn it from the Move Reminder (Heart Scale).</translation>
     </message>
 </context>
 <context>
