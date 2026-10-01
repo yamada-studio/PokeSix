@@ -1,6 +1,7 @@
 # core 단위 테스트 — Qt 없이 빌드·실행된다.
 add_executable(pokesix_core_tests
     typechart_test.cpp
+    squadanalyzer_test.cpp
 )
 pokesix_target_defaults(pokesix_core_tests)
 

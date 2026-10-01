@@ -349,6 +349,37 @@
     </message>
 </context>
 <context>
+    <name>com::yamada::studio::HeatmapView</name>
+    <message>
+        <source>빈 슬롯</source>
+        <translation>Empty</translation>
+    </message>
+    <message>
+        <source>약점 수</source>
+        <translation>Weak</translation>
+    </message>
+    <message>
+        <source>내성 · 무효</source>
+        <translation>Resist · immune</translation>
+    </message>
+    <message>
+        <source>공격 커버</source>
+        <translation>Coverage</translation>
+    </message>
+    <message>
+        <source>무효</source>
+        <translation>Immune</translation>
+    </message>
+    <message>
+        <source>문제 열</source>
+        <translation>Problem column</translation>
+    </message>
+    <message>
+        <source>이름을 누르면 행이 노랗게 강조돼요</source>
+        <translation>Click a name to highlight its row</translation>
+    </message>
+</context>
+<context>
     <name>com::yamada::studio::HomePage</name>
     <message>
         <source>도감 · 파티 도우미</source>
@@ -470,11 +501,18 @@
     </message>
 </context>
 <context>
-    <name>com::yamada::studio::MainWindow</name>
+    <name>com::yamada::studio::ListPicker</name>
     <message>
-        <source>스쿼드</source>
-        <translation>Squad</translation>
+        <source>이름으로 찾기</source>
+        <translation>Search by name</translation>
     </message>
+    <message>
+        <source>닫기</source>
+        <translation>Close</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::MainWindow</name>
     <message>
         <source>설정</source>
         <translation>Settings</translation>
@@ -570,13 +608,6 @@
     </message>
 </context>
 <context>
-    <name>com::yamada::studio::NatureButton</name>
-    <message>
-        <source>성격</source>
-        <translation>Nature</translation>
-    </message>
-</context>
-<context>
     <name>com::yamada::studio::NaturePicker</name>
     <message>
         <source>공격</source>
@@ -601,6 +632,68 @@
     <message>
         <source>성격 없음</source>
         <translation>No nature</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::ProblemList</name>
+    <message>
+        <source>공격</source>
+        <translation>Offense</translation>
+    </message>
+    <message>
+        <source>방어</source>
+        <translation>Defense</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::SlotCard</name>
+    <message>
+        <source>역할 메모 (예: 선봉 · 고속 스위퍼)</source>
+        <translation>Role note (e.g. lead · fast sweeper)</translation>
+    </message>
+    <message>
+        <source>위력 %1 · 명중 %2 · PP %3</source>
+        <translation>Power %1 · Accuracy %2 · PP %3</translation>
+    </message>
+    <message>
+        <source>이 게임에서는 배울 수 없는 기술이에요. 다시 골라 주세요.</source>
+        <translation>This move cannot be learned in this game. Please choose again.</translation>
+    </message>
+    <message>
+        <source>1세대에는 특성 · 성격 · 지닌 물건이 없어요</source>
+        <translation>Generation 1 has no abilities, natures or held items</translation>
+    </message>
+    <message>
+        <source>특성</source>
+        <translation>Ability</translation>
+    </message>
+    <message>
+        <source>성격</source>
+        <translation>Nature</translation>
+    </message>
+    <message>
+        <source>물건</source>
+        <translation>Item</translation>
+    </message>
+    <message>
+        <source>약점</source>
+        <translation>Weak</translation>
+    </message>
+    <message>
+        <source>없음</source>
+        <translation>None</translation>
+    </message>
+    <message>
+        <source>+ 기술 추가</source>
+        <translation>+ Add move</translation>
+    </message>
+    <message>
+        <source>%1 빈 슬롯</source>
+        <translation>%1 Empty slot</translation>
+    </message>
+    <message>
+        <source>+ 개체 추가</source>
+        <translation>+ Add Pokémon</translation>
     </message>
 </context>
 <context>
@@ -647,6 +740,275 @@
     </message>
 </context>
 <context>
+    <name>com::yamada::studio::SplitBar</name>
+    <message>
+        <source>물리</source>
+        <translation>Physical</translation>
+    </message>
+    <message>
+        <source>특수</source>
+        <translation>Special</translation>
+    </message>
+    <message>
+        <source>변화</source>
+        <translation>Status</translation>
+    </message>
+    <message>
+        <source>빈칸</source>
+        <translation>Empty</translation>
+    </message>
+    <message>
+        <source>물리 %1 · 특수 %2</source>
+        <translation>Physical %1 · Special %2</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::SquadPage</name>
+    <message>
+        <source>저장 중…</source>
+        <translation>Saving…</translation>
+    </message>
+    <message>
+        <source>✓ 자동 저장됨</source>
+        <translation>✓ Saved</translation>
+    </message>
+    <message>
+        <source>저장하지 못했어요</source>
+        <translation>Could not save</translation>
+    </message>
+    <message>
+        <source>눌러서 이름을 바꿔요</source>
+        <translation>Click to rename</translation>
+    </message>
+    <message>
+        <source>기술 기준 게임 — 배울 수 있는 기술 · 기술머신 번호가 게임마다 달라요</source>
+        <translation>Game for moves — learnable moves and TM numbers differ by game</translation>
+    </message>
+    <message>
+        <source>✓ 자동 저장</source>
+        <translation>✓ Autosave</translation>
+    </message>
+    <message>
+        <source>첫 포켓몬을 추가하면 분석이 시작돼요</source>
+        <translation>Add your first Pokémon to start the analysis</translation>
+    </message>
+    <message>
+        <source>방어 상성 히트맵</source>
+        <translation>Defensive heatmap</translation>
+    </message>
+    <message>
+        <source>행 = 포켓몬 · 열 = 공격 타입 · 숫자 = 받는 배율</source>
+        <translation>Rows = Pokémon · columns = attacking type · numbers = damage taken</translation>
+    </message>
+    <message>
+        <source>물리 · 특수 분포</source>
+        <translation>Physical · special split</translation>
+    </message>
+    <message>
+        <source>%1세대 규칙</source>
+        <translation>Gen %1 rules</translation>
+    </message>
+    <message>
+        <source>게임</source>
+        <translation>Game</translation>
+    </message>
+    <message>
+        <source>%1세대 상성표</source>
+        <translation>Gen %1 type chart</translation>
+    </message>
+    <message>
+        <source> · 악 · 강철 · 페어리 없음</source>
+        <translation> · no Dark, Steel or Fairy</translation>
+    </message>
+    <message>
+        <source> · 강철이 고스트/악 반감 · 페어리 없음</source>
+        <translation> · Steel resists Ghost/Dark · no Fairy</translation>
+    </message>
+    <message>
+        <source>실시간 분석</source>
+        <translation>Live analysis</translation>
+    </message>
+    <message>
+        <source>%1 — 효과가 굉장한 기술 없음</source>
+        <translation>%1 — no super-effective move</translation>
+    </message>
+    <message>
+        <source>%1 타입 공격 기술이 스쿼드에 없어요</source>
+        <translation>No %1 attacking move in the squad</translation>
+    </message>
+    <message>
+        <source>%1 — 약점 %2, 받아낼 포켓몬 %3</source>
+        <translation>%1 — %2 weak, %3 can take it</translation>
+    </message>
+    <message>
+        <source>%1 — 약점 %2, 받아낼 포켓몬 없음</source>
+        <translation>%1 — %2 weak, none can take it</translation>
+    </message>
+    <message>
+        <source>%1 — 4배 약점</source>
+        <translation>%1 — 4× weakness</translation>
+    </message>
+    <message>
+        <source>받아낼 포켓몬이 없어요</source>
+        <translation>nobody takes it</translation>
+    </message>
+    <message>
+        <source>받아냄: %1</source>
+        <translation>takes it: %1</translation>
+    </message>
+    <message>
+        <source>문제가 없어요 — 약점이 고르게 나뉘어 있어요</source>
+        <translation>No problems — weaknesses are well spread</translation>
+    </message>
+    <message>
+        <source>✓ 문제 없음</source>
+        <translation>✓ No problems</translation>
+    </message>
+    <message>
+        <source>⚠ 문제 %1</source>
+        <translation>⚠ %1 problems</translation>
+    </message>
+    <message>
+        <source>4세대~ 기술마다 판정</source>
+        <translation>Gen 4+: per move</translation>
+    </message>
+    <message>
+        <source>1–3세대 타입마다 판정</source>
+        <translation>Gen 1–3: per type</translation>
+    </message>
+    <message>
+        <source>기술 %1 / %2</source>
+        <translation>Moves %1 / %2</translation>
+    </message>
+    <message>
+        <source>1–3세대 규칙(타입 기준)이었다면</source>
+        <translation>Under Gen 1–3 rules (by type)</translation>
+    </message>
+    <message>
+        <source>4세대 이후 규칙(기술 기준)이었다면</source>
+        <translation>Under Gen 4+ rules (by move)</translation>
+    </message>
+    <message>
+        <source>%1 공격에 강하고 %2 기술을 가진 포켓몬이면 문제 %3건이 함께 풀려요.</source>
+        <translation>A Pokémon that resists %1 and has a %2 move would solve %3 problems.</translation>
+    </message>
+    <message>
+        <source>%1 공격에 강한 포켓몬이면 문제 %2건이 풀려요.</source>
+        <translation>A Pokémon that resists %1 would solve %2 problems.</translation>
+    </message>
+    <message>
+        <source>%1 기술을 가진 포켓몬이면 문제 %2건이 풀려요.</source>
+        <translation>A Pokémon with a %1 move would solve %2 problems.</translation>
+    </message>
+    <message>
+        <source>이 세대의 포켓몬만 고를 수 있어요.</source>
+        <translation>Only Pokémon from this generation can be chosen.</translation>
+    </message>
+    <message>
+        <source>빈 자리에 포켓몬을 더해 보세요.</source>
+        <translation>Add a Pokémon to the empty slot.</translation>
+    </message>
+    <message>
+        <source>포켓몬 바꾸기</source>
+        <translation>Change Pokémon</translation>
+    </message>
+    <message>
+        <source>도감에서 보기</source>
+        <translation>Show in Pokédex</translation>
+    </message>
+    <message>
+        <source>앞으로</source>
+        <translation>Move up</translation>
+    </message>
+    <message>
+        <source>뒤로</source>
+        <translation>Move down</translation>
+    </message>
+    <message>
+        <source>비우기</source>
+        <translation>Clear</translation>
+    </message>
+    <message>
+        <source>%1세대 포켓몬 고르기 · %2마리</source>
+        <translation>Choose a Gen %1 Pokémon · %2</translation>
+    </message>
+    <message>
+        <source>No.</source>
+        <translation>No.</translation>
+    </message>
+    <message>
+        <source>이름</source>
+        <translation>Name</translation>
+    </message>
+    <message>
+        <source>타입</source>
+        <translation>Type</translation>
+    </message>
+    <message>
+        <source>합계</source>
+        <translation>Total</translation>
+    </message>
+    <message>
+        <source>가르침</source>
+        <translation>Tutor</translation>
+    </message>
+    <message>
+        <source>알</source>
+        <translation>Egg</translation>
+    </message>
+    <message>
+        <source>%1의 기술 · %2개</source>
+        <translation>%1 moves · %2</translation>
+    </message>
+    <message>
+        <source>기술</source>
+        <translation>Move</translation>
+    </message>
+    <message>
+        <source>분류</source>
+        <translation>Cat.</translation>
+    </message>
+    <message>
+        <source>위력</source>
+        <translation>Pow.</translation>
+    </message>
+    <message>
+        <source>명중</source>
+        <translation>Acc.</translation>
+    </message>
+    <message>
+        <source>PP</source>
+        <translation>PP</translation>
+    </message>
+    <message>
+        <source>배우는 방법</source>
+        <translation>How learned</translation>
+    </message>
+    <message>
+        <source>기술 비우기</source>
+        <translation>Clear move</translation>
+    </message>
+    <message>
+        <source> (숨겨진 특성)</source>
+        <translation> (hidden ability)</translation>
+    </message>
+    <message>
+        <source>지닌 물건 고르기 · %1개</source>
+        <translation>Choose a held item · %1</translation>
+    </message>
+    <message>
+        <source>물건 없음</source>
+        <translation>No item</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::SquadSession</name>
+    <message>
+        <source>%1세대 정주행</source>
+        <translation>Gen %1 run</translation>
+    </message>
+</context>
+<context>
     <name>com::yamada::studio::StatRadar</name>
     <message>
         <source>HP</source>
@@ -671,6 +1033,21 @@
     <message>
         <source>스피드</source>
         <translation>Spe</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::squadpaint</name>
+    <message>
+        <source>물</source>
+        <translation>P</translation>
+    </message>
+    <message>
+        <source>특</source>
+        <translation>S</translation>
+    </message>
+    <message>
+        <source>변</source>
+        <translation>St</translation>
     </message>
 </context>
 </TS>

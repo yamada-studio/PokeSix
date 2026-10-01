@@ -2,7 +2,6 @@
 
 #include "data/repository/repository.h"
 
-#include <QAbstractButton>
 #include <QWidget>
 
 namespace com::yamada::studio {
@@ -41,15 +40,4 @@ private:
     Language m_language = Language::Korean;
 };
 
-// 종족값 카드 머리의 작은 버튼 "성격 ▾" / "조심 ▾"
-class NatureButton : public QAbstractButton
-{
-    Q_OBJECT
-public:
-    explicit NatureButton(QWidget *parent = nullptr);
-    QSize sizeHint() const override;
-
-protected:
-    void paintEvent(QPaintEvent *event) override;
-};
 } // namespace com::yamada::studio

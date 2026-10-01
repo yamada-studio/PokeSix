@@ -9,6 +9,7 @@
 #include "ui/items/itemspage.h"
 #include "ui/logging/logging.h"
 #include "ui/shell/appbar.h"
+#include "ui/squad/squadpage.h"
 #include "ui/widgets/generationbutton.h"
 #include "ui/widgets/searchfield.h"
 
@@ -58,13 +59,17 @@ MainWindow::MainWindow(QWidget *parent)
     m_dexPage = new DexPage(m_repository.get(), m_state);
     m_pages->addWidget(m_dexPage);                                  // [0] 도감
     m_pages->addWidget(new ItemsPage(m_repository.get(), m_state)); // [1] 아이템
-    const QString names[] = {tr("스쿼드"), tr("설정")};
-    for (const QString &name : names) {
-        QLabel *placeholder = new QLabel(tr("%1 — 준비 중이에요").arg(name));
-        placeholder->setObjectName(QStringLiteral("pagePlaceholder"));
-        placeholder->setAlignment(Qt::AlignCenter);
-        m_pages->addWidget(placeholder);
-    }
+    SquadPage *squad = new SquadPage(m_repository.get(), m_state);
+    m_pages->addWidget(squad); // [2] 스쿼드
+    // 슬롯 메뉴 "도감에서 보기" → 도감 탭으로 옮겨 그 포켓몬의 상세를 연다
+    connect(squad, &SquadPage::dexRequested, this, [this](int pokemonId) {
+        open(Page::Dex);
+        m_dexPage->openPokemon(pokemonId);
+    });
+    QLabel *placeholder = new QLabel(tr("%1 — 준비 중이에요").arg(tr("설정")));
+    placeholder->setObjectName(QStringLiteral("pagePlaceholder"));
+    placeholder->setAlignment(Qt::AlignCenter);
+    m_pages->addWidget(placeholder); // [3] 설정
 
     layout->addWidget(m_appBar);
     layout->addWidget(m_pages);

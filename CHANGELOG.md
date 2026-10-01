@@ -7,6 +7,19 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- SixSquad editor (Squad tab). Each generation keeps its own squad of six, saved to `squads.json`
+  in the app data folder shortly after every change. Slot cards show the Pokémon in the
+  generation's types, a role note, ability, nature and held item (only where the generation has
+  them) and four moves; the Pokémon, move and held item pickers list only what exists in the
+  generation, and moves only what the Pokémon learns in the chosen game (level-up, TM/HM, tutor,
+  egg — DP, Platinum or HGSS in generation 4), with how each is learned. The live analysis panel
+  lists problems first (three or more Pokémon weak to a type, a shared weakness nobody resists,
+  4× weaknesses, defending types no move hits super-effectively), then a defensive heatmap over
+  all 18 types (types missing from the generation hatched) with weakness, resistance and coverage
+  rows, and the physical/special/status split with what it would be under the other split rule.
+  Hovering a problem outlines the affected slots; empty slots suggest what kind of Pokémon would
+  fix the current problems. The analysis lives in core (`SquadAnalyzer`, tested against the
+  design's sample squad), and generation differences come from one feature table.
 - Abilities and natures in the Pokédex detail page. An "특성" card lists the Pokémon's abilities for
   the current generation with their effects: none before generation 3, hidden abilities from
   generation 5, and past changes applied (Clefable gains Magic Guard in generation 4, Gengar's

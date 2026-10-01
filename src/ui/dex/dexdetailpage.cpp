@@ -13,6 +13,7 @@
 #include "ui/theme/dexstyle.h"
 #include "ui/theme/theme.h"
 #include "ui/theme/tokens.h"
+#include "ui/widgets/dropdownbutton.h"
 #include "ui/widgets/panelframe.h"
 #include "ui/widgets/shadowbutton.h"
 #include "ui/widgets/typechip.h"
@@ -247,9 +248,9 @@ QWidget *DexDetailPage::buildContent()
     m_statsPanel = section(tok::kBlue, m_stats, {6, 4, 6, 6});
     m_statsPanel->setFixedHeight(kTopRowHeight);
     // 머리 띠 오른쪽 [성격 ▾]: 5×5 성격표 팝업 → 레이더에 ▲▼
-    m_natureButton = new NatureButton;
+    m_natureButton = new DropdownButton(tr("성격"));
     m_statsPanel->setHeaderWidget(m_natureButton);
-    connect(m_natureButton, &NatureButton::clicked, this, &DexDetailPage::showNaturePicker);
+    connect(m_natureButton, &DropdownButton::clicked, this, &DexDetailPage::showNaturePicker);
     m_statsPanel->setMinimumWidth(kCardMinWidth);
     row->addWidget(m_statsPanel, 1);
     // 획득법: [진화 트리] + [야생 출현]. 줄이 많으면(캐이시 27줄) 카드 높이 안에서 스크롤

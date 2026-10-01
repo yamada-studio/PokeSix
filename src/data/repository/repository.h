@@ -76,6 +76,9 @@ struct MoveEntry
     // 배우지 않는 기술(가디안의 치유소원). 기본 단계의 Lv 1 기술(태어날 때 가진 몸통박치기 등)은
     // 아니다.
     bool needsReminder = false;
+    // 기술 자체의 분류(세대 규칙을 적용하기 전). 3세대까지 damageClass는 타입이 정한 값이라, "4세대
+    // 이후 규칙이었다면"(스쿼드 물리 · 특수 분포)을 셀 때 이 값을 쓴다
+    int ownDamageClass = 0;
 };
 
 // 야생 출현 한 줄: 버전 · 장소 · 방법마다 레벨 범위와 출현 칸 확률의 합.
@@ -167,6 +170,8 @@ struct PokemonDetail
     QList<EncounterEntry> encounters; // 그 세대 모든 버전(DP · Pt · HGSS)
     QList<MoveEntry> levelMoves;      // 레벨 순
     QList<MoveEntry> machineMoves;    // 기술머신 번호 순, 비전머신은 뒤에
+    QList<MoveEntry> tutorMoves; // 기술 가르침(이름은 fillMoves가 채운다. 순서 = move id)
+    QList<MoveEntry> eggMoves; // 알 기술(진화 전 단계에만 있는 경우가 많다)
     QList<EvolutionStep> evolution; // 그 세대에 있는 종만. 진화하지 않는 포켓몬은 비어 있다
     QList<AbilityEntry> abilities; // 그 세대의 특성(칸 순). 1–2세대는 비어 있다(특성이 없었다)
 
@@ -174,6 +179,14 @@ struct PokemonDetail
 };
 
 // 세대 g의 타입 상성표: (공격 타입, 방어 타입) → 배율. 표에 없는 쌍은 1배.
+// 세대의 게임 묶음 하나(4세대: DP · Pt · HGSS). 스쿼드의 "기술 기준 게임" 선택지
+struct GameInfo
+{
+    QString versionGroup;              // "platinum"
+    QStringList versions;              // {"platinum"} — UI 약칭(dexstyle.json)의 키
+    QList<LocalizedText> versionNames; // versions와 같은 순서
+};
+
 struct TypeChart
 {
     QStringList types;                  // 그 세대에 있는 타입(id 순)
@@ -222,6 +235,10 @@ public:
     static QString representativeVersionGroup(int generation);
     // 성격 25가지(id 순). 성격은 3세대부터 — 1–2세대 화면은 쓰지 않는다
     QList<Nature> natures();
+    // 그 세대의 본편 게임 묶음(도감이 연결된 것만 — 콜로세움 · XD 같은 외전은 뺀다). 출시 순
+    QList<GameInfo> gamesForGeneration(int generation);
+    // 기술 id들 → 그 세대 값(타입 · 위력 · 분류 …). 없는 id는 빠진다. 순서는 ids 그대로
+    QList<MoveEntry> moves(const QList<int> &ids, int generation);
 
     // 세대 generation까지 나온 종 전부(번호 순). 타입 · 종족값은 그 세대 기준.
     // 1세대는 "특수"(stat 9) 하나였으므로 특공 · 특방 칸에 같은 값을 넣고, 합계에는 한 번만 더한다.
