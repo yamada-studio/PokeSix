@@ -1031,6 +1031,14 @@
         <source>자력(%1레벨)</source>
         <translation>Lv %1</translation>
     </message>
+    <message>
+        <source>진화한 모습(%1)이 이미 있어요</source>
+        <translation>Its evolution (%1) is already in the squad</translation>
+    </message>
+    <message>
+        <source>진화 전 모습(%1)이 이미 있어요</source>
+        <translation>Its pre-evolution (%1) is already in the squad</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::SquadSession</name>

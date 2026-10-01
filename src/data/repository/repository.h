@@ -248,6 +248,9 @@ public:
     static QString representativeVersionGroup(int generation);
     // 성격 25가지(id 순). 성격은 3세대부터 — 1–2세대 화면은 쓰지 않는다
     QList<Nature> natures();
+    // 종 → 진화 전 종(species.evolves_from). 진화 전이 없는 종은 빠진다. 스쿼드의 "진화 전 · 후
+    // 모습이 이미 있어요" 경고에 쓴다
+    QHash<int, int> evolvesFrom();
     // 그 세대의 본편 게임 묶음(도감이 연결된 것만 — 콜로세움 · XD 같은 외전은 뺀다). 출시 순
     QList<GameInfo> gamesForGeneration(int generation);
     // 기술 id들 → 그 세대 값(타입 · 위력 · 분류 …). 없는 id는 빠진다. 순서는 ids 그대로

@@ -618,3 +618,11 @@ TEST_F(RepositoryTest, RefusesADatabaseWithAnotherSchemaVersion)
     repository.close();
     EXPECT_EQ(repository.speciesForGeneration(4).size(), 5);
 }
+
+TEST_F(RepositoryTest, KnowsWhatEachSpeciesEvolvesFrom)
+{
+    Repository repository(s_dbPath);
+    const QHash<int, int> parents = repository.evolvesFrom();
+    EXPECT_EQ(parents.value(36), 35);  // 픽시 ← 삐삐
+    EXPECT_FALSE(parents.contains(1)); // 이상해씨는 진화 전이 없다
+}

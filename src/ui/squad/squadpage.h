@@ -114,6 +114,7 @@ private:
 
     int m_selected = -1;
     QHash<QString, int> m_pickerDex;
+    mutable QHash<int, int> m_evolvesFrom; // 종 → 진화 전 종(경고용, 처음 쓸 때 읽는다)
 
     bool m_dragging = false;
     QList<QRect> m_cells; // 자리(위치 번호)마다 카드 칸 — 끌기를 시작할 때 레이아웃에서 잰다

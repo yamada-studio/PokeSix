@@ -737,6 +737,19 @@ QList<Nature> Repository::natures()
     return natures;
 }
 
+QHash<int, int> Repository::evolvesFrom()
+{
+    QHash<int, int> parents;
+    if (!open())
+        return parents;
+    QSqlQuery query(QSqlDatabase::database(m_connection));
+    if (query.exec(QStringLiteral(
+                "SELECT id, evolves_from FROM species WHERE evolves_from IS NOT NULL")))
+        while (query.next())
+            parents.insert(query.value(0).toInt(), query.value(1).toInt());
+    return parents;
+}
+
 QList<GameInfo> Repository::gamesForGeneration(int generation)
 {
     QList<GameInfo> games;
