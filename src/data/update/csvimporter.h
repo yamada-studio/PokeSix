@@ -53,10 +53,11 @@ private:
     bool importEvolutions(QSqlDatabase &db); // 진화 방법(세대마다)
     bool importAbilities(QSqlDatabase &db); // 특성 · 포켓몬 특성(세대 구간) · 설명문
     bool importNatures(QSqlDatabase &db);   // 성격(오르는 · 내리는 능력치)
-    // 게임 설명문(item_flavor_text · ability_flavor_text) → table(idField, generation, text_*)
+    // 게임 설명문(item · ability · move_flavor_text) → table(idField, generation, text_*)
     bool importFlavorTexts(QSqlDatabase &db, const QString &csv, const QString &idColumn,
                            const QString &table, const QString &idField);
     bool importItemEffects(QSqlDatabase &db);
+    bool importMoveEffects(QSqlDatabase &db); // 기술 설명문(기술머신 설명)
     bool writeMeta(QSqlDatabase &db);
 
     // CSV 파일 하나를 열어, 레코드마다 columns 순서대로 값을 뽑아 row(values)를 부른다.

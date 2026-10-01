@@ -209,9 +209,11 @@ QList<ItemRow> Repository::itemsForGeneration(int generation)
         }
     }
 
+    QHash<int, int> moveOfItem; // 기술머신 item id → 이 세대에 담긴 move id
     // 3) 기술머신: 이 세대에 담긴 기술 + 그 기술의 이 세대 타입(구간 질의)
     query.prepare(
-            QStringLiteral("SELECT im.item_id, m.name_ko, m.name_en, m.name_ja, t.identifier FROM "
+            QStringLiteral("SELECT im.item_id, m.name_ko, m.name_en, m.name_ja, t.identifier, "
+                           "im.move_id FROM "
                            "item_machines im "
                            "JOIN moves m ON m.id = im.move_id "
                            "LEFT JOIN move_types mt ON mt.move_id = m.id AND mt.gen_from <= :g "
@@ -227,15 +229,33 @@ QList<ItemRow> Repository::itemsForGeneration(int generation)
             ItemRow &row = rows[*it];
             row.machineMove = localized(query, 1);
             row.machineType = query.value(4).toString();
+            moveOfItem.insert(row.id, query.value(5).toInt());
         }
     }
 
     // 4) 효과 문구: 언어마다 따로 고른다(한국어는 6세대부터, 영어는 3세대부터 있다).
     //    세대 오름차순으로 읽으면서, generation 이하면 계속 덮어쓰고(→ 가장 최근), 아직 아무것도
     //    없으면 처음 것을 쥔다(→ generation보다 뒤 세대 중 가장 이른 것).
+    //    기술머신은 아이템 문구 대신 담긴 기술의 문구를 같은 규칙으로 고른다. 아이템 문구를 다른
+    //    세대에서 빌려 오면 기술과 설명이 어긋나지만(4세대 기술머신01 = 힘껏펀치인데 6세대 한국어
+    //    문구는 손톱갈기), 기술 문구는 세대가 달라도 같은 기술을 설명한다.
     struct Taken
     {
         std::array<int, 3> from {}; // 언어별로 문구를 가져온 세대(0 = 아직 없음)
+    };
+    const auto pick = [generation](LocalizedText &effect, Taken &t, const QSqlQuery &q) {
+        const int g = q.value(1).toInt();
+        QString *byLanguage[3] = {&effect.ko, &effect.en, &effect.ja};
+        for (int language = 0; language < 3; ++language) {
+            const QString text = q.value(2 + language).toString();
+            if (text.isEmpty())
+                continue;
+            const int from = t.from[language];
+            if (from == 0 || (g <= generation && from <= generation)) {
+                *byLanguage[language] = text;
+                t.from[language] = g;
+            }
+        }
     };
     QHash<int, Taken> taken; // item id →
     if (query.exec(QStringLiteral("SELECT item_id, generation, text_ko, text_en, text_ja "
@@ -243,35 +263,29 @@ QList<ItemRow> Repository::itemsForGeneration(int generation)
         while (query.next()) {
             const int id = query.value(0).toInt();
             const auto it = rowOfItem.constFind(id);
-            if (it == rowOfItem.constEnd())
+            if (it == rowOfItem.constEnd() || moveOfItem.contains(id))
                 continue;
-            const int g = query.value(1).toInt();
-            LocalizedText &effect = rows[*it].effect;
-            QString *byLanguage[3] = {&effect.ko, &effect.en, &effect.ja};
-            Taken &t = taken[id];
-            for (int language = 0; language < 3; ++language) {
-                const QString text = query.value(2 + language).toString();
-                if (text.isEmpty())
-                    continue;
-                const int from = t.from[language];
-                if (from == 0 || (g <= generation && from <= generation)) {
-                    *byLanguage[language] = text;
-                    t.from[language] = g;
-                }
-            }
+            pick(rows[*it].effect, taken[id], query);
         }
     }
-    // 기술머신의 설명문은 담긴 기술의 설명이다. 다른 세대 문구를 빌려 오면 기술과 설명이 어긋난다
-    // (4세대 기술머신01 = 힘껏펀치인데 6세대 한국어 문구는 손톱갈기) → 그 세대 문구가 아닌 언어는
-    // 비운다.
-    for (ItemRow &row : rows) {
-        if (row.machineMove.isEmpty())
-            continue;
-        const Taken t = taken.value(row.id);
-        QString *byLanguage[3] = {&row.effect.ko, &row.effect.en, &row.effect.ja};
-        for (int language = 0; language < 3; ++language)
-            if (t.from[language] != generation)
-                byLanguage[language]->clear();
+    if (!moveOfItem.isEmpty()) {
+        QHash<int, QList<qsizetype>> rowsOfMove; // move id → 그 기술이 담긴 기술머신 행들
+        for (auto it = moveOfItem.cbegin(); it != moveOfItem.cend(); ++it)
+            rowsOfMove[it.value()].append(rowOfItem.value(it.key()));
+        QHash<int, Taken> takenOfMove;
+        if (query.exec(QStringLiteral("SELECT move_id, generation, text_ko, text_en, text_ja "
+                                      "FROM move_effects ORDER BY generation"))) {
+            while (query.next()) {
+                const int moveId = query.value(0).toInt();
+                const auto it = rowsOfMove.constFind(moveId);
+                if (it == rowsOfMove.constEnd())
+                    continue;
+                LocalizedText effect = rows[it->first()].effect;
+                pick(effect, takenOfMove[moveId], query);
+                for (const qsizetype row : *it)
+                    rows[row].effect = effect;
+            }
+        }
     }
     return rows;
 }
