@@ -35,7 +35,8 @@ class DexDetailPage : public QWidget
 public:
     DexDetailPage(Repository *repository, AppState *state, QWidget *parent = nullptr);
 
-    void showPokemon(int pokemonId); // 그 포켓몬을 읽어 채운다
+    // 그 포켓몬을 읽어 채운다. versionGroup = 기술 기준 게임 묶음(비면 세대의 대표 게임)
+    void showPokemon(int pokemonId, const QString &versionGroup);
 
 signals:
     void backRequested(); // [← 목록] · Esc · 지금 세대에 없는 포켓몬이 되었을 때
@@ -51,6 +52,7 @@ private:
     SpriteCache *m_icons = nullptr;        // 아이템 아이콘(하트비늘)
     SpriteCache *m_pokemonIcons = nullptr; // 포켓몬 박스 아이콘(진화 트리)
     PokemonDetail m_detail;
+    QString m_versionGroup; // 보여 달라고 받은 기준 게임(진화 트리로 옮겨 가도 그대로)
     TypeChart m_chart;
 
     QScrollArea *m_scroll = nullptr;

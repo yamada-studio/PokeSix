@@ -369,3 +369,19 @@ TEST_F(RepositoryTest, EvolutionTreeAndReminderMoves)
     }
     EXPECT_TRUE(repository.pokemonDetail(445, 4).evolution.isEmpty());
 }
+
+TEST_F(RepositoryTest, DetailUsesTheChosenGame)
+{
+    Repository repository(s_dbPath);
+    // 신오(DP) 도감에서 열면 디아루가 · 펄기아 기준
+    const PokemonDetail dp = repository.pokemonDetail(1, 4, QStringLiteral("diamond-pearl"));
+    EXPECT_EQ(dp.versionGroup, QStringLiteral("diamond-pearl"));
+    EXPECT_EQ(dp.groupVersions, (QStringList {QStringLiteral("diamond"), QStringLiteral("pearl")}));
+    EXPECT_FALSE(dp.levelMoves.isEmpty());
+    // 다른 세대 게임을 주면(세대를 바꿨다) 그 세대의 대표 게임으로 대신한다
+    EXPECT_EQ(repository.pokemonDetail(1, 4, QStringLiteral("sword-shield")).versionGroup,
+              QStringLiteral("platinum"));
+    // 도감 정보에도 게임 묶음이 실린다(신오 DP = diamond-pearl)
+    EXPECT_EQ(repository.dexesForGeneration(4).first().versionGroups,
+              QStringList {QStringLiteral("diamond-pearl")});
+}

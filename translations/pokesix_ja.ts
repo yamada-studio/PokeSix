@@ -103,10 +103,6 @@
         <translation>レベルで覚えるわざ</translation>
     </message>
     <message>
-        <source>기술 기준: %1</source>
-        <translation>わざの基準: %1</translation>
-    </message>
-    <message>
         <source>기술머신 · 비전머신</source>
         <translation>わざマシン・ひでんマシン</translation>
     </message>
@@ -121,6 +117,10 @@
     <message>
         <source>진화</source>
         <translation>進化</translation>
+    </message>
+    <message>
+        <source>기술 기준: %1 (%2)</source>
+        <translation>わざの基準: %1 (%2)</translation>
     </message>
 </context>
 <context>

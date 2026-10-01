@@ -103,10 +103,6 @@
         <translation>Level-up moves</translation>
     </message>
     <message>
-        <source>기술 기준: %1</source>
-        <translation>Moves from: %1</translation>
-    </message>
-    <message>
         <source>기술머신 · 비전머신</source>
         <translation>TMs · HMs</translation>
     </message>
@@ -121,6 +117,10 @@
     <message>
         <source>진화</source>
         <translation>Evolution</translation>
+    </message>
+    <message>
+        <source>기술 기준: %1 (%2)</source>
+        <translation>Moves from: %1 (%2)</translation>
     </message>
 </context>
 <context>

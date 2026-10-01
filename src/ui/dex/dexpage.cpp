@@ -249,7 +249,9 @@ void DexPage::openDetail(const QModelIndex &proxyIndex)
         return;
     // 뷰의 줄(프록시: 정렬 · 검색 뒤 순서) → 원본 모델의 줄
     const QModelIndex source = m_proxy->mapToSource(proxyIndex);
-    m_detail->showPokemon(m_model->rowAt(source.row()).pokemonId);
+    // 기술 기준 = 지금 고른 도감의 게임(성도 HG·SS → 하트골드·소울실버). 전국이면 세대의 대표 게임
+    m_detail->showPokemon(m_model->rowAt(source.row()).pokemonId,
+                          m_selector->currentVersionGroup());
     m_views->setCurrentWidget(m_detail);
 }
 
