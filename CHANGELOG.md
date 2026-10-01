@@ -91,6 +91,8 @@ and the project uses [Semantic Versioning](https://semver.org/).
   arrow from shifting the label.
 
 ### Changed
+- Search fields filter while the first Korean syllable is still being composed (IME preedit), not
+  only after the next keystroke commits it; lone jamo are ignored so results do not flash empty.
 - The main window opens at 920×840 (just wide enough for the Dex list); its minimum size now comes
   from the layouts. The app bar search field shrinks from 280 to 160 px on narrow windows and hides its
   `Ctrl K` badge below 220 px.

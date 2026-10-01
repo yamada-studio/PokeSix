@@ -6,10 +6,13 @@
 #include <QColor>
 #include <QEvent>
 #include <QHBoxLayout>
+#include <QInputMethodEvent>
 #include <QLabel>
 #include <QLineEdit>
 #include <QPainter>
 #include <QResizeEvent>
+
+#include <algorithm>
 
 namespace {
 constexpr int kBorder = 2;
@@ -41,6 +44,12 @@ SearchField::SearchField(const QString &placeholder, const QString &shortcutText
             QStringLiteral("searchFieldInput")); // app.qss: 테두리 · 배경 없이(바깥 상자가 그린다)
     m_edit->setPlaceholderText(placeholder);
     m_edit->installEventFilter(this);
+    // 확정된 글자가 바뀔 때(영문 · 숫자 입력, 지우기, 붙여 넣기, 한글 조합 확정)
+    connect(m_edit, &QLineEdit::textChanged, this, [this] {
+        if (m_edit->text().isEmpty())
+            m_preedit.clear(); // 다 지웠으면 조합도 끝났다
+        emit searchTextChanged(searchText());
+    });
     layout->addWidget(m_edit, 1);
 
     if (!shortcutText.isEmpty()) {
@@ -67,11 +76,33 @@ QSize SearchField::minimumSizeHint() const
     return QSize(kMinimumWidth, kHeight);
 }
 
+QString SearchField::searchText() const
+{
+    // 자모만 있는 조합 글자("ㅇ", "이ㅅ"의 ㅅ)는 아직 글자가 아니다 — 넣으면 결과가 잠깐 0개로
+    // 깜빡인다. 한글 호환 자모(U+3131–U+318E)만으로 된 조합은 빼고, 음절이 되면("이") 넣는다.
+    const bool onlyJamo = std::all_of(m_preedit.cbegin(), m_preedit.cend(), [](QChar c) {
+        return c.unicode() >= 0x3131 && c.unicode() <= 0x318E;
+    });
+    if (m_preedit.isEmpty() || onlyJamo)
+        return m_edit->text();
+    QString text = m_edit->text();
+    text.insert(m_edit->cursorPosition(), m_preedit); // 조합 중 글자는 커서 자리에 있다
+    return text;
+}
+
 bool SearchField::eventFilter(QObject *watched, QEvent *event)
 {
     if (watched == m_edit
         && (event->type() == QEvent::FocusIn || event->type() == QEvent::FocusOut))
         QWidget::update(); // 테두리 색(먹 ↔ 파랑)을 바꾸려고 다시 그린다
+    if (watched == m_edit && event->type() == QEvent::InputMethod) {
+        // 입력기 이벤트: 조합 중 글자(preedit)와 확정 글자(commit)를 함께 싣고 온다. 이 필터는
+        // 입력이 이벤트를 처리하기 "전"에 불리므로, 확정 글자가 text()에 들어간 "뒤"에 알리도록
+        // 이벤트 루프의 다음 차례로 미룬다(queued). 조합이 끝나면 preedit은 빈 문자열로 온다.
+        m_preedit = static_cast<QInputMethodEvent *>(event)->preeditString();
+        QMetaObject::invokeMethod(
+                this, [this] { emit searchTextChanged(searchText()); }, Qt::QueuedConnection);
+    }
     return QWidget::eventFilter(watched, event);
 }
 
