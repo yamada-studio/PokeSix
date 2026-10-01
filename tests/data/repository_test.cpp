@@ -8,7 +8,10 @@
 #include "data/store/squadstore.h"
 #include "data/update/csvimporter.h"
 
+#include <QFile>
 #include <QSettings>
+#include <QSqlDatabase>
+#include <QSqlQuery>
 #include <QTemporaryDir>
 
 #include <gtest/gtest.h>
@@ -572,4 +575,32 @@ TEST_F(RepositoryTest, MovesCarryTheirEffectSkeleton)
     EXPECT_EQ(moves[3].statChanges, (QList<std::pair<int, int>> {{2, 1}, {4, 1}}));
     // 그 세대 설명문: 한국어는 XY부터라 4세대는 6세대 문구를 빌린다
     EXPECT_FALSE(moves[0].effect.ko.isEmpty());
+}
+
+TEST_F(RepositoryTest, RefusesADatabaseWithAnotherSchemaVersion)
+{
+    // 스키마가 바뀐 뒤 데이터를 다시 받기 전의 옛 DB: 열지 않는다(옛 표를 읽어 빈 이름 · 잘못된
+    // 분류를 보여 주지 않게). 새 DB로 바뀐 뒤 close() → 다음 조회는 새 파일을 연다
+    QTemporaryDir dir;
+    const QString path = dir.filePath(QStringLiteral("old.sqlite"));
+    ASSERT_TRUE(QFile::copy(s_dbPath, path));
+    QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+    {
+        QSqlDatabase db
+                = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), QStringLiteral("old"));
+        db.setDatabaseName(path);
+        ASSERT_TRUE(db.open());
+        QSqlQuery(db).exec(
+                QStringLiteral("UPDATE meta SET value = '1' WHERE key = 'schema_version'"));
+        db.close();
+    }
+    QSqlDatabase::removeDatabase(QStringLiteral("old"));
+    Repository repository(path);
+    EXPECT_TRUE(repository.speciesForGeneration(4).isEmpty());
+    EXPECT_FALSE(repository.errorString().isEmpty());
+
+    ASSERT_TRUE(QFile::remove(path));
+    ASSERT_TRUE(QFile::copy(s_dbPath, path)); // 데이터 받기가 새 DB로 바꿔 놓았다
+    repository.close();
+    EXPECT_EQ(repository.speciesForGeneration(4).size(), 5);
 }

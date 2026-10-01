@@ -318,6 +318,11 @@ void SquadPage::placeCards(bool wide)
     }
 }
 
+void SquadPage::reloadData()
+{
+    m_session->reload();
+}
+
 void SquadPage::showEvent(QShowEvent *event)
 {
     QWidget::showEvent(event);

@@ -1,5 +1,6 @@
 #include "data/repository/repository.h"
 
+#include "data/db/gamedatabase.h"
 #include "data/logging/logging.h"
 
 #include <QHash>
@@ -59,6 +60,10 @@ bool Repository::open()
 {
     if (QSqlDatabase::contains(m_connection) && QSqlDatabase::database(m_connection).isOpen())
         return true;
+    if (!gamedatabase::isUsable(m_path)) {
+        m_error = QStringLiteral("game database is missing or has another schema version");
+        return false;
+    }
     QSqlDatabase db = QSqlDatabase::contains(m_connection)
                               ? QSqlDatabase::database(m_connection, false)
                               : QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), m_connection);
@@ -71,6 +76,12 @@ bool Repository::open()
         return false;
     }
     return true;
+}
+
+void Repository::close()
+{
+    if (QSqlDatabase::contains(m_connection))
+        QSqlDatabase::database(m_connection, false).close();
 }
 
 QList<SpeciesRow> Repository::speciesForGeneration(int generation)
