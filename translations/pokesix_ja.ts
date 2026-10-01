@@ -1011,6 +1011,14 @@
         <source>%1세대 상성표 · %2타입</source>
         <translation>第%1世代の相性表・%2タイプ</translation>
     </message>
+    <message>
+        <source>이미 멤버에 있어요(%1번 자리)</source>
+        <translation>すでにメンバーにいます(%1番)</translation>
+    </message>
+    <message>
+        <source>이미 스타팅 포켓몬(%1)이 있어요</source>
+        <translation>すでに最初のポケモン(%1)がいます</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::SquadSession</name>

@@ -18,6 +18,7 @@
 #include "ui/squad/slotcard.h"
 #include "ui/squad/splitbar.h"
 #include "ui/squad/squadpaint.h"
+#include "ui/squad/starters.h"
 #include "ui/theme/dexstyle.h"
 #include "ui/theme/itemstyle.h"
 #include "ui/theme/theme.h"
@@ -364,6 +365,9 @@ void SquadPage::refresh()
         card->setSelected(m_cards.indexOf(card) == m_selected);
         card->setAlert(false);
         card->setSuggestion(hint);
+        const int slot = int(m_cards.indexOf(card));
+        const PokemonDetail &detail = m_session->detail(slot);
+        card->setWarning(detail.isValid() ? warningFor(slot, detail.speciesId) : QString());
     }
     refreshAnalysis();
 }
@@ -494,6 +498,31 @@ QString SquadPage::suggestion() const
                                 : tr("빈 자리에 포켓몬을 더해 보세요.");
 }
 
+QString SquadPage::warningFor(int slot, int speciesId) const
+{
+    // 경고만 한다(고르는 것은 막지 않는다 — 교환 · 교배 · 치트로 얼마든지 가능하다)
+    const Language language = m_state->language();
+    const QString game = m_session->versionGroup();
+    const int line = starters::lineOf(game, speciesId);
+    for (int other = 0; other < int(kSquadSize); ++other) {
+        const PokemonDetail &detail = m_session->detail(other);
+        if (other == slot || !detail.isValid())
+            continue;
+        if (detail.speciesId == speciesId)
+            return tr("이미 멤버에 있어요(%1번 자리)").arg(other + 1);
+    }
+    if (line < 0)
+        return {};
+    for (int other = 0; other < int(kSquadSize); ++other) {
+        const PokemonDetail &detail = m_session->detail(other);
+        if (other == slot || !detail.isValid())
+            continue;
+        if (starters::lineOf(game, detail.speciesId) >= 0) // 한 정주행에 스타팅은 하나
+            return tr("이미 스타팅 포켓몬(%1)이 있어요").arg(detail.name.text(language));
+    }
+    return {};
+}
+
 void SquadPage::selectSlot(int slot)
 {
     m_selected = m_selected == slot ? -1 : slot; // 다시 누르면 풀린다
@@ -587,11 +616,13 @@ void SquadPage::pickPokemon(int slot)
     }
     QList<SpeciesRow> rows; // painter가 참조로 본다 → 도감을 바꾸면 이 목록을 먼저 바꾼다
     QStringList search;
+    QStringList warnings; // 줄마다 경고(같은 포켓몬 · 스타팅 둘). 없으면 빈 칸
     int current = -1;
     auto load = [&](int id) {
         rows = id == DexFilterBar::kNational ? m_repository->speciesForGeneration(generation)
                                              : m_repository->speciesForDex(id, generation);
         search.clear();
+        warnings.clear();
         current = -1;
         for (qsizetype i = 0; i < rows.size(); ++i) {
             const SpeciesRow &row = rows.at(i);
@@ -600,6 +631,7 @@ void SquadPage::pickPokemon(int slot)
                                   .arg(row.dexNumber)
                                   .arg(row.speciesId)
                                   .arg(row.name.all()));
+            warnings.append(warningFor(slot, row.speciesId));
             if (row.pokemonId == m_session->member(slot).pokemonId)
                 current = int(i);
         }
@@ -611,7 +643,8 @@ void SquadPage::pickPokemon(int slot)
     SpriteCache *icons = m_pokemonIcons;
     ListPicker picker(
             tr("%1세대 포켓몬 고르기").arg(generation), search,
-            [this, &rows, icons, language](QPainter &painter, const QRect &r, int i, bool) {
+            [this, &rows, &warnings, icons, language](QPainter &painter, const QRect &r, int i,
+                                                      bool) {
                 if (i < 0) { // 칸 제목
                     painter.setFont(theme::font(theme::kFamilyBody, 11, QFont::ExtraBold));
                     painter.setPen(QColor(tok::kText3));
@@ -626,6 +659,11 @@ void SquadPage::pickPokemon(int slot)
                     return;
                 }
                 const SpeciesRow &row = rows.at(i);
+                const QString warning = warnings.value(i);
+                if (!warning.isEmpty()) { // 경고 줄: 빨강 연한 바탕 + 왼쪽 빨강 띠
+                    painter.fillRect(r, QColor(tok::kRedTint));
+                    painter.fillRect(QRect(r.left(), r.top(), 4, r.height()), QColor(tok::kRed));
+                }
                 painter.setFont(theme::font(theme::kFamilyData, 12, QFont::Bold));
                 painter.setPen(QColor(tok::kText3));
                 painter.drawText(QRect(r.left() + 14, r.top(), 52, r.height()),
@@ -636,14 +674,28 @@ void SquadPage::pickPokemon(int slot)
                         row.pokemonId, icons);
                 painter.setFont(theme::font(theme::kFamilyBody, 14, QFont::ExtraBold));
                 painter.setPen(QColor(tok::kText1));
-                painter.drawText(QRect(r.left() + 112, r.top(), 170, r.height()),
-                                 Qt::AlignLeft | Qt::AlignVCenter, row.name.text(language));
+                if (warning.isEmpty()) {
+                    painter.drawText(QRect(r.left() + 112, r.top(), 170, r.height()),
+                                     Qt::AlignLeft | Qt::AlignVCenter, row.name.text(language));
+                } else { // 이름은 위, 경고 문구는 아래 작은 빨강 글자
+                    painter.drawText(QRect(r.left() + 112, r.top() + 2, 170, 20),
+                                     Qt::AlignLeft | Qt::AlignVCenter, row.name.text(language));
+                    painter.setFont(theme::font(theme::kFamilyBody, 11, QFont::ExtraBold));
+                    painter.setPen(QColor(tok::kRed));
+                    const int width = r.right() - 100 - (r.left() + 112);
+                    painter.drawText(QRect(r.left() + 112, r.top() + 21, width, 16),
+                                     Qt::AlignLeft | Qt::AlignVCenter,
+                                     QFontMetricsF(painter.font())
+                                             .elidedText(QStringLiteral("! ") + warning,
+                                                         Qt::ElideRight, width));
+                }
+                // 타입 칩: 경고 줄이면 윗줄(이름과 같은 높이)로 올려 아래 경고 문구와 겹치지 않게
                 qreal x = r.left() + 290;
+                const qreal chipTop
+                        = warning.isEmpty() ? r.center().y() - typechip::kHeight / 2 : r.top() + 2;
                 for (const QString &key : row.types)
                     if (const tok::TypeColor *type = typechip::find(key))
-                        x += typechip::paint(painter,
-                                             QPointF(x, r.center().y() - typechip::kHeight / 2),
-                                             *type, language)
+                        x += typechip::paint(painter, QPointF(x, chipTop), *type, language)
                              + typechip::kGap;
                 painter.setFont(theme::font(theme::kFamilyData, 12, QFont::Bold));
                 painter.setPen(QColor(tok::kText2));

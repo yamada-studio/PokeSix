@@ -68,6 +68,9 @@ private:
 
     QString typeName(const QString &key) const;
     QString suggestion() const; // 빈 자리 제안 문구
+    // slot 자리에 speciesId를 둘 때의 경고(같은 포켓몬이 이미 있다 · 스타팅이 이미 있다). 없으면 빈
+    // 칸
+    QString warningFor(int slot, int speciesId) const;
 
     Repository *m_repository = nullptr;
     AppState *m_state = nullptr;
