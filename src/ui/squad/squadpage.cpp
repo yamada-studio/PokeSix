@@ -730,13 +730,13 @@ void SquadPage::pickMove(int slot, int index)
     const QList<SquadSession::LearnableMove> rows = m_session->learnableMoves(slot);
     const auto &current = m_session->slotMoves(slot)[std::size_t(index)];
     QStringList search;
-    QStringList methods; // "Lv 1 · TM26 · 가르침 · 알"
+    QStringList methods; // "자력(1레벨) · TM26 · 가르침 · 알"
     int currentRow = -1;
     for (qsizetype i = 0; i < rows.size(); ++i) {
         const SquadSession::LearnableMove &row = rows.at(i);
         QStringList parts;
-        if (row.level >= 0)
-            parts.append(QStringLiteral("Lv %1").arg(row.level));
+        if (row.level >= 0) // 레벨업 = 스스로 배운다("자력")
+            parts.append(tr("자력(%1레벨)").arg(row.level));
         if (!row.machine.isEmpty())
             parts.append(row.machine);
         if (row.tutor)

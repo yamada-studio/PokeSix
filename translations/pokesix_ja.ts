@@ -1019,6 +1019,10 @@
         <source>이미 스타팅 포켓몬(%1)이 있어요</source>
         <translation>すでに最初のポケモン(%1)がいます</translation>
     </message>
+    <message>
+        <source>자력(%1레벨)</source>
+        <translation>Lv %1で覚える</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::SquadSession</name>
