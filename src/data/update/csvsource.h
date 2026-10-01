@@ -122,9 +122,11 @@ inline constexpr auto kFiles = std::to_array<CsvFile>({
         {"machines", 32831, "f9df7faaf0a60896fa344abd2b639f83f79c2a24e1fd4bb3560ca7da76e9a6ad"},
         {"item_flavor_text", 6281294,
          "f85281c97e4a423fb6ae673a3d2cfab116ac2e7bb9fcdecfb43ac8b1e1fb8676"},
+        {"move_flavor_text", 5392794,
+         "43177df8d76dac477fc837aa19b2a50d74ee2c94e47fb827506768c58b360087"},
 });
 
-// 전부 합친 크기. 첫 실행 화면의 "예상 크기"와 진행 막대에 쓴다. (18.8 MB)
+// 전부 합친 크기. 첫 실행 화면의 "예상 크기"와 진행 막대에 쓴다. (28.9 MB)
 inline constexpr qint64 kTotalSize = [] {
     qint64 sum = 0;
     for (const CsvFile &file : kFiles)

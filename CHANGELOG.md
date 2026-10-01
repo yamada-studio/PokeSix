@@ -100,6 +100,13 @@ and the project uses [Semantic Versioning](https://semver.org/).
   with the same alignment rule and padding as the cells (text left, numbers right) and keeps the sort
   arrow from shifting the label.
 
+### Fixed
+- TM and HM descriptions in the Items page were shown in English with the Korean language selected
+  for generations 1–5: Korean item descriptions only exist from generation 6, so machines now use
+  their move's description, borrowed from the nearest generation when needed (the move is the same,
+  so the text still matches). Move descriptions are imported (schema version 9; the downloaded CSV
+  data grows to 28.9 MB). Moves introduced in generation 9 still lack Korean text in PokéAPI.
+
 ### Changed
 - The Pokédex detail page takes its moves and TMs from the game of the dex chosen in the list
   (HeartGold/SoulSilver from the Johto dex, Diamond/Pearl from the Sinnoh D·P dex); only the national

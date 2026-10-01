@@ -147,9 +147,9 @@ bool CsvImporter::run(const QString &csvDir, const QString &dbPath)
                  && importPokemonTypes(db) && importPokemonStats(db) && importRegions(db)
                  && importVersionGroups(db) && importVersions(db) && importPokedexes(db)
                  && importItems(db) && importItemEffects(db) && importMoves(db)
-                 && importMachines(db) && importPokemonMoves(db) && importEncounters(db)
-                 && importEvolutions(db) && importAbilities(db) && importNatures(db)
-                 && writeMeta(db);
+                 && importMoveEffects(db) && importMachines(db) && importPokemonMoves(db)
+                 && importEncounters(db) && importEvolutions(db) && importAbilities(db)
+                 && importNatures(db) && writeMeta(db);
             if (ok)
                 ok = db.commit()
                      || fail(QStringLiteral("commit failed: %1").arg(db.lastError().text()));
@@ -1077,7 +1077,7 @@ bool CsvImporter::importEvolutions(QSqlDatabase &db)
 bool CsvImporter::importFlavorTexts(QSqlDatabase &db, const QString &csv, const QString &idColumn,
                                     const QString &table, const QString &idField)
 {
-    // 게임 설명문(*_flavor_text) → 세대 · 언어마다 한 줄. 아이템 · 특성이 같이 쓴다.
+    // 게임 설명문(*_flavor_text) → 세대 · 언어마다 한 줄. 아이템 · 특성 · 기술이 같이 쓴다.
     // 버전 그룹 → (세대, 순서). 세대마다 "그 세대 첫 게임"의 문구를 고르는 데 쓴다.
     // (7세대: SM · USUM · LGPE 중 SM. 기술머신은 게임마다 담긴 기술이 달라 문구도 다르다)
     struct GroupInfo
@@ -1150,6 +1150,12 @@ bool CsvImporter::importItemEffects(QSqlDatabase &db)
 {
     return importFlavorTexts(db, QStringLiteral("item_flavor_text"), QStringLiteral("item_id"),
                              QStringLiteral("item_effects"), QStringLiteral("item_id"));
+}
+
+bool CsvImporter::importMoveEffects(QSqlDatabase &db)
+{
+    return importFlavorTexts(db, QStringLiteral("move_flavor_text"), QStringLiteral("move_id"),
+                             QStringLiteral("move_effects"), QStringLiteral("move_id"));
 }
 
 bool CsvImporter::importAbilities(QSqlDatabase &db)

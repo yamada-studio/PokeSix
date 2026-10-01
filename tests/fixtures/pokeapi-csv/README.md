@@ -13,6 +13,7 @@ PokéAPI 저장소([PokeAPI/pokeapi](https://github.com/PokeAPI/pokeapi), BSD-3-
 - 진화 방법(`pokemon_evolution`)은 시드 종으로 진화하는 줄만
 - 야생 출현(`encounters`)은 시드 포켓몬의 4세대 줄, 그 칸 · 구역 · 장소(`encounter_slots` · `location_areas` · `locations` · `location_names`), `encounter_methods`는 통째로
 - 아이템(`items` · `item_names` · `item_game_indices` · `item_flavor_text`)은 시드 아이템 7개의 줄만(설명문은 ko · en). `item_categories` · `item_pockets`는 통째로
+- 기술 설명문(`move_flavor_text`)은 `machines`에 나오는 기술의 ko · en · ja 줄만(기술머신 설명에 쓴다)
   - 마스터볼(1) · 상처약(17) · 불꽃의돌(82) · 각성의돌(109, 4세대~) · 먹다남은음식(211, 2세대~) · 기술머신01(305, 세대마다 문구가 다르다) · 얼음의돌(885, 7세대~)
 - 포켓몬은 세대 규칙을 확인하기 좋은 것만:
   - 이상해씨(1): 1세대 전용 능력치 "특수"(stat 9)

@@ -210,20 +210,19 @@ TEST_F(RepositoryTest, ItemsKnowWhichGenerationsHaveThem)
 TEST_F(RepositoryTest, ItemEffectFollowsTheGeneration)
 {
     Repository repository(s_dbPath);
-    // 기술머신01은 게임마다 담긴 기술이 달라 문구가 다르다. 세대마다 그 세대 첫 게임의 문구.
+    // 기술머신01은 게임마다 담긴 기술이 다르다. 문구는 아이템 설명문이 아니라 담긴 기술의
+    // 설명문이다 (기술 설명문은 세대가 달라도 같은 기술을 설명하니 가까운 세대에서 빌려도 된다).
     auto tm01 = [&](int generation) {
         return findItem(repository.itemsForGeneration(generation), QStringLiteral("tm01"))
                 ->effect.ko;
     };
-    const QString xy
-            = QStringLiteral("손톱을 갈아 날카롭게 만든다. 자신의 공격과 명중률을 올린다.");
-    EXPECT_EQ(tm01(6), xy); // XY (줄바꿈 → 띄어쓰기)
-    EXPECT_EQ(tm01(7),
-              QStringLiteral("스스로 분발해서 공격과 특수공격을 올린다.")); // SM (LGPE 아님)
-    // 1–5세대 · 9세대는 그 세대 한국어 문구가 없다. 기술머신의 문구는 담긴 기술의 설명이라 다른
-    // 세대 문구를 빌리지 않는다(4세대 기술머신01 = 힘껏펀치인데 6세대 문구는 손톱갈기) → 비어 있다.
-    EXPECT_TRUE(tm01(4).isEmpty());
-    EXPECT_TRUE(tm01(9).isEmpty());
+    EXPECT_EQ(tm01(6), // XY 손톱갈기 (줄바꿈 → 띄어쓰기)
+              QStringLiteral("손톱을 갈아 날카롭게 한다. 자신의 공격과 명중률을 올린다."));
+    // 4세대 기술머신01 = 힘껏펀치. 한국어 기술 설명문은 XY부터라 6세대 문구를 빌린다
+    EXPECT_EQ(tm01(4),
+              QStringLiteral(
+                      "정신력을 높여 펀치를 날린다. 기술을 쓰기 전에 공격을 받으면 실패한다."));
+    EXPECT_FALSE(tm01(9).isEmpty());
     // 다른 아이템은 가장 가까운 세대의 문구를 빌린다(각성의돌: 4세대 → 6세대 문구)
     EXPECT_EQ(findItem(repository.itemsForGeneration(4), QStringLiteral("dawn-stone"))->effect.ko,
               QStringLiteral("어느 특정 포켓몬을 진화시키는 이상한 돌. 눈동자처럼 아름답다."));
@@ -283,14 +282,13 @@ TEST_F(RepositoryTest, MachineHoldsTheMoveOfTheGeneration)
 TEST_F(RepositoryTest, EffectsAreKeptPerLanguage)
 {
     Repository repository(s_dbPath);
-    // 4세대 기술머신01(힘껏펀치): 한국어 문구는 4세대에 없어서 비지만, 영어 문구는 DP에 있다.
-    // 화면(한국어)에서는 LocalizedText의 대체 순서로 영어 문구가 보인다.
+    // 4세대 기술머신01(힘껏펀치): 언어마다 따로 고른다 — 영어는 DP 문구, 한국어는 XY 문구
     const QList<ItemRow> items
             = repository.itemsForGeneration(4); // 포인터가 가리킬 목록을 살려 둔다
     const ItemRow *tm01 = findItem(items, QStringLiteral("tm01"));
-    EXPECT_TRUE(tm01->effect.ko.isEmpty());
+    EXPECT_TRUE(tm01->effect.ko.startsWith(QStringLiteral("정신력을")));
     EXPECT_FALSE(tm01->effect.en.isEmpty());
-    EXPECT_EQ(tm01->effect.text(Language::Korean), tm01->effect.en);
+    EXPECT_EQ(tm01->effect.text(Language::Korean), tm01->effect.ko);
     EXPECT_EQ(tm01->machineMove.en, QStringLiteral("Focus Punch"));
 }
 
