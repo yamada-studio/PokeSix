@@ -31,11 +31,10 @@ public:
 
     static constexpr int kHeight = 258; // 내용이 꼭 맞는 기준 높이
     static constexpr int kMinimumHeight = 234; // 줄 사이 숨만 줄인 최소(창이 낮으면 여기까지)
-    static constexpr int kMaximumHeight = 292; // 줄 사이가 넉넉해지는 최대(창이 높으면 여기까지)
     static constexpr int kMinimumWidth = 262;
 
-    // 카드 높이를 [kMinimumHeight, kMaximumHeight]로 맞춘다 — 창 높이에 따라 6장이 아래 빈 공간
-    // 없이 딱 들어가게(SquadPage가 계산한다). 차이는 줄 사이 간격에서만 더하고 뺀다(areas()).
+    // 카드 높이를 맞춘다(최소만 지킨다) — 카드 열의 바닥이 실시간 분석 창과 같은 줄에 오게
+    // SquadPage가 계산해 준다. 기준(kHeight)과의 차이는 줄 사이 간격에서만 더하고 뺀다(areas()).
     void setCardHeight(int height);
 
     void refresh(Language language); // 세션 값이 바뀌었다
