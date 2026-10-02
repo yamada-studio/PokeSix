@@ -1183,6 +1183,10 @@
         <source>NPC 가르침(%1)</source>
         <translation>教え技（%1）</translation>
     </message>
+    <message>
+        <source>분석이 이 세대의 규칙을 따라요 — 상성표(페어리는 6세대부터),물리·특수 구분(3세대까지 타입, 4세대부터 기술),특성·성격(3세대부터) · 지닌 물건(2세대부터)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::SquadSession</name>
