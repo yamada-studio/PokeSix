@@ -39,6 +39,7 @@ LocalizedText localizedOf(const QJsonValue &value)
 struct Book
 {
     QHash<QString, QHash<QString, QStringList>> machinePlaces; // 묶음 → 아이템 → 획득처
+    QHash<QString, QHash<QString, LocalizedText>> tutorCosts;  // 묶음 → 기술 → 비용
     QHash<QString, LocalizedText> places;
     QHash<QString, LocalizedText> methods;
 };
@@ -58,6 +59,14 @@ Book load()
                 places.append(place.toString());
             book.machinePlaces[group.key()].insert(item.key(), places);
         }
+    }
+    const QJsonObject tutors = readJson(":/data/tutor-costs.json");
+    for (auto group = tutors.begin(); group != tutors.end(); ++group) {
+        if (group.key().startsWith(QLatin1Char('_')) || !group->isObject())
+            continue; // "_comment"
+        const QJsonObject moves = group->toObject();
+        for (auto move = moves.begin(); move != moves.end(); ++move)
+            book.tutorCosts[group.key()].insert(move.key(), localizedOf(*move));
     }
     const QJsonObject places
             = readJson(":/data/place-names.json").value(QStringLiteral("places")).toObject();
@@ -81,6 +90,13 @@ namespace com::yamada::studio::guidebook {
 QStringList machinePlaces(const QString &versionGroup, const QString &machineItem)
 {
     return book().machinePlaces.value(versionGroup).value(machineItem);
+}
+
+QString tutorCost(const QString &versionGroup, const QString &move, Language language)
+{
+    const LocalizedText cost = book().tutorCosts.value(versionGroup).value(move);
+    const QString text = cost.text(language);
+    return text.isEmpty() ? cost.ko : text; // "48BP"처럼 언어 공통이면 ko 칸 하나만 쓴다
 }
 
 QString placeName(const QString &identifier, const LocalizedText &pokeapiName, Language language)

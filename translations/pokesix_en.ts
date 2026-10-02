@@ -154,11 +154,15 @@
     </message>
     <message>
         <source>가르침 기술</source>
-        <translation>Tutor moves</translation>
+        <translation type="vanished">Tutor moves</translation>
     </message>
     <message>
         <source>알 기술</source>
         <translation>Egg moves</translation>
+    </message>
+    <message>
+        <source>NPC 가르침 기술</source>
+        <translation>Move tutor moves</translation>
     </message>
 </context>
 <context>
@@ -761,6 +765,10 @@ to see its details here</translation>
         <source>효과</source>
         <translation>Effect</translation>
     </message>
+    <message>
+        <source>비용</source>
+        <translation>Cost</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::NaturePicker</name>
@@ -1085,7 +1093,7 @@ to see its details here</translation>
     </message>
     <message>
         <source>가르침</source>
-        <translation>Tutor</translation>
+        <translation type="vanished">Tutor</translation>
     </message>
     <message>
         <source>알</source>
@@ -1166,6 +1174,14 @@ to see its details here</translation>
     <message>
         <source>진화 전 모습(%1)이 이미 있어요</source>
         <translation>Its pre-evolution (%1) is already in the squad</translation>
+    </message>
+    <message>
+        <source>NPC 가르침</source>
+        <translation>Move tutor</translation>
+    </message>
+    <message>
+        <source>NPC 가르침(%1)</source>
+        <translation>Move tutor (%1)</translation>
     </message>
 </context>
 <context>

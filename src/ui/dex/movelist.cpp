@@ -25,6 +25,7 @@ constexpr int kNameWidth = 120;
 constexpr int kTypeWidth = 74;
 constexpr int kClassWidth = 46;
 constexpr int kNumberWidth = 44; // 위력 · 명중 · PP
+constexpr int kCostWidth = 96;   // NPC 가르침 비용("48BP")
 constexpr int kFirstWidth = 56;  // Lv · 번호
 constexpr char kHeartScale[] = "heart-scale";
 constexpr int kVariablePower = 1;
@@ -105,6 +106,10 @@ QList<MoveList::Column> MoveList::columns() const
         add(effect);
         x += kPlacesGap;
         add(std::max(80, width() - x - kPadding));
+    } else if (m_mode == Mode::Plain) { // 효과 + 비용(NPC 가르침 — BP · 조각)
+        add(std::max(kEffectMinWidth, rest - kCostWidth - kPlacesGap));
+        x += kPlacesGap;
+        add(std::max(60, width() - x - kPadding));
     } else {
         add(rest);
     }
@@ -145,7 +150,7 @@ void MoveList::paintEvent(QPaintEvent *)
                                tr("명중"),
                                tr("PP"),
                                tr("효과"),
-                               tr("획득처")};
+                               m_mode == Mode::Plain ? tr("비용") : tr("획득처")};
     for (qsizetype i = 0; i < c.size(); ++i) {
         const bool numeric = i >= 4 && i <= 6;
         painter.drawText(cell(int(i), 0, kHeaderHeight),
@@ -224,6 +229,15 @@ void MoveList::paintEvent(QPaintEvent *)
             moveeffect::paint(painter, cell(effectColumn(), top, kRowHeight),
                               moveeffect::describe(move, m_generation, m_userTypes, m_language),
                               placeFont);
+        // 비용(NPC 가르침): 사전(tutor-costs.json)에 있을 때만. 없으면 흐린 "—"
+        if (m_mode == Mode::Plain) {
+            const QString cost = guidebook::tutorCost(m_versionGroup, move.identifier, m_language);
+            painter.setFont(dataFont);
+            painter.setPen(QColor(cost.isEmpty() ? tok::kTextDisabled : tok::kText2));
+            painter.drawText(cell(placesColumn(), top, kRowHeight),
+                             Qt::AlignLeft | Qt::AlignVCenter,
+                             cost.isEmpty() ? QStringLiteral("—") : cost);
+        }
         // 획득처(기술머신)
         if (m_mode == Mode::Machine) {
             const QString places = placesOf(move);
