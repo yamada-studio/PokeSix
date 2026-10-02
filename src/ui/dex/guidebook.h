@@ -15,6 +15,10 @@ namespace com::yamada::studio::guidebook {
 // 기술머신 획득처 한 줄씩. 사전에 없으면 빈 목록. versionGroup = "platinum", machineItem = "tm01"
 QStringList machinePlaces(const QString &versionGroup, const QString &machineItem);
 
+// NPC 가르침 기술의 비용("48BP" · "빨강조각 8개" …). 사전에 없으면 빈 문자열.
+// PokéAPI에는 이 데이터가 없어서 사전(tutor-costs.json)으로만 안다.
+QString tutorCost(const QString &versionGroup, const QString &move, Language language);
+
 // 장소 이름: 사전(한국어) → 도로 · 수로 번호 규칙("201번 도로") → PokéAPI 이름(대체 순서)
 QString placeName(const QString &identifier, const LocalizedText &pokeapiName, Language language);
 

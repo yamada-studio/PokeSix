@@ -9,6 +9,7 @@
 #include "data/store/squadstore.h"
 #include "ui/dex/dexrowdelegate.h"
 #include "ui/dex/gameselector.h"
+#include "ui/dex/guidebook.h"
 #include "ui/dex/moveeffect.h"
 #include "ui/dex/naturepicker.h"
 #include "ui/items/itemrowdelegate.h"
@@ -906,7 +907,7 @@ void SquadPage::pickMove(int slot, int index)
     const QList<SquadSession::LearnableMove> rows = m_session->learnableMoves(slot);
     const auto &current = m_session->slotMoves(slot)[std::size_t(index)];
     QStringList search;
-    QStringList methods; // "자력(1레벨) · TM26 · 가르침 · 알"
+    QStringList methods; // "자력(1레벨) · TM26 · NPC 가르침 · 알"
     QList<moveeffect::Parts> effects; // 변화 기술의 효과 줄(공격 ▲2 …). 공격 기술은 비어 있다
     const QStringList userTypes = m_session->detail(slot).types;
     int currentRow = -1;
@@ -917,8 +918,11 @@ void SquadPage::pickMove(int slot, int index)
             parts.append(tr("자력(%1레벨)").arg(row.level));
         if (!row.machine.isEmpty())
             parts.append(row.machine);
-        if (row.tutor)
-            parts.append(tr("가르침"));
+        if (row.tutor) {
+            const QString cost = guidebook::tutorCost(m_session->versionGroup(),
+                                                      row.move.identifier, language);
+            parts.append(cost.isEmpty() ? tr("NPC 가르침") : tr("NPC 가르침(%1)").arg(cost));
+        }
         if (row.egg)
             parts.append(tr("알"));
         methods.append(parts.join(QStringLiteral(" · ")));

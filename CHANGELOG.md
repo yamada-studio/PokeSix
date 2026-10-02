@@ -7,6 +7,11 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Tutor moves are labeled "NPC 가르침" (to separate them from the Heart Scale move reminder) and
+  show their cost where known — a new 비용 column in the Pokédex detail and a suffix in the squad
+  move picker ("NPC 가르침(48BP)"). PokéAPI has no tutor cost data, so costs live in our own
+  dictionary (`resources/data/tutor-costs.json`, per game → move); it starts with Emerald's
+  Battle Frontier elemental punches (48BP) and grows like the TM location dictionary.
 - The Items page gets its third pane: picking an item (click or ↑/↓) shows a detail pane with the
   icon, name, price, a 1–9 generation-presence strip (current generation ringed), the full effect
   text, the Pokémon that evolve with the item ("가디 → 윈디", trade-hold evolutions marked), and —

@@ -154,11 +154,15 @@
     </message>
     <message>
         <source>가르침 기술</source>
-        <translation>教え技</translation>
+        <translation type="vanished">教え技</translation>
     </message>
     <message>
         <source>알 기술</source>
         <translation>タマゴ技</translation>
+    </message>
+    <message>
+        <source>NPC 가르침 기술</source>
+        <translation>教え技</translation>
     </message>
 </context>
 <context>
@@ -761,6 +765,10 @@
         <source>효과</source>
         <translation>効果</translation>
     </message>
+    <message>
+        <source>비용</source>
+        <translation>コスト</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::NaturePicker</name>
@@ -1085,7 +1093,7 @@
     </message>
     <message>
         <source>가르침</source>
-        <translation>教え技</translation>
+        <translation type="vanished">教え技</translation>
     </message>
     <message>
         <source>알</source>
@@ -1166,6 +1174,14 @@
     <message>
         <source>진화 전 모습(%1)이 이미 있어요</source>
         <translation>進化前の姿(%1)がすでにいます</translation>
+    </message>
+    <message>
+        <source>NPC 가르침</source>
+        <translation>教え技</translation>
+    </message>
+    <message>
+        <source>NPC 가르침(%1)</source>
+        <translation>教え技（%1）</translation>
     </message>
 </context>
 <context>

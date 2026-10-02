@@ -413,7 +413,7 @@ void DexDetailPage::applyLanguage()
                              tr("%1개").arg(m_detail.machineMoves.size()));
     m_tutorMoves->setMoves(m_detail.tutorMoves, m_detail.versionGroup, m_detail.generation,
                            m_detail.types, language);
-    m_tutorPanel->setTitle(tr("가르침 기술"), tr("%1개").arg(m_detail.tutorMoves.size()));
+    m_tutorPanel->setTitle(tr("NPC 가르침 기술"), tr("%1개").arg(m_detail.tutorMoves.size()));
     m_tutorPanel->setVisible(!m_detail.tutorMoves.isEmpty());
     m_eggMoves->setMoves(m_detail.eggMoves, m_detail.versionGroup, m_detail.generation,
                          m_detail.types, language);

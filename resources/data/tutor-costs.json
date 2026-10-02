@@ -1,0 +1,14 @@
+{
+  "_comment": [
+    "NPC 가르침 기술의 비용 사전 (도감 상세의 '비용' 칸 · 스쿼드 기술 선택 창, ui/dex/guidebook.h가 읽는다).",
+    "PokéAPI에는 가르침 비용(BP · 조각 등)이 없어서 따로 정리한다. 키: 게임 묶음(version_groups.identifier) → 기술 identifier.",
+    "값: 글자 하나(언어 공통, 예: '48BP') 또는 {ko, en, ja}.",
+    "emerald: 배틀프런티어 BP 교환 튜터 중 널리 알려진 값만 우선 넣었다. 나머지(1회용 무료 튜터 포함)와",
+    "다른 게임(Pt · HGSS · BW2의 조각 · BP)은 출처를 받아 같은 형식으로 채운다."
+  ],
+  "emerald": {
+    "fire-punch": "48BP",
+    "ice-punch": "48BP",
+    "thunder-punch": "48BP"
+  }
+}
