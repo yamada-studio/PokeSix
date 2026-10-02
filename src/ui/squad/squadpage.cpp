@@ -162,7 +162,7 @@ SquadPage::SquadPage(Repository *repository, AppState *state, QWidget *parent)
         m_cards.append(card);
     }
     m_columns->addWidget(m_cardArea, 0, Qt::AlignTop);
-    m_columns->addWidget(buildAnalysis(), 1, Qt::AlignTop);
+    m_columns->addWidget(buildAnalysis(), 1); // 넓은 배치: 세로를 채운다(placeCards가 바꾼다)
     m_columns->addStretch();
     placeCards(false);
 
@@ -291,8 +291,27 @@ QWidget *SquadPage::buildAnalysis()
     frameLayout->setContentsMargins(14, 12, 14, 14);
     frameLayout->addWidget(m_emptyAnalysis);
     frameLayout->addWidget(body);
-    m_analysis->setBody(frameBody);
+    frameLayout->addStretch(); // 창이 내용보다 크면 남는 공간은 아래로
+
+    // 분석이 창보다 길면 분석 "안"에서만 스크롤한다(넓은 배치). 페이지 전체가 밀리지 않게.
+    m_analysisScroll = new QScrollArea;
+    m_analysisScroll->setObjectName(QStringLiteral("squadScroll")); // app.qss: 투명
+    m_analysisScroll->setWidgetResizable(true);
+    m_analysisScroll->setFrameShape(QFrame::NoFrame);
+    m_analysisScroll->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    m_analysisScroll->setWidget(frameBody);
+    m_analysis->setBody(m_analysisScroll);
     return m_analysis;
+}
+
+void SquadPage::syncAnalysisHeight()
+{
+    if (m_wide) {
+        m_analysisScroll->setMinimumHeight(0); // 세로는 열이 정한다 — 넘치면 안에서 스크롤
+        return;
+    }
+    QWidget *content = m_analysisScroll->widget();
+    m_analysisScroll->setMinimumHeight(content->sizeHint().height());
 }
 
 void SquadPage::fitCardHeights()
@@ -323,6 +342,12 @@ void SquadPage::placeCards(bool wide)
         m_cardArea->setMinimumWidth(0);
         m_cardArea->setMaximumWidth(QWIDGETSIZE_MAX);
     }
+    // 넓으면: 분석 창이 열 세로를 채우고, 넘치는 내용은 창 안에서 스크롤 → 바깥은 안 밀린다.
+    // 좁으면: 분석 창을 내용 높이대로 펴고(안쪽 스크롤 없음) 페이지 전체가 스크롤한다(전처럼).
+    m_columns->setAlignment(m_analysis, wide ? Qt::Alignment() : Qt::AlignTop);
+    m_analysisScroll->setVerticalScrollBarPolicy(wide ? Qt::ScrollBarAsNeeded
+                                                      : Qt::ScrollBarAlwaysOff);
+    syncAnalysisHeight();
 }
 
 void SquadPage::reloadData()
@@ -469,6 +494,7 @@ void SquadPage::refreshAnalysis()
     m_split->setSplit(s, analysis.otherRuleSplit,
                       features.splitByMove ? tr("1–3세대 규칙(타입 기준)이었다면")
                                            : tr("4세대 이후 규칙(기술 기준)이었다면"));
+    syncAnalysisHeight(); // 내용(문제 수)이 바뀌었다 — 좁은 배치의 최소 높이 갱신
 }
 
 QString SquadPage::suggestion() const
