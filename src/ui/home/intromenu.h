@@ -7,9 +7,8 @@
 namespace com::yamada::studio {
 class IntroMenuItem;
 
-// 인트로 메뉴 창의 "내용": 메뉴 줄 3개 + 점선 구분선 + 종료 줄 (디자인 02b SCR-01 #5 · ADR 0015).
-// 설정 줄은 뺐다 — 설정은 본 화면의 앱 막대 탭으로 간다.
-// 자기가 PanelFrame 안에 들어 있다는 사실은 모른다(ADR 0007: 겉모양과 내용의 분리).
+// 인트로 메뉴: 카드 버튼 3개(스쿼드는 빨강 주 행동) + 종료 줄 (ADR 0015, 사진 레퍼런스).
+// 버튼마다 자기 카드(먹선 · 그림자 · 배지 아이콘)를 그린다 — 바깥 PanelFrame은 더 쓰지 않는다.
 //
 // 선택(▶ + 노란 칸)은 이 클래스가 인덱스 하나로 관리한다.
 //   - 마우스: 줄에 올라가면(hover) 선택이 그 줄로 옮겨 간다
@@ -37,7 +36,6 @@ signals:
 
 protected:
     void keyPressEvent(QKeyEvent *event) override;
-    void paintEvent(QPaintEvent *event) override;
 
 private:
     // from에서 direction(+1 아래 / −1 위) 쪽으로 가며 처음 만나는 쓸 수 있는 줄. 없으면 from.

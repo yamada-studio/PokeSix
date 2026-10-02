@@ -7,7 +7,6 @@
 #include "ui/home/intromenu.h"
 #include "ui/theme/tokens.h"
 #include "ui/widgets/markwidget.h"
-#include "ui/widgets/panelframe.h"
 #include "ui/widgets/wordmarklabel.h"
 
 #include <QKeyEvent>
@@ -34,25 +33,11 @@ constexpr int kFirstRunToMenu = 12;                  // 첫 실행 패널과 메
 // 순으로 줄인다. 메뉴는 절대 잘리지 않는다." 패널이 있는 동안에는 마크를 작게(960 배치와 같은
 // 72) 하고 부제와 세대 카드를 숨긴다(세대는 데이터를 받은 뒤 고르면 된다).
 constexpr int kCompactMark = 72;
-constexpr int kHomeMark = 96; // v2의 136보다 작게 — 세대 카드 부채꼴의 세로 자리(ADR 0015)
+constexpr int kHomeMark = 80; // v2의 136보다 작게 — 세대 카드 부채꼴의 세로 자리(ADR 0015)
 // 글자 줄의 높이. CSS의 line-height: normal은 브라우저가 글꼴 파일의 줄 간격 값으로 정하는데,
 // Qt의 QLabel은 다른 값(QFontMetrics::height)을 쓴다. 도현 22는 Qt가 32로 잡아서 아래가 전부
 // 밀리므로 기준 이미지(30_intro_1440.png)에서 잰 브라우저 값으로 고정한다.
 constexpr int kSubtitleLine = 26; // 도현 22
-
-// 메뉴 창의 겉모양: 먹선 3 · 반경 12 · 그림자 6, 안쪽 8 떨어진 곳에 line 색 2px 이중 테(반경 8).
-// PanelStyle에는 QRgb만 들어 있으므로 constexpr로 만들 수 있다.
-constexpr PanelStyle kMenuWindow {
-        .outline = 3,
-        .radius = 12,
-        .shadow = 6,
-        .fill = tok::kWhite,
-        .ink = tok::kInk,
-        .innerInset = 8,
-        .innerLine = 2,
-        .innerRadius = 8,
-        .innerColor = tok::kLine,
-};
 
 // ── 바탕 (02b SCR-01 #0) ──────────────────────────────────────────────────────
 // CSS: repeating-linear-gradient(135deg, paper 0–26px, intro.stripe 26–52px)
@@ -149,14 +134,11 @@ HomePage::HomePage(DataUpdater *updater, AppState *state, QWidget *parent)
         layout->addWidget(m_firstRunBlock, 0, Qt::AlignHCenter);
     }
 
-    // 메뉴 창 = 겉모양(PanelFrame) + 내용(IntroMenu). 폭은 쓰는 쪽(HomePage)이 정한다.
+    // 메뉴 = 카드 버튼 3개 + 종료 줄(IntroMenu가 직접 그린다 — 바깥 창 없음, ADR 0015)
     m_menu = new IntroMenu;
-    m_menu->setDataLocked(firstRun); // 데이터가 필요한 줄(도감 · 아이템 · 스쿼드)을 잠근다
-    PanelFrame *menuFrame = new PanelFrame;
-    menuFrame->setPanelStyle(kMenuWindow);
-    menuFrame->setFixedWidth(kMenuWidth);
-    menuFrame->setBody(m_menu);
-    layout->addWidget(menuFrame, 0, Qt::AlignHCenter);
+    m_menu->setDataLocked(firstRun); // 데이터가 필요한 버튼(스쿼드 · 도감 · 아이템)을 잠근다
+    m_menu->setFixedWidth(kMenuWidth);
+    layout->addWidget(m_menu, 0, Qt::AlignHCenter);
 
     layout->addStretch(); // 남는 세로 공간은 메뉴 창과 정보 줄 사이로 간다
     layout->addWidget(new IntroFooter); // 정렬 없음 → 가로로 꽉 찬다

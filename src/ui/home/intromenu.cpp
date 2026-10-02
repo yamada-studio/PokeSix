@@ -1,25 +1,25 @@
 #include "ui/home/intromenu.h"
 
 #include "ui/home/intromenuitem.h"
-#include "ui/theme/tokens.h"
 
 #include <QKeyEvent>
-#include <QPainter>
 #include <QVBoxLayout>
 
 namespace {
-constexpr QMargins kMenuMargins = {6, 6, 6, 6}; // 안쪽 이중 테 안의 padding: 6px
-constexpr int kItemSpacing = 2;                 // gap: 2px
-constexpr int kItemHeight = com::yamada::studio::tok::kSizeIntroMenuRow; // 58
-constexpr int kQuitHeight = 42;
-// CSS: 마지막 줄과 종료 줄 사이 = gap 2 + 구분선(margin 4 · 선 2 · margin 4) + gap 2 = 14.
-// QBoxLayout은 spacer 주위에 spacing(2)을 한 번만 넣으므로 spacer 자체는 14 − 2.
-constexpr int kDividerSpacing = 14 - kItemSpacing;
-constexpr int kDividerLine = 2;   // border-top: 2px dashed line
-constexpr int kDividerInsetX = 8; // margin: 4px 8px 의 좌우 8
-constexpr int kDividerInsetY = 4; // 〃 위 4
+constexpr int kItemSpacing = 10; // 카드 버튼 사이
+constexpr int kItemHeight = 62;  // 카드 버튼(그림자 포함)
+constexpr int kQuitHeight = 32;
+constexpr int kQuitSpacing = 6 - kItemSpacing < 0 ? 0 : 6 - kItemSpacing; // 카드 ↔ 종료 줄
 // 데이터가 있어야 쓸 수 있는 메뉴 줄(스쿼드 · 도감 백과 · 아이템 백과). 규칙을 if 대신 표로 둔다.
 constexpr int kNeedsData[] = {0, 1, 2};
+
+// 아이콘은 앱 막대 탭과 같은 그림(24 격자, 선 2.2) — 배지 색은 IntroMenuItem이 입힌다
+constexpr const char *kSquadSvg
+        = R"(<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.8 4.5v9L12 21l-7.8-4.5v-9z"/><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9"/></svg>)";
+constexpr const char *kDexSvg
+        = R"(<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9h16M9 9v11"/></svg>)";
+constexpr const char *kItemsSvg
+        = R"(<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>)";
 } // namespace
 
 namespace com::yamada::studio {
@@ -30,31 +30,37 @@ IntroMenu::IntroMenu(QWidget *parent)
     QWidget::setFocusPolicy(Qt::StrongFocus);
 
     QVBoxLayout *layout = new QVBoxLayout(this);
-    layout->setContentsMargins(kMenuMargins);
+    layout->setContentsMargins(0, 0, 0, 0);
     layout->setSpacing(kItemSpacing);
 
     struct Entry
     {
+        IntroMenuItem::Kind kind;
         QString name;
         QString description;
+        const char *svg;
     };
     const Entry entries[] = {
-            {tr("스쿼드"), tr("여섯 자리 파티 편성과 타입 분석")},
-            {tr("도감 백과"), tr("종족값 · 타입 상성 · 습득 기술")},
-            {tr("아이템 백과"), tr("회복 · 기술머신 · 진화 · 배틀 · 기타")},
+            // 주 행동(스쿼드)만 빨강 카드. 단축키 1–3은 keyPressEvent가 계속 받는다(칸은 안 그린다)
+            {IntroMenuItem::Kind::Primary, tr("스쿼드"), tr("여섯 자리 파티 편성과 타입 분석"),
+             kSquadSvg},
+            {IntroMenuItem::Kind::Entry, tr("도감 백과"), tr("종족값 · 타입 상성 · 습득 기술"),
+             kDexSvg},
+            {IntroMenuItem::Kind::Entry, tr("아이템 백과"),
+             tr("회복 · 기술머신 · 진화 · 배틀 · 기타"), kItemsSvg},
     };
 
     for (const Entry &entry : entries) {
-        IntroMenuItem *item = new IntroMenuItem(IntroMenuItem::Kind::Entry);
+        IntroMenuItem *item = new IntroMenuItem(entry.kind);
         item->setText(entry.name);
         item->setDescription(entry.description);
-        item->setShortcutText(QString::number(m_items.size() + 1)); // "1" … "3"
+        item->setIconSvg(QString::fromLatin1(entry.svg));
         item->setFixedHeight(kItemHeight);
         layout->addWidget(item);
         m_items.push_back(item);
     }
 
-    layout->addSpacing(kDividerSpacing); // 점선은 paintEvent가 이 빈자리에 그린다
+    layout->addSpacing(kQuitSpacing);
 
     IntroMenuItem *quit = new IntroMenuItem(IntroMenuItem::Kind::Quit);
     quit->setText(tr("종료"));
@@ -160,21 +166,4 @@ void IntroMenu::keyPressEvent(QKeyEvent *event)
     }
 }
 
-void IntroMenu::paintEvent(QPaintEvent *event)
-{
-    Q_UNUSED(event);
-    // 마지막 메뉴 줄 아래 빈자리에 2px 점선(line 색)을 그린다.
-    const IntroMenuItem *lastEntry = m_items[kQuitIndex - 1];
-    const qreal y = lastEntry->geometry().bottom() + 1 + kItemSpacing + kDividerInsetY
-                    + kDividerLine / 2.0;
-    const qreal left = kMenuMargins.left() + kDividerInsetX;
-    const qreal right = width() - kMenuMargins.right() - kDividerInsetX;
-
-    QPainter painter(this);
-    QPen pen(QColor(tok::kLine), kDividerLine);
-    pen.setDashPattern({3, 3}); // 펜 폭 단위: 6px 선 · 6px 빈칸 (브라우저의 2px dashed와 비슷하게)
-    pen.setCapStyle(Qt::FlatCap);
-    painter.setPen(pen);
-    painter.drawLine(QPointF(left, y), QPointF(right, y));
-}
 } // namespace com::yamada::studio

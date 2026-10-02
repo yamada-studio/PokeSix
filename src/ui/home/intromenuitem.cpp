@@ -3,6 +3,8 @@
 #include "ui/theme/cursors.h"
 #include "ui/theme/theme.h"
 #include "ui/theme/tokens.h"
+#include "ui/widgets/panelpainter.h"
+#include "ui/widgets/svgicon.h"
 
 #include <QEvent>
 #include <QFontMetricsF>
@@ -22,15 +24,24 @@ constexpr qreal kRadius = 7;                           // border-radius: 7px
 constexpr qreal kPressedOffset = 2;                    // 눌림: 2px 내려앉는다
 constexpr qreal kLockedOpacity = 0.45; // 잠김: 불투명도 45% (02b SCR-01 메뉴 항목 상태)
 
-// Entry 줄
-constexpr int kNamePx = 25;                // 이름: 도현 25, line-height 1.1
-constexpr qreal kNameLine = kNamePx * 1.1; // 이름 줄 상자 높이 27.5
-constexpr int kDescPx = 12;                // 설명: 나눔고딕 12
-constexpr qreal kNameDescGap = 2;          // 이름과 설명 사이 gap: 2px
-constexpr QSizeF kCursor {12, 16};         // ▶: border-left 12 · 위아래 8
-constexpr qreal kChip = 26;                // 단축키 칸 26×26, 반경 5, 먹선 2
-constexpr qreal kChipRadius = 5;
-constexpr int kChipPx = 12; // 단축키 글자: Silkscreen 12
+// 카드 버튼(Entry · Primary)
+constexpr int kNamePx = 20; // 이름: 도현 20
+constexpr qreal kNameLine = 24;
+constexpr int kDescPx = 12;       // 설명: 나눔고딕 12
+constexpr qreal kNameDescGap = 2; // 이름과 설명 사이
+constexpr int kBadge = 36;        // 아이콘 배지(먹색 둥근 네모 + 흰 그림)
+constexpr int kBadgeRadius = 9;
+constexpr int kBadgeIcon = 20;
+constexpr int kCardPadX = 12;
+constexpr int kCardGap = 12; // 배지 ↔ 글자
+
+constexpr com::yamada::studio::PanelStyle kEntryCard {
+        .outline = 2,
+        .radius = 10,
+        .shadow = 3,
+        .fill = com::yamada::studio::tok::kWhite,
+        .ink = com::yamada::studio::tok::kInk,
+};
 
 // Quit 줄
 constexpr int kQuitPx = 19;            // "종료": 도현 19, text.2
@@ -78,6 +89,13 @@ void IntroMenuItem::setShortcutText(const QString &text)
     QAbstractButton::update();
 }
 
+void IntroMenuItem::setIconSvg(const QString &svg)
+{
+    m_iconSvg = svg;
+    m_icon = {};
+    QAbstractButton::update();
+}
+
 void IntroMenuItem::setSelected(bool selected)
 {
     if (m_selected == selected)
@@ -116,60 +134,92 @@ void IntroMenuItem::paintEvent(QPaintEvent *event)
         painter.setOpacity(kLockedOpacity);
 
     const bool down = QAbstractButton::isDown();
-    const qreal offset = down ? kPressedOffset : 0;
-    const QRectF row(0, offset, width(), height() - offset);
 
-    // 선택(또는 눌림) 바탕: 노란 옅은 칸 + 먹선 2 · 반경 7. 눌림은 진한 노랑(menu.pressed).
-    if (m_selected || down) {
-        const qreal half = kBorder / 2.0;
-        painter.setPen(QPen(QColor(tok::kInk), kBorder));
-        painter.setBrush(QColor(down ? tok::kMenuPressed : tok::kYellowTint));
-        painter.drawRoundedRect(row.adjusted(half, half, -half, -half), kRadius - half,
-                                kRadius - half);
+    if (m_kind == Kind::Quit) {
+        const qreal offset = down ? kPressedOffset : 0;
+        const QRectF row(0, offset, width(), height() - offset);
+        // 선택(또는 눌림) 바탕: 노란 옅은 칸 + 먹선 2 · 반경 7. 눌림은 진한 노랑(menu.pressed).
+        if (m_selected || down) {
+            const qreal half = kBorder / 2.0;
+            painter.setPen(QPen(QColor(tok::kInk), kBorder));
+            painter.setBrush(QColor(down ? tok::kMenuPressed : tok::kYellowTint));
+            painter.drawRoundedRect(row.adjusted(half, half, -half, -half), kRadius - half,
+                                    kRadius - half);
+        }
+        paintQuit(painter, row);
+        return;
     }
 
-    if (m_kind == Kind::Entry)
-        paintEntry(painter, row);
-    else
-        paintQuit(painter, row);
+    // 카드 버튼: 눌리면 2px 내려앉고 그림자가 1로 준다(그림자 속으로 들어가는 느낌)
+    const qreal offset = down ? kPressedOffset : 0;
+    const QRectF row(0, offset, width(), height() - offset);
+    paintCard(painter, row);
 }
 
-void IntroMenuItem::paintEntry(QPainter &painter, const QRectF &row)
+void IntroMenuItem::paintCard(QPainter &painter, const QRectF &row)
 {
-    if (m_selected)
-        paintCursor(painter, row, kCursor);
+    PanelStyle style = kEntryCard;
+    if (m_kind == Kind::Primary)
+        style.fill = tok::kRed; // 주 행동(스쿼드)은 빨강 카드 + 흰 글자
+    if (QAbstractButton::isDown())
+        style.shadow = 1;
+    paintPanel(painter, row.toRect(), style);
+    const QRectF face = row.adjusted(style.outline, style.outline, -style.outline,
+                                     -style.outline - style.shadow);
 
-    // 이름(27.5) + 간격(2) + 설명 한 줄을 묶어서 세로 가운데에 둔다.
+    // 선택(키보드 ↑↓ · hover): 면 안쪽 노란 테 — 세대 카드와 같은 문법
+    if (m_selected) {
+        painter.setPen(QPen(QColor(tok::kYellow), 3));
+        painter.setBrush(Qt::NoBrush);
+        painter.drawRoundedRect(face.adjusted(2.5, 2.5, -2.5, -2.5), style.radius - 3,
+                                style.radius - 3);
+    }
+
+    const bool primary = m_kind == Kind::Primary;
+    const QColor title = primary ? QColor(tok::kWhite) : QColor(tok::kText1);
+    QColor sub = primary ? QColor(tok::kWhite) : QColor(tok::kText2);
+    if (primary)
+        sub.setAlpha(215);
+
+    // 왼쪽 아이콘 배지: 먹색 둥근 네모 + 흰 그림
+    const QRectF badge(face.left() + kCardPadX, face.center().y() - kBadge / 2.0, kBadge, kBadge);
+    painter.setPen(Qt::NoPen);
+    painter.setBrush(QColor(tok::kInk));
+    painter.drawRoundedRect(badge, kBadgeRadius, kBadgeRadius);
+    if (m_icon.isNull() && !m_iconSvg.isEmpty())
+        m_icon = svgicon::pixmap(QString(m_iconSvg).replace(QStringLiteral("currentColor"),
+                                                            QColor(tok::kWhite).name()),
+                                 kBadgeIcon, devicePixelRatio());
+    if (!m_icon.isNull())
+        painter.drawPixmap(badge.center() - QPointF(kBadgeIcon / 2.0, kBadgeIcon / 2.0), m_icon);
+
+    // 이름 + 설명(잠겼으면 "데이터가 필요해요")
+    const qreal textX = badge.right() + kCardGap;
     const QFont nameFont = theme::font(theme::kFamilyTitle, kNamePx);
     const QFont descFont = theme::font(theme::kFamilyBody, kDescPx);
     const QFontMetricsF nameMetrics(nameFont);
     const QFontMetricsF descMetrics(descFont);
-    const qreal descLine
-            = descMetrics.height(); // CSS line-height: normal에 가장 가까운 값(ascent + descent)
-    const qreal top = row.center().y() - (kNameLine + kNameDescGap + descLine) / 2.0;
-
+    const qreal descLine = descMetrics.height();
+    const qreal top = face.center().y() - (kNameLine + kNameDescGap + descLine) / 2.0;
     painter.setFont(nameFont);
-    painter.setPen(QColor(tok::kText1));
-    painter.drawText(QPointF(kTextX, baselineIn(top, kNameLine, nameMetrics)),
+    painter.setPen(title);
+    painter.drawText(QPointF(textX, baselineIn(top, kNameLine, nameMetrics)),
                      QAbstractButton::text());
-
     painter.setFont(descFont);
-    painter.setPen(QColor(tok::kText2));
+    painter.setPen(sub);
     painter.drawText(
-            QPointF(kTextX, baselineIn(top + kNameLine + kNameDescGap, descLine, descMetrics)),
-            // 잠겼으면 설명 대신 tr("데이터가 필요해요")
+            QPointF(textX, baselineIn(top + kNameLine + kNameDescGap, descLine, descMetrics)),
             QAbstractButton::isEnabled() ? m_description : tr("데이터가 필요해요"));
 
-    // 오른쪽 단축키 칸: 흰 바탕(선택 시 노랑) + 먹선 2 + Silkscreen 숫자
-    const qreal half = kBorder / 2.0;
-    const QRectF chip(row.right() - kPadX - kChip, row.center().y() - kChip / 2.0, kChip, kChip);
-    painter.setPen(QPen(QColor(tok::kInk), kBorder));
-    painter.setBrush(QColor(m_selected ? tok::kYellow : tok::kWhite));
-    painter.drawRoundedRect(chip.adjusted(half, half, -half, -half), kChipRadius - half,
-                            kChipRadius - half);
-    painter.setFont(theme::font(theme::kFamilyPixel, kChipPx));
-    painter.setPen(QColor(tok::kText1));
-    painter.drawText(chip, Qt::AlignCenter, m_shortcut);
+    // 오른쪽 화살표 ›
+    painter.setPen(QPen(title, 2.4, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+    painter.setBrush(Qt::NoBrush);
+    const QPointF tip(face.right() - kCardPadX - 4, face.center().y());
+    QPainterPath chevron;
+    chevron.moveTo(tip + QPointF(-5, -6));
+    chevron.lineTo(tip + QPointF(1, 0));
+    chevron.lineTo(tip + QPointF(-5, 6));
+    painter.drawPath(chevron);
 }
 
 void IntroMenuItem::paintQuit(QPainter &painter, const QRectF &row)

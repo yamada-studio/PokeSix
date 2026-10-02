@@ -1,7 +1,7 @@
 {
   "_comment": [
     "홈(인트로) 세대 카드 설정 (ui/home/homecards.h가 읽는다).",
-    "mascot: 카드 가운데 그림의 포켓몬(전국 번호). 그림은 그 세대의 정면 스프라이트를 쓴다.",
+    "mascot: 카드 가운데 그림의 포켓몬(전국 번호). 그림은 기본(96×96) 정면 스프라이트를 쓴다 — 카드끼리 그림체 · 크기가 맞게.",
     "accent: 카드 윗띠 색. region: 카드 아래 지방 이름(언어별).",
     "색은 앱 팔레트(red · blue · green · yellow)를 돌려 쓴다 — ui/theme/tokens.h와 같은 값."
   ],
@@ -12,7 +12,7 @@
     { "generation": 4, "mascot": 393, "accent": "#F2C12E", "region": { "ko": "신오", "en": "Sinnoh", "ja": "シンオウ" } },
     { "generation": 5, "mascot": 511, "accent": "#D8322B", "region": { "ko": "하나", "en": "Unova", "ja": "イッシュ" } },
     { "generation": 6, "mascot": 656, "accent": "#2C64B0", "region": { "ko": "칼로스", "en": "Kalos", "ja": "カロス" } },
-    { "generation": 7, "mascot": 728, "accent": "#2A7D38", "region": { "ko": "알로라", "en": "Alola", "ja": "アローラ" } },
+    { "generation": 7, "mascot": 722, "accent": "#2A7D38", "region": { "ko": "알로라", "en": "Alola", "ja": "アローラ" } },
     { "generation": 8, "mascot": 810, "accent": "#F2C12E", "region": { "ko": "가라르", "en": "Galar", "ja": "ガラル" } },
     { "generation": 9, "mascot": 909, "accent": "#D8322B", "region": { "ko": "팔데아", "en": "Paldea", "ja": "パルデア" } }
   ]
