@@ -8,8 +8,6 @@
 namespace {
 constexpr int kItemSpacing = 10; // 카드 버튼 사이
 constexpr int kItemHeight = 62;  // 카드 버튼(그림자 포함)
-constexpr int kQuitHeight = 32;
-constexpr int kQuitSpacing = 6 - kItemSpacing < 0 ? 0 : 6 - kItemSpacing; // 카드 ↔ 종료 줄
 // 데이터가 있어야 쓸 수 있는 메뉴 줄(스쿼드 · 도감 백과 · 아이템 백과). 규칙을 if 대신 표로 둔다.
 constexpr int kNeedsData[] = {0, 1, 2};
 
@@ -60,15 +58,6 @@ IntroMenu::IntroMenu(QWidget *parent)
         m_items.push_back(item);
     }
 
-    layout->addSpacing(kQuitSpacing);
-
-    IntroMenuItem *quit = new IntroMenuItem(IntroMenuItem::Kind::Quit);
-    quit->setText(tr("종료"));
-    quit->setShortcutText(QStringLiteral("Esc"));
-    quit->setFixedHeight(kQuitHeight);
-    layout->addWidget(quit);
-    m_items.push_back(quit);
-
     // 시그널/슬롯: 줄이 보낸 신호를 메뉴의 동작으로 잇는다.
     //   hovered → 선택 이동,  clicked → 실행
     // 람다가 index를 값으로 캡처하므로 줄마다 자기 번호를 기억한다.
@@ -115,8 +104,9 @@ void IntroMenu::setDataLocked(bool locked)
 int IntroMenu::nextEnabled(int from, int direction) const
 {
     // from + direction부터 한 칸씩 가며 isEnabled()인 첫 줄의 번호를 돌려준다.
-    //        목록 끝을 넘어가면(0보다 작거나 kQuitIndex보다 크면) 멈추고 from을 돌려준다(순환 없음)
-    for (int index = from + direction; index >= 0 && index <= kQuitIndex; index += direction) {
+    //        목록 끝을 넘어가면 멈추고 from을 돌려준다(순환 없음)
+    for (int index = from + direction; index >= 0 && index < int(m_items.size());
+         index += direction) {
         if (m_items[index]->isEnabled())
             return index;
     }
@@ -154,12 +144,6 @@ void IntroMenu::keyPressEvent(QKeyEvent *event)
         emit activated(index);
         return;
     }
-    case Qt::Key_Escape:
-        if (m_current == kQuitIndex)
-            emit activated(kQuitIndex); // 두 번째 Esc = 종료
-        else
-            setCurrentIndex(kQuitIndex); // 첫 번째 Esc = 종료 줄로 커서만 이동
-        return;
     default:
         // 처리하지 않은 키는 베이스로 넘긴다 → 부모 위젯으로 전파된다(Tab 이동 등).
         QWidget::keyPressEvent(event);

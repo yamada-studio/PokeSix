@@ -197,6 +197,9 @@ and the project uses [Semantic Versioning](https://semver.org/).
   data grows to 28.9 MB). Moves introduced in generation 9 still lack Korean text in PokéAPI.
 
 ### Changed
+- The home screen drops its quit row and the keyboard hint strip (↑↓ · ←→ · Enter · 1–3) — the
+  shortcuts themselves still work, and quitting is the window's close button; the footer keeps the
+  version and the PokéAPI credit.
 - Home mascots are upscaled with Scale2x (EPX) — applied twice, then smoothly fitted — instead of
   plain bilinear scaling, so the enlarged pixel art stays crisp.
 - The home fan is tighter and bigger: cards grew, the fan gathers toward its pivot like a hand of

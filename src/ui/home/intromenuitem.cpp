@@ -43,23 +43,6 @@ constexpr com::yamada::studio::PanelStyle kEntryCard {
         .ink = com::yamada::studio::tok::kInk,
 };
 
-// Quit 줄
-constexpr int kQuitPx = 19;            // "종료": 도현 19, text.2
-constexpr int kEscPx = 11;             // "Esc": 나눔고딕코딩 11, text.3
-constexpr QSizeF kQuitCursor {10, 14}; // ▶: border-left 10 · 위아래 7
-
-// ▶ 삼각형: 폭 w · 높이 h, 22px 칸의 가운데.
-void paintCursor(QPainter &painter, const QRectF &row, QSizeF size)
-{
-    const QPointF center(kPadX + kCursorColumn / 2.0, row.center().y());
-    QPainterPath triangle;
-    triangle.moveTo(center + QPointF(-size.width() / 2.0, -size.height() / 2.0));
-    triangle.lineTo(center + QPointF(size.width() / 2.0, 0));
-    triangle.lineTo(center + QPointF(-size.width() / 2.0, size.height() / 2.0));
-    triangle.closeSubpath();
-    painter.fillPath(triangle, QColor(com::yamada::studio::tok::kInk));
-}
-
 // CSS의 줄 상자(line box) 안에 글자를 넣을 때의 기준선 y.
 // 브라우저는 줄 높이와 글꼴 높이(ascent + descent)의 차이를 위아래로 반씩 나눈다(half-leading).
 qreal baselineIn(qreal lineTop, qreal lineHeight, const QFontMetricsF &metrics)
@@ -80,12 +63,6 @@ IntroMenuItem::IntroMenuItem(Kind kind, QWidget *parent)
 void IntroMenuItem::setDescription(const QString &description)
 {
     m_description = description;
-    QAbstractButton::update();
-}
-
-void IntroMenuItem::setShortcutText(const QString &text)
-{
-    m_shortcut = text;
     QAbstractButton::update();
 }
 
@@ -134,21 +111,6 @@ void IntroMenuItem::paintEvent(QPaintEvent *event)
         painter.setOpacity(kLockedOpacity);
 
     const bool down = QAbstractButton::isDown();
-
-    if (m_kind == Kind::Quit) {
-        const qreal offset = down ? kPressedOffset : 0;
-        const QRectF row(0, offset, width(), height() - offset);
-        // 선택(또는 눌림) 바탕: 노란 옅은 칸 + 먹선 2 · 반경 7. 눌림은 진한 노랑(menu.pressed).
-        if (m_selected || down) {
-            const qreal half = kBorder / 2.0;
-            painter.setPen(QPen(QColor(tok::kInk), kBorder));
-            painter.setBrush(QColor(down ? tok::kMenuPressed : tok::kYellowTint));
-            painter.drawRoundedRect(row.adjusted(half, half, -half, -half), kRadius - half,
-                                    kRadius - half);
-        }
-        paintQuit(painter, row);
-        return;
-    }
 
     // 카드 버튼: 눌리면 2px 내려앉고 그림자가 1로 준다(그림자 속으로 들어가는 느낌)
     const qreal offset = down ? kPressedOffset : 0;
@@ -222,19 +184,4 @@ void IntroMenuItem::paintCard(QPainter &painter, const QRectF &row)
     painter.drawPath(chevron);
 }
 
-void IntroMenuItem::paintQuit(QPainter &painter, const QRectF &row)
-{
-    if (m_selected)
-        paintCursor(painter, row, kQuitCursor);
-
-    const QRectF textArea(kTextX, row.top(), row.width() - kTextX - kPadX, row.height());
-
-    painter.setFont(theme::font(theme::kFamilyTitle, kQuitPx));
-    painter.setPen(QColor(tok::kText2));
-    painter.drawText(textArea, Qt::AlignLeft | Qt::AlignVCenter, QAbstractButton::text());
-
-    painter.setFont(theme::font(theme::kFamilyData, kEscPx));
-    painter.setPen(QColor(tok::kText3));
-    painter.drawText(textArea, Qt::AlignRight | Qt::AlignVCenter, m_shortcut);
-}
 } // namespace com::yamada::studio

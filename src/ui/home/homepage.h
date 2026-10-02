@@ -32,8 +32,7 @@ public:
     HomePage(DataUpdater *updater, AppState *state, QWidget *parent = nullptr);
 
 signals:
-    void openRequested(com::yamada::studio::Page page); // 메뉴 1–4
-    void quitRequested();                               // 메뉴 "종료"
+    void openRequested(com::yamada::studio::Page page); // 메뉴 1–3
 
 protected:
     void paintEvent(QPaintEvent *event) override;
