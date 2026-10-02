@@ -56,7 +56,10 @@ private:
     QWidget *buildAnalysis();
     void placeCards(bool wide);
     void fitCardHeights(); // 창 높이에 맞춰 카드 6장이 스크롤 없이 들어가게
-    void refresh();        // 세션 · 언어가 바뀌었다 → 전부 다시
+    // 좁은 배치에서는 분석 창 최소 높이 = 내용 높이(안쪽 스크롤 없이 페이지가 스크롤),
+    // 넓은 배치에서는 열 높이를 따른다(넘치면 분석 안에서만 스크롤)
+    void syncAnalysisHeight();
+    void refresh(); // 세션 · 언어가 바뀌었다 → 전부 다시
     void refreshAnalysis();
 
     void selectSlot(int slot);
@@ -103,6 +106,7 @@ private:
     bool m_wide = false;
 
     PanelFrame *m_analysis = nullptr;
+    QScrollArea *m_analysisScroll = nullptr; // 분석 몸통(넓은 배치에서 안쪽 스크롤)
     QLabel *m_problemPill = nullptr;
     QLabel *m_emptyAnalysis = nullptr;
     QWidget *m_analysisBody = nullptr;

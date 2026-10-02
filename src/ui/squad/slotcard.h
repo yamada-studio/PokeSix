@@ -29,12 +29,13 @@ public:
     SlotCard(int slot, SquadSession *session, SpriteCache *pokemonIcons, SpriteCache *itemIcons,
              QWidget *parent = nullptr);
 
-    static constexpr int kHeight = 258; // 내용이 다 들어가는 기준 높이
+    static constexpr int kHeight = 258; // 내용이 꼭 맞는 기준 높이
     static constexpr int kMinimumHeight = 234; // 줄 사이 숨만 줄인 최소(창이 낮으면 여기까지)
+    static constexpr int kMaximumHeight = 292; // 줄 사이가 넉넉해지는 최대(창이 높으면 여기까지)
     static constexpr int kMinimumWidth = 262;
 
-    // 카드 높이를 [kMinimumHeight, kHeight]로 맞춘다 — 창 높이에 따라 6장이 딱 들어가게
-    // (SquadPage가 계산한다). 줄어든 만큼은 줄 사이 간격에서만 뺀다(areas()).
+    // 카드 높이를 [kMinimumHeight, kMaximumHeight]로 맞춘다 — 창 높이에 따라 6장이 아래 빈 공간
+    // 없이 딱 들어가게(SquadPage가 계산한다). 차이는 줄 사이 간격에서만 더하고 뺀다(areas()).
     void setCardHeight(int height);
 
     void refresh(Language language); // 세션 값이 바뀌었다
