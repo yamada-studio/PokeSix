@@ -138,6 +138,10 @@ and the project uses [Semantic Versioning](https://semver.org/).
   arrow from shifting the label.
 
 ### Fixed
+- The Pokédex detail picture overflowed its card for generations whose sprite is larger than the
+  frame (generation 9's 256×256 renders, and the 96×96 default pictures of generations 7–8 drawn
+  at 2×). Sprites larger than the frame now shrink to fit (smoothly — they are not pixel art at
+  that size), via a shared sprite-fit helper.
 - "도감에서 보기" from a squad slot opened the Pokémon in the game last chosen in the Pokédex
   (Emerald) instead of the squad's game (FireRed/LeafGreen). It now opens the detail in the
   squad's game and switches the Pokédex list to that game's dex, unless the national dex or a dex

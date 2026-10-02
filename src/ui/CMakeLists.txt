@@ -32,6 +32,8 @@ qt_add_library(pokesix_ui STATIC
     widgets/searchfield.cpp
     widgets/rowhover.h
     widgets/rowhover.cpp
+    widgets/spritefit.h
+    widgets/spritefit.cpp
     widgets/versionchip.h
     widgets/versionchip.cpp
     widgets/dropdownbutton.h

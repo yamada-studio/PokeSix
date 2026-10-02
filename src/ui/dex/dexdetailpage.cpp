@@ -17,6 +17,7 @@
 #include "ui/widgets/dropdownbutton.h"
 #include "ui/widgets/panelframe.h"
 #include "ui/widgets/shadowbutton.h"
+#include "ui/widgets/spritefit.h"
 #include "ui/widgets/typechip.h"
 
 #include <QFontMetricsF>
@@ -137,11 +138,8 @@ protected:
         if (file.isEmpty() || !sprite.load(file)) {
             m_fronts->request(key);
         } else {
-            const QSize size = sprite.size() * kSpriteScale;
-            const QRect target(frame.center() - QPoint(size.width() / 2, size.height() / 2), size);
-            painter.setRenderHint(QPainter::SmoothPixmapTransform,
-                                  false); // 도트는 이웃 픽셀 그대로
-            painter.drawPixmap(target, sprite);
+            // 칸보다 크면(9세대 256×256 렌더, 기본 그림 192) 칸에 맞게 줄인다
+            spritefit::draw(painter, frame.adjusted(4, 4, -4, -4), sprite, kSpriteScale);
         }
         y = frame.bottom() + 10;
 
