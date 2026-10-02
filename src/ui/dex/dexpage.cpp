@@ -127,8 +127,8 @@ DexPage::DexPage(Repository *repository, AppState *state, QWidget *parent)
     // 창은 페이지 폭을 채운다. 최대 폭(kListMaxWidth)은 resizeEvent가 좌우 여백으로 맞춘다.
     // 목록 창과 상세 화면을 겹쳐 두고 하나만 보인다: [0] 목록 · [1] 상세(포켓몬을 누르면)
     // 목록 줄 = [필터 | 목록 | 미리 보기]. 상세로 가면 셋이 통째로 상세와 바뀐다.
-    QWidget *listRow = new QWidget;
-    QHBoxLayout *row = new QHBoxLayout(listRow);
+    m_listRow = new QWidget;
+    QHBoxLayout *row = new QHBoxLayout(m_listRow);
     row->setContentsMargins(0, 0, 0, 0);
     row->setSpacing(kColumnGap);
 
@@ -162,7 +162,7 @@ DexPage::DexPage(Repository *repository, AppState *state, QWidget *parent)
     row->addWidget(previewFrame);
 
     m_views = new QStackedWidget;
-    m_views->addWidget(listRow);
+    m_views->addWidget(m_listRow);
     m_detail = new DexDetailPage(m_repository, m_state);
     m_views->addWidget(m_detail);
     layout->addWidget(m_views);
@@ -320,7 +320,9 @@ void DexPage::openPokemon(int pokemonId, const QString &versionGroup)
 
 void DexPage::showList()
 {
-    m_views->setCurrentWidget(m_panel);
+    // 목록 "페이지"는 m_panel이 아니라 세 칸 묶음(m_listRow)이다 — m_panel을 주면 스택의
+    // 페이지가 아니라서 아무 일도 일어나지 않는다(상세에서 돌아오지 못하는 버그였다)
+    m_views->setCurrentWidget(m_listRow);
     m_table->setFocus(Qt::OtherFocusReason); // 키보드로 이어서 고를 수 있게
 }
 

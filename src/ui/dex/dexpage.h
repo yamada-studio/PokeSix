@@ -66,7 +66,8 @@ private:
     SpeciesTableModel *m_model = nullptr;
     SpeciesFilterProxy *m_proxy = nullptr;
     PanelFrame *m_panel = nullptr;
-    QStackedWidget *m_views = nullptr; // [목록 창 │ 상세]
+    QWidget *m_listRow = nullptr;      // [필터 | 목록 | 미리 보기] 묶음 — m_views의 [0]
+    QStackedWidget *m_views = nullptr; // [목록 줄 │ 상세]
     DexDetailPage *m_detail = nullptr;
     SearchField *m_search = nullptr;
     DexFilterPanel *m_filter = nullptr;
