@@ -203,6 +203,10 @@ and the project uses [Semantic Versioning](https://semver.org/).
   data grows to 28.9 MB). Moves introduced in generation 9 still lack Korean text in PokéAPI.
 
 ### Changed
+- Text typed into inputs now uses the app's display font: line edits (search fields included) render
+  in Do Hyeon 15px/14px instead of NanumGothic 13px, which looked like the system default. The
+  role memo field keeps the body font (it holds sentences), and the squad name keeps its 28px
+  title styling.
 - The home screen drops its quit row and the keyboard hint strip (↑↓ · ←→ · Enter · 1–3) — the
   shortcuts themselves still work, and quitting is the window's close button; the footer keeps the
   version and the PokéAPI credit.
