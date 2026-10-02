@@ -21,11 +21,12 @@ and the project uses [Semantic Versioning](https://semver.org/).
 - The home (intro) screen picks the generation with a fan of nine cards, spread like a hand of
   playing cards: the fan spreads open whenever the screen appears, cards lift on hover and stay
   lifted (with a yellow ring) when chosen, and dragging swings the whole fan, which springs back
-  on release. Each card shows the generation, its region and a mascot Pokémon drawn with that
-  generation's own sprite art (card contents live in `resources/theme/homecards.json`). The
+  on release. Each card shows the generation, its region and a mascot Pokémon (the default
+  96×96 sprite, trimmed and drawn at one size so the nine cards match; card contents live in
+  `resources/theme/homecards.json`). The
   generation button leaves the home screen (the app bar keeps one), the menu becomes
-  스쿼드 · 도감 백과 · 아이템 백과 (+ 종료) — the Settings row moves to the app bar tab — and the
-  default window grows to 1440×900. ←/→ moves between generations. (ADR 0015)
+  스쿼드 · 도감 백과 · 아이템 백과 (+ 종료) — the Settings row moves to the app bar tab. ←/→ moves
+  between generations. (ADR 0015)
 - Game chips in the Pokédex detail page ("기준 게임 [BW][B2W2]", the same version-colored chips as
   the squad's dex filter) replace the "기술 기준" label: choosing a game switches level-up moves,
   TM/HM numbers and locations, evolution conditions and wild encounters (only that game's versions)
@@ -176,14 +177,20 @@ and the project uses [Semantic Versioning](https://semver.org/).
   data grows to 28.9 MB). Moves introduced in generation 9 still lack Korean text in PokéAPI.
 
 ### Changed
+- The home fan is tighter and bigger: cards grew, the fan gathers toward its pivot like a hand of
+  cards and its width shrank, and every card draws the same default sprite art, trimmed and
+  bottom-aligned at one size (generation 7's mascot is now Rowlet). The menu became three card
+  buttons in the photo reference's style — a red primary Squad card and white Pokédex/Items cards,
+  each with an icon badge and a chevron — and hovering over overlapping fan cards no longer
+  flickers (hover is hit-tested against resting positions; cards drop more slowly than they lift).
 - The Pokédex detail page takes its moves and TMs from the game of the dex chosen in the list
   (HeartGold/SoulSilver from the Johto dex, Diamond/Pearl from the Sinnoh D·P dex); only the national
   dex falls back to the generation's representative game. The basis label adds version abbreviations
   ("기라티나 (Pt)").
 - Search fields filter while the first Korean syllable is still being composed (IME preedit), not
   only after the next keystroke commits it; lone jamo are ignored so results do not flash empty.
-- The main window opens at 920×840 (just wide enough for the Dex list); its minimum size now comes
-  from the layouts. The app bar search field shrinks from 280 to 160 px on narrow windows and hides its
+- The main window opens at 1440×900 (fits the three-pane Pokédex/Items layouts and the home card
+  fan; it first opened at 920×840); its minimum size now comes from the layouts. The app bar search field shrinks from 280 to 160 px on narrow windows and hides its
   `Ctrl K` badge below 220 px.
 - The paper background in `app.qss` applies to `QMainWindow` only, so plain container widgets no
   longer paint paper-coloured rectangles over panels.

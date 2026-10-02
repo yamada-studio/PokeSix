@@ -1,14 +1,13 @@
 #include "ui/home/cardfan.h"
 
 #include "data/sprites/spritecache.h"
-#include "data/sprites/spritekeys.h"
 #include "data/state/appstate.h"
 #include "ui/theme/cursors.h"
 #include "ui/theme/theme.h"
 #include "ui/theme/tokens.h"
 #include "ui/widgets/panelpainter.h"
-#include "ui/widgets/spritefit.h"
 
+#include <QImage>
 #include <QMouseEvent>
 #include <QPainter>
 #include <QPainterPath>
@@ -23,17 +22,19 @@ using namespace com::yamada::studio;
 
 // 카드 한 장 (비율 10 : 14, 창 높이에 따라 늘어난다)
 constexpr qreal kCardRatio = 10.0 / 14.0;
-constexpr qreal kCardMinHeight = 140;
-constexpr qreal kCardMaxHeight = 210;
-constexpr int kLiftDistance = 26; // 들린 카드가 부채 바깥쪽으로 나오는 거리
+constexpr qreal kCardMinHeight = 150;
+constexpr qreal kCardMaxHeight = 250;
+constexpr int kLiftDistance = 30; // 들린 카드가 부채 바깥쪽으로 나오는 거리
 constexpr int kTopPad = kLiftDistance + 14; // 들린 카드 위 여유
-// 위젯 높이 → 카드 높이. 바깥 카드는 회전하면서 아래로 처지므로(≈ 0.55 × 카드 높이)
+// 위젯 높이 → 카드 높이. 바깥 카드는 회전하면서 아래로 처지므로(반지름이 작을수록 더)
 // 카드 높이 + 처짐 + 위 여유가 위젯 높이에 들어가야 한다.
-constexpr qreal kHeightToCard = 1.55;
-constexpr qreal kMaxHalfAngle = qDegreesToRadians(28.0); // 부채가 이보다 더 벌어지지 않는다
-constexpr int kBandHeight = 40;                          // 윗띠(세대 번호)
-constexpr int kSpreadMs = 620;                           // 펼침
-constexpr int kLiftMs = 140;                             // 들림
+constexpr qreal kHeightToCard = 1.45;
+constexpr qreal kMaxHalfAngle = qDegreesToRadians(32.0); // 부채가 이보다 더 벌어지지 않는다
+constexpr int kLiftRaiseMs = 150;                        // 들리는 건 빠르게
+constexpr int kLiftDropMs = 240; // 내려오는 건 천천히 — 겹친 카드 사이를 지나도 덜 튄다
+constexpr int kBandHeight = 40; // 윗띠(세대 번호)
+constexpr int kSpreadMs = 620;  // 펼침
+constexpr int kLiftMs = 140;    // 들림
 constexpr int kSwingBackMs = 520; // 놓은 부채가 돌아오는 시간 (OutBack: 살짝 넘겼다 돌아온다)
 constexpr qreal kDragThreshold = 6;      // 이보다 멀리 끌면 클릭이 아니라 흔들기
 constexpr qreal kSwingPerPixel = 0.0011; // 끈 거리(px) → 부채 각도(라디안)
@@ -115,10 +116,11 @@ CardFan::Layout CardFan::fanLayout() const
     fan.cardHeight = std::clamp<qreal>((height() - kTopPad) / kHeightToCard, kCardMinHeight,
                                        kCardMaxHeight);
     fan.cardWidth = fan.cardHeight * kCardRatio;
-    // 반지름이 클수록 부채가 평평해지고 이웃 카드 사이가 벌어진다(카드가 서로 덜 가린다)
-    fan.radius = fan.cardHeight * 4.7;
-    // 부채가 창 폭을 넘지 않게: 바깥 카드 가운데의 가로 거리 ≈ sin(θmax) × (R − h/2)
-    const qreal half = std::max<qreal>(width() / 2.0 - fan.cardWidth / 2 - 20, 60);
+    // 반지름이 작을수록 손에 쥔 패처럼 원심 쪽으로 모인다(겹침이 깊어지고 폭이 준다)
+    fan.radius = fan.cardHeight * 2.4;
+    // 부채의 가로 폭: 창 폭과, 카드 높이의 1.5배(홈에서 부채가 퍼지지 않게) 중 작은 쪽
+    const qreal half = std::max<qreal>(
+            std::min(width() / 2.0 - fan.cardWidth / 2 - 20, fan.cardHeight * 1.5), 60);
     const qreal reach = fan.radius - fan.cardHeight / 2;
     const qreal maxAngle = std::min(kMaxHalfAngle, std::asin(std::min(half / reach, 1.0)));
     fan.step = m_cards.size() > 1 ? 2 * maxAngle / (m_cards.size() - 1) : 0;
@@ -126,15 +128,44 @@ CardFan::Layout CardFan::fanLayout() const
     return fan;
 }
 
-QTransform CardFan::cardTransform(const Layout &fan, int index) const
+QTransform CardFan::cardTransform(const Layout &fan, int index, bool withLift) const
 {
     const qreal middle = (m_cards.size() - 1) / 2.0;
     const qreal angle = (index - middle) * fan.step * m_spread + m_swing;
     QTransform transform;
     transform.translate(fan.pivot.x(), fan.pivot.y());
     transform.rotateRadians(angle);
-    transform.translate(0, -(fan.radius + m_lift[size_t(index)] * kLiftDistance));
+    transform.translate(0, -(fan.radius + (withLift ? m_lift[size_t(index)] * kLiftDistance : 0)));
     return transform; // 카드 로컬 좌표: 윗변 가운데가 (0, 0), 카드는 (−w/2, 0, w, h)
+}
+
+QPixmap CardFan::mascotSprite(int index) const
+{
+    const homecards::Card &card = m_cards.at(index);
+    const auto it = m_mascots.constFind(card.mascot);
+    if (it != m_mascots.constEnd())
+        return *it;
+    // 모든 세대가 같은 기본(96×96) 그림을 쓴다 — 세대 그림은 해상도(1세대 40 ~ 9세대 256)와
+    // 여백이 제각각이라 카드마다 크기가 들쭉날쭉했다.
+    const QString key = QStringLiteral("default/%1").arg(card.mascot);
+    const QString file = m_fronts->path(key);
+    QImage image;
+    if (file.isEmpty() || !image.load(file)) {
+        m_fronts->request(key);
+        return {};
+    }
+    // 투명 여백 잘라 내기: 알파가 있는 픽셀의 경계 상자
+    QRect bounds;
+    const QImage alpha = image.convertToFormat(QImage::Format_ARGB32);
+    for (int y = 0; y < alpha.height(); ++y) {
+        const QRgb *line = reinterpret_cast<const QRgb *>(alpha.constScanLine(y));
+        for (int x = 0; x < alpha.width(); ++x)
+            if (qAlpha(line[x]) > 8)
+                bounds = bounds.isNull() ? QRect(x, y, 1, 1) : bounds.united(QRect(x, y, 1, 1));
+    }
+    const QPixmap trimmed = QPixmap::fromImage(bounds.isNull() ? alpha : alpha.copy(bounds));
+    m_mascots.insert(card.mascot, trimmed);
+    return trimmed;
 }
 
 QList<int> CardFan::paintOrder() const
@@ -148,17 +179,32 @@ QList<int> CardFan::paintOrder() const
     return order;
 }
 
-int CardFan::cardAt(const QPointF &pos) const
+int CardFan::cardAt(const QPointF &pos, bool withLift) const
 {
     const Layout fan = fanLayout();
     const QList<int> order = paintOrder();
     for (qsizetype i = order.size() - 1; i >= 0; --i) { // 맨 위에 그려진 카드부터
         const int index = order.at(i);
-        const QPointF local = cardTransform(fan, index).inverted().map(pos);
+        const QPointF local = cardTransform(fan, index, withLift).inverted().map(pos);
         if (QRectF(-fan.cardWidth / 2, 0, fan.cardWidth, fan.cardHeight).contains(local))
             return index;
     }
     return -1;
+}
+
+int CardFan::hoverCardAt(const QPointF &pos) const
+{
+    // 들림(애니메이션 중 포함)을 기준으로 잡으면, 카드가 움직이는 동안 마우스 아래 카드가 바뀌어
+    // hover가 이웃과 왔다 갔다 튄다. 그래서:
+    //   1) 지금 hover 카드가 (들린 모습 그대로) 아직 마우스 아래면 그대로 둔다
+    //   2) 아니면 모두 제자리에 있다고 치고(들림 무시) 판정한다 → 판정이 흔들리지 않는다
+    if (m_hovered >= 0) {
+        const Layout fan = fanLayout();
+        const QPointF local = cardTransform(fan, m_hovered, true).inverted().map(pos);
+        if (QRectF(-fan.cardWidth / 2, 0, fan.cardWidth, fan.cardHeight).contains(local))
+            return m_hovered;
+    }
+    return cardAt(pos, false);
 }
 
 qreal CardFan::liftTarget(int index) const
@@ -166,7 +212,7 @@ qreal CardFan::liftTarget(int index) const
     if (index == m_hovered)
         return 1.0;
     if (m_cards.at(index).generation == m_state->generation())
-        return 0.62; // 고른 카드는 조금 들린 채로 둔다
+        return 0.5; // 고른 카드는 조금 들린 채로 둔다(너무 들면 이웃 윗띠를 가린다)
     return 0.0;
 }
 
@@ -175,6 +221,7 @@ void CardFan::animateLift(int index)
     QVariantAnimation *animation = m_liftAnimations[size_t(index)];
     const qreal target = liftTarget(index);
     animation->stop();
+    animation->setDuration(target > m_lift[size_t(index)] ? kLiftRaiseMs : kLiftDropMs);
     animation->setStartValue(m_lift[size_t(index)]);
     animation->setEndValue(target);
     animation->start();
@@ -214,7 +261,7 @@ void CardFan::mousePressEvent(QMouseEvent *event)
 {
     if (event->button() != Qt::LeftButton)
         return;
-    m_pressed = cardAt(event->position());
+    m_pressed = cardAt(event->position(), true);
     m_pressPos = event->position();
     m_pressSwing = m_swing;
     m_dragging = false;
@@ -235,7 +282,7 @@ void CardFan::mouseMoveEvent(QMouseEvent *event)
         }
         return;
     }
-    setHovered(cardAt(event->position()));
+    setHovered(hoverCardAt(event->position()));
 }
 
 void CardFan::mouseReleaseEvent(QMouseEvent *event)
@@ -250,10 +297,10 @@ void CardFan::mouseReleaseEvent(QMouseEvent *event)
         m_swingAnimation->setStartValue(m_swing);
         m_swingAnimation->setEndValue(0.0);
         m_swingAnimation->start();
-        setHovered(cardAt(event->position()));
+        setHovered(hoverCardAt(event->position()));
         return;
     }
-    if (pressed >= 0 && pressed == cardAt(event->position()))
+    if (pressed >= 0 && pressed == cardAt(event->position(), true))
         select(pressed);
 }
 
@@ -285,22 +332,25 @@ void CardFan::paintCard(QPainter &painter, const Layout &fan, int index) const
     painter.setPen(QColor(tok::kWhite));
     painter.drawText(band, Qt::AlignCenter, tr("%1세대").arg(card.generation));
 
-    // 가운데: 마스코트(그 세대의 정면 스프라이트). 아직 없으면 받기 시작한다 → ready가 update.
-    const QRect spriteBox(face.left() + 8, band.bottom() + 8, face.width() - 16,
-                          face.bottom() - band.bottom() - 40);
-    const QString key = spritekeys::front(card.generation, card.mascot);
-    const QString file = m_fronts->path(key);
-    QPixmap sprite;
-    if (file.isEmpty() || !sprite.load(file))
-        m_fronts->request(key);
-    else
-        spritefit::draw(painter, spriteBox, sprite);
-
-    // 아래: 지방 이름
+    // 아래: 지방 이름 띠(고정 높이) — 그림은 이 띠를 침범하지 않는다
+    const QRect label(face.left(), face.bottom() - 32, face.width(), 26);
     painter.setFont(theme::font(theme::kFamilyBody, 14, QFont::Bold));
     painter.setPen(QColor(tok::kText1));
-    painter.drawText(QRect(face.left(), face.bottom() - 30, face.width(), 24), Qt::AlignCenter,
-                     card.region.text(m_state->language()));
+    painter.drawText(label, Qt::AlignCenter, card.region.text(m_state->language()));
+
+    // 가운데: 마스코트. 투명 여백을 잘라 내고 모두 같은 높이로 바닥선에 세운다 — 원본의 해상도 ·
+    // 여백이 제각각이어도 카드끼리 크기 · 자리가 맞게. 아직 없으면 받기 시작한다 → ready가 update.
+    const QRect spriteBox(face.left() + 10, band.bottom() + 10, face.width() - 20,
+                          label.top() - band.bottom() - 16);
+    const QPixmap sprite = mascotSprite(index);
+    if (!sprite.isNull()) {
+        qreal scale = spriteBox.height() / qreal(sprite.height());
+        scale = std::min(scale, spriteBox.width() / qreal(sprite.width()));
+        const QSizeF size = sprite.size() * scale;
+        const QRectF target(spriteBox.center().x() - size.width() / 2,
+                            spriteBox.bottom() - size.height(), size.width(), size.height());
+        painter.drawPixmap(target, sprite, sprite.rect()); // SmoothPixmapTransform은 paintEvent에서
+    }
 
     // 고른 카드: 노란 테 (선택 칸의 문법, 디자인 시트 §3)
     if (card.generation == m_state->generation()) {

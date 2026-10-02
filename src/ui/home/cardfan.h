@@ -2,6 +2,8 @@
 
 #include "ui/home/homecards.h"
 
+#include <QHash>
+#include <QPixmap>
 #include <QWidget>
 
 #include <array>
@@ -50,11 +52,13 @@ private:
         QPointF pivot;    // 위젯 아래 바깥의 회전 중심
     };
     Layout fanLayout() const;
-    QTransform cardTransform(const Layout &fan, int index) const;
+    QTransform cardTransform(const Layout &fan, int index, bool withLift = true) const;
     QList<int> paintOrder() const; // 들린 카드가 위로 오게 정렬한 카드 번호
-    int cardAt(const QPointF &pos) const;
+    int cardAt(const QPointF &pos, bool withLift) const;
+    int hoverCardAt(const QPointF &pos) const; // hover용: 판정이 들림을 따라 흔들리지 않게
     void paintCard(QPainter &painter, const Layout &fan, int index) const;
 
+    QPixmap mascotSprite(int index) const; // 여백을 잘라 낸 기본 그림(처음 쓸 때 캐시)
     void setHovered(int index);
     void animateLift(int index); // 그 카드의 목표 들림(고름 · hover)로 애니메이션을 다시 건다
     qreal liftTarget(int index) const;
@@ -63,6 +67,7 @@ private:
     AppState *m_state = nullptr; // 소유하지 않는다
     QList<homecards::Card> m_cards;
     SpriteCache *m_fronts = nullptr;
+    mutable QHash<int, QPixmap> m_mascots; // 포켓몬 → 여백 잘라 낸 그림
 
     qreal m_spread = 0; // 0 = 가운데에 모임, 1 = 다 펴짐
     qreal m_swing = 0;  // 끌기로 도는 각도(라디안). 놓으면 0으로 돌아간다
