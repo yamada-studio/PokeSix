@@ -1,7 +1,7 @@
 #include "ui/home/homepage.h"
 
 #include "data/update/dataupdater.h"
-#include "ui/home/cardfan.h"
+#include "ui/home/cardbarrel.h"
 #include "ui/home/firstrunpanel.h"
 #include "ui/home/introfooter.h"
 #include "ui/home/intromenu.h"
@@ -25,7 +25,7 @@ constexpr QMargins kPageMargins
         = {32, 44, 32, 26};        // 좌 · 위 · 우 · 아래 (푸터 left/right 32, bottom 26)
 constexpr int kMarkToWordmark = 6; // h1 margin-top: 6
 constexpr int kWordmarkToSubtitle = 16 - 5; // p margin-top: 16 − 워드마크 글자 그림자 5
-constexpr int kSubtitleToFan = 8;           // 부제 ↔ 세대 카드 부채꼴
+constexpr int kSubtitleToFan = 8;           // 부제 ↔ 세대 카드 배럴
 constexpr int kFanToMenu = 2; // 부채꼴 ↔ 메뉴 창 (부채꼴 아래 여백이 이미 넉넉하다)
 constexpr int kMenuWidth = tok::kSizeIntroMenuWidth; // 520
 constexpr int kFirstRunToMenu = 12;                  // 첫 실행 패널과 메뉴 창 사이
@@ -117,7 +117,7 @@ HomePage::HomePage(DataUpdater *updater, AppState *state, QWidget *parent)
 
     // 세대 선택 = 카드 부채꼴. AppState와 바로 이어져 있어서(누르면 setGeneration) 여기서 더 이을
     // 것이 없다. 남는 세로 공간은 부채꼴이 가진다(stretch 1).
-    m_fan = new CardFan(state);
+    m_fan = new CardBarrel(state);
     layout->addWidget(m_fan, 1);
     layout->addSpacing(kFanToMenu);
 

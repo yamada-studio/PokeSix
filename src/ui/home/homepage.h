@@ -9,14 +9,14 @@ class QSpacerItem;
 
 namespace com::yamada::studio {
 class AppState;
-class CardFan;
+class CardBarrel;
 class DataUpdater;
 class FirstRunPanel;
 class IntroMenu;
 class MarkWidget;
 
 // 인트로(타이틀) 화면. 디자인 v2의 IntroPage에 해당한다(ADR 0008 · 0009 · 0015).
-// 앱 막대 없이 창 전체를 쓰고, 위에서부터 마크 → 워드마크 → 부제 → 세대 카드 부채꼴(CardFan) →
+// 앱 막대 없이 창 전체를 쓰고, 위에서부터 마크 → 워드마크 → 부제 → 세대 카드 배럴(CardBarrel) →
 // 메뉴 창, 맨 아래에 정보 줄을 둔다. 바탕(사선 무늬 + 위아래 빨강 띠)은 이 위젯이 직접 그린다.
 //
 // 메뉴에서 무엇을 골랐는지는 시그널로만 알린다. 화면을 실제로 바꾸는 일은 MainWindow가 한다
@@ -46,7 +46,7 @@ private:
 
     DataUpdater *m_updater = nullptr; // 소유하지 않는다(MainWindow가 소유)
     IntroMenu *m_menu = nullptr;
-    CardFan *m_fan = nullptr;
+    CardBarrel *m_fan = nullptr;
     MarkWidget *m_mark = nullptr;
     QLabel *m_subtitle = nullptr;
     QSpacerItem *m_subtitleGap = nullptr; // 워드마크 ↔ 부제 간격 (compact에서 0)

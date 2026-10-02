@@ -52,8 +52,8 @@ qt_add_library(pokesix_ui STATIC
     items/itemheaderview.cpp
     items/itemrowdelegate.h
     items/itemrowdelegate.cpp
-    home/cardfan.h
-    home/cardfan.cpp
+    home/cardbarrel.h
+    home/cardbarrel.cpp
     home/homecards.h
     home/homecards.cpp
     home/homepage.h

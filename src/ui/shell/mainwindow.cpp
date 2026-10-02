@@ -95,7 +95,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_appBar, &AppBar::homeRequested, this, &MainWindow::showIntro);
 
     // 앱 막대의 세대 버튼을 AppState에 잇는다. 버튼은 "고름"만 알리고(generationSelected), 바뀐
-    // 값은 AppState가 generationChanged로 모두에게 돌려준다. 인트로의 세대 카드(CardFan)는
+    // 값은 AppState가 generationChanged로 모두에게 돌려준다. 인트로의 세대 카드(CardBarrel)는
     // AppState를 직접 받아 스스로 잇는다 → 어느 쪽에서 바꿔도 같은 세대를 보인다.
     GenerationButton *generationButton = m_appBar->generationButton();
     generationButton->setGenerationRange(AppState::kMinGeneration, AppState::kMaxGeneration);
