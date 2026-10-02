@@ -26,9 +26,11 @@ constexpr qreal kCardMinHeight = 150;
 constexpr qreal kCardMaxHeight = 250;
 constexpr int kLiftDistance = 30; // 들린 카드가 부채 바깥쪽으로 나오는 거리
 constexpr int kTopPad = kLiftDistance + 14; // 들린 카드 위 여유
-// 위젯 높이 → 카드 높이. 바깥 카드는 회전하면서 아래로 처지므로(반지름이 작을수록 더)
-// 카드 높이 + 처짐 + 위 여유가 위젯 높이에 들어가야 한다.
-constexpr qreal kHeightToCard = 1.45;
+// 위젯 높이 → 카드 높이. 바깥 카드는 회전하면서 아래로 처지므로 카드 높이 + 처짐 + 위 여유가
+// 위젯 높이에 들어가야 한다(넘치면 위젯 경계에서 평평하게 잘린다 — Qt 위젯은 자기 rect 밖을
+// 그리지 못한다). 처짐 = R − cos(θmax + φ) × (아래 모서리 거리) ≈ 반지름 3.2 · 최대각 32°에서
+// 카드 높이의 1.53배 → 여유를 더해 1.6.
+constexpr qreal kHeightToCard = 1.6;
 constexpr qreal kMaxHalfAngle = qDegreesToRadians(32.0); // 부채가 이보다 더 벌어지지 않는다
 constexpr int kLiftRaiseMs = 150;                        // 들리는 건 빠르게
 constexpr int kLiftDropMs = 240; // 내려오는 건 천천히 — 겹친 카드 사이를 지나도 덜 튄다
@@ -126,6 +128,12 @@ CardFan::Layout CardFan::fanLayout() const
     const qreal maxAngle = std::min(kMaxHalfAngle, std::asin(std::min(half / reach, 1.0)));
     fan.step = m_cards.size() > 1 ? 2 * maxAngle / (m_cards.size() - 1) : 0;
     fan.pivot = QPointF(width() / 2.0, fan.radius + kTopPad);
+    // 흔들림(끌기) 한도: 바깥 카드의 아래 바깥 모서리가 위젯 바닥을 넘지 않는 각도까지만.
+    // 모서리는 pivot에서 거리 d, 각 θmax + φ에 있다 → y = pivotY − d·cos(θmax + φ + swing).
+    const qreal phi = std::atan2(fan.cardWidth / 2, fan.radius - fan.cardHeight);
+    const qreal corner = std::hypot(fan.radius - fan.cardHeight, fan.cardWidth / 2);
+    const qreal cosLimit = std::clamp((fan.pivot.y() - (height() - 3)) / corner, -1.0, 1.0);
+    fan.maxSwing = std::clamp(std::acos(cosLimit) - (maxAngle + phi), 0.0, kMaxSwing);
     return fan;
 }
 
@@ -317,7 +325,8 @@ void CardFan::mouseMoveEvent(QMouseEvent *event)
         }
         if (m_dragging) {
             m_swingAnimation->stop();
-            m_swing = std::clamp(m_pressSwing + dx * kSwingPerPixel, -kMaxSwing, kMaxSwing);
+            const qreal maxSwing = fanLayout().maxSwing;
+            m_swing = std::clamp(m_pressSwing + dx * kSwingPerPixel, -maxSwing, maxSwing);
             QWidget::update();
         }
         return;
