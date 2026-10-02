@@ -116,8 +116,9 @@ CardFan::Layout CardFan::fanLayout() const
     fan.cardHeight = std::clamp<qreal>((height() - kTopPad) / kHeightToCard, kCardMinHeight,
                                        kCardMaxHeight);
     fan.cardWidth = fan.cardHeight * kCardRatio;
-    // 반지름이 작을수록 손에 쥔 패처럼 원심 쪽으로 모인다(겹침이 깊어지고 폭이 준다)
-    fan.radius = fan.cardHeight * 2.4;
+    // 반지름이 작을수록 손에 쥔 패처럼 원심 쪽으로 모인다. 2.4는 이웃이 너무 가려져서(선택한
+    // 카드가 오른쪽 이웃을 통째로 덮었다) 3.2로 살짝 벌렸다.
+    fan.radius = fan.cardHeight * 3.2;
     // 부채의 가로 폭: 창 폭과, 카드 높이의 1.5배(홈에서 부채가 퍼지지 않게) 중 작은 쪽
     const qreal half = std::max<qreal>(
             std::min(width() / 2.0 - fan.cardWidth / 2 - 20, fan.cardHeight * 1.5), 60);
@@ -150,17 +151,18 @@ QImage scale2x(const QImage &source)
     const int h = source.height();
     for (int y = 0; y < h; ++y) {
         const QRgb *row = reinterpret_cast<const QRgb *>(source.constScanLine(y));
-        const QRgb *above = reinterpret_cast<const QRgb *>(source.constScanLine(std::max(y - 1, 0)));
+        const QRgb *above
+                = reinterpret_cast<const QRgb *>(source.constScanLine(std::max(y - 1, 0)));
         const QRgb *below
                 = reinterpret_cast<const QRgb *>(source.constScanLine(std::min(y + 1, h - 1)));
         QRgb *out0 = reinterpret_cast<QRgb *>(result.scanLine(y * 2));
         QRgb *out1 = reinterpret_cast<QRgb *>(result.scanLine(y * 2 + 1));
         for (int x = 0; x < w; ++x) {
             const QRgb p = row[x];
-            const QRgb a = above[x];                  // 위
+            const QRgb a = above[x];                    // 위
             const QRgb b = row[std::min(x + 1, w - 1)]; // 오른쪽
             const QRgb c = row[std::max(x - 1, 0)];     // 왼쪽
-            const QRgb d = below[x];                  // 아래
+            const QRgb d = below[x];                    // 아래
             out0[x * 2] = (c == a && c != d && a != b) ? a : p;
             out0[x * 2 + 1] = (a == b && a != c && b != d) ? b : p;
             out1[x * 2] = (d == c && d != b && c != a) ? c : p;
@@ -207,9 +209,13 @@ QList<int> CardFan::paintOrder() const
     QList<int> order;
     for (int i = 0; i < int(m_cards.size()); ++i)
         order.append(i);
-    // 왼쪽 → 오른쪽(오른쪽 카드가 위로 겹친다), 들린 카드는 그 위로
-    std::stable_sort(order.begin(), order.end(),
-                     [this](int a, int b) { return m_lift[size_t(a)] < m_lift[size_t(b)]; });
+    // 왼쪽 → 오른쪽(오른쪽 카드가 위로 겹친다). 맨 위로 오는 건 마우스가 올라간 카드뿐이다 —
+    // 고른 카드까지 위로 올리면 겹침이 깊을 때 오른쪽 이웃이 통째로 가려진다. 고른 카드는
+    // 제자리 z에서 위로 밀려 나온다(손패에서 한 장 올려 둔 모습).
+    if (m_hovered >= 0) {
+        order.removeOne(m_hovered);
+        order.append(m_hovered);
+    }
     return order;
 }
 
