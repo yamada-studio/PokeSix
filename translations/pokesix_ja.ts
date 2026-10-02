@@ -50,10 +50,17 @@
     </message>
 </context>
 <context>
-    <name>com::yamada::studio::CardFan</name>
+    <name>com::yamada::studio::CardBarrel</name>
     <message>
         <source>%1세대</source>
         <translation>%1世代</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::CardFan</name>
+    <message>
+        <source>%1세대</source>
+        <translation type="vanished">%1世代</translation>
     </message>
 </context>
 <context>
