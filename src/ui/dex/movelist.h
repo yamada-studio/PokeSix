@@ -14,11 +14,12 @@ class SpriteCache;
 //             기술 떠올리기로만 배운다). 기본 단계의 Lv 1 기술(몸통박치기 등)에는 붙이지 않는다.
 //   기술머신: [번호] [기술] [타입] [분류] [위력] [명중] [PP] [획득처] — 획득처는 공략
 //   사전(guidebook)
+//   가르침 · 알: 첫 칸 없이 [기술]부터 (Mode::Plain)
 class MoveList : public QWidget
 {
     Q_OBJECT
 public:
-    enum class Mode { LevelUp, Machine };
+    enum class Mode { LevelUp, Machine, Plain };
 
     // icons: 아이템 아이콘 캐시(하트비늘). 소유하지 않는다.
     MoveList(Mode mode, SpriteCache *icons, QWidget *parent = nullptr);

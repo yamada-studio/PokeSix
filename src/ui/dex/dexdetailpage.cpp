@@ -299,6 +299,15 @@ QWidget *DexDetailPage::buildContent()
     m_machineMoves = new MoveList(MoveList::Mode::Machine, m_icons);
     m_machinePanel = section(tok::kBlueDeep, m_machineMoves, {8, 6, 8, 10});
     layout->addWidget(m_machinePanel);
+
+    // 가르침(NPC 기술 가르침 — 하트비늘의 "기술 떠올리기"와 다르다) · 알 기술. 그 게임에 없으면
+    // 창째 숨긴다(3세대 가르침은 에메랄드가 17개, FRLG는 6개 — 게임 칩을 따라간다).
+    m_tutorMoves = new MoveList(MoveList::Mode::Plain, m_icons);
+    m_tutorPanel = section(tok::kGreen, m_tutorMoves, {8, 6, 8, 10});
+    layout->addWidget(m_tutorPanel);
+    m_eggMoves = new MoveList(MoveList::Mode::Plain, m_icons);
+    m_eggPanel = section(tok::kGreen, m_eggMoves, {8, 6, 8, 10});
+    layout->addWidget(m_eggPanel);
     layout->addStretch();
     return content;
 }
@@ -402,5 +411,13 @@ void DexDetailPage::applyLanguage()
                              m_detail.types, language);
     m_machinePanel->setTitle(tr("기술머신 · 비전머신"),
                              tr("%1개").arg(m_detail.machineMoves.size()));
+    m_tutorMoves->setMoves(m_detail.tutorMoves, m_detail.versionGroup, m_detail.generation,
+                           m_detail.types, language);
+    m_tutorPanel->setTitle(tr("가르침 기술"), tr("%1개").arg(m_detail.tutorMoves.size()));
+    m_tutorPanel->setVisible(!m_detail.tutorMoves.isEmpty());
+    m_eggMoves->setMoves(m_detail.eggMoves, m_detail.versionGroup, m_detail.generation,
+                         m_detail.types, language);
+    m_eggPanel->setTitle(tr("알 기술"), tr("%1개").arg(m_detail.eggMoves.size()));
+    m_eggPanel->setVisible(!m_detail.eggMoves.isEmpty());
 }
 } // namespace com::yamada::studio

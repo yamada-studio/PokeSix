@@ -152,6 +152,14 @@
         <source>기준 게임</source>
         <translation>基準のゲーム</translation>
     </message>
+    <message>
+        <source>가르침 기술</source>
+        <translation>教え技</translation>
+    </message>
+    <message>
+        <source>알 기술</source>
+        <translation>タマゴ技</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::DexFilterBar</name>
