@@ -191,6 +191,15 @@ struct PokemonDetail
 
 // 세대 g의 타입 상성표: (공격 타입, 방어 타입) → 배율. 표에 없는 쌍은 1배.
 // 세대의 게임 묶음 하나(4세대: DP · Pt · HGSS). 스쿼드의 "기술 기준 게임" 선택지
+// 아이템으로 하는 진화 한 줄 (아이템 상세 창의 "진화"): 가디 → 윈디(불꽃의돌 사용),
+// 분이 → 딱구리(지니고 통신교환)
+struct ItemEvolution
+{
+    LocalizedText from;
+    LocalizedText to;
+    bool held = false; // true = 지니고(통신교환 등), false = 사용
+};
+
 struct GameInfo
 {
     QString versionGroup;              // "platinum"
@@ -263,6 +272,8 @@ public:
     // 세대 generation까지 나온 종 전부(번호 순). 타입 · 종족값은 그 세대 기준.
     // 1세대는 "특수"(stat 9) 하나였으므로 특공 · 특방 칸에 같은 값을 넣고, 합계에는 한 번만 더한다.
     QList<SpeciesRow> speciesForGeneration(int generation);
+    // 이 아이템으로 진화하는 포켓몬(그 세대까지의 규칙 · 그 세대까지 나온 진화형만)
+    QList<ItemEvolution> evolutionsWithItem(int itemId, int generation);
 
 private:
     QString m_path;
