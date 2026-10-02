@@ -9,6 +9,7 @@
     <file>styles/app.qss</file>
     <file>theme/dexstyle.json</file>
     <file>theme/itemstyle.json</file>
+    <file>theme/homecards.json</file> <!-- 홈 세대 카드: 마스코트 · 색 · 지방 -->
     <file>data/machine-locations.json</file> <!-- 기술머신 획득처 사전 -->
     <file>data/place-names.json</file>       <!-- 장소 한국어 이름 사전 -->
     <file>data/encounter-methods.json</file> <!-- 야생 출현 방법 이름 -->

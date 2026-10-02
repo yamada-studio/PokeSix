@@ -1,6 +1,7 @@
 #include "ui/dex/dexdetailpage.h"
 
 #include "data/sprites/spritecache.h"
+#include "data/sprites/spritekeys.h"
 #include "data/state/appstate.h"
 #include "ui/dex/abilitylist.h"
 #include "ui/dex/encounterlist.h"
@@ -72,22 +73,6 @@ PanelFrame *section(QRgb headerColor, QWidget *content, QMargins margins = {12, 
     return frame;
 }
 
-// 세대마다 정면 그림 폴더(PokéAPI/sprites의 versions/…). 없는 세대(7 · 8)는 기본 그림(96×96).
-QString spriteKey(int generation, int pokemonId)
-{
-    static constexpr const char *kFolders[] = {"generation-i/yellow",
-                                               "generation-ii/crystal",
-                                               "generation-iii/emerald",
-                                               "generation-iv/platinum",
-                                               "generation-v/black-white",
-                                               "generation-vi/x-y",
-                                               nullptr,
-                                               nullptr,
-                                               "generation-ix/scarlet-violet"};
-    const char *folder = generation >= 1 && generation <= 9 ? kFolders[generation - 1] : nullptr;
-    return folder ? QStringLiteral("%1/%2").arg(QLatin1String(folder)).arg(pokemonId)
-                  : QStringLiteral("default/%1").arg(pokemonId); // 폴더 없음 → 2번째 출처(기본)
-}
 } // namespace
 
 namespace com::yamada::studio {
@@ -132,7 +117,7 @@ protected:
         painter.setPen(QPen(QColor(tok::kLine), 1.5));
         painter.setBrush(QColor(tok::kPaperAlt));
         painter.drawRoundedRect(QRectF(frame).adjusted(0.75, 0.75, -0.75, -0.75), 6, 6);
-        const QString key = spriteKey(m_detail.generation, m_detail.pokemonId);
+        const QString key = spritekeys::front(m_detail.generation, m_detail.pokemonId);
         const QString file = m_fronts->path(key);
         QPixmap sprite;
         if (file.isEmpty() || !sprite.load(file)) {

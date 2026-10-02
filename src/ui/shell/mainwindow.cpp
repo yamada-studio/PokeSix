@@ -42,7 +42,7 @@ MainWindow::MainWindow(QWidget *parent)
     // 앱 상태(지금은 정주행 중인 세대). 화면들은 이 객체를 받아 generationChanged를 구독한다.
     m_state = new AppState(this);
 
-    HomePage *home = new HomePage(dataUpdater);
+    HomePage *home = new HomePage(dataUpdater, m_state);
     m_screens->addWidget(home);
 
     QWidget *shell = new QWidget;
@@ -97,15 +97,16 @@ MainWindow::MainWindow(QWidget *parent)
     // 종료).
     connect(home, &HomePage::quitRequested, this, &QMainWindow::close);
 
-    // 세대 버튼 둘(인트로 · 앱 막대)을 AppState에 잇는다. 버튼은 "고름"만
-    // 알리고(generationSelected), 바뀐 값은 AppState가 generationChanged로 모두에게 돌려준다 →
-    // 한쪽에서 바꿔도 둘 다 같은 세대를 보인다.
-    for (GenerationButton *button : {home->generationButton(), m_appBar->generationButton()}) {
-        button->setGenerationRange(AppState::kMinGeneration, AppState::kMaxGeneration);
-        button->setGeneration(m_state->generation());
-        connect(button, &GenerationButton::generationSelected, m_state, &AppState::setGeneration);
-        connect(m_state, &AppState::generationChanged, button, &GenerationButton::setGeneration);
-    }
+    // 앱 막대의 세대 버튼을 AppState에 잇는다. 버튼은 "고름"만 알리고(generationSelected), 바뀐
+    // 값은 AppState가 generationChanged로 모두에게 돌려준다. 인트로의 세대 카드(CardFan)는
+    // AppState를 직접 받아 스스로 잇는다 → 어느 쪽에서 바꿔도 같은 세대를 보인다.
+    GenerationButton *generationButton = m_appBar->generationButton();
+    generationButton->setGenerationRange(AppState::kMinGeneration, AppState::kMaxGeneration);
+    generationButton->setGeneration(m_state->generation());
+    connect(generationButton, &GenerationButton::generationSelected, m_state,
+            &AppState::setGeneration);
+    connect(m_state, &AppState::generationChanged, generationButton,
+            &GenerationButton::setGeneration);
 
     // 본 화면의 단축키. shell에 달고 WidgetWithChildrenShortcut으로 두면 본 화면이 보일 때만
     // 동작한다 (인트로에서는 1–4 키가 메뉴에 있고, 잠긴 메뉴를 단축키로 우회하지 못한다).

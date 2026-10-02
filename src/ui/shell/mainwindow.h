@@ -41,6 +41,7 @@ private:
 
     // 처음 여는 크기: 도감 표(840) + 창 테두리 · 여백이 딱 들어가는 폭, 인트로(최소 높이 804)가 다
     // 들어가는 높이. 최소 크기는 따로 정하지 않는다 — 레이아웃이 계산한 minimumSizeHint가 최소다.
-    static constexpr QSize kDefaultSize {920, 840};
+    // 1440×900: 도감 · 아이템의 세 칸(필터 | 목록 | 상세)과 홈 부채꼴이 들어가는 폭(ADR 0015)
+    static constexpr QSize kDefaultSize {1440, 900};
 };
 } // namespace com::yamada::studio
