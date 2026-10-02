@@ -217,10 +217,8 @@ QWidget *SquadPage::buildTopBar()
     layout->addWidget(m_name);
     m_rule = new QLabel;
     m_rule->setObjectName(QStringLiteral("squadRulePill"));
-    m_rule->setToolTip(tr("분석이 이 세대의 규칙을 따라요 — 상성표(페어리는 6세대부터),
-                          "
-                          "물리·특수 구분(3세대까지 타입, 4세대부터 기술),
-                          "
+    m_rule->setToolTip(tr("분석이 이 세대의 규칙을 따라요 — 상성표(페어리는 6세대부터),\n"
+                          "물리·특수 구분(3세대까지 타입, 4세대부터 기술),\n"
                           "특성·성격(3세대부터) · 지닌 물건(2세대부터)"));
     layout->addWidget(m_rule);
     // 게임 칩: 게임마다 스쿼드가 따로 저장된다(도감 · 나오는 포켓몬 · 기술이 게임마다 다르다)

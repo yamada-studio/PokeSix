@@ -1184,8 +1184,12 @@ to see its details here</translation>
         <translation>Move tutor (%1)</translation>
     </message>
     <message>
-        <source>분석이 이 세대의 규칙을 따라요 — 상성표(페어리는 6세대부터),물리·특수 구분(3세대까지 타입, 4세대부터 기술),특성·성격(3세대부터) · 지닌 물건(2세대부터)</source>
-        <translation type="unfinished"></translation>
+        <source>분석이 이 세대의 규칙을 따라요 — 상성표(페어리는 6세대부터),
+물리·특수 구분(3세대까지 타입, 4세대부터 기술),
+특성·성격(3세대부터) · 지닌 물건(2세대부터)</source>
+        <translation>The analysis follows this generation&#x27;s rules — its type chart (Fairy from gen 6),
+the physical/special split (by type up to gen 3, by move from gen 4),
+abilities &amp; natures (gen 3+) and held items (gen 2+)</translation>
     </message>
 </context>
 <context>
