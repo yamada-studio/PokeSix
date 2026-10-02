@@ -488,15 +488,15 @@ to see a summary here</translation>
     </message>
     <message>
         <source>이동</source>
-        <translation>Move</translation>
+        <translation type="vanished">Move</translation>
     </message>
     <message>
         <source>선택</source>
-        <translation>Select</translation>
+        <translation type="vanished">Select</translation>
     </message>
     <message>
         <source>바로 가기</source>
-        <translation>Jump</translation>
+        <translation type="vanished">Jump</translation>
     </message>
     <message>
         <source>데이터: PokéAPI · 비공식 팬 도구</source>
@@ -504,7 +504,7 @@ to see a summary here</translation>
     </message>
     <message>
         <source>세대</source>
-        <translation>Generation</translation>
+        <translation type="vanished">Generation</translation>
     </message>
 </context>
 <context>
@@ -539,7 +539,7 @@ to see a summary here</translation>
     </message>
     <message>
         <source>종료</source>
-        <translation>Quit</translation>
+        <translation type="vanished">Quit</translation>
     </message>
     <message>
         <source>스쿼드</source>

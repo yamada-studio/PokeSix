@@ -7,20 +7,18 @@
 namespace com::yamada::studio {
 class IntroMenuItem;
 
-// 인트로 메뉴: 카드 버튼 3개(스쿼드는 빨강 주 행동) + 종료 줄 (ADR 0015, 사진 레퍼런스).
+// 인트로 메뉴: 카드 버튼 3개(스쿼드는 빨강 주 행동) (ADR 0015, 사진 레퍼런스).
 // 버튼마다 자기 카드(먹선 · 그림자 · 배지 아이콘)를 그린다 — 바깥 PanelFrame은 더 쓰지 않는다.
+// 종료 줄과 키 안내는 뺐다(사용자 결정) — 종료는 창 닫기 버튼으로.
 //
 // 선택(▶ + 노란 칸)은 이 클래스가 인덱스 하나로 관리한다.
 //   - 마우스: 줄에 올라가면(hover) 선택이 그 줄로 옮겨 간다
-//   - 키보드: ↑↓ 이동(처음 · 끝에서 멈춤, 순환 없음), Enter 실행, 1–3 바로 실행,
-//             Esc = 종료 줄로 이동, 종료 줄에서 한 번 더 Esc = 실행
+//   - 키보드: ↑↓ 이동(처음 · 끝에서 멈춤, 순환 없음), Enter 실행, 1–3 바로 실행
 // 실행은 activated(index) 시그널로 밖에 알린다. 무엇을 할지는 HomePage가 정한다.
 class IntroMenu : public QWidget
 {
     Q_OBJECT
 public:
-    static constexpr int kQuitIndex = 3; // 0–2 = 스쿼드 · 도감 · 아이템, 3 = 종료
-
     explicit IntroMenu(QWidget *parent = nullptr);
 
     int currentIndex() const { return m_current; }
@@ -31,7 +29,7 @@ public:
     void setDataLocked(bool locked);
 
 signals:
-    // 사용자가 줄을 실행했다(클릭, Enter, 1–3, 종료 줄에서 Esc). index는 kQuitIndex 포함.
+    // 사용자가 줄을 실행했다(클릭, Enter, 1–3).
     void activated(int index);
 
 protected:

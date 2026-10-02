@@ -93,9 +93,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(home, &HomePage::openRequested, this, &MainWindow::open);
     connect(m_appBar, &AppBar::pageSelected, this, &MainWindow::open);
     connect(m_appBar, &AppBar::homeRequested, this, &MainWindow::showIntro);
-    // 종료: 확인 대화 상자 여부는 열린 질문 9(roadmap). 지금은 바로 창을 닫는다(마지막 창 → 앱
-    // 종료).
-    connect(home, &HomePage::quitRequested, this, &QMainWindow::close);
 
     // 앱 막대의 세대 버튼을 AppState에 잇는다. 버튼은 "고름"만 알리고(generationSelected), 바뀐
     // 값은 AppState가 generationChanged로 모두에게 돌려준다. 인트로의 세대 카드(CardFan)는
