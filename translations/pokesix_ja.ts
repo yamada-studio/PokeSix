@@ -554,6 +554,51 @@
     </message>
 </context>
 <context>
+    <name>com::yamada::studio::ItemDetailPane</name>
+    <message>
+        <source>%L1원</source>
+        <translation>%L1円</translation>
+    </message>
+    <message>
+        <source>비매품</source>
+        <translation>非売品</translation>
+    </message>
+    <message>
+        <source>목록에서 아이템을 고르면
+여기에 자세히 보여요</source>
+        <translation>リストでどうぐを選ぶと
+ここに詳しく出ます</translation>
+    </message>
+    <message>
+        <source>세대별 존재</source>
+        <translation>世代別の存在</translation>
+    </message>
+    <message>
+        <source>효과</source>
+        <translation>効果</translation>
+    </message>
+    <message>
+        <source>효과 설명이 없어요</source>
+        <translation>効果の説明がありません</translation>
+    </message>
+    <message>
+        <source>진화</source>
+        <translation>進化</translation>
+    </message>
+    <message>
+        <source>%1 → %2</source>
+        <translation>%1 → %2</translation>
+    </message>
+    <message>
+        <source> (지니고 교환)</source>
+        <translation>（持たせて通信交換）</translation>
+    </message>
+    <message>
+        <source>획득처</source>
+        <translation>入手場所</translation>
+    </message>
+</context>
+<context>
     <name>com::yamada::studio::ItemRowDelegate</name>
     <message>
         <source>%1원</source>
@@ -592,6 +637,10 @@
     <message>
         <source>%1 · %2개</source>
         <translation>%1・%2個</translation>
+    </message>
+    <message>
+        <source>상세</source>
+        <translation>詳細</translation>
     </message>
 </context>
 <context>

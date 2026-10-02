@@ -7,6 +7,11 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- The Items page gets its third pane: picking an item (click or ↑/↓) shows a detail pane with the
+  icon, name, price, a 1–9 generation-presence strip (current generation ringed), the full effect
+  text, the Pokémon that evolve with the item ("가디 → 윈디", trade-hold evolutions marked), and —
+  for TMs — the move it holds and where to get it (from the TM location dictionary; Platinum so
+  far).
 - The Pokédex list becomes three panes: filters | list | preview. The filter pane narrows the list
   by type (the generation's own types — no Fairy chip in generation 4), base stat total (a
   two-handle range slider), "전설 · 환상 제외" and "최종 진화만" (final by that generation's rules:

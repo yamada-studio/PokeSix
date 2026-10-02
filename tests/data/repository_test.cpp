@@ -115,6 +115,18 @@ TEST_F(RepositoryTest, FlagsLegendaryAndFinalEvolution)
     EXPECT_FALSE(find(gen4, 445)->legendary); // 시드에 전설 · 환상은 없다
 }
 
+TEST_F(RepositoryTest, ListsEvolutionsWithAnItem)
+{
+    Repository repository(s_dbPath);
+    // 시드: 픽시는 달의돌(81)로 진화(1세대 규칙)
+    const QList<ItemEvolution> stone = repository.evolutionsWithItem(81, 4);
+    ASSERT_EQ(stone.size(), 1);
+    EXPECT_EQ(stone.first().from.en, QStringLiteral("Clefairy"));
+    EXPECT_EQ(stone.first().to.en, QStringLiteral("Clefable"));
+    EXPECT_FALSE(stone.first().held);
+    EXPECT_TRUE(repository.evolutionsWithItem(999, 4).isEmpty()); // 진화와 무관한 아이템
+}
+
 TEST_F(RepositoryTest, ProxyFiltersByTypeTotalAndFlags)
 {
     // 프록시 조건은 DB가 필요 없다 — 행을 손으로 만들어 조건마다 확인한다

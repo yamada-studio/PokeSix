@@ -113,6 +113,7 @@ QLabel#searchFieldShortcut {
 /* ── 아직 만들지 않은 페이지의 자리 표시 ── */
 QLabel#filterCaption { font-size: 12px; font-weight: 700; color: @text.3; }
 QLabel#filterValue { font-family: "NanumGothicCoding"; font-size: 12px; font-weight: 700; color: @text.2; }
+QLabel#itemEffect { font-size: 13px; color: @text.2; }
 QLabel#previewEmpty { font-size: 13px; color: @text.3; }
 QLabel#pagePlaceholder { font-family: "Do Hyeon"; font-size: 28px; color: @text.3; }
 

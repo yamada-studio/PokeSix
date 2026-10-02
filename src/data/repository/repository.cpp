@@ -84,6 +84,36 @@ void Repository::close()
         QSqlDatabase::database(m_connection, false).close();
 }
 
+QList<ItemEvolution> Repository::evolutionsWithItem(int itemId, int generation)
+{
+    QList<ItemEvolution> evolutions;
+    if (!open())
+        return evolutions;
+    // 사용(item_id) · 지님(held_item_id) 모두. 규칙이 세대마다 여러 줄일 수 있어 DISTINCT.
+    QSqlQuery query(QSqlDatabase::database(m_connection));
+    query.prepare(QStringLiteral("SELECT DISTINCT f.name_ko, f.name_en, f.name_ja, "
+                                 "       t.name_ko, t.name_en, t.name_ja, e.held_item_id = :held "
+                                 "FROM evolutions e "
+                                 "JOIN species t ON t.id = e.evolved_species_id "
+                                 "LEFT JOIN species f ON f.id = t.evolves_from "
+                                 "WHERE (e.item_id = :item OR e.held_item_id = :held2) "
+                                 "  AND e.generation <= :g AND t.intro_gen <= :g2 "
+                                 "ORDER BY t.id"));
+    query.bindValue(QStringLiteral(":item"), itemId);
+    query.bindValue(QStringLiteral(":held"), itemId);
+    query.bindValue(QStringLiteral(":held2"), itemId);
+    query.bindValue(QStringLiteral(":g"), generation);
+    query.bindValue(QStringLiteral(":g2"), generation);
+    if (!query.exec()) {
+        m_error = query.lastError().text();
+        qCWarning(lcData) << "item evolution query failed:" << m_error;
+        return evolutions;
+    }
+    while (query.next())
+        evolutions.append({localized(query, 0), localized(query, 3), query.value(6).toBool()});
+    return evolutions;
+}
+
 QList<SpeciesRow> Repository::speciesForGeneration(int generation)
 {
     QList<SpeciesRow> rows;

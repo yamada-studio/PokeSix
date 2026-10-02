@@ -46,6 +46,8 @@ qt_add_library(pokesix_ui STATIC
     items/itemspage.cpp
     items/categorybutton.h
     items/categorybutton.cpp
+    items/itemdetailpane.h
+    items/itemdetailpane.cpp
     items/itemheaderview.h
     items/itemheaderview.cpp
     items/itemrowdelegate.h

@@ -5,7 +5,9 @@
 #include "data/repository/repository.h"
 #include "data/sprites/spritecache.h"
 #include "data/state/appstate.h"
+#include "ui/dex/guidebook.h"
 #include "ui/items/categorybutton.h"
+#include "ui/items/itemdetailpane.h"
 #include "ui/items/itemheaderview.h"
 #include "ui/items/itemrowdelegate.h"
 #include "ui/logging/logging.h"
@@ -31,6 +33,14 @@ using namespace com::yamada::studio;
 constexpr QMargins kPageMargins {20, 16, 20, 20};
 constexpr int kGap = 16;
 constexpr int kCategoryWidth = 220;
+constexpr int kDetailWidth = 292; // 오른쪽 상세 창 (도감 미리 보기와 같은 폭)
+constexpr PanelStyle kDetailPanel {.outline = 2,
+                                   .radius = 8,
+                                   .shadow = 3,
+                                   .fill = tok::kWhite,
+                                   .ink = tok::kInk,
+                                   .header = 38,
+                                   .headerColor = tok::kBlue};
 constexpr PanelStyle kCategoryPanel {.outline = 2,
                                      .radius = 8,
                                      .shadow = 3,
@@ -86,6 +96,18 @@ ItemsPage::ItemsPage(Repository *repository, AppState *state, QWidget *parent)
     m_listPanel->setPanelStyle(kListPanel);
     m_listPanel->setBody(buildListBody());
     layout->addWidget(m_listPanel, 1);
+
+    m_detailPanel = new PanelFrame;
+    m_detailPanel->setPanelStyle(kDetailPanel);
+    m_detailPanel->setTitle(tr("상세"));
+    m_detailPanel->setFixedWidth(kDetailWidth);
+    m_detail = new ItemDetailPane(m_sprites);
+    QWidget *detailBody = new QWidget;
+    QVBoxLayout *detailLayout = new QVBoxLayout(detailBody);
+    detailLayout->setContentsMargins(12, 10, 12, 12);
+    detailLayout->addWidget(m_detail);
+    m_detailPanel->setBody(detailBody);
+    layout->addWidget(m_detailPanel);
 
     connect(m_state, &AppState::generationChanged, this, &ItemsPage::onGenerationChanged);
     connect(m_state, &AppState::languageChanged, this, &ItemsPage::applyLanguage);
@@ -165,6 +187,11 @@ QWidget *ItemsPage::buildListBody()
     // 아이콘 파일이 받아질 때마다 다시 그린다(update는 예약만 — 여러 번이 한 번으로 합쳐진다)
     connect(m_sprites, &SpriteCache::ready, m_table->viewport(), qOverload<>(&QWidget::update));
 
+    // 한 번 클릭 · ↑↓ = 오른쪽 상세 창
+    connect(m_table, &QTableView::clicked, this, &ItemsPage::showDetail);
+    connect(m_table->selectionModel(), &QItemSelectionModel::currentRowChanged, this,
+            [this](const QModelIndex &current) { showDetail(current); });
+
     // 검색 디바운스: 입력이 150ms 멈추면 한 번만 거른다
     m_searchDelay->setSingleShot(true);
     m_searchDelay->setInterval(kSearchDebounceMs);
@@ -187,6 +214,7 @@ void ItemsPage::applyLanguage()
     for (QAbstractButton *button : m_groups->buttons())
         static_cast<CategoryButton *>(button)->setLanguage(language);
     m_table->viewport()->update();
+    showDetail(m_table->currentIndex()); // 상세 창도 새 언어로
     updateTitle();
 }
 
@@ -210,6 +238,7 @@ void ItemsPage::load()
     const int generation = m_state->generation();
     m_model->setRows(m_repository->itemsForGeneration(generation), generation);
     m_delegate->setGeneration(generation);
+    m_detail->clear();
     m_loaded = m_model->rowCount() > 0; // 비어 있으면(DB가 아직 없음) 다음에 보일 때 다시
     updateTitle();
     qCInfo(lcUi) << "items loaded" << m_model->rowCount() << "for generation" << generation;
@@ -221,6 +250,23 @@ void ItemsPage::selectGroup(const QString &key)
     m_proxy->setCategoryFilter(itemstyle::filterFor(key)); // 규칙은 itemstyle.json — 화면은 key만
     m_table->scrollToTop();
     updateTitle();
+}
+
+void ItemsPage::showDetail(const QModelIndex &proxyIndex)
+{
+    if (!proxyIndex.isValid()) {
+        m_detail->clear();
+        return;
+    }
+    const int generation = m_state->generation();
+    const ItemRow &item = m_model->rowAt(m_proxy->mapToSource(proxyIndex).row());
+    // 진화 대상과, 기술머신이면 획득처(사전은 지금 Pt만 — 세대의 대표 게임 기준)
+    const QList<ItemEvolution> evolutions = m_repository->evolutionsWithItem(item.id, generation);
+    QStringList places;
+    if (!item.machineMove.isEmpty())
+        places = guidebook::machinePlaces(Repository::representativeVersionGroup(generation),
+                                          item.identifier);
+    m_detail->setItem(item, generation, m_state->language(), evolutions, places);
 }
 
 void ItemsPage::updateTitle()

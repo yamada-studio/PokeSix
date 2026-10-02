@@ -554,6 +554,51 @@ to see a summary here</translation>
     </message>
 </context>
 <context>
+    <name>com::yamada::studio::ItemDetailPane</name>
+    <message>
+        <source>%L1원</source>
+        <translation>₽%L1</translation>
+    </message>
+    <message>
+        <source>비매품</source>
+        <translation>Not for sale</translation>
+    </message>
+    <message>
+        <source>목록에서 아이템을 고르면
+여기에 자세히 보여요</source>
+        <translation>Pick an item in the list
+to see its details here</translation>
+    </message>
+    <message>
+        <source>세대별 존재</source>
+        <translation>By generation</translation>
+    </message>
+    <message>
+        <source>효과</source>
+        <translation>Effect</translation>
+    </message>
+    <message>
+        <source>효과 설명이 없어요</source>
+        <translation>No effect text</translation>
+    </message>
+    <message>
+        <source>진화</source>
+        <translation>Evolves</translation>
+    </message>
+    <message>
+        <source>%1 → %2</source>
+        <translation>%1 → %2</translation>
+    </message>
+    <message>
+        <source> (지니고 교환)</source>
+        <translation> (trade holding it)</translation>
+    </message>
+    <message>
+        <source>획득처</source>
+        <translation>Locations</translation>
+    </message>
+</context>
+<context>
     <name>com::yamada::studio::ItemRowDelegate</name>
     <message>
         <source>%1원</source>
@@ -592,6 +637,10 @@ to see a summary here</translation>
     <message>
         <source>%1 · %2개</source>
         <translation>%1 · %2</translation>
+    </message>
+    <message>
+        <source>상세</source>
+        <translation>Details</translation>
     </message>
 </context>
 <context>
