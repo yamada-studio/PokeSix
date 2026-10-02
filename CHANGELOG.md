@@ -158,6 +158,10 @@ and the project uses [Semantic Versioning](https://semver.org/).
   arrow from shifting the label.
 
 ### Fixed
+- The home fan's bottom arc was cut flat: the widget's height estimate did not cover how far the
+  outer cards sag after the fan was widened (a widget cannot paint outside its own rect — no
+  z-order involved). The height now follows the real geometry, and dragging clamps the swing so
+  the corners stay inside the widget.
 - The squad's card column now ends on exactly the same line as the live analysis panel: cards are
   sized when the scroll viewport gets its final size (not from the page's own resize, which ran too
   early and left an 11px mismatch), the upper height cap is gone and leftover pixels go to the top

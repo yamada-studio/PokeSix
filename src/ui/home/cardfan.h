@@ -49,7 +49,8 @@ private:
         qreal cardHeight = 0;
         qreal radius = 0; // 회전 중심(pivot) ↔ 카드 윗변
         qreal step = 0;   // 이웃 카드 사이 각도(라디안)
-        QPointF pivot;    // 위젯 아래 바깥의 회전 중심
+        qreal maxSwing = 0; // 바깥 카드 모서리가 위젯 안에 머무는 흔들림 한도(라디안)
+        QPointF pivot; // 위젯 아래 바깥의 회전 중심
     };
     Layout fanLayout() const;
     QTransform cardTransform(const Layout &fan, int index, bool withLift = true) const;
