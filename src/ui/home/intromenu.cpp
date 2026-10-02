@@ -18,7 +18,7 @@ constexpr int kDividerSpacing = 14 - kItemSpacing;
 constexpr int kDividerLine = 2;   // border-top: 2px dashed line
 constexpr int kDividerInsetX = 8; // margin: 4px 8px 의 좌우 8
 constexpr int kDividerInsetY = 4; // 〃 위 4
-// 데이터가 있어야 쓸 수 있는 메뉴 줄(도감 백과 · 아이템 백과 · 스쿼드). 규칙을 if 대신 표로 둔다.
+// 데이터가 있어야 쓸 수 있는 메뉴 줄(스쿼드 · 도감 백과 · 아이템 백과). 규칙을 if 대신 표로 둔다.
 constexpr int kNeedsData[] = {0, 1, 2};
 } // namespace
 
@@ -39,17 +39,16 @@ IntroMenu::IntroMenu(QWidget *parent)
         QString description;
     };
     const Entry entries[] = {
+            {tr("스쿼드"), tr("여섯 자리 파티 편성과 타입 분석")},
             {tr("도감 백과"), tr("종족값 · 타입 상성 · 습득 기술")},
             {tr("아이템 백과"), tr("회복 · 기술머신 · 진화 · 배틀 · 기타")},
-            {tr("스쿼드"), tr("여섯 자리 파티 편성과 타입 분석")},
-            {tr("설정"), tr("세대 규칙 · 데이터 · 언어 · 테마")},
     };
 
     for (const Entry &entry : entries) {
         IntroMenuItem *item = new IntroMenuItem(IntroMenuItem::Kind::Entry);
         item->setText(entry.name);
         item->setDescription(entry.description);
-        item->setShortcutText(QString::number(m_items.size() + 1)); // "1" … "4"
+        item->setShortcutText(QString::number(m_items.size() + 1)); // "1" … "3"
         item->setFixedHeight(kItemHeight);
         layout->addWidget(item);
         m_items.push_back(item);
@@ -134,9 +133,8 @@ void IntroMenu::keyPressEvent(QKeyEvent *event)
         return;
     case Qt::Key_1:
     case Qt::Key_2:
-    case Qt::Key_3:
-    case Qt::Key_4: {
-        // 수식키(Ctrl · Alt …)가 눌렸으면 "1–4 바로 가기"가 아니다(Ctrl+1 같은 조합은 다른 뜻).
+    case Qt::Key_3: {
+        // 수식키(Ctrl · Alt …)가 눌렸으면 "1–3 바로 가기"가 아니다(Ctrl+1 같은 조합은 다른 뜻).
         // 숫자 키패드는 허용.
         if ((event->modifiers() & ~Qt::KeypadModifier) != Qt::NoModifier) {
             QWidget::keyPressEvent(event);

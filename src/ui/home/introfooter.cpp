@@ -40,8 +40,9 @@ IntroFooter::IntroFooter(QWidget *parent)
     };
     const Hint hints[] = {
             {QStringLiteral("↑↓"), tr("이동")},
+            {QStringLiteral("←→"), tr("세대")},
             {QStringLiteral("Enter"), tr("선택")},
-            {QStringLiteral("1–4"), tr("바로 가기")},
+            {QStringLiteral("1–3"), tr("바로 가기")},
     };
     QHBoxLayout *hintRow = new QHBoxLayout;
     hintRow->setSpacing(kHintGroupSpacing);

@@ -7,6 +7,14 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- The home (intro) screen picks the generation with a fan of nine cards, spread like a hand of
+  playing cards: the fan spreads open whenever the screen appears, cards lift on hover and stay
+  lifted (with a yellow ring) when chosen, and dragging swings the whole fan, which springs back
+  on release. Each card shows the generation, its region and a mascot Pokémon drawn with that
+  generation's own sprite art (card contents live in `resources/theme/homecards.json`). The
+  generation button leaves the home screen (the app bar keeps one), the menu becomes
+  스쿼드 · 도감 백과 · 아이템 백과 (+ 종료) — the Settings row moves to the app bar tab — and the
+  default window grows to 1440×900. ←/→ moves between generations. (ADR 0015)
 - Game chips in the Pokédex detail page ("기준 게임 [BW][B2W2]", the same version-colored chips as
   the squad's dex filter) replace the "기술 기준" label: choosing a game switches level-up moves,
   TM/HM numbers and locations, evolution conditions and wild encounters (only that game's versions)

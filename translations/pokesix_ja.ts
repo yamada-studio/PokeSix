@@ -50,6 +50,13 @@
     </message>
 </context>
 <context>
+    <name>com::yamada::studio::CardFan</name>
+    <message>
+        <source>%1세대</source>
+        <translation>%1世代</translation>
+    </message>
+</context>
+<context>
     <name>com::yamada::studio::CsvDownloader</name>
     <message>
         <source>폴더를 만들 수 없어요: %1</source>
@@ -402,7 +409,7 @@
     </message>
     <message>
         <source>세대를 선택하여 시작하세요:</source>
-        <translation>世代を選んで始めましょう:</translation>
+        <translation type="vanished">世代を選んで始めましょう:</translation>
     </message>
 </context>
 <context>
@@ -426,6 +433,10 @@
     <message>
         <source>데이터: PokéAPI · 비공식 팬 도구</source>
         <translation>データ: PokéAPI・非公式ファンツール</translation>
+    </message>
+    <message>
+        <source>세대</source>
+        <translation>世代</translation>
     </message>
 </context>
 <context>
@@ -452,11 +463,11 @@
     </message>
     <message>
         <source>설정</source>
-        <translation>設定</translation>
+        <translation type="vanished">設定</translation>
     </message>
     <message>
         <source>세대 규칙 · 데이터 · 언어 · 테마</source>
-        <translation>世代ルール・データ・言語・テーマ</translation>
+        <translation type="vanished">世代ルール・データ・言語・テーマ</translation>
     </message>
     <message>
         <source>종료</source>

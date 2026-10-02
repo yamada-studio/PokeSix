@@ -1,15 +1,16 @@
 #include "ui/home/homepage.h"
 
 #include "data/update/dataupdater.h"
+#include "ui/home/cardfan.h"
 #include "ui/home/firstrunpanel.h"
 #include "ui/home/introfooter.h"
 #include "ui/home/intromenu.h"
 #include "ui/theme/tokens.h"
-#include "ui/widgets/generationbutton.h"
 #include "ui/widgets/markwidget.h"
 #include "ui/widgets/panelframe.h"
 #include "ui/widgets/wordmarklabel.h"
 
+#include <QKeyEvent>
 #include <QLabel>
 #include <QPainter>
 #include <QVBoxLayout>
@@ -25,21 +26,19 @@ constexpr QMargins kPageMargins
         = {32, 44, 32, 26};        // 좌 · 위 · 우 · 아래 (푸터 left/right 32, bottom 26)
 constexpr int kMarkToWordmark = 6; // h1 margin-top: 6
 constexpr int kWordmarkToSubtitle = 16 - 5; // p margin-top: 16 − 워드마크 글자 그림자 5
-constexpr int kSubtitleToGeneration = 24;   // 세대 블록 margin-top: 24
-constexpr int kGenerationLabelToButton = 6; // 세대 블록 gap: 6
-constexpr int kGenerationToMenu = 24 - 3;   // nav margin-top: 24 − 세대 버튼 그림자 3
+constexpr int kSubtitleToFan = 8;           // 부제 ↔ 세대 카드 부채꼴
+constexpr int kFanToMenu = 2; // 부채꼴 ↔ 메뉴 창 (부채꼴 아래 여백이 이미 넉넉하다)
 constexpr int kMenuWidth = tok::kSizeIntroMenuWidth; // 520
 constexpr int kFirstRunToMenu = 12;                  // 첫 실행 패널과 메뉴 창 사이
 // 첫 실행 패널이 들어가면 세로가 모자란다. 화면 정의서(02b SCR-01): "높이가 부족하면 마크 → 부제
-// 순으로 줄인다. 메뉴는 절대 잘리지 않는다." 그래서 패널이 있는 동안에만 마크를 작게(960 배치와
-// 같은 72) 하고 부제를 숨긴다.
+// 순으로 줄인다. 메뉴는 절대 잘리지 않는다." 패널이 있는 동안에는 마크를 작게(960 배치와 같은
+// 72) 하고 부제와 세대 카드를 숨긴다(세대는 데이터를 받은 뒤 고르면 된다).
 constexpr int kCompactMark = 72;
-constexpr int kCompactGenerationGap = 12; // compact에서 (숨긴 부제 자리의) 세대 블록 위 간격
+constexpr int kHomeMark = 96; // v2의 136보다 작게 — 세대 카드 부채꼴의 세로 자리(ADR 0015)
 // 글자 줄의 높이. CSS의 line-height: normal은 브라우저가 글꼴 파일의 줄 간격 값으로 정하는데,
 // Qt의 QLabel은 다른 값(QFontMetrics::height)을 쓴다. 도현 22는 Qt가 32로 잡아서 아래가 전부
 // 밀리므로 기준 이미지(30_intro_1440.png)에서 잰 브라우저 값으로 고정한다.
-constexpr int kSubtitleLine = 26;        // 도현 22
-constexpr int kGenerationLabelLine = 14; // 나눔고딕 12
+constexpr int kSubtitleLine = 26; // 도현 22
 
 // 메뉴 창의 겉모양: 먹선 3 · 반경 12 · 그림자 6, 안쪽 8 떨어진 곳에 line 색 2px 이중 테(반경 8).
 // PanelStyle에는 QRgb만 들어 있으므로 constexpr로 만들 수 있다.
@@ -104,7 +103,7 @@ QLabel *makeLabel(const QString &text, const char *objectName)
 } // namespace
 
 namespace com::yamada::studio {
-HomePage::HomePage(DataUpdater *updater, QWidget *parent)
+HomePage::HomePage(DataUpdater *updater, AppState *state, QWidget *parent)
     : QWidget(parent)
     , m_updater(updater)
 {
@@ -115,6 +114,7 @@ HomePage::HomePage(DataUpdater *updater, QWidget *parent)
     // 크기는 각 위젯의 sizeHint()가 알려 준다. Qt::AlignHCenter를 주면 레이아웃은 위젯을
     // 칸 폭으로 늘리지 않고 sizeHint 크기 그대로 가로 가운데에 둔다.
     m_mark = new MarkWidget;
+    m_mark->setMarkSize(kHomeMark);
     layout->addWidget(m_mark, 0, Qt::AlignHCenter);
     layout->addSpacing(kMarkToWordmark);
 
@@ -128,19 +128,13 @@ HomePage::HomePage(DataUpdater *updater, QWidget *parent)
     m_subtitle = makeLabel(tr("도감 · 파티 도우미"), "introSubtitle");
     m_subtitle->setFixedHeight(kSubtitleLine);
     layout->addWidget(m_subtitle, 0, Qt::AlignHCenter);
-    m_generationGap
-            = new QSpacerItem(0, kSubtitleToGeneration, QSizePolicy::Minimum, QSizePolicy::Fixed);
-    layout->addSpacerItem(m_generationGap);
+    layout->addSpacing(kSubtitleToFan);
 
-    QLabel *generationLabel = makeLabel(tr("세대를 선택하여 시작하세요:"), "introGenerationLabel");
-    generationLabel->setFixedHeight(kGenerationLabelLine);
-    layout->addWidget(generationLabel, 0, Qt::AlignHCenter);
-    layout->addSpacing(kGenerationLabelToButton);
-
-    // 세대 버튼. 현재 세대 · 메뉴 범위는 MainWindow가 AppState와 연결한다(generationButton()).
-    m_generationButton = new GenerationButton;
-    layout->addWidget(m_generationButton, 0, Qt::AlignHCenter);
-    layout->addSpacing(kGenerationToMenu);
+    // 세대 선택 = 카드 부채꼴. AppState와 바로 이어져 있어서(누르면 setGeneration) 여기서 더 이을
+    // 것이 없다. 남는 세로 공간은 부채꼴이 가진다(stretch 1).
+    m_fan = new CardFan(state);
+    layout->addWidget(m_fan, 1);
+    layout->addSpacing(kFanToMenu);
 
     // 첫 실행이면 메뉴 창 위에 패널을 끼운다. 패널과 그 아래 간격을 한 상자(m_firstRunBlock)에 담아
     // 두면, 끝났을 때 상자만 지우면 간격까지 함께 사라진다.
@@ -168,11 +162,14 @@ HomePage::HomePage(DataUpdater *updater, QWidget *parent)
     layout->addWidget(new IntroFooter); // 정렬 없음 → 가로로 꽉 찬다
 
     // 메뉴의 "몇 번째 줄 실행"을 화면 의미(페이지 열기 / 종료)로 바꿔서 밖에 알린다.
+    // 메뉴 순서(스쿼드 · 도감 · 아이템)는 Page 순서와 다르므로 표로 바꾼다.
     connect(m_menu, &IntroMenu::activated, this, [this](int index) {
-        if (index == IntroMenu::kQuitIndex)
+        if (index == IntroMenu::kQuitIndex) {
             emit quitRequested();
-        else
-            emit openRequested(static_cast<Page>(index)); // 메뉴 순서 = Page 순서 (page.h)
+            return;
+        }
+        constexpr Page kPages[] = {Page::Squad, Page::Dex, Page::Items};
+        emit openRequested(kPages[index]);
     });
 
     if (m_firstRun) {
@@ -193,12 +190,11 @@ void HomePage::setCompact(bool compact)
 {
     // 첫 실행 패널이 들어간 만큼 위쪽을 줄인다. 1440×900에서 메뉴 창 아래 끝이 정보 줄(858)을 넘지
     // 않게.
-    m_mark->setMarkSize(compact ? kCompactMark : tok::kSizeIntroMark);
+    m_mark->setMarkSize(compact ? kCompactMark : kHomeMark);
     m_subtitle->setVisible(!compact);
+    m_fan->setVisible(!compact); // 패널이 있는 동안은 부채꼴을 숨겨 세로를 번다
     m_subtitleGap->changeSize(0, compact ? 0 : kWordmarkToSubtitle, QSizePolicy::Minimum,
                               QSizePolicy::Fixed);
-    m_generationGap->changeSize(0, compact ? kCompactGenerationGap : kSubtitleToGeneration,
-                                QSizePolicy::Minimum, QSizePolicy::Fixed);
     QWidget::layout()->invalidate(); // 간격(spacer)은 위젯이 아니라서 바뀐 것을 스스로 레이아웃에
                                      // 알리지 못한다
 }
@@ -220,6 +216,17 @@ void HomePage::paintEvent(QPaintEvent *event)
     Q_UNUSED(event);
     QPainter painter(this);
     paintIntroBackground(painter, rect());
+}
+
+void HomePage::keyPressEvent(QKeyEvent *event)
+{
+    // 메뉴(포커스 소유)가 처리하지 않은 키가 여기로 전파된다. ← → 는 세대 카드로 보낸다.
+    if (event->key() == Qt::Key_Left || event->key() == Qt::Key_Right) {
+        if (m_fan->isVisible())
+            m_fan->selectNeighbor(event->key() == Qt::Key_Left ? -1 : +1);
+        return;
+    }
+    QWidget::keyPressEvent(event);
 }
 
 void HomePage::showEvent(QShowEvent *event)

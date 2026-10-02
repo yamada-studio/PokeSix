@@ -40,6 +40,8 @@ qt_add_library(pokesix_data STATIC
     analysis/squadinput.cpp
     sprites/spritecache.h
     sprites/spritecache.cpp
+    sprites/spritekeys.h
+    sprites/spritekeys.cpp
     models/speciestablemodel.h
     models/speciestablemodel.cpp
     models/speciesfilterproxy.h
