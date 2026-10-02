@@ -126,7 +126,7 @@ void SlotCard::setSuggestion(const QString &text)
 
 void SlotCard::setCardHeight(int height)
 {
-    QWidget::setFixedHeight(std::clamp(height, kMinimumHeight, kMaximumHeight));
+    QWidget::setFixedHeight(std::max(height, kMinimumHeight));
 }
 
 SlotCard::Geometry SlotCard::areas() const
@@ -140,7 +140,7 @@ SlotCard::Geometry SlotCard::areas() const
     const int inner = g.card.width() - 2 * kPadding - 3; // 3 = 그림자
     // 기준(kHeight)보다 낮으면 그만큼을 줄 사이 간격 다섯(10 · 8 · 8 · 8 · 10 = 44)에서
     // 비례해서 뺀다 — 줄 자체(머리 · 메모 · 기술 …)는 그대로라 내용이 잘리지 않는다.
-    const int slack = kHeight - QWidget::height(); // −34(가장 넉넉) ~ 24(가장 빽빽)
+    const int slack = kHeight - QWidget::height(); // 음수(넉넉) ~ 24(가장 빽빽)
     const auto gap = [slack](int base) {
         return base - slack * base / 44;
     };

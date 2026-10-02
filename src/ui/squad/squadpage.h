@@ -50,6 +50,9 @@ signals:
 protected:
     void showEvent(QShowEvent *event) override;
     void resizeEvent(QResizeEvent *event) override;
+    // 스크롤 viewport의 크기 변화를 엿본다 — SquadPage::resizeEvent 시점에는 viewport가 아직
+    // 옛 크기라서, 카드 높이를 거기서 재면 분석 창과 바닥이 어긋난다
+    bool eventFilter(QObject *watched, QEvent *event) override;
 
 private:
     QWidget *buildTopBar();

@@ -172,6 +172,7 @@ SquadPage::SquadPage(Repository *repository, AppState *state, QWidget *parent)
     m_scroll->setFrameShape(QFrame::NoFrame);
     m_scroll->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     m_scroll->setWidget(content);
+    m_scroll->viewport()->installEventFilter(this); // 크기가 정해지면 카드 높이를 맞춘다
     layout->addWidget(m_scroll, 1);
 
     // 세션이 바뀌면(편집 · 세대) 전부 다시 그린다. 언어가 바뀌면 이름 · 타입 글자만 바뀐다
@@ -319,10 +320,14 @@ void SquadPage::fitCardHeights()
     // 카드 줄(넓으면 3줄, 좁으면 2줄)이 스크롤 없이 들어가게 카드 높이를 맞춘다.
     // SlotCard가 [kMinimumHeight, kHeight]로 자르므로, 창이 더 낮으면 그대로 스크롤이 생긴다.
     const int rows = m_wide ? 3 : 2;
-    const int available = m_scroll->viewport()->height() - m_columns->contentsMargins().bottom();
-    const int height = (available - (rows - 1) * m_grid->verticalSpacing()) / rows;
-    for (SlotCard *card : std::as_const(m_cards))
-        card->setCardHeight(height);
+    const int columns = m_wide ? 2 : 3;
+    const int available = m_scroll->viewport()->height() - m_columns->contentsMargins().bottom()
+                          - (rows - 1) * m_grid->verticalSpacing();
+    // 나머지 px는 윗줄부터 1px씩 — 카드 열의 바닥이 분석 창과 정확히 같은 줄에 온다
+    const int height = available / rows;
+    const int extra = available - height * rows;
+    for (int slot = 0; slot < m_cards.size(); ++slot)
+        m_cards.at(slot)->setCardHeight(height + (slot / columns < extra ? 1 : 0));
 }
 
 void SquadPage::placeCards(bool wide)
@@ -370,7 +375,14 @@ void SquadPage::resizeEvent(QResizeEvent *event)
     const bool wide = width() >= kWideWidth;
     if (wide != m_wide)
         placeCards(wide);
-    fitCardHeights();
+    // 카드 높이는 여기서 재지 않는다 — viewport의 Resize(eventFilter)가 정확한 시점이다
+}
+
+bool SquadPage::eventFilter(QObject *watched, QEvent *event)
+{
+    if (watched == m_scroll->viewport() && event->type() == QEvent::Resize)
+        fitCardHeights();
+    return QWidget::eventFilter(watched, event); // 엿보기만 하고 이벤트는 그대로 흘려보낸다
 }
 
 QString SquadPage::typeName(const QString &key) const

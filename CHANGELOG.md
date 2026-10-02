@@ -158,6 +158,13 @@ and the project uses [Semantic Versioning](https://semver.org/).
   arrow from shifting the label.
 
 ### Fixed
+- The squad's card column now ends on exactly the same line as the live analysis panel: cards are
+  sized when the scroll viewport gets its final size (not from the page's own resize, which ran too
+  early and left an 11px mismatch), the upper height cap is gone and leftover pixels go to the top
+  rows one by one.
+- Picking a generation no longer hides its right neighbor on the home fan: only the hovered card
+  comes to the front, while the chosen card slides up in its own place in the stack (like a card
+  pushed up in a hand); the fan also spreads a little wider (radius 2.4 → 3.2 × card height).
 - "← 목록" in the Pokédex detail did nothing since the three-pane list row: the back switch still
   pointed at the list panel, which is no longer a page of the stack.
 - The squad page no longer scrolls as a whole in the wide layout: slot cards also grow with the
