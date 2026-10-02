@@ -44,8 +44,10 @@ private:
     QList<Column> columns() const; // 지금 폭에서 칸 위치
     int rowAt(int y) const;
     QString placesOf(const MoveEntry &move) const;
-    int effectColumn() const { return 7; } // 효과(변화 기술만)
-    int placesColumn() const { return 8; } // 획득처(기술머신만)
+    // 7 · 8번째 칸은 모드마다 다르다: 레벨업 [효과], 기술머신 [효과][획득처], 가르침 [비용][효과]
+    int effectColumn() const { return m_mode == Mode::Plain ? 8 : 7; } // 효과(변화 기술만)
+    int costColumn() const { return 7; }                               // 비용(가르침만)
+    int placesColumn() const { return 8; }                             // 획득처(기술머신만)
 
     Mode m_mode;
     SpriteCache *m_icons = nullptr;
