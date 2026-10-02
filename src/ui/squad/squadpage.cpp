@@ -295,6 +295,17 @@ QWidget *SquadPage::buildAnalysis()
     return m_analysis;
 }
 
+void SquadPage::fitCardHeights()
+{
+    // 카드 줄(넓으면 3줄, 좁으면 2줄)이 스크롤 없이 들어가게 카드 높이를 맞춘다.
+    // SlotCard가 [kMinimumHeight, kHeight]로 자르므로, 창이 더 낮으면 그대로 스크롤이 생긴다.
+    const int rows = m_wide ? 3 : 2;
+    const int available = m_scroll->viewport()->height() - m_columns->contentsMargins().bottom();
+    const int height = (available - (rows - 1) * m_grid->verticalSpacing()) / rows;
+    for (SlotCard *card : std::as_const(m_cards))
+        card->setCardHeight(height);
+}
+
 void SquadPage::placeCards(bool wide)
 {
     m_wide = wide;
@@ -334,6 +345,7 @@ void SquadPage::resizeEvent(QResizeEvent *event)
     const bool wide = width() >= kWideWidth;
     if (wide != m_wide)
         placeCards(wide);
+    fitCardHeights();
 }
 
 QString SquadPage::typeName(const QString &key) const

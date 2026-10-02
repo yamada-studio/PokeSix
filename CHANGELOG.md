@@ -158,6 +158,9 @@ and the project uses [Semantic Versioning](https://semver.org/).
   arrow from shifting the label.
 
 ### Fixed
+- The squad's bottom card row (slots 05–06) was clipped by the window: slot cards now shrink with
+  the window height — only the gaps between their rows compress, down to a 234px minimum — so all
+  six cards fit without scrolling at the default window size; smaller windows scroll as before.
 - The Pokédex detail picture overflowed its card for generations whose sprite is larger than the
   frame (generation 9's 256×256 renders, and the 96×96 default pictures of generations 7–8 drawn
   at 2×). Sprites larger than the frame now shrink to fit (smoothly — they are not pixel art at

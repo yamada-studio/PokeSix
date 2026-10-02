@@ -62,7 +62,7 @@ SlotCard::SlotCard(int slot, SquadSession *session, SpriteCache *pokemonIcons,
     , m_pokemonIcons(pokemonIcons)
     , m_itemIcons(itemIcons)
 {
-    QWidget::setFixedHeight(kHeight);
+    QWidget::setFixedHeight(kHeight); // SquadPage가 setCardHeight로 창 높이에 맞춘다
     QWidget::setMinimumWidth(kMinimumWidth);
     QWidget::setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     QWidget::setMouseTracking(true);
@@ -124,6 +124,11 @@ void SlotCard::setSuggestion(const QString &text)
     QWidget::update();
 }
 
+void SlotCard::setCardHeight(int height)
+{
+    QWidget::setFixedHeight(std::clamp(height, kMinimumHeight, kHeight));
+}
+
 SlotCard::Geometry SlotCard::areas() const
 {
     Geometry g;
@@ -133,11 +138,17 @@ SlotCard::Geometry SlotCard::areas() const
     g.warn = QRect(g.menu.left() - 20, g.header.top() + (kHeader - 20) / 2, 20, 20);
     const int left = g.card.left() + kPadding;
     const int inner = g.card.width() - 2 * kPadding - 3; // 3 = 그림자
-    int y = g.header.bottom() + 10;
+    // 기준(kHeight)보다 낮으면 그만큼을 줄 사이 간격 다섯(10 · 8 · 8 · 8 · 10 = 44)에서
+    // 비례해서 뺀다 — 줄 자체(머리 · 메모 · 기술 …)는 그대로라 내용이 잘리지 않는다.
+    const int slack = kHeight - QWidget::height(); // 0(기준) ~ 24(최소)
+    const auto gap = [slack](int base) {
+        return base - slack * base / 44;
+    };
+    int y = g.header.bottom() + gap(10);
     g.types = QRect(left, y, inner, int(typechip::kHeight));
-    y += 28;
+    y += int(typechip::kHeight) + gap(8);
     g.memo = QRect(left, y, inner, 26);
-    y += 26 + 8;
+    y += 26 + gap(8);
     // 특성 · 성격 · 물건: 그 세대에 있는 것만 같은 폭으로 나눈다
     const GenerationFeatures features = featuresOf(m_session->generation());
     const bool shown[3] = {features.abilities, features.natures, features.heldItems};
@@ -152,12 +163,12 @@ SlotCard::Geometry SlotCard::areas() const
         g.traits[i] = QRect(x, y, traitWidth, 24);
         x += traitWidth + kRowGap;
     }
-    y += 24 + 8;
+    y += 24 + gap(8);
     const int moveWidth = (inner - kRowGap) / 2;
     for (int i = 0; i < 4; ++i)
         g.moves[i] = QRect(left + (i % 2) * (moveWidth + kRowGap),
                            y + (i / 2) * (kMoveHeight + kRowGap), moveWidth, kMoveHeight);
-    y += 2 * kMoveHeight + kRowGap + 10;
+    y += 2 * kMoveHeight + kRowGap + gap(10);
     g.weak = QRect(left, y, inner, 20);
     // 빈 자리: 가운데 버튼
     g.add = QRect(g.card.center().x() - 80, g.card.top() + 104, 160, 38);
