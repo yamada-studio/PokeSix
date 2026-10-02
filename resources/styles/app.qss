@@ -43,10 +43,12 @@ QLineEdit {
   min-height: 32px; padding: 0 10px;
   border: 2px solid @ink; border-radius: 6px;
   background: @white; color: @text.1;
+  font-family: "Do Hyeon"; font-size: 15px; /* 입력 글자도 앱 글꼴로 — 나눔고딕 13은 기본 글꼴처럼 보인다 */
   selection-background-color: @yellow; selection-color: @text.1;
 }
 QLineEdit:focus { border-color: @blue; }
-QLineEdit[role="memo"] { min-height: 24px; border: 1.5px solid @line.strong; border-radius: 5px; background: @paper.alt; color: @text.2; font-size: 12px; }
+/* 역할 메모는 문장이라 본문 글꼴 유지 */
+QLineEdit[role="memo"] { min-height: 24px; border: 1.5px solid @line.strong; border-radius: 5px; background: @paper.alt; color: @text.2; font-family: "NanumGothic"; font-size: 12px; }
 
 QCheckBox { spacing: 8px; font-weight: 700; }
 QCheckBox::indicator { width: 16px; height: 16px; border: 2px solid @ink; border-radius: 3px; background: @white; }
@@ -103,7 +105,7 @@ QLabel#firstRunNote { font-size: 12px; color: @text.3; }
 /* ── 앱 막대 검색 칸(SearchField): 테두리 · 바탕은 바깥 상자가 그린다 ── */
 QLineEdit#searchFieldInput {
   min-height: 0; padding: 0; border: none; background: transparent;
-  font-size: 13px; color: @text.1;
+  font-size: 14px; color: @text.1; /* 글꼴은 QLineEdit 규칙(도현)을 따른다 */
 }
 QLabel#searchFieldShortcut {
   font-family: "NanumGothicCoding"; font-size: 11px; color: @text.3;
