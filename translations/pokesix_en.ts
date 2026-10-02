@@ -180,7 +180,7 @@
     </message>
     <message>
         <source>전설 · 환상 제외</source>
-        <translation>Hide legendary & mythical</translation>
+        <translation>Hide legendary &amp; mythical</translation>
     </message>
     <message>
         <source>최종 진화만</source>
