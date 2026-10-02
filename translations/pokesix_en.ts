@@ -152,6 +152,14 @@
         <source>기준 게임</source>
         <translation>Game</translation>
     </message>
+    <message>
+        <source>가르침 기술</source>
+        <translation>Tutor moves</translation>
+    </message>
+    <message>
+        <source>알 기술</source>
+        <translation>Egg moves</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::DexFilterBar</name>

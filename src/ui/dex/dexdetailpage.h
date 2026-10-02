@@ -78,5 +78,9 @@ private:
     MoveList *m_levelMoves = nullptr;
     MoveList *m_machineMoves = nullptr;
     PanelFrame *m_machinePanel = nullptr;
+    MoveList *m_tutorMoves = nullptr; // 가르침(그 게임의 NPC 튜터) — 없으면 창째 숨김
+    PanelFrame *m_tutorPanel = nullptr;
+    MoveList *m_eggMoves = nullptr; // 알 기술(부모에게서 물려받는다)
+    PanelFrame *m_eggPanel = nullptr;
 };
 } // namespace com::yamada::studio

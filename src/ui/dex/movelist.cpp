@@ -90,7 +90,8 @@ QList<MoveList::Column> MoveList::columns() const
         c.append({x, w});
         x += w + kPadding;
     };
-    add(kFirstWidth);
+    // Plain(가르침 · 알)은 첫 칸이 없다 — 자리만 0으로 남겨 칸 번호를 다른 모드와 맞춘다
+    add(m_mode == Mode::Plain ? -kPadding : kFirstWidth);
     add(kNameWidth);
     add(kTypeWidth);
     add(kClassWidth);
@@ -134,7 +135,9 @@ void MoveList::paintEvent(QPaintEvent *)
     const QFont headerFont = theme::font(theme::kFamilyBody, 11, QFont::ExtraBold);
     painter.setFont(headerFont);
     painter.setPen(QColor(tok::kText2));
-    const QString headers[] = {m_mode == Mode::LevelUp ? tr("Lv") : tr("번호"),
+    const QString headers[] = {m_mode == Mode::LevelUp   ? tr("Lv")
+                               : m_mode == Mode::Machine ? tr("번호")
+                                                         : QString(),
                                tr("기술"),
                                tr("타입"),
                                tr("분류"),
@@ -187,7 +190,7 @@ void MoveList::paintEvent(QPaintEvent *)
                             QPointF(first.left() + 18, first.center().y() - icon.height() / 2.0),
                             icon);
             }
-        } else {
+        } else if (m_mode == Mode::Machine) {
             const QString prefix = move.hiddenMachine ? QStringLiteral("HM") : QStringLiteral("TM");
             painter.drawText(
                     cell(0, top, kRowHeight), Qt::AlignLeft | Qt::AlignVCenter,
