@@ -7,6 +7,12 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- The Pokédex list becomes three panes: filters | list | preview. The filter pane narrows the list
+  by type (the generation's own types — no Fairy chip in generation 4), base stat total (a
+  two-handle range slider), "전설 · 환상 제외" and "최종 진화만" (final by that generation's rules:
+  Onix counts as final in generation 1). A single click or ↑/↓ fills the preview pane — sprite,
+  number, name, types, stat radar and defensive weaknesses (×4/×2) from the generation's type
+  chart — and a double click, Enter or "자세히 보기" opens the full-page detail as before.
 - The home (intro) screen picks the generation with a fan of nine cards, spread like a hand of
   playing cards: the fan spreads open whenever the screen appears, cards lift on hover and stay
   lifted (with a yellow ring) when chosen, and dragging swings the whole fan, which springs back

@@ -169,6 +169,41 @@
     </message>
 </context>
 <context>
+    <name>com::yamada::studio::DexFilterPanel</name>
+    <message>
+        <source>타입</source>
+        <translation>Types</translation>
+    </message>
+    <message>
+        <source>종족값 합계</source>
+        <translation>Base stat total</translation>
+    </message>
+    <message>
+        <source>전설 · 환상 제외</source>
+        <translation>Hide legendary & mythical</translation>
+    </message>
+    <message>
+        <source>최종 진화만</source>
+        <translation>Final evolutions only</translation>
+    </message>
+    <message>
+        <source>필터 초기화</source>
+        <translation>Reset filters</translation>
+    </message>
+    <message>
+        <source>전체</source>
+        <translation>Any</translation>
+    </message>
+    <message>
+        <source>최소</source>
+        <translation>min</translation>
+    </message>
+    <message>
+        <source>최대</source>
+        <translation>max</translation>
+    </message>
+</context>
+<context>
     <name>com::yamada::studio::DexPage</name>
     <message>
         <source>이름 · 번호로 찾기</source>
@@ -181,6 +216,39 @@
     <message>
         <source>%1마리</source>
         <translation>%1</translation>
+    </message>
+    <message>
+        <source>필터</source>
+        <translation>Filters</translation>
+    </message>
+    <message>
+        <source>미리 보기</source>
+        <translation>Preview</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::DexPreview</name>
+    <message>
+        <source>약점이 없어요</source>
+        <translation>No weaknesses</translation>
+    </message>
+    <message>
+        <source>목록에서 포켓몬을 고르면
+여기에 요약이 보여요</source>
+        <translation>Pick a Pokémon in the list
+to see a summary here</translation>
+    </message>
+    <message>
+        <source>종족값</source>
+        <translation>Base stats</translation>
+    </message>
+    <message>
+        <source>약점 (받을 때)</source>
+        <translation>Weaknesses (defending)</translation>
+    </message>
+    <message>
+        <source>자세히 보기</source>
+        <translation>Full details</translation>
     </message>
 </context>
 <context>

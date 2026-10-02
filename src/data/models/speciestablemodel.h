@@ -37,7 +37,10 @@ public:
         SortRole = Qt::UserRole, // 정렬용 값(숫자는 숫자로 — 문자열로 정렬하면 "100" < "20"이 된다)
         TypesRole,      // QStringList: 타입 identifier(슬롯 순)
         SearchTextRole, // 검색에 쓰는 문자열(번호 · 한국어 · 영어 · 일본어 이름)
-        PokemonIdRole, // int: 기본 모습의 pokemon id(아이콘 파일 이름)
+        PokemonIdRole,      // int: 기본 모습의 pokemon id(아이콘 파일 이름)
+        LegendaryRole,      // bool: 전설 · 환상 (필터)
+        FinalEvolutionRole, // bool: 그 세대 기준 최종 진화 (필터)
+        TotalRole,          // int: 종족값 합계 (필터 — 어느 칸에 물어도 같다)
     };
 
     explicit SpeciesTableModel(QObject *parent = nullptr);

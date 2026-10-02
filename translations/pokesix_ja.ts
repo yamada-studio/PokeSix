@@ -169,6 +169,41 @@
     </message>
 </context>
 <context>
+    <name>com::yamada::studio::DexFilterPanel</name>
+    <message>
+        <source>타입</source>
+        <translation>タイプ</translation>
+    </message>
+    <message>
+        <source>종족값 합계</source>
+        <translation>種族値合計</translation>
+    </message>
+    <message>
+        <source>전설 · 환상 제외</source>
+        <translation>伝説・幻を除く</translation>
+    </message>
+    <message>
+        <source>최종 진화만</source>
+        <translation>最終進化のみ</translation>
+    </message>
+    <message>
+        <source>필터 초기화</source>
+        <translation>フィルターをリセット</translation>
+    </message>
+    <message>
+        <source>전체</source>
+        <translation>すべて</translation>
+    </message>
+    <message>
+        <source>최소</source>
+        <translation>最小</translation>
+    </message>
+    <message>
+        <source>최대</source>
+        <translation>最大</translation>
+    </message>
+</context>
+<context>
     <name>com::yamada::studio::DexPage</name>
     <message>
         <source>이름 · 번호로 찾기</source>
@@ -181,6 +216,39 @@
     <message>
         <source>%1마리</source>
         <translation>%1匹</translation>
+    </message>
+    <message>
+        <source>필터</source>
+        <translation>フィルター</translation>
+    </message>
+    <message>
+        <source>미리 보기</source>
+        <translation>プレビュー</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::DexPreview</name>
+    <message>
+        <source>약점이 없어요</source>
+        <translation>弱点はありません</translation>
+    </message>
+    <message>
+        <source>목록에서 포켓몬을 고르면
+여기에 요약이 보여요</source>
+        <translation>リストでポケモンを選ぶと
+ここに要約が出ます</translation>
+    </message>
+    <message>
+        <source>종족값</source>
+        <translation>種族値</translation>
+    </message>
+    <message>
+        <source>약점 (받을 때)</source>
+        <translation>弱点（受ける時）</translation>
+    </message>
+    <message>
+        <source>자세히 보기</source>
+        <translation>詳しく見る</translation>
     </message>
 </context>
 <context>

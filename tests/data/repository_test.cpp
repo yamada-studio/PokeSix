@@ -104,6 +104,67 @@ TEST_F(RepositoryTest, ProxySearchesNamesAndNumbers)
     EXPECT_EQ(proxy.rowCount(), 5);
 }
 
+TEST_F(RepositoryTest, FlagsLegendaryAndFinalEvolution)
+{
+    Repository repository(s_dbPath);
+    const QList<SpeciesRow> gen4 = repository.speciesForGeneration(4);
+    // 삐삐는 픽시가 있으니 최종 진화가 아니고, 픽시 · 한카리아스는 최종 진화다
+    EXPECT_FALSE(find(gen4, 35)->finalEvolution);
+    EXPECT_TRUE(find(gen4, 36)->finalEvolution);
+    EXPECT_TRUE(find(gen4, 445)->finalEvolution);
+    EXPECT_FALSE(find(gen4, 445)->legendary); // 시드에 전설 · 환상은 없다
+}
+
+TEST_F(RepositoryTest, ProxyFiltersByTypeTotalAndFlags)
+{
+    // 프록시 조건은 DB가 필요 없다 — 행을 손으로 만들어 조건마다 확인한다
+    SpeciesRow dragonite;
+    dragonite.speciesId = 149;
+    dragonite.dexNumber = 149;
+    dragonite.name.ko = QStringLiteral("망나뇽");
+    dragonite.types = {QStringLiteral("dragon"), QStringLiteral("flying")};
+    dragonite.total = 600;
+    SpeciesRow dratini;
+    dratini.speciesId = 147;
+    dratini.dexNumber = 147;
+    dratini.name.ko = QStringLiteral("미뇽");
+    dratini.types = {QStringLiteral("dragon")};
+    dratini.total = 300;
+    dratini.finalEvolution = false;
+    SpeciesRow dialga;
+    dialga.speciesId = 483;
+    dialga.dexNumber = 483;
+    dialga.name.ko = QStringLiteral("디아루가");
+    dialga.types = {QStringLiteral("steel"), QStringLiteral("dragon")};
+    dialga.total = 680;
+    dialga.legendary = true;
+    SpeciesRow pikachu;
+    pikachu.speciesId = 25;
+    pikachu.dexNumber = 25;
+    pikachu.name.ko = QStringLiteral("피카츄");
+    pikachu.types = {QStringLiteral("electric")};
+    pikachu.total = 320;
+    pikachu.finalEvolution = false;
+
+    SpeciesTableModel model;
+    model.setRows({dragonite, dratini, dialga, pikachu});
+    SpeciesFilterProxy proxy;
+    proxy.setSourceModel(&model);
+
+    proxy.setTypes({QStringLiteral("dragon")}); // 하나라도 가지면 통과
+    EXPECT_EQ(proxy.rowCount(), 3);
+    proxy.setExcludeLegendary(true); // 디아루가가 빠진다
+    EXPECT_EQ(proxy.rowCount(), 2);
+    proxy.setFinalEvolutionOnly(true); // 미뇽이 빠진다
+    EXPECT_EQ(proxy.rowCount(), 1);
+    EXPECT_EQ(proxy.index(0, SpeciesTableModel::NumberColumn).data().toInt(), 149);
+
+    proxy.clearFilters(); // 전부 돌아온다
+    EXPECT_EQ(proxy.rowCount(), 4);
+    proxy.setTotalRange(310, 650); // 미뇽(300) · 디아루가(680)가 빠진다
+    EXPECT_EQ(proxy.rowCount(), 2);
+}
+
 TEST_F(RepositoryTest, ProxySortsNumbersAsNumbers)
 {
     Repository repository(s_dbPath);
