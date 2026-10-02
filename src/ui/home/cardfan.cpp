@@ -32,7 +32,8 @@ constexpr int kTopPad = kLiftDistance + 14; // 들린 카드 위 여유
 // 카드 높이의 1.53배 → 여유를 더해 1.6.
 constexpr qreal kHeightToCard = 1.6;
 constexpr qreal kMaxHalfAngle = qDegreesToRadians(32.0); // 부채가 이보다 더 벌어지지 않는다
-constexpr int kLiftRaiseMs = 150;                        // 들리는 건 빠르게
+constexpr qreal kLiftScale = 0.10; // 들린 카드는 살짝 커진다(들림 0 → 1에 비례)
+constexpr int kLiftRaiseMs = 150;  // 들리는 건 빠르게
 constexpr int kLiftDropMs = 240; // 내려오는 건 천천히 — 겹친 카드 사이를 지나도 덜 튄다
 constexpr int kBandHeight = 40; // 윗띠(세대 번호)
 constexpr int kSpreadMs = 620;  // 펼침
@@ -145,6 +146,12 @@ QTransform CardFan::cardTransform(const Layout &fan, int index, bool withLift) c
     transform.translate(fan.pivot.x(), fan.pivot.y());
     transform.rotateRadians(angle);
     transform.translate(0, -(fan.radius + (withLift ? m_lift[size_t(index)] * kLiftDistance : 0)));
+    if (withLift && m_lift[size_t(index)] > 0) { // 들린 카드는 가운데를 중심으로 살짝 커진다
+        const qreal scale = 1 + kLiftScale * m_lift[size_t(index)];
+        transform.translate(0, fan.cardHeight / 2);
+        transform.scale(scale, scale);
+        transform.translate(0, -fan.cardHeight / 2);
+    }
     return transform; // 카드 로컬 좌표: 윗변 가운데가 (0, 0), 카드는 (−w/2, 0, w, h)
 }
 
@@ -260,7 +267,7 @@ qreal CardFan::liftTarget(int index) const
     if (index == m_hovered)
         return 1.0;
     if (m_cards.at(index).generation == m_state->generation())
-        return 0.5; // 고른 카드는 조금 들린 채로 둔다(너무 들면 이웃 윗띠를 가린다)
+        return 0.75; // 고른 카드는 들린 채로 — 부채 실루엣 위로 또렷이 나오게(z는 제자리)
     return 0.0;
 }
 
@@ -379,7 +386,19 @@ void CardFan::paintCard(QPainter &painter, const Layout &fan, int index) const
     painter.fillRect(QRect(band.left(), band.bottom() + 1, band.width(), 2), QColor(tok::kInk));
     painter.setFont(theme::font(theme::kFamilyTitle, 20));
     painter.setPen(QColor(tok::kWhite));
-    painter.drawText(band, Qt::AlignCenter, tr("%1세대").arg(card.generation));
+    const QString title = tr("%1세대").arg(card.generation);
+    painter.drawText(band, Qt::AlignCenter, title);
+    // 고른 카드: 띠 글자 앞에 ▶ (메뉴의 선택 커서와 같은 문법 — 노란 테만으로는 눈에 안 띈다)
+    if (card.generation == m_state->generation()) {
+        const qreal textLeft
+                = band.center().x() - QFontMetricsF(painter.font()).horizontalAdvance(title) / 2;
+        QPainterPath cursor;
+        cursor.moveTo(textLeft - 16, band.center().y() - 6);
+        cursor.lineTo(textLeft - 6, band.center().y());
+        cursor.lineTo(textLeft - 16, band.center().y() + 6);
+        cursor.closeSubpath();
+        painter.fillPath(cursor, QColor(tok::kWhite));
+    }
 
     // 아래: 지방 이름 띠(고정 높이) — 그림은 이 띠를 침범하지 않는다
     const QRect label(face.left(), face.bottom() - 32, face.width(), 26);

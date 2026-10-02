@@ -203,6 +203,9 @@ and the project uses [Semantic Versioning](https://semver.org/).
   data grows to 28.9 MB). Moves introduced in generation 9 still lack Korean text in PokéAPI.
 
 ### Changed
+- The chosen generation card reads at a glance: besides the yellow ring it now rises higher out of
+  the fan's silhouette (lift 0.75), grows slightly with the lift (up to 1.1×, hover included) and
+  carries the menu's ▶ cursor before the band title ("▶ 3세대").
 - Text typed into inputs now uses the app's display font: line edits (search fields included) render
   in Do Hyeon 15px/14px instead of NanumGothic 13px, which looked like the system default. The
   role memo field keeps the body font (it holds sentences), and the squad name keeps its 28px
