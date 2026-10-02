@@ -6,7 +6,9 @@
 #include "data/sprites/spritecache.h"
 #include "data/state/appstate.h"
 #include "ui/dex/dexdetailpage.h"
+#include "ui/dex/dexfilterpanel.h"
 #include "ui/dex/dexheaderview.h"
+#include "ui/dex/dexpreview.h"
 #include "ui/dex/dexrowdelegate.h"
 #include "ui/dex/dexselector.h"
 #include "ui/logging/logging.h"
@@ -80,9 +82,20 @@ constexpr FlexColumn kFlexColumns[] = {
         {SpeciesTableModel::TotalColumn, 1, 52}, // 종족값과 같은 폭 → 칸 사이 간격이 고르다
 };
 
-// 목록 창의 최대 폭(CSS max-width). 이보다 넓은 창에서는 가운데에 두고 좌우 여백이 늘어난다 —
-// 칸이 끝없이 벌어지면 줄을 따라 읽기 어렵다.
-constexpr int kListMaxWidth = 1100;
+// 목록 줄(필터 + 목록 + 미리 보기)의 최대 폭(CSS max-width). 이보다 넓은 창에서는 가운데에 두고
+// 좌우 여백이 늘어난다 — 칸이 끝없이 벌어지면 줄을 따라 읽기 어렵다.
+constexpr int kRowMaxWidth = 1660;
+constexpr int kFilterWidth = 238;  // 왼쪽 필터 창
+constexpr int kPreviewWidth = 292; // 오른쪽 미리 보기 창
+constexpr int kColumnGap = 12;
+
+// 옆 창(필터 · 미리 보기)의 겉모양: 목록 창과 같은 틀, 머리 색만 역할대로(파랑 = 필터 · 정보)
+PanelStyle sidePanelStyle(QRgb headerColor)
+{
+    PanelStyle style = kListPanel;
+    style.headerColor = headerColor;
+    return style;
+}
 } // namespace
 
 namespace com::yamada::studio {
@@ -113,8 +126,43 @@ DexPage::DexPage(Repository *repository, AppState *state, QWidget *parent)
     connect(m_state, &AppState::languageChanged, this, &DexPage::applyLanguage);
     // 창은 페이지 폭을 채운다. 최대 폭(kListMaxWidth)은 resizeEvent가 좌우 여백으로 맞춘다.
     // 목록 창과 상세 화면을 겹쳐 두고 하나만 보인다: [0] 목록 · [1] 상세(포켓몬을 누르면)
+    // 목록 줄 = [필터 | 목록 | 미리 보기]. 상세로 가면 셋이 통째로 상세와 바뀐다.
+    QWidget *listRow = new QWidget;
+    QHBoxLayout *row = new QHBoxLayout(listRow);
+    row->setContentsMargins(0, 0, 0, 0);
+    row->setSpacing(kColumnGap);
+
+    PanelFrame *filterFrame = new PanelFrame;
+    filterFrame->setPanelStyle(sidePanelStyle(tok::kBlue));
+    filterFrame->setTitle(tr("필터"));
+    filterFrame->setFixedWidth(kFilterWidth);
+    m_filter = new DexFilterPanel;
+    QWidget *filterBody = new QWidget;
+    QVBoxLayout *filterLayout = new QVBoxLayout(filterBody);
+    filterLayout->setContentsMargins(kBodyMargins.left(), 10, kBodyMargins.right(), 12);
+    filterLayout->addWidget(m_filter);
+    filterFrame->setBody(filterBody);
+    connect(m_filter, &DexFilterPanel::changed, this, &DexPage::applyFilters);
+    row->addWidget(filterFrame);
+
+    row->addWidget(m_panel, 1);
+
+    PanelFrame *previewFrame = new PanelFrame;
+    previewFrame->setPanelStyle(sidePanelStyle(tok::kGreen));
+    previewFrame->setTitle(tr("미리 보기"));
+    previewFrame->setFixedWidth(kPreviewWidth);
+    m_preview = new DexPreview;
+    QWidget *previewBody = new QWidget;
+    QVBoxLayout *previewLayout = new QVBoxLayout(previewBody);
+    previewLayout->setContentsMargins(kBodyMargins.left(), 10, kBodyMargins.right(), 12);
+    previewLayout->addWidget(m_preview);
+    previewFrame->setBody(previewBody);
+    connect(m_preview, &DexPreview::detailRequested, this,
+            [this] { openDetail(m_table->currentIndex()); });
+    row->addWidget(previewFrame);
+
     m_views = new QStackedWidget;
-    m_views->addWidget(m_panel);
+    m_views->addWidget(listRow);
     m_detail = new DexDetailPage(m_repository, m_state);
     m_views->addWidget(m_detail);
     layout->addWidget(m_views);
@@ -151,6 +199,9 @@ DexPage::DexPage(Repository *repository, AppState *state, QWidget *parent)
     // 모든 칸을 Fixed로 두고 폭은 코드가 정한다(사용자가 머리 칸 경계를 끌어 바꾸지 못하게).
     QHeaderView *header = m_table->horizontalHeader();
     header->setSectionResizeMode(QHeaderView::Fixed);
+    // 기본 최소 칸 폭(글꼴 기준 ~38)이 ▶ 칸의 24를 막는다 → 칸 합이 viewport보다 넓어져 합계
+    // 칸이 잘린다
+    header->setMinimumSectionSize(kFixedColumns[0].width);
     for (const FixedColumn &fixed : kFixedColumns)
         header->resizeSection(fixed.column, fixed.width);
     applyLanguage(); // 타입 칸 폭(칩 글자 길이) · 이름 언어 — 고정 칸 합(m_fixedWidth)도 여기서
@@ -174,9 +225,11 @@ DexPage::DexPage(Repository *repository, AppState *state, QWidget *parent)
     // 루프가 여러 번의 예약을 한 번의 paintEvent로 합친다 → 수백 개가 연달아 와도 부담이 없다.
     connect(m_sprites, &SpriteCache::ready, m_table->viewport(), qOverload<>(&QWidget::update));
 
-    // 포켓몬을 누르면(클릭 · Enter) 상세 화면으로. activated = 더블클릭 · Enter(스타일에 따라 클릭)
-    connect(m_table, &QTableView::clicked, this, &DexPage::openDetail);
+    // 한 번 클릭 · ↑↓ = 미리 보기, 더블클릭 · Enter(activated) = 전체 화면 상세
+    connect(m_table, &QTableView::clicked, this, &DexPage::showPreview);
     connect(m_table, &QTableView::activated, this, &DexPage::openDetail);
+    connect(m_table->selectionModel(), &QItemSelectionModel::currentRowChanged, this,
+            [this](const QModelIndex &current) { showPreview(current); });
 
     // 검색: 글자가 바뀔 때마다 타이머를 다시 건다 → 입력이 150ms 멈추면 한 번만 거른다(디바운스).
     m_searchDelay->setSingleShot(true);
@@ -204,7 +257,7 @@ void DexPage::resizeEvent(QResizeEvent *event)
     // 최대 폭: 페이지가 넓으면 좌우 여백을 늘려 창을 가운데에 kListMaxWidth로 둔다.
     // 여백을 바꾸면 레이아웃이 자식(창)만 다시 배치한다 — 이 위젯 자신의 크기는 그대로라 루프가
     // 없다.
-    const int side = std::max(kPageMargins.left(), (width() - kListMaxWidth) / 2);
+    const int side = std::max(kPageMargins.left(), (width() - kRowMaxWidth) / 2);
     QWidget::layout()->setContentsMargins(side, kPageMargins.top(), side, kPageMargins.bottom());
 }
 
@@ -277,6 +330,11 @@ void DexPage::applyLanguage()
     m_model->setLanguage(language);
     m_delegate->setLanguage(language);
     m_selector->setLanguage(language);
+    // 타입 칩을 새 언어로 다시 만든다(고른 타입은 풀린다 — 프록시와 다시 맞춘다). 미리 보기는
+    // 고른 줄을 다시 보여 주면 새 언어로 그려진다.
+    m_filter->setTypes(m_chart.types, language);
+    applyFilters();
+    showPreview(m_table->currentIndex());
 
     // 타입 칸 폭은 칩 글자 길이에 따라 다르다(일본어 "フェアリー"가 가장 길다) → 고정 칸 합과
     // 표 최소 폭을 다시 계산하고 비율 칸을 다시 나눈다.
@@ -307,6 +365,12 @@ void DexPage::load()
 {
     // 이 세대의 지방 도감으로 버튼을 만들고, 전국 목록부터 보여 준다.
     m_selector->setDexes(m_repository->dexesForGeneration(m_state->generation()));
+    // 필터도 그 세대로: 타입 칩(1세대에는 악 · 강철 · 페어리가 없다)과 상성표(미리 보기의 약점)
+    m_chart = m_repository->typeChart(m_state->generation());
+    m_filter->setTypes(m_chart.types, m_state->language());
+    m_filter->reset();
+    applyFilters(); // reset이 아무것도 안 바꿨어도(첫 로드) 프록시와 한 번 맞춘다
+    m_preview->clear();
     showDex(DexSelector::kNational);
     m_loaded = m_model->rowCount() > 0; // 비어 있으면(DB가 아직 없음) 다음에 보일 때 다시 읽는다
 }
@@ -324,6 +388,38 @@ void DexPage::showDex(int pokedexId)
     updateTitle();
     qCInfo(lcUi) << "dex" << pokedexId << "shows" << m_model->rowCount() << "species (generation"
                  << m_state->generation() << ")";
+}
+
+void DexPage::showPreview(const QModelIndex &proxyIndex)
+{
+    if (!proxyIndex.isValid()) {
+        m_preview->clear();
+        return;
+    }
+    const QModelIndex source = m_proxy->mapToSource(proxyIndex);
+    const SpeciesRow &row = m_model->rowAt(source.row());
+    // 약점(받을 때): 공격 타입마다 방어 타입 배율의 곱. 복합 타입은 곱이 4까지 간다.
+    QStringList quad;
+    QStringList twice;
+    for (const QString &attack : m_chart.types) {
+        double factor = 1;
+        for (const QString &defense : row.types)
+            factor *= m_chart.at(attack, defense);
+        if (factor >= 3.9)
+            quad.append(attack);
+        else if (factor >= 1.9)
+            twice.append(attack);
+    }
+    m_preview->setSpecies(row, m_state->generation(), quad, twice, m_state->language());
+}
+
+void DexPage::applyFilters()
+{
+    m_proxy->setTypes(m_filter->selectedTypes());
+    m_proxy->setTotalRange(m_filter->minimumTotal(), m_filter->maximumTotal());
+    m_proxy->setExcludeLegendary(m_filter->excludeLegendary());
+    m_proxy->setFinalEvolutionOnly(m_filter->finalEvolutionOnly());
+    updateTitle();
 }
 
 void DexPage::updateTitle()

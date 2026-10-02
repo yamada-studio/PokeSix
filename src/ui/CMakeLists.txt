@@ -30,6 +30,8 @@ qt_add_library(pokesix_ui STATIC
     widgets/svgicon.cpp
     widgets/searchfield.h
     widgets/searchfield.cpp
+    widgets/rangeslider.h
+    widgets/rangeslider.cpp
     widgets/rowhover.h
     widgets/rowhover.cpp
     widgets/spritefit.h
@@ -64,6 +66,10 @@ qt_add_library(pokesix_ui STATIC
     home/firstrunpanel.cpp
     dex/dexpage.h
     dex/dexpage.cpp
+    dex/dexfilterpanel.h
+    dex/dexfilterpanel.cpp
+    dex/dexpreview.h
+    dex/dexpreview.cpp
     dex/dexheaderview.h
     dex/dexheaderview.cpp
     dex/guidebook.h

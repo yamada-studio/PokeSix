@@ -92,11 +92,16 @@ QList<SpeciesRow> Repository::speciesForGeneration(int generation)
 
     // 그 세대까지 나온 종과 기본 모습. 전국도감이므로 도감 번호 = 종 번호.
     QSqlQuery query(QSqlDatabase::database(m_connection));
-    query.prepare(QStringLiteral(
-            "SELECT s.id, p.id, s.name_ko, s.name_en, s.name_ja, s.id FROM species s "
-            "JOIN pokemon p ON p.species_id = s.id AND p.is_default = 1 "
-            "WHERE s.intro_gen <= :g ORDER BY s.id"));
+    query.prepare(
+            QStringLiteral("SELECT s.id, p.id, s.name_ko, s.name_en, s.name_ja, s.id, "
+                           "       s.is_legendary OR s.is_mythical, "
+                           "       NOT EXISTS (SELECT 1 FROM species c "
+                           "                   WHERE c.evolves_from = s.id AND c.intro_gen <= :g2) "
+                           "FROM species s "
+                           "JOIN pokemon p ON p.species_id = s.id AND p.is_default = 1 "
+                           "WHERE s.intro_gen <= :g ORDER BY s.id"));
     query.bindValue(QStringLiteral(":g"), generation);
+    query.bindValue(QStringLiteral(":g2"), generation);
     if (!readSpecies(query, rows))
         return rows;
     fillTypesAndStats(rows, generation);
@@ -112,12 +117,17 @@ QList<SpeciesRow> Repository::speciesForDex(int pokedexId, int generation)
     // 지방 도감: 도감 번호 순. 어떤 종이 들어가는지는 dex_numbers가 정한다(신오도감에 이상해씨는
     // 없다). 그 도감의 게임은 모두 generation 이하에 나왔으므로 intro_gen 조건은 필요 없다.
     QSqlQuery query(QSqlDatabase::database(m_connection));
-    query.prepare(QStringLiteral(
-            "SELECT s.id, p.id, s.name_ko, s.name_en, s.name_ja, dn.number FROM dex_numbers dn "
-            "JOIN species s ON s.id = dn.species_id "
-            "JOIN pokemon p ON p.species_id = s.id AND p.is_default = 1 "
-            "WHERE dn.pokedex_id = :dex ORDER BY dn.number"));
+    query.prepare(
+            QStringLiteral("SELECT s.id, p.id, s.name_ko, s.name_en, s.name_ja, dn.number, "
+                           "       s.is_legendary OR s.is_mythical, "
+                           "       NOT EXISTS (SELECT 1 FROM species c "
+                           "                   WHERE c.evolves_from = s.id AND c.intro_gen <= :g) "
+                           "FROM dex_numbers dn "
+                           "JOIN species s ON s.id = dn.species_id "
+                           "JOIN pokemon p ON p.species_id = s.id AND p.is_default = 1 "
+                           "WHERE dn.pokedex_id = :dex ORDER BY dn.number"));
     query.bindValue(QStringLiteral(":dex"), pokedexId);
+    query.bindValue(QStringLiteral(":g"), generation);
     if (!readSpecies(query, rows))
         return rows;
     fillTypesAndStats(rows, generation);
@@ -913,7 +923,7 @@ void Repository::fillMoves(QList<MoveEntry> &moves, int generation)
 
 bool Repository::readSpecies(QSqlQuery &query, QList<SpeciesRow> &rows)
 {
-    // 열 순서: 종 id · 기본 모습 pokemon id · 이름 ko/en/ja · 도감 번호
+    // 열 순서: 종 id · 기본 모습 pokemon id · 이름 ko/en/ja · 도감 번호 · 전설 · 최종 진화
     if (!query.exec()) {
         m_error = query.lastError().text();
         qCWarning(lcData) << "species query failed:" << m_error;
@@ -925,6 +935,8 @@ bool Repository::readSpecies(QSqlQuery &query, QList<SpeciesRow> &rows)
         row.pokemonId = query.value(1).toInt();
         row.name = localized(query, 2);
         row.dexNumber = query.value(5).toInt();
+        row.legendary = query.value(6).toBool();
+        row.finalEvolution = query.value(7).toBool();
         rows.append(row);
     }
     return true;

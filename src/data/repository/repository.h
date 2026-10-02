@@ -22,6 +22,10 @@ struct SpeciesRow
     QStringList types; // 타입 identifier(슬롯 순): "dragon", "ground" — UI가 색 · 이름을 붙인다
     std::array<int, 6> stats {}; // HP · 공격 · 방어 · 특공 · 특방 · 스피드
     int total = 0;               // 합계
+    bool legendary = false;      // 전설 · 환상 (필터 "전설 · 환상 제외")
+    // 그 세대 기준 최종 진화인가(그 세대까지 나온 진화형이 없다). 강철톤이 없는 1세대의 롱스톤은
+    // 최종 진화다 — 세대 차이는 질의가 계산한다.
+    bool finalEvolution = true;
 };
 
 // 지방 도감 하나(도감 선택 버튼 하나). 한 도감을 여러 게임이 쓰면 버전 이름이 모인다.
