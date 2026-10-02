@@ -29,8 +29,13 @@ public:
     SlotCard(int slot, SquadSession *session, SpriteCache *pokemonIcons, SpriteCache *itemIcons,
              QWidget *parent = nullptr);
 
-    static constexpr int kHeight = 258;
+    static constexpr int kHeight = 258; // 내용이 다 들어가는 기준 높이
+    static constexpr int kMinimumHeight = 234; // 줄 사이 숨만 줄인 최소(창이 낮으면 여기까지)
     static constexpr int kMinimumWidth = 262;
+
+    // 카드 높이를 [kMinimumHeight, kHeight]로 맞춘다 — 창 높이에 따라 6장이 딱 들어가게
+    // (SquadPage가 계산한다). 줄어든 만큼은 줄 사이 간격에서만 뺀다(areas()).
+    void setCardHeight(int height);
 
     void refresh(Language language); // 세션 값이 바뀌었다
     void setSelected(bool selected);
@@ -38,8 +43,8 @@ public:
     void setSuggestion(const QString &text); // 빈 자리의 제안 문구
     void setWarning(const QString &text); // 같은 포켓몬 · 스타팅 둘 → 머리에 "!" + 툴팁
 
-    QSize sizeHint() const override { return {300, kHeight}; }
-    QSize minimumSizeHint() const override { return {kMinimumWidth, kHeight}; }
+    QSize sizeHint() const override { return {300, height()}; }
+    QSize minimumSizeHint() const override { return {kMinimumWidth, height()}; }
 
 signals:
     void selectRequested(int slot);

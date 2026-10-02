@@ -55,7 +55,8 @@ private:
     QWidget *buildTopBar();
     QWidget *buildAnalysis();
     void placeCards(bool wide);
-    void refresh(); // 세션 · 언어가 바뀌었다 → 전부 다시
+    void fitCardHeights(); // 창 높이에 맞춰 카드 6장이 스크롤 없이 들어가게
+    void refresh();        // 세션 · 언어가 바뀌었다 → 전부 다시
     void refreshAnalysis();
 
     void selectSlot(int slot);
