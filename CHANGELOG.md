@@ -158,6 +158,12 @@ and the project uses [Semantic Versioning](https://semver.org/).
   arrow from shifting the label.
 
 ### Fixed
+- "← 목록" in the Pokédex detail did nothing since the three-pane list row: the back switch still
+  pointed at the list panel, which is no longer a page of the stack.
+- The squad page no longer scrolls as a whole in the wide layout: slot cards also grow with the
+  window (row gaps widen, up to 292px) so the six cards fill the column, and when the live
+  analysis is taller than the window it scrolls inside its own panel instead of overflowing; the
+  narrow layout keeps the single page scroll.
 - The squad's bottom card row (slots 05–06) was clipped by the window: slot cards now shrink with
   the window height — only the gaps between their rows compress, down to a 234px minimum — so all
   six cards fit without scrolling at the default window size; smaller windows scroll as before.
@@ -180,6 +186,8 @@ and the project uses [Semantic Versioning](https://semver.org/).
   data grows to 28.9 MB). Moves introduced in generation 9 still lack Korean text in PokéAPI.
 
 ### Changed
+- Home mascots are upscaled with Scale2x (EPX) — applied twice, then smoothly fitted — instead of
+  plain bilinear scaling, so the enlarged pixel art stays crisp.
 - The home fan is tighter and bigger: cards grew, the fan gathers toward its pivot like a hand of
   cards and its width shrank, and every card draws the same default sprite art, trimmed and
   bottom-aligned at one size (generation 7's mascot is now Rowlet). The menu became three card

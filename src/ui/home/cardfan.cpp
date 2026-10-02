@@ -139,6 +139,38 @@ QTransform CardFan::cardTransform(const Layout &fan, int index, bool withLift) c
     return transform; // 카드 로컬 좌표: 윗변 가운데가 (0, 0), 카드는 (−w/2, 0, w, h)
 }
 
+namespace {
+// Scale2x(EPX): 도트 그림을 2배로 키우면서 계단을 모서리 방향으로 채우는 고전 업스케일러.
+// 보간(bilinear)과 달리 색을 섞지 않아 또렷하다. 두 번 적용(4배)한 뒤 목표 크기로 부드럽게
+// 줄이면, 원본을 바로 2~3배 늘인 것보다 훨씬 깨끗하다.
+QImage scale2x(const QImage &source)
+{
+    QImage result(source.size() * 2, QImage::Format_ARGB32);
+    const int w = source.width();
+    const int h = source.height();
+    for (int y = 0; y < h; ++y) {
+        const QRgb *row = reinterpret_cast<const QRgb *>(source.constScanLine(y));
+        const QRgb *above = reinterpret_cast<const QRgb *>(source.constScanLine(std::max(y - 1, 0)));
+        const QRgb *below
+                = reinterpret_cast<const QRgb *>(source.constScanLine(std::min(y + 1, h - 1)));
+        QRgb *out0 = reinterpret_cast<QRgb *>(result.scanLine(y * 2));
+        QRgb *out1 = reinterpret_cast<QRgb *>(result.scanLine(y * 2 + 1));
+        for (int x = 0; x < w; ++x) {
+            const QRgb p = row[x];
+            const QRgb a = above[x];                  // 위
+            const QRgb b = row[std::min(x + 1, w - 1)]; // 오른쪽
+            const QRgb c = row[std::max(x - 1, 0)];     // 왼쪽
+            const QRgb d = below[x];                  // 아래
+            out0[x * 2] = (c == a && c != d && a != b) ? a : p;
+            out0[x * 2 + 1] = (a == b && a != c && b != d) ? b : p;
+            out1[x * 2] = (d == c && d != b && c != a) ? c : p;
+            out1[x * 2 + 1] = (b == d && b != a && d != c) ? d : p;
+        }
+    }
+    return result;
+}
+} // namespace
+
 QPixmap CardFan::mascotSprite(int index) const
 {
     const homecards::Card &card = m_cards.at(index);
@@ -163,7 +195,9 @@ QPixmap CardFan::mascotSprite(int index) const
             if (qAlpha(line[x]) > 8)
                 bounds = bounds.isNull() ? QRect(x, y, 1, 1) : bounds.united(QRect(x, y, 1, 1));
     }
-    const QPixmap trimmed = QPixmap::fromImage(bounds.isNull() ? alpha : alpha.copy(bounds));
+    // 여백을 자르고 Scale2x를 두 번(4배) — 그린 뒤 목표 크기로 줄어들며 또렷해진다
+    const QPixmap trimmed
+            = QPixmap::fromImage(scale2x(scale2x(bounds.isNull() ? alpha : alpha.copy(bounds))));
     m_mascots.insert(card.mascot, trimmed);
     return trimmed;
 }
