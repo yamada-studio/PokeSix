@@ -219,6 +219,13 @@ and the project uses [Semantic Versioning](https://semver.org/).
 - The home screen is a full-screen intro instead of the v1 dashboard; the app bar will have four tabs.
 - Installed Linux binaries keep the Qt library path in their RUNPATH, so the desktop launcher works.
 
+### Changed
+- The squad's analysis panel keeps the defensive heatmap pinned at the top, followed by the
+  problem list and the physical/special split, so all three stay in view. The problem list now
+  scrolls inside its own box (up to four rows in the narrow layout; whatever height is left in the
+  wide layout) instead of pushing the heatmap off screen, and a "크게 보기 ↗" link opens the full
+  list in a larger dialog where titles and details are no longer elided.
+
 ### Fixed
 - Windows: `run.bat --log` (and any `build.bat` / `setup.bat` call with arguments) failed with "env.bat is not recognized" because `shift` also shifted `%0`, so `%~dp0` no longer pointed at the script folder. All argument loops now use `shift /1`.
 - Windows: the build stopped at `GoogleTestAddTests.cmake … Exit code 0xc0000135` because `gtest_discover_tests()` ran the Qt-linked test binary right after linking, before any Qt DLL was on PATH. The data tests now discover at ctest time (`DISCOVERY_MODE PRE_TEST`), where the test preset sets PATH.

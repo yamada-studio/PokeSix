@@ -1,5 +1,7 @@
 #pragma once
 
+#include "ui/squad/problemlist.h" // ProblemList::Row 를 멤버로 둔다
+
 #include <QHash>
 #include <QList>
 #include <QWidget>
@@ -16,7 +18,6 @@ class AppState;
 class GameSelector;
 class HeatmapView;
 class PanelFrame;
-class ProblemList;
 class Repository;
 class SlotCard;
 class SplitBar;
@@ -80,6 +81,10 @@ private:
     void slideTo(QWidget *card, const QPoint &target, int durationMs);
     void onProblemHovered(int row);
     void onProblemClicked(int row);
+    // 문제 목록은 자기 칸 안에서만 스크롤한다(히트맵 · 분포가 항상 보이게). 넓은 배치에서는 남는
+    // 세로를 채우되 내용보다 커지지 않고, 좁은 배치에서는 kProblemVisibleRows 줄까지만 편다
+    void syncProblemHeight();
+    void showProblemDialog(); // "크게 보기" — 문제 전체를 큰 창에서
 
     QString typeName(const QString &key) const;
     QString suggestion() const; // 빈 자리 제안 문구
@@ -114,6 +119,11 @@ private:
     QLabel *m_emptyAnalysis = nullptr;
     QWidget *m_analysisBody = nullptr;
     ProblemList *m_problems = nullptr;
+    QScrollArea *m_problemScroll = nullptr;  // 문제 목록만의 스크롤
+    QLabel *m_problemCount = nullptr;        // 문제 칸 제목 옆 "13개"
+    ProblemList *m_dialogProblems = nullptr; // 크게 보기 창이 열려 있으면 그 목록(같이 갱신)
+    QList<ProblemList::Row> m_problemRows;
+    QString m_problemEmptyText;
     HeatmapView *m_heatmap = nullptr;
     QLabel *m_splitRule = nullptr;
     QLabel *m_moveCount = nullptr;
@@ -125,8 +135,8 @@ private:
 
     bool m_dragging = false;
     QList<QRect> m_cells; // 자리(위치 번호)마다 카드 칸 — 끌기를 시작할 때 레이아웃에서 잰다
-    QList<int> m_order;  // 위치 → 카드(= 원래 슬롯 번호). 끄는 동안 바뀐다
-    QPoint m_dragOffset; // 카드 왼쪽 위 ↔ 마우스
+    QList<int> m_order;   // 위치 → 카드(= 원래 슬롯 번호). 끄는 동안 바뀐다
+    QPoint m_dragOffset;  // 카드 왼쪽 위 ↔ 마우스
     QHash<QWidget *, class QPropertyAnimation *>
             m_slides; // 게임(버전 그룹) → 포켓몬 선택 창에서 마지막에 고른 도감
 };
