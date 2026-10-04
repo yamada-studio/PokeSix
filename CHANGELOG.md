@@ -234,6 +234,7 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ### Documentation
 - `docs/overlay-design.md`: review and design of the emulator overlay (melonDS, generations 4–5): reading the party from the `.sav` file first and from the GDB stub later, save and PKM layout as data tables in core, window docking on Windows, move suggestions, legal notes and a Phase H step breakdown.
 - The Windows build is now verified end to end (VS 2022 17.14, Qt 6.8.3): `docs/build.md` §4 and §5-7, `scripts/README.md` and `CLAUDE.md` updated.
+- `docs/deploy.md`: the run CLI (script options, app arguments, Qt environment variables, where the app keeps its data, cache and settings on each OS) and the Windows `.exe` distribution plan — `windeployqt` by hand today, `qt_generate_deploy_app_script` + CPack ZIP next, installer options and code-signing notes, a pre-release checklist and the CI step for Phase G.
 
 ## [0.0.1] - 2026-09-28
 

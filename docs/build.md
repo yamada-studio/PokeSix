@@ -308,5 +308,7 @@ cmake --preset linux-debug -DPOKESIX_ENABLE_CLANG_TIDY=ON
 cmake --install build/linux-release --prefix ~/.local
 ```
 Linux에서는 `bin/PokeSix`, `share/applications/*.desktop`, `share/icons/hicolor/`가 설치된다.
-Qt 런타임은 함께 설치하지 않는다. 배포 패키지(dmg / zip / AppImage)가 필요해지면
-`qt_generate_deploy_app_script()`를 붙인다.
+Qt 런타임은 함께 설치하지 않는다.
+
+**실행 CLI(스크립트 · 앱 인자 · 데이터 위치)와 Windows `.exe` 배포 방안(windeployqt → CMake deploy 스크립트 → ZIP/설치 프로그램 → CI)은
+[deploy.md](deploy.md)에 있다.**
