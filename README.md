@@ -50,7 +50,8 @@ Prefer plain CMake? Set `QT_ROOT_DIR` to your Qt folder (e.g. `~/Qt/6.8.3/gcc_64
 `cmake --preset linux-debug && cmake --build --preset linux-debug && ctest --preset linux-debug`.
 
 Windows (MSVC 2022), Homebrew Qt, IDE setup and common errors are covered in
-**[docs/build.md](docs/build.md)**.
+**[docs/build.md](docs/build.md)**. Running the app from the command line and shipping a Windows `.exe`
+are covered in **[docs/deploy.md](docs/deploy.md)**.
 
 > Ubuntu 24.04's `apt` ships Qt 6.4, which is too old. Use the script above or the Qt online installer.
 
