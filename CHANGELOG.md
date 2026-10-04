@@ -219,6 +219,15 @@ and the project uses [Semantic Versioning](https://semver.org/).
 - The home screen is a full-screen intro instead of the v1 dashboard; the app bar will have four tabs.
 - Installed Linux binaries keep the Qt library path in their RUNPATH, so the desktop launcher works.
 
+### Fixed
+- Windows: `run.bat --log` (and any `build.bat` / `setup.bat` call with arguments) failed with "env.bat is not recognized" because `shift` also shifted `%0`, so `%~dp0` no longer pointed at the script folder. All argument loops now use `shift /1`.
+- Windows: the build stopped at `GoogleTestAddTests.cmake … Exit code 0xc0000135` because `gtest_discover_tests()` ran the Qt-linked test binary right after linking, before any Qt DLL was on PATH. The data tests now discover at ctest time (`DISCOVERY_MODE PRE_TEST`), where the test preset sets PATH.
+- Windows: `setup.bat` could not find `uvx` right after installing uv, because winget 1.29 places portable packages under `WinGet\Packages` and does not always create the `WinGet\Links` folder. The script now adds both to PATH for the session.
+
+### Documentation
+- `docs/overlay-design.md`: review and design of the emulator overlay (melonDS, generations 4–5): reading the party from the `.sav` file first and from the GDB stub later, save and PKM layout as data tables in core, window docking on Windows, move suggestions, legal notes and a Phase H step breakdown.
+- The Windows build is now verified end to end (VS 2022 17.14, Qt 6.8.3): `docs/build.md` §4 and §5-7, `scripts/README.md` and `CLAUDE.md` updated.
+
 ## [0.0.1] - 2026-09-28
 
 ### Added

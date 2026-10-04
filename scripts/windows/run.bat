@@ -34,16 +34,16 @@ if /i "%~1"=="--help"      goto :usage
 echo error: unknown argument: %~1 (app arguments go after --) 1>&2
 goto :usage_fail
 :next
-shift
+shift /1
 goto :parse
 
 rem Arguments after -- are passed to the app unchanged
 :collect
-shift
+shift /1
 :collect_loop
 if "%~1"=="" goto :parsed
 set APP_ARGS=%APP_ARGS% %1
-shift
+shift /1
 goto :collect_loop
 :parsed
 

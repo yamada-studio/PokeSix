@@ -39,7 +39,7 @@ scripts/
 |---|---|
 | linux | ✅ setup · build(debug/release, `--format`, `--install`) · run(`--offscreen`) · shellcheck |
 | macos | ⚠ shellcheck(bash)만 통과. macOS 실기 미검증 |
-| windows | ⚠ Wine의 cmd로 인자 파싱·에러 경로·run 흐름(인자 전달, 로그, exit code)만 확인. 실제 VS/winget/Qt 설치 미검증 |
+| windows | ✅ Windows 11 실기(2026-10-04): winget으로 VS 2022 Community · uv 설치, aqtinstall로 Qt 6.8.3, build(debug) · ctest 71개 · run(`--log`). `shift`가 `%0`을 밀어 `%~dp0`가 깨지던 버그를 고쳤다 |
 
 ## 스크립트를 고칠 때
 
@@ -47,3 +47,5 @@ scripts/
 - Qt 버전 변경은 `QT_VERSION` 한 줄만 고친다
 - `.sh`: `shellcheck -x -P SCRIPTDIR scripts/*/*.sh`(`uvx --from shellcheck-py shellcheck …`)
 - `.bat`: `( )` 블록 안에서 경로 변수를 펼치지 않는다(`Program Files (x86)`의 `)`). 분기는 `goto`로 처리한다
+- `.bat`: 인자 루프에서는 반드시 **`shift /1`**. 그냥 `shift`는 `%0`까지 밀어서, 그 뒤의 `%~dp0`(스크립트 폴더)가 현재 폴더로 바뀐다(`run.bat --log`가 `env.bat`을 못 찾던 원인)
+- `.bat`: winget 1.29는 portable 패키지(uv)를 `%LOCALAPPDATA%\Microsoft\WinGet\Packages\<id>_…\`에 두고, `WinGet\Links` 폴더는 만들지 않을 수 있다(심볼릭 링크에 개발자 모드가 필요). 같은 세션에서 바로 쓰려면 두 경로를 모두 PATH에 더한다

@@ -31,9 +31,9 @@ goto :usage_fail
 :opt_install
 if "%~2"=="" goto :install_needs_path
 set "INSTALL_PREFIX=%~2"
-shift
+shift /1
 :next
-shift
+shift /1
 goto :parse
 :parsed
 

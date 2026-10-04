@@ -20,4 +20,6 @@ target_compile_definitions(pokesix_data_tests PRIVATE
     POKESIX_FIXTURES_DIR="${PROJECT_SOURCE_DIR}/tests/fixtures"
 )
 
-gtest_discover_tests(pokesix_data_tests)
+# Windows: 빌드 직후 실행 파일을 돌려 테스트 목록을 읽으면 PATH에 Qt DLL이 없어 0xc0000135로 실패한다.
+# PRE_TEST 는 ctest 가 실행될 때 목록을 읽으므로, 테스트 프리셋이 PATH 에 넣은 Qt bin 폴더를 쓴다.
+gtest_discover_tests(pokesix_data_tests DISCOVERY_MODE PRE_TEST)
