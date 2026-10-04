@@ -155,7 +155,7 @@ CI(GitHub Actions, 3개 OS), 패키징(dmg / zip / AppImage), sanitizer 프리�
 | 목표 | 필요한 것 | 지금 지켜 둘 것 |
 |---|---|---|
 | **배틀 시뮬레이터** | core의 세대별 배틀 규칙 엔진, 기술 · 특성 · 도구 효과 구현, 결정적 난수 | 계산은 core에(Qt 없음), 세대는 항상 인자로, id는 PokéAPI id |
-| **에뮬레이터 오버레이** | 게임 내부 번호 → PokéAPI id 표(`*_game_indices`), 에뮬레이터 상태 읽기, 별도 창 | core 분석 · data state를 UI와 분리해 두기 |
+| **에뮬레이터 오버레이** ([검토 · 설계](overlay-design.md)) | 세이브(`.sav`) 파싱을 core에, 파일 감시 · id 변환을 data에, 항상 위 창을 ui에. 게임 내부 번호 → PokéAPI id 표(`item_game_indices`) | core 분석 · data state를 UI와 분리해 두기. `SquadSession`을 읽기 전용으로 쓸 수 있게 |
 
 ## 나중에 붙일 것 (백로그)
 
