@@ -1159,6 +1159,30 @@ to see its details here</translation>
         <source>진화 전 모습(%1)이 이미 있어요</source>
         <translation>Its pre-evolution (%1) is already in the squad</translation>
     </message>
+    <message>
+        <source>문제 항목</source>
+        <translation>Problems</translation>
+    </message>
+    <message>
+        <source>크게 보기 ↗</source>
+        <translation>Expand ↗</translation>
+    </message>
+    <message>
+        <source>문제 전체를 큰 창에서 봐요</source>
+        <translation>See every problem in a larger window</translation>
+    </message>
+    <message>
+        <source>%1개</source>
+        <translation>%1</translation>
+    </message>
+    <message>
+        <source>줄을 누르면 히트맵에서 그 타입 열이 깜빡여요</source>
+        <translation>Click a row to flash that type's column in the heatmap</translation>
+    </message>
+    <message>
+        <source>닫기</source>
+        <translation>Close</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::SquadSession</name>

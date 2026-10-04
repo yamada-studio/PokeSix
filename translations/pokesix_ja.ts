@@ -1159,6 +1159,30 @@
         <source>진화 전 모습(%1)이 이미 있어요</source>
         <translation>進化前の姿(%1)がすでにいます</translation>
     </message>
+    <message>
+        <source>문제 항목</source>
+        <translation>問題</translation>
+    </message>
+    <message>
+        <source>크게 보기 ↗</source>
+        <translation>拡大 ↗</translation>
+    </message>
+    <message>
+        <source>문제 전체를 큰 창에서 봐요</source>
+        <translation>すべての問題を大きなウィンドウで見る</translation>
+    </message>
+    <message>
+        <source>%1개</source>
+        <translation>%1個</translation>
+    </message>
+    <message>
+        <source>줄을 누르면 히트맵에서 그 타입 열이 깜빡여요</source>
+        <translation>行をクリックするとヒートマップでそのタイプの列が点滅します</translation>
+    </message>
+    <message>
+        <source>닫기</source>
+        <translation>閉じる</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::SquadSession</name>

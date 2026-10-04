@@ -34,11 +34,16 @@ void ProblemList::setRows(const QList<Row> &rows, const QString &emptyText, Lang
     QWidget::update();
 }
 
+int ProblemList::heightForRows(int rows)
+{
+    return rows * (kRowHeight + kGap) - kGap;
+}
+
 QSize ProblemList::sizeHint() const
 {
     if (m_rows.isEmpty())
         return {400, kEmptyHeight};
-    return {400, int(m_rows.size()) * (kRowHeight + kGap) - kGap};
+    return {400, heightForRows(int(m_rows.size()))};
 }
 
 int ProblemList::rowAt(const QPoint &pos) const
