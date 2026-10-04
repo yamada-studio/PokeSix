@@ -25,7 +25,7 @@ if /i "%~1"=="--help"      goto :usage
 echo error: unknown argument: %~1 1>&2
 goto :usage_fail
 :next
-shift
+shift /1
 goto :parse
 :parsed
 
@@ -138,6 +138,8 @@ echo [setup] installing %1 ...
 winget install -e --id %1 --accept-package-agreements --accept-source-agreements
 if errorlevel 1 exit /b 1
 rem PATH entries registered by winget only appear in new terminals, so add the known install locations here
+rem winget 1.29 keeps portable packages (uv) under WinGet\Packages and may not create WinGet\Links (symlinks need Developer Mode)
+for /d %%D in ("%LOCALAPPDATA%\Microsoft\WinGet\Packages\astral-sh.uv_*") do set "PATH=%%D;%PATH%"
 set "PATH=%LOCALAPPDATA%\Microsoft\WinGet\Links;%USERPROFILE%\.local\bin;%ProgramFiles%\Git\cmd;%ProgramFiles%\CMake\bin;%PATH%"
 exit /b 0
 
