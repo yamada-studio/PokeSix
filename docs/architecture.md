@@ -177,6 +177,7 @@ composition root. 명령행 인자(`--gallery`, `--screenshot`), 로깅 초기�
   - 게임 메모리에서 읽은 값은 **게임 내부 번호**라서, PokéAPI id로 바꾸는 표가 필요하다.
     PokéAPI에 `pokemon_game_indices` · `item_game_indices` · `type_game_indices`가 있으므로 그때 받을 목록에 추가한다
   - 에뮬레이터에서 상태를 꺼내는 방법(에뮬레이터의 스크립트 기능 · 프로세스 메모리 읽기)과 앱으로 넘기는 방법(로컬 소켓 등)은 그 단계에서 정한다
+  - 검토와 단계 나누기는 [overlay-design.md](overlay-design.md)에 있다(1차: `.sav` 파일 감시, 2차: melonDS GDB stub)
 - **배틀 시뮬레이터**: 계산은 전부 core에 둔다(Qt 없음, 결정적 = 같은 입력 · 같은 난수 시드면 같은 결과).
   세대마다 다른 규칙(데미지 식, 급소, 성격 · 특성의 유무, 물리/특수 판정)은 §5처럼 **표 · 전략 객체**로 표현한다.
   - 데이터의 한계: PokéAPI에는 기술의 위력 · 명중 · 우선도 · 대상 · 부가 효과 일부(`move_meta`: 상태 이상 · 능력치 변화 · 급소율 · 흡수)가
