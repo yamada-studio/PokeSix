@@ -4,7 +4,7 @@
 |---|---|---|---|---|
 | Ubuntu 24.04 | GCC 13+ | Ninja | `linux-debug` / `linux-release` | ✅ 빌드·테스트·실행 확인 (Qt 6.8.3) |
 | macOS | Apple Clang (Xcode CLT) | Ninja | `macos-debug` / `macos-release` | ⚠ 미검증 |
-| Windows 10/11 | MSVC 2022 | Visual Studio 17 2022 | `windows-msvc` + `windows-debug` / `windows-release` | ⚠ 미검증 |
+| Windows 10/11 | MSVC 2022 | Visual Studio 17 2022 | `windows-msvc` + `windows-debug` / `windows-release` | ✅ 빌드·테스트·실행 확인 (Windows 11, VS 2022 17.14, Qt 6.8.3, 2026-10-04) |
 
 공통 요구 사항: CMake 3.21+, **Qt 6.8 이상** (Widgets / Svg / Sql / Network), 인터넷(첫 configure 때 GoogleTest를 받는다).
 
@@ -143,8 +143,14 @@ open build/macos-debug/src/PokeSix.app
 
 ### 4-1. 도구
 
+한 번에: `scripts\windows\setup.bat` (winget으로 VS 2022 Community + C++ 워크로드 · Git · uv, aqtinstall로 Qt). 직접 할 때:
+
 - **Visual Studio 2022** (Community 가능) — 워크로드 "C++를 사용한 데스크톱 개발"
-  - CMake가 함께 설치된다. 별도 CMake는 3.21 이상이면 된다
+  - CMake(3.31)가 함께 설치된다. 별도 CMake는 3.21 이상이면 된다. 스크립트는 PATH에 cmake가 없으면 VS에 번들된 것을 `vswhere`로 찾는다
+  - 설치에는 **관리자 권한(UAC 창)** 이 필요하다. winget이 설치 관리자를 띄우면 UAC를 승인한다
+  - 설치 관리자가 "재시작하면 완료"라고 하지만, 컴파일러 · CMake는 재시작 없이 바로 쓸 수 있었다
+- **winget으로 설치한 도구는 새 터미널에서만 PATH에 보인다.** 같은 터미널에서 이어서 쓰려면 터미널을 다시 연다(setup.bat은 세션 안에서 uv 경로를 직접 더해 준다)
+- Python은 필요 없다. Qt는 uv(`uvx --from aqtinstall`)가 격리된 환경에서 받는다. Microsoft Store의 python 스텁(`python --version`이 빈 줄)은 무시해도 된다
 
 ### 4-2. Qt 설치
 
@@ -238,11 +244,25 @@ Qt 6의 TLS는 플러그인(`plugins/tls/`)으로 동작한다.
 - Windows는 RPATH가 없어서 DLL을 `PATH`에서 찾는다
 - ctest 프리셋(`windows-debug`)은 `PATH`에 `%QT_ROOT_DIR%\bin`을 자동으로 추가한다
 - 직접 실행할 때는 [§4-3](#4-3-빌드--테스트--실행)처럼 `PATH`를 설정한다
+- 같은 코드가 **빌드 중에** 나오면 테스트 목록 읽기 단계다 → [§5-7](#gtest-discovery)
 
 <a id="generator-mismatch"></a>
 ### 5-6. `Error: generator : Ninja  Does not match the generator used previously`
 
 - 같은 빌드 폴더를 다른 generator로 configure한 경우다 → `rm -rf build/<preset>`
+
+<a id="gtest-discovery"></a>
+### 5-7. Windows: 빌드 중 `GoogleTestAddTests.cmake … Error running test executable … Exit code 0xc0000135`
+
+```
+CMake Error at .../GoogleTestAddTests.cmake:132 (message):
+  Error running test executable.
+    Path: '.../tests/data/Debug/pokesix_data_tests.exe'
+    Result: Exit code 0xc0000135
+```
+- `gtest_discover_tests()`가 **빌드 직후** 테스트 실행 파일을 돌려 `TEST()` 목록을 읽는데, 그 시점의 PATH에 Qt DLL이 없어 실행이 안 된 것이다([§5-5](#windows-dll)와 같은 원인, 다른 시점)
+- 이 리포는 Qt에 링크하는 테스트에 `DISCOVERY_MODE PRE_TEST`를 줘서 목록 읽기를 **ctest 실행 시점**(테스트 프리셋이 PATH에 Qt bin을 넣는다)으로 미뤘다. Qt에 링크하는 테스트 타깃을 새로 만들면 같은 옵션을 준다
+- core 테스트(`pokesix_core_tests`)는 Qt를 쓰지 않으므로 그대로 둔다
 
 ---
 
@@ -288,5 +308,7 @@ cmake --preset linux-debug -DPOKESIX_ENABLE_CLANG_TIDY=ON
 cmake --install build/linux-release --prefix ~/.local
 ```
 Linux에서는 `bin/PokeSix`, `share/applications/*.desktop`, `share/icons/hicolor/`가 설치된다.
-Qt 런타임은 함께 설치하지 않는다. 배포 패키지(dmg / zip / AppImage)가 필요해지면
-`qt_generate_deploy_app_script()`를 붙인다.
+Qt 런타임은 함께 설치하지 않는다.
+
+**실행 CLI(스크립트 · 앱 인자 · 데이터 위치)와 Windows `.exe` 배포 방안(windeployqt → CMake deploy 스크립트 → ZIP/설치 프로그램 → CI)은
+[deploy.md](deploy.md)에 있다.**

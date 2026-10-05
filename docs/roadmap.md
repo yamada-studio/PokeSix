@@ -132,6 +132,7 @@ A에서 만든 `PanelFrame`, 버튼 스타일도 갤러리에 올린다.
 ## Phase G — 배포 준비 → v1.0.0
 
 CI(GitHub Actions, 3개 OS), 패키징(dmg / zip / AppImage), sanitizer 프리셋, i18n 영어 번역.
+Windows `.exe` 배포 방안(windeployqt → `qt_generate_deploy_app_script` → ZIP/설치 프로그램 → CI)과 실행 CLI 정리는 [deploy.md](deploy.md).
 
 ---
 
@@ -140,7 +141,7 @@ CI(GitHub Actions, 3개 OS), 패키징(dmg / zip / AppImage), sanitizer 프리�
 1. ~~**PokéAPI 가져오기 방식** (D4 전)~~ → 첫 실행에 CSV 원본(고정 커밋 + SHA-256)을 받아 로컬에서 SQLite로 변환([ADR 0011](decisions/0011-data-from-pinned-pokeapi-csv.md))
 2. **스프라이트** (E1 전): 끝까지 `SpritePlaceholder`로 둘지, 런타임에 받아 개인 캐시에 둘지
 3. **앱 이름 "PokeSix"** (공개 배포 전): "Poké" 접두어의 상표 문제를 검토할 필요가 있는지
-4. **패키징 방식** (Phase G): OS별 배포 형식
+4. **패키징 방식** (Phase G): OS별 배포 형식 — Windows는 ZIP(포터블) 먼저, v1.0에 Inno Setup 안이 [deploy.md §2-4](deploy.md#2-4-방안-c--설치-프로그램)에 있다. 최종 결정은 ADR로
 5. ~~**Tokens 네이밍** (A4)~~ → 핸드오프 이름(`tok::kRed`) 유지로 결정([ADR 0010](decisions/0010-intro-implemented-by-claude.md))
 6. ~~**글꼴 12MB를 qrc에 넣을지** (A4)~~ → 실행 파일 qrc에 넣고 `qt_add_big_resources`로 빌드 속도 유지([ADR 0010](decisions/0010-intro-implemented-by-claude.md))
 7. **상자 바깥 장식을 그리는 방식** (A7): 부모 위젯이 그리기 vs `QFocusFrame`처럼 대상 위를 덮는 형제 위젯. 선택 테와 포커스 링에 같이 쓴다
@@ -155,7 +156,7 @@ CI(GitHub Actions, 3개 OS), 패키징(dmg / zip / AppImage), sanitizer 프리�
 | 목표 | 필요한 것 | 지금 지켜 둘 것 |
 |---|---|---|
 | **배틀 시뮬레이터** | core의 세대별 배틀 규칙 엔진, 기술 · 특성 · 도구 효과 구현, 결정적 난수 | 계산은 core에(Qt 없음), 세대는 항상 인자로, id는 PokéAPI id |
-| **에뮬레이터 오버레이** | 게임 내부 번호 → PokéAPI id 표(`*_game_indices`), 에뮬레이터 상태 읽기, 별도 창 | core 분석 · data state를 UI와 분리해 두기 |
+| **에뮬레이터 오버레이** ([검토 · 설계](overlay-design.md)) | 세이브(`.sav`) 파싱을 core에, 파일 감시 · id 변환을 data에, 항상 위 창을 ui에. 게임 내부 번호 → PokéAPI id 표(`item_game_indices`) | core 분석 · data state를 UI와 분리해 두기. `SquadSession`을 읽기 전용으로 쓸 수 있게 |
 
 ## 나중에 붙일 것 (백로그)
 

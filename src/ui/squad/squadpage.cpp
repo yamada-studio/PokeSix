@@ -27,9 +27,11 @@
 #include "ui/theme/theme.h"
 #include "ui/theme/tokens.h"
 #include "ui/widgets/panelframe.h"
+#include "ui/widgets/shadowbutton.h"
 #include "ui/widgets/typechip.h"
 
 #include <QBoxLayout>
+#include <QDialog>
 #include <QFontMetricsF>
 #include <QGraphicsDropShadowEffect>
 #include <QGridLayout>
@@ -40,6 +42,7 @@
 #include <QPainter>
 #include <QPixmapCache>
 #include <QPropertyAnimation>
+#include <QPushButton>
 #include <QResizeEvent>
 #include <QScrollArea>
 #include <QScrollBar>
@@ -56,6 +59,10 @@ constexpr int kShiftMs = 180;
 constexpr int kDropMs = 140;
 constexpr int kAutoScrollMargin = 40;
 constexpr int kAutoScrollStep = 18;
+// 좁은 배치에서 문제 칸이 펴지는 최대 줄 수(그 이상은 칸 안에서 스크롤). 넓은 배치는 남는 세로를
+// 쓴다
+constexpr int kProblemVisibleRows = 4;
+constexpr QSize kProblemDialogSize {820, 640}; // "크게 보기" 창 — 제목 · 설명이 잘리지 않는 폭
 constexpr PanelStyle kAnalysisPanel {.outline = 2,
                                      .radius = 8,
                                      .shadow = 3,
@@ -257,11 +264,8 @@ QWidget *SquadPage::buildAnalysis()
     QVBoxLayout *layout = new QVBoxLayout(body);
     layout->setContentsMargins(0, 0, 0, 0);
     layout->setSpacing(8);
-    m_problems = new ProblemList;
-    connect(m_problems, &ProblemList::rowHovered, this, &SquadPage::onProblemHovered);
-    connect(m_problems, &ProblemList::rowClicked, this, &SquadPage::onProblemClicked);
-    layout->addWidget(m_problems);
-    layout->addSpacing(8);
+    // 순서: 히트맵(항상 맨 위에 고정) → 문제 목록(자기 칸 안에서만 스크롤) → 물리 · 특수.
+    // 세 덩이가 한눈에 들어오게 — 문제가 13개여도 히트맵과 분포가 밀려나지 않는다
     QHBoxLayout *heatTitle = new QHBoxLayout;
     QLabel *heatLabel = new QLabel(tr("방어 상성 히트맵"));
     heatLabel->setObjectName(QStringLiteral("dexSectionLabel"));
@@ -275,6 +279,38 @@ QWidget *SquadPage::buildAnalysis()
     connect(m_heatmap, &HeatmapView::slotClicked, this, &SquadPage::selectSlot);
     layout->addWidget(m_heatmap);
     layout->addSpacing(10);
+
+    QHBoxLayout *problemTitle = new QHBoxLayout;
+    problemTitle->setSpacing(10);
+    QLabel *problemLabel = new QLabel(tr("문제 항목"));
+    problemLabel->setObjectName(QStringLiteral("dexSectionLabel"));
+    problemTitle->addWidget(problemLabel);
+    m_problemCount = new QLabel;
+    m_problemCount->setObjectName(QStringLiteral("squadCount"));
+    problemTitle->addWidget(m_problemCount);
+    problemTitle->addStretch();
+    QPushButton *expand = new QPushButton(tr("크게 보기 ↗"));
+    expand->setObjectName(QStringLiteral("squadLinkButton")); // app.qss: 글자만 있는 링크 버튼
+    expand->setCursor(Qt::PointingHandCursor);
+    expand->setFlat(true);
+    expand->setToolTip(tr("문제 전체를 큰 창에서 봐요"));
+    connect(expand, &QPushButton::clicked, this, &SquadPage::showProblemDialog);
+    problemTitle->addWidget(expand);
+    layout->addLayout(problemTitle);
+    m_problems = new ProblemList;
+    connect(m_problems, &ProblemList::rowHovered, this, &SquadPage::onProblemHovered);
+    connect(m_problems, &ProblemList::rowClicked, this, &SquadPage::onProblemClicked);
+    m_problemScroll = new QScrollArea;
+    m_problemScroll->setObjectName(QStringLiteral("squadScroll")); // 투명
+    m_problemScroll->setWidgetResizable(
+            true); // 폭은 칸을 따라가고, 높이는 ProblemList(Fixed)가 정한다
+    m_problemScroll->setAlignment(Qt::AlignTop | Qt::AlignLeft);
+    m_problemScroll->setFrameShape(QFrame::NoFrame);
+    m_problemScroll->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    m_problemScroll->setWidget(m_problems);
+    layout->addWidget(m_problemScroll, 1); // 넓은 배치에서 남는 세로를 이 칸이 가져간다
+    layout->addSpacing(10);
+
     QHBoxLayout *splitTitle = new QHBoxLayout;
     splitTitle->setSpacing(10);
     QLabel *splitLabel = new QLabel(tr("물리 · 특수 분포"));
@@ -295,8 +331,8 @@ QWidget *SquadPage::buildAnalysis()
     QVBoxLayout *frameLayout = new QVBoxLayout(frameBody);
     frameLayout->setContentsMargins(14, 12, 14, 14);
     frameLayout->addWidget(m_emptyAnalysis);
-    frameLayout->addWidget(body);
-    frameLayout->addStretch(); // 창이 내용보다 크면 남는 공간은 아래로
+    frameLayout->addWidget(body, 1); // 남는 세로는 몸통(→ 문제 칸)이 먼저 가져간다
+    frameLayout->addStretch();       // 문제 칸이 내용 높이에 닿으면 그 뒤 남는 공간은 아래로
 
     // 분석이 창보다 길면 분석 "안"에서만 스크롤한다(넓은 배치). 페이지 전체가 밀리지 않게.
     m_analysisScroll = new QScrollArea;
@@ -309,8 +345,25 @@ QWidget *SquadPage::buildAnalysis()
     return m_analysis;
 }
 
+void SquadPage::syncProblemHeight()
+{
+    const int content = m_problems->sizeHint().height();
+    if (m_wide) {
+        // 최소 두 줄은 보이게, 내용보다 커지지는 않게(그 뒤는 frameLayout의 stretch가 받는다)
+        m_problemScroll->setMinimumHeight(std::min(content, ProblemList::heightForRows(2)));
+        m_problemScroll->setMaximumHeight(content);
+    } else {
+        // 좁은 배치는 페이지가 스크롤한다 → 문제 칸은 kProblemVisibleRows 줄까지만 펴고 안에서
+        // 스크롤
+        const int h = std::min(content, ProblemList::heightForRows(kProblemVisibleRows));
+        m_problemScroll->setMinimumHeight(h);
+        m_problemScroll->setMaximumHeight(h);
+    }
+}
+
 void SquadPage::syncAnalysisHeight()
 {
+    syncProblemHeight(); // 바깥 높이를 재기 전에 — 문제 칸의 최소 · 최대가 내용 높이에 들어간다
     if (m_wide) {
         m_analysisScroll->setMinimumHeight(0); // 세로는 열이 정한다 — 넘치면 안에서 스크롤
         return;
@@ -487,8 +540,13 @@ void SquadPage::refreshAnalysis()
         }
         rows.append(row);
     }
-    m_problems->setRows(rows, tr("문제가 없어요 — 약점이 고르게 나뉘어 있어요"), language);
+    m_problemRows = rows;
+    m_problemEmptyText = tr("문제가 없어요 — 약점이 고르게 나뉘어 있어요");
+    m_problems->setRows(rows, m_problemEmptyText, language);
+    if (m_dialogProblems) // 크게 보기 창이 열려 있으면 같이
+        m_dialogProblems->setRows(rows, m_problemEmptyText, language);
     const int count = int(analysis.problems.size());
+    m_problemCount->setText(count == 0 ? QString() : tr("%1개").arg(count));
     m_problemPill->setVisible(analysis.filled > 0);
     m_problemPill->setProperty("ok", count == 0);
     m_problemPill->setText(count == 0 ? tr("✓ 문제 없음") : tr("⚠ 문제 %1").arg(count));
@@ -746,6 +804,59 @@ void SquadPage::onProblemClicked(int row)
         return;
     m_scroll->ensureWidgetVisible(m_heatmap, 0, 40);
     m_heatmap->flashType(keyOf(problems[std::size_t(row)].type));
+}
+
+void SquadPage::showProblemDialog()
+{
+    // 분석 칸은 좁아서 제목 · 설명이 … 으로 잘린다. 큰 창에서는 전부 보인다.
+    // 줄 위에 마우스 · 클릭은 본 화면과 같은 동작(카드 경고 · 히트맵 열 강조 · 깜빡임)
+    QDialog dialog(this);
+    dialog.setWindowTitle(tr("문제 항목"));
+    dialog.resize(kProblemDialogSize);
+    QVBoxLayout *layout = new QVBoxLayout(&dialog);
+    layout->setContentsMargins(16, 14, 16, 14);
+    layout->setSpacing(10);
+
+    QHBoxLayout *heading = new QHBoxLayout;
+    heading->setSpacing(10);
+    QLabel *title = new QLabel(tr("문제 항목"));
+    title->setObjectName(QStringLiteral("dexSectionLabel"));
+    heading->addWidget(title);
+    QLabel *pill = new QLabel(m_problemPill->text());
+    pill->setObjectName(QStringLiteral("squadProblemPill"));
+    pill->setProperty("ok", m_problemRows.isEmpty());
+    heading->addWidget(pill);
+    heading->addStretch();
+    QLabel *note = new QLabel(tr("줄을 누르면 히트맵에서 그 타입 열이 깜빡여요"));
+    note->setObjectName(QStringLiteral("squadNote"));
+    heading->addWidget(note);
+    layout->addLayout(heading);
+
+    ProblemList *list = new ProblemList;
+    list->setRows(m_problemRows, m_problemEmptyText, m_state->language());
+    connect(list, &ProblemList::rowHovered, this, &SquadPage::onProblemHovered);
+    connect(list, &ProblemList::rowClicked, this, &SquadPage::onProblemClicked);
+    QScrollArea *scroll = new QScrollArea;
+    scroll->setObjectName(QStringLiteral("squadScroll"));
+    scroll->setWidgetResizable(true);
+    scroll->setAlignment(Qt::AlignTop | Qt::AlignLeft);
+    scroll->setFrameShape(QFrame::NoFrame);
+    scroll->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    scroll->setWidget(list);
+    layout->addWidget(scroll, 1);
+
+    QHBoxLayout *buttons = new QHBoxLayout;
+    buttons->addStretch();
+    ShadowButton *close = new ShadowButton(ShadowButton::Variant::Secondary);
+    close->setText(tr("닫기"));
+    connect(close, &ShadowButton::clicked, &dialog, &QDialog::reject);
+    buttons->addWidget(close);
+    layout->addLayout(buttons);
+
+    m_dialogProblems = list; // 열려 있는 동안 분석이 바뀌면 refreshAnalysis가 같이 갱신한다
+    dialog.exec();
+    m_dialogProblems = nullptr;
+    onProblemHovered(-1); // 창을 닫으면 카드 경고 · 열 강조를 푼다
 }
 
 void SquadPage::showSlotMenu(int slot, const QPoint &globalPos)

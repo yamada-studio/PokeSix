@@ -62,14 +62,21 @@ Claude Code가 이 리포에서 세션을 시작할 때마다 읽는 파일이�
 
 ## 3. 빌드
 
-OS별 스크립트가 기본이다(`scripts/<linux|macos|windows>/`). 이 머신은 Linux.
+OS별 스크립트가 기본이다(`scripts/<linux|macos|windows>/`). 사용자는 **Linux(Ubuntu)와 Windows 11** 두 머신에서 작업한다.
+어느 OS인지는 세션 환경을 보고 판단한다.
 ```bash
-scripts/linux/setup.sh     # 의존성 (이미 설치됨)
+scripts/linux/setup.sh     # 의존성 (Ubuntu: apt + aqtinstall)
 scripts/linux/build.sh     # configure + build + test   (release, --clean, --format, --tidy, --install <prefix>)
 scripts/linux/run.sh       # 실행 (--log, --gdb, --offscreen, -- <앱 인자>)
 ```
+```bat
+scripts\windows\setup.bat  # 의존성 (winget: VS 2022 + C++ 워크로드 · Git · uv, aqtinstall: Qt → C:\Qt). VS 설치는 UAC 승인 필요
+scripts\windows\build.bat  # configure + build + test   (release, --clean, --no-test, --install <prefix>). 빌드 폴더 build\windows-msvc
+scripts\windows\run.bat    # 실행 (--log, --vs, --offscreen, -- <앱 인자>). GUI 앱이라 로그는 build\windows-msvc\PokeSix-<config>.log
+```
 프리셋을 직접 쓸 때: `cmake --preset linux-debug && cmake --build --preset linux-debug && ctest --preset linux-debug`
-(`QT_ROOT_DIR=$HOME/Qt/6.8.3/gcc_64` — `~/.bashrc`에 있음). Qt 버전은 `scripts/QT_VERSION` 한 곳.
+(Linux `QT_ROOT_DIR=$HOME/Qt/6.8.3/gcc_64` — `~/.bashrc`에 있음. Windows는 스크립트가 `C:\Qt\6.8.3\msvc2022_64`를 기본으로 찾는다).
+Qt 버전은 `scripts/QT_VERSION` 한 곳.
 OS별 상세와 흔한 에러는 [docs/build.md](docs/build.md).
 
 ## 4. 아키텍처 규칙 (위반하면 지적할 것)

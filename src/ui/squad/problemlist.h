@@ -26,6 +26,9 @@ public:
 
     void setRows(const QList<Row> &rows, const QString &emptyText, Language language);
 
+    // rows 줄이 딱 들어가는 높이(마지막 간격 없이). 스크롤 칸의 최소 · 최대를 정할 때 쓴다
+    static int heightForRows(int rows);
+
     QSize sizeHint() const override;
     QSize minimumSizeHint() const override { return {200, sizeHint().height()}; }
 

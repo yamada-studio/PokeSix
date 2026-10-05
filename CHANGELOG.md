@@ -235,6 +235,23 @@ and the project uses [Semantic Versioning](https://semver.org/).
 - The home screen is a full-screen intro instead of the v1 dashboard; the app bar will have four tabs.
 - Installed Linux binaries keep the Qt library path in their RUNPATH, so the desktop launcher works.
 
+### Changed
+- The squad's analysis panel keeps the defensive heatmap pinned at the top, followed by the
+  problem list and the physical/special split, so all three stay in view. The problem list now
+  scrolls inside its own box (up to four rows in the narrow layout; whatever height is left in the
+  wide layout) instead of pushing the heatmap off screen, and a "크게 보기 ↗" link opens the full
+  list in a larger dialog where titles and details are no longer elided.
+
+### Fixed
+- Windows: `run.bat --log` (and any `build.bat` / `setup.bat` call with arguments) failed with "env.bat is not recognized" because `shift` also shifted `%0`, so `%~dp0` no longer pointed at the script folder. All argument loops now use `shift /1`.
+- Windows: the build stopped at `GoogleTestAddTests.cmake … Exit code 0xc0000135` because `gtest_discover_tests()` ran the Qt-linked test binary right after linking, before any Qt DLL was on PATH. The data tests now discover at ctest time (`DISCOVERY_MODE PRE_TEST`), where the test preset sets PATH.
+- Windows: `setup.bat` could not find `uvx` right after installing uv, because winget 1.29 places portable packages under `WinGet\Packages` and does not always create the `WinGet\Links` folder. The script now adds both to PATH for the session.
+
+### Documentation
+- `docs/overlay-design.md`: review and design of the emulator overlay (melonDS, generations 4–5): reading the party from the `.sav` file first and from the GDB stub later, save and PKM layout as data tables in core, window docking on Windows, move suggestions, legal notes and a Phase H step breakdown.
+- The Windows build is now verified end to end (VS 2022 17.14, Qt 6.8.3): `docs/build.md` §4 and §5-7, `scripts/README.md` and `CLAUDE.md` updated.
+- `docs/deploy.md`: the run CLI (script options, app arguments, Qt environment variables, where the app keeps its data, cache and settings on each OS) and the Windows `.exe` distribution plan — `windeployqt` by hand today, `qt_generate_deploy_app_script` + CPack ZIP next, installer options and code-signing notes, a pre-release checklist and the CI step for Phase G.
+
 ## [0.0.1] - 2026-09-28
 
 ### Added

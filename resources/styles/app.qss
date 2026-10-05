@@ -160,5 +160,11 @@ QLabel#squadProblemPill {
 }
 QLabel#squadProblemPill[ok="true"] { background: @green; }
 QLabel#squadNote { font-size: 11px; color: @text.3; }
+/* 분석 칸 제목 줄의 글자 링크("크게 보기 ↗") — 섹션 제목 높이(15px)에 맞춘 작은 버튼 */
+QPushButton#squadLinkButton {
+  background: transparent; border: none; padding: 0 2px; min-height: 0;
+  font-size: 12px; font-weight: 700; color: @text.2; text-decoration: underline;
+}
+QPushButton#squadLinkButton:hover { color: @red; }
 QLabel#squadEmpty { font-family: "Do Hyeon"; font-size: 20px; color: @text.3; }
 QListView#squadPickerList { border: 2px solid @ink; border-radius: 6px; background: @white; outline: none; }

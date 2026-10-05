@@ -160,16 +160,12 @@
         <translation>Game</translation>
     </message>
     <message>
-        <source>가르침 기술</source>
-        <translation type="vanished">Tutor moves</translation>
+        <source>NPC 가르침 기술</source>
+        <translation>Move tutor moves</translation>
     </message>
     <message>
         <source>알 기술</source>
         <translation>Egg moves</translation>
-    </message>
-    <message>
-        <source>NPC 가르침 기술</source>
-        <translation>Move tutor moves</translation>
     </message>
 </context>
 <context>
@@ -1183,12 +1179,28 @@ to see its details here</translation>
         <translation>Its pre-evolution (%1) is already in the squad</translation>
     </message>
     <message>
-        <source>NPC 가르침</source>
-        <translation>Move tutor</translation>
+        <source>문제 항목</source>
+        <translation>Problems</translation>
     </message>
     <message>
-        <source>NPC 가르침(%1)</source>
-        <translation>Move tutor (%1)</translation>
+        <source>크게 보기 ↗</source>
+        <translation>Expand ↗</translation>
+    </message>
+    <message>
+        <source>문제 전체를 큰 창에서 봐요</source>
+        <translation>See every problem in a larger window</translation>
+    </message>
+    <message>
+        <source>%1개</source>
+        <translation>%1</translation>
+    </message>
+    <message>
+        <source>줄을 누르면 히트맵에서 그 타입 열이 깜빡여요</source>
+        <translation>Click a row to flash that type&apos;s column in the heatmap</translation>
+    </message>
+    <message>
+        <source>닫기</source>
+        <translation>Close</translation>
     </message>
     <message>
         <source>분석이 이 세대의 규칙을 따라요 — 상성표(페어리는 6세대부터),
@@ -1197,6 +1209,14 @@ to see its details here</translation>
         <translation>The analysis follows this generation&apos;s rules — its type chart (Fairy from gen 6),
 the physical/special split (by type up to gen 3, by move from gen 4),
 abilities &amp; natures (gen 3+) and held items (gen 2+)</translation>
+    </message>
+    <message>
+        <source>NPC 가르침</source>
+        <translation>Move tutor</translation>
+    </message>
+    <message>
+        <source>NPC 가르침(%1)</source>
+        <translation>Move tutor (%1)</translation>
     </message>
 </context>
 <context>

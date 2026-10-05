@@ -160,16 +160,12 @@
         <translation>基準のゲーム</translation>
     </message>
     <message>
-        <source>가르침 기술</source>
-        <translation type="vanished">教え技</translation>
+        <source>NPC 가르침 기술</source>
+        <translation>教え技</translation>
     </message>
     <message>
         <source>알 기술</source>
         <translation>タマゴ技</translation>
-    </message>
-    <message>
-        <source>NPC 가르침 기술</source>
-        <translation>教え技</translation>
     </message>
 </context>
 <context>
@@ -1183,12 +1179,28 @@
         <translation>進化前の姿(%1)がすでにいます</translation>
     </message>
     <message>
-        <source>NPC 가르침</source>
-        <translation>教え技</translation>
+        <source>문제 항목</source>
+        <translation>問題</translation>
     </message>
     <message>
-        <source>NPC 가르침(%1)</source>
-        <translation>教え技（%1）</translation>
+        <source>크게 보기 ↗</source>
+        <translation>拡大 ↗</translation>
+    </message>
+    <message>
+        <source>문제 전체를 큰 창에서 봐요</source>
+        <translation>すべての問題を大きなウィンドウで見る</translation>
+    </message>
+    <message>
+        <source>%1개</source>
+        <translation>%1個</translation>
+    </message>
+    <message>
+        <source>줄을 누르면 히트맵에서 그 타입 열이 깜빡여요</source>
+        <translation>行をクリックするとヒートマップでそのタイプの列が点滅します</translation>
+    </message>
+    <message>
+        <source>닫기</source>
+        <translation>閉じる</translation>
     </message>
     <message>
         <source>분석이 이 세대의 규칙을 따라요 — 상성표(페어리는 6세대부터),
@@ -1197,6 +1209,14 @@
         <translation>分析はこの世代のルールに従います — タイプ相性表（フェアリーは第6世代から）、
 物理・特殊の区分（第3世代まではタイプ、第4世代からは技ごと）、
 特性・性格（第3世代から）・持ち物（第2世代から）</translation>
+    </message>
+    <message>
+        <source>NPC 가르침</source>
+        <translation>教え技</translation>
+    </message>
+    <message>
+        <source>NPC 가르침(%1)</source>
+        <translation>教え技（%1）</translation>
     </message>
 </context>
 <context>
