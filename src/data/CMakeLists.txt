@@ -29,6 +29,8 @@ qt_add_library(pokesix_data STATIC
     repository/repository.h
     repository/repository.cpp
     text/localizedtext.h
+    text/namebook.h
+    text/namebook.cpp
     state/appstate.h
     state/appstate.cpp
     state/squadsession.h

@@ -2,6 +2,7 @@
 
 #include "data/db/gamedatabase.h"
 #include "data/logging/logging.h"
+#include "data/text/namebook.h"
 
 #include <QHash>
 #include <QSet>
@@ -204,6 +205,7 @@ QList<DexInfo> Repository::dexesForGeneration(int generation)
         DexInfo &dex = dexes[*it];
         dex.versions.append(query.value(5).toString());
         dex.versionNames.append(localized(query, 6));
+        namebook::fill(namebook::Kind::Version, dex.versions.last(), dex.versionNames.last());
         const QString group = query.value(9).toString();
         if (!dex.versionGroups.contains(group))
             dex.versionGroups.append(group);
@@ -245,6 +247,7 @@ QList<ItemRow> Repository::itemsForGeneration(int generation)
         row.category = query.value(2).toString();
         row.pocket = query.value(3).toString();
         row.name = localized(query, 4);
+        namebook::fill(namebook::Kind::Item, row.identifier, row.name); // 빈 한국어 칸 보충
         row.cost = query.value(7).toInt();
         rowOfItem.insert(row.id, rows.size());
         rows.append(row);
@@ -264,7 +267,7 @@ QList<ItemRow> Repository::itemsForGeneration(int generation)
     // 3) 기술머신: 이 세대에 담긴 기술 + 그 기술의 이 세대 타입(구간 질의)
     query.prepare(
             QStringLiteral("SELECT im.item_id, m.name_ko, m.name_en, m.name_ja, t.identifier, "
-                           "im.move_id FROM "
+                           "im.move_id, m.identifier FROM "
                            "item_machines im "
                            "JOIN moves m ON m.id = im.move_id "
                            "LEFT JOIN move_types mt ON mt.move_id = m.id AND mt.gen_from <= :g "
@@ -279,6 +282,7 @@ QList<ItemRow> Repository::itemsForGeneration(int generation)
                 continue;
             ItemRow &row = rows[*it];
             row.machineMove = localized(query, 1);
+            namebook::fill(namebook::Kind::Move, query.value(6).toString(), row.machineMove);
             row.machineType = query.value(4).toString();
             moveOfItem.insert(row.id, query.value(5).toInt());
         }
@@ -319,6 +323,9 @@ QList<ItemRow> Repository::itemsForGeneration(int generation)
             pick(rows[*it].effect, taken[id], query);
         }
     }
+    for (ItemRow &row : rows) // 어느 세대에도 한국어 문구가 없는 아이템(9세대 신규 등)
+        if (!moveOfItem.contains(row.id))
+            namebook::fill(namebook::Kind::ItemEffect, row.identifier, row.effect);
     if (!moveOfItem.isEmpty()) {
         QHash<int, QList<qsizetype>> rowsOfMove; // move id → 그 기술이 담긴 기술머신 행들
         for (auto it = moveOfItem.cbegin(); it != moveOfItem.cend(); ++it)
@@ -437,6 +444,8 @@ PokemonDetail Repository::pokemonDetail(int pokemonId, int generation, const QSt
         while (query.next()) {
             detail.groupVersions.append(query.value(0).toString());
             detail.groupGames.append(localized(query, 1));
+            namebook::fill(namebook::Kind::Version, detail.groupVersions.last(),
+                           detail.groupGames.last());
         }
     }
 
@@ -525,6 +534,7 @@ PokemonDetail Repository::pokemonDetail(int pokemonId, int generation, const QSt
             EncounterEntry e;
             e.version = query.value(0).toString();
             e.versionName = localized(query, 1);
+            namebook::fill(namebook::Kind::Version, e.version, e.versionName);
             e.location = query.value(4).toString();
             e.locationName = localized(query, 5);
             e.method = query.value(8).toString();
@@ -698,7 +708,8 @@ void Repository::fillAbilities(PokemonDetail &detail)
     QSqlQuery query(QSqlDatabase::database(m_connection));
     const int generation = detail.generation;
     query.prepare(
-            QStringLiteral("SELECT pa.slot, pa.is_hidden, a.id, a.name_ko, a.name_en, a.name_ja "
+            QStringLiteral("SELECT pa.slot, pa.is_hidden, a.id, a.name_ko, a.name_en, a.name_ja, "
+                           "a.identifier "
                            "FROM pokemon_abilities pa JOIN abilities a ON a.id = pa.ability_id "
                            "WHERE pa.pokemon_id = :p AND pa.gen_from <= :g AND (pa.gen_to IS NULL "
                            "OR pa.gen_to >= :g) "
@@ -713,6 +724,8 @@ void Repository::fillAbilities(PokemonDetail &detail)
             ability.hidden = query.value(1).toInt() != 0;
             ability.abilityId = query.value(2).toInt();
             ability.name = localized(query, 3);
+            ability.identifier = query.value(6).toString();
+            namebook::fill(namebook::Kind::Ability, ability.identifier, ability.name);
             indexOf.insert(ability.abilityId, detail.abilities.size());
             detail.abilities.append(ability);
         }
@@ -755,6 +768,8 @@ void Repository::fillAbilities(PokemonDetail &detail)
             unique.append(ability);
         }
     detail.abilities = unique;
+    for (AbilityEntry &ability : detail.abilities) // 한국어 설명이 없는 특성(9세대 신규 등)
+        namebook::fill(namebook::Kind::AbilityEffect, ability.identifier, ability.effect);
 }
 
 QList<Nature> Repository::natures()
@@ -811,6 +826,8 @@ QList<GameInfo> Repository::gamesForGeneration(int generation)
                 games.append(GameInfo {group, {}, {}});
             games.last().versions.append(query.value(1).toString());
             games.last().versionNames.append(localized(query, 2));
+            namebook::fill(namebook::Kind::Version, games.last().versions.last(),
+                           games.last().versionNames.last());
         }
     }
     return games;
@@ -948,6 +965,9 @@ void Repository::fillMoves(QList<MoveEntry> &moves, int generation)
         if (generation <= kLastTypeBasedDamageClassGeneration && move.damageClass != kStatusClass)
             move.damageClass = kPhysicalTypesBeforeSplit.contains(move.type) ? kPhysicalClass
                                                                              : kSpecialClass;
+        // PokéAPI에 한국어가 없는 이름 · 설명(다크 기술 · 9세대 신규 등)은 사전으로 채운다
+        namebook::fill(namebook::Kind::Move, move.identifier, move.name);
+        namebook::fill(namebook::Kind::MoveEffect, move.identifier, move.effect);
     }
 }
 

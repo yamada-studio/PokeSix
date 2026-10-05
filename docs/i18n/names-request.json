@@ -1,0 +1,254 @@
+{
+  "items": {
+    "orange-mail": {
+      "en": "Orange Mail",
+      "ko": ""
+    },
+    "harbor-mail": {
+      "en": "Harbor Mail",
+      "ko": ""
+    },
+    "glitter-mail": {
+      "en": "Glitter Mail",
+      "ko": ""
+    },
+    "mech-mail": {
+      "en": "Mech Mail",
+      "ko": ""
+    },
+    "wood-mail": {
+      "en": "Wood Mail",
+      "ko": ""
+    },
+    "wave-mail": {
+      "en": "Wave Mail",
+      "ko": ""
+    },
+    "bead-mail": {
+      "en": "Bead Mail",
+      "ko": ""
+    },
+    "shadow-mail": {
+      "en": "Shadow Mail",
+      "ko": ""
+    },
+    "tropic-mail": {
+      "en": "Tropic Mail",
+      "ko": ""
+    },
+    "dream-mail": {
+      "en": "Dream Mail",
+      "ko": ""
+    },
+    "fab-mail": {
+      "en": "Fab Mail",
+      "ko": ""
+    },
+    "retro-mail": {
+      "en": "Retro Mail",
+      "ko": ""
+    },
+    "devon-goods": {
+      "en": "Devon Goods",
+      "ko": ""
+    },
+    "pokeblock-case": {
+      "en": "Pokéblock Case",
+      "ko": ""
+    },
+    "rm-1-key": {
+      "en": "Rm. 1 Key",
+      "ko": ""
+    },
+    "rm-2-key": {
+      "en": "Rm. 2 Key",
+      "ko": ""
+    },
+    "rm-4-key": {
+      "en": "Rm. 4 Key",
+      "ko": ""
+    },
+    "rm-6-key": {
+      "en": "Rm. 6 Key",
+      "ko": ""
+    },
+    "bike-voucher": {
+      "en": "Bike Voucher",
+      "ko": ""
+    },
+    "fame-checker": {
+      "en": "Fame Checker",
+      "ko": ""
+    },
+    "berry-pouch": {
+      "en": "Berry Pouch",
+      "ko": ""
+    },
+    "teachy-tv": {
+      "en": "Teachy TV",
+      "ko": ""
+    },
+    "tri-pass": {
+      "en": "Tri-Pass",
+      "ko": ""
+    },
+    "rainbow-pass": {
+      "en": "Rainbow Pass",
+      "ko": ""
+    },
+    "mysticticket": {
+      "en": "MysticTicket",
+      "ko": ""
+    },
+    "auroraticket": {
+      "en": "AuroraTicket",
+      "ko": ""
+    },
+    "powder-jar": {
+      "en": "Powder Jar",
+      "ko": ""
+    },
+    "ruby": {
+      "en": "Ruby",
+      "ko": ""
+    },
+    "sapphire": {
+      "en": "Sapphire",
+      "ko": ""
+    },
+    "magma-emblem": {
+      "en": "Magma Emblem",
+      "ko": ""
+    },
+    "old-sea-map": {
+      "en": "Old Sea Map",
+      "ko": ""
+    },
+    "god-stone": {
+      "en": "god stone",
+      "ko": ""
+    },
+    "roto-stick": {
+      "en": "Roto Stick",
+      "ko": ""
+    },
+    "fresh-start-mochi": {
+      "en": "Fresh Start Mochi",
+      "ko": ""
+    }
+  },
+  "moves": {
+    "shadow-rush": {
+      "en": "Shadow Rush",
+      "ko": ""
+    },
+    "shadow-blast": {
+      "en": "Shadow Blast",
+      "ko": ""
+    },
+    "shadow-blitz": {
+      "en": "Shadow Blitz",
+      "ko": ""
+    },
+    "shadow-bolt": {
+      "en": "Shadow Bolt",
+      "ko": ""
+    },
+    "shadow-break": {
+      "en": "Shadow Break",
+      "ko": ""
+    },
+    "shadow-chill": {
+      "en": "Shadow Chill",
+      "ko": ""
+    },
+    "shadow-end": {
+      "en": "Shadow End",
+      "ko": ""
+    },
+    "shadow-fire": {
+      "en": "Shadow Fire",
+      "ko": ""
+    },
+    "shadow-rave": {
+      "en": "Shadow Rave",
+      "ko": ""
+    },
+    "shadow-storm": {
+      "en": "Shadow Storm",
+      "ko": ""
+    },
+    "shadow-wave": {
+      "en": "Shadow Wave",
+      "ko": ""
+    },
+    "shadow-down": {
+      "en": "Shadow Down",
+      "ko": ""
+    },
+    "shadow-half": {
+      "en": "Shadow Half",
+      "ko": ""
+    },
+    "shadow-hold": {
+      "en": "Shadow Hold",
+      "ko": ""
+    },
+    "shadow-mist": {
+      "en": "Shadow Mist",
+      "ko": ""
+    },
+    "shadow-panic": {
+      "en": "Shadow Panic",
+      "ko": ""
+    },
+    "shadow-shed": {
+      "en": "Shadow Shed",
+      "ko": ""
+    },
+    "shadow-sky": {
+      "en": "Shadow Sky",
+      "ko": ""
+    }
+  },
+  "abilities": {
+    "eelevate": {
+      "en": "Eelevate",
+      "ko": "",
+      "ja": ""
+    },
+    "fire-mane": {
+      "en": "Fire Mane",
+      "ko": "",
+      "ja": ""
+    },
+    "aura-guard": {
+      "en": "Aura Guard",
+      "ko": "",
+      "ja": ""
+    }
+  },
+  "versions": {
+    "the-teal-mask-scarlet": {
+      "en": "Scarlet: The Teal Mask",
+      "ko": ""
+    },
+    "the-indigo-disk-scarlet": {
+      "en": "Scarlet: The Indigo Disk",
+      "ko": ""
+    },
+    "champions": {
+      "en": "Champions",
+      "ko": "",
+      "ja": ""
+    },
+    "the-teal-mask-violet": {
+      "en": "Violet: The Teal Mask",
+      "ko": ""
+    },
+    "the-indigo-disk-violet": {
+      "en": "Violet: The Indigo Disk",
+      "ko": ""
+    }
+  }
+}

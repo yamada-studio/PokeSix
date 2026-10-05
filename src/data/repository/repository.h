@@ -145,6 +145,7 @@ struct EvolutionStep
 struct AbilityEntry
 {
     int abilityId = 0;
+    QString identifier;  // "rock-head" — 이름 · 설명 보충 사전(namebook)의 키
     int slot = 0;        // 1 · 2 = 일반, 3 = 숨겨진 특성
     bool hidden = false; // 숨겨진 특성(5세대부터)
     LocalizedText name;
