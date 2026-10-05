@@ -7,6 +7,12 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- A fill-in dictionary for Korean (and Japanese) names and descriptions PokéAPI lacks
+  (`resources/data/names.json`, read by `data/text/namebook.h`): item, move, ability and version
+  names plus item/move/ability descriptions get their empty language slots filled at run time, so
+  no data re-download is needed. `docs/i18n/` holds the audit — request files listing every entry
+  still missing Korean (680 places, 60 names, 186 descriptions) and the prompt for gathering
+  official Korean text.
 - Tutor moves are labeled "NPC 가르침" (to separate them from the Heart Scale move reminder) and
   show their cost where known — a new 비용 column right beside PP in the Pokédex detail and a
   suffix in the squad move picker. Costs carry the content they come from ("배틀프런티어 48BP").

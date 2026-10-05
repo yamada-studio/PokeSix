@@ -13,6 +13,7 @@
     <file>data/machine-locations.json</file> <!-- 기술머신 획득처 사전 -->
     <file>data/tutor-costs.json</file>       <!-- NPC 가르침 비용 사전 (BP · 조각) -->
     <file>data/place-names.json</file>       <!-- 장소 한국어 이름 사전 -->
+    <file>data/names.json</file>             <!-- 이름 · 설명 보충 사전 (PokéAPI에 없는 한국어) -->
     <file>data/encounter-methods.json</file> <!-- 야생 출현 방법 이름 -->
     <file>data/starters.json</file>          <!-- 게임별 스타팅 포켓몬 -->
     <file>data/move-effects.json</file>      <!-- 변화 기술 설명의 세대 차이 · 예외 -->

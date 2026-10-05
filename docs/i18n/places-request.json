@@ -1,0 +1,4818 @@
+{
+  "(no region)": {
+    "day-care-couple": {
+      "en": "Day-Care Couple",
+      "ko": "",
+      "ja": ""
+    },
+    "link-trade-arrive": {
+      "en": "Link trade (arrive)",
+      "ko": "",
+      "ja": ""
+    },
+    "link-trade-met": {
+      "en": "Link trade (met)",
+      "ko": "",
+      "ja": ""
+    },
+    "kanto": {
+      "en": "Kanto",
+      "ko": "",
+      "ja": ""
+    },
+    "johto": {
+      "en": "Johto",
+      "ko": "",
+      "ja": ""
+    },
+    "hoenn": {
+      "en": "Hoenn",
+      "ko": "",
+      "ja": ""
+    },
+    "sinnoh": {
+      "en": "Sinnoh",
+      "ko": "",
+      "ja": ""
+    },
+    "distant-land": {
+      "en": "Distant land",
+      "ko": "",
+      "ja": ""
+    },
+    "traveling-man": {
+      "en": "Traveling Man",
+      "ko": "",
+      "ja": ""
+    },
+    "riley": {
+      "en": "Riley",
+      "ko": "",
+      "ja": ""
+    },
+    "cynthia": {
+      "en": "Cynthia",
+      "ko": "",
+      "ja": ""
+    },
+    "mystery-zone": {
+      "en": "Mystery Zone",
+      "ko": "",
+      "ja": ""
+    },
+    "lovely-place": {
+      "en": "Lovely place",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-ranger": {
+      "en": "Pokémon Ranger",
+      "ko": "",
+      "ja": ""
+    },
+    "faraway-place": {
+      "en": "Faraway place",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-movie": {
+      "en": "Pokémon Movie",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-movie-06": {
+      "en": "Pokémon Movie 06",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-movie-07": {
+      "en": "Pokémon Movie 07",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-movie-08": {
+      "en": "Pokémon Movie 08",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-movie-09": {
+      "en": "Pokémon Movie 09",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-movie-10": {
+      "en": "Pokémon Movie 10",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-movie-11": {
+      "en": "Pokémon Movie 11",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-movie-12": {
+      "en": "Pokémon Movie 12",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-movie-13": {
+      "en": "Pokémon Movie 13",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-movie-14": {
+      "en": "Pokémon Movie 14",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-movie-15": {
+      "en": "Pokémon Movie 15",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-movie-16": {
+      "en": "Pokémon Movie 16",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-cartoon": {
+      "en": "Pokémon Cartoon",
+      "ko": "",
+      "ja": ""
+    },
+    "space-world": {
+      "en": "Space World",
+      "ko": "",
+      "ja": ""
+    },
+    "space-world-06": {
+      "en": "Space World 06",
+      "ko": "",
+      "ja": ""
+    },
+    "space-world-07": {
+      "en": "Space World 07",
+      "ko": "",
+      "ja": ""
+    },
+    "space-world-08": {
+      "en": "Space World 08",
+      "ko": "",
+      "ja": ""
+    },
+    "space-world-09": {
+      "en": "Space World 09",
+      "ko": "",
+      "ja": ""
+    },
+    "space-world-10": {
+      "en": "Space World 10",
+      "ko": "",
+      "ja": ""
+    },
+    "space-world-11": {
+      "en": "Space World 11",
+      "ko": "",
+      "ja": ""
+    },
+    "space-world-12": {
+      "en": "Space World 12",
+      "ko": "",
+      "ja": ""
+    },
+    "space-world-13": {
+      "en": "Space World 13",
+      "ko": "",
+      "ja": ""
+    },
+    "space-world-14": {
+      "en": "Space World 14",
+      "ko": "",
+      "ja": ""
+    },
+    "space-world-15": {
+      "en": "Space World 15",
+      "ko": "",
+      "ja": ""
+    },
+    "space-world-16": {
+      "en": "Space World 16",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-festa": {
+      "en": "Pokémon Festa",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-festa-06": {
+      "en": "Pokémon Festa 06",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-festa-07": {
+      "en": "Pokémon Festa 07",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-festa-08": {
+      "en": "Pokémon Festa 08",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-festa-09": {
+      "en": "Pokémon Festa 09",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-festa-10": {
+      "en": "Pokémon Festa 10",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-festa-11": {
+      "en": "Pokémon Festa 11",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-festa-12": {
+      "en": "Pokémon Festa 12",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-festa-13": {
+      "en": "Pokémon Festa 13",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-festa-14": {
+      "en": "Pokémon Festa 14",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-festa-15": {
+      "en": "Pokémon Festa 15",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-festa-16": {
+      "en": "Pokémon Festa 16",
+      "ko": "",
+      "ja": ""
+    },
+    "pokepark": {
+      "en": "POKéPARK",
+      "ko": "",
+      "ja": ""
+    },
+    "pokepark-06": {
+      "en": "POKéPARK 06",
+      "ko": "",
+      "ja": ""
+    },
+    "pokepark-07": {
+      "en": "POKéPARK 07",
+      "ko": "",
+      "ja": ""
+    },
+    "pokepark-08": {
+      "en": "POKéPARK 08",
+      "ko": "",
+      "ja": ""
+    },
+    "pokepark-09": {
+      "en": "POKéPARK 09",
+      "ko": "",
+      "ja": ""
+    },
+    "pokepark-10": {
+      "en": "POKéPARK 10",
+      "ko": "",
+      "ja": ""
+    },
+    "pokepark-11": {
+      "en": "POKéPARK 11",
+      "ko": "",
+      "ja": ""
+    },
+    "pokepark-12": {
+      "en": "POKéPARK 12",
+      "ko": "",
+      "ja": ""
+    },
+    "pokepark-13": {
+      "en": "POKéPARK 13",
+      "ko": "",
+      "ja": ""
+    },
+    "pokepark-14": {
+      "en": "POKéPARK 14",
+      "ko": "",
+      "ja": ""
+    },
+    "pokepark-15": {
+      "en": "POKéPARK 15",
+      "ko": "",
+      "ja": ""
+    },
+    "pokepark-16": {
+      "en": "POKéPARK 16",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-center": {
+      "en": "Pokémon Center",
+      "ko": "",
+      "ja": ""
+    },
+    "pc-tokyo": {
+      "en": "PC Tokyo",
+      "ko": "",
+      "ja": ""
+    },
+    "pc-osaka": {
+      "en": "PC Osaka",
+      "ko": "",
+      "ja": ""
+    },
+    "pc-fukuoka": {
+      "en": "PC Fukuoka",
+      "ko": "",
+      "ja": ""
+    },
+    "pc-nagoya": {
+      "en": "PC Nagoya",
+      "ko": "",
+      "ja": ""
+    },
+    "pc-sapporo": {
+      "en": "PC Sapporo",
+      "ko": "",
+      "ja": ""
+    },
+    "pc-yokohama": {
+      "en": "PC Yokohama",
+      "ko": "",
+      "ja": ""
+    },
+    "nintendo-world": {
+      "en": "Nintendo World",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-event": {
+      "en": "Pokémon Event",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-event-06": {
+      "en": "Pokémon Event 06",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-event-07": {
+      "en": "Pokémon Event 07",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-event-08": {
+      "en": "Pokémon Event 08",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-event-09": {
+      "en": "Pokémon Event 09",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-event-10": {
+      "en": "Pokémon Event 10",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-event-11": {
+      "en": "Pokémon Event 11",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-event-12": {
+      "en": "Pokémon Event 12",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-event-13": {
+      "en": "Pokémon Event 13",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-event-14": {
+      "en": "Pokémon Event 14",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-event-15": {
+      "en": "Pokémon Event 15",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-event-16": {
+      "en": "Pokémon Event 16",
+      "ko": "",
+      "ja": ""
+    },
+    "wi-fi-event": {
+      "en": "Wi-Fi Event",
+      "ko": "",
+      "ja": ""
+    },
+    "wi-fi-gift": {
+      "en": "Wi-Fi Gift",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-fan-club": {
+      "en": "Pokémon Fan Club",
+      "ko": "",
+      "ja": ""
+    },
+    "event-site": {
+      "en": "Event Site",
+      "ko": "",
+      "ja": ""
+    },
+    "concert-event": {
+      "en": "Concert Event",
+      "ko": "",
+      "ja": ""
+    },
+    "mr-pokemon": {
+      "en": "Mr. Pokémon",
+      "ko": "",
+      "ja": ""
+    },
+    "primo": {
+      "en": "Primo",
+      "ko": "",
+      "ja": ""
+    }
+  },
+  "Kanto": {
+    "celadon-city": {
+      "en": "Celadon City",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Blue",
+        "Crystal",
+        "FireRed",
+        "Gold",
+        "Green",
+        "HeartGold",
+        "LeafGreen",
+        "Let’s Go, Eevee!",
+        "Let’s Go, Pikachu!",
+        "Red",
+        "Silver",
+        "SoulSilver",
+        "Yellow"
+      ]
+    },
+    "cerulean-city": {
+      "en": "Cerulean City",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Blue",
+        "Crystal",
+        "FireRed",
+        "Gold",
+        "Green",
+        "HeartGold",
+        "LeafGreen",
+        "Let’s Go, Eevee!",
+        "Let’s Go, Pikachu!",
+        "Red",
+        "Silver",
+        "SoulSilver",
+        "Yellow"
+      ]
+    },
+    "cinnabar-island": {
+      "en": "Cinnabar Island",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Blue",
+        "Crystal",
+        "FireRed",
+        "Gold",
+        "Green",
+        "HeartGold",
+        "LeafGreen",
+        "Let’s Go, Eevee!",
+        "Let’s Go, Pikachu!",
+        "Red",
+        "Silver",
+        "SoulSilver",
+        "Yellow"
+      ]
+    },
+    "digletts-cave": {
+      "en": "Diglett's Cave",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Blue",
+        "Crystal",
+        "FireRed",
+        "Gold",
+        "Green",
+        "HeartGold",
+        "LeafGreen",
+        "Let’s Go, Eevee!",
+        "Let’s Go, Pikachu!",
+        "Red",
+        "Silver",
+        "SoulSilver",
+        "Yellow"
+      ]
+    },
+    "fuchsia-city": {
+      "en": "Fuchsia City",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Blue",
+        "Crystal",
+        "FireRed",
+        "Gold",
+        "Green",
+        "HeartGold",
+        "LeafGreen",
+        "Let’s Go, Eevee!",
+        "Let’s Go, Pikachu!",
+        "Red",
+        "Silver",
+        "SoulSilver",
+        "Yellow"
+      ]
+    },
+    "mt-moon": {
+      "en": "Mt. Moon",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Blue",
+        "Crystal",
+        "FireRed",
+        "Gold",
+        "Green",
+        "HeartGold",
+        "LeafGreen",
+        "Let’s Go, Eevee!",
+        "Let’s Go, Pikachu!",
+        "Red",
+        "Silver",
+        "SoulSilver",
+        "Yellow"
+      ]
+    },
+    "rock-tunnel": {
+      "en": "Rock Tunnel",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Blue",
+        "Crystal",
+        "FireRed",
+        "Gold",
+        "Green",
+        "HeartGold",
+        "LeafGreen",
+        "Let’s Go, Eevee!",
+        "Let’s Go, Pikachu!",
+        "Red",
+        "Silver",
+        "SoulSilver",
+        "Yellow"
+      ]
+    },
+    "seafoam-islands": {
+      "en": "Seafoam Islands",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Blue",
+        "FireRed",
+        "Green",
+        "HeartGold",
+        "LeafGreen",
+        "Let’s Go, Eevee!",
+        "Let’s Go, Pikachu!",
+        "Red",
+        "SoulSilver",
+        "Yellow"
+      ]
+    },
+    "cerulean-cave": {
+      "en": "Cerulean Cave",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Blue",
+        "FireRed",
+        "Green",
+        "HeartGold",
+        "LeafGreen",
+        "Let’s Go, Eevee!",
+        "Let’s Go, Pikachu!",
+        "Red",
+        "SoulSilver",
+        "Yellow"
+      ]
+    },
+    "vermilion-city": {
+      "en": "Vermilion City",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Blue",
+        "Crystal",
+        "FireRed",
+        "Gold",
+        "Green",
+        "HeartGold",
+        "LeafGreen",
+        "Let’s Go, Eevee!",
+        "Let’s Go, Pikachu!",
+        "Red",
+        "Silver",
+        "SoulSilver",
+        "Yellow"
+      ]
+    },
+    "kanto-victory-road-1": {
+      "en": "Victory Road",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Let’s Go, Eevee!",
+        "Let’s Go, Pikachu!",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "viridian-city": {
+      "en": "Viridian City",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Blue",
+        "Crystal",
+        "FireRed",
+        "Gold",
+        "Green",
+        "HeartGold",
+        "LeafGreen",
+        "Red",
+        "Silver",
+        "SoulSilver",
+        "Yellow"
+      ]
+    },
+    "viridian-forest": {
+      "en": "Viridian Forest",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Blue",
+        "FireRed",
+        "Green",
+        "HeartGold",
+        "LeafGreen",
+        "Let’s Go, Eevee!",
+        "Let’s Go, Pikachu!",
+        "Red",
+        "SoulSilver",
+        "Yellow"
+      ]
+    },
+    "kanto-power-plant": {
+      "en": "Kanto Power Plant",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Blue",
+        "Crystal",
+        "FireRed",
+        "Green",
+        "HeartGold",
+        "LeafGreen",
+        "Let’s Go, Eevee!",
+        "Let’s Go, Pikachu!",
+        "Red",
+        "SoulSilver",
+        "Yellow"
+      ]
+    },
+    "kanto-victory-road-2": {
+      "en": "Victory Road",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Blue",
+        "FireRed",
+        "Green",
+        "LeafGreen",
+        "Red",
+        "Yellow"
+      ]
+    },
+    "pokemon-tower": {
+      "en": "Pokémon Tower",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Blue",
+        "FireRed",
+        "Green",
+        "LeafGreen",
+        "Let’s Go, Eevee!",
+        "Let’s Go, Pikachu!",
+        "Red",
+        "Yellow"
+      ]
+    },
+    "pokemon-mansion": {
+      "en": "Pokémon Mansion",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Blue",
+        "FireRed",
+        "Green",
+        "LeafGreen",
+        "Let’s Go, Eevee!",
+        "Let’s Go, Pikachu!",
+        "Red",
+        "Yellow"
+      ]
+    },
+    "kanto-safari-zone": {
+      "en": "Safari Zone",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Blue",
+        "FireRed",
+        "Green",
+        "LeafGreen",
+        "Red",
+        "Yellow"
+      ]
+    },
+    "pewter-city": {
+      "en": "Pewter City",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "lavender-town": {
+      "en": "Lavender Town",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Let’s Go, Eevee!",
+        "Let’s Go, Pikachu!"
+      ]
+    },
+    "indigo-plateau": {
+      "en": "Indigo Plateau",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Let’s Go, Eevee!",
+        "Let’s Go, Pikachu!"
+      ]
+    },
+    "saffron-city": {
+      "en": "Saffron City",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Blue",
+        "FireRed",
+        "Green",
+        "HeartGold",
+        "LeafGreen",
+        "Let’s Go, Eevee!",
+        "Let’s Go, Pikachu!",
+        "Red",
+        "SoulSilver",
+        "Yellow"
+      ]
+    },
+    "monean-chamber": {
+      "en": "Monean Chamber",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "liptoo-chamber": {
+      "en": "Liptoo Chamber",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "weepth-chamber": {
+      "en": "Weepth Chamber",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "dilford-chamber": {
+      "en": "Dilford Chamber",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "scufib-chamber": {
+      "en": "Scufib Chamber",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "rixy-chamber": {
+      "en": "Rixy Chamber",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "viapos-chamber": {
+      "en": "Viapos Chamber",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "ss-anne": {
+      "en": "S.S. Anne",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "mt-ember": {
+      "en": "Mt. Ember",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "berry-forest": {
+      "en": "Berry Forest",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "icefall-cave": {
+      "en": "Icefall Cave",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "pattern-bush": {
+      "en": "Pattern Bush",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "lost-cave": {
+      "en": "Lost Cave",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "kindle-road": {
+      "en": "Kindle Road",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "treasure-beach": {
+      "en": "Treasure Beach",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "cape-brink": {
+      "en": "Cape Brink",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "bond-bridge": {
+      "en": "Bond Bridge",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "three-isle-port": {
+      "en": "Three Isle Port",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "resort-gorgeous": {
+      "en": "Resort Gorgeous",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "water-labyrinth": {
+      "en": "Water Labyrinth",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "five-isle-meadow": {
+      "en": "Five Isle Meadow",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "memorial-pillar": {
+      "en": "Memorial Pillar",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "outcast-island": {
+      "en": "Outcast Island",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "green-path": {
+      "en": "Green Path",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "water-path": {
+      "en": "Water Path",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "ruin-valley": {
+      "en": "Ruin Valley",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "trainer-tower": {
+      "en": "Trainer Tower",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "canyon-entrance": {
+      "en": "Canyon Entrance",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "sevault-canyon": {
+      "en": "Sevault Canyon",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "tanoby-ruins": {
+      "en": "Tanoby Ruins",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "one-island": {
+      "en": "One Island",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "four-island": {
+      "en": "Four Island",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "five-island": {
+      "en": "Five Island",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "kanto-altering-cave": {
+      "en": "Altering Cave",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "roaming-kanto": {
+      "en": "Roaming Kanto",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "two-island": {
+      "en": "Two Island",
+      "ko": "",
+      "ja": ""
+    },
+    "three-island": {
+      "en": "Three Island",
+      "ko": "",
+      "ja": ""
+    },
+    "three-isle-path": {
+      "en": "Three Isle Path",
+      "ko": "",
+      "ja": ""
+    },
+    "six-island": {
+      "en": "Six Island",
+      "ko": "",
+      "ja": ""
+    },
+    "seven-island": {
+      "en": "Seven Island",
+      "ko": "",
+      "ja": ""
+    },
+    "birth-island": {
+      "en": "Birth Island",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Emerald",
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "navel-rock": {
+      "en": "Navel Rock",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Emerald",
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "kanto-pokemart": {
+      "en": "kanto-pokemart",
+      "ko": "",
+      "ja": ""
+    },
+    "kanto-pokecenter": {
+      "en": "kanto-pokecenter",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "FireRed",
+        "LeafGreen"
+      ]
+    },
+    "kanto-underground-path": {
+      "en": "Kanto Underground Path",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Blue",
+        "FireRed",
+        "LeafGreen",
+        "Red",
+        "Yellow"
+      ]
+    }
+  },
+  "Johto": {
+    "blackthorn-city": {
+      "en": "Blackthorn City",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "burned-tower": {
+      "en": "Burned Tower",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "cherrygrove-city": {
+      "en": "Cherrygrove City",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "cianwood-city": {
+      "en": "Cianwood City",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "dark-cave": {
+      "en": "Dark Cave",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "dragons-den": {
+      "en": "Dragon's Den",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "ecruteak-city": {
+      "en": "Ecruteak City",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "ice-path": {
+      "en": "Ice Path",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "ilex-forest": {
+      "en": "Ilex Forest",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "lake-of-rage": {
+      "en": "Lake of Rage",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "mt-mortar": {
+      "en": "Mt. Mortar",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "national-park": {
+      "en": "National Park",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "new-bark-town": {
+      "en": "New Bark Town",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "olivine-city": {
+      "en": "Olivine City",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "ruins-of-alph": {
+      "en": "Ruins of Alph",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "slowpoke-well": {
+      "en": "Slowpoke Well",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "sprout-tower": {
+      "en": "Sprout Tower",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "bell-tower": {
+      "en": "Bell Tower",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "tohjo-falls": {
+      "en": "Tohjo Falls",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "union-cave": {
+      "en": "Union Cave",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "unknown-all-poliwag": {
+      "en": "Unknown; all Poliwag",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "HeartGold",
+        "SoulSilver"
+      ]
+    },
+    "unknown-all-rattata": {
+      "en": "Unknown; all Rattata",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "HeartGold",
+        "SoulSilver"
+      ]
+    },
+    "unknown-all-bugs": {
+      "en": "Unknown; all bugs",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "HeartGold",
+        "SoulSilver"
+      ]
+    },
+    "violet-city": {
+      "en": "Violet City",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "whirl-islands": {
+      "en": "Whirl Islands",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "azalea-town": {
+      "en": "Azalea Town",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "goldenrod-city": {
+      "en": "Goldenrod City",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "mahogany-town": {
+      "en": "Mahogany Town",
+      "ko": "",
+      "ja": ""
+    },
+    "johto-lighthouse": {
+      "en": "Lighthouse",
+      "ko": "",
+      "ja": ""
+    },
+    "team-rocket-hq": {
+      "en": "Team Rocket HQ",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "goldenrod-tunnel": {
+      "en": "Goldenrod Tunnel",
+      "ko": "",
+      "ja": ""
+    },
+    "mt-silver-cave": {
+      "en": "Mt. Silver Cave",
+      "ko": "",
+      "ja": ""
+    },
+    "pokeathlon-dome": {
+      "en": "Pokéathlon Dome",
+      "ko": "",
+      "ja": ""
+    },
+    "ss-aqua": {
+      "en": "S.S. Aqua",
+      "ko": "",
+      "ja": ""
+    },
+    "safari-zone-gate": {
+      "en": "Safari Zone Gate",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "HeartGold",
+        "SoulSilver"
+      ]
+    },
+    "cliff-cave": {
+      "en": "Cliff Cave",
+      "ko": "",
+      "ja": ""
+    },
+    "frontier-access": {
+      "en": "Frontier Access",
+      "ko": "",
+      "ja": ""
+    },
+    "bellchime-trail": {
+      "en": "Bellchime Trail",
+      "ko": "",
+      "ja": ""
+    },
+    "sinjoh-ruins": {
+      "en": "Sinjoh Ruins",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "HeartGold",
+        "SoulSilver"
+      ]
+    },
+    "embedded-tower": {
+      "en": "Embedded Tower",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "HeartGold",
+        "SoulSilver"
+      ]
+    },
+    "pokewalker": {
+      "en": "Pokéwalker",
+      "ko": "",
+      "ja": ""
+    },
+    "cliff-edge-gate": {
+      "en": "Cliff Edge Gate",
+      "ko": "",
+      "ja": ""
+    },
+    "radio-tower": {
+      "en": "Radio Tower",
+      "ko": "",
+      "ja": ""
+    },
+    "roaming-johto": {
+      "en": "Roaming Johto",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Crystal",
+        "Gold",
+        "HeartGold",
+        "Silver",
+        "SoulSilver"
+      ]
+    },
+    "johto-safari-zone": {
+      "en": "Johto Safari Zone",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "HeartGold",
+        "SoulSilver"
+      ]
+    },
+    "johto-pokemart": {
+      "en": "johto-pokemart",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "HeartGold",
+        "SoulSilver"
+      ]
+    }
+  },
+  "Hoenn": {
+    "abandoned-ship": {
+      "en": "Abandoned Ship",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Emerald",
+        "Ruby",
+        "Sapphire"
+      ]
+    },
+    "magma-hideout": {
+      "en": "Magma Hideout",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Emerald"
+      ]
+    },
+    "mirage-tower": {
+      "en": "Mirage Tower",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Emerald"
+      ]
+    },
+    "desert-underpass": {
+      "en": "Desert Underpass",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Emerald"
+      ]
+    },
+    "artisan-cave": {
+      "en": "Artisan Cave",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Emerald"
+      ]
+    },
+    "hoenn-altering-cave": {
+      "en": "Altering Cave",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Emerald"
+      ]
+    },
+    "underwater": {
+      "en": "Underwater",
+      "ko": "",
+      "ja": ""
+    },
+    "hoenn-battle-tower": {
+      "en": "Battle Tower",
+      "ko": "",
+      "ja": ""
+    },
+    "roaming-hoenn": {
+      "en": "Roaming Hoenn",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Emerald",
+        "Ruby",
+        "Sapphire"
+      ]
+    },
+    "terra-cave": {
+      "en": "Terra Cave",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Emerald"
+      ]
+    },
+    "marine-cave": {
+      "en": "Marine Cave",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Emerald"
+      ]
+    },
+    "faraway-island": {
+      "en": "Faraway Island",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Emerald"
+      ]
+    },
+    "hoenn-battle-frontier": {
+      "en": "Hoenn Battle Frontier",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Emerald"
+      ]
+    },
+    "mossdeep-space-center": {
+      "en": "Mossdeep Space Center",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Alpha Sapphire",
+        "Omega Ruby"
+      ]
+    },
+    "hoenn-pokemart": {
+      "en": "hoenn-pokemart",
+      "ko": "",
+      "ja": ""
+    },
+    "hoenn-pokecenter": {
+      "en": "hoenn-pokecenter",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Emerald",
+        "Ruby",
+        "Sapphire"
+      ]
+    },
+    "mirage-island": {
+      "en": "mirage-island",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Emerald",
+        "Ruby",
+        "Sapphire"
+      ]
+    }
+  },
+  "Sinnoh": {
+    "sinnoh-pokemon-league": {
+      "en": "Pokémon League",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Diamond",
+        "Pearl",
+        "Platinum"
+      ]
+    },
+    "oreburgh-mine": {
+      "en": "Oreburgh Mine",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Diamond",
+        "Pearl",
+        "Platinum"
+      ]
+    },
+    "great-marsh": {
+      "en": "Great Marsh",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Diamond",
+        "Pearl",
+        "Platinum"
+      ]
+    },
+    "solaceon-ruins": {
+      "en": "Solaceon Ruins",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Diamond",
+        "Pearl",
+        "Platinum"
+      ]
+    },
+    "spring-path": {
+      "en": "Spring Path",
+      "ko": "",
+      "ja": ""
+    },
+    "turnback-cave": {
+      "en": "Turnback Cave",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Diamond",
+        "Pearl",
+        "Platinum"
+      ]
+    },
+    "snowpoint-temple": {
+      "en": "Snowpoint Temple",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Diamond",
+        "Pearl",
+        "Platinum"
+      ]
+    },
+    "trophy-garden": {
+      "en": "Trophy Garden",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Diamond",
+        "Pearl",
+        "Platinum"
+      ]
+    },
+    "valor-lakefront": {
+      "en": "Valor Lakefront",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Diamond",
+        "Pearl",
+        "Platinum"
+      ]
+    },
+    "acuity-lakefront": {
+      "en": "Acuity Lakefront",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Diamond",
+        "Pearl",
+        "Platinum"
+      ]
+    },
+    "twinleaf-town": {
+      "en": "Twinleaf Town",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Diamond",
+        "Pearl",
+        "Platinum"
+      ]
+    },
+    "resort-area": {
+      "en": "Resort Area",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Diamond",
+        "Pearl",
+        "Platinum"
+      ]
+    },
+    "sandgem-town": {
+      "en": "Sandgem Town",
+      "ko": "",
+      "ja": ""
+    },
+    "floaroma-town": {
+      "en": "Floaroma Town",
+      "ko": "",
+      "ja": ""
+    },
+    "solaceon-town": {
+      "en": "Solaceon Town",
+      "ko": "",
+      "ja": ""
+    },
+    "jubilife-city": {
+      "en": "Jubilife City",
+      "ko": "",
+      "ja": ""
+    },
+    "spear-pillar": {
+      "en": "Spear Pillar",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Diamond",
+        "Pearl",
+        "Platinum"
+      ]
+    },
+    "pal-park": {
+      "en": "Pal Park",
+      "ko": "",
+      "ja": ""
+    },
+    "amity-square": {
+      "en": "Amity Square",
+      "ko": "",
+      "ja": ""
+    },
+    "floaroma-meadow": {
+      "en": "Floaroma Meadow",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Diamond",
+        "Pearl",
+        "Platinum"
+      ]
+    },
+    "fullmoon-island": {
+      "en": "Fullmoon Island",
+      "ko": "",
+      "ja": ""
+    },
+    "sendoff-spring": {
+      "en": "Sendoff Spring",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Diamond",
+        "Pearl",
+        "Platinum"
+      ]
+    },
+    "flower-paradise": {
+      "en": "Flower Paradise",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Diamond",
+        "Pearl",
+        "Platinum"
+      ]
+    },
+    "maniac-tunnel": {
+      "en": "Maniac Tunnel",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Diamond",
+        "Pearl",
+        "Platinum"
+      ]
+    },
+    "galactic-hq": {
+      "en": "Galactic HQ",
+      "ko": "",
+      "ja": ""
+    },
+    "verity-lakefront": {
+      "en": "Verity Lakefront",
+      "ko": "",
+      "ja": ""
+    },
+    "newmoon-island": {
+      "en": "Newmoon Island",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Diamond",
+        "Pearl",
+        "Platinum"
+      ]
+    },
+    "sinnoh-battle-tower": {
+      "en": "Battle Tower",
+      "ko": "",
+      "ja": ""
+    },
+    "fight-area": {
+      "en": "Fight Area",
+      "ko": "",
+      "ja": ""
+    },
+    "survival-area": {
+      "en": "Survival Area",
+      "ko": "",
+      "ja": ""
+    },
+    "seabreak-path": {
+      "en": "Seabreak Path",
+      "ko": "",
+      "ja": ""
+    },
+    "sinnoh-hall-of-origin-1": {
+      "en": "Hall of Origin",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Diamond",
+        "Pearl",
+        "Platinum"
+      ]
+    },
+    "sinnoh-hall-of-origin-2": {
+      "en": "Hall of Origin",
+      "ko": "",
+      "ja": ""
+    },
+    "verity-cavern": {
+      "en": "Verity Cavern",
+      "ko": "",
+      "ja": ""
+    },
+    "valor-cavern": {
+      "en": "Valor Cavern",
+      "ko": "",
+      "ja": ""
+    },
+    "acuity-cavern": {
+      "en": "Acuity Cavern",
+      "ko": "",
+      "ja": ""
+    },
+    "jubilife-tv": {
+      "en": "Jubilife TV",
+      "ko": "",
+      "ja": ""
+    },
+    "poketch-co": {
+      "en": "Pokétch Co.",
+      "ko": "",
+      "ja": ""
+    },
+    "gts": {
+      "en": "GTS",
+      "ko": "",
+      "ja": ""
+    },
+    "trainers-school": {
+      "en": "Trainers’ School",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Ultra Moon",
+        "Ultra Sun"
+      ]
+    },
+    "mining-museum": {
+      "en": "Mining Museum",
+      "ko": "",
+      "ja": ""
+    },
+    "sinnoh-flower-shop": {
+      "en": "Flower Shop",
+      "ko": "",
+      "ja": ""
+    },
+    "sinnoh-cycle-shop": {
+      "en": "Cycle Shop",
+      "ko": "",
+      "ja": ""
+    },
+    "contest-hall": {
+      "en": "Contest Hall",
+      "ko": "",
+      "ja": ""
+    },
+    "poffin-house": {
+      "en": "Poffin House",
+      "ko": "",
+      "ja": ""
+    },
+    "sinnoh-foreign-building": {
+      "en": "Foreign Building",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-day-care": {
+      "en": "Pokémon Day Care",
+      "ko": "",
+      "ja": ""
+    },
+    "veilstone-store": {
+      "en": "Veilstone Store",
+      "ko": "",
+      "ja": ""
+    },
+    "sinnoh-game-corner": {
+      "en": "Game Corner",
+      "ko": "",
+      "ja": ""
+    },
+    "canalave-library": {
+      "en": "Canalave Library",
+      "ko": "",
+      "ja": ""
+    },
+    "vista-lighthouse": {
+      "en": "Vista Lighthouse",
+      "ko": "",
+      "ja": ""
+    },
+    "sunyshore-market": {
+      "en": "Sunyshore Market",
+      "ko": "",
+      "ja": ""
+    },
+    "footstep-house": {
+      "en": "Footstep House",
+      "ko": "",
+      "ja": ""
+    },
+    "sinnoh-cafe": {
+      "en": "Café",
+      "ko": "",
+      "ja": ""
+    },
+    "grand-lake": {
+      "en": "Grand Lake",
+      "ko": "",
+      "ja": ""
+    },
+    "sinnoh-restaurant": {
+      "en": "Restaurant",
+      "ko": "",
+      "ja": ""
+    },
+    "battle-park": {
+      "en": "Battle Park",
+      "ko": "",
+      "ja": ""
+    },
+    "battle-frontier": {
+      "en": "Battle Frontier",
+      "ko": "",
+      "ja": ""
+    },
+    "battle-factory": {
+      "en": "Battle Factory",
+      "ko": "",
+      "ja": ""
+    },
+    "battle-castle": {
+      "en": "Battle Castle",
+      "ko": "",
+      "ja": ""
+    },
+    "battle-arcade": {
+      "en": "Battle Arcade",
+      "ko": "",
+      "ja": ""
+    },
+    "battle-hall": {
+      "en": "Battle Hall",
+      "ko": "",
+      "ja": ""
+    },
+    "distortion-world": {
+      "en": "Distortion World",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Platinum"
+      ]
+    },
+    "sinnoh-global-terminal": {
+      "en": "Global Terminal",
+      "ko": "",
+      "ja": ""
+    },
+    "sinnoh-villa": {
+      "en": "Villa",
+      "ko": "",
+      "ja": ""
+    },
+    "battleground": {
+      "en": "Battleground",
+      "ko": "",
+      "ja": ""
+    },
+    "rotoms-room": {
+      "en": "ROTOM's Room",
+      "ko": "",
+      "ja": ""
+    },
+    "tg-eterna-bldg": {
+      "en": "T.G. Eterna Bldg",
+      "ko": "",
+      "ja": ""
+    },
+    "iron-ruins": {
+      "en": "Iron Ruins",
+      "ko": "",
+      "ja": ""
+    },
+    "iceberg-ruins": {
+      "en": "Iceberg Ruins",
+      "ko": "",
+      "ja": ""
+    },
+    "rock-peak-ruins": {
+      "en": "Rock Peak Ruins",
+      "ko": "",
+      "ja": ""
+    },
+    "roaming-sinnoh": {
+      "en": "Roaming Sinnoh",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Diamond",
+        "Pearl",
+        "Platinum"
+      ]
+    },
+    "sinnoh-pokemart": {
+      "en": "sinnoh-pokemart",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Diamond",
+        "Pearl",
+        "Platinum"
+      ]
+    }
+  },
+  "Unova": {
+    "unova-mystery-zone": {
+      "en": "Mystery Zone",
+      "ko": ""
+    },
+    "unova-faraway-place": {
+      "en": "Faraway place",
+      "ko": ""
+    },
+    "nuvema-town": {
+      "en": "Nuvema Town",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "White"
+      ]
+    },
+    "accumula-town": {
+      "en": "Accumula Town",
+      "ko": "",
+      "seen_in": [
+        "Black 2",
+        "White 2"
+      ]
+    },
+    "striaton-city": {
+      "en": "Striaton City",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "Black 2",
+        "White",
+        "White 2"
+      ]
+    },
+    "nacrene-city": {
+      "en": "Nacrene City",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "Black 2",
+        "White",
+        "White 2"
+      ]
+    },
+    "castelia-city": {
+      "en": "Castelia City",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "Black 2",
+        "White",
+        "White 2"
+      ]
+    },
+    "nimbasa-city": {
+      "en": "Nimbasa City",
+      "ko": ""
+    },
+    "driftveil-city": {
+      "en": "Driftveil City",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "Black 2",
+        "White",
+        "White 2"
+      ]
+    },
+    "mistralton-city": {
+      "en": "Mistralton City",
+      "ko": ""
+    },
+    "icirrus-city": {
+      "en": "Icirrus City",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "Black 2",
+        "White",
+        "White 2"
+      ]
+    },
+    "opelucid-city": {
+      "en": "Opelucid City",
+      "ko": ""
+    },
+    "dreamyard": {
+      "en": "Dreamyard",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "Black 2",
+        "White",
+        "White 2"
+      ]
+    },
+    "pinwheel-forest": {
+      "en": "Pinwheel Forest",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "Black 2",
+        "White",
+        "White 2"
+      ]
+    },
+    "desert-resort": {
+      "en": "Desert Resort",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "Black 2",
+        "White",
+        "White 2"
+      ]
+    },
+    "relic-castle": {
+      "en": "Relic Castle",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "Black 2",
+        "White",
+        "White 2"
+      ]
+    },
+    "cold-storage": {
+      "en": "Cold Storage",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "White"
+      ]
+    },
+    "chargestone-cave": {
+      "en": "Chargestone Cave",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "Black 2",
+        "White",
+        "White 2"
+      ]
+    },
+    "twist-mountain": {
+      "en": "Twist Mountain",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "Black 2",
+        "White",
+        "White 2"
+      ]
+    },
+    "dragonspiral-tower": {
+      "en": "Dragonspiral Tower",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "Black 2",
+        "White",
+        "White 2"
+      ]
+    },
+    "unova-victory-road": {
+      "en": "Victory Road",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "Black 2",
+        "White",
+        "White 2"
+      ]
+    },
+    "lacunosa-town": {
+      "en": "Lacunosa Town",
+      "ko": ""
+    },
+    "undella-town": {
+      "en": "Undella Town",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "Black 2",
+        "White",
+        "White 2"
+      ]
+    },
+    "anville-town": {
+      "en": "Anville Town",
+      "ko": ""
+    },
+    "unova-pokemon-league": {
+      "en": "Pokémon League",
+      "ko": ""
+    },
+    "ns-castle": {
+      "en": "N's Castle",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "White"
+      ]
+    },
+    "royal-unova": {
+      "en": "Royal Unova",
+      "ko": ""
+    },
+    "gear-station": {
+      "en": "Gear Station",
+      "ko": ""
+    },
+    "battle-subway": {
+      "en": "Battle Subway",
+      "ko": ""
+    },
+    "musical-theater": {
+      "en": "Musical Theater",
+      "ko": ""
+    },
+    "black-city": {
+      "en": "Black City",
+      "ko": ""
+    },
+    "white-forest": {
+      "en": "White Forest",
+      "ko": ""
+    },
+    "unity-tower": {
+      "en": "Unity Tower",
+      "ko": ""
+    },
+    "wellspring-cave": {
+      "en": "Wellspring Cave",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "Black 2",
+        "White",
+        "White 2"
+      ]
+    },
+    "mistralton-cave": {
+      "en": "Mistralton Cave",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "Black 2",
+        "White",
+        "White 2"
+      ]
+    },
+    "rumination-field": {
+      "en": "Rumination Field",
+      "ko": ""
+    },
+    "celestial-tower": {
+      "en": "Celestial Tower",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "Black 2",
+        "White",
+        "White 2"
+      ]
+    },
+    "moor-of-icirrus": {
+      "en": "Moor of Icirrus",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "Black 2",
+        "White",
+        "White 2"
+      ]
+    },
+    "unova-shopping-mall": {
+      "en": "Shopping Mall",
+      "ko": ""
+    },
+    "challengers-cave": {
+      "en": "Challenger's Cave",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "White"
+      ]
+    },
+    "poke-transfer-lab": {
+      "en": "Poké Transfer Lab",
+      "ko": ""
+    },
+    "giant-chasm": {
+      "en": "Giant Chasm",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "Black 2",
+        "White",
+        "White 2"
+      ]
+    },
+    "liberty-garden": {
+      "en": "Liberty Garden",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "White"
+      ]
+    },
+    "p2-laboratory": {
+      "en": "P2 Laboratory",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "Black 2",
+        "White",
+        "White 2"
+      ]
+    },
+    "skyarrow-bridge": {
+      "en": "Skyarrow Bridge",
+      "ko": ""
+    },
+    "driftveil-drawbridge": {
+      "en": "Driftveil Drawbridge",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "Black 2",
+        "White",
+        "White 2"
+      ]
+    },
+    "tubeline-bridge": {
+      "en": "Tubeline Bridge",
+      "ko": ""
+    },
+    "village-bridge": {
+      "en": "Village Bridge",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "Black 2",
+        "White",
+        "White 2"
+      ]
+    },
+    "marvelous-bridge": {
+      "en": "Marvelous Bridge",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "Black 2",
+        "White",
+        "White 2"
+      ]
+    },
+    "entralink": {
+      "en": "Entralink",
+      "ko": ""
+    },
+    "abundant-shrine": {
+      "en": "Abundant Shrine",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "Black 2",
+        "White",
+        "White 2"
+      ]
+    },
+    "undella-bay": {
+      "en": "Undella Bay",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "Black 2",
+        "White",
+        "White 2"
+      ]
+    },
+    "lostlorn-forest": {
+      "en": "Lostlorn Forest",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "Black 2",
+        "White",
+        "White 2"
+      ]
+    },
+    "trial-chamber": {
+      "en": "Trial Chamber",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "White"
+      ]
+    },
+    "guidance-chamber": {
+      "en": "Guidance Chamber",
+      "ko": "",
+      "seen_in": [
+        "Black",
+        "Black 2",
+        "White",
+        "White 2"
+      ]
+    },
+    "entree-forest": {
+      "en": "Entree Forest",
+      "ko": ""
+    },
+    "accumula-gate": {
+      "en": "Accumula Gate",
+      "ko": ""
+    },
+    "undella-gate": {
+      "en": "Undella Gate",
+      "ko": ""
+    },
+    "nacrene-gate": {
+      "en": "Nacrene Gate",
+      "ko": ""
+    },
+    "castelia-gate": {
+      "en": "Castelia Gate",
+      "ko": ""
+    },
+    "nimbasa-gate": {
+      "en": "Nimbasa Gate",
+      "ko": ""
+    },
+    "opelucid-gate": {
+      "en": "Opelucid Gate",
+      "ko": ""
+    },
+    "black-gate": {
+      "en": "Black Gate",
+      "ko": ""
+    },
+    "white-gate": {
+      "en": "White Gate",
+      "ko": ""
+    },
+    "bridge-gate": {
+      "en": "Bridge Gate",
+      "ko": ""
+    },
+    "route-gate": {
+      "en": "Route Gate",
+      "ko": ""
+    },
+    "abyssal-ruins": {
+      "en": "Abyssal Ruins",
+      "ko": ""
+    },
+    "aspertia-city": {
+      "en": "Aspertia City",
+      "ko": "",
+      "seen_in": [
+        "Black 2",
+        "White 2"
+      ]
+    },
+    "virbank-city": {
+      "en": "Virbank City",
+      "ko": "",
+      "seen_in": [
+        "Black 2",
+        "White 2"
+      ]
+    },
+    "humilau-city": {
+      "en": "Humilau City",
+      "ko": "",
+      "seen_in": [
+        "Black 2",
+        "White 2"
+      ]
+    },
+    "pokestar-studios": {
+      "en": "PokéStar Studios",
+      "ko": ""
+    },
+    "join-avenue": {
+      "en": "Join Avenue",
+      "ko": ""
+    },
+    "floccesy-town": {
+      "en": "Floccesy Town",
+      "ko": "",
+      "seen_in": [
+        "Black 2",
+        "White 2"
+      ]
+    },
+    "lentimas-town": {
+      "en": "Lentimas Town",
+      "ko": ""
+    },
+    "castelia-sewers": {
+      "en": "Castelia Sewers",
+      "ko": "",
+      "seen_in": [
+        "Black 2",
+        "White 2"
+      ]
+    },
+    "floccesy-ranch": {
+      "en": "Floccesy Ranch",
+      "ko": "",
+      "seen_in": [
+        "Black 2",
+        "White 2"
+      ]
+    },
+    "virbank-complex": {
+      "en": "Virbank Complex",
+      "ko": "",
+      "seen_in": [
+        "Black 2",
+        "White 2"
+      ]
+    },
+    "reversal-mountain": {
+      "en": "Reversal Mountain",
+      "ko": "",
+      "seen_in": [
+        "Black 2",
+        "White 2"
+      ]
+    },
+    "strange-house": {
+      "en": "Strange House",
+      "ko": "",
+      "seen_in": [
+        "Black 2",
+        "White 2"
+      ]
+    },
+    "unova-victory-road-2": {
+      "en": "Victory Road",
+      "ko": "",
+      "seen_in": [
+        "Black 2",
+        "White 2"
+      ]
+    },
+    "plasma-frigate": {
+      "en": "Plasma Frigate",
+      "ko": ""
+    },
+    "relic-passage": {
+      "en": "Relic Passage",
+      "ko": "",
+      "seen_in": [
+        "Black 2",
+        "White 2"
+      ]
+    },
+    "clay-tunnel": {
+      "en": "Clay Tunnel",
+      "ko": "",
+      "seen_in": [
+        "Black 2",
+        "White 2"
+      ]
+    },
+    "white-treehollow": {
+      "en": "White Treehollow",
+      "ko": ""
+    },
+    "black-tower": {
+      "en": "Black Tower",
+      "ko": ""
+    },
+    "seaside-cave": {
+      "en": "Seaside Cave",
+      "ko": "",
+      "seen_in": [
+        "Black 2",
+        "White 2"
+      ]
+    },
+    "cave-of-being": {
+      "en": "Cave of Being",
+      "ko": ""
+    },
+    "hidden-grotto": {
+      "en": "Hidden Grotto",
+      "ko": ""
+    },
+    "marine-tube": {
+      "en": "Marine Tube",
+      "ko": ""
+    },
+    "virbank-gate": {
+      "en": "Virbank Gate",
+      "ko": ""
+    },
+    "aspertia-gate": {
+      "en": "Aspertia Gate",
+      "ko": ""
+    },
+    "nature-sanctuary": {
+      "en": "Nature Sanctuary",
+      "ko": "",
+      "seen_in": [
+        "Black 2",
+        "White 2"
+      ]
+    },
+    "medal-secretariat": {
+      "en": "Medal Secretariat",
+      "ko": ""
+    },
+    "underground-ruins": {
+      "en": "Underground Ruins",
+      "ko": "",
+      "seen_in": [
+        "Black 2",
+        "White 2"
+      ]
+    },
+    "rocky-mountain-room": {
+      "en": "Rocky Mountain Room",
+      "ko": "",
+      "seen_in": [
+        "Black 2",
+        "White 2"
+      ]
+    },
+    "glacier-room": {
+      "en": "Glacier Room",
+      "ko": "",
+      "seen_in": [
+        "Black 2",
+        "White 2"
+      ]
+    },
+    "iron-room": {
+      "en": "Iron Room",
+      "ko": "",
+      "seen_in": [
+        "Black 2",
+        "White 2"
+      ]
+    },
+    "pledge-grove": {
+      "en": "Pledge Grove",
+      "ko": ""
+    },
+    "roaming-unova": {
+      "en": "Unova (Roaming)",
+      "ko": "",
+      "ja": ""
+    }
+  },
+  "Kalos": {
+    "roaming-kalos": {
+      "en": "Kalos (Roaming)",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "X",
+        "Y"
+      ]
+    },
+    "kalos-berry-fields": {
+      "en": "kalos-berry-fields",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "X",
+        "Y"
+      ]
+    }
+  },
+  "Alola": {
+    "hauoli-city": {
+      "en": "Hau'oli City",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Moon",
+        "Sun",
+        "Ultra Moon",
+        "Ultra Sun"
+      ]
+    },
+    "verdant-cavern": {
+      "en": "Verdant Cavern",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Moon",
+        "Sun",
+        "Ultra Moon",
+        "Ultra Sun"
+      ]
+    },
+    "thrifty-megamart": {
+      "en": "Royal Avenue",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Moon",
+        "Sun",
+        "Ultra Moon",
+        "Ultra Sun"
+      ]
+    },
+    "malie-city": {
+      "en": "Malie City",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Moon",
+        "Sun",
+        "Ultra Moon",
+        "Ultra Sun"
+      ]
+    },
+    "dividing-peak-tunnel": {
+      "en": "Dividing Peak Tunnel",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Ultra Moon",
+        "Ultra Sun"
+      ]
+    },
+    "heahea-beach": {
+      "en": "Heahea Beach",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Ultra Moon",
+        "Ultra Sun"
+      ]
+    },
+    "sandy-cave": {
+      "en": "Sandy Cave",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Ultra Moon",
+        "Ultra Sun"
+      ]
+    },
+    "ulaula-beach": {
+      "en": "Ula'ula Beach",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Ultra Moon",
+        "Ultra Sun"
+      ]
+    },
+    "ultra-megalopolis": {
+      "en": "Ultra Megalopolis",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Ultra Moon",
+        "Ultra Sun"
+      ]
+    },
+    "ultra-space-wilds": {
+      "en": "Ultra Space Wilds",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Ultra Moon",
+        "Ultra Sun"
+      ]
+    },
+    "poke-pelago": {
+      "en": "Poké Pelago",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Moon",
+        "Sun",
+        "Ultra Moon",
+        "Ultra Sun"
+      ]
+    },
+    "team-rockets-castle": {
+      "en": "Team Rocket's Castle",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Ultra Moon",
+        "Ultra Sun"
+      ]
+    }
+  },
+  "Galar": {
+    "axews-eye": {
+      "en": "Axew's Eye",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "ballimere-lake": {
+      "en": "Ballimere Lake",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Crown Tundra",
+        "Sword: The Crown Tundra"
+      ]
+    },
+    "ballonlea": {
+      "en": "Ballonlea",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "galar-battle-tower": {
+      "en": "Battle Tower",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "brawlers-cave": {
+      "en": "Brawlers' Cave",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Isle of Armor",
+        "Sword: The Isle of Armor"
+      ]
+    },
+    "bridge-field": {
+      "en": "Bridge Field",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "challenge-beach": {
+      "en": "Challenge Beach",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Isle of Armor",
+        "Sword: The Isle of Armor"
+      ]
+    },
+    "challenge-road": {
+      "en": "Challenge Road",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Isle of Armor",
+        "Sword: The Isle of Armor"
+      ]
+    },
+    "circhester": {
+      "en": "Circhester",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "courageous-cavern": {
+      "en": "Courageous Cavern",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Isle of Armor",
+        "Sword: The Isle of Armor"
+      ]
+    },
+    "crown-shrine": {
+      "en": "Crown Shrine",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Crown Tundra",
+        "Sword: The Crown Tundra"
+      ]
+    },
+    "dappled-grove": {
+      "en": "Dappled Grove",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "dusty-bowl": {
+      "en": "Dusty Bowl",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "dyna-tree-hill": {
+      "en": "Dyna Tree Hill",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Crown Tundra",
+        "Sword: The Crown Tundra"
+      ]
+    },
+    "east-lake-axewell": {
+      "en": "East Lake Axewell",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "fields-of-honor": {
+      "en": "Fields of Honor",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Isle of Armor",
+        "Sword: The Isle of Armor"
+      ]
+    },
+    "forest-of-focus": {
+      "en": "Forest of Focus",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Isle of Armor",
+        "Sword: The Isle of Armor"
+      ]
+    },
+    "freezington": {
+      "en": "Freezington",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Crown Tundra",
+        "Sword: The Crown Tundra"
+      ]
+    },
+    "frigid-sea": {
+      "en": "Frigid Sea",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Crown Tundra",
+        "Sword: The Crown Tundra"
+      ]
+    },
+    "frostpoint-field": {
+      "en": "Frostpoint Field",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Crown Tundra",
+        "Sword: The Crown Tundra"
+      ]
+    },
+    "galar-mine": {
+      "en": "Galar Mine",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "galar-mine-no-2": {
+      "en": "Galar Mine No. 2",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "giants-bed": {
+      "en": "Giant's Bed",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Crown Tundra",
+        "Sword: The Crown Tundra"
+      ]
+    },
+    "giants-foot": {
+      "en": "Giant's Foot",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Crown Tundra",
+        "Sword: The Crown Tundra"
+      ]
+    },
+    "giants-mirror": {
+      "en": "Giant's Mirror",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "giants-seat": {
+      "en": "Giant's Seat",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "glimwood-tangle": {
+      "en": "Glimwood Tangle",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "hammerlocke": {
+      "en": "Hammerlocke",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "hammerlocke-hills": {
+      "en": "Hammerlocke Hills",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "honeycalm-island": {
+      "en": "Honeycalm Island",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Isle of Armor",
+        "Sword: The Isle of Armor"
+      ]
+    },
+    "honeycalm-sea": {
+      "en": "Honeycalm Sea",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Isle of Armor",
+        "Sword: The Isle of Armor"
+      ]
+    },
+    "hulbury": {
+      "en": "Hulbury",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "galar-iceberg-ruins": {
+      "en": "Iceberg Ruins",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Crown Tundra",
+        "Sword: The Crown Tundra"
+      ]
+    },
+    "insular-sea": {
+      "en": "Insular Sea",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Isle of Armor",
+        "Sword: The Isle of Armor"
+      ]
+    },
+    "galar-iron-ruins": {
+      "en": "Iron Ruins",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Crown Tundra",
+        "Sword: The Crown Tundra"
+      ]
+    },
+    "lake-of-outrage": {
+      "en": "Lake of Outrage",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "lakeside-cave": {
+      "en": "Lakeside Cave",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Crown Tundra",
+        "Sword: The Crown Tundra"
+      ]
+    },
+    "loop-lagoon": {
+      "en": "Loop Lagoon",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Isle of Armor",
+        "Sword: The Isle of Armor"
+      ]
+    },
+    "master-dojo": {
+      "en": "Master Dojo",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Isle of Armor",
+        "Sword: The Isle of Armor"
+      ]
+    },
+    "max-lair": {
+      "en": "Max Lair",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Crown Tundra",
+        "Sword: The Crown Tundra"
+      ]
+    },
+    "motostoke": {
+      "en": "Motostoke",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "motostoke-outskirts": {
+      "en": "Motostoke Outskirts",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "motostoke-riverbank": {
+      "en": "Motostoke Riverbank",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "north-lake-miloch": {
+      "en": "North Lake Miloch",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "old-cemetery": {
+      "en": "Old Cemetery",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Crown Tundra",
+        "Sword: The Crown Tundra"
+      ]
+    },
+    "path-to-the-peak": {
+      "en": "Path to the Peak",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Crown Tundra",
+        "Sword: The Crown Tundra"
+      ]
+    },
+    "postwick": {
+      "en": "Postwick",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "potbottom-desert": {
+      "en": "Potbottom Desert",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Isle of Armor",
+        "Sword: The Isle of Armor"
+      ]
+    },
+    "roaring-sea-caves": {
+      "en": "Roaring-Sea Caves",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Crown Tundra",
+        "Sword: The Crown Tundra"
+      ]
+    },
+    "galar-rock-peak-ruins": {
+      "en": "Rock Peak Ruins",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Crown Tundra",
+        "Sword: The Crown Tundra"
+      ]
+    },
+    "rolling-fields": {
+      "en": "Rolling Fields",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "slippery-slope": {
+      "en": "Slippery Slope",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Crown Tundra",
+        "Sword: The Crown Tundra"
+      ]
+    },
+    "slumbering-weald": {
+      "en": "Slumbering Weald",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "snowslide-slope": {
+      "en": "Snowslide Slope",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Crown Tundra",
+        "Sword: The Crown Tundra"
+      ]
+    },
+    "soothing-wetlands": {
+      "en": "Soothing Wetlands",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Isle of Armor",
+        "Sword: The Isle of Armor"
+      ]
+    },
+    "south-lake-miloch": {
+      "en": "South Lake Miloch",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "spikemuth": {
+      "en": "Spikemuth",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "split-decision-ruins": {
+      "en": "Split-Decision Ruins",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Crown Tundra",
+        "Sword: The Crown Tundra"
+      ]
+    },
+    "steamdrift-way": {
+      "en": "Route 8",
+      "ko": "",
+      "ja": ""
+    },
+    "stepping-stone-sea": {
+      "en": "Stepping-Stone Sea",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Isle of Armor",
+        "Sword: The Isle of Armor"
+      ]
+    },
+    "stony-wilderness": {
+      "en": "Stony Wilderness",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "stow-on-side": {
+      "en": "Stow-on-Side",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "three-point-pass": {
+      "en": "Three-Point Pass",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Crown Tundra",
+        "Sword: The Crown Tundra"
+      ]
+    },
+    "tower-of-darkness": {
+      "en": "Tower of Darkness",
+      "ko": "",
+      "ja": ""
+    },
+    "tower-of-waters": {
+      "en": "Tower of Waters",
+      "ko": "",
+      "ja": ""
+    },
+    "training-lowlands": {
+      "en": "Training Lowlands",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Isle of Armor",
+        "Sword: The Isle of Armor"
+      ]
+    },
+    "tunnel-to-the-top": {
+      "en": "Tunnel to the Top",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Crown Tundra",
+        "Sword: The Crown Tundra"
+      ]
+    },
+    "turffield": {
+      "en": "Turffield",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "warm-up-tunnel": {
+      "en": "Warm-Up Tunnel",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Isle of Armor",
+        "Sword: The Isle of Armor"
+      ]
+    },
+    "watchtower-ruins": {
+      "en": "Watchtower Ruins",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "wedgehurst": {
+      "en": "Wedgehurst",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "west-lake-axewell": {
+      "en": "West Lake Axewell",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "workout-sea": {
+      "en": "Workout Sea",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Isle of Armor",
+        "Sword: The Isle of Armor"
+      ]
+    },
+    "wyndon": {
+      "en": "Wyndon",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "giants-cap": {
+      "en": "Giant's Cap",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "energy-plant": {
+      "en": "Energy Plant",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "meetup-spot": {
+      "en": "Meetup Spot",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    },
+    "isle-of-armor-caves": {
+      "en": "Random caves across the Isle of Armor",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Isle of Armor",
+        "Sword: The Isle of Armor"
+      ]
+    },
+    "roaming-galar-wild-area": {
+      "en": "Roaming Galar Wild Areas",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Crown Tundra",
+        "Sword: The Crown Tundra"
+      ]
+    },
+    "roaming-isle-of-armor": {
+      "en": "Roaming the Isle of Armor",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Crown Tundra",
+        "Sword: The Crown Tundra"
+      ]
+    },
+    "roaming-crown-tundra": {
+      "en": "Roaming the Crown Tundra",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield: The Crown Tundra",
+        "Sword: The Crown Tundra"
+      ]
+    },
+    "galar-wild-area-max-dens": {
+      "en": "Max Dens in the Galar Wild Area",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Shield",
+        "Sword"
+      ]
+    }
+  },
+  "Hisui": {
+    "aipom-hill": {
+      "en": "Aipom Hill",
+      "ko": "",
+      "ja": ""
+    },
+    "ancient-quarry": {
+      "en": "Ancient Quarry",
+      "ko": "",
+      "ja": ""
+    },
+    "arenas-approach": {
+      "en": "Arena's Approach",
+      "ko": "",
+      "ja": ""
+    },
+    "aspiration-hill": {
+      "en": "Aspiration Hill",
+      "ko": "",
+      "ja": ""
+    },
+    "avalanche-slopes": {
+      "en": "Avalanche Slopes",
+      "ko": "",
+      "ja": ""
+    },
+    "avaluggs-legacy": {
+      "en": "Avalugg's Legacy",
+      "ko": "",
+      "ja": ""
+    },
+    "bathers-lagoon": {
+      "en": "Bathers' Lagoon",
+      "ko": "",
+      "ja": ""
+    },
+    "bolderoll-ravine": {
+      "en": "Bolderoll Ravine",
+      "ko": "",
+      "ja": ""
+    },
+    "bolderoll-slope": {
+      "en": "Bolderoll Slope",
+      "ko": "",
+      "ja": ""
+    },
+    "bonechill-wastes": {
+      "en": "Bonechill Wastes",
+      "ko": "",
+      "ja": ""
+    },
+    "brava-arena": {
+      "en": "Brava Arena",
+      "ko": "",
+      "ja": ""
+    },
+    "castaway-shore": {
+      "en": "Castaway Shore",
+      "ko": "",
+      "ja": ""
+    },
+    "celestica-ruins": {
+      "en": "Celestica Ruins",
+      "ko": "",
+      "ja": ""
+    },
+    "celestica-trail": {
+      "en": "Celestica Trail",
+      "ko": "",
+      "ja": ""
+    },
+    "clamberclaw-cliffs": {
+      "en": "Clamberclaw Cliffs",
+      "ko": "",
+      "ja": ""
+    },
+    "cloudcap-pass": {
+      "en": "Cloudcap Pass",
+      "ko": "",
+      "ja": ""
+    },
+    "cloudpool-ridge": {
+      "en": "Cloudpool Ridge",
+      "ko": "",
+      "ja": ""
+    },
+    "coastlands-camp": {
+      "en": "Coastlands Base Camp",
+      "ko": "",
+      "ja": ""
+    },
+    "cottonsedge-prairie": {
+      "en": "Cottonsedge Prairie",
+      "ko": "",
+      "ja": ""
+    },
+    "crossing-slope": {
+      "en": "Crossing Slope",
+      "ko": "",
+      "ja": ""
+    },
+    "deadwood-haunt": {
+      "en": "Deadwood Haunt",
+      "ko": "",
+      "ja": ""
+    },
+    "deertrack-heights": {
+      "en": "Deertrack Heights",
+      "ko": "",
+      "ja": ""
+    },
+    "deertrack-path": {
+      "en": "Deertrack Path",
+      "ko": "",
+      "ja": ""
+    },
+    "diamond-heath": {
+      "en": "Diamond Heath",
+      "ko": "",
+      "ja": ""
+    },
+    "diamond-settlement": {
+      "en": "Diamond Settlement",
+      "ko": "",
+      "ja": ""
+    },
+    "droning-meadow": {
+      "en": "Droning Meadow",
+      "ko": "",
+      "ja": ""
+    },
+    "fabled-spring": {
+      "en": "Fabled Spring",
+      "ko": "",
+      "ja": ""
+    },
+    "firespit-island": {
+      "en": "Firespit Island",
+      "ko": "",
+      "ja": ""
+    },
+    "floaro-gardens": {
+      "en": "Floaro Gardens",
+      "ko": "",
+      "ja": ""
+    },
+    "gapejaw-bog": {
+      "en": "Gapejaw Bog",
+      "ko": "",
+      "ja": ""
+    },
+    "ginkgo-landing": {
+      "en": "Ginkgo Landing",
+      "ko": "",
+      "ja": ""
+    },
+    "glacier-terrace": {
+      "en": "Glacier Terrace",
+      "ko": "",
+      "ja": ""
+    },
+    "golden-lowlands": {
+      "en": "Golden Lowlands",
+      "ko": "",
+      "ja": ""
+    },
+    "grandtree-arena": {
+      "en": "Grandtree Arena",
+      "ko": "",
+      "ja": ""
+    },
+    "grueling-grove": {
+      "en": "Grueling Grove",
+      "ko": "",
+      "ja": ""
+    },
+    "hearts-crag": {
+      "en": "Heart's Crag",
+      "ko": "",
+      "ja": ""
+    },
+    "heavenward-lookout": {
+      "en": "Heavenward Lookout",
+      "ko": "",
+      "ja": ""
+    },
+    "heights-camp": {
+      "en": "Heights Base Camp",
+      "ko": "",
+      "ja": ""
+    },
+    "hideaway-bay": {
+      "en": "Hideaway Bay",
+      "ko": "",
+      "ja": ""
+    },
+    "holm-of-trials": {
+      "en": "Holm of Trials",
+      "ko": "",
+      "ja": ""
+    },
+    "horseshoe-plains": {
+      "en": "Horseshoe Plains",
+      "ko": "",
+      "ja": ""
+    },
+    "ice-column-chamber": {
+      "en": "Ice Column Chamber",
+      "ko": "",
+      "ja": ""
+    },
+    "icebound-falls": {
+      "en": "Icebound Falls",
+      "ko": "",
+      "ja": ""
+    },
+    "icepeak-arena": {
+      "en": "Icepeak Arena",
+      "ko": "",
+      "ja": ""
+    },
+    "icepeak-cavern": {
+      "en": "Icepeak Cavern",
+      "ko": "",
+      "ja": ""
+    },
+    "islespy-shore": {
+      "en": "Islespy Shore",
+      "ko": "",
+      "ja": ""
+    },
+    "jubilife-village": {
+      "en": "Jubilife Village",
+      "ko": "",
+      "ja": ""
+    },
+    "hisui-lake-acuity": {
+      "en": "Lake Acuity",
+      "ko": "",
+      "ja": ""
+    },
+    "hisui-lake-valor": {
+      "en": "Lake Valor",
+      "ko": "",
+      "ja": ""
+    },
+    "hisui-lake-verity": {
+      "en": "Lake Verity",
+      "ko": "",
+      "ja": ""
+    },
+    "lonely-spring": {
+      "en": "Lonely Spring",
+      "ko": "",
+      "ja": ""
+    },
+    "lunkers-lair": {
+      "en": "Lunker's Lair",
+      "ko": "",
+      "ja": ""
+    },
+    "molten-arena": {
+      "en": "Molten Arena",
+      "ko": "",
+      "ja": ""
+    },
+    "moonview-arena": {
+      "en": "Moonview Arena",
+      "ko": "",
+      "ja": ""
+    },
+    "natures-pantry": {
+      "en": "Nature's Pantry",
+      "ko": "",
+      "ja": ""
+    },
+    "obsidian-falls": {
+      "en": "Obsidian Falls",
+      "ko": "",
+      "ja": ""
+    },
+    "oreburrow-tunnel": {
+      "en": "Oreburrow Tunnel",
+      "ko": "",
+      "ja": ""
+    },
+    "pearl-settlement": {
+      "en": "Pearl Settlement",
+      "ko": "",
+      "ja": ""
+    },
+    "primeval-grotto": {
+      "en": "Primeval Grotto",
+      "ko": "",
+      "ja": ""
+    },
+    "ramanas-island": {
+      "en": "Ramanas Island",
+      "ko": "",
+      "ja": ""
+    },
+    "sacred-plaza": {
+      "en": "Sacred Plaza",
+      "ko": "",
+      "ja": ""
+    },
+    "sands-reach": {
+      "en": "Sand's Reach",
+      "ko": "",
+      "ja": ""
+    },
+    "sandgem-flats": {
+      "en": "Sandgem Flats",
+      "ko": "",
+      "ja": ""
+    },
+    "scarlet-bog": {
+      "en": "Scarlet Bog",
+      "ko": "",
+      "ja": ""
+    },
+    "seagrass-haven": {
+      "en": "Seagrass Haven",
+      "ko": "",
+      "ja": ""
+    },
+    "seaside-hollow": {
+      "en": "Seaside Hollow",
+      "ko": "",
+      "ja": ""
+    },
+    "shrouded-ruins": {
+      "en": "Shrouded Ruins",
+      "ko": "",
+      "ja": ""
+    },
+    "sludge-mound": {
+      "en": "Sludge Mound",
+      "ko": "",
+      "ja": ""
+    },
+    "snowfall-hot-spring": {
+      "en": "Snowfall Hot Spring",
+      "ko": "",
+      "ja": ""
+    },
+    "hisui-snowpoint-temple": {
+      "en": "Snowpoint Temple",
+      "ko": "",
+      "ja": ""
+    },
+    "hisui-solaceon-ruins": {
+      "en": "Solaceon Ruins",
+      "ko": "",
+      "ja": ""
+    },
+    "sonorous-path": {
+      "en": "Sonorous Path",
+      "ko": "",
+      "ja": ""
+    },
+    "space-time-distortion": {
+      "en": "Space-time distortion",
+      "ko": "",
+      "ja": ""
+    },
+    "hisui-spring-path": {
+      "en": "Spring Path",
+      "ko": "",
+      "ja": ""
+    },
+    "stonetooth-rows": {
+      "en": "Stonetooth Rows",
+      "ko": "",
+      "ja": ""
+    },
+    "temple-of-sinnoh": {
+      "en": "Temple of Sinnoh",
+      "ko": "",
+      "ja": ""
+    },
+    "the-heartwood": {
+      "en": "The Heartwood",
+      "ko": "",
+      "ja": ""
+    },
+    "tidewater-dam": {
+      "en": "Tidewater Dam",
+      "ko": "",
+      "ja": ""
+    },
+    "tombolo-walk": {
+      "en": "Tombolo Walk",
+      "ko": "",
+      "ja": ""
+    },
+    "tranquility-cove": {
+      "en": "Tranquility Cove",
+      "ko": "",
+      "ja": ""
+    },
+    "hisui-turnback-cave": {
+      "en": "Turnback Cave",
+      "ko": "",
+      "ja": ""
+    },
+    "ursas-ring": {
+      "en": "Ursa's Ring",
+      "ko": "",
+      "ja": ""
+    },
+    "veilstone-cape": {
+      "en": "Veilstone Cape",
+      "ko": "",
+      "ja": ""
+    },
+    "hisui-wayward-cave": {
+      "en": "Wayward Cave",
+      "ko": "",
+      "ja": ""
+    },
+    "wayward-wood": {
+      "en": "Wayward Wood",
+      "ko": "",
+      "ja": ""
+    },
+    "whiteout-valley": {
+      "en": "Whiteout Valley",
+      "ko": "",
+      "ja": ""
+    },
+    "windbreak-stand": {
+      "en": "Windbreak Stand",
+      "ko": "",
+      "ja": ""
+    },
+    "windswept-run": {
+      "en": "Windswept Run",
+      "ko": "",
+      "ja": ""
+    },
+    "worn-bridge": {
+      "en": "Worn Bridge",
+      "ko": "",
+      "ja": ""
+    }
+  },
+  "Paldea": {
+    "cabo-poco": {
+      "en": "Cabo Poco",
+      "ko": "",
+      "ja": ""
+    },
+    "los-platos": {
+      "en": "Los Platos",
+      "ko": "",
+      "ja": ""
+    },
+    "mesagoza": {
+      "en": "Mesagoza",
+      "ko": "",
+      "ja": ""
+    },
+    "cortondo": {
+      "en": "Cortondo",
+      "ko": "",
+      "ja": ""
+    },
+    "alfornada": {
+      "en": "Alfornada",
+      "ko": "",
+      "ja": ""
+    },
+    "pokemon-league": {
+      "en": "Pokémon League",
+      "ko": "",
+      "ja": ""
+    },
+    "artazon": {
+      "en": "Artazon",
+      "ko": "",
+      "ja": ""
+    },
+    "levincia": {
+      "en": "Levincia",
+      "ko": "",
+      "ja": ""
+    },
+    "zapapico": {
+      "en": "Zapapico",
+      "ko": "",
+      "ja": ""
+    },
+    "cascarrafa": {
+      "en": "Cascarrafa",
+      "ko": "",
+      "ja": ""
+    },
+    "porto-marinada": {
+      "en": "Porto Marinada",
+      "ko": "",
+      "ja": ""
+    },
+    "medali": {
+      "en": "Medali",
+      "ko": "",
+      "ja": ""
+    },
+    "montenevera": {
+      "en": "Montenevera",
+      "ko": "",
+      "ja": ""
+    },
+    "paldea-south-province-area-one": {
+      "en": "South Province (Area One)",
+      "ko": "",
+      "ja": ""
+    },
+    "paldea-south-province-area-two": {
+      "en": "South Province (Area Two)",
+      "ko": "",
+      "ja": ""
+    },
+    "paldea-south-province-area-three": {
+      "en": "South Province (Area Three)",
+      "ko": "",
+      "ja": ""
+    },
+    "paldea-south-province-area-four": {
+      "en": "South Province (Area Four)",
+      "ko": "",
+      "ja": ""
+    },
+    "paldea-south-province-area-five": {
+      "en": "South Province (Area Five)",
+      "ko": "",
+      "ja": ""
+    },
+    "paldea-south-province-area-six": {
+      "en": "South Province (Area Six)",
+      "ko": "",
+      "ja": ""
+    },
+    "south-paldean-sea": {
+      "en": "South Paldean Sea",
+      "ko": "",
+      "ja": ""
+    },
+    "poco-path": {
+      "en": "Poco Path",
+      "ko": "",
+      "ja": ""
+    },
+    "inlet-grotto": {
+      "en": "Inlet Grotto",
+      "ko": "",
+      "ja": ""
+    },
+    "naranja-academy": {
+      "en": "Naranja Academy",
+      "ko": "",
+      "ja": ""
+    },
+    "alfornada-cavern": {
+      "en": "Alfornada Cavern",
+      "ko": "",
+      "ja": ""
+    },
+    "grasswither-shrine": {
+      "en": "Grasswither Shrine",
+      "ko": "",
+      "ja": ""
+    },
+    "paldea-east-province-area-one": {
+      "en": "East Province (Area One)",
+      "ko": "",
+      "ja": ""
+    },
+    "paldea-east-province-area-two": {
+      "en": "East Province (Area Two)",
+      "ko": "",
+      "ja": ""
+    },
+    "paldea-east-province-area-three": {
+      "en": "East Province (Area Three)",
+      "ko": "",
+      "ja": ""
+    },
+    "east-paldean-sea": {
+      "en": "East Paldean Sea",
+      "ko": "",
+      "ja": ""
+    },
+    "tagtree-thicket": {
+      "en": "Tagtree Thicket",
+      "ko": "",
+      "ja": ""
+    },
+    "schedar-squads-base": {
+      "en": "Schedar Squad's Base",
+      "ko": "",
+      "ja": ""
+    },
+    "navi-squads-base": {
+      "en": "Navi Squad's Base",
+      "ko": "",
+      "ja": ""
+    },
+    "paldea-west-province-area-one": {
+      "en": "West Province (Area One)",
+      "ko": "",
+      "ja": ""
+    },
+    "paldea-west-province-area-two": {
+      "en": "West Province (Area Two)",
+      "ko": "",
+      "ja": ""
+    },
+    "paldea-west-province-area-three": {
+      "en": "West Province (Area Three)",
+      "ko": "",
+      "ja": ""
+    },
+    "asado-desert": {
+      "en": "Asado Desert",
+      "ko": "",
+      "ja": ""
+    },
+    "west-paldean-sea": {
+      "en": "West Paldean Sea",
+      "ko": "",
+      "ja": ""
+    },
+    "segin-squads-base": {
+      "en": "Segin Squad's Base",
+      "ko": "",
+      "ja": ""
+    },
+    "icerend-shrine": {
+      "en": "Icerend Shrine",
+      "ko": "",
+      "ja": ""
+    },
+    "paldea-north-province-area-one": {
+      "en": "North Province (Area One)",
+      "ko": "",
+      "ja": ""
+    },
+    "paldea-north-province-area-two": {
+      "en": "North Province (Area Two)",
+      "ko": "",
+      "ja": ""
+    },
+    "paldea-north-province-area-three": {
+      "en": "North Province (Area Three)",
+      "ko": "",
+      "ja": ""
+    },
+    "casseroya-lake": {
+      "en": "Casseroya Lake",
+      "ko": "",
+      "ja": ""
+    },
+    "dalizapa-passage": {
+      "en": "Dalizapa Passage",
+      "ko": "",
+      "ja": ""
+    },
+    "glaseado-mountain": {
+      "en": "Glaseado Mountain",
+      "ko": "",
+      "ja": ""
+    },
+    "socarrat-trail": {
+      "en": "Socarrat Trail",
+      "ko": "",
+      "ja": ""
+    },
+    "groundblight-shrine": {
+      "en": "Groundblight Shrine",
+      "ko": "",
+      "ja": ""
+    },
+    "firescourge-shrine": {
+      "en": "Firescourge Shrine",
+      "ko": "",
+      "ja": ""
+    },
+    "north-paldean-sea": {
+      "en": "North Paldean Sea",
+      "ko": "",
+      "ja": ""
+    },
+    "ruchbah-squads-base": {
+      "en": "Ruchbah Squad's Base",
+      "ko": "",
+      "ja": ""
+    },
+    "caph-squads-base": {
+      "en": "Caph Squad's Base",
+      "ko": "",
+      "ja": ""
+    },
+    "area-zero": {
+      "en": "Area Zero",
+      "ko": "",
+      "ja": ""
+    },
+    "zero-lab": {
+      "en": "Zero Lab",
+      "ko": "",
+      "ja": ""
+    },
+    "uva-academy": {
+      "en": "Uva Academy",
+      "ko": "",
+      "ja": ""
+    },
+    "apple-hills": {
+      "en": "Apple Hills",
+      "ko": "",
+      "ja": ""
+    },
+    "chilling-waterhead": {
+      "en": "Chilling Waterhead",
+      "ko": "",
+      "ja": ""
+    },
+    "crystal-pool": {
+      "en": "Crystal Pool",
+      "ko": "",
+      "ja": ""
+    },
+    "dreaded-den": {
+      "en": "Dreaded Den",
+      "ko": "",
+      "ja": ""
+    },
+    "fellhorn-gorge": {
+      "en": "Fellhorn Gorge",
+      "ko": "",
+      "ja": ""
+    },
+    "infernal-pass": {
+      "en": "Infernal Pass",
+      "ko": "",
+      "ja": ""
+    },
+    "kitakami-hall": {
+      "en": "Kitakami Hall",
+      "ko": "",
+      "ja": ""
+    },
+    "kitakami-road": {
+      "en": "Kitakami Road",
+      "ko": "",
+      "ja": ""
+    },
+    "kitakami-wilds": {
+      "en": "Kitakami Wilds",
+      "ko": "",
+      "ja": ""
+    },
+    "loyalty-plaza": {
+      "en": "Loyalty Plaza",
+      "ko": "",
+      "ja": ""
+    },
+    "mossfell-confluence": {
+      "en": "Mossfell Confluence",
+      "ko": "",
+      "ja": ""
+    },
+    "mossui-town": {
+      "en": "Mossui Town",
+      "ko": "",
+      "ja": ""
+    },
+    "oni-mountain": {
+      "en": "Oni Mountain",
+      "ko": "",
+      "ja": ""
+    },
+    "onis-maw": {
+      "en": "Oni's Maw",
+      "ko": "",
+      "ja": ""
+    },
+    "paradise-barrens": {
+      "en": "Paradise Barrens",
+      "ko": "",
+      "ja": ""
+    },
+    "revelers-road": {
+      "en": "Reveler's Road",
+      "ko": "",
+      "ja": ""
+    },
+    "timeless-woods": {
+      "en": "Timeless Woods",
+      "ko": "",
+      "ja": ""
+    },
+    "wistful-fields": {
+      "en": "Wistful Fields",
+      "ko": "",
+      "ja": ""
+    },
+    "canyon-biome": {
+      "en": "Canyon Biome",
+      "ko": "",
+      "ja": ""
+    },
+    "canyon-plaza": {
+      "en": "Canyon Plaza",
+      "ko": "",
+      "ja": ""
+    },
+    "central-plaza": {
+      "en": "Central Plaza",
+      "ko": "",
+      "ja": ""
+    },
+    "chargestone-cavern": {
+      "en": "Chargestone Cavern",
+      "ko": "",
+      "ja": ""
+    },
+    "coastal-biome": {
+      "en": "Coastal Biome",
+      "ko": "",
+      "ja": ""
+    },
+    "coastal-plaza": {
+      "en": "Coastal Plaza",
+      "ko": "",
+      "ja": ""
+    },
+    "league-club-room": {
+      "en": "League Club Room",
+      "ko": "",
+      "ja": ""
+    },
+    "polar-biome": {
+      "en": "Polar Biome",
+      "ko": "",
+      "ja": ""
+    },
+    "polar-plaza": {
+      "en": "Polar Plaza",
+      "ko": "",
+      "ja": ""
+    },
+    "savanna-biome": {
+      "en": "Savanna Biome",
+      "ko": "",
+      "ja": ""
+    },
+    "savanna-plaza": {
+      "en": "Savanna Plaza",
+      "ko": "",
+      "ja": ""
+    },
+    "torchlit-labyrinth": {
+      "en": "Torchlit Labyrinth",
+      "ko": "",
+      "ja": ""
+    }
+  },
+  "Orre": {
+    "outskirt-stand": {
+      "en": "Outskirt Stand",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Colosseum",
+        "XD"
+      ]
+    },
+    "phenac-city": {
+      "en": "Phenac City",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Colosseum",
+        "XD"
+      ]
+    },
+    "snagem-hideout": {
+      "en": "Snagem Hideout",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Colosseum"
+      ]
+    },
+    "shadow-pokemon-lab": {
+      "en": "Shadow Pokémon Lab",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Colosseum"
+      ]
+    },
+    "pyrite-town": {
+      "en": "Pyrite Town",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Colosseum",
+        "XD"
+      ]
+    },
+    "pyrite-bldg": {
+      "en": "Pyrite Bldg",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Colosseum"
+      ]
+    },
+    "pyrite-cave": {
+      "en": "Pyrite Cave",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Colosseum"
+      ]
+    },
+    "realgam-tower": {
+      "en": "Realgam Tower",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Colosseum",
+        "XD"
+      ]
+    },
+    "agate-village": {
+      "en": "Agate Village",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Colosseum"
+      ]
+    },
+    "the-under": {
+      "en": "The Under",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Colosseum"
+      ]
+    },
+    "mt-battle": {
+      "en": "Mt. Battle",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "Colosseum",
+        "XD"
+      ]
+    },
+    "pokemon-hq-lab": {
+      "en": "Pokemon Hq Lab",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "XD"
+      ]
+    },
+    "gateon-port": {
+      "en": "Gateon Port",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "XD"
+      ]
+    },
+    "cipher-lab": {
+      "en": "Cipher Lab",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "XD"
+      ]
+    },
+    "pokespot": {
+      "en": "Pokespot",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "XD"
+      ]
+    },
+    "onbs": {
+      "en": "ONBS",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "XD"
+      ]
+    },
+    "cipher-key-lair": {
+      "en": "Cipher Key Lair",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "XD"
+      ]
+    },
+    "citadark-isle": {
+      "en": "Citadark Isle",
+      "ko": "",
+      "ja": "",
+      "seen_in": [
+        "XD"
+      ]
+    }
+  }
+}

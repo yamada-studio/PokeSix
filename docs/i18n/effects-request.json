@@ -1,0 +1,938 @@
+{
+  "item-effects": {
+    "grass-mail": {
+      "name_en": "Grass Mail",
+      "en": "Stationery featuring a print of a refreshingly green field. Let a Pokémon hold it for delivery.",
+      "ko": ""
+    },
+    "flame-mail": {
+      "name_en": "Flame Mail",
+      "en": "Stationery featuring a print of flames in blazing red. Let a Pokémon hold it for delivery.",
+      "ko": ""
+    },
+    "bubble-mail": {
+      "name_en": "Bubble Mail",
+      "en": "Stationery featuring a print of a blue world underwater. Let a Pokémon hold it for delivery.",
+      "ko": ""
+    },
+    "bloom-mail": {
+      "name_en": "Bloom Mail",
+      "en": "Stationery featuring a print of pretty floral patterns. Let a Pokémon hold it for delivery.",
+      "ko": ""
+    },
+    "tunnel-mail": {
+      "name_en": "Tunnel Mail",
+      "en": "Stationery featuring a print of a dimly lit coal mine. Let a Pokémon hold it for delivery.",
+      "ko": ""
+    },
+    "steel-mail": {
+      "name_en": "Steel Mail",
+      "en": "Stationery featuring a print of cool mechanical designs. Let a Pokémon hold it for delivery.",
+      "ko": ""
+    },
+    "heart-mail": {
+      "name_en": "Heart Mail",
+      "en": "Stationery featuring a print of giant heart patterns. Let a Pokémon hold it for delivery.",
+      "ko": ""
+    },
+    "snow-mail": {
+      "name_en": "Snow Mail",
+      "en": "Stationery featuring a print of a chilly, snow-covered world. Let a Pokémon hold it for delivery.",
+      "ko": ""
+    },
+    "space-mail": {
+      "name_en": "Space Mail",
+      "en": "Stationery featuring a print depicting the huge expanse of space. Let a Pokémon hold it for delivery.",
+      "ko": ""
+    },
+    "air-mail": {
+      "name_en": "Air Mail",
+      "en": "Stationery featuring a print of colorful letter sets. Let a Pokémon hold it for delivery.",
+      "ko": ""
+    },
+    "mosaic-mail": {
+      "name_en": "Mosaic Mail",
+      "en": "Stationery featuring a print of a vivid rainbow pattern. Let a Pokémon hold it for delivery.",
+      "ko": ""
+    },
+    "brick-mail": {
+      "name_en": "Brick Mail",
+      "en": "Stationery featuring a print of a tough-looking brick pattern. Let a Pokémon hold it for delivery.",
+      "ko": ""
+    },
+    "hm08": {
+      "name_en": "HM08",
+      "en": "A charging attack that may also leave the foe confused. It can also be used to scale rocky walls.",
+      "ko": ""
+    },
+    "orange-mail": {
+      "name_en": "Orange Mail",
+      "en": "A ZIGZAGOON-print MAIL to be held by a POKéMON.",
+      "ko": ""
+    },
+    "harbor-mail": {
+      "name_en": "Harbor Mail",
+      "en": "A WINGULL-print MAIL to be held by a POKéMON.",
+      "ko": ""
+    },
+    "glitter-mail": {
+      "name_en": "Glitter Mail",
+      "en": "A PIKACHU-print MAIL to be held by a POKéMON.",
+      "ko": ""
+    },
+    "mech-mail": {
+      "name_en": "Mech Mail",
+      "en": "A MAGNEMITE-print MAIL to be held by a POKéMON.",
+      "ko": ""
+    },
+    "wood-mail": {
+      "name_en": "Wood Mail",
+      "en": "A SLAKOTH-print MAIL to be held by a POKéMON.",
+      "ko": ""
+    },
+    "wave-mail": {
+      "name_en": "Wave Mail",
+      "en": "A WAILMER-print MAIL to be held by a POKéMON.",
+      "ko": ""
+    },
+    "bead-mail": {
+      "name_en": "Bead Mail",
+      "en": "MAIL featuring a sketch of the holding POKéMON.",
+      "ko": ""
+    },
+    "shadow-mail": {
+      "name_en": "Shadow Mail",
+      "en": "A DUSKULL-print MAIL to be held by a POKéMON.",
+      "ko": ""
+    },
+    "tropic-mail": {
+      "name_en": "Tropic Mail",
+      "en": "A BELLOSSOM-print MAIL to be held by a POKéMON.",
+      "ko": ""
+    },
+    "dream-mail": {
+      "name_en": "Dream Mail",
+      "en": "MAIL featuring a sketch of the holding POKéMON.",
+      "ko": ""
+    },
+    "fab-mail": {
+      "name_en": "Fab Mail",
+      "en": "A gorgeous-print MAIL to be held by a POKéMON.",
+      "ko": ""
+    },
+    "retro-mail": {
+      "name_en": "Retro Mail",
+      "en": "MAIL featuring the drawings of three POKéMON.",
+      "ko": ""
+    },
+    "devon-goods": {
+      "name_en": "Devon Goods",
+      "en": "A package that contains DEVON’s machine parts.",
+      "ko": ""
+    },
+    "pokeblock-case": {
+      "name_en": "Pokéblock Case",
+      "en": "A case for holding POKéBLOCKS made with a BERRY BLENDER.",
+      "ko": ""
+    },
+    "rm-1-key": {
+      "name_en": "Rm. 1 Key",
+      "en": "A key that opens a door inside the ABANDONED SHIP.",
+      "ko": ""
+    },
+    "rm-2-key": {
+      "name_en": "Rm. 2 Key",
+      "en": "A key that opens a door inside the ABANDONED SHIP.",
+      "ko": ""
+    },
+    "rm-4-key": {
+      "name_en": "Rm. 4 Key",
+      "en": "A key that opens a door inside the ABANDONED SHIP.",
+      "ko": ""
+    },
+    "rm-6-key": {
+      "name_en": "Rm. 6 Key",
+      "en": "A key that opens a door inside the ABANDONED SHIP.",
+      "ko": ""
+    },
+    "oaks-parcel": {
+      "name_en": "Oak’s Parcel",
+      "en": "A parcel for PROF. OAK from a POKéMON MART’s clerk.",
+      "ko": ""
+    },
+    "bike-voucher": {
+      "name_en": "Bike Voucher",
+      "en": "A voucher for obtaining a bicycle from the BIKE SHOP.",
+      "ko": ""
+    },
+    "fame-checker": {
+      "name_en": "Fame Checker",
+      "en": "Stores information on famous people for instant recall.",
+      "ko": ""
+    },
+    "berry-pouch": {
+      "name_en": "Berry Pouch",
+      "en": "A convenient container that holds BERRIES.",
+      "ko": ""
+    },
+    "teachy-tv": {
+      "name_en": "Teachy TV",
+      "en": "A TV set tuned to an advice program for TRAINERS.",
+      "ko": ""
+    },
+    "tri-pass": {
+      "name_en": "Tri-Pass",
+      "en": "A pass for ferries between ONE, TWO, and THREE ISLAND.",
+      "ko": ""
+    },
+    "rainbow-pass": {
+      "name_en": "Rainbow Pass",
+      "en": "For ferries serving VERMILION and the SEVII ISLANDS.",
+      "ko": ""
+    },
+    "mysticticket": {
+      "name_en": "MysticTicket",
+      "en": "A ticket required to board the ship to NAVEL ROCK.",
+      "ko": ""
+    },
+    "auroraticket": {
+      "name_en": "AuroraTicket",
+      "en": "A ticket required to board the ship to BIRTH ISLAND.",
+      "ko": ""
+    },
+    "powder-jar": {
+      "name_en": "Powder Jar",
+      "en": "Stores BERRY POWDER made using a BERRY CRUSHER.",
+      "ko": ""
+    },
+    "ruby": {
+      "name_en": "Ruby",
+      "en": "An exquisite, red- glowing gem that symbolizes passion.",
+      "ko": ""
+    },
+    "sapphire": {
+      "name_en": "Sapphire",
+      "en": "A brilliant blue gem that symbolizes honesty.",
+      "ko": ""
+    },
+    "magma-emblem": {
+      "name_en": "Magma Emblem",
+      "en": "A medal-like item in the same shape as TEAM MAGMA’s mark.",
+      "ko": ""
+    },
+    "old-sea-map": {
+      "name_en": "Old Sea Map",
+      "en": "A faded sea chart that shows the way to a certain island.",
+      "ko": ""
+    },
+    "laheavy-ball": {
+      "name_en": "Heavy Ball",
+      "en": "Doesn't fly far, but is more effective if the Pokémon hasn't noticed the player.",
+      "ko": ""
+    },
+    "laleaden-ball": {
+      "name_en": "Leaden Ball",
+      "en": "Upgraded version of the Heavy Ball. Doesn't fly far, but is more effective if the Pokémon hasn't noticed the player.",
+      "ko": ""
+    },
+    "lagigaton-ball": {
+      "name_en": "Gigaton Ball",
+      "en": "Upgraded version of the Leaden Ball. Doesn't fly far, but is more effective if the Pokémon hasn't noticed the player.",
+      "ko": ""
+    },
+    "lafeather-ball": {
+      "name_en": "Feather Ball",
+      "en": "Can be thrown further than a regular Poké Ball. Is more effective for catching Pokémon that fly high in the air.",
+      "ko": ""
+    },
+    "lawing-ball": {
+      "name_en": "Wing Ball",
+      "en": "Can be thrown further than a Feather Ball. Is more effective for catching Pokémon that fly high in the air.",
+      "ko": ""
+    },
+    "lajet-ball": {
+      "name_en": "Jet Ball",
+      "en": "Can be thrown further than a Wing Ball. Is more effective for catching Pokémon that fly high in the air.",
+      "ko": ""
+    }
+  },
+  "move-effects": {
+    "dire-claw": {
+      "name_en": "Dire Claw",
+      "en": "The user lashes out at the target with ruinous claws. This may also leave the target poisoned, paralyzed, or asleep.",
+      "ko": ""
+    },
+    "psyshield-bash": {
+      "name_en": "Psyshield Bash",
+      "en": "Cloaking itself in psychic energy, the user slams into the target. This also boosts the user’s Defense stat.",
+      "ko": ""
+    },
+    "power-shift": {
+      "name_en": "Power Shift",
+      "en": "The user swaps its Attack and Defense stats.",
+      "ko": ""
+    },
+    "stone-axe": {
+      "name_en": "Stone Axe",
+      "en": "The user swings its stone axes at the target. Stone splinters left behind by this attack float around the target.",
+      "ko": ""
+    },
+    "springtide-storm": {
+      "name_en": "Springtide Storm",
+      "en": "The user attacks by wrapping opposing Pokémon in fierce winds brimming with love and hate. This may also lower their Attack stats.",
+      "ko": ""
+    },
+    "mystical-power": {
+      "name_en": "Mystical Power",
+      "en": "The user attacks by emitting a mysterious power. This also boosts the user’s Sp. Atk stat.",
+      "ko": ""
+    },
+    "raging-fury": {
+      "name_en": "Raging Fury",
+      "en": "The user rampages around spewing flames for two to three turns. The user then becomes confused.",
+      "ko": ""
+    },
+    "wave-crash": {
+      "name_en": "Wave Crash",
+      "en": "The user shrouds itself in water and slams into the target with its whole body to inflict damage. This also damages the user quite a lot.",
+      "ko": ""
+    },
+    "chloroblast": {
+      "name_en": "Chloroblast",
+      "en": "The user launches its amassed chlorophyll to inflict damage on the target. This also damages the user.",
+      "ko": ""
+    },
+    "mountain-gale": {
+      "name_en": "Mountain Gale",
+      "en": "The user hurls giant chunks of ice at the target to inflict damage. This may also make the target flinch.",
+      "ko": ""
+    },
+    "victory-dance": {
+      "name_en": "Victory Dance",
+      "en": "The user performs an intense dance to usher in victory, boosting its Attack, Defense, and Speed stats.",
+      "ko": ""
+    },
+    "headlong-rush": {
+      "name_en": "Headlong Rush",
+      "en": "The user smashes into the target in a full-body tackle. This also lowers the user’s Defense and Sp. Def stats.",
+      "ko": ""
+    },
+    "barb-barrage": {
+      "name_en": "Barb Barrage",
+      "en": "The user launches countless toxic barbs to inflict damage. This may also poison the target. This move’s power is doubled if the target is already poisoned.",
+      "ko": ""
+    },
+    "esper-wing": {
+      "name_en": "Esper Wing",
+      "en": "The user slashes the target with aura-enriched wings. This also boosts the user's Speed stat. This move has a heightened chance of landing a critical hit.",
+      "ko": ""
+    },
+    "bitter-malice": {
+      "name_en": "Bitter Malice",
+      "en": "The user attacks the target with spine-chilling resentment. This also lowers the target’s Attack stat.",
+      "ko": ""
+    },
+    "shelter": {
+      "name_en": "Shelter",
+      "en": "The user makes its skin as hard as an iron shield, sharply boosting its Defense stat.",
+      "ko": ""
+    },
+    "triple-arrows": {
+      "name_en": "Triple Arrows",
+      "en": "The user kicks, then fires three arrows. This move has a heightened chance of landing a critical hit and may also lower the target’s Defense stat or make it flinch.",
+      "ko": ""
+    },
+    "infernal-parade": {
+      "name_en": "Infernal Parade",
+      "en": "The user attacks with myriad fireballs. This may also leave the target with a burn. This move's power is doubled if the target has a status condition.",
+      "ko": ""
+    },
+    "ceaseless-edge": {
+      "name_en": "Ceaseless Edge",
+      "en": "The user slashes its shell blade at the target. Shell splinters left behind by this attack remain scattered under the target as spikes.",
+      "ko": ""
+    },
+    "bleakwind-storm": {
+      "name_en": "Bleakwind Storm",
+      "en": "The user attacks with savagely cold winds that cause both body and spirit to tremble. This may also lower the Speed stats of opposing Pokémon.",
+      "ko": ""
+    },
+    "wildbolt-storm": {
+      "name_en": "Wildbolt Storm",
+      "en": "The user summons a thunderous tempest and savagely attacks with lightning and wind. This may also leave opposing Pokémon with paralysis.",
+      "ko": ""
+    },
+    "sandsear-storm": {
+      "name_en": "Sandsear Storm",
+      "en": "The user attacks by wrapping opposing Pokémon in fierce winds and searingly hot sand. This may also leave them with a burn.",
+      "ko": ""
+    },
+    "lunar-blessing": {
+      "name_en": "Lunar Blessing",
+      "en": "The user receives a blessing from the crescent moon, restoring HP and curing status conditions for itself and its ally Pokémon currently in the battle.",
+      "ko": ""
+    },
+    "take-heart": {
+      "name_en": "Take Heart",
+      "en": "The user lifts its spirits, curing its own status conditions and boosting its Sp. Atk and Sp. Def stats.",
+      "ko": ""
+    },
+    "tera-blast": {
+      "name_en": "Tera Blast",
+      "en": "If the user has Terastallized, it unleashes energy of its Tera Type. This move inflicts damage using the Attack or Sp. Atk stat—whichever is higher for the user.",
+      "ko": ""
+    },
+    "silk-trap": {
+      "name_en": "Silk Trap",
+      "en": "The user spins a silken trap, protecting itself from damage while lowering the Speed stat of any attacker that makes direct contact.",
+      "ko": ""
+    },
+    "axe-kick": {
+      "name_en": "Axe Kick",
+      "en": "The user attacks by kicking up into the air and slamming its heel down upon the target. This may also confuse the target. If it misses, the user takes damage instead.",
+      "ko": ""
+    },
+    "last-respects": {
+      "name_en": "Last Respects",
+      "en": "The user attacks to avenge its allies. The more defeated allies there are in the user's party, the greater the move's power.",
+      "ko": ""
+    },
+    "lumina-crash": {
+      "name_en": "Lumina Crash",
+      "en": "The user attacks by unleashing a peculiar light that even affects the mind. This also harshly lowers the target's Sp. Def stat.",
+      "ko": ""
+    },
+    "order-up": {
+      "name_en": "Order Up",
+      "en": "The user attacks with elegant poise. If the user has a Tatsugiri in its mouth, this move boosts one of the user's stats based on the Tatsugiri's form.",
+      "ko": ""
+    },
+    "jet-punch": {
+      "name_en": "Jet Punch",
+      "en": "The user summons a torrent around its fist and punches at blinding speed. This move always goes first.",
+      "ko": ""
+    },
+    "spicy-extract": {
+      "name_en": "Spicy Extract",
+      "en": "The user emits an incredibly spicy extract, sharply boosting the target's Attack stat and harshly lowering the target's Defense stat.",
+      "ko": ""
+    },
+    "spin-out": {
+      "name_en": "Spin Out",
+      "en": "The user spins furiously by straining its legs, inflicting damage on the target. This also harshly lowers the user's Speed stat.",
+      "ko": ""
+    },
+    "population-bomb": {
+      "name_en": "Population Bomb",
+      "en": "The user’s fellows gather in droves to perform a combo attack that hits the target one to ten times in a row.",
+      "ko": ""
+    },
+    "ice-spinner": {
+      "name_en": "Ice Spinner",
+      "en": "The user covers its feet in thin ice and twirls around, slamming into the target. This move's spinning motion also destroys the terrain.",
+      "ko": ""
+    },
+    "glaive-rush": {
+      "name_en": "Glaive Rush",
+      "en": "The user throws its entire body into a reckless charge. After this move is used, attacks on the user cannot miss and will inflict double damage until the user’s next turn.",
+      "ko": ""
+    },
+    "revival-blessing": {
+      "name_en": "Revival Blessing",
+      "en": "The user bestows a loving blessing, reviving a party Pokémon that has fainted and restoring half that Pokémon's max HP.",
+      "ko": ""
+    },
+    "salt-cure": {
+      "name_en": "Salt Cure",
+      "en": "The user salt cures the target, inflicting damage every turn. Steel and Water types are more strongly affected by this move.",
+      "ko": ""
+    },
+    "triple-dive": {
+      "name_en": "Triple Dive",
+      "en": "The user performs a perfectly timed triple dive, hitting the target with splashes of water three times in a row.",
+      "ko": ""
+    },
+    "mortal-spin": {
+      "name_en": "Mortal Spin",
+      "en": "The user performs a spin attack that can also eliminate the effects of such moves as Bind, Wrap, and Leech Seed. This also poisons opposing Pokémon.",
+      "ko": ""
+    },
+    "doodle": {
+      "name_en": "Doodle",
+      "en": "The user captures the very essence of the target in a sketch. This changes the Abilities of the user and its ally Pokémon to that of the target.",
+      "ko": ""
+    },
+    "fillet-away": {
+      "name_en": "Fillet Away",
+      "en": "The user sharply boosts its Attack, Sp. Atk, and Speed stats by using its own HP.",
+      "ko": ""
+    },
+    "kowtow-cleave": {
+      "name_en": "Kowtow Cleave",
+      "en": "The user slashes at the target after kowtowing to make the target let down its guard. This attack never misses.",
+      "ko": ""
+    },
+    "flower-trick": {
+      "name_en": "Flower Trick",
+      "en": "The user throws a rigged bouquet of flowers at the target. This attack never misses and always lands a critical hit.",
+      "ko": ""
+    },
+    "torch-song": {
+      "name_en": "Torch Song",
+      "en": "The user blows out raging flames as if singing a song, scorching the target. This also boosts the user's Sp. Atk stat.",
+      "ko": ""
+    },
+    "aqua-step": {
+      "name_en": "Aqua Step",
+      "en": "The user toys with the target and attacks it using light and fluid dance steps. This also boosts the user's Speed stat.",
+      "ko": ""
+    },
+    "raging-bull": {
+      "name_en": "Raging Bull",
+      "en": "The user performs a tackle like a raging bull. This move's type depends on the user's form. It can also break barriers, such as Light Screen and Reflect.",
+      "ko": ""
+    },
+    "make-it-rain": {
+      "name_en": "Make It Rain",
+      "en": "The user attacks by throwing out a mass of coins. This also lowers the user's Sp. Atk stat. Money is earned after the battle.",
+      "ko": ""
+    },
+    "psyblade": {
+      "name_en": "Psyblade",
+      "en": "The user rends the target with an ethereal blade. This move's power is boosted by 50 percent if the user is on Electric Terrain.",
+      "ko": ""
+    },
+    "hydro-steam": {
+      "name_en": "Hydro Steam",
+      "en": "The user blasts the target with boiling-hot water. This move's power is not lowered in harsh sunlight but rather boosted by 50 percent.",
+      "ko": ""
+    },
+    "ruination": {
+      "name_en": "Ruination",
+      "en": "The user summons a ruinous disaster. This cuts the target’s HP in half.",
+      "ko": ""
+    },
+    "collision-course": {
+      "name_en": "Collision Course",
+      "en": "The user transforms and crashes to the ground, causing a massive prehistoric explosion. This move's power is boosted more than usual if it’s a supereffective hit.",
+      "ko": ""
+    },
+    "electro-drift": {
+      "name_en": "Electro Drift",
+      "en": "The user races forward at ultrafast speeds, piercing its target with futuristic electricity. This move's power is boosted more than usual if it's a supereffective hit.",
+      "ko": ""
+    },
+    "shed-tail": {
+      "name_en": "Shed Tail",
+      "en": "The user creates a substitute for itself using its own HP before switching places with a party Pokémon in waiting.",
+      "ko": ""
+    },
+    "chilly-reception": {
+      "name_en": "Chilly Reception",
+      "en": "The user tells a chillingly bad joke before switching places with a party Pokémon in waiting. This summons a snowstorm lasting five turns.",
+      "ko": ""
+    },
+    "tidy-up": {
+      "name_en": "Tidy Up",
+      "en": "The user tidies up and removes the effects of Spikes, Stealth Rock, Sticky Web, Toxic Spikes, and Substitute. This also boosts the user’s Attack and Speed stats.",
+      "ko": ""
+    },
+    "snowscape": {
+      "name_en": "Snowscape",
+      "en": "The user summons a snowstorm lasting five turns. This boosts the Defense stats of Ice types.",
+      "ko": ""
+    },
+    "pounce": {
+      "name_en": "Pounce",
+      "en": "The user attacks by pouncing on the target. This also lowers the target's Speed stat.",
+      "ko": ""
+    },
+    "trailblaze": {
+      "name_en": "Trailblaze",
+      "en": "The user attacks suddenly as if leaping out from tall grass. The user's nimble footwork boosts its Speed stat.",
+      "ko": ""
+    },
+    "chilling-water": {
+      "name_en": "Chilling Water",
+      "en": "The user attacks the target by showering it with water that's so cold it saps the target's power. This also lowers the target's Attack stat.",
+      "ko": ""
+    },
+    "hyper-drill": {
+      "name_en": "Hyper Drill",
+      "en": "The user spins the pointed part of its body at high speed to pierce the target. This attack can hit a target using a move such as Protect or Detect.",
+      "ko": ""
+    },
+    "twin-beam": {
+      "name_en": "Twin Beam",
+      "en": "The user shoots mystical beams from its eyes to inflict damage. The target is hit twice in a row.",
+      "ko": ""
+    },
+    "rage-fist": {
+      "name_en": "Rage Fist",
+      "en": "The user converts its rage into energy to attack. The more times the user has been hit by attacks, the greater the move's power.",
+      "ko": ""
+    },
+    "armor-cannon": {
+      "name_en": "Armor Cannon",
+      "en": "The user shoots its own armor out as blazing projectiles. This also lowers the user’s Defense and Sp. Def stats.",
+      "ko": ""
+    },
+    "bitter-blade": {
+      "name_en": "Bitter Blade",
+      "en": "The user focuses its bitter feelings toward the world of the living into a slashing attack. The user's HP is restored by up to half the damage taken by the target.",
+      "ko": ""
+    },
+    "double-shock": {
+      "name_en": "Double Shock",
+      "en": "The user discharges all the electricity from its body to perform a high-damage attack. After using this move, the user will no longer be Electric type.",
+      "ko": ""
+    },
+    "gigaton-hammer": {
+      "name_en": "Gigaton Hammer",
+      "en": "The user swings its whole body around to attack with its huge hammer. This move can't be used twice in a row.",
+      "ko": ""
+    },
+    "comeuppance": {
+      "name_en": "Comeuppance",
+      "en": "The user retaliates with much greater force against the opponent that last inflicted damage on it.",
+      "ko": ""
+    },
+    "aqua-cutter": {
+      "name_en": "Aqua Cutter",
+      "en": "The user expels pressurized water to cut at the target like a blade. This move has a heightened chance of landing a critical hit.",
+      "ko": ""
+    },
+    "blood-moon": {
+      "name_en": "Blood Moon",
+      "en": "The user unleashes the full brunt of its spirit from a full moon that shines as red as blood. This move can't be used twice in a row.",
+      "ko": ""
+    },
+    "matcha-gotcha": {
+      "name_en": "Matcha Gotcha",
+      "en": "The user fires a blast of tea that it mixed. The user's HP is restored by up to half the damage taken by the target. This may also leave the target with a burn.",
+      "ko": ""
+    },
+    "syrup-bomb": {
+      "name_en": "Syrup Bomb",
+      "en": "The user sets off an explosion of sticky candy syrup, which coats the target and causes the target's Speed stat to drop each turn for three turns.",
+      "ko": ""
+    },
+    "ivy-cudgel": {
+      "name_en": "Ivy Cudgel",
+      "en": "The user strikes with an ivy-wrapped cudgel. This move's type changes depending on the mask worn by the user, and it has a heightened chance of landing a critical hit.",
+      "ko": ""
+    },
+    "electro-shot": {
+      "name_en": "Electro Shot",
+      "en": "The user gathers electricity on the first turn, boosting its Sp. Atk stat, then fires a high-voltage shot on the next turn. The shot will be fired immediately in rain.",
+      "ko": ""
+    },
+    "tera-starstorm": {
+      "name_en": "Tera Starstorm",
+      "en": "With the power of its crystals, the user bombards and eliminates the target. When used by Terapagos in its Stellar Form, this move damages all opposing Pokémon.",
+      "ko": ""
+    },
+    "fickle-beam": {
+      "name_en": "Fickle Beam",
+      "en": "The user shoots a beam of light to inflict damage. Sometimes all the user's heads shoot beams in unison, doubling the move's power.",
+      "ko": ""
+    },
+    "burning-bulwark": {
+      "name_en": "Burning Bulwark",
+      "en": "The user's intensely hot fur protects it from attacks and also burns any attacker that makes direct contact with it.",
+      "ko": ""
+    },
+    "thunderclap": {
+      "name_en": "Thunderclap",
+      "en": "This move enables the user to attack first with a jolt of electricity. This move fails if the target is not readying an attack.",
+      "ko": ""
+    },
+    "mighty-cleave": {
+      "name_en": "Mighty Cleave",
+      "en": "The user wields the light that has accumulated atop its head to cleave the target. This move hits even if the target protects itself.",
+      "ko": ""
+    },
+    "tachyon-cutter": {
+      "name_en": "Tachyon Cutter",
+      "en": "The user attacks by launching particle blades at the target twice in a row. This attack never misses.",
+      "ko": ""
+    },
+    "hard-press": {
+      "name_en": "Hard Press",
+      "en": "The target is crushed with an arm, a claw, or the like to inflict damage. The more HP the target has left, the greater the move's power.",
+      "ko": ""
+    },
+    "dragon-cheer": {
+      "name_en": "Dragon Cheer",
+      "en": "The user raises its allies’ morale with a draconic cry so that their future attacks have a heightened chance of landing critical hits. This rouses Dragon types more.",
+      "ko": ""
+    },
+    "alluring-voice": {
+      "name_en": "Alluring Voice",
+      "en": "The user attacks the target using its angelic voice. This also confuses the target if its stats have been boosted during the turn.",
+      "ko": ""
+    },
+    "temper-flare": {
+      "name_en": "Temper Flare",
+      "en": "Spurred by desperation, the user attacks the target. This move's power is doubled if the user's previous move failed.",
+      "ko": ""
+    },
+    "supercell-slam": {
+      "name_en": "Supercell Slam",
+      "en": "The user electrifies its body and drops onto the target to inflict damage. If this move misses, the user takes damage instead.",
+      "ko": ""
+    },
+    "psychic-noise": {
+      "name_en": "Psychic Noise",
+      "en": "The user attacks the target with unpleasant sound waves. For two turns, the target is prevented from recovering HP through moves, Abilities, or held items.",
+      "ko": ""
+    },
+    "upper-hand": {
+      "name_en": "Upper Hand",
+      "en": "The user reacts to the target's movement and strikes with the heel of its palm, making the target flinch. This move fails if the target is not readying a priority move.",
+      "ko": ""
+    },
+    "malignant-chain": {
+      "name_en": "Malignant Chain",
+      "en": "The user pours toxins into the target by wrapping them in a toxic, corrosive chain. This may also leave the target badly poisoned.",
+      "ko": ""
+    }
+  },
+  "ability-effects": {
+    "lingering-aroma": {
+      "name_en": "Lingering Aroma",
+      "en": "Contact with the Pokémon changes the attacker's Ability to Lingering Aroma.",
+      "ko": ""
+    },
+    "seed-sower": {
+      "name_en": "Seed Sower",
+      "en": "Turns the ground into Grassy Terrain when the Pokémon is hit by an attack.",
+      "ko": ""
+    },
+    "thermal-exchange": {
+      "name_en": "Thermal Exchange",
+      "en": "Boosts the Attack stat when the Pokémon is hit by a Fire-type move. The Pokémon also cannot be burned.",
+      "ko": ""
+    },
+    "anger-shell": {
+      "name_en": "Anger Shell",
+      "en": "When an attack causes its HP to drop to half or less, the Pokémon gets angry. This lowers its Defense and Sp. Def stats but boosts its Attack, Sp. Atk, and Speed stats.",
+      "ko": ""
+    },
+    "purifying-salt": {
+      "name_en": "Purifying Salt",
+      "en": "The Pokémon's pure salt protects it from status conditions and halves the damage taken from Ghost-type moves.",
+      "ko": ""
+    },
+    "well-baked-body": {
+      "name_en": "Well-Baked Body",
+      "en": "The Pokémon takes no damage when hit by Fire-type moves. Instead, its Defense stat is sharply boosted.",
+      "ko": ""
+    },
+    "wind-rider": {
+      "name_en": "Wind Rider",
+      "en": "Boosts the Pokémon's Attack stat if Tailwind takes effect or if the Pokémon is hit by a wind move. The Pokémon also takes no damage from wind moves.",
+      "ko": ""
+    },
+    "guard-dog": {
+      "name_en": "Guard Dog",
+      "en": "Boosts the Pokémon’s Attack stat if intimidated. Moves and items that would force the Pokémon to switch out also fail to work.",
+      "ko": ""
+    },
+    "rocky-payload": {
+      "name_en": "Rocky Payload",
+      "en": "Powers up Rock-type moves.",
+      "ko": ""
+    },
+    "wind-power": {
+      "name_en": "Wind Power",
+      "en": "The Pokémon becomes charged when it is hit by a wind move, boosting the power of the next Electric-type move the Pokémon uses.",
+      "ko": ""
+    },
+    "zero-to-hero": {
+      "name_en": "Zero to Hero",
+      "en": "The Pokémon transforms into its Hero Form when it switches out.",
+      "ko": ""
+    },
+    "commander": {
+      "name_en": "Commander",
+      "en": "When the Pokémon enters a battle, it goes inside the mouth of an ally Dondozo if one is on the field. The Pokémon then issues commands from there.",
+      "ko": ""
+    },
+    "electromorphosis": {
+      "name_en": "Electromorphosis",
+      "en": "The Pokémon becomes charged when it takes damage, boosting the power of the next Electric-type move the Pokémon uses.",
+      "ko": ""
+    },
+    "protosynthesis": {
+      "name_en": "Protosynthesis",
+      "en": "Boosts the Pokémon's most proficient stat in harsh sunlight or if the Pokémon is holding Booster Energy.",
+      "ko": ""
+    },
+    "quark-drive": {
+      "name_en": "Quark Drive",
+      "en": "Boosts the Pokémon's most proficient stat on Electric Terrain or if the Pokémon is holding Booster Energy.",
+      "ko": ""
+    },
+    "good-as-gold": {
+      "name_en": "Good as Gold",
+      "en": "A body of pure, solid gold gives the Pokémon full immunity to other Pokémon's status moves.",
+      "ko": ""
+    },
+    "vessel-of-ruin": {
+      "name_en": "Vessel of Ruin",
+      "en": "The power of the Pokémon's ruinous vessel lowers the Sp. Atk stats of all Pokémon except itself.",
+      "ko": ""
+    },
+    "sword-of-ruin": {
+      "name_en": "Sword of Ruin",
+      "en": "The power of the Pokémon's ruinous sword lowers the Defense stats of all Pokémon except itself.",
+      "ko": ""
+    },
+    "tablets-of-ruin": {
+      "name_en": "Tablets of Ruin",
+      "en": "The power of the Pokémon's ruinous wooden tablets lowers the Attack stats of all Pokémon except itself.",
+      "ko": ""
+    },
+    "beads-of-ruin": {
+      "name_en": "Beads of Ruin",
+      "en": "The power of the Pokémon's ruinous beads lowers the Sp. Def stats of all Pokémon except itself.",
+      "ko": ""
+    },
+    "orichalcum-pulse": {
+      "name_en": "Orichalcum Pulse",
+      "en": "Turns the sunlight harsh when the Pokémon enters a battle. The ancient pulse thrumming through the Pokémon also boosts its Attack stat in harsh sunlight.",
+      "ko": ""
+    },
+    "hadron-engine": {
+      "name_en": "Hadron Engine",
+      "en": "Turns the ground into Electric Terrain when the Pokémon enters a battle. The futuristic engine within the Pokémon also boosts its Sp. Atk stat on Electric Terrain.",
+      "ko": ""
+    },
+    "opportunist": {
+      "name_en": "Opportunist",
+      "en": "If an opponent's stat is boosted, the Pokémon seizes the opportunity to boost the same stat for itself.",
+      "ko": ""
+    },
+    "cud-chew": {
+      "name_en": "Cud Chew",
+      "en": "When the Pokémon eats a Berry, it will regurgitate that Berry at the end of the next turn and eat it one more time.",
+      "ko": ""
+    },
+    "sharpness": {
+      "name_en": "Sharpness",
+      "en": "Powers up slicing moves.",
+      "ko": ""
+    },
+    "supreme-overlord": {
+      "name_en": "Supreme Overlord",
+      "en": "When the Pokémon enters a battle, its Attack and Sp. Atk stats are slightly boosted for each of the allies in its party that have already been defeated.",
+      "ko": ""
+    },
+    "costar": {
+      "name_en": "Costar",
+      "en": "When the Pokémon enters a battle, it copies an ally's stat changes.",
+      "ko": ""
+    },
+    "toxic-debris": {
+      "name_en": "Toxic Debris",
+      "en": "Scatters poison spikes at the feet of the opposing team when the Pokémon takes damage from physical moves.",
+      "ko": ""
+    },
+    "armor-tail": {
+      "name_en": "Armor Tail",
+      "en": "The mysterious tail covering the Pokémon's head makes opponents unable to use priority moves against the Pokémon or its allies.",
+      "ko": ""
+    },
+    "earth-eater": {
+      "name_en": "Earth Eater",
+      "en": "If hit by a Ground-type move, the Pokémon has its HP restored instead of taking damage.",
+      "ko": ""
+    },
+    "mycelium-might": {
+      "name_en": "Mycelium Might",
+      "en": "The Pokémon will always act more slowly when using status moves, but these moves will be unimpeded by the Ability of the target.",
+      "ko": ""
+    },
+    "minds-eye": {
+      "name_en": "Mind’s Eye",
+      "en": "The Pokémon ignores changes to opponents' evasiveness, its accuracy can't be lowered, and it can hit Ghost types with Normal-type and Fighting-type moves",
+      "ko": ""
+    },
+    "supersweet-syrup": {
+      "name_en": "Supersweet Syrup",
+      "en": "Lowers the evasion of opposing Pokémon by 1 stage when first sent into battle",
+      "ko": ""
+    },
+    "hospitality": {
+      "name_en": "Hospitality",
+      "en": "When the Pokémon enters a battle, it showers its ally with hospitality, restoring a small amount of the ally's HP",
+      "ko": ""
+    },
+    "toxic-chain": {
+      "name_en": "Toxic Chain",
+      "en": "The power of the Pokémon's toxic chain may badly poison any target the Pokémon hits with a move",
+      "ko": ""
+    },
+    "embody-aspect": {
+      "name_en": "Embody Aspect",
+      "en": "The Pokémon's heart fills with memories, causing the Mask to shine and one of the Pokémon's stats to be boosted.",
+      "ko": ""
+    },
+    "tera-shift": {
+      "name_en": "Tera Shift",
+      "en": "When the Pokémon enters a battle, it absorbs the energy around itself and transforms into its Terastal Form.",
+      "ko": ""
+    },
+    "tera-shell": {
+      "name_en": "Tera Shell",
+      "en": "The Pokémon's shell contains the powers of each type. All damage-dealing moves that hit the Pokémon when its HP is full will not be very effective.",
+      "ko": ""
+    },
+    "teraform-zero": {
+      "name_en": "Teraform Zero",
+      "en": "When Terapagos changes into its Stellar Form, it uses its hidden powers to eliminate all effects of weather and terrain, reducing them to zero.",
+      "ko": ""
+    },
+    "poison-puppeteer": {
+      "name_en": "Poison Puppeteer",
+      "en": "Pokémon poisoned by Pecharunt's moves will also become confused.",
+      "ko": ""
+    },
+    "piercing-drill": {
+      "name_en": "Piercing Drill",
+      "en": "When the Pokémon uses contact moves, it can hit even targets that are protecting themselves, dealing 1/4 of the damage that the move would otherwise deal. Everything aside from the target's protective effects is still triggered.",
+      "ko": ""
+    },
+    "dragonize": {
+      "name_en": "Dragonize",
+      "en": "The Pokémon's Normal-type moves become Dragon-type moves and their power is boosted by 20%.",
+      "ko": ""
+    },
+    "mega-sol": {
+      "name_en": "Mega Sol",
+      "en": "Even when the sunlight has not turned harsh, the Pokémon can use its moves as if the weather were harsh sunlight.",
+      "ko": ""
+    },
+    "spicy-spray": {
+      "name_en": "Spicy Spray",
+      "en": "When the Pokémon takes damage from a move, it burns the attacker.",
+      "ko": ""
+    },
+    "eelevate": {
+      "name_en": "Eelevate",
+      "en": "The Pokémon floats off the ground, making it immune to Ground-type moves, as well as the Spikes, Toxic Spikes, and Sticky Web statuses. When the Pokémon knocks out a target with an attack, its highest stat is boosted by 1 stage.",
+      "ko": ""
+    },
+    "fire-mane": {
+      "name_en": "Fire Mane",
+      "en": "Boosts the power of the Pokémon's Fire-type moves by 50%.",
+      "ko": ""
+    },
+    "aura-guard": {
+      "name_en": "Aura Guard",
+      "en": "A Pokémon with Aura Guard takes half damage from moves that make contact. Moves affected by Long Reach which make contact will deal regular damage.",
+      "ko": ""
+    }
+  }
+}
