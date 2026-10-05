@@ -166,61 +166,62 @@ ItemDetailPane::ItemDetailPane(SpriteCache *sprites, QWidget *parent)
     m_effect = new QLabel;
     m_effect->setWordWrap(true);
     m_effect->setObjectName(QStringLiteral("itemEffect"));
-    m_extraCaption = new QLabel;
+    m_extraCaption = new QLabel(tr("진화"));
     m_extra = new QLabel;
     m_extra->setWordWrap(true);
     m_extra->setObjectName(QStringLiteral("itemEffect"));
-    for (QLabel *caption : {m_generationCaption, m_effectCaption, m_extraCaption})
+    m_sourceCaption = new QLabel(tr("입수처"));
+    m_sources = new QLabel;
+    m_sources->setWordWrap(true);
+    m_sources->setObjectName(QStringLiteral("itemEffect"));
+    for (QLabel *caption : {m_generationCaption, m_effectCaption, m_extraCaption, m_sourceCaption})
         caption->setObjectName(QStringLiteral("filterCaption"));
-    for (QWidget *w :
-         std::initializer_list<QWidget *> {m_generationCaption, m_generations, m_effectCaption,
-                                           m_effect, m_extraCaption, m_extra})
+    for (QWidget *w : std::initializer_list<QWidget *> {m_generationCaption, m_generations,
+                                                        m_effectCaption, m_effect, m_extraCaption,
+                                                        m_extra, m_sourceCaption, m_sources})
         layout->addWidget(w);
     layout->addStretch();
     clear();
 }
 
 void ItemDetailPane::setItem(const ItemRow &item, int generation, Language language,
-                             const QList<ItemEvolution> &evolutions,
-                             const QStringList &machinePlaces)
+                             const QList<ItemEvolution> &evolutions, const QStringList &sources)
 {
     m_empty->hide();
-    for (QWidget *w : std::initializer_list<QWidget *> {m_head, m_generationCaption, m_generations,
-                                                        m_effectCaption, m_effect})
+    for (QWidget *w :
+         std::initializer_list<QWidget *> {m_head, m_generationCaption, m_generations,
+                                           m_effectCaption, m_effect, m_sourceCaption, m_sources})
         w->show();
     m_head->set(item, generation, language);
     m_generations->set(item.generations, generation);
     const QString effect = item.effect.text(language);
     m_effect->setText(effect.isEmpty() ? tr("효과 설명이 없어요") : effect);
 
-    // 셋째 칸: 진화 아이템이면 진화 대상, 기술머신이면 획득처. 없으면 숨긴다.
+    // 진화 아이템이면 진화 대상(없으면 칸째 숨김)
     QStringList lines;
-    QString caption;
-    if (!evolutions.isEmpty()) {
-        caption = tr("진화");
-        for (const ItemEvolution &evolution : evolutions) {
-            const QString from = evolution.from.text(language);
-            const QString to = evolution.to.text(language);
-            QString line = from.isEmpty() ? to : tr("%1 → %2").arg(from, to);
-            if (evolution.held)
-                line += tr(" (지니고 교환)");
-            lines.append(line);
-        }
-    } else if (!machinePlaces.isEmpty()) {
-        caption = tr("획득처");
-        lines = machinePlaces;
+    for (const ItemEvolution &evolution : evolutions) {
+        const QString from = evolution.from.text(language);
+        const QString to = evolution.to.text(language);
+        QString line = from.isEmpty() ? to : tr("%1 → %2").arg(from, to);
+        if (evolution.held)
+            line += tr(" (지니고 교환)");
+        lines.append(line);
     }
-    m_extraCaption->setText(caption);
     m_extra->setText(QStringLiteral("· ") + lines.join(QStringLiteral("\n· ")));
     m_extraCaption->setVisible(!lines.isEmpty());
     m_extra->setVisible(!lines.isEmpty());
+
+    // 입수처: 고른 게임의 입수 사전. 아직 없으면 그렇다고 알린다(빈칸보다 낫다)
+    m_sources->setText(sources.isEmpty()
+                               ? tr("이 게임의 입수 정보가 아직 없어요")
+                               : QStringLiteral("· ") + sources.join(QStringLiteral("\n· ")));
 }
 
 void ItemDetailPane::clear()
 {
-    for (QWidget *w :
-         std::initializer_list<QWidget *> {m_head, m_generationCaption, m_generations,
-                                           m_effectCaption, m_effect, m_extraCaption, m_extra})
+    for (QWidget *w : std::initializer_list<QWidget *> {m_head, m_generationCaption, m_generations,
+                                                        m_effectCaption, m_effect, m_extraCaption,
+                                                        m_extra, m_sourceCaption, m_sources})
         w->hide();
     m_empty->show();
 }

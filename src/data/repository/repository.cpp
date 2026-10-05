@@ -221,7 +221,7 @@ int ItemRow::introGeneration() const
     return 0;
 }
 
-QList<ItemRow> Repository::itemsForGeneration(int generation)
+QList<ItemRow> Repository::itemsForGeneration(int generation, const QString &versionGroup)
 {
     QList<ItemRow> rows;
     if (!open())
@@ -263,18 +263,27 @@ QList<ItemRow> Repository::itemsForGeneration(int generation)
         }
     }
 
-    QHash<int, int> moveOfItem; // 기술머신 item id → 이 세대에 담긴 move id
-    // 3) 기술머신: 이 세대에 담긴 기술 + 그 기술의 이 세대 타입(구간 질의)
+    QHash<int, int> moveOfItem; // 기술머신 item id → 이 세대(게임)에 담긴 move id
+    // 3) 기술머신: 담긴 기술 + 그 기술의 이 세대 타입(구간 질의). 게임을 주면 그 게임의 기술머신
+    //    표(machines — 버전 그룹 단위)를, 아니면 세대 표(item_machines — 그 세대 첫 게임)를 쓴다
+    const QString machineSource
+            = versionGroup.isEmpty()
+                      ? QStringLiteral("(SELECT item_id, move_id FROM item_machines "
+                                       " WHERE generation = :g)")
+                      : QStringLiteral("(SELECT ma.item_id, ma.move_id FROM machines ma "
+                                       " JOIN version_groups vg ON vg.id = ma.version_group_id "
+                                       " WHERE vg.identifier = :vg)");
     query.prepare(
             QStringLiteral("SELECT im.item_id, m.name_ko, m.name_en, m.name_ja, t.identifier, "
-                           "im.move_id, m.identifier FROM "
-                           "item_machines im "
+                           "im.move_id, m.identifier FROM %1 im "
                            "JOIN moves m ON m.id = im.move_id "
                            "LEFT JOIN move_types mt ON mt.move_id = m.id AND mt.gen_from <= :g "
                            "  AND (mt.gen_to IS NULL OR mt.gen_to >= :g) "
-                           "LEFT JOIN types t ON t.id = mt.type_id "
-                           "WHERE im.generation = :g"));
+                           "LEFT JOIN types t ON t.id = mt.type_id")
+                    .arg(machineSource));
     query.bindValue(QStringLiteral(":g"), generation);
+    if (!versionGroup.isEmpty())
+        query.bindValue(QStringLiteral(":vg"), versionGroup);
     if (query.exec()) {
         while (query.next()) {
             const auto it = rowOfItem.constFind(query.value(0).toInt());
@@ -345,6 +354,12 @@ QList<ItemRow> Repository::itemsForGeneration(int generation)
             }
         }
     }
+    // 게임을 골랐으면 그 게임의 기술머신 표에 없는 기술머신 · 비전머신은 뺀다(레츠고는 60개뿐인데
+    // 세대 목록에는 썬문의 기술머신100까지 있다)
+    if (!versionGroup.isEmpty())
+        rows.removeIf([&moveOfItem](const ItemRow &row) {
+            return row.pocket == QLatin1String("machines") && !moveOfItem.contains(row.id);
+        });
     return rows;
 }
 

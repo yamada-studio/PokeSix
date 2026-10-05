@@ -125,7 +125,8 @@ int MoveList::rowAt(int y) const
 
 QString MoveList::placesOf(const MoveEntry &move) const
 {
-    return guidebook::machinePlaces(m_versionGroup, move.machineItem).join(QStringLiteral(" · "));
+    return guidebook::itemSources(m_versionGroup, move.machineItem, m_language)
+            .join(QStringLiteral(" / "));
 }
 
 void MoveList::paintEvent(QPaintEvent *)

@@ -289,6 +289,28 @@ TEST_F(RepositoryTest, ItemsKnowWhichGenerationsHaveThem)
     EXPECT_EQ(findItem(items, QStringLiteral("leftovers"))->introGeneration(), 2);
 }
 
+TEST_F(RepositoryTest, MachineContentsFollowTheGame)
+{
+    Repository repository(s_dbPath);
+    // 같은 7세대라도 기술머신01은 썬문 = 분발, 레츠고 = 박치기 (PokéAPI machines는 게임 단위)
+    auto tm01 = [&](const QString &versionGroup) {
+        return findItem(repository.itemsForGeneration(7, versionGroup), QStringLiteral("tm01"))
+                ->machineMove.ko;
+    };
+    EXPECT_EQ(tm01(QStringLiteral("sun-moon")), QStringLiteral("분발"));
+    EXPECT_EQ(tm01(QStringLiteral("lets-go-pikachu-lets-go-eevee")), QStringLiteral("박치기"));
+    // 그 게임의 기술머신 표에 없는 기술머신은 게임을 고르면 빠진다(픽스처: 기술머신02는 레츠고에
+    // 없다)
+    const QList<ItemRow> letsGo
+            = repository.itemsForGeneration(7, QStringLiteral("lets-go-pikachu-lets-go-eevee"));
+    for (const ItemRow &row : letsGo)
+        if (row.pocket == QStringLiteral("machines"))
+            EXPECT_FALSE(row.machineMove.isEmpty()) << qPrintable(row.identifier);
+    // 게임을 주지 않으면 세대 기준(그 세대 첫 게임 = 썬문)
+    EXPECT_EQ(findItem(repository.itemsForGeneration(7), QStringLiteral("tm01"))->machineMove.ko,
+              QStringLiteral("분발"));
+}
+
 TEST_F(RepositoryTest, ItemEffectFollowsTheGeneration)
 {
     Repository repository(s_dbPath);

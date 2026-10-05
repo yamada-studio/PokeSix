@@ -610,7 +610,15 @@
     </message>
     <message>
         <source>획득처</source>
+        <translation type="vanished">入手場所</translation>
+    </message>
+    <message>
+        <source>입수처</source>
         <translation>入手場所</translation>
+    </message>
+    <message>
+        <source>이 게임의 입수 정보가 아직 없어요</source>
+        <translation>このゲームの入手情報はまだありません</translation>
     </message>
 </context>
 <context>
@@ -1251,6 +1259,93 @@
     <message>
         <source>스피드</source>
         <translation>すばやさ</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::guidebook</name>
+    <message>
+        <source>필드</source>
+        <translation>フィールド</translation>
+    </message>
+    <message>
+        <source>숨겨진 아이템</source>
+        <translation>隠しアイテム</translation>
+    </message>
+    <message>
+        <source>받기</source>
+        <translation>もらう</translation>
+    </message>
+    <message>
+        <source>상점</source>
+        <translation>ショップ</translation>
+    </message>
+    <message>
+        <source>교환</source>
+        <translation>交換</translation>
+    </message>
+    <message>
+        <source>경품</source>
+        <translation>景品</translation>
+    </message>
+    <message>
+        <source>보상</source>
+        <translation>報酬</translation>
+    </message>
+    <message>
+        <source>야생 포켓몬 소지</source>
+        <translation>野生ポケモンの持ち物</translation>
+    </message>
+    <message>
+        <source>교환(통신)</source>
+        <translation>通信交換</translation>
+    </message>
+    <message>
+        <source>NPC 가르침</source>
+        <translation>教え技</translation>
+    </message>
+    <message>
+        <source>%1원</source>
+        <translation>%1円</translation>
+    </message>
+    <message>
+        <source>%1BP</source>
+        <translation>%1BP</translation>
+    </message>
+    <message>
+        <source>코인 %1</source>
+        <translation>コイン%1枚</translation>
+    </message>
+    <message>
+        <source>빨강조각 %1개</source>
+        <translation>あかいかけら%1こ</translation>
+    </message>
+    <message>
+        <source>파랑조각 %1개</source>
+        <translation>あおいかけら%1こ</translation>
+    </message>
+    <message>
+        <source>노랑조각 %1개</source>
+        <translation>きいろいかけら%1こ</translation>
+    </message>
+    <message>
+        <source>초록조각 %1개</source>
+        <translation>みどりのかけら%1こ</translation>
+    </message>
+    <message>
+        <source>하트비늘 %1개</source>
+        <translation>ハートのウロコ%1こ</translation>
+    </message>
+    <message>
+        <source>%1포인트</source>
+        <translation>%1ポイント</translation>
+    </message>
+    <message>
+        <source>%1와트</source>
+        <translation>%1W</translation>
+    </message>
+    <message>
+        <source>%1LP</source>
+        <translation>%1LP</translation>
     </message>
 </context>
 <context>

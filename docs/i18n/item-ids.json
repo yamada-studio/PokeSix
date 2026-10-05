@@ -1,0 +1,8698 @@
+{
+ "master-ball": {
+  "en": "Master Ball",
+  "ko": "마스터볼"
+ },
+ "ultra-ball": {
+  "en": "Ultra Ball",
+  "ko": "하이퍼볼"
+ },
+ "great-ball": {
+  "en": "Great Ball",
+  "ko": "슈퍼볼"
+ },
+ "poke-ball": {
+  "en": "Poké Ball",
+  "ko": "몬스터볼"
+ },
+ "safari-ball": {
+  "en": "Safari Ball",
+  "ko": "사파리볼"
+ },
+ "net-ball": {
+  "en": "Net Ball",
+  "ko": "네트볼"
+ },
+ "dive-ball": {
+  "en": "Dive Ball",
+  "ko": "다이브볼"
+ },
+ "nest-ball": {
+  "en": "Nest Ball",
+  "ko": "네스트볼"
+ },
+ "repeat-ball": {
+  "en": "Repeat Ball",
+  "ko": "리피트볼"
+ },
+ "timer-ball": {
+  "en": "Timer Ball",
+  "ko": "타이머볼"
+ },
+ "luxury-ball": {
+  "en": "Luxury Ball",
+  "ko": "럭셔리볼"
+ },
+ "premier-ball": {
+  "en": "Premier Ball",
+  "ko": "프리미어볼"
+ },
+ "dusk-ball": {
+  "en": "Dusk Ball",
+  "ko": "다크볼"
+ },
+ "heal-ball": {
+  "en": "Heal Ball",
+  "ko": "힐볼"
+ },
+ "quick-ball": {
+  "en": "Quick Ball",
+  "ko": "퀵볼"
+ },
+ "cherish-ball": {
+  "en": "Cherish Ball",
+  "ko": "프레셔스볼"
+ },
+ "potion": {
+  "en": "Potion",
+  "ko": "상처약"
+ },
+ "antidote": {
+  "en": "Antidote",
+  "ko": "해독제"
+ },
+ "burn-heal": {
+  "en": "Burn Heal",
+  "ko": "화상치료제"
+ },
+ "ice-heal": {
+  "en": "Ice Heal",
+  "ko": "얼음상태치료제"
+ },
+ "awakening": {
+  "en": "Awakening",
+  "ko": "잠깨는약"
+ },
+ "paralyze-heal": {
+  "en": "Paralyze Heal",
+  "ko": "마비치료제"
+ },
+ "full-restore": {
+  "en": "Full Restore",
+  "ko": "회복약"
+ },
+ "max-potion": {
+  "en": "Max Potion",
+  "ko": "풀회복약"
+ },
+ "hyper-potion": {
+  "en": "Hyper Potion",
+  "ko": "고급상처약"
+ },
+ "super-potion": {
+  "en": "Super Potion",
+  "ko": "좋은상처약"
+ },
+ "full-heal": {
+  "en": "Full Heal",
+  "ko": "만병통치제"
+ },
+ "revive": {
+  "en": "Revive",
+  "ko": "기력의조각"
+ },
+ "max-revive": {
+  "en": "Max Revive",
+  "ko": "기력의덩어리"
+ },
+ "fresh-water": {
+  "en": "Fresh Water",
+  "ko": "맛있는물"
+ },
+ "soda-pop": {
+  "en": "Soda Pop",
+  "ko": "미네랄사이다"
+ },
+ "lemonade": {
+  "en": "Lemonade",
+  "ko": "후르츠밀크"
+ },
+ "moomoo-milk": {
+  "en": "Moomoo Milk",
+  "ko": "튼튼밀크"
+ },
+ "energy-powder": {
+  "en": "Energy Powder",
+  "ko": "힘의가루"
+ },
+ "energy-root": {
+  "en": "Energy Root",
+  "ko": "힘의뿌리"
+ },
+ "heal-powder": {
+  "en": "Heal Powder",
+  "ko": "만능가루"
+ },
+ "revival-herb": {
+  "en": "Revival Herb",
+  "ko": "부활초"
+ },
+ "ether": {
+  "en": "Ether",
+  "ko": "PP에이드"
+ },
+ "max-ether": {
+  "en": "Max Ether",
+  "ko": "PP회복"
+ },
+ "elixir": {
+  "en": "Elixir",
+  "ko": "PP에이더"
+ },
+ "max-elixir": {
+  "en": "Max Elixir",
+  "ko": "PP맥스"
+ },
+ "lava-cookie": {
+  "en": "Lava Cookie",
+  "ko": "용암전병"
+ },
+ "berry-juice": {
+  "en": "Berry Juice",
+  "ko": "나무열매쥬스"
+ },
+ "sacred-ash": {
+  "en": "Sacred Ash",
+  "ko": "성스러운분말"
+ },
+ "hp-up": {
+  "en": "HP Up",
+  "ko": "맥스업"
+ },
+ "protein": {
+  "en": "Protein",
+  "ko": "타우린"
+ },
+ "iron": {
+  "en": "Iron",
+  "ko": "사포닌"
+ },
+ "carbos": {
+  "en": "Carbos",
+  "ko": "알칼로이드"
+ },
+ "calcium": {
+  "en": "Calcium",
+  "ko": "리보플라빈"
+ },
+ "rare-candy": {
+  "en": "Rare Candy",
+  "ko": "이상한사탕"
+ },
+ "pp-up": {
+  "en": "PP Up",
+  "ko": "포인트업"
+ },
+ "zinc": {
+  "en": "Zinc",
+  "ko": "키토산"
+ },
+ "pp-max": {
+  "en": "PP Max",
+  "ko": "포인트맥스"
+ },
+ "old-gateau": {
+  "en": "Old Gateau",
+  "ko": "숲의양갱"
+ },
+ "guard-spec": {
+  "en": "Guard Spec.",
+  "ko": "이펙트가드"
+ },
+ "dire-hit": {
+  "en": "Dire Hit",
+  "ko": "크리티컬커터"
+ },
+ "x-attack": {
+  "en": "X Attack",
+  "ko": "플러스파워"
+ },
+ "x-defense": {
+  "en": "X Defense",
+  "ko": "디펜드업"
+ },
+ "x-speed": {
+  "en": "X Speed",
+  "ko": "스피드업"
+ },
+ "x-accuracy": {
+  "en": "X Accuracy",
+  "ko": "잘-맞히기"
+ },
+ "x-sp-atk": {
+  "en": "X Sp. Atk",
+  "ko": "스페셜업"
+ },
+ "x-sp-def": {
+  "en": "X Sp. Def",
+  "ko": "스페셜가드"
+ },
+ "poke-doll": {
+  "en": "Poké Doll",
+  "ko": "삐삐인형"
+ },
+ "fluffy-tail": {
+  "en": "Fluffy Tail",
+  "ko": "에나비꼬리"
+ },
+ "blue-flute": {
+  "en": "Blue Flute",
+  "ko": "파랑비드로"
+ },
+ "yellow-flute": {
+  "en": "Yellow Flute",
+  "ko": "노랑비드로"
+ },
+ "red-flute": {
+  "en": "Red Flute",
+  "ko": "빨강비드로"
+ },
+ "black-flute": {
+  "en": "Black Flute",
+  "ko": "검정비드로"
+ },
+ "white-flute": {
+  "en": "White Flute",
+  "ko": "하양비드로"
+ },
+ "shoal-salt": {
+  "en": "Shoal Salt",
+  "ko": "여울소금"
+ },
+ "shoal-shell": {
+  "en": "Shoal Shell",
+  "ko": "여울조개껍질"
+ },
+ "red-shard": {
+  "en": "Red Shard",
+  "ko": "빨강조각"
+ },
+ "blue-shard": {
+  "en": "Blue Shard",
+  "ko": "파랑조각"
+ },
+ "yellow-shard": {
+  "en": "Yellow Shard",
+  "ko": "노랑조각"
+ },
+ "green-shard": {
+  "en": "Green Shard",
+  "ko": "초록조각"
+ },
+ "super-repel": {
+  "en": "Super Repel",
+  "ko": "실버스프레이"
+ },
+ "max-repel": {
+  "en": "Max Repel",
+  "ko": "골드스프레이"
+ },
+ "escape-rope": {
+  "en": "Escape Rope",
+  "ko": "동굴탈출로프"
+ },
+ "repel": {
+  "en": "Repel",
+  "ko": "벌레회피스프레이"
+ },
+ "sun-stone": {
+  "en": "Sun Stone",
+  "ko": "태양의돌"
+ },
+ "moon-stone": {
+  "en": "Moon Stone",
+  "ko": "달의돌"
+ },
+ "fire-stone": {
+  "en": "Fire Stone",
+  "ko": "불꽃의돌"
+ },
+ "thunder-stone": {
+  "en": "Thunder Stone",
+  "ko": "천둥의돌"
+ },
+ "water-stone": {
+  "en": "Water Stone",
+  "ko": "물의돌"
+ },
+ "leaf-stone": {
+  "en": "Leaf Stone",
+  "ko": "리프의돌"
+ },
+ "tiny-mushroom": {
+  "en": "Tiny Mushroom",
+  "ko": "작은버섯"
+ },
+ "big-mushroom": {
+  "en": "Big Mushroom",
+  "ko": "큰버섯"
+ },
+ "pearl": {
+  "en": "Pearl",
+  "ko": "진주"
+ },
+ "big-pearl": {
+  "en": "Big Pearl",
+  "ko": "큰진주"
+ },
+ "stardust": {
+  "en": "Stardust",
+  "ko": "별의모래"
+ },
+ "star-piece": {
+  "en": "Star Piece",
+  "ko": "별의조각"
+ },
+ "nugget": {
+  "en": "Nugget",
+  "ko": "금구슬"
+ },
+ "heart-scale": {
+  "en": "Heart Scale",
+  "ko": "하트비늘"
+ },
+ "honey": {
+  "en": "Honey",
+  "ko": "달콤한꿀"
+ },
+ "growth-mulch": {
+  "en": "Growth Mulch",
+  "ko": "무럭무럭비료"
+ },
+ "damp-mulch": {
+  "en": "Damp Mulch",
+  "ko": "축축이비료"
+ },
+ "stable-mulch": {
+  "en": "Stable Mulch",
+  "ko": "오래오래비료"
+ },
+ "gooey-mulch": {
+  "en": "Gooey Mulch",
+  "ko": "끈적끈적비료"
+ },
+ "root-fossil": {
+  "en": "Root Fossil",
+  "ko": "뿌리화석"
+ },
+ "claw-fossil": {
+  "en": "Claw Fossil",
+  "ko": "발톱화석"
+ },
+ "helix-fossil": {
+  "en": "Helix Fossil",
+  "ko": "조개화석"
+ },
+ "dome-fossil": {
+  "en": "Dome Fossil",
+  "ko": "껍질화석"
+ },
+ "old-amber": {
+  "en": "Old Amber",
+  "ko": "비밀의호박"
+ },
+ "armor-fossil": {
+  "en": "Armor Fossil",
+  "ko": "방패의화석"
+ },
+ "skull-fossil": {
+  "en": "Skull Fossil",
+  "ko": "두개의화석"
+ },
+ "rare-bone": {
+  "en": "Rare Bone",
+  "ko": "귀중한뼈"
+ },
+ "shiny-stone": {
+  "en": "Shiny Stone",
+  "ko": "빛의돌"
+ },
+ "dusk-stone": {
+  "en": "Dusk Stone",
+  "ko": "어둠의돌"
+ },
+ "dawn-stone": {
+  "en": "Dawn Stone",
+  "ko": "각성의돌"
+ },
+ "oval-stone": {
+  "en": "Oval Stone",
+  "ko": "동글동글돌"
+ },
+ "odd-keystone": {
+  "en": "Odd Keystone",
+  "ko": "쐐기돌"
+ },
+ "adamant-orb": {
+  "en": "Adamant Orb",
+  "ko": "금강옥"
+ },
+ "lustrous-orb": {
+  "en": "Lustrous Orb",
+  "ko": "백옥"
+ },
+ "grass-mail": {
+  "en": "Grass Mail",
+  "ko": "그래스메일"
+ },
+ "flame-mail": {
+  "en": "Flame Mail",
+  "ko": "플레임메일"
+ },
+ "bubble-mail": {
+  "en": "Bubble Mail",
+  "ko": "블루메일"
+ },
+ "bloom-mail": {
+  "en": "Bloom Mail",
+  "ko": "블룸메일"
+ },
+ "tunnel-mail": {
+  "en": "Tunnel Mail",
+  "ko": "터널메일"
+ },
+ "steel-mail": {
+  "en": "Steel Mail",
+  "ko": "스틸메일"
+ },
+ "heart-mail": {
+  "en": "Heart Mail",
+  "ko": "러브러브메일"
+ },
+ "snow-mail": {
+  "en": "Snow Mail",
+  "ko": "블리자드메일"
+ },
+ "space-mail": {
+  "en": "Space Mail",
+  "ko": "스페이스메일"
+ },
+ "air-mail": {
+  "en": "Air Mail",
+  "ko": "에어메일"
+ },
+ "mosaic-mail": {
+  "en": "Mosaic Mail",
+  "ko": "모자이크메일"
+ },
+ "brick-mail": {
+  "en": "Brick Mail",
+  "ko": "브릭메일"
+ },
+ "cheri-berry": {
+  "en": "Cheri Berry",
+  "ko": "버치열매"
+ },
+ "chesto-berry": {
+  "en": "Chesto Berry",
+  "ko": "유루열매"
+ },
+ "pecha-berry": {
+  "en": "Pecha Berry",
+  "ko": "복슝열매"
+ },
+ "rawst-berry": {
+  "en": "Rawst Berry",
+  "ko": "복분열매"
+ },
+ "aspear-berry": {
+  "en": "Aspear Berry",
+  "ko": "배리열매"
+ },
+ "leppa-berry": {
+  "en": "Leppa Berry",
+  "ko": "과사열매"
+ },
+ "oran-berry": {
+  "en": "Oran Berry",
+  "ko": "오랭열매"
+ },
+ "persim-berry": {
+  "en": "Persim Berry",
+  "ko": "시몬열매"
+ },
+ "lum-berry": {
+  "en": "Lum Berry",
+  "ko": "리샘열매"
+ },
+ "sitrus-berry": {
+  "en": "Sitrus Berry",
+  "ko": "자뭉열매"
+ },
+ "figy-berry": {
+  "en": "Figy Berry",
+  "ko": "무화열매"
+ },
+ "wiki-berry": {
+  "en": "Wiki Berry",
+  "ko": "위키열매"
+ },
+ "mago-berry": {
+  "en": "Mago Berry",
+  "ko": "마고열매"
+ },
+ "aguav-berry": {
+  "en": "Aguav Berry",
+  "ko": "아바열매"
+ },
+ "iapapa-berry": {
+  "en": "Iapapa Berry",
+  "ko": "파야열매"
+ },
+ "razz-berry": {
+  "en": "Razz Berry",
+  "ko": "라즈열매"
+ },
+ "bluk-berry": {
+  "en": "Bluk Berry",
+  "ko": "블리열매"
+ },
+ "nanab-berry": {
+  "en": "Nanab Berry",
+  "ko": "나나열매"
+ },
+ "wepear-berry": {
+  "en": "Wepear Berry",
+  "ko": "서배열매"
+ },
+ "pinap-berry": {
+  "en": "Pinap Berry",
+  "ko": "파인열매"
+ },
+ "pomeg-berry": {
+  "en": "Pomeg Berry",
+  "ko": "유석열매"
+ },
+ "kelpsy-berry": {
+  "en": "Kelpsy Berry",
+  "ko": "시마열매"
+ },
+ "qualot-berry": {
+  "en": "Qualot Berry",
+  "ko": "파비열매"
+ },
+ "hondew-berry": {
+  "en": "Hondew Berry",
+  "ko": "로매열매"
+ },
+ "grepa-berry": {
+  "en": "Grepa Berry",
+  "ko": "또뽀열매"
+ },
+ "tamato-berry": {
+  "en": "Tamato Berry",
+  "ko": "토망열매"
+ },
+ "cornn-berry": {
+  "en": "Cornn Berry",
+  "ko": "수숙열매"
+ },
+ "magost-berry": {
+  "en": "Magost Berry",
+  "ko": "고스티열매"
+ },
+ "rabuta-berry": {
+  "en": "Rabuta Berry",
+  "ko": "라부탐열매"
+ },
+ "nomel-berry": {
+  "en": "Nomel Berry",
+  "ko": "노멜열매"
+ },
+ "spelon-berry": {
+  "en": "Spelon Berry",
+  "ko": "메호키열매"
+ },
+ "pamtre-berry": {
+  "en": "Pamtre Berry",
+  "ko": "자야열매"
+ },
+ "watmel-berry": {
+  "en": "Watmel Berry",
+  "ko": "슈박열매"
+ },
+ "durin-berry": {
+  "en": "Durin Berry",
+  "ko": "두리열매"
+ },
+ "belue-berry": {
+  "en": "Belue Berry",
+  "ko": "루베열매"
+ },
+ "occa-berry": {
+  "en": "Occa Berry",
+  "ko": "오카열매"
+ },
+ "passho-berry": {
+  "en": "Passho Berry",
+  "ko": "꼬시개열매"
+ },
+ "wacan-berry": {
+  "en": "Wacan Berry",
+  "ko": "초나열매"
+ },
+ "rindo-berry": {
+  "en": "Rindo Berry",
+  "ko": "린드열매"
+ },
+ "yache-berry": {
+  "en": "Yache Berry",
+  "ko": "플카열매"
+ },
+ "chople-berry": {
+  "en": "Chople Berry",
+  "ko": "로플열매"
+ },
+ "kebia-berry": {
+  "en": "Kebia Berry",
+  "ko": "으름열매"
+ },
+ "shuca-berry": {
+  "en": "Shuca Berry",
+  "ko": "슈캐열매"
+ },
+ "coba-berry": {
+  "en": "Coba Berry",
+  "ko": "바코열매"
+ },
+ "payapa-berry": {
+  "en": "Payapa Berry",
+  "ko": "야파열매"
+ },
+ "tanga-berry": {
+  "en": "Tanga Berry",
+  "ko": "리체열매"
+ },
+ "charti-berry": {
+  "en": "Charti Berry",
+  "ko": "루미열매"
+ },
+ "kasib-berry": {
+  "en": "Kasib Berry",
+  "ko": "수불열매"
+ },
+ "haban-berry": {
+  "en": "Haban Berry",
+  "ko": "하반열매"
+ },
+ "colbur-berry": {
+  "en": "Colbur Berry",
+  "ko": "마코열매"
+ },
+ "babiri-berry": {
+  "en": "Babiri Berry",
+  "ko": "바리비열매"
+ },
+ "chilan-berry": {
+  "en": "Chilan Berry",
+  "ko": "카리열매"
+ },
+ "liechi-berry": {
+  "en": "Liechi Berry",
+  "ko": "치리열매"
+ },
+ "ganlon-berry": {
+  "en": "Ganlon Berry",
+  "ko": "용아열매"
+ },
+ "salac-berry": {
+  "en": "Salac Berry",
+  "ko": "캄라열매"
+ },
+ "petaya-berry": {
+  "en": "Petaya Berry",
+  "ko": "야타비열매"
+ },
+ "apicot-berry": {
+  "en": "Apicot Berry",
+  "ko": "규살열매"
+ },
+ "lansat-berry": {
+  "en": "Lansat Berry",
+  "ko": "랑사열매"
+ },
+ "starf-berry": {
+  "en": "Starf Berry",
+  "ko": "스타열매"
+ },
+ "enigma-berry": {
+  "en": "Enigma Berry",
+  "ko": "의문열매"
+ },
+ "micle-berry": {
+  "en": "Micle Berry",
+  "ko": "미클열매"
+ },
+ "custap-berry": {
+  "en": "Custap Berry",
+  "ko": "애슈열매"
+ },
+ "jaboca-berry": {
+  "en": "Jaboca Berry",
+  "ko": "자보열매"
+ },
+ "rowap-berry": {
+  "en": "Rowap Berry",
+  "ko": "애터열매"
+ },
+ "bright-powder": {
+  "en": "Bright Powder",
+  "ko": "반짝가루"
+ },
+ "white-herb": {
+  "en": "White Herb",
+  "ko": "하양허브"
+ },
+ "macho-brace": {
+  "en": "Macho Brace",
+  "ko": "교정깁스"
+ },
+ "exp-share": {
+  "en": "Exp. Share",
+  "ko": "학습장치"
+ },
+ "quick-claw": {
+  "en": "Quick Claw",
+  "ko": "선제공격손톱"
+ },
+ "soothe-bell": {
+  "en": "Soothe Bell",
+  "ko": "평온의방울"
+ },
+ "mental-herb": {
+  "en": "Mental Herb",
+  "ko": "멘탈허브"
+ },
+ "choice-band": {
+  "en": "Choice Band",
+  "ko": "구애머리띠"
+ },
+ "kings-rock": {
+  "en": "King’s Rock",
+  "ko": "왕의징표석"
+ },
+ "silver-powder": {
+  "en": "Silver Powder",
+  "ko": "은빛가루"
+ },
+ "amulet-coin": {
+  "en": "Amulet Coin",
+  "ko": "부적금화"
+ },
+ "cleanse-tag": {
+  "en": "Cleanse Tag",
+  "ko": "순결의부적"
+ },
+ "soul-dew": {
+  "en": "Soul Dew",
+  "ko": "마음의물방울"
+ },
+ "deep-sea-tooth": {
+  "en": "Deep Sea Tooth",
+  "ko": "심해의이빨"
+ },
+ "deep-sea-scale": {
+  "en": "Deep Sea Scale",
+  "ko": "심해의비늘"
+ },
+ "smoke-ball": {
+  "en": "Smoke Ball",
+  "ko": "연막탄"
+ },
+ "everstone": {
+  "en": "Everstone",
+  "ko": "변함없는돌"
+ },
+ "focus-band": {
+  "en": "Focus Band",
+  "ko": "기합의머리띠"
+ },
+ "lucky-egg": {
+  "en": "Lucky Egg",
+  "ko": "행복의알"
+ },
+ "scope-lens": {
+  "en": "Scope Lens",
+  "ko": "초점렌즈"
+ },
+ "metal-coat": {
+  "en": "Metal Coat",
+  "ko": "금속코트"
+ },
+ "leftovers": {
+  "en": "Leftovers",
+  "ko": "먹다남은음식"
+ },
+ "dragon-scale": {
+  "en": "Dragon Scale",
+  "ko": "용의비늘"
+ },
+ "light-ball": {
+  "en": "Light Ball",
+  "ko": "전기구슬"
+ },
+ "soft-sand": {
+  "en": "Soft Sand",
+  "ko": "부드러운모래"
+ },
+ "hard-stone": {
+  "en": "Hard Stone",
+  "ko": "딱딱한돌"
+ },
+ "miracle-seed": {
+  "en": "Miracle Seed",
+  "ko": "기적의씨"
+ },
+ "black-glasses": {
+  "en": "Black Glasses",
+  "ko": "검은안경"
+ },
+ "black-belt": {
+  "en": "Black Belt",
+  "ko": "검은띠"
+ },
+ "magnet": {
+  "en": "Magnet",
+  "ko": "자석"
+ },
+ "mystic-water": {
+  "en": "Mystic Water",
+  "ko": "신비의물방울"
+ },
+ "sharp-beak": {
+  "en": "Sharp Beak",
+  "ko": "예리한부리"
+ },
+ "poison-barb": {
+  "en": "Poison Barb",
+  "ko": "독바늘"
+ },
+ "never-melt-ice": {
+  "en": "Never-Melt Ice",
+  "ko": "녹지않는얼음"
+ },
+ "spell-tag": {
+  "en": "Spell Tag",
+  "ko": "저주의부적"
+ },
+ "twisted-spoon": {
+  "en": "Twisted Spoon",
+  "ko": "휘어진스푼"
+ },
+ "charcoal": {
+  "en": "Charcoal",
+  "ko": "목탄"
+ },
+ "dragon-fang": {
+  "en": "Dragon Fang",
+  "ko": "용의이빨"
+ },
+ "silk-scarf": {
+  "en": "Silk Scarf",
+  "ko": "실크스카프"
+ },
+ "up-grade": {
+  "en": "Upgrade",
+  "ko": "업그레이드"
+ },
+ "shell-bell": {
+  "en": "Shell Bell",
+  "ko": "조개껍질방울"
+ },
+ "sea-incense": {
+  "en": "Sea Incense",
+  "ko": "바닷물향로"
+ },
+ "lax-incense": {
+  "en": "Lax Incense",
+  "ko": "무사태평향로"
+ },
+ "lucky-punch": {
+  "en": "Lucky Punch",
+  "ko": "럭키펀치"
+ },
+ "metal-powder": {
+  "en": "Metal Powder",
+  "ko": "금속파우더"
+ },
+ "thick-club": {
+  "en": "Thick Club",
+  "ko": "굵은뼈"
+ },
+ "stick": {
+  "en": "Leek",
+  "ko": "대파"
+ },
+ "red-scarf": {
+  "en": "Red Scarf",
+  "ko": "빨강밴드"
+ },
+ "blue-scarf": {
+  "en": "Blue Scarf",
+  "ko": "파랑밴드"
+ },
+ "pink-scarf": {
+  "en": "Pink Scarf",
+  "ko": "분홍밴드"
+ },
+ "green-scarf": {
+  "en": "Green Scarf",
+  "ko": "초록밴드"
+ },
+ "yellow-scarf": {
+  "en": "Yellow Scarf",
+  "ko": "노랑밴드"
+ },
+ "wide-lens": {
+  "en": "Wide Lens",
+  "ko": "광각렌즈"
+ },
+ "muscle-band": {
+  "en": "Muscle Band",
+  "ko": "힘의머리띠"
+ },
+ "wise-glasses": {
+  "en": "Wise Glasses",
+  "ko": "박식안경"
+ },
+ "expert-belt": {
+  "en": "Expert Belt",
+  "ko": "달인의띠"
+ },
+ "light-clay": {
+  "en": "Light Clay",
+  "ko": "빛의점토"
+ },
+ "life-orb": {
+  "en": "Life Orb",
+  "ko": "생명의구슬"
+ },
+ "power-herb": {
+  "en": "Power Herb",
+  "ko": "파워풀허브"
+ },
+ "toxic-orb": {
+  "en": "Toxic Orb",
+  "ko": "맹독구슬"
+ },
+ "flame-orb": {
+  "en": "Flame Orb",
+  "ko": "화염구슬"
+ },
+ "quick-powder": {
+  "en": "Quick Powder",
+  "ko": "스피드파우더"
+ },
+ "focus-sash": {
+  "en": "Focus Sash",
+  "ko": "기합의띠"
+ },
+ "zoom-lens": {
+  "en": "Zoom Lens",
+  "ko": "포커스렌즈"
+ },
+ "metronome": {
+  "en": "Metronome",
+  "ko": "메트로놈"
+ },
+ "iron-ball": {
+  "en": "Iron Ball",
+  "ko": "검은철구"
+ },
+ "lagging-tail": {
+  "en": "Lagging Tail",
+  "ko": "느림보꼬리"
+ },
+ "destiny-knot": {
+  "en": "Destiny Knot",
+  "ko": "빨간실"
+ },
+ "black-sludge": {
+  "en": "Black Sludge",
+  "ko": "검은오물"
+ },
+ "icy-rock": {
+  "en": "Icy Rock",
+  "ko": "차가운바위"
+ },
+ "smooth-rock": {
+  "en": "Smooth Rock",
+  "ko": "보송보송바위"
+ },
+ "heat-rock": {
+  "en": "Heat Rock",
+  "ko": "뜨거운바위"
+ },
+ "damp-rock": {
+  "en": "Damp Rock",
+  "ko": "축축한바위"
+ },
+ "grip-claw": {
+  "en": "Grip Claw",
+  "ko": "끈기갈고리손톱"
+ },
+ "choice-scarf": {
+  "en": "Choice Scarf",
+  "ko": "구애스카프"
+ },
+ "sticky-barb": {
+  "en": "Sticky Barb",
+  "ko": "끈적끈적바늘"
+ },
+ "power-bracer": {
+  "en": "Power Bracer",
+  "ko": "파워리스트"
+ },
+ "power-belt": {
+  "en": "Power Belt",
+  "ko": "파워벨트"
+ },
+ "power-lens": {
+  "en": "Power Lens",
+  "ko": "파워렌즈"
+ },
+ "power-band": {
+  "en": "Power Band",
+  "ko": "파워밴드"
+ },
+ "power-anklet": {
+  "en": "Power Anklet",
+  "ko": "파워앵클릿"
+ },
+ "power-weight": {
+  "en": "Power Weight",
+  "ko": "파워웨이트"
+ },
+ "shed-shell": {
+  "en": "Shed Shell",
+  "ko": "아름다운허물"
+ },
+ "big-root": {
+  "en": "Big Root",
+  "ko": "큰뿌리"
+ },
+ "choice-specs": {
+  "en": "Choice Specs",
+  "ko": "구애안경"
+ },
+ "flame-plate": {
+  "en": "Flame Plate",
+  "ko": "불구슬플레이트"
+ },
+ "splash-plate": {
+  "en": "Splash Plate",
+  "ko": "물방울플레이트"
+ },
+ "zap-plate": {
+  "en": "Zap Plate",
+  "ko": "우레플레이트"
+ },
+ "meadow-plate": {
+  "en": "Meadow Plate",
+  "ko": "초록플레이트"
+ },
+ "icicle-plate": {
+  "en": "Icicle Plate",
+  "ko": "고드름플레이트"
+ },
+ "fist-plate": {
+  "en": "Fist Plate",
+  "ko": "주먹플레이트"
+ },
+ "toxic-plate": {
+  "en": "Toxic Plate",
+  "ko": "맹독플레이트"
+ },
+ "earth-plate": {
+  "en": "Earth Plate",
+  "ko": "대지플레이트"
+ },
+ "sky-plate": {
+  "en": "Sky Plate",
+  "ko": "푸른하늘플레이트"
+ },
+ "mind-plate": {
+  "en": "Mind Plate",
+  "ko": "이상한플레이트"
+ },
+ "insect-plate": {
+  "en": "Insect Plate",
+  "ko": "비단벌레플레이트"
+ },
+ "stone-plate": {
+  "en": "Stone Plate",
+  "ko": "암석플레이트"
+ },
+ "spooky-plate": {
+  "en": "Spooky Plate",
+  "ko": "원령플레이트"
+ },
+ "draco-plate": {
+  "en": "Draco Plate",
+  "ko": "용의플레이트"
+ },
+ "dread-plate": {
+  "en": "Dread Plate",
+  "ko": "공포플레이트"
+ },
+ "iron-plate": {
+  "en": "Iron Plate",
+  "ko": "강철플레이트"
+ },
+ "odd-incense": {
+  "en": "Odd Incense",
+  "ko": "괴상한향로"
+ },
+ "rock-incense": {
+  "en": "Rock Incense",
+  "ko": "암석향로"
+ },
+ "full-incense": {
+  "en": "Full Incense",
+  "ko": "만복향로"
+ },
+ "wave-incense": {
+  "en": "Wave Incense",
+  "ko": "잔물결향로"
+ },
+ "rose-incense": {
+  "en": "Rose Incense",
+  "ko": "꽃향로"
+ },
+ "luck-incense": {
+  "en": "Luck Incense",
+  "ko": "행운의향로"
+ },
+ "pure-incense": {
+  "en": "Pure Incense",
+  "ko": "순결의향로"
+ },
+ "protector": {
+  "en": "Protector",
+  "ko": "프로텍터"
+ },
+ "electirizer": {
+  "en": "Electirizer",
+  "ko": "에레키부스터"
+ },
+ "magmarizer": {
+  "en": "Magmarizer",
+  "ko": "마그마부스터"
+ },
+ "dubious-disc": {
+  "en": "Dubious Disc",
+  "ko": "괴상한패치"
+ },
+ "reaper-cloth": {
+  "en": "Reaper Cloth",
+  "ko": "영계의천"
+ },
+ "razor-claw": {
+  "en": "Razor Claw",
+  "ko": "예리한손톱"
+ },
+ "razor-fang": {
+  "en": "Razor Fang",
+  "ko": "예리한이빨"
+ },
+ "tm01": {
+  "en": "TM01",
+  "ko": "기술머신01"
+ },
+ "tm02": {
+  "en": "TM02",
+  "ko": "기술머신02"
+ },
+ "tm03": {
+  "en": "TM03",
+  "ko": "기술머신03"
+ },
+ "tm04": {
+  "en": "TM04",
+  "ko": "기술머신04"
+ },
+ "tm05": {
+  "en": "TM05",
+  "ko": "기술머신05"
+ },
+ "tm06": {
+  "en": "TM06",
+  "ko": "기술머신06"
+ },
+ "tm07": {
+  "en": "TM07",
+  "ko": "기술머신07"
+ },
+ "tm08": {
+  "en": "TM08",
+  "ko": "기술머신08"
+ },
+ "tm09": {
+  "en": "TM09",
+  "ko": "기술머신09"
+ },
+ "tm10": {
+  "en": "TM10",
+  "ko": "기술머신10"
+ },
+ "tm11": {
+  "en": "TM11",
+  "ko": "기술머신11"
+ },
+ "tm12": {
+  "en": "TM12",
+  "ko": "기술머신12"
+ },
+ "tm13": {
+  "en": "TM13",
+  "ko": "기술머신13"
+ },
+ "tm14": {
+  "en": "TM14",
+  "ko": "기술머신14"
+ },
+ "tm15": {
+  "en": "TM15",
+  "ko": "기술머신15"
+ },
+ "tm16": {
+  "en": "TM16",
+  "ko": "기술머신16"
+ },
+ "tm17": {
+  "en": "TM17",
+  "ko": "기술머신17"
+ },
+ "tm18": {
+  "en": "TM18",
+  "ko": "기술머신18"
+ },
+ "tm19": {
+  "en": "TM19",
+  "ko": "기술머신19"
+ },
+ "tm20": {
+  "en": "TM20",
+  "ko": "기술머신20"
+ },
+ "tm21": {
+  "en": "TM21",
+  "ko": "기술머신21"
+ },
+ "tm22": {
+  "en": "TM22",
+  "ko": "기술머신22"
+ },
+ "tm23": {
+  "en": "TM23",
+  "ko": "기술머신23"
+ },
+ "tm24": {
+  "en": "TM24",
+  "ko": "기술머신24"
+ },
+ "tm25": {
+  "en": "TM25",
+  "ko": "기술머신25"
+ },
+ "tm26": {
+  "en": "TM26",
+  "ko": "기술머신26"
+ },
+ "tm27": {
+  "en": "TM27",
+  "ko": "기술머신27"
+ },
+ "tm28": {
+  "en": "TM28",
+  "ko": "기술머신28"
+ },
+ "tm29": {
+  "en": "TM29",
+  "ko": "기술머신29"
+ },
+ "tm30": {
+  "en": "TM30",
+  "ko": "기술머신30"
+ },
+ "tm31": {
+  "en": "TM31",
+  "ko": "기술머신31"
+ },
+ "tm32": {
+  "en": "TM32",
+  "ko": "기술머신32"
+ },
+ "tm33": {
+  "en": "TM33",
+  "ko": "기술머신33"
+ },
+ "tm34": {
+  "en": "TM34",
+  "ko": "기술머신34"
+ },
+ "tm35": {
+  "en": "TM35",
+  "ko": "기술머신35"
+ },
+ "tm36": {
+  "en": "TM36",
+  "ko": "기술머신36"
+ },
+ "tm37": {
+  "en": "TM37",
+  "ko": "기술머신37"
+ },
+ "tm38": {
+  "en": "TM38",
+  "ko": "기술머신38"
+ },
+ "tm39": {
+  "en": "TM39",
+  "ko": "기술머신39"
+ },
+ "tm40": {
+  "en": "TM40",
+  "ko": "기술머신40"
+ },
+ "tm41": {
+  "en": "TM41",
+  "ko": "기술머신41"
+ },
+ "tm42": {
+  "en": "TM42",
+  "ko": "기술머신42"
+ },
+ "tm43": {
+  "en": "TM43",
+  "ko": "기술머신43"
+ },
+ "tm44": {
+  "en": "TM44",
+  "ko": "기술머신44"
+ },
+ "tm45": {
+  "en": "TM45",
+  "ko": "기술머신45"
+ },
+ "tm46": {
+  "en": "TM46",
+  "ko": "기술머신46"
+ },
+ "tm47": {
+  "en": "TM47",
+  "ko": "기술머신47"
+ },
+ "tm48": {
+  "en": "TM48",
+  "ko": "기술머신48"
+ },
+ "tm49": {
+  "en": "TM49",
+  "ko": "기술머신49"
+ },
+ "tm50": {
+  "en": "TM50",
+  "ko": "기술머신50"
+ },
+ "tm51": {
+  "en": "TM51",
+  "ko": "기술머신51"
+ },
+ "tm52": {
+  "en": "TM52",
+  "ko": "기술머신52"
+ },
+ "tm53": {
+  "en": "TM53",
+  "ko": "기술머신53"
+ },
+ "tm54": {
+  "en": "TM54",
+  "ko": "기술머신54"
+ },
+ "tm55": {
+  "en": "TM55",
+  "ko": "기술머신55"
+ },
+ "tm56": {
+  "en": "TM56",
+  "ko": "기술머신56"
+ },
+ "tm57": {
+  "en": "TM57",
+  "ko": "기술머신57"
+ },
+ "tm58": {
+  "en": "TM58",
+  "ko": "기술머신58"
+ },
+ "tm59": {
+  "en": "TM59",
+  "ko": "기술머신59"
+ },
+ "tm60": {
+  "en": "TM60",
+  "ko": "기술머신60"
+ },
+ "tm61": {
+  "en": "TM61",
+  "ko": "기술머신61"
+ },
+ "tm62": {
+  "en": "TM62",
+  "ko": "기술머신62"
+ },
+ "tm63": {
+  "en": "TM63",
+  "ko": "기술머신63"
+ },
+ "tm64": {
+  "en": "TM64",
+  "ko": "기술머신64"
+ },
+ "tm65": {
+  "en": "TM65",
+  "ko": "기술머신65"
+ },
+ "tm66": {
+  "en": "TM66",
+  "ko": "기술머신66"
+ },
+ "tm67": {
+  "en": "TM67",
+  "ko": "기술머신67"
+ },
+ "tm68": {
+  "en": "TM68",
+  "ko": "기술머신68"
+ },
+ "tm69": {
+  "en": "TM69",
+  "ko": "기술머신69"
+ },
+ "tm70": {
+  "en": "TM70",
+  "ko": "기술머신70"
+ },
+ "tm71": {
+  "en": "TM71",
+  "ko": "기술머신71"
+ },
+ "tm72": {
+  "en": "TM72",
+  "ko": "기술머신72"
+ },
+ "tm73": {
+  "en": "TM73",
+  "ko": "기술머신73"
+ },
+ "tm74": {
+  "en": "TM74",
+  "ko": "기술머신74"
+ },
+ "tm75": {
+  "en": "TM75",
+  "ko": "기술머신75"
+ },
+ "tm76": {
+  "en": "TM76",
+  "ko": "기술머신76"
+ },
+ "tm77": {
+  "en": "TM77",
+  "ko": "기술머신77"
+ },
+ "tm78": {
+  "en": "TM78",
+  "ko": "기술머신78"
+ },
+ "tm79": {
+  "en": "TM79",
+  "ko": "기술머신79"
+ },
+ "tm80": {
+  "en": "TM80",
+  "ko": "기술머신80"
+ },
+ "tm81": {
+  "en": "TM81",
+  "ko": "기술머신81"
+ },
+ "tm82": {
+  "en": "TM82",
+  "ko": "기술머신82"
+ },
+ "tm83": {
+  "en": "TM83",
+  "ko": "기술머신83"
+ },
+ "tm84": {
+  "en": "TM84",
+  "ko": "기술머신84"
+ },
+ "tm85": {
+  "en": "TM85",
+  "ko": "기술머신85"
+ },
+ "tm86": {
+  "en": "TM86",
+  "ko": "기술머신86"
+ },
+ "tm87": {
+  "en": "TM87",
+  "ko": "기술머신87"
+ },
+ "tm88": {
+  "en": "TM88",
+  "ko": "기술머신88"
+ },
+ "tm89": {
+  "en": "TM89",
+  "ko": "기술머신89"
+ },
+ "tm90": {
+  "en": "TM90",
+  "ko": "기술머신90"
+ },
+ "tm91": {
+  "en": "TM91",
+  "ko": "기술머신91"
+ },
+ "tm92": {
+  "en": "TM92",
+  "ko": "기술머신92"
+ },
+ "hm01": {
+  "en": "HM01",
+  "ko": "비전머신01"
+ },
+ "hm02": {
+  "en": "HM02",
+  "ko": "비전머신02"
+ },
+ "hm03": {
+  "en": "HM03",
+  "ko": "비전머신03"
+ },
+ "hm04": {
+  "en": "HM04",
+  "ko": "비전머신04"
+ },
+ "hm05": {
+  "en": "HM05",
+  "ko": "비전머신05"
+ },
+ "hm06": {
+  "en": "HM06",
+  "ko": "비전머신06"
+ },
+ "hm07": {
+  "en": "HM07",
+  "ko": "비전머신07"
+ },
+ "hm08": {
+  "en": "HM08",
+  "ko": "비전머신08"
+ },
+ "explorer-kit": {
+  "en": "Explorer Kit",
+  "ko": "탐험세트"
+ },
+ "loot-sack": {
+  "en": "Loot Sack",
+  "ko": "보물주머니"
+ },
+ "rule-book": {
+  "en": "Rule Book",
+  "ko": "룰북"
+ },
+ "poke-radar": {
+  "en": "Poké Radar",
+  "ko": "포켓트레"
+ },
+ "point-card": {
+  "en": "Point Card",
+  "ko": "포인트카드"
+ },
+ "journal": {
+  "en": "Journal",
+  "ko": "모험노트"
+ },
+ "seal-case": {
+  "en": "Seal Case",
+  "ko": "실상자"
+ },
+ "fashion-case": {
+  "en": "Fashion Case",
+  "ko": "액세서리상자"
+ },
+ "seal-bag": {
+  "en": "Seal Bag",
+  "ko": "실주머니"
+ },
+ "pal-pad": {
+  "en": "Pal Pad",
+  "ko": "친구수첩"
+ },
+ "works-key": {
+  "en": "Works Key",
+  "ko": "발전소키"
+ },
+ "old-charm": {
+  "en": "Old Charm",
+  "ko": "고대의부적"
+ },
+ "galactic-key": {
+  "en": "Galactic Key",
+  "ko": "갤럭시단의열쇠"
+ },
+ "red-chain": {
+  "en": "Red Chain",
+  "ko": "빨강쇠사슬"
+ },
+ "town-map": {
+  "en": "Town Map",
+  "ko": "타운맵"
+ },
+ "vs-seeker": {
+  "en": "Vs. Seeker",
+  "ko": "배틀서처"
+ },
+ "coin-case": {
+  "en": "Coin Case",
+  "ko": "동전케이스"
+ },
+ "old-rod": {
+  "en": "Old Rod",
+  "ko": "낡은낚싯대"
+ },
+ "good-rod": {
+  "en": "Good Rod",
+  "ko": "좋은낚싯대"
+ },
+ "super-rod": {
+  "en": "Super Rod",
+  "ko": "대단한낚싯대"
+ },
+ "sprayduck": {
+  "en": "Sprayduck",
+  "ko": "고라파덕물뿌리개"
+ },
+ "poffin-case": {
+  "en": "Poffin Case",
+  "ko": "포핀케이스"
+ },
+ "bicycle": {
+  "en": "Bicycle",
+  "ko": "자전거"
+ },
+ "suite-key": {
+  "en": "Suite Key",
+  "ko": "룸키"
+ },
+ "oaks-letter": {
+  "en": "Oak’s Letter",
+  "ko": "오박사의편지"
+ },
+ "lunar-wing": {
+  "en": "Lunar Wing",
+  "ko": "초승달깃털"
+ },
+ "member-card": {
+  "en": "Member Card",
+  "ko": "멤버스카드"
+ },
+ "azure-flute": {
+  "en": "Azure Flute",
+  "ko": "천계의피리"
+ },
+ "ss-ticket": {
+  "en": "S.S. Ticket",
+  "ko": "승선티켓"
+ },
+ "contest-pass": {
+  "en": "Contest Pass",
+  "ko": "콘테스트패스"
+ },
+ "magma-stone": {
+  "en": "Magma Stone",
+  "ko": "화산의돌"
+ },
+ "parcel": {
+  "en": "Parcel",
+  "ko": "전해줄물건"
+ },
+ "coupon-1": {
+  "en": "Coupon 1",
+  "ko": "교환권1"
+ },
+ "coupon-2": {
+  "en": "Coupon 2",
+  "ko": "교환권2"
+ },
+ "coupon-3": {
+  "en": "Coupon 3",
+  "ko": "교환권3"
+ },
+ "storage-key": {
+  "en": "Storage Key",
+  "ko": "창고열쇠"
+ },
+ "secret-potion": {
+  "en": "Secret Potion",
+  "ko": "비전신약"
+ },
+ "griseous-orb": {
+  "en": "Griseous Orb",
+  "ko": "백금옥"
+ },
+ "vs-recorder": {
+  "en": "Vs. Recorder",
+  "ko": "배틀레코더"
+ },
+ "gracidea": {
+  "en": "Gracidea",
+  "ko": "그라시데아꽃"
+ },
+ "secret-key": {
+  "en": "Secret Key",
+  "ko": "비밀의열쇠"
+ },
+ "apricorn-box": {
+  "en": "Apricorn Box",
+  "ko": "규토리케이스"
+ },
+ "berry-pots": {
+  "en": "Berry Pots",
+  "ko": "나무열매플랜터"
+ },
+ "squirt-bottle": {
+  "en": "Squirt Bottle",
+  "ko": "꼬부기물뿌리개"
+ },
+ "lure-ball": {
+  "en": "Lure Ball",
+  "ko": "루어볼"
+ },
+ "level-ball": {
+  "en": "Level Ball",
+  "ko": "레벨볼"
+ },
+ "moon-ball": {
+  "en": "Moon Ball",
+  "ko": "문볼"
+ },
+ "heavy-ball": {
+  "en": "Heavy Ball",
+  "ko": "헤비볼"
+ },
+ "fast-ball": {
+  "en": "Fast Ball",
+  "ko": "스피드볼"
+ },
+ "friend-ball": {
+  "en": "Friend Ball",
+  "ko": "프렌드볼"
+ },
+ "love-ball": {
+  "en": "Love Ball",
+  "ko": "러브러브볼"
+ },
+ "park-ball": {
+  "en": "Park Ball",
+  "ko": "파크볼"
+ },
+ "sport-ball": {
+  "en": "Sport Ball",
+  "ko": "컴퍼티션볼"
+ },
+ "red-apricorn": {
+  "en": "Red Apricorn",
+  "ko": "빨간규토리"
+ },
+ "blue-apricorn": {
+  "en": "Blue Apricorn",
+  "ko": "파란규토리"
+ },
+ "yellow-apricorn": {
+  "en": "Yellow Apricorn",
+  "ko": "노랑규토리"
+ },
+ "green-apricorn": {
+  "en": "Green Apricorn",
+  "ko": "초록규토리"
+ },
+ "pink-apricorn": {
+  "en": "Pink Apricorn",
+  "ko": "담홍규토리"
+ },
+ "white-apricorn": {
+  "en": "White Apricorn",
+  "ko": "하얀규토리"
+ },
+ "black-apricorn": {
+  "en": "Black Apricorn",
+  "ko": "검은규토리"
+ },
+ "dowsing-machine": {
+  "en": "Dowsing Machine",
+  "ko": "다우징머신"
+ },
+ "rage-candy-bar": {
+  "en": "Rage Candy Bar",
+  "ko": "분노의호두과자"
+ },
+ "red-orb": {
+  "en": "Red Orb",
+  "ko": "주홍구슬"
+ },
+ "blue-orb": {
+  "en": "Blue Orb",
+  "ko": "쪽빛구슬"
+ },
+ "jade-orb": {
+  "en": "Jade Orb",
+  "ko": "연둣빛구슬"
+ },
+ "enigma-stone": {
+  "en": "Enigma Stone",
+  "ko": "수수께끼의수정"
+ },
+ "unown-report": {
+  "en": "Unown Report",
+  "ko": "안농노트"
+ },
+ "blue-card": {
+  "en": "Blue Card",
+  "ko": "블루카드"
+ },
+ "slowpoke-tail": {
+  "en": "Slowpoke Tail",
+  "ko": "맛있는꼬리"
+ },
+ "clear-bell": {
+  "en": "Clear Bell",
+  "ko": "크리스탈방울"
+ },
+ "card-key": {
+  "en": "Card Key",
+  "ko": "카드키"
+ },
+ "basement-key": {
+  "en": "Basement Key",
+  "ko": "지하의열쇠"
+ },
+ "red-scale": {
+  "en": "Red Scale",
+  "ko": "빨간비늘"
+ },
+ "lost-item": {
+  "en": "Lost Item",
+  "ko": "분실물"
+ },
+ "pass": {
+  "en": "Pass",
+  "ko": "리니어패스"
+ },
+ "machine-part": {
+  "en": "Machine Part",
+  "ko": "기계부품"
+ },
+ "silver-wing": {
+  "en": "Silver Wing",
+  "ko": "은빛깃털"
+ },
+ "rainbow-wing": {
+  "en": "Rainbow Wing",
+  "ko": "무지갯빛깃털"
+ },
+ "mystery-egg": {
+  "en": "Mystery Egg",
+  "ko": "이상한알"
+ },
+ "gb-sounds": {
+  "en": "GB Sounds",
+  "ko": "GB플레이어"
+ },
+ "tidal-bell": {
+  "en": "Tidal Bell",
+  "ko": "해명의방울"
+ },
+ "data-card-01": {
+  "en": "Data Card 01",
+  "ko": "데이터카드01"
+ },
+ "data-card-02": {
+  "en": "Data Card 02",
+  "ko": "데이터카드02"
+ },
+ "data-card-03": {
+  "en": "Data Card 03",
+  "ko": "데이터카드03"
+ },
+ "data-card-04": {
+  "en": "Data Card 04",
+  "ko": "데이터카드04"
+ },
+ "data-card-05": {
+  "en": "Data Card 05",
+  "ko": "데이터카드05"
+ },
+ "data-card-06": {
+  "en": "Data Card 06",
+  "ko": "데이터카드06"
+ },
+ "data-card-07": {
+  "en": "Data Card 07",
+  "ko": "데이터카드07"
+ },
+ "data-card-08": {
+  "en": "Data Card 08",
+  "ko": "데이터카드08"
+ },
+ "data-card-09": {
+  "en": "Data Card 09",
+  "ko": "데이터카드09"
+ },
+ "data-card-10": {
+  "en": "Data Card 10",
+  "ko": "데이터카드10"
+ },
+ "data-card-11": {
+  "en": "Data Card 11",
+  "ko": "데이터카드11"
+ },
+ "data-card-12": {
+  "en": "Data Card 12",
+  "ko": "데이터카드12"
+ },
+ "data-card-13": {
+  "en": "Data Card 13",
+  "ko": "데이터카드13"
+ },
+ "data-card-14": {
+  "en": "Data Card 14",
+  "ko": "데이터카드14"
+ },
+ "data-card-15": {
+  "en": "Data Card 15",
+  "ko": "데이터카드15"
+ },
+ "data-card-16": {
+  "en": "Data Card 16",
+  "ko": "데이터카드16"
+ },
+ "data-card-17": {
+  "en": "Data Card 17",
+  "ko": "데이터카드17"
+ },
+ "data-card-18": {
+  "en": "Data Card 18",
+  "ko": "데이터카드18"
+ },
+ "data-card-19": {
+  "en": "Data Card 19",
+  "ko": "데이터카드19"
+ },
+ "data-card-20": {
+  "en": "Data Card 20",
+  "ko": "데이터카드20"
+ },
+ "data-card-21": {
+  "en": "Data Card 21",
+  "ko": "데이터카드21"
+ },
+ "data-card-22": {
+  "en": "Data Card 22",
+  "ko": "데이터카드22"
+ },
+ "data-card-23": {
+  "en": "Data Card 23",
+  "ko": "데이터카드23"
+ },
+ "data-card-24": {
+  "en": "Data Card 24",
+  "ko": "데이터카드24"
+ },
+ "data-card-25": {
+  "en": "Data Card 25",
+  "ko": "데이터카드25"
+ },
+ "data-card-26": {
+  "en": "Data Card 26",
+  "ko": "데이터카드26"
+ },
+ "data-card-27": {
+  "en": "Data Card 27",
+  "ko": "데이터카드27"
+ },
+ "lock-capsule": {
+  "en": "Lock Capsule",
+  "ko": "록캡슐"
+ },
+ "photo-album": {
+  "en": "Photo Album",
+  "ko": "포토앨범"
+ },
+ "orange-mail": {
+  "en": "Orange Mail",
+  "ko": ""
+ },
+ "harbor-mail": {
+  "en": "Harbor Mail",
+  "ko": ""
+ },
+ "glitter-mail": {
+  "en": "Glitter Mail",
+  "ko": ""
+ },
+ "mech-mail": {
+  "en": "Mech Mail",
+  "ko": ""
+ },
+ "wood-mail": {
+  "en": "Wood Mail",
+  "ko": ""
+ },
+ "wave-mail": {
+  "en": "Wave Mail",
+  "ko": ""
+ },
+ "bead-mail": {
+  "en": "Bead Mail",
+  "ko": ""
+ },
+ "shadow-mail": {
+  "en": "Shadow Mail",
+  "ko": ""
+ },
+ "tropic-mail": {
+  "en": "Tropic Mail",
+  "ko": ""
+ },
+ "dream-mail": {
+  "en": "Dream Mail",
+  "ko": ""
+ },
+ "fab-mail": {
+  "en": "Fab Mail",
+  "ko": ""
+ },
+ "retro-mail": {
+  "en": "Retro Mail",
+  "ko": ""
+ },
+ "mach-bike": {
+  "en": "Mach Bike",
+  "ko": "마하자전거"
+ },
+ "acro-bike": {
+  "en": "Acro Bike",
+  "ko": "더트자전거"
+ },
+ "wailmer-pail": {
+  "en": "Wailmer Pail",
+  "ko": "고래왕자물뿌리개"
+ },
+ "devon-goods": {
+  "en": "Devon Goods",
+  "ko": ""
+ },
+ "soot-sack": {
+  "en": "Soot Sack",
+  "ko": "재주머니"
+ },
+ "pokeblock-case": {
+  "en": "Pokéblock Case",
+  "ko": ""
+ },
+ "letter": {
+  "en": "Letter",
+  "ko": "성호에게줄편지"
+ },
+ "eon-ticket": {
+  "en": "Eon Ticket",
+  "ko": "무한티켓"
+ },
+ "scanner": {
+  "en": "Scanner",
+  "ko": "탐지기"
+ },
+ "go-goggles": {
+  "en": "Go-Goggles",
+  "ko": "고고고글"
+ },
+ "meteorite": {
+  "en": "Meteorite",
+  "ko": "운석"
+ },
+ "rm-1-key": {
+  "en": "Rm. 1 Key",
+  "ko": ""
+ },
+ "rm-2-key": {
+  "en": "Rm. 2 Key",
+  "ko": ""
+ },
+ "rm-4-key": {
+  "en": "Rm. 4 Key",
+  "ko": ""
+ },
+ "rm-6-key": {
+  "en": "Rm. 6 Key",
+  "ko": ""
+ },
+ "devon-scope": {
+  "en": "Devon Scope",
+  "ko": "데봉스코프"
+ },
+ "poke-flute": {
+  "en": "Poké Flute",
+  "ko": "포켓몬피리"
+ },
+ "bike-voucher": {
+  "en": "Bike Voucher",
+  "ko": ""
+ },
+ "gold-teeth": {
+  "en": "Gold Teeth",
+  "ko": "금틀니"
+ },
+ "lift-key": {
+  "en": "Lift Key",
+  "ko": "엘리베이터열쇠"
+ },
+ "silph-scope": {
+  "en": "Silph Scope",
+  "ko": "실프스코프"
+ },
+ "fame-checker": {
+  "en": "Fame Checker",
+  "ko": ""
+ },
+ "tm-case": {
+  "en": "TM Case",
+  "ko": "기술머신케이스"
+ },
+ "berry-pouch": {
+  "en": "Berry Pouch",
+  "ko": ""
+ },
+ "teachy-tv": {
+  "en": "Teachy TV",
+  "ko": ""
+ },
+ "tri-pass": {
+  "en": "Tri-Pass",
+  "ko": ""
+ },
+ "rainbow-pass": {
+  "en": "Rainbow Pass",
+  "ko": ""
+ },
+ "tea": {
+  "en": "Tea",
+  "ko": "차"
+ },
+ "mysticticket": {
+  "en": "MysticTicket",
+  "ko": ""
+ },
+ "auroraticket": {
+  "en": "AuroraTicket",
+  "ko": ""
+ },
+ "powder-jar": {
+  "en": "Powder Jar",
+  "ko": ""
+ },
+ "ruby": {
+  "en": "Ruby",
+  "ko": ""
+ },
+ "sapphire": {
+  "en": "Sapphire",
+  "ko": ""
+ },
+ "magma-emblem": {
+  "en": "Magma Emblem",
+  "ko": ""
+ },
+ "old-sea-map": {
+  "en": "Old Sea Map",
+  "ko": ""
+ },
+ "douse-drive": {
+  "en": "Douse Drive",
+  "ko": "아쿠아카세트"
+ },
+ "shock-drive": {
+  "en": "Shock Drive",
+  "ko": "번개카세트"
+ },
+ "burn-drive": {
+  "en": "Burn Drive",
+  "ko": "블레이즈카세트"
+ },
+ "chill-drive": {
+  "en": "Chill Drive",
+  "ko": "프리즈카세트"
+ },
+ "sweet-heart": {
+  "en": "Sweet Heart",
+  "ko": "하트스위트"
+ },
+ "greet-mail": {
+  "en": "Greet Mail",
+  "ko": "첫메일"
+ },
+ "favored-mail": {
+  "en": "Favored Mail",
+  "ko": "애호메일"
+ },
+ "rsvp-mail": {
+  "en": "RSVP Mail",
+  "ko": "권유메일"
+ },
+ "thanks-mail": {
+  "en": "Thanks Mail",
+  "ko": "감사메일"
+ },
+ "inquiry-mail": {
+  "en": "Inquiry Mail",
+  "ko": "질문메일"
+ },
+ "like-mail": {
+  "en": "Like Mail",
+  "ko": "추천메일"
+ },
+ "reply-mail": {
+  "en": "Reply Mail",
+  "ko": "답장메일"
+ },
+ "bridge-mail-s": {
+  "en": "Bridge Mail S",
+  "ko": "브리지메일S"
+ },
+ "bridge-mail-d": {
+  "en": "Bridge Mail D",
+  "ko": "브리지메일M"
+ },
+ "bridge-mail-t": {
+  "en": "Bridge Mail T",
+  "ko": "브리지메일C"
+ },
+ "bridge-mail-v": {
+  "en": "Bridge Mail V",
+  "ko": "브리지메일V"
+ },
+ "bridge-mail-m": {
+  "en": "Bridge Mail M",
+  "ko": "브리지메일W"
+ },
+ "prism-scale": {
+  "en": "Prism Scale",
+  "ko": "고운비늘"
+ },
+ "eviolite": {
+  "en": "Eviolite",
+  "ko": "진화의휘석"
+ },
+ "float-stone": {
+  "en": "Float Stone",
+  "ko": "가벼운돌"
+ },
+ "rocky-helmet": {
+  "en": "Rocky Helmet",
+  "ko": "울퉁불퉁멧"
+ },
+ "air-balloon": {
+  "en": "Air Balloon",
+  "ko": "풍선"
+ },
+ "red-card": {
+  "en": "Red Card",
+  "ko": "레드카드"
+ },
+ "ring-target": {
+  "en": "Ring Target",
+  "ko": "겨냥표적"
+ },
+ "binding-band": {
+  "en": "Binding Band",
+  "ko": "조임밴드"
+ },
+ "absorb-bulb": {
+  "en": "Absorb Bulb",
+  "ko": "구근"
+ },
+ "cell-battery": {
+  "en": "Cell Battery",
+  "ko": "충전지"
+ },
+ "eject-button": {
+  "en": "Eject Button",
+  "ko": "탈출버튼"
+ },
+ "fire-gem": {
+  "en": "Fire Gem",
+  "ko": "불꽃주얼"
+ },
+ "water-gem": {
+  "en": "Water Gem",
+  "ko": "물주얼"
+ },
+ "electric-gem": {
+  "en": "Electric Gem",
+  "ko": "전기주얼"
+ },
+ "grass-gem": {
+  "en": "Grass Gem",
+  "ko": "풀주얼"
+ },
+ "ice-gem": {
+  "en": "Ice Gem",
+  "ko": "얼음주얼"
+ },
+ "fighting-gem": {
+  "en": "Fighting Gem",
+  "ko": "격투주얼"
+ },
+ "poison-gem": {
+  "en": "Poison Gem",
+  "ko": "독주얼"
+ },
+ "ground-gem": {
+  "en": "Ground Gem",
+  "ko": "땅주얼"
+ },
+ "flying-gem": {
+  "en": "Flying Gem",
+  "ko": "비행주얼"
+ },
+ "psychic-gem": {
+  "en": "Psychic Gem",
+  "ko": "에스퍼주얼"
+ },
+ "bug-gem": {
+  "en": "Bug Gem",
+  "ko": "벌레주얼"
+ },
+ "rock-gem": {
+  "en": "Rock Gem",
+  "ko": "바위주얼"
+ },
+ "ghost-gem": {
+  "en": "Ghost Gem",
+  "ko": "고스트주얼"
+ },
+ "dark-gem": {
+  "en": "Dark Gem",
+  "ko": "악주얼"
+ },
+ "steel-gem": {
+  "en": "Steel Gem",
+  "ko": "강철주얼"
+ },
+ "health-wing": {
+  "en": "Health Feather",
+  "ko": "체력깃털"
+ },
+ "muscle-wing": {
+  "en": "Muscle Feather",
+  "ko": "근력깃털"
+ },
+ "resist-wing": {
+  "en": "Resist Feather",
+  "ko": "저항력깃털"
+ },
+ "genius-wing": {
+  "en": "Genius Feather",
+  "ko": "지력깃털"
+ },
+ "clever-wing": {
+  "en": "Clever Feather",
+  "ko": "정신력깃털"
+ },
+ "swift-wing": {
+  "en": "Swift Feather",
+  "ko": "순발력깃털"
+ },
+ "pretty-wing": {
+  "en": "Pretty Feather",
+  "ko": "고운깃털"
+ },
+ "cover-fossil": {
+  "en": "Cover Fossil",
+  "ko": "덮개화석"
+ },
+ "plume-fossil": {
+  "en": "Plume Fossil",
+  "ko": "깃털화석"
+ },
+ "liberty-pass": {
+  "en": "Liberty Pass",
+  "ko": "리버티티켓"
+ },
+ "pass-orb": {
+  "en": "Pass Orb",
+  "ko": "딜구슬"
+ },
+ "dream-ball": {
+  "en": "Dream Ball",
+  "ko": "드림볼"
+ },
+ "poke-toy": {
+  "en": "Poké Toy",
+  "ko": "포켓풀"
+ },
+ "prop-case": {
+  "en": "Prop Case",
+  "ko": "굿즈케이스"
+ },
+ "dragon-skull": {
+  "en": "Dragon Skull",
+  "ko": "드래곤의뼈"
+ },
+ "balm-mushroom": {
+  "en": "Balm Mushroom",
+  "ko": "향기버섯"
+ },
+ "big-nugget": {
+  "en": "Big Nugget",
+  "ko": "큰금구슬"
+ },
+ "pearl-string": {
+  "en": "Pearl String",
+  "ko": "경단진주"
+ },
+ "comet-shard": {
+  "en": "Comet Shard",
+  "ko": "혜성조각"
+ },
+ "relic-copper": {
+  "en": "Relic Copper",
+  "ko": "고대의동화"
+ },
+ "relic-silver": {
+  "en": "Relic Silver",
+  "ko": "고대의은화"
+ },
+ "relic-gold": {
+  "en": "Relic Gold",
+  "ko": "고대의금화"
+ },
+ "relic-vase": {
+  "en": "Relic Vase",
+  "ko": "고대의항아리"
+ },
+ "relic-band": {
+  "en": "Relic Band",
+  "ko": "고대의팔찌"
+ },
+ "relic-statue": {
+  "en": "Relic Statue",
+  "ko": "고대의석상"
+ },
+ "relic-crown": {
+  "en": "Relic Crown",
+  "ko": "고대의왕관"
+ },
+ "casteliacone": {
+  "en": "Casteliacone",
+  "ko": "구름아이스"
+ },
+ "dire-hit-2": {
+  "en": "Dire Hit 2",
+  "ko": "크리티컬커터2"
+ },
+ "x-speed-2": {
+  "en": "X Speed 2",
+  "ko": "스피드업2"
+ },
+ "x-sp-atk-2": {
+  "en": "X Sp. Atk 2",
+  "ko": "스페셜업2"
+ },
+ "x-sp-def-2": {
+  "en": "X Sp. Def 2",
+  "ko": "스페셜가드2"
+ },
+ "x-defense-2": {
+  "en": "X Defense 2",
+  "ko": "디펜드업2"
+ },
+ "x-attack-2": {
+  "en": "X Attack 2",
+  "ko": "플러스파워2"
+ },
+ "x-accuracy-2": {
+  "en": "X Accuracy 2",
+  "ko": "잘-맞히기2"
+ },
+ "x-speed-3": {
+  "en": "X Speed 3",
+  "ko": "스피드업3"
+ },
+ "x-sp-atk-3": {
+  "en": "X Sp. Atk 3",
+  "ko": "스페셜업3"
+ },
+ "x-sp-def-3": {
+  "en": "X Sp. Def 3",
+  "ko": "스페셜가드3"
+ },
+ "x-defense-3": {
+  "en": "X Defense 3",
+  "ko": "디펜드업3"
+ },
+ "x-attack-3": {
+  "en": "X Attack 3",
+  "ko": "플러스파워3"
+ },
+ "x-accuracy-3": {
+  "en": "X Accuracy 3",
+  "ko": "잘-맞히기3"
+ },
+ "x-speed-6": {
+  "en": "X Speed 6",
+  "ko": "스피드업6"
+ },
+ "x-sp-atk-6": {
+  "en": "X Sp. Atk 6",
+  "ko": "스페셜업6"
+ },
+ "x-sp-def-6": {
+  "en": "X Sp. Def 6",
+  "ko": "스페셜가드6"
+ },
+ "x-defense-6": {
+  "en": "X Defense 6",
+  "ko": "디펜드업6"
+ },
+ "x-attack-6": {
+  "en": "X Attack 6",
+  "ko": "플러스파워6"
+ },
+ "x-accuracy-6": {
+  "en": "X Accuracy 6",
+  "ko": "잘-맞히기6"
+ },
+ "ability-urge": {
+  "en": "Ability Urge",
+  "ko": "스킬콜"
+ },
+ "item-drop": {
+  "en": "Item Drop",
+  "ko": "아이템드롭"
+ },
+ "item-urge": {
+  "en": "Item Urge",
+  "ko": "아이템콜"
+ },
+ "reset-urge": {
+  "en": "Reset Urge",
+  "ko": "플랫콜"
+ },
+ "dire-hit-3": {
+  "en": "Dire Hit 3",
+  "ko": "크리티컬커터3"
+ },
+ "light-stone": {
+  "en": "Light Stone",
+  "ko": "라이트스톤"
+ },
+ "dark-stone": {
+  "en": "Dark Stone",
+  "ko": "다크스톤"
+ },
+ "tm93": {
+  "en": "TM93",
+  "ko": "기술머신93"
+ },
+ "tm94": {
+  "en": "TM94",
+  "ko": "기술머신94"
+ },
+ "tm95": {
+  "en": "TM95",
+  "ko": "기술머신95"
+ },
+ "xtransceiver": {
+  "en": "Xtransceiver",
+  "ko": "라이브캐스터"
+ },
+ "god-stone": {
+  "en": "god stone",
+  "ko": ""
+ },
+ "gram-1": {
+  "en": "Gram 1",
+  "ko": "배달물1"
+ },
+ "gram-2": {
+  "en": "Gram 2",
+  "ko": "배달물2"
+ },
+ "gram-3": {
+  "en": "Gram 3",
+  "ko": "배달물3"
+ },
+ "dragon-gem": {
+  "en": "Dragon Gem",
+  "ko": "드래곤주얼"
+ },
+ "normal-gem": {
+  "en": "Normal Gem",
+  "ko": "노말주얼"
+ },
+ "medal-box": {
+  "en": "Medal Box",
+  "ko": "메달박스"
+ },
+ "dna-splicers": {
+  "en": "DNA Splicers",
+  "ko": "유전자쐐기"
+ },
+ "permit": {
+  "en": "Permit",
+  "ko": "허가증"
+ },
+ "oval-charm": {
+  "en": "Oval Charm",
+  "ko": "둥근부적"
+ },
+ "shiny-charm": {
+  "en": "Shiny Charm",
+  "ko": "빛나는부적"
+ },
+ "plasma-card": {
+  "en": "Plasma Card",
+  "ko": "플라스마카드"
+ },
+ "grubby-hanky": {
+  "en": "Grubby Hanky",
+  "ko": "더러운손수건"
+ },
+ "colress-machine": {
+  "en": "Colress Machine",
+  "ko": "아크로마머신"
+ },
+ "dropped-item": {
+  "en": "Dropped Item",
+  "ko": "잊은물건"
+ },
+ "reveal-glass": {
+  "en": "Reveal Glass",
+  "ko": "비추는거울"
+ },
+ "weakness-policy": {
+  "en": "Weakness Policy",
+  "ko": "약점보험"
+ },
+ "assault-vest": {
+  "en": "Assault Vest",
+  "ko": "돌격조끼"
+ },
+ "pixie-plate": {
+  "en": "Pixie Plate",
+  "ko": "정령플레이트"
+ },
+ "ability-capsule": {
+  "en": "Ability Capsule",
+  "ko": "특성캡슐"
+ },
+ "whipped-dream": {
+  "en": "Whipped Dream",
+  "ko": "휘핑팝"
+ },
+ "sachet": {
+  "en": "Sachet",
+  "ko": "향기주머니"
+ },
+ "luminous-moss": {
+  "en": "Luminous Moss",
+  "ko": "빛이끼"
+ },
+ "snowball": {
+  "en": "Snowball",
+  "ko": "눈덩이"
+ },
+ "safety-goggles": {
+  "en": "Safety Goggles",
+  "ko": "방진고글"
+ },
+ "rich-mulch": {
+  "en": "Rich Mulch",
+  "ko": "주렁주렁비료"
+ },
+ "surprise-mulch": {
+  "en": "Surprise Mulch",
+  "ko": "깜놀비료"
+ },
+ "boost-mulch": {
+  "en": "Boost Mulch",
+  "ko": "부쩍부쩍비료"
+ },
+ "amaze-mulch": {
+  "en": "Amaze Mulch",
+  "ko": "기절초풍비료"
+ },
+ "gengarite": {
+  "en": "Gengarite",
+  "ko": "팬텀나이트"
+ },
+ "gardevoirite": {
+  "en": "Gardevoirite",
+  "ko": "가디안나이트"
+ },
+ "ampharosite": {
+  "en": "Ampharosite",
+  "ko": "전룡나이트"
+ },
+ "venusaurite": {
+  "en": "Venusaurite",
+  "ko": "이상해꽃나이트"
+ },
+ "charizardite-x": {
+  "en": "Charizardite X",
+  "ko": "리자몽나이트X"
+ },
+ "blastoisinite": {
+  "en": "Blastoisinite",
+  "ko": "거북왕나이트"
+ },
+ "mewtwonite-x": {
+  "en": "Mewtwonite X",
+  "ko": "뮤츠나이트X"
+ },
+ "mewtwonite-y": {
+  "en": "Mewtwonite Y",
+  "ko": "뮤츠나이트Y"
+ },
+ "blazikenite": {
+  "en": "Blazikenite",
+  "ko": "번치코나이트"
+ },
+ "medichamite": {
+  "en": "Medichamite",
+  "ko": "요가램나이트"
+ },
+ "houndoominite": {
+  "en": "Houndoominite",
+  "ko": "헬가나이트"
+ },
+ "aggronite": {
+  "en": "Aggronite",
+  "ko": "보스로라나이트"
+ },
+ "banettite": {
+  "en": "Banettite",
+  "ko": "다크펫나이트"
+ },
+ "tyranitarite": {
+  "en": "Tyranitarite",
+  "ko": "마기라스나이트"
+ },
+ "scizorite": {
+  "en": "Scizorite",
+  "ko": "핫삼나이트"
+ },
+ "pinsirite": {
+  "en": "Pinsirite",
+  "ko": "쁘사이저나이트"
+ },
+ "aerodactylite": {
+  "en": "Aerodactylite",
+  "ko": "프테라나이트"
+ },
+ "lucarionite": {
+  "en": "Lucarionite",
+  "ko": "루카리오나이트"
+ },
+ "abomasite": {
+  "en": "Abomasite",
+  "ko": "눈설왕나이트"
+ },
+ "kangaskhanite": {
+  "en": "Kangaskhanite",
+  "ko": "캥카나이트"
+ },
+ "gyaradosite": {
+  "en": "Gyaradosite",
+  "ko": "갸라도스나이트"
+ },
+ "absolite": {
+  "en": "Absolite",
+  "ko": "앱솔나이트"
+ },
+ "charizardite-y": {
+  "en": "Charizardite Y",
+  "ko": "리자몽나이트Y"
+ },
+ "alakazite": {
+  "en": "Alakazite",
+  "ko": "후디나이트"
+ },
+ "heracronite": {
+  "en": "Heracronite",
+  "ko": "헤라크로스나이트"
+ },
+ "mawilite": {
+  "en": "Mawilite",
+  "ko": "입치트나이트"
+ },
+ "manectite": {
+  "en": "Manectite",
+  "ko": "썬더볼트나이트"
+ },
+ "garchompite": {
+  "en": "Garchompite",
+  "ko": "한카리아스나이트"
+ },
+ "roseli-berry": {
+  "en": "Roseli Berry",
+  "ko": "로셀열매"
+ },
+ "kee-berry": {
+  "en": "Kee Berry",
+  "ko": "악키열매"
+ },
+ "maranga-berry": {
+  "en": "Maranga Berry",
+  "ko": "타라프열매"
+ },
+ "discount-coupon": {
+  "en": "Discount Coupon",
+  "ko": "바겐세일티켓"
+ },
+ "strange-souvenir": {
+  "en": "Strange Souvenir",
+  "ko": "이상한장식품"
+ },
+ "lumiose-galette": {
+  "en": "Lumiose Galette",
+  "ko": "미르갈레트"
+ },
+ "jaw-fossil": {
+  "en": "Jaw Fossil",
+  "ko": "턱화석"
+ },
+ "sail-fossil": {
+  "en": "Sail Fossil",
+  "ko": "지느러미화석"
+ },
+ "fairy-gem": {
+  "en": "Fairy Gem",
+  "ko": "페어리주얼"
+ },
+ "adventure-rules": {
+  "en": "Adventure Guide",
+  "ko": "탐험수칙"
+ },
+ "elevator-key": {
+  "en": "Elevator Key",
+  "ko": "엘리베이터키"
+ },
+ "holo-caster": {
+  "en": "Holo Caster",
+  "ko": "홀로캐스터"
+ },
+ "honor-of-kalos": {
+  "en": "Honor of Kalos",
+  "ko": "칼로스엠블럼"
+ },
+ "intriguing-stone": {
+  "en": "Intriguing Stone",
+  "ko": "대단할듯한돌"
+ },
+ "lens-case": {
+  "en": "Lens Case",
+  "ko": "렌즈케이스"
+ },
+ "looker-ticket": {
+  "en": "Looker Ticket",
+  "ko": "핸섬티켓"
+ },
+ "mega-ring": {
+  "en": "Mega Ring",
+  "ko": "메가링"
+ },
+ "power-plant-pass": {
+  "en": "Power Plant Pass",
+  "ko": "발전소패스"
+ },
+ "profs-letter": {
+  "en": "Prof’s Letter",
+  "ko": "박사의편지"
+ },
+ "roller-skates": {
+  "en": "Roller Skates",
+  "ko": "롤러스케이트"
+ },
+ "sprinklotad": {
+  "en": "Sprinklotad",
+  "ko": "연꽃몬물뿌리개"
+ },
+ "tmv-pass": {
+  "en": "TMV Pass",
+  "ko": "TMV패스"
+ },
+ "tm96": {
+  "en": "TM96",
+  "ko": "기술머신96"
+ },
+ "tm97": {
+  "en": "TM97",
+  "ko": "기술머신97"
+ },
+ "tm98": {
+  "en": "TM98",
+  "ko": "기술머신98"
+ },
+ "tm99": {
+  "en": "TM99",
+  "ko": "기술머신99"
+ },
+ "tm100": {
+  "en": "TM100",
+  "ko": "기술머신100"
+ },
+ "latiasite": {
+  "en": "Latiasite",
+  "ko": "라티아스나이트"
+ },
+ "latiosite": {
+  "en": "Latiosite",
+  "ko": "라티오스나이트"
+ },
+ "common-stone": {
+  "en": "Common Stone",
+  "ko": "흔해빠진돌"
+ },
+ "makeup-bag": {
+  "en": "Makeup Bag",
+  "ko": "코스메틱파우치"
+ },
+ "travel-trunk": {
+  "en": "Travel Trunk",
+  "ko": "의상트렁크"
+ },
+ "shalour-sable": {
+  "en": "Shalour Sable",
+  "ko": "사라사블레"
+ },
+ "mega-charm": {
+  "en": "Mega Charm",
+  "ko": "메가참"
+ },
+ "mega-glove": {
+  "en": "Mega Glove",
+  "ko": "메가글러브"
+ },
+ "devon-parts": {
+  "en": "Devon Parts",
+  "ko": "데봉화물"
+ },
+ "pokeblock-kit": {
+  "en": "Pokéblock Kit",
+  "ko": "포켓몬스낵키트"
+ },
+ "key-to-room-1": {
+  "en": "Key to Room 1",
+  "ko": "1호실열쇠"
+ },
+ "key-to-room-2": {
+  "en": "Key to Room 2",
+  "ko": "2호실열쇠"
+ },
+ "key-to-room-4": {
+  "en": "Key to Room 4",
+  "ko": "4호실열쇠"
+ },
+ "key-to-room-6": {
+  "en": "Key to Room 6",
+  "ko": "6호실열쇠"
+ },
+ "devon-scuba-gear": {
+  "en": "Devon Scuba Gear",
+  "ko": "데봉봄베"
+ },
+ "contest-costume--jacket": {
+  "en": "Contest Costume",
+  "ko": "라이브슈트"
+ },
+ "magma-suit": {
+  "en": "Magma Suit",
+  "ko": "마그마슈트"
+ },
+ "aqua-suit": {
+  "en": "Aqua Suit",
+  "ko": "아쿠아슈트"
+ },
+ "pair-of-tickets": {
+  "en": "Pair of Tickets",
+  "ko": "페어티켓"
+ },
+ "mega-bracelet": {
+  "en": "Mega Bracelet",
+  "ko": "메가뱅글"
+ },
+ "mega-pendant": {
+  "en": "Mega Pendant",
+  "ko": "메가펜던트"
+ },
+ "mega-glasses": {
+  "en": "Mega Glasses",
+  "ko": "메가글라스"
+ },
+ "mega-anchor": {
+  "en": "Mega Anchor",
+  "ko": "메가앵커"
+ },
+ "mega-stickpin": {
+  "en": "Mega Stickpin",
+  "ko": "메가라펠핀"
+ },
+ "mega-tiara": {
+  "en": "Mega Tiara",
+  "ko": "메가티아라"
+ },
+ "mega-anklet": {
+  "en": "Mega Anklet",
+  "ko": "메가앵클릿"
+ },
+ "swampertite": {
+  "en": "Swampertite",
+  "ko": "대짱이나이트"
+ },
+ "sceptilite": {
+  "en": "Sceptilite",
+  "ko": "나무킹나이트"
+ },
+ "sablenite": {
+  "en": "Sablenite",
+  "ko": "깜까미나이트"
+ },
+ "altarianite": {
+  "en": "Altarianite",
+  "ko": "파비코리나이트"
+ },
+ "galladite": {
+  "en": "Galladite",
+  "ko": "엘레이드나이트"
+ },
+ "audinite": {
+  "en": "Audinite",
+  "ko": "다부니나이트"
+ },
+ "metagrossite": {
+  "en": "Metagrossite",
+  "ko": "메타그로스나이트"
+ },
+ "sharpedonite": {
+  "en": "Sharpedonite",
+  "ko": "샤크니아나이트"
+ },
+ "slowbronite": {
+  "en": "Slowbronite",
+  "ko": "야도란나이트"
+ },
+ "steelixite": {
+  "en": "Steelixite",
+  "ko": "강철톤나이트"
+ },
+ "pidgeotite": {
+  "en": "Pidgeotite",
+  "ko": "피죤투나이트"
+ },
+ "glalitite": {
+  "en": "Glalitite",
+  "ko": "얼음귀신나이트"
+ },
+ "diancite": {
+  "en": "Diancite",
+  "ko": "디안시나이트"
+ },
+ "prison-bottle": {
+  "en": "Prison Bottle",
+  "ko": "굴레의항아리"
+ },
+ "mega-cuff": {
+  "en": "Mega Cuff",
+  "ko": "메가브레스"
+ },
+ "cameruptite": {
+  "en": "Cameruptite",
+  "ko": "폭타나이트"
+ },
+ "lopunnite": {
+  "en": "Lopunnite",
+  "ko": "이어롭나이트"
+ },
+ "salamencite": {
+  "en": "Salamencite",
+  "ko": "보만다나이트"
+ },
+ "beedrillite": {
+  "en": "Beedrillite",
+  "ko": "독침붕나이트"
+ },
+ "key-stone": {
+  "en": "Key Stone",
+  "ko": "키스톤"
+ },
+ "meteorite-shard": {
+  "en": "Meteorite Shard",
+  "ko": "운석조각"
+ },
+ "eon-flute": {
+  "en": "Eon Flute",
+  "ko": "무한의피리"
+ },
+ "normalium-z--held": {
+  "en": "Normalium Z",
+  "ko": "노말Z"
+ },
+ "firium-z--held": {
+  "en": "Firium Z",
+  "ko": "불꽃Z"
+ },
+ "waterium-z--held": {
+  "en": "Waterium Z",
+  "ko": "물Z"
+ },
+ "electrium-z--held": {
+  "en": "Electrium Z",
+  "ko": "전기Z"
+ },
+ "grassium-z--held": {
+  "en": "Grassium Z",
+  "ko": "풀Z"
+ },
+ "icium-z--held": {
+  "en": "Icium Z",
+  "ko": "얼음Z"
+ },
+ "fightinium-z--held": {
+  "en": "Fightinium Z",
+  "ko": "격투Z"
+ },
+ "poisonium-z--held": {
+  "en": "Poisonium Z",
+  "ko": "독Z"
+ },
+ "groundium-z--held": {
+  "en": "Groundium Z",
+  "ko": "땅Z"
+ },
+ "flyinium-z--held": {
+  "en": "Flyinium Z",
+  "ko": "비행Z"
+ },
+ "psychium-z--held": {
+  "en": "Psychium Z",
+  "ko": "에스퍼Z"
+ },
+ "buginium-z--held": {
+  "en": "Buginium Z",
+  "ko": "벌레Z"
+ },
+ "rockium-z--held": {
+  "en": "Rockium Z",
+  "ko": "바위Z"
+ },
+ "ghostium-z--held": {
+  "en": "Ghostium Z",
+  "ko": "고스트Z"
+ },
+ "dragonium-z--held": {
+  "en": "Dragonium Z",
+  "ko": "드래곤Z"
+ },
+ "darkinium-z--held": {
+  "en": "Darkinium Z",
+  "ko": "악Z"
+ },
+ "steelium-z--held": {
+  "en": "Steelium Z",
+  "ko": "강철Z"
+ },
+ "fairium-z--held": {
+  "en": "Fairium Z",
+  "ko": "페어리Z"
+ },
+ "pikanium-z--held": {
+  "en": "Pikanium Z",
+  "ko": "피카츄Z"
+ },
+ "bottle-cap": {
+  "en": "Bottle Cap",
+  "ko": "은색병뚜껑"
+ },
+ "gold-bottle-cap": {
+  "en": "Gold Bottle Cap",
+  "ko": "금색병뚜껑"
+ },
+ "z-ring": {
+  "en": "Z-Ring",
+  "ko": "Z링"
+ },
+ "decidium-z--held": {
+  "en": "Decidium Z",
+  "ko": "모크나이퍼Z"
+ },
+ "incinium-z--held": {
+  "en": "Incinium Z",
+  "ko": "어흥염Z"
+ },
+ "primarium-z--held": {
+  "en": "Primarium Z",
+  "ko": "누리레느Z"
+ },
+ "tapunium-z--held": {
+  "en": "Tapunium Z",
+  "ko": "카푸Z"
+ },
+ "marshadium-z--held": {
+  "en": "Marshadium Z",
+  "ko": "마샤도Z"
+ },
+ "aloraichium-z--held": {
+  "en": "Aloraichium Z",
+  "ko": "알로라이Z"
+ },
+ "snorlium-z--held": {
+  "en": "Snorlium Z",
+  "ko": "잠만보Z"
+ },
+ "eevium-z--held": {
+  "en": "Eevium Z",
+  "ko": "이브이Z"
+ },
+ "mewnium-z--held": {
+  "en": "Mewnium Z",
+  "ko": "뮤Z"
+ },
+ "pikashunium-z--held": {
+  "en": "Pikashunium Z",
+  "ko": "지우피카Z"
+ },
+ "forage-bag": {
+  "en": "Forage Bag",
+  "ko": "재료주머니"
+ },
+ "fishing-rod": {
+  "en": "Fishing Rod",
+  "ko": "낚싯대"
+ },
+ "professors-mask": {
+  "en": "Professor’s Mask",
+  "ko": "박사의복면"
+ },
+ "festival-ticket": {
+  "en": "Festival Ticket",
+  "ko": "페스티켓"
+ },
+ "sparkling-stone": {
+  "en": "Sparkling Stone",
+  "ko": "빛나는돌"
+ },
+ "adrenaline-orb": {
+  "en": "Adrenaline Orb",
+  "ko": "주눅구슬"
+ },
+ "zygarde-cube": {
+  "en": "Zygarde Cube",
+  "ko": "지가르데큐브"
+ },
+ "ice-stone": {
+  "en": "Ice Stone",
+  "ko": "얼음의돌"
+ },
+ "ride-pager": {
+  "en": "Ride Pager",
+  "ko": "라이드기어"
+ },
+ "beast-ball": {
+  "en": "Beast Ball",
+  "ko": "울트라볼"
+ },
+ "big-malasada": {
+  "en": "Big Malasada",
+  "ko": "큰 말라사다"
+ },
+ "red-nectar": {
+  "en": "Red Nectar",
+  "ko": "다홍꿀"
+ },
+ "yellow-nectar": {
+  "en": "Yellow Nectar",
+  "ko": "진노랑꿀"
+ },
+ "pink-nectar": {
+  "en": "Pink Nectar",
+  "ko": "연분홍꿀"
+ },
+ "purple-nectar": {
+  "en": "Purple Nectar",
+  "ko": "보라꿀"
+ },
+ "sun-flute": {
+  "en": "Sun Flute",
+  "ko": "태양의피리"
+ },
+ "moon-flute": {
+  "en": "Moon Flute",
+  "ko": "달의피리"
+ },
+ "enigmatic-card": {
+  "en": "Enigmatic Card",
+  "ko": "괴상한카드"
+ },
+ "terrain-extender": {
+  "en": "Terrain Extender",
+  "ko": "그라운드코트"
+ },
+ "protective-pads": {
+  "en": "Protective Pads",
+  "ko": "방호패드"
+ },
+ "electric-seed": {
+  "en": "Electric Seed",
+  "ko": "일렉트릭시드"
+ },
+ "psychic-seed": {
+  "en": "Psychic Seed",
+  "ko": "사이코시드"
+ },
+ "misty-seed": {
+  "en": "Misty Seed",
+  "ko": "미스트시드"
+ },
+ "grassy-seed": {
+  "en": "Grassy Seed",
+  "ko": "그래스시드"
+ },
+ "fighting-memory": {
+  "en": "Fighting Memory",
+  "ko": "파이팅메모리"
+ },
+ "flying-memory": {
+  "en": "Flying Memory",
+  "ko": "플라잉메모리"
+ },
+ "poison-memory": {
+  "en": "Poison Memory",
+  "ko": "포이즌메모리"
+ },
+ "ground-memory": {
+  "en": "Ground Memory",
+  "ko": "그라운드메모리"
+ },
+ "rock-memory": {
+  "en": "Rock Memory",
+  "ko": "록메모리"
+ },
+ "bug-memory": {
+  "en": "Bug Memory",
+  "ko": "버그메모리"
+ },
+ "ghost-memory": {
+  "en": "Ghost Memory",
+  "ko": "고스트메모리"
+ },
+ "steel-memory": {
+  "en": "Steel Memory",
+  "ko": "스틸메모리"
+ },
+ "fire-memory": {
+  "en": "Fire Memory",
+  "ko": "파이어메모리"
+ },
+ "water-memory": {
+  "en": "Water Memory",
+  "ko": "워터메모리"
+ },
+ "grass-memory": {
+  "en": "Grass Memory",
+  "ko": "그래스메모리"
+ },
+ "electric-memory": {
+  "en": "Electric Memory",
+  "ko": "일렉트릭메모리"
+ },
+ "psychic-memory": {
+  "en": "Psychic Memory",
+  "ko": "사이킥메모리"
+ },
+ "ice-memory": {
+  "en": "Ice Memory",
+  "ko": "아이스메모리"
+ },
+ "dragon-memory": {
+  "en": "Dragon Memory",
+  "ko": "드래곤메모리"
+ },
+ "dark-memory": {
+  "en": "Dark Memory",
+  "ko": "다크메모리"
+ },
+ "fairy-memory": {
+  "en": "Fairy Memory",
+  "ko": "페어리메모리"
+ },
+ "bike--green": {
+  "en": "Bike",
+  "ko": "자전거"
+ },
+ "storage-key--galactic-warehouse": {
+  "en": "Storage Key",
+  "ko": "창고열쇠"
+ },
+ "basement-key--goldenrod": {
+  "en": "Basement Key",
+  "ko": "지하의열쇠"
+ },
+ "xtransceiver--red": {
+  "en": "Xtransceiver",
+  "ko": "라이브캐스터"
+ },
+ "xtransceiver--yellow": {
+  "en": "Xtransceiver",
+  "ko": "라이브캐스터"
+ },
+ "dna-splicers--merge": {
+  "en": "DNA Splicers",
+  "ko": "유전자쐐기"
+ },
+ "dna-splicers--split": {
+  "en": "DNA Splicers",
+  "ko": "유전자쐐기"
+ },
+ "dropped-item--red": {
+  "en": "Dropped Item",
+  "ko": "잊은물건"
+ },
+ "dropped-item--yellow": {
+  "en": "Dropped Item",
+  "ko": "잊은물건"
+ },
+ "holo-caster--green": {
+  "en": "Holo Caster",
+  "ko": "홀로캐스터"
+ },
+ "bike--yellow": {
+  "en": "Bike",
+  "ko": "자전거"
+ },
+ "holo-caster--red": {
+  "en": "Holo Caster",
+  "ko": "홀로캐스터"
+ },
+ "basement-key--new-mauville": {
+  "en": "Basement Key",
+  "ko": "지하열쇠"
+ },
+ "storage-key--sea-mauville": {
+  "en": "Storage Key",
+  "ko": "창고열쇠"
+ },
+ "ss-ticket--hoenn": {
+  "en": "S.S. Ticket",
+  "ko": "승선티켓"
+ },
+ "contest-costume--dress": {
+  "en": "Contest Costume",
+  "ko": "라이브드레스"
+ },
+ "meteorite--2": {
+  "en": "Meteorite",
+  "ko": "운석"
+ },
+ "meteorite--3": {
+  "en": "Meteorite",
+  "ko": "운석"
+ },
+ "meteorite--4": {
+  "en": "Meteorite",
+  "ko": "운석"
+ },
+ "normalium-z--bag": {
+  "en": "Normalium Z",
+  "ko": "노말Z"
+ },
+ "firium-z--bag": {
+  "en": "Firium Z",
+  "ko": "불꽃Z"
+ },
+ "waterium-z--bag": {
+  "en": "Waterium Z",
+  "ko": "물Z"
+ },
+ "electrium-z--bag": {
+  "en": "Electrium Z",
+  "ko": "전기Z"
+ },
+ "grassium-z--bag": {
+  "en": "Grassium Z",
+  "ko": "풀Z"
+ },
+ "icium-z--bag": {
+  "en": "Icium Z",
+  "ko": "얼음Z"
+ },
+ "fightinium-z--bag": {
+  "en": "Fightinium Z",
+  "ko": "격투Z"
+ },
+ "poisonium-z--bag": {
+  "en": "Poisonium Z",
+  "ko": "독Z"
+ },
+ "groundium-z--bag": {
+  "en": "Groundium Z",
+  "ko": "땅Z"
+ },
+ "flyinium-z--bag": {
+  "en": "Flyinium Z",
+  "ko": "비행Z"
+ },
+ "psychium-z--bag": {
+  "en": "Psychium Z",
+  "ko": "에스퍼Z"
+ },
+ "buginium-z--bag": {
+  "en": "Buginium Z",
+  "ko": "벌레Z"
+ },
+ "rockium-z--bag": {
+  "en": "Rockium Z",
+  "ko": "바위Z"
+ },
+ "ghostium-z--bag": {
+  "en": "Ghostium Z",
+  "ko": "고스트Z"
+ },
+ "dragonium-z--bag": {
+  "en": "Dragonium Z",
+  "ko": "드래곤Z"
+ },
+ "darkinium-z--bag": {
+  "en": "Darkinium Z",
+  "ko": "악Z"
+ },
+ "steelium-z--bag": {
+  "en": "Steelium Z",
+  "ko": "강철Z"
+ },
+ "fairium-z--bag": {
+  "en": "Fairium Z",
+  "ko": "페어리Z"
+ },
+ "pikanium-z--bag": {
+  "en": "Pikanium Z",
+  "ko": "피카츄Z"
+ },
+ "decidium-z--bag": {
+  "en": "Decidium Z",
+  "ko": "모크나이퍼Z"
+ },
+ "incinium-z--bag": {
+  "en": "Incinium Z",
+  "ko": "어흥염Z"
+ },
+ "primarium-z--bag": {
+  "en": "Primarium Z",
+  "ko": "누리레느Z"
+ },
+ "tapunium-z--bag": {
+  "en": "Tapunium Z",
+  "ko": "카푸Z"
+ },
+ "marshadium-z--bag": {
+  "en": "Marshadium Z",
+  "ko": "마샤도Z"
+ },
+ "aloraichium-z--bag": {
+  "en": "Aloraichium Z",
+  "ko": "알로라이Z"
+ },
+ "snorlium-z--bag": {
+  "en": "Snorlium Z",
+  "ko": "잠만보Z"
+ },
+ "eevium-z--bag": {
+  "en": "Eevium Z",
+  "ko": "이브이Z"
+ },
+ "mewnium-z--bag": {
+  "en": "Mewnium Z",
+  "ko": "뮤Z"
+ },
+ "pikashunium-z--bag": {
+  "en": "Pikashunium Z",
+  "ko": "지우피카Z"
+ },
+ "solganium-z--held": {
+  "en": "Solganium Z",
+  "ko": "솔가레오Z"
+ },
+ "lunalium-z--held": {
+  "en": "Lunalium Z",
+  "ko": "루나아라Z"
+ },
+ "ultranecrozium-z--held": {
+  "en": "Ultranecrozium Z",
+  "ko": "울트라네크로Z"
+ },
+ "mimikium-z--held": {
+  "en": "Mimikium Z",
+  "ko": "따라큐Z"
+ },
+ "lycanium-z--held": {
+  "en": "Lycanium Z",
+  "ko": "루가루암Z"
+ },
+ "kommonium-z--held": {
+  "en": "Kommonium Z",
+  "ko": "짜랑고우거Z"
+ },
+ "solganium-z--bag": {
+  "en": "Solganium Z",
+  "ko": "솔가레오Z"
+ },
+ "lunalium-z--bag": {
+  "en": "Lunalium Z",
+  "ko": "루나아라Z"
+ },
+ "ultranecrozium-z--bag": {
+  "en": "Ultranecrozium Z",
+  "ko": "울트라네크로Z"
+ },
+ "mimikium-z--bag": {
+  "en": "Mimikium Z",
+  "ko": "따라큐Z"
+ },
+ "lycanium-z--bag": {
+  "en": "Lycanium Z",
+  "ko": "루가루암Z"
+ },
+ "kommonium-z--bag": {
+  "en": "Kommonium Z",
+  "ko": "짜랑고우거Z"
+ },
+ "z-power-ring": {
+  "en": "Z-Power Ring",
+  "ko": "Z파워링"
+ },
+ "pink-petal": {
+  "en": "Pink Petal",
+  "ko": "담홍꽃잎"
+ },
+ "orange-petal": {
+  "en": "Orange Petal",
+  "ko": "주황꽃잎"
+ },
+ "blue-petal": {
+  "en": "Blue Petal",
+  "ko": "파랑꽃잎"
+ },
+ "red-petal": {
+  "en": "Red Petal",
+  "ko": "빨강꽃잎"
+ },
+ "green-petal": {
+  "en": "Green Petal",
+  "ko": "초록꽃잎"
+ },
+ "yellow-petal": {
+  "en": "Yellow Petal",
+  "ko": "노랑꽃잎"
+ },
+ "purple-petal": {
+  "en": "Purple Petal",
+  "ko": "보라꽃잎"
+ },
+ "rainbow-flower": {
+  "en": "Rainbow Flower",
+  "ko": "무지개꽃"
+ },
+ "surge-badge": {
+  "en": "Surge Badge",
+  "ko": "주황배지"
+ },
+ "n-solarizer--merge": {
+  "en": "N-Solarizer",
+  "ko": "네크로플러스솔"
+ },
+ "n-lunarizer--merge": {
+  "en": "N-Lunarizer",
+  "ko": "네크로플러스루나"
+ },
+ "n-solarizer--split": {
+  "en": "N-Solarizer",
+  "ko": "네크로플러스솔"
+ },
+ "n-lunarizer--split": {
+  "en": "N-Lunarizer",
+  "ko": "네크로플러스루나"
+ },
+ "ilimas-normalium-z": {
+  "en": "Ilima Normalium Z",
+  "ko": "일리마의 노말Z"
+ },
+ "left-poke-ball": {
+  "en": "Left Poké Ball",
+  "ko": "남겨진 볼"
+ },
+ "roto-hatch": {
+  "en": "Roto Hatch",
+  "ko": "알부화캡슐토이"
+ },
+ "roto-bargain": {
+  "en": "Roto Bargain",
+  "ko": "할인캡슐토이"
+ },
+ "roto-prize-money": {
+  "en": "Roto Prize Money",
+  "ko": "용돈캡슐토이"
+ },
+ "roto-exp-points": {
+  "en": "Roto Exp. Points",
+  "ko": "경험캡슐토이"
+ },
+ "roto-friendship": {
+  "en": "Roto Friendship",
+  "ko": "친밀도캡슐토이"
+ },
+ "roto-encounter": {
+  "en": "Roto Encounter",
+  "ko": "발견캡슐토이"
+ },
+ "roto-stealth": {
+  "en": "Roto Stealth",
+  "ko": "숨기캡슐토이"
+ },
+ "roto-hp-restore": {
+  "en": "Roto HP Restore",
+  "ko": "HP회복캡슐토이"
+ },
+ "roto-pp-restore": {
+  "en": "Roto PP Restore",
+  "ko": "PP회복캡슐토이"
+ },
+ "roto-boost": {
+  "en": "Roto Boost",
+  "ko": "응원캡슐토이"
+ },
+ "roto-catch": {
+  "en": "Roto Catch",
+  "ko": "잡기캡슐토이"
+ },
+ "autograph": {
+  "en": "Autograph",
+  "ko": "마티스의사인"
+ },
+ "pokemon-box": {
+  "en": "Pokémon Box Link",
+  "ko": "포켓몬 박스"
+ },
+ "medicine-pocket": {
+  "en": "Medicine Pocket",
+  "ko": "회복포켓"
+ },
+ "candy-jar": {
+  "en": "Candy Jar",
+  "ko": "사탕보틀"
+ },
+ "power-up-pocket": {
+  "en": "Power-Up Pocket",
+  "ko": "강화포켓"
+ },
+ "clothing-trunk": {
+  "en": "Clothing Trunk",
+  "ko": "옷갈아입기트렁크"
+ },
+ "catching-pocket": {
+  "en": "Catching Pocket",
+  "ko": "포획포켓"
+ },
+ "battle-pocket": {
+  "en": "Battle Pocket",
+  "ko": "배틀포켓"
+ },
+ "silver-razz-berry": {
+  "en": "Silver Razz Berry",
+  "ko": "은 라즈열매"
+ },
+ "golden-razz-berry": {
+  "en": "Golden Razz Berry",
+  "ko": "황금 라즈열매"
+ },
+ "silver-nanab-berry": {
+  "en": "Silver Nanab Berry",
+  "ko": "은 나나열매"
+ },
+ "golden-nanab-berry": {
+  "en": "Golden Nanab Berry",
+  "ko": "황금 나나열매"
+ },
+ "silver-pinap-berry": {
+  "en": "Silver Pinap Berry",
+  "ko": "은 파인열매"
+ },
+ "golden-pinap-berry": {
+  "en": "Golden Pinap Berry",
+  "ko": "황금 파인열매"
+ },
+ "secret-key--letsgo": {
+  "en": "Secret Key",
+  "ko": "비밀의열쇠"
+ },
+ "ss-ticket--letsgo": {
+  "en": "S.S. Ticket",
+  "ko": "승선티켓"
+ },
+ "parcel--letsgo": {
+  "en": "Parcel",
+  "ko": "전해줄물건"
+ },
+ "card-key--letsgo": {
+  "en": "Card Key",
+  "ko": "카드키"
+ },
+ "stretchy-spring": {
+  "en": "Stretchy Spring",
+  "ko": "늘어난용수철"
+ },
+ "chalky-stone": {
+  "en": "Chalky Stone",
+  "ko": "초크돌"
+ },
+ "marble": {
+  "en": "Marble",
+  "ko": "유리구슬"
+ },
+ "lone-earring": {
+  "en": "Lone Earring",
+  "ko": "한쪽귀고리"
+ },
+ "beach-glass": {
+  "en": "Beach Glass",
+  "ko": "바닷가유리"
+ },
+ "gold-leaf": {
+  "en": "Gold Leaf",
+  "ko": "금빛잎사귀"
+ },
+ "silver-leaf": {
+  "en": "Silver Leaf",
+  "ko": "은빛잎사귀"
+ },
+ "polished-mud-ball": {
+  "en": "Polished Mud Ball",
+  "ko": "반짝반짝경단"
+ },
+ "tropical-shell": {
+  "en": "Tropical Shell",
+  "ko": "트로피컬조개껍질"
+ },
+ "leaf-letter--pikachu": {
+  "en": "Leaf Letter",
+  "ko": "나뭇잎편지"
+ },
+ "leaf-letter--eevee": {
+  "en": "Leaf Letter",
+  "ko": "나뭇잎편지"
+ },
+ "small-bouquet": {
+  "en": "Small Bouquet",
+  "ko": "작은꽃다발"
+ },
+ "lure": {
+  "en": "Lure",
+  "ko": "벌레유인코롱"
+ },
+ "super-lure": {
+  "en": "Super Lure",
+  "ko": "실버코롱"
+ },
+ "max-lure": {
+  "en": "Max Lure",
+  "ko": "골드코롱"
+ },
+ "pewter-crunchies": {
+  "en": "Pewter Crunchies",
+  "ko": "회색강정"
+ },
+ "health-candy": {
+  "en": "Health Candy",
+  "ko": "기력의사탕"
+ },
+ "mighty-candy": {
+  "en": "Mighty Candy",
+  "ko": "힘의사탕"
+ },
+ "tough-candy": {
+  "en": "Tough Candy",
+  "ko": "수비의사탕"
+ },
+ "smart-candy": {
+  "en": "Smart Candy",
+  "ko": "지식의사탕"
+ },
+ "courage-candy": {
+  "en": "Courage Candy",
+  "ko": "마음의사탕"
+ },
+ "quick-candy": {
+  "en": "Quick Candy",
+  "ko": "속도의사탕"
+ },
+ "health-candy-l": {
+  "en": "Health Candy L",
+  "ko": "기력의사탕L"
+ },
+ "mighty-candy-l": {
+  "en": "Mighty Candy L",
+  "ko": "힘의사탕L"
+ },
+ "tough-candy-l": {
+  "en": "Tough Candy L",
+  "ko": "수비의사탕L"
+ },
+ "smart-candy-l": {
+  "en": "Smart Candy L",
+  "ko": "지식의사탕L"
+ },
+ "courage-candy-l": {
+  "en": "Courage Candy L",
+  "ko": "마음의사탕L"
+ },
+ "quick-candy-l": {
+  "en": "Quick Candy L",
+  "ko": "속도의사탕L"
+ },
+ "health-candy-xl": {
+  "en": "Health Candy XL",
+  "ko": "기력의사탕XL"
+ },
+ "mighty-candy-xl": {
+  "en": "Mighty Candy XL",
+  "ko": "힘의사탕XL"
+ },
+ "tough-candy-xl": {
+  "en": "Tough Candy XL",
+  "ko": "수비의사탕XL"
+ },
+ "smart-candy-xl": {
+  "en": "Smart Candy XL",
+  "ko": "지식의사탕XL"
+ },
+ "courage-candy-xl": {
+  "en": "Courage Candy XL",
+  "ko": "마음의사탕XL"
+ },
+ "quick-candy-xl": {
+  "en": "Quick Candy XL",
+  "ko": "속도의사탕XL"
+ },
+ "bulbasaur-candy": {
+  "en": "Bulbasaur Candy",
+  "ko": "이상해씨의사탕"
+ },
+ "charmander-candy": {
+  "en": "Charmander Candy",
+  "ko": "파이리의사탕"
+ },
+ "squirtle-candy": {
+  "en": "Squirtle Candy",
+  "ko": "꼬부기의사탕"
+ },
+ "caterpie-candy": {
+  "en": "Caterpie Candy",
+  "ko": "캐터피의사탕"
+ },
+ "weedle-candy": {
+  "en": "Weedle Candy",
+  "ko": "뿔충이의사탕"
+ },
+ "pidgey-candy": {
+  "en": "Pidgey Candy",
+  "ko": "구구의사탕"
+ },
+ "rattata-candy": {
+  "en": "Rattata Candy",
+  "ko": "꼬렛의사탕"
+ },
+ "spearow-candy": {
+  "en": "Spearow Candy",
+  "ko": "깨비참의사탕"
+ },
+ "ekans-candy": {
+  "en": "Ekans Candy",
+  "ko": "아보의사탕"
+ },
+ "pikachu-candy": {
+  "en": "Pikachu Candy",
+  "ko": "피카츄의사탕"
+ },
+ "sandshrew-candy": {
+  "en": "Sandshrew Candy",
+  "ko": "모래두지의사탕"
+ },
+ "nidoran-f-candy": {
+  "en": "Nidoran♀ Candy",
+  "ko": "니드런♀의사탕"
+ },
+ "nidoran-m-candy": {
+  "en": "Nidoran♂ Candy",
+  "ko": "니드런♂의사탕"
+ },
+ "clefairy-candy": {
+  "en": "Clefairy Candy",
+  "ko": "삐삐의사탕"
+ },
+ "vulpix-candy": {
+  "en": "Vulpix Candy",
+  "ko": "식스테일의사탕"
+ },
+ "jigglypuff-candy": {
+  "en": "Jigglypuff Candy",
+  "ko": "푸린의사탕"
+ },
+ "zubat-candy": {
+  "en": "Zubat Candy",
+  "ko": "주뱃의사탕"
+ },
+ "oddish-candy": {
+  "en": "Oddish Candy",
+  "ko": "뚜벅쵸의사탕"
+ },
+ "paras-candy": {
+  "en": "Paras Candy",
+  "ko": "파라스의사탕"
+ },
+ "venonat-candy": {
+  "en": "Venonat Candy",
+  "ko": "콘팡의사탕"
+ },
+ "diglett-candy": {
+  "en": "Diglett Candy",
+  "ko": "디그다의사탕"
+ },
+ "meowth-candy": {
+  "en": "Meowth Candy",
+  "ko": "나옹의사탕"
+ },
+ "psyduck-candy": {
+  "en": "Psyduck Candy",
+  "ko": "고라파덕의사탕"
+ },
+ "mankey-candy": {
+  "en": "Mankey Candy",
+  "ko": "망키의사탕"
+ },
+ "growlithe-candy": {
+  "en": "Growlithe Candy",
+  "ko": "가디의사탕"
+ },
+ "poliwag-candy": {
+  "en": "Poliwag Candy",
+  "ko": "발챙이의사탕"
+ },
+ "abra-candy": {
+  "en": "Abra Candy",
+  "ko": "캐이시의사탕"
+ },
+ "machop-candy": {
+  "en": "Machop Candy",
+  "ko": "알통몬의사탕"
+ },
+ "bellsprout-candy": {
+  "en": "Bellsprout Candy",
+  "ko": "모다피의사탕"
+ },
+ "tentacool-candy": {
+  "en": "Tentacool Candy",
+  "ko": "왕눈해의사탕"
+ },
+ "geodude-candy": {
+  "en": "Geodude Candy",
+  "ko": "꼬마돌의사탕"
+ },
+ "ponyta-candy": {
+  "en": "Ponyta Candy",
+  "ko": "포니타의사탕"
+ },
+ "slowpoke-candy": {
+  "en": "Slowpoke Candy",
+  "ko": "야돈의사탕"
+ },
+ "magnemite-candy": {
+  "en": "Magnemite Candy",
+  "ko": "코일의사탕"
+ },
+ "farfetchd-candy": {
+  "en": "Farfetch’d Candy",
+  "ko": "파오리의사탕"
+ },
+ "doduo-candy": {
+  "en": "Doduo Candy",
+  "ko": "두두의사탕"
+ },
+ "seel-candy": {
+  "en": "Seel Candy",
+  "ko": "쥬쥬의사탕"
+ },
+ "grimer-candy": {
+  "en": "Grimer Candy",
+  "ko": "질퍽이의사탕"
+ },
+ "shellder-candy": {
+  "en": "Shellder Candy",
+  "ko": "셀러의사탕"
+ },
+ "gastly-candy": {
+  "en": "Gastly Candy",
+  "ko": "고오스의사탕"
+ },
+ "onix-candy": {
+  "en": "Onix Candy",
+  "ko": "롱스톤의사탕"
+ },
+ "drowzee-candy": {
+  "en": "Drowzee Candy",
+  "ko": "슬리프의사탕"
+ },
+ "krabby-candy": {
+  "en": "Krabby Candy",
+  "ko": "크랩의사탕"
+ },
+ "voltorb-candy": {
+  "en": "Voltorb Candy",
+  "ko": "찌리리공의사탕"
+ },
+ "exeggcute-candy": {
+  "en": "Exeggcute Candy",
+  "ko": "아라리의사탕"
+ },
+ "cubone-candy": {
+  "en": "Cubone Candy",
+  "ko": "탕구리의사탕"
+ },
+ "hitmonlee-candy": {
+  "en": "Hitmonlee Candy",
+  "ko": "시라소몬의사탕"
+ },
+ "hitmonchan-candy": {
+  "en": "Hitmonchan Candy",
+  "ko": "홍수몬의사탕"
+ },
+ "lickitung-candy": {
+  "en": "Lickitung Candy",
+  "ko": "내루미의사탕"
+ },
+ "koffing-candy": {
+  "en": "Koffing Candy",
+  "ko": "또가스의사탕"
+ },
+ "rhyhorn-candy": {
+  "en": "Rhyhorn Candy",
+  "ko": "뿔카노의사탕"
+ },
+ "chansey-candy": {
+  "en": "Chansey Candy",
+  "ko": "럭키의사탕"
+ },
+ "tangela-candy": {
+  "en": "Tangela Candy",
+  "ko": "덩쿠리의사탕"
+ },
+ "kangaskhan-candy": {
+  "en": "Kangaskhan Candy",
+  "ko": "캥카의사탕"
+ },
+ "horsea-candy": {
+  "en": "Horsea Candy",
+  "ko": "쏘드라의사탕"
+ },
+ "goldeen-candy": {
+  "en": "Goldeen Candy",
+  "ko": "콘치의사탕"
+ },
+ "staryu-candy": {
+  "en": "Staryu Candy",
+  "ko": "별가사리의사탕"
+ },
+ "mr-mime-candy": {
+  "en": "Mr. Mime Candy",
+  "ko": "마임맨의사탕"
+ },
+ "scyther-candy": {
+  "en": "Scyther Candy",
+  "ko": "스라크의사탕"
+ },
+ "jynx-candy": {
+  "en": "Jynx Candy",
+  "ko": "루주라의사탕"
+ },
+ "electabuzz-candy": {
+  "en": "Electabuzz Candy",
+  "ko": "에레브의사탕"
+ },
+ "pinsir-candy": {
+  "en": "Pinsir Candy",
+  "ko": "쁘사이저의사탕"
+ },
+ "tauros-candy": {
+  "en": "Tauros Candy",
+  "ko": "켄타로스의사탕"
+ },
+ "magikarp-candy": {
+  "en": "Magikarp Candy",
+  "ko": "잉어킹의사탕"
+ },
+ "lapras-candy": {
+  "en": "Lapras Candy",
+  "ko": "라프라스의사탕"
+ },
+ "ditto-candy": {
+  "en": "Ditto Candy",
+  "ko": "메타몽의사탕"
+ },
+ "eevee-candy": {
+  "en": "Eevee Candy",
+  "ko": "이브이의사탕"
+ },
+ "porygon-candy": {
+  "en": "Porygon Candy",
+  "ko": "폴리곤의사탕"
+ },
+ "omanyte-candy": {
+  "en": "Omanyte Candy",
+  "ko": "암나이트의사탕"
+ },
+ "kabuto-candy": {
+  "en": "Kabuto Candy",
+  "ko": "투구의사탕"
+ },
+ "aerodactyl-candy": {
+  "en": "Aerodactyl Candy",
+  "ko": "프테라의사탕"
+ },
+ "snorlax-candy": {
+  "en": "Snorlax Candy",
+  "ko": "잠만보의사탕"
+ },
+ "articuno-candy": {
+  "en": "Articuno Candy",
+  "ko": "프리져의사탕"
+ },
+ "zapdos-candy": {
+  "en": "Zapdos Candy",
+  "ko": "썬더의사탕"
+ },
+ "moltres-candy": {
+  "en": "Moltres Candy",
+  "ko": "파이어의사탕"
+ },
+ "dratini-candy": {
+  "en": "Dratini Candy",
+  "ko": "미뇽의사탕"
+ },
+ "mewtwo-candy": {
+  "en": "Mewtwo Candy",
+  "ko": "뮤츠의사탕"
+ },
+ "mew-candy": {
+  "en": "Mew Candy",
+  "ko": "뮤의사탕"
+ },
+ "meltan-candy": {
+  "en": "Meltan Candy",
+  "ko": "멜탄의사탕"
+ },
+ "magmar-candy": {
+  "en": "Magmar Candy",
+  "ko": "마그마의사탕"
+ },
+ "endorsement": {
+  "en": "Endorsement",
+  "ko": "추천장"
+ },
+ "pokemon-box-link": {
+  "en": "Pokémon Box Link",
+  "ko": "포켓몬 박스"
+ },
+ "wishing-star": {
+  "en": "Wishing Star",
+  "ko": "소원의별"
+ },
+ "dynamax-band": {
+  "en": "Dynamax Band",
+  "ko": "다이맥스 밴드"
+ },
+ "fishing-rod--galar": {
+  "en": "Fishing Rod",
+  "ko": "낚싯대"
+ },
+ "rotom-bike": {
+  "en": "Rotom Bike",
+  "ko": "로토무자전거"
+ },
+ "sausages": {
+  "en": "Sausages",
+  "ko": "탱글탱글부어스트"
+ },
+ "bobs-food-tin": {
+  "en": "Bob’s Food Tin",
+  "ko": "밥의통조림"
+ },
+ "bachs-food-tin": {
+  "en": "Bach’s Food Tin",
+  "ko": "바크의통조림"
+ },
+ "tin-of-beans": {
+  "en": "Tin of Beans",
+  "ko": "콩통조림"
+ },
+ "bread": {
+  "en": "Bread",
+  "ko": "식빵"
+ },
+ "pasta": {
+  "en": "Pasta",
+  "ko": "파스타"
+ },
+ "mixed-mushrooms": {
+  "en": "Mixed Mushrooms",
+  "ko": "버섯팩"
+ },
+ "smoke-poke-tail": {
+  "en": "Smoke-Poke Tail",
+  "ko": "꼬리훈제"
+ },
+ "large-leek": {
+  "en": "Large Leek",
+  "ko": "굵은대파"
+ },
+ "fancy-apple": {
+  "en": "Fancy Apple",
+  "ko": "특선사과"
+ },
+ "brittle-bones": {
+  "en": "Brittle Bones",
+  "ko": "가느다란뼈"
+ },
+ "pack-of-potatoes": {
+  "en": "Pack of Potatoes",
+  "ko": "포테이토팩"
+ },
+ "pungent-root": {
+  "en": "Pungent Root",
+  "ko": "물가허브팩"
+ },
+ "salad-mix": {
+  "en": "Salad Mix",
+  "ko": "채소팩"
+ },
+ "fried-food": {
+  "en": "Fried Food",
+  "ko": "모둠튀김"
+ },
+ "boiled-egg": {
+  "en": "Boiled Egg",
+  "ko": "삶은알"
+ },
+ "camping-gear": {
+  "en": "Camping Gear",
+  "ko": "캠프세트"
+ },
+ "rusted-sword": {
+  "en": "Rusted Sword",
+  "ko": "녹슨검"
+ },
+ "rusted-shield": {
+  "en": "Rusted Shield",
+  "ko": "녹슨방패"
+ },
+ "fossilized-bird": {
+  "en": "Fossilized Bird",
+  "ko": "화석새"
+ },
+ "fossilized-fish": {
+  "en": "Fossilized Fish",
+  "ko": "화석물고기"
+ },
+ "fossilized-drake": {
+  "en": "Fossilized Drake",
+  "ko": "화석용"
+ },
+ "fossilized-dino": {
+  "en": "Fossilized Dino",
+  "ko": "화석긴목"
+ },
+ "strawberry-sweet": {
+  "en": "Strawberry Sweet",
+  "ko": "딸기사탕공예"
+ },
+ "love-sweet": {
+  "en": "Love Sweet",
+  "ko": "하트사탕공예"
+ },
+ "berry-sweet": {
+  "en": "Berry Sweet",
+  "ko": "베리사탕공예"
+ },
+ "clover-sweet": {
+  "en": "Clover Sweet",
+  "ko": "네잎사탕공예"
+ },
+ "flower-sweet": {
+  "en": "Flower Sweet",
+  "ko": "꽃사탕공예"
+ },
+ "star-sweet": {
+  "en": "Star Sweet",
+  "ko": "스타사탕공예"
+ },
+ "ribbon-sweet": {
+  "en": "Ribbon Sweet",
+  "ko": "리본사탕공예"
+ },
+ "sweet-apple": {
+  "en": "Sweet Apple",
+  "ko": "달콤한사과"
+ },
+ "tart-apple": {
+  "en": "Tart Apple",
+  "ko": "새콤한사과"
+ },
+ "throat-spray": {
+  "en": "Throat Spray",
+  "ko": "목스프레이"
+ },
+ "eject-pack": {
+  "en": "Eject Pack",
+  "ko": "탈출팩"
+ },
+ "heavy-duty-boots": {
+  "en": "Heavy-Duty Boots",
+  "ko": "통굽부츠"
+ },
+ "blunder-policy": {
+  "en": "Blunder Policy",
+  "ko": "허탕보험"
+ },
+ "room-service": {
+  "en": "Room Service",
+  "ko": "룸서비스"
+ },
+ "utility-umbrella": {
+  "en": "Utility Umbrella",
+  "ko": "만능우산"
+ },
+ "exp-candy-xs": {
+  "en": "Exp. Candy XS",
+  "ko": "경험사탕XS"
+ },
+ "exp-candy-s": {
+  "en": "Exp. Candy S",
+  "ko": "경험사탕S"
+ },
+ "exp-candy-m": {
+  "en": "Exp. Candy M",
+  "ko": "경험사탕M"
+ },
+ "exp-candy-l": {
+  "en": "Exp. Candy L",
+  "ko": "경험사탕L"
+ },
+ "exp-candy-xl": {
+  "en": "Exp. Candy XL",
+  "ko": "경험사탕XL"
+ },
+ "dynamax-candy": {
+  "en": "Dynamax Candy",
+  "ko": "다이맥스사탕"
+ },
+ "tr00": {
+  "en": "TR00",
+  "ko": "기술레코드00"
+ },
+ "tr01": {
+  "en": "TR01",
+  "ko": "기술레코드01"
+ },
+ "tr02": {
+  "en": "TR02",
+  "ko": "기술레코드02"
+ },
+ "tr03": {
+  "en": "TR03",
+  "ko": "기술레코드03"
+ },
+ "tr04": {
+  "en": "TR04",
+  "ko": "기술레코드04"
+ },
+ "tr05": {
+  "en": "TR05",
+  "ko": "기술레코드05"
+ },
+ "tr06": {
+  "en": "TR06",
+  "ko": "기술레코드06"
+ },
+ "tr07": {
+  "en": "TR07",
+  "ko": "기술레코드07"
+ },
+ "tr08": {
+  "en": "TR08",
+  "ko": "기술레코드08"
+ },
+ "tr09": {
+  "en": "TR09",
+  "ko": "기술레코드09"
+ },
+ "tr10": {
+  "en": "TR10",
+  "ko": "기술레코드10"
+ },
+ "tr11": {
+  "en": "TR11",
+  "ko": "기술레코드11"
+ },
+ "tr12": {
+  "en": "TR12",
+  "ko": "기술레코드12"
+ },
+ "tr13": {
+  "en": "TR13",
+  "ko": "기술레코드13"
+ },
+ "tr14": {
+  "en": "TR14",
+  "ko": "기술레코드14"
+ },
+ "tr15": {
+  "en": "TR15",
+  "ko": "기술레코드15"
+ },
+ "tr16": {
+  "en": "TR16",
+  "ko": "기술레코드16"
+ },
+ "tr17": {
+  "en": "TR17",
+  "ko": "기술레코드17"
+ },
+ "tr18": {
+  "en": "TR18",
+  "ko": "기술레코드18"
+ },
+ "tr19": {
+  "en": "TR19",
+  "ko": "기술레코드19"
+ },
+ "tr20": {
+  "en": "TR20",
+  "ko": "기술레코드20"
+ },
+ "tr21": {
+  "en": "TR21",
+  "ko": "기술레코드21"
+ },
+ "tr22": {
+  "en": "TR22",
+  "ko": "기술레코드22"
+ },
+ "tr23": {
+  "en": "TR23",
+  "ko": "기술레코드23"
+ },
+ "tr24": {
+  "en": "TR24",
+  "ko": "기술레코드24"
+ },
+ "tr25": {
+  "en": "TR25",
+  "ko": "기술레코드25"
+ },
+ "tr26": {
+  "en": "TR26",
+  "ko": "기술레코드26"
+ },
+ "tr27": {
+  "en": "TR27",
+  "ko": "기술레코드27"
+ },
+ "tr28": {
+  "en": "TR28",
+  "ko": "기술레코드28"
+ },
+ "tr29": {
+  "en": "TR29",
+  "ko": "기술레코드29"
+ },
+ "tr30": {
+  "en": "TR30",
+  "ko": "기술레코드30"
+ },
+ "tr31": {
+  "en": "TR31",
+  "ko": "기술레코드31"
+ },
+ "tr32": {
+  "en": "TR32",
+  "ko": "기술레코드32"
+ },
+ "tr33": {
+  "en": "TR33",
+  "ko": "기술레코드33"
+ },
+ "tr34": {
+  "en": "TR34",
+  "ko": "기술레코드34"
+ },
+ "tr35": {
+  "en": "TR35",
+  "ko": "기술레코드35"
+ },
+ "tr36": {
+  "en": "TR36",
+  "ko": "기술레코드36"
+ },
+ "tr37": {
+  "en": "TR37",
+  "ko": "기술레코드37"
+ },
+ "tr38": {
+  "en": "TR38",
+  "ko": "기술레코드38"
+ },
+ "tr39": {
+  "en": "TR39",
+  "ko": "기술레코드39"
+ },
+ "tr40": {
+  "en": "TR40",
+  "ko": "기술레코드40"
+ },
+ "tr41": {
+  "en": "TR41",
+  "ko": "기술레코드41"
+ },
+ "tr42": {
+  "en": "TR42",
+  "ko": "기술레코드42"
+ },
+ "tr43": {
+  "en": "TR43",
+  "ko": "기술레코드43"
+ },
+ "tr44": {
+  "en": "TR44",
+  "ko": "기술레코드44"
+ },
+ "tr45": {
+  "en": "TR45",
+  "ko": "기술레코드45"
+ },
+ "tr46": {
+  "en": "TR46",
+  "ko": "기술레코드46"
+ },
+ "tr47": {
+  "en": "TR47",
+  "ko": "기술레코드47"
+ },
+ "tr48": {
+  "en": "TR48",
+  "ko": "기술레코드48"
+ },
+ "tr49": {
+  "en": "TR49",
+  "ko": "기술레코드49"
+ },
+ "tr50": {
+  "en": "TR50",
+  "ko": "기술레코드50"
+ },
+ "tr51": {
+  "en": "TR51",
+  "ko": "기술레코드51"
+ },
+ "tr52": {
+  "en": "TR52",
+  "ko": "기술레코드52"
+ },
+ "tr53": {
+  "en": "TR53",
+  "ko": "기술레코드53"
+ },
+ "tr54": {
+  "en": "TR54",
+  "ko": "기술레코드54"
+ },
+ "tr55": {
+  "en": "TR55",
+  "ko": "기술레코드55"
+ },
+ "tr56": {
+  "en": "TR56",
+  "ko": "기술레코드56"
+ },
+ "tr57": {
+  "en": "TR57",
+  "ko": "기술레코드57"
+ },
+ "tr58": {
+  "en": "TR58",
+  "ko": "기술레코드58"
+ },
+ "tr59": {
+  "en": "TR59",
+  "ko": "기술레코드59"
+ },
+ "tr60": {
+  "en": "TR60",
+  "ko": "기술레코드60"
+ },
+ "tr61": {
+  "en": "TR61",
+  "ko": "기술레코드61"
+ },
+ "tr62": {
+  "en": "TR62",
+  "ko": "기술레코드62"
+ },
+ "tr63": {
+  "en": "TR63",
+  "ko": "기술레코드63"
+ },
+ "tr64": {
+  "en": "TR64",
+  "ko": "기술레코드64"
+ },
+ "tr65": {
+  "en": "TR65",
+  "ko": "기술레코드65"
+ },
+ "tr66": {
+  "en": "TR66",
+  "ko": "기술레코드66"
+ },
+ "tr67": {
+  "en": "TR67",
+  "ko": "기술레코드67"
+ },
+ "tr68": {
+  "en": "TR68",
+  "ko": "기술레코드68"
+ },
+ "tr69": {
+  "en": "TR69",
+  "ko": "기술레코드69"
+ },
+ "tr70": {
+  "en": "TR70",
+  "ko": "기술레코드70"
+ },
+ "tr71": {
+  "en": "TR71",
+  "ko": "기술레코드71"
+ },
+ "tr72": {
+  "en": "TR72",
+  "ko": "기술레코드72"
+ },
+ "tr73": {
+  "en": "TR73",
+  "ko": "기술레코드73"
+ },
+ "tr74": {
+  "en": "TR74",
+  "ko": "기술레코드74"
+ },
+ "tr75": {
+  "en": "TR75",
+  "ko": "기술레코드75"
+ },
+ "tr76": {
+  "en": "TR76",
+  "ko": "기술레코드76"
+ },
+ "tr77": {
+  "en": "TR77",
+  "ko": "기술레코드77"
+ },
+ "tr78": {
+  "en": "TR78",
+  "ko": "기술레코드78"
+ },
+ "tr79": {
+  "en": "TR79",
+  "ko": "기술레코드79"
+ },
+ "tr80": {
+  "en": "TR80",
+  "ko": "기술레코드80"
+ },
+ "tr81": {
+  "en": "TR81",
+  "ko": "기술레코드81"
+ },
+ "tr82": {
+  "en": "TR82",
+  "ko": "기술레코드82"
+ },
+ "tr83": {
+  "en": "TR83",
+  "ko": "기술레코드83"
+ },
+ "tr84": {
+  "en": "TR84",
+  "ko": "기술레코드84"
+ },
+ "tr85": {
+  "en": "TR85",
+  "ko": "기술레코드85"
+ },
+ "tr86": {
+  "en": "TR86",
+  "ko": "기술레코드86"
+ },
+ "tr87": {
+  "en": "TR87",
+  "ko": "기술레코드87"
+ },
+ "tr88": {
+  "en": "TR88",
+  "ko": "기술레코드88"
+ },
+ "tr89": {
+  "en": "TR89",
+  "ko": "기술레코드89"
+ },
+ "tr90": {
+  "en": "TR90",
+  "ko": "기술레코드90"
+ },
+ "tr91": {
+  "en": "TR91",
+  "ko": "기술레코드91"
+ },
+ "tr92": {
+  "en": "TR92",
+  "ko": "기술레코드92"
+ },
+ "tr93": {
+  "en": "TR93",
+  "ko": "기술레코드93"
+ },
+ "tr94": {
+  "en": "TR94",
+  "ko": "기술레코드94"
+ },
+ "tr95": {
+  "en": "TR95",
+  "ko": "기술레코드95"
+ },
+ "tr96": {
+  "en": "TR96",
+  "ko": "기술레코드96"
+ },
+ "tr97": {
+  "en": "TR97",
+  "ko": "기술레코드97"
+ },
+ "tr98": {
+  "en": "TR98",
+  "ko": "기술레코드98"
+ },
+ "tr99": {
+  "en": "TR99",
+  "ko": "기술레코드99"
+ },
+ "tm00": {
+  "en": "TM00",
+  "ko": "기술머신00"
+ },
+ "lonely-mint": {
+  "en": "Lonely Mint",
+  "ko": "외로움민트"
+ },
+ "adamant-mint": {
+  "en": "Adamant Mint",
+  "ko": "고집민트"
+ },
+ "naughty-mint": {
+  "en": "Naughty Mint",
+  "ko": "개구쟁이민트"
+ },
+ "brave-mint": {
+  "en": "Brave Mint",
+  "ko": "용감민트"
+ },
+ "bold-mint": {
+  "en": "Bold Mint",
+  "ko": "대담민트"
+ },
+ "impish-mint": {
+  "en": "Impish Mint",
+  "ko": "장난꾸러기민트"
+ },
+ "lax-mint": {
+  "en": "Lax Mint",
+  "ko": "촐랑민트"
+ },
+ "relaxed-mint": {
+  "en": "Relaxed Mint",
+  "ko": "무사태평민트"
+ },
+ "modest-mint": {
+  "en": "Modest Mint",
+  "ko": "조심민트"
+ },
+ "mild-mint": {
+  "en": "Mild Mint",
+  "ko": "의젓민트"
+ },
+ "rash-mint": {
+  "en": "Rash Mint",
+  "ko": "덜렁민트"
+ },
+ "quiet-mint": {
+  "en": "Quiet Mint",
+  "ko": "냉정민트"
+ },
+ "calm-mint": {
+  "en": "Calm Mint",
+  "ko": "차분민트"
+ },
+ "gentle-mint": {
+  "en": "Gentle Mint",
+  "ko": "얌전민트"
+ },
+ "careful-mint": {
+  "en": "Careful Mint",
+  "ko": "신중민트"
+ },
+ "sassy-mint": {
+  "en": "Sassy Mint",
+  "ko": "건방민트"
+ },
+ "timid-mint": {
+  "en": "Timid Mint",
+  "ko": "겁쟁이민트"
+ },
+ "hasty-mint": {
+  "en": "Hasty Mint",
+  "ko": "성급민트"
+ },
+ "jolly-mint": {
+  "en": "Jolly Mint",
+  "ko": "명랑민트"
+ },
+ "naive-mint": {
+  "en": "Naive Mint",
+  "ko": "천진난만민트"
+ },
+ "serious-mint": {
+  "en": "Serious Mint",
+  "ko": "성실민트"
+ },
+ "wishing-piece": {
+  "en": "Wishing Piece",
+  "ko": "소원의덩어리"
+ },
+ "cracked-pot": {
+  "en": "Cracked Pot",
+  "ko": "깨진포트"
+ },
+ "chipped-pot": {
+  "en": "Chipped Pot",
+  "ko": "이빠진포트"
+ },
+ "hi-tech-earbuds": {
+  "en": "Hi-tech Earbuds",
+  "ko": "대단한귀마개"
+ },
+ "fruit-bunch": {
+  "en": "Fruit Bunch",
+  "ko": "송이팩"
+ },
+ "moomoo-cheese": {
+  "en": "Moomoo Cheese",
+  "ko": "튼튼치즈"
+ },
+ "spice-mix": {
+  "en": "Spice Mix",
+  "ko": "스파이스세트"
+ },
+ "fresh-cream": {
+  "en": "Fresh Cream",
+  "ko": "신선한크림"
+ },
+ "packaged-curry": {
+  "en": "Packaged Curry",
+  "ko": "레토르트카레"
+ },
+ "coconut-milk": {
+  "en": "Coconut Milk",
+  "ko": "야자밀크"
+ },
+ "instant-noodles": {
+  "en": "Instant Noodles",
+  "ko": "레토르트면"
+ },
+ "precooked-burger": {
+  "en": "Precooked Burger",
+  "ko": "레토르트햄버그"
+ },
+ "gigantamix": {
+  "en": "Gigantamix",
+  "ko": "거대파우더"
+ },
+ "wishing-chip": {
+  "en": "Wishing Chip",
+  "ko": "소원의조각"
+ },
+ "rotom-bike--water-mode": {
+  "en": "Rotom Bike",
+  "ko": "로토무자전거"
+ },
+ "catching-charm": {
+  "en": "Catching Charm",
+  "ko": "흔들림없는부적"
+ },
+ "old-letter": {
+  "en": "Old Letter",
+  "ko": "낡은편지"
+ },
+ "band-autograph": {
+  "en": "Band Autograph",
+  "ko": "밴드의사인"
+ },
+ "sonias-book": {
+  "en": "Sonia’s Book",
+  "ko": "소니아의책"
+ },
+ "rotom-catalog": {
+  "en": "Rotom Catalog",
+  "ko": "로토무카탈로그"
+ },
+ "dynamax-crystal-and458": {
+  "en": "★And458",
+  "ko": "★And458"
+ },
+ "dynamax-crystal-and15": {
+  "en": "★And15",
+  "ko": "★And15"
+ },
+ "dynamax-crystal-and337": {
+  "en": "★And337",
+  "ko": "★And337"
+ },
+ "dynamax-crystal-and603": {
+  "en": "★And603",
+  "ko": "★And603"
+ },
+ "dynamax-crystal-and390": {
+  "en": "★And390",
+  "ko": "★And390"
+ },
+ "dynamax-crystal-sgr6879": {
+  "en": "★Sgr6879",
+  "ko": "★Sgr6879"
+ },
+ "dynamax-crystal-sgr6859": {
+  "en": "★Sgr6859",
+  "ko": "★Sgr6859"
+ },
+ "dynamax-crystal-sgr6913": {
+  "en": "★Sgr6913",
+  "ko": "★Sgr6913"
+ },
+ "dynamax-crystal-sgr7348": {
+  "en": "★Sgr7348",
+  "ko": "★Sgr7348"
+ },
+ "dynamax-crystal-sgr7121": {
+  "en": "★Sgr7121",
+  "ko": "★Sgr7121"
+ },
+ "dynamax-crystal-sgr6746": {
+  "en": "★Sgr6746",
+  "ko": "★Sgr6746"
+ },
+ "dynamax-crystal-sgr7194": {
+  "en": "★Sgr7194",
+  "ko": "★Sgr7194"
+ },
+ "dynamax-crystal-sgr7337": {
+  "en": "★Sgr7337",
+  "ko": "★Sgr7337"
+ },
+ "dynamax-crystal-sgr7343": {
+  "en": "★Sgr7343",
+  "ko": "★Sgr7343"
+ },
+ "dynamax-crystal-sgr6812": {
+  "en": "★Sgr6812",
+  "ko": "★Sgr6812"
+ },
+ "dynamax-crystal-sgr7116": {
+  "en": "★Sgr7116",
+  "ko": "★Sgr7116"
+ },
+ "dynamax-crystal-sgr7264": {
+  "en": "★Sgr7264",
+  "ko": "★Sgr7264"
+ },
+ "dynamax-crystal-sgr7597": {
+  "en": "★Sgr7597",
+  "ko": "★Sgr7597"
+ },
+ "dynamax-crystal-del7882": {
+  "en": "★Del7882",
+  "ko": "★Del7882"
+ },
+ "dynamax-crystal-del7906": {
+  "en": "★Del7906",
+  "ko": "★Del7906"
+ },
+ "dynamax-crystal-del7852": {
+  "en": "★Del7852",
+  "ko": "★Del7852"
+ },
+ "dynamax-crystal-psc596": {
+  "en": "★Psc596",
+  "ko": "★Psc596"
+ },
+ "dynamax-crystal-psc361": {
+  "en": "★Psc361",
+  "ko": "★Psc361"
+ },
+ "dynamax-crystal-psc510": {
+  "en": "★Psc510",
+  "ko": "★Psc510"
+ },
+ "dynamax-crystal-psc437": {
+  "en": "★Psc437",
+  "ko": "★Psc437"
+ },
+ "dynamax-crystal-psc8773": {
+  "en": "★Psc8773",
+  "ko": "★Psc8773"
+ },
+ "dynamax-crystal-lep1865": {
+  "en": "★Lep1865",
+  "ko": "★Lep1865"
+ },
+ "dynamax-crystal-lep1829": {
+  "en": "★Lep1829",
+  "ko": "★Lep1829"
+ },
+ "dynamax-crystal-boo5340": {
+  "en": "★Boo5340",
+  "ko": "★Boo5340"
+ },
+ "dynamax-crystal-boo5506": {
+  "en": "★Boo5506",
+  "ko": "★Boo5506"
+ },
+ "dynamax-crystal-boo5435": {
+  "en": "★Boo5435",
+  "ko": "★Boo5435"
+ },
+ "dynamax-crystal-boo5602": {
+  "en": "★Boo5602",
+  "ko": "★Boo5602"
+ },
+ "dynamax-crystal-boo5733": {
+  "en": "★Boo5733",
+  "ko": "★Boo5733"
+ },
+ "dynamax-crystal-boo5235": {
+  "en": "★Boo5235",
+  "ko": "★Boo5235"
+ },
+ "dynamax-crystal-boo5351": {
+  "en": "★Boo5351",
+  "ko": "★Boo5351"
+ },
+ "dynamax-crystal-hya3748": {
+  "en": "★Hya3748",
+  "ko": "★Hya3748"
+ },
+ "dynamax-crystal-hya3903": {
+  "en": "★Hya3903",
+  "ko": "★Hya3903"
+ },
+ "dynamax-crystal-hya3418": {
+  "en": "★Hya3418",
+  "ko": "★Hya3418"
+ },
+ "dynamax-crystal-hya3482": {
+  "en": "★Hya3482",
+  "ko": "★Hya3482"
+ },
+ "dynamax-crystal-hya3845": {
+  "en": "★Hya3845",
+  "ko": "★Hya3845"
+ },
+ "dynamax-crystal-eri1084": {
+  "en": "★Eri1084",
+  "ko": "★Eri1084"
+ },
+ "dynamax-crystal-eri472": {
+  "en": "★Eri472",
+  "ko": "★Eri472"
+ },
+ "dynamax-crystal-eri1666": {
+  "en": "★Eri1666",
+  "ko": "★Eri1666"
+ },
+ "dynamax-crystal-eri897": {
+  "en": "★Eri897",
+  "ko": "★Eri897"
+ },
+ "dynamax-crystal-eri1231": {
+  "en": "★Eri1231",
+  "ko": "★Eri1231"
+ },
+ "dynamax-crystal-eri874": {
+  "en": "★Eri874",
+  "ko": "★Eri874"
+ },
+ "dynamax-crystal-eri1298": {
+  "en": "★Eri1298",
+  "ko": "★Eri1298"
+ },
+ "dynamax-crystal-eri1325": {
+  "en": "★Eri1325",
+  "ko": "★Eri1325"
+ },
+ "dynamax-crystal-eri984": {
+  "en": "★Eri984",
+  "ko": "★Eri984"
+ },
+ "dynamax-crystal-eri1464": {
+  "en": "★Eri1464",
+  "ko": "★Eri1464"
+ },
+ "dynamax-crystal-eri1393": {
+  "en": "★Eri1393",
+  "ko": "★Eri1393"
+ },
+ "dynamax-crystal-eri850": {
+  "en": "★Eri850",
+  "ko": "★Eri850"
+ },
+ "dynamax-crystal-tau1409": {
+  "en": "★Tau1409",
+  "ko": "★Tau1409"
+ },
+ "dynamax-crystal-tau1457": {
+  "en": "★Tau1457",
+  "ko": "★Tau1457"
+ },
+ "dynamax-crystal-tau1165": {
+  "en": "★Tau1165",
+  "ko": "★Tau1165"
+ },
+ "dynamax-crystal-tau1791": {
+  "en": "★Tau1791",
+  "ko": "★Tau1791"
+ },
+ "dynamax-crystal-tau1910": {
+  "en": "★Tau1910",
+  "ko": "★Tau1910"
+ },
+ "dynamax-crystal-tau1346": {
+  "en": "★Tau1346",
+  "ko": "★Tau1346"
+ },
+ "dynamax-crystal-tau1373": {
+  "en": "★Tau1373",
+  "ko": "★Tau1373"
+ },
+ "dynamax-crystal-tau1412": {
+  "en": "★Tau1412",
+  "ko": "★Tau1412"
+ },
+ "dynamax-crystal-cma2491": {
+  "en": "★CMa2491",
+  "ko": "★CMa2491"
+ },
+ "dynamax-crystal-cma2693": {
+  "en": "★CMa2693",
+  "ko": "★CMa2693"
+ },
+ "dynamax-crystal-cma2294": {
+  "en": "★CMa2294",
+  "ko": "★CMa2294"
+ },
+ "dynamax-crystal-cma2827": {
+  "en": "★CMa2827",
+  "ko": "★CMa2827"
+ },
+ "dynamax-crystal-cma2282": {
+  "en": "★CMa2282",
+  "ko": "★CMa2282"
+ },
+ "dynamax-crystal-cma2618": {
+  "en": "★CMa2618",
+  "ko": "★CMa2618"
+ },
+ "dynamax-crystal-cma2657": {
+  "en": "★CMa2657",
+  "ko": "★CMa2657"
+ },
+ "dynamax-crystal-cma2646": {
+  "en": "★CMa2646",
+  "ko": "★CMa2646"
+ },
+ "dynamax-crystal-uma4905": {
+  "en": "★UMa4905",
+  "ko": "★UMa4905"
+ },
+ "dynamax-crystal-uma4301": {
+  "en": "★UMa4301",
+  "ko": "★UMa4301"
+ },
+ "dynamax-crystal-uma5191": {
+  "en": "★UMa5191",
+  "ko": "★UMa5191"
+ },
+ "dynamax-crystal-uma5054": {
+  "en": "★UMa5054",
+  "ko": "★UMa5054"
+ },
+ "dynamax-crystal-uma4295": {
+  "en": "★UMa4295",
+  "ko": "★UMa4295"
+ },
+ "dynamax-crystal-uma4660": {
+  "en": "★UMa4660",
+  "ko": "★UMa4660"
+ },
+ "dynamax-crystal-uma4554": {
+  "en": "★UMa4554",
+  "ko": "★UMa4554"
+ },
+ "dynamax-crystal-uma4069": {
+  "en": "★UMa4069",
+  "ko": "★UMa4069"
+ },
+ "dynamax-crystal-uma3569": {
+  "en": "★UMa3569",
+  "ko": "★UMa3569"
+ },
+ "dynamax-crystal-uma3323": {
+  "en": "★UMa3323",
+  "ko": "★UMa3323"
+ },
+ "dynamax-crystal-uma4033": {
+  "en": "★UMa4033",
+  "ko": "★UMa4033"
+ },
+ "dynamax-crystal-uma4377": {
+  "en": "★UMa4377",
+  "ko": "★UMa4377"
+ },
+ "dynamax-crystal-uma4375": {
+  "en": "★UMa4375",
+  "ko": "★UMa4375"
+ },
+ "dynamax-crystal-uma4518": {
+  "en": "★UMa4518",
+  "ko": "★UMa4518"
+ },
+ "dynamax-crystal-uma3594": {
+  "en": "★UMa3594",
+  "ko": "★UMa3594"
+ },
+ "dynamax-crystal-vir5056": {
+  "en": "★Vir5056",
+  "ko": "★Vir5056"
+ },
+ "dynamax-crystal-vir4825": {
+  "en": "★Vir4825",
+  "ko": "★Vir4825"
+ },
+ "dynamax-crystal-vir4932": {
+  "en": "★Vir4932",
+  "ko": "★Vir4932"
+ },
+ "dynamax-crystal-vir4540": {
+  "en": "★Vir4540",
+  "ko": "★Vir4540"
+ },
+ "dynamax-crystal-vir4689": {
+  "en": "★Vir4689",
+  "ko": "★Vir4689"
+ },
+ "dynamax-crystal-vir5338": {
+  "en": "★Vir5338",
+  "ko": "★Vir5338"
+ },
+ "dynamax-crystal-vir4910": {
+  "en": "★Vir4910",
+  "ko": "★Vir4910"
+ },
+ "dynamax-crystal-vir5315": {
+  "en": "★Vir5315",
+  "ko": "★Vir5315"
+ },
+ "dynamax-crystal-vir5359": {
+  "en": "★Vir5359",
+  "ko": "★Vir5359"
+ },
+ "dynamax-crystal-vir5409": {
+  "en": "★Vir5409",
+  "ko": "★Vir5409"
+ },
+ "dynamax-crystal-vir5107": {
+  "en": "★Vir5107",
+  "ko": "★Vir5107"
+ },
+ "dynamax-crystal-ari617": {
+  "en": "★Ari617",
+  "ko": "★Ari617"
+ },
+ "dynamax-crystal-ari553": {
+  "en": "★Ari553",
+  "ko": "★Ari553"
+ },
+ "dynamax-crystal-ari546": {
+  "en": "★Ari546",
+  "ko": "★Ari546"
+ },
+ "dynamax-crystal-ari951": {
+  "en": "★Ari951",
+  "ko": "★Ari951"
+ },
+ "dynamax-crystal-ori1713": {
+  "en": "★Ori1713",
+  "ko": "★Ori1713"
+ },
+ "dynamax-crystal-ori2061": {
+  "en": "★Ori2061",
+  "ko": "★Ori2061"
+ },
+ "dynamax-crystal-ori1790": {
+  "en": "★Ori1790",
+  "ko": "★Ori1790"
+ },
+ "dynamax-crystal-ori1903": {
+  "en": "★Ori1903",
+  "ko": "★Ori1903"
+ },
+ "dynamax-crystal-ori1948": {
+  "en": "★Ori1948",
+  "ko": "★Ori1948"
+ },
+ "dynamax-crystal-ori2004": {
+  "en": "★Ori2004",
+  "ko": "★Ori2004"
+ },
+ "dynamax-crystal-ori1852": {
+  "en": "★Ori1852",
+  "ko": "★Ori1852"
+ },
+ "dynamax-crystal-ori1879": {
+  "en": "★Ori1879",
+  "ko": "★Ori1879"
+ },
+ "dynamax-crystal-ori1899": {
+  "en": "★Ori1899",
+  "ko": "★Ori1899"
+ },
+ "dynamax-crystal-ori1543": {
+  "en": "★Ori1543",
+  "ko": "★Ori1543"
+ },
+ "dynamax-crystal-cas21": {
+  "en": "★Cas21",
+  "ko": "★Cas21"
+ },
+ "dynamax-crystal-cas168": {
+  "en": "★Cas168",
+  "ko": "★Cas168"
+ },
+ "dynamax-crystal-cas403": {
+  "en": "★Cas403",
+  "ko": "★Cas403"
+ },
+ "dynamax-crystal-cas153": {
+  "en": "★Cas153",
+  "ko": "★Cas153"
+ },
+ "dynamax-crystal-cas542": {
+  "en": "★Cas542",
+  "ko": "★Cas542"
+ },
+ "dynamax-crystal-cas219": {
+  "en": "★Cas219",
+  "ko": "★Cas219"
+ },
+ "dynamax-crystal-cas265": {
+  "en": "★Cas265",
+  "ko": "★Cas265"
+ },
+ "dynamax-crystal-cnc3572": {
+  "en": "★Cnc3572",
+  "ko": "★Cnc3572"
+ },
+ "dynamax-crystal-cnc3208": {
+  "en": "★Cnc3208",
+  "ko": "★Cnc3208"
+ },
+ "dynamax-crystal-cnc3461": {
+  "en": "★Cnc3461",
+  "ko": "★Cnc3461"
+ },
+ "dynamax-crystal-cnc3449": {
+  "en": "★Cnc3449",
+  "ko": "★Cnc3449"
+ },
+ "dynamax-crystal-cnc3429": {
+  "en": "★Cnc3429",
+  "ko": "★Cnc3429"
+ },
+ "dynamax-crystal-cnc3627": {
+  "en": "★Cnc3627",
+  "ko": "★Cnc3627"
+ },
+ "dynamax-crystal-cnc3268": {
+  "en": "★Cnc3268",
+  "ko": "★Cnc3268"
+ },
+ "dynamax-crystal-cnc3249": {
+  "en": "★Cnc3249",
+  "ko": "★Cnc3249"
+ },
+ "dynamax-crystal-com4968": {
+  "en": "★Com4968",
+  "ko": "★Com4968"
+ },
+ "dynamax-crystal-crv4757": {
+  "en": "★Crv4757",
+  "ko": "★Crv4757"
+ },
+ "dynamax-crystal-crv4623": {
+  "en": "★Crv4623",
+  "ko": "★Crv4623"
+ },
+ "dynamax-crystal-crv4662": {
+  "en": "★Crv4662",
+  "ko": "★Crv4662"
+ },
+ "dynamax-crystal-crv4786": {
+  "en": "★Crv4786",
+  "ko": "★Crv4786"
+ },
+ "dynamax-crystal-aur1708": {
+  "en": "★Aur1708",
+  "ko": "★Aur1708"
+ },
+ "dynamax-crystal-aur2088": {
+  "en": "★Aur2088",
+  "ko": "★Aur2088"
+ },
+ "dynamax-crystal-aur1605": {
+  "en": "★Aur1605",
+  "ko": "★Aur1605"
+ },
+ "dynamax-crystal-aur2095": {
+  "en": "★Aur2095",
+  "ko": "★Aur2095"
+ },
+ "dynamax-crystal-aur1577": {
+  "en": "★Aur1577",
+  "ko": "★Aur1577"
+ },
+ "dynamax-crystal-aur1641": {
+  "en": "★Aur1641",
+  "ko": "★Aur1641"
+ },
+ "dynamax-crystal-aur1612": {
+  "en": "★Aur1612",
+  "ko": "★Aur1612"
+ },
+ "dynamax-crystal-pav7790": {
+  "en": "★Pav7790",
+  "ko": "★Pav7790"
+ },
+ "dynamax-crystal-cet911": {
+  "en": "★Cet911",
+  "ko": "★Cet911"
+ },
+ "dynamax-crystal-cet681": {
+  "en": "★Cet681",
+  "ko": "★Cet681"
+ },
+ "dynamax-crystal-cet188": {
+  "en": "★Cet188",
+  "ko": "★Cet188"
+ },
+ "dynamax-crystal-cet539": {
+  "en": "★Cet539",
+  "ko": "★Cet539"
+ },
+ "dynamax-crystal-cet804": {
+  "en": "★Cet804",
+  "ko": "★Cet804"
+ },
+ "dynamax-crystal-cep8974": {
+  "en": "★Cep8974",
+  "ko": "★Cep8974"
+ },
+ "dynamax-crystal-cep8162": {
+  "en": "★Cep8162",
+  "ko": "★Cep8162"
+ },
+ "dynamax-crystal-cep8238": {
+  "en": "★Cep8238",
+  "ko": "★Cep8238"
+ },
+ "dynamax-crystal-cep8417": {
+  "en": "★Cep8417",
+  "ko": "★Cep8417"
+ },
+ "dynamax-crystal-cen5267": {
+  "en": "★Cen5267",
+  "ko": "★Cen5267"
+ },
+ "dynamax-crystal-cen5288": {
+  "en": "★Cen5288",
+  "ko": "★Cen5288"
+ },
+ "dynamax-crystal-cen551": {
+  "en": "★Cen551",
+  "ko": "★Cen551"
+ },
+ "dynamax-crystal-cen5459": {
+  "en": "★Cen5459",
+  "ko": "★Cen5459"
+ },
+ "dynamax-crystal-cen5460": {
+  "en": "★Cen5460",
+  "ko": "★Cen5460"
+ },
+ "dynamax-crystal-cmi2943": {
+  "en": "★CMi2943",
+  "ko": "★CMi2943"
+ },
+ "dynamax-crystal-cmi2845": {
+  "en": "★CMi2845",
+  "ko": "★CMi2845"
+ },
+ "dynamax-crystal-equ8131": {
+  "en": "★Equ8131",
+  "ko": "★Equ8131"
+ },
+ "dynamax-crystal-vul7405": {
+  "en": "★Vul7405",
+  "ko": "★Vul7405"
+ },
+ "dynamax-crystal-umi424": {
+  "en": "★UMi424",
+  "ko": "★UMi424"
+ },
+ "dynamax-crystal-umi5563": {
+  "en": "★UMi5563",
+  "ko": "★UMi5563"
+ },
+ "dynamax-crystal-umi5735": {
+  "en": "★UMi5735",
+  "ko": "★UMi5735"
+ },
+ "dynamax-crystal-umi6789": {
+  "en": "★UMi6789",
+  "ko": "★UMi6789"
+ },
+ "dynamax-crystal-crt4287": {
+  "en": "★Crt4287",
+  "ko": "★Crt4287"
+ },
+ "dynamax-crystal-lyr7001": {
+  "en": "★Lyr7001",
+  "ko": "★Lyr7001"
+ },
+ "dynamax-crystal-lyr7178": {
+  "en": "★Lyr7178",
+  "ko": "★Lyr7178"
+ },
+ "dynamax-crystal-lyr7106": {
+  "en": "★Lyr7106",
+  "ko": "★Lyr7106"
+ },
+ "dynamax-crystal-lyr7298": {
+  "en": "★Lyr7298",
+  "ko": "★Lyr7298"
+ },
+ "dynamax-crystal-ara6585": {
+  "en": "★Ara6585",
+  "ko": "★Ara6585"
+ },
+ "dynamax-crystal-sco6134": {
+  "en": "★Sco6134",
+  "ko": "★Sco6134"
+ },
+ "dynamax-crystal-sco6527": {
+  "en": "★Sco6527",
+  "ko": "★Sco6527"
+ },
+ "dynamax-crystal-sco6553": {
+  "en": "★Sco6553",
+  "ko": "★Sco6553"
+ },
+ "dynamax-crystal-sco5953": {
+  "en": "★Sco5953",
+  "ko": "★Sco5953"
+ },
+ "dynamax-crystal-sco5984": {
+  "en": "★Sco5984",
+  "ko": "★Sco5984"
+ },
+ "dynamax-crystal-sco6508": {
+  "en": "★Sco6508",
+  "ko": "★Sco6508"
+ },
+ "dynamax-crystal-sco6084": {
+  "en": "★Sco6084",
+  "ko": "★Sco6084"
+ },
+ "dynamax-crystal-sco5944": {
+  "en": "★Sco5944",
+  "ko": "★Sco5944"
+ },
+ "dynamax-crystal-sco6630": {
+  "en": "★Sco6630",
+  "ko": "★Sco6630"
+ },
+ "dynamax-crystal-sco6027": {
+  "en": "★Sco6027",
+  "ko": "★Sco6027"
+ },
+ "dynamax-crystal-sco6247": {
+  "en": "★Sco6247",
+  "ko": "★Sco6247"
+ },
+ "dynamax-crystal-sco6252": {
+  "en": "★Sco6252",
+  "ko": "★Sco6252"
+ },
+ "dynamax-crystal-sco5928": {
+  "en": "★Sco5928",
+  "ko": "★Sco5928"
+ },
+ "dynamax-crystal-sco6241": {
+  "en": "★Sco6241",
+  "ko": "★Sco6241"
+ },
+ "dynamax-crystal-sco6165": {
+  "en": "★Sco6165",
+  "ko": "★Sco6165"
+ },
+ "dynamax-crystal-tri544": {
+  "en": "★Tri544",
+  "ko": "★Tri544"
+ },
+ "dynamax-crystal-leo3982": {
+  "en": "★Leo3982",
+  "ko": "★Leo3982"
+ },
+ "dynamax-crystal-leo4534": {
+  "en": "★Leo4534",
+  "ko": "★Leo4534"
+ },
+ "dynamax-crystal-leo4357": {
+  "en": "★Leo4357",
+  "ko": "★Leo4357"
+ },
+ "dynamax-crystal-leo4057": {
+  "en": "★Leo4057",
+  "ko": "★Leo4057"
+ },
+ "dynamax-crystal-leo4359": {
+  "en": "★Leo4359",
+  "ko": "★Leo4359"
+ },
+ "dynamax-crystal-leo4031": {
+  "en": "★Leo4031",
+  "ko": "★Leo4031"
+ },
+ "dynamax-crystal-leo3852": {
+  "en": "★Leo3852",
+  "ko": "★Leo3852"
+ },
+ "dynamax-crystal-leo3905": {
+  "en": "★Leo3905",
+  "ko": "★Leo3905"
+ },
+ "dynamax-crystal-leo3773": {
+  "en": "★Leo3773",
+  "ko": "★Leo3773"
+ },
+ "dynamax-crystal-gru8425": {
+  "en": "★Gru8425",
+  "ko": "★Gru8425"
+ },
+ "dynamax-crystal-gru8636": {
+  "en": "★Gru8636",
+  "ko": "★Gru8636"
+ },
+ "dynamax-crystal-gru8353": {
+  "en": "★Gru8353",
+  "ko": "★Gru8353"
+ },
+ "dynamax-crystal-lib5685": {
+  "en": "★Lib5685",
+  "ko": "★Lib5685"
+ },
+ "dynamax-crystal-lib5531": {
+  "en": "★Lib5531",
+  "ko": "★Lib5531"
+ },
+ "dynamax-crystal-lib5787": {
+  "en": "★Lib5787",
+  "ko": "★Lib5787"
+ },
+ "dynamax-crystal-lib5603": {
+  "en": "★Lib5603",
+  "ko": "★Lib5603"
+ },
+ "dynamax-crystal-pup3165": {
+  "en": "★Pup3165",
+  "ko": "★Pup3165"
+ },
+ "dynamax-crystal-pup3185": {
+  "en": "★Pup3185",
+  "ko": "★Pup3185"
+ },
+ "dynamax-crystal-pup3045": {
+  "en": "★Pup3045",
+  "ko": "★Pup3045"
+ },
+ "dynamax-crystal-cyg7924": {
+  "en": "★Cyg7924",
+  "ko": "★Cyg7924"
+ },
+ "dynamax-crystal-cyg7417": {
+  "en": "★Cyg7417",
+  "ko": "★Cyg7417"
+ },
+ "dynamax-crystal-cyg7796": {
+  "en": "★Cyg7796",
+  "ko": "★Cyg7796"
+ },
+ "dynamax-crystal-cyg8301": {
+  "en": "★Cyg8301",
+  "ko": "★Cyg8301"
+ },
+ "dynamax-crystal-cyg7949": {
+  "en": "★Cyg7949",
+  "ko": "★Cyg7949"
+ },
+ "dynamax-crystal-cyg7528": {
+  "en": "★Cyg7528",
+  "ko": "★Cyg7528"
+ },
+ "dynamax-crystal-oct7228": {
+  "en": "★Oct7228",
+  "ko": "★Oct7228"
+ },
+ "dynamax-crystal-col1956": {
+  "en": "★Col1956",
+  "ko": "★Col1956"
+ },
+ "dynamax-crystal-col2040": {
+  "en": "★Col2040",
+  "ko": "★Col2040"
+ },
+ "dynamax-crystal-col2177": {
+  "en": "★Col2177",
+  "ko": "★Col2177"
+ },
+ "dynamax-crystal-gem2990": {
+  "en": "★Gem2990",
+  "ko": "★Gem2990"
+ },
+ "dynamax-crystal-gem2891": {
+  "en": "★Gem2891",
+  "ko": "★Gem2891"
+ },
+ "dynamax-crystal-gem2421": {
+  "en": "★Gem2421",
+  "ko": "★Gem2421"
+ },
+ "dynamax-crystal-gem2473": {
+  "en": "★Gem2473",
+  "ko": "★Gem2473"
+ },
+ "dynamax-crystal-gem2216": {
+  "en": "★Gem2216",
+  "ko": "★Gem2216"
+ },
+ "dynamax-crystal-gem2777": {
+  "en": "★Gem2777",
+  "ko": "★Gem2777"
+ },
+ "dynamax-crystal-gem2650": {
+  "en": "★Gem2650",
+  "ko": "★Gem2650"
+ },
+ "dynamax-crystal-gem2286": {
+  "en": "★Gem2286",
+  "ko": "★Gem2286"
+ },
+ "dynamax-crystal-gem2484": {
+  "en": "★Gem2484",
+  "ko": "★Gem2484"
+ },
+ "dynamax-crystal-gem2930": {
+  "en": "★Gem2930",
+  "ko": "★Gem2930"
+ },
+ "dynamax-crystal-peg8775": {
+  "en": "★Peg8775",
+  "ko": "★Peg8775"
+ },
+ "dynamax-crystal-peg8781": {
+  "en": "★Peg8781",
+  "ko": "★Peg8781"
+ },
+ "dynamax-crystal-peg39": {
+  "en": "★Peg39",
+  "ko": "★Peg39"
+ },
+ "dynamax-crystal-peg8308": {
+  "en": "★Peg8308",
+  "ko": "★Peg8308"
+ },
+ "dynamax-crystal-peg8650": {
+  "en": "★Peg8650",
+  "ko": "★Peg8650"
+ },
+ "dynamax-crystal-peg8634": {
+  "en": "★Peg8634",
+  "ko": "★Peg8634"
+ },
+ "dynamax-crystal-peg8684": {
+  "en": "★Peg8684",
+  "ko": "★Peg8684"
+ },
+ "dynamax-crystal-peg8450": {
+  "en": "★Peg8450",
+  "ko": "★Peg8450"
+ },
+ "dynamax-crystal-peg8880": {
+  "en": "★Peg8880",
+  "ko": "★Peg8880"
+ },
+ "dynamax-crystal-peg8905": {
+  "en": "★Peg8905",
+  "ko": "★Peg8905"
+ },
+ "dynamax-crystal-oph6556": {
+  "en": "★Oph6556",
+  "ko": "★Oph6556"
+ },
+ "dynamax-crystal-oph6378": {
+  "en": "★Oph6378",
+  "ko": "★Oph6378"
+ },
+ "dynamax-crystal-oph6603": {
+  "en": "★Oph6603",
+  "ko": "★Oph6603"
+ },
+ "dynamax-crystal-oph6149": {
+  "en": "★Oph6149",
+  "ko": "★Oph6149"
+ },
+ "dynamax-crystal-oph6056": {
+  "en": "★Oph6056",
+  "ko": "★Oph6056"
+ },
+ "dynamax-crystal-oph6075": {
+  "en": "★Oph6075",
+  "ko": "★Oph6075"
+ },
+ "dynamax-crystal-ser5854": {
+  "en": "★Ser5854",
+  "ko": "★Ser5854"
+ },
+ "dynamax-crystal-ser7141": {
+  "en": "★Ser7141",
+  "ko": "★Ser7141"
+ },
+ "dynamax-crystal-ser5879": {
+  "en": "★Ser5879",
+  "ko": "★Ser5879"
+ },
+ "dynamax-crystal-her6406": {
+  "en": "★Her6406",
+  "ko": "★Her6406"
+ },
+ "dynamax-crystal-her6148": {
+  "en": "★Her6148",
+  "ko": "★Her6148"
+ },
+ "dynamax-crystal-her6410": {
+  "en": "★Her6410",
+  "ko": "★Her6410"
+ },
+ "dynamax-crystal-her6526": {
+  "en": "★Her6526",
+  "ko": "★Her6526"
+ },
+ "dynamax-crystal-her6117": {
+  "en": "★Her6117",
+  "ko": "★Her6117"
+ },
+ "dynamax-crystal-her6008": {
+  "en": "★Her6008",
+  "ko": "★Her6008"
+ },
+ "dynamax-crystal-per936": {
+  "en": "★Per936",
+  "ko": "★Per936"
+ },
+ "dynamax-crystal-per1017": {
+  "en": "★Per1017",
+  "ko": "★Per1017"
+ },
+ "dynamax-crystal-per1131": {
+  "en": "★Per1131",
+  "ko": "★Per1131"
+ },
+ "dynamax-crystal-per1228": {
+  "en": "★Per1228",
+  "ko": "★Per1228"
+ },
+ "dynamax-crystal-per834": {
+  "en": "★Per834",
+  "ko": "★Per834"
+ },
+ "dynamax-crystal-per941": {
+  "en": "★Per941",
+  "ko": "★Per941"
+ },
+ "dynamax-crystal-phe99": {
+  "en": "★Phe99",
+  "ko": "★Phe99"
+ },
+ "dynamax-crystal-phe338": {
+  "en": "★Phe338",
+  "ko": "★Phe338"
+ },
+ "dynamax-crystal-vel3634": {
+  "en": "★Vel3634",
+  "ko": "★Vel3634"
+ },
+ "dynamax-crystal-vel3485": {
+  "en": "★Vel3485",
+  "ko": "★Vel3485"
+ },
+ "dynamax-crystal-vel3734": {
+  "en": "★Vel3734",
+  "ko": "★Vel3734"
+ },
+ "dynamax-crystal-aqr8232": {
+  "en": "★Aqr8232",
+  "ko": "★Aqr8232"
+ },
+ "dynamax-crystal-aqr8414": {
+  "en": "★Aqr8414",
+  "ko": "★Aqr8414"
+ },
+ "dynamax-crystal-aqr8709": {
+  "en": "★Aqr8709",
+  "ko": "★Aqr8709"
+ },
+ "dynamax-crystal-aqr8518": {
+  "en": "★Aqr8518",
+  "ko": "★Aqr8518"
+ },
+ "dynamax-crystal-aqr7950": {
+  "en": "★Aqr7950",
+  "ko": "★Aqr7950"
+ },
+ "dynamax-crystal-aqr8499": {
+  "en": "★Aqr8499",
+  "ko": "★Aqr8499"
+ },
+ "dynamax-crystal-aqr8610": {
+  "en": "★Aqr8610",
+  "ko": "★Aqr8610"
+ },
+ "dynamax-crystal-aqr8264": {
+  "en": "★Aqr8264",
+  "ko": "★Aqr8264"
+ },
+ "dynamax-crystal-cru4853": {
+  "en": "★Cru4853",
+  "ko": "★Cru4853"
+ },
+ "dynamax-crystal-cru4730": {
+  "en": "★Cru4730",
+  "ko": "★Cru4730"
+ },
+ "dynamax-crystal-cru4763": {
+  "en": "★Cru4763",
+  "ko": "★Cru4763"
+ },
+ "dynamax-crystal-cru4700": {
+  "en": "★Cru4700",
+  "ko": "★Cru4700"
+ },
+ "dynamax-crystal-cru4656": {
+  "en": "★Cru4656",
+  "ko": "★Cru4656"
+ },
+ "dynamax-crystal-psa8728": {
+  "en": "★PsA8728",
+  "ko": "★PsA8728"
+ },
+ "dynamax-crystal-tra6217": {
+  "en": "★TrA6217",
+  "ko": "★TrA6217"
+ },
+ "dynamax-crystal-cap7776": {
+  "en": "★Cap7776",
+  "ko": "★Cap7776"
+ },
+ "dynamax-crystal-cap7754": {
+  "en": "★Cap7754",
+  "ko": "★Cap7754"
+ },
+ "dynamax-crystal-cap8278": {
+  "en": "★Cap8278",
+  "ko": "★Cap8278"
+ },
+ "dynamax-crystal-cap8322": {
+  "en": "★Cap8322",
+  "ko": "★Cap8322"
+ },
+ "dynamax-crystal-cap7773": {
+  "en": "★Cap7773",
+  "ko": "★Cap7773"
+ },
+ "dynamax-crystal-sge7479": {
+  "en": "★Sge7479",
+  "ko": "★Sge7479"
+ },
+ "dynamax-crystal-car2326": {
+  "en": "★Car2326",
+  "ko": "★Car2326"
+ },
+ "dynamax-crystal-car3685": {
+  "en": "★Car3685",
+  "ko": "★Car3685"
+ },
+ "dynamax-crystal-car3307": {
+  "en": "★Car3307",
+  "ko": "★Car3307"
+ },
+ "dynamax-crystal-car3699": {
+  "en": "★Car3699",
+  "ko": "★Car3699"
+ },
+ "dynamax-crystal-dra5744": {
+  "en": "★Dra5744",
+  "ko": "★Dra5744"
+ },
+ "dynamax-crystal-dra5291": {
+  "en": "★Dra5291",
+  "ko": "★Dra5291"
+ },
+ "dynamax-crystal-dra6705": {
+  "en": "★Dra6705",
+  "ko": "★Dra6705"
+ },
+ "dynamax-crystal-dra6536": {
+  "en": "★Dra6536",
+  "ko": "★Dra6536"
+ },
+ "dynamax-crystal-dra7310": {
+  "en": "★Dra7310",
+  "ko": "★Dra7310"
+ },
+ "dynamax-crystal-dra6688": {
+  "en": "★Dra6688",
+  "ko": "★Dra6688"
+ },
+ "dynamax-crystal-dra4434": {
+  "en": "★Dra4434",
+  "ko": "★Dra4434"
+ },
+ "dynamax-crystal-dra6370": {
+  "en": "★Dra6370",
+  "ko": "★Dra6370"
+ },
+ "dynamax-crystal-dra7462": {
+  "en": "★Dra7462",
+  "ko": "★Dra7462"
+ },
+ "dynamax-crystal-dra6396": {
+  "en": "★Dra6396",
+  "ko": "★Dra6396"
+ },
+ "dynamax-crystal-dra6132": {
+  "en": "★Dra6132",
+  "ko": "★Dra6132"
+ },
+ "dynamax-crystal-dra6636": {
+  "en": "★Dra6636",
+  "ko": "★Dra6636"
+ },
+ "dynamax-crystal-cvn4915": {
+  "en": "★CVn4915",
+  "ko": "★CVn4915"
+ },
+ "dynamax-crystal-cvn4785": {
+  "en": "★CVn4785",
+  "ko": "★CVn4785"
+ },
+ "dynamax-crystal-cvn4846": {
+  "en": "★CVn4846",
+  "ko": "★CVn4846"
+ },
+ "dynamax-crystal-aql7595": {
+  "en": "★Aql7595",
+  "ko": "★Aql7595"
+ },
+ "dynamax-crystal-aql7557": {
+  "en": "★Aql7557",
+  "ko": "★Aql7557"
+ },
+ "dynamax-crystal-aql7525": {
+  "en": "★Aql7525",
+  "ko": "★Aql7525"
+ },
+ "dynamax-crystal-aql7602": {
+  "en": "★Aql7602",
+  "ko": "★Aql7602"
+ },
+ "dynamax-crystal-aql7235": {
+  "en": "★Aql7235",
+  "ko": "★Aql7235"
+ },
+ "max-honey": {
+  "en": "Max Honey",
+  "ko": "다이꿀"
+ },
+ "max-mushrooms": {
+  "en": "Max Mushrooms",
+  "ko": "다이버섯"
+ },
+ "galarica-twig": {
+  "en": "Galarica Twig",
+  "ko": "가라두구가지"
+ },
+ "galarica-cuff": {
+  "en": "Galarica Cuff",
+  "ko": "가라두구팔찌"
+ },
+ "style-card": {
+  "en": "Style Card",
+  "ko": "멋쟁이카드"
+ },
+ "armor-pass": {
+  "en": "Armor Pass",
+  "ko": "갑옷패스"
+ },
+ "rotom-bike--sparkling-white": {
+  "en": "Rotom Bike",
+  "ko": "로토무자전거"
+ },
+ "rotom-bike--glistening-black": {
+  "en": "Rotom Bike",
+  "ko": "로토무자전거"
+ },
+ "exp-charm": {
+  "en": "Exp. Charm",
+  "ko": "경험부적"
+ },
+ "armorite-ore": {
+  "en": "Armorite Ore",
+  "ko": "갑옷광석"
+ },
+ "mark-charm": {
+  "en": "Mark Charm",
+  "ko": "증표의부적"
+ },
+ "reins-of-unity--merge": {
+  "en": "Reins of Unity",
+  "ko": "유대의고삐"
+ },
+ "reins-of-unity--split": {
+  "en": "Reins of Unity",
+  "ko": "유대의고삐"
+ },
+ "galarica-wreath": {
+  "en": "Galarica Wreath",
+  "ko": "가라두구머리장식"
+ },
+ "legendary-clue-1": {
+  "en": "Legendary Clue 1",
+  "ko": "전설의메모1"
+ },
+ "legendary-clue-2": {
+  "en": "Legendary Clue 2",
+  "ko": "전설의메모2"
+ },
+ "legendary-clue-3": {
+  "en": "Legendary Clue 3",
+  "ko": "전설의메모3"
+ },
+ "legendary-clue-question": {
+  "en": "Legendary Clue?",
+  "ko": "전설의메모?"
+ },
+ "crown-pass": {
+  "en": "Crown Pass",
+  "ko": "왕관패스"
+ },
+ "wooden-crown": {
+  "en": "Wooden Crown",
+  "ko": "목각왕관"
+ },
+ "radiant-petal": {
+  "en": "Radiant Petal",
+  "ko": "빛나는꽃잎"
+ },
+ "white-mane-hair": {
+  "en": "White Mane Hair",
+  "ko": "하얀갈기"
+ },
+ "black-mane-hair": {
+  "en": "Black Mane Hair",
+  "ko": "검은갈기"
+ },
+ "iceroot-carrot": {
+  "en": "Iceroot Carrot",
+  "ko": "차가운당근"
+ },
+ "shaderoot-carrot": {
+  "en": "Shaderoot Carrot",
+  "ko": "검은당근"
+ },
+ "dynite-ore": {
+  "en": "Dynite Ore",
+  "ko": "맥스광석"
+ },
+ "carrot-seeds": {
+  "en": "Carrot Seeds",
+  "ko": "당근씨"
+ },
+ "ability-patch": {
+  "en": "Ability Patch",
+  "ko": "특성패치"
+ },
+ "reins-of-unity": {
+  "en": "Reins of Unity",
+  "ko": "유대의고삐"
+ },
+ "adamant-crystal": {
+  "en": "Adamant Crystal",
+  "ko": "큰금강옥"
+ },
+ "lustrous-globe": {
+  "en": "Lustrous Globe",
+  "ko": "큰백옥"
+ },
+ "griseous-core": {
+  "en": "Griseous Core",
+  "ko": "큰백금옥"
+ },
+ "blank-plate": {
+  "en": "Blank Plate",
+  "ko": "순백플레이트"
+ },
+ "strange-ball": {
+  "en": "Strange Ball",
+  "ko": "스트레인지볼"
+ },
+ "legend-plate": {
+  "en": "Legend Plate",
+  "ko": "레전드플레이트"
+ },
+ "rotom-phone": {
+  "en": "Rotom Phone",
+  "ko": "스마트로토무"
+ },
+ "sandwich": {
+  "en": "Sandwich",
+  "ko": "샌드위치"
+ },
+ "koraidons-poke-ball": {
+  "en": "Koraidon’s Poké Ball",
+  "ko": "코라이돈의 볼"
+ },
+ "miraidons-poke-ball": {
+  "en": "Miraidon’s Poké Ball",
+  "ko": "미라이돈의 볼"
+ },
+ "tera-orb": {
+  "en": "Tera Orb",
+  "ko": "테라스탈오브"
+ },
+ "scarlet-book": {
+  "en": "Scarlet Book",
+  "ko": "스칼렛북"
+ },
+ "violet-book": {
+  "en": "Violet Book",
+  "ko": "바이올렛북"
+ },
+ "kofus-wallet": {
+  "en": "Kofu’s Wallet",
+  "ko": "곤포의 지갑"
+ },
+ "tiny-bamboo-shoot": {
+  "en": "Tiny Bamboo Shoot",
+  "ko": "작은죽순"
+ },
+ "big-bamboo-shoot": {
+  "en": "Big Bamboo Shoot",
+  "ko": "큰죽순"
+ },
+ "scroll-of-darkness": {
+  "en": "Scroll of Darkness",
+  "ko": "악의 족자"
+ },
+ "scroll-of-waters": {
+  "en": "Scroll of Waters",
+  "ko": "물의 족자"
+ },
+ "malicious-armor": {
+  "en": "Malicious Armor",
+  "ko": "저주받은갑옷"
+ },
+ "normal-tera-shard": {
+  "en": "Normal Tera Shard",
+  "ko": "테라피스 노말"
+ },
+ "fire-tera-shard": {
+  "en": "Fire Tera Shard",
+  "ko": "테라피스 불꽃"
+ },
+ "water-tera-shard": {
+  "en": "Water Tera Shard",
+  "ko": "테라피스 물"
+ },
+ "electric-tera-shard": {
+  "en": "Electric Tera Shard",
+  "ko": "테라피스 전기"
+ },
+ "grass-tera-shard": {
+  "en": "Grass Tera Shard",
+  "ko": "테라피스 풀"
+ },
+ "ice-tera-shard": {
+  "en": "Ice Tera Shard",
+  "ko": "테라피스 얼음"
+ },
+ "fighting-tera-shard": {
+  "en": "Fighting Tera Shard",
+  "ko": "테라피스 격투"
+ },
+ "poison-tera-shard": {
+  "en": "Poison Tera Shard",
+  "ko": "테라피스 독"
+ },
+ "ground-tera-shard": {
+  "en": "Ground Tera Shard",
+  "ko": "테라피스 땅"
+ },
+ "flying-tera-shard": {
+  "en": "Flying Tera Shard",
+  "ko": "테라피스 비행"
+ },
+ "psychic-tera-shard": {
+  "en": "Psychic Tera Shard",
+  "ko": "테라피스 에스퍼"
+ },
+ "bug-tera-shard": {
+  "en": "Bug Tera Shard",
+  "ko": "테라피스 벌레"
+ },
+ "rock-tera-shard": {
+  "en": "Rock Tera Shard",
+  "ko": "테라피스 바위"
+ },
+ "ghost-tera-shard": {
+  "en": "Ghost Tera Shard",
+  "ko": "테라피스 고스트"
+ },
+ "dragon-tera-shard": {
+  "en": "Dragon Tera Shard",
+  "ko": "테라피스 드래곤"
+ },
+ "dark-tera-shard": {
+  "en": "Dark Tera Shard",
+  "ko": "테라피스 악"
+ },
+ "steel-tera-shard": {
+  "en": "Steel Tera Shard",
+  "ko": "테라피스 강철"
+ },
+ "fairy-tera-shard": {
+  "en": "Fairy Tera Shard",
+  "ko": "테라피스 페어리"
+ },
+ "booster-energy": {
+  "en": "Booster Energy",
+  "ko": "부스트에너지"
+ },
+ "ability-shield": {
+  "en": "Ability Shield",
+  "ko": "특성가드"
+ },
+ "clear-amulet": {
+  "en": "Clear Amulet",
+  "ko": "클리어참"
+ },
+ "mirror-herb": {
+  "en": "Mirror Herb",
+  "ko": "흉내허브"
+ },
+ "punching-glove": {
+  "en": "Punching Glove",
+  "ko": "펀치글러브"
+ },
+ "covert-cloak": {
+  "en": "Covert Cloak",
+  "ko": "은밀망토"
+ },
+ "loaded-dice": {
+  "en": "Loaded Dice",
+  "ko": "속임수주사위"
+ },
+ "baguette": {
+  "en": "Baguette",
+  "ko": "바게트"
+ },
+ "mayonnaise": {
+  "en": "Mayonnaise",
+  "ko": "마요네즈"
+ },
+ "ketchup": {
+  "en": "Ketchup",
+  "ko": "케첩"
+ },
+ "mustard": {
+  "en": "Mustard",
+  "ko": "머스터드"
+ },
+ "butter": {
+  "en": "Butter",
+  "ko": "버터"
+ },
+ "peanut-butter": {
+  "en": "Peanut Butter",
+  "ko": "땅콩버터"
+ },
+ "chili-sauce": {
+  "en": "Chili Sauce",
+  "ko": "칠리소스"
+ },
+ "salt": {
+  "en": "Salt",
+  "ko": "소금"
+ },
+ "pepper": {
+  "en": "Pepper",
+  "ko": "후추"
+ },
+ "yogurt": {
+  "en": "Yogurt",
+  "ko": "요구르트"
+ },
+ "whipped-cream": {
+  "en": "Whipped Cream",
+  "ko": "휘핑크림"
+ },
+ "cream-cheese": {
+  "en": "Cream Cheese",
+  "ko": "크림치즈"
+ },
+ "jam": {
+  "en": "Jam",
+  "ko": "베리잼"
+ },
+ "marmalade": {
+  "en": "Marmalade",
+  "ko": "마멀레이드"
+ },
+ "olive-oil": {
+  "en": "Olive Oil",
+  "ko": "올리브오일"
+ },
+ "vinegar": {
+  "en": "Vinegar",
+  "ko": "비니거"
+ },
+ "sweet-herba-mystica": {
+  "en": "Sweet Herba Mystica",
+  "ko": "비전 달콤스파이스"
+ },
+ "salty-herba-mystica": {
+  "en": "Salty Herba Mystica",
+  "ko": "비전 짭짤스파이스"
+ },
+ "sour-herba-mystica": {
+  "en": "Sour Herba Mystica",
+  "ko": "비전 새콤스파이스"
+ },
+ "bitter-herba-mystica": {
+  "en": "Bitter Herba Mystica",
+  "ko": "비전 쌉쌀스파이스"
+ },
+ "spicy-herba-mystica": {
+  "en": "Spicy Herba Mystica",
+  "ko": "비전 매콤스파이스"
+ },
+ "lettuce": {
+  "en": "Lettuce",
+  "ko": "양상추"
+ },
+ "tomato": {
+  "en": "Tomato",
+  "ko": "토마토슬라이스"
+ },
+ "cherry-tomatoes": {
+  "en": "Cherry Tomatoes",
+  "ko": "방울토마토슬라이스"
+ },
+ "cucumber": {
+  "en": "Cucumber",
+  "ko": "오이슬라이스"
+ },
+ "pickle": {
+  "en": "Pickle",
+  "ko": "피클슬라이스"
+ },
+ "onion": {
+  "en": "Onion",
+  "ko": "양파슬라이스"
+ },
+ "red-onion": {
+  "en": "Red Onion",
+  "ko": "적양파"
+ },
+ "green-bell-pepper": {
+  "en": "Green Bell Pepper",
+  "ko": "피망슬라이스"
+ },
+ "red-bell-pepper": {
+  "en": "Red Bell Pepper",
+  "ko": "빨간파프리카슬라이스"
+ },
+ "yellow-bell-pepper": {
+  "en": "Yellow Bell Pepper",
+  "ko": "노란파프리카슬라이스"
+ },
+ "avocado": {
+  "en": "Avocado",
+  "ko": "아보카도"
+ },
+ "bacon": {
+  "en": "Bacon",
+  "ko": "구운베이컨"
+ },
+ "ham": {
+  "en": "Ham",
+  "ko": "슬라이스햄"
+ },
+ "prosciutto": {
+  "en": "Prosciutto",
+  "ko": "생햄"
+ },
+ "chorizo": {
+  "en": "Chorizo",
+  "ko": "구운초리조"
+ },
+ "herbed-sausage": {
+  "en": "Herbed Sausage",
+  "ko": "허브소시지"
+ },
+ "hamburger": {
+  "en": "Hamburger",
+  "ko": "햄버그"
+ },
+ "klawf-stick": {
+  "en": "Klawf Stick",
+  "ko": "절벼게맛살"
+ },
+ "smoked-fillet": {
+  "en": "Smoked Fillet",
+  "ko": "훈제토막"
+ },
+ "fried-fillet": {
+  "en": "Fried Fillet",
+  "ko": "튀긴토막"
+ },
+ "egg": {
+  "en": "Egg",
+  "ko": "에그슬라이스"
+ },
+ "potato-tortilla": {
+  "en": "Potato Tortilla",
+  "ko": "토르티야"
+ },
+ "tofu": {
+  "en": "Tofu",
+  "ko": "두부"
+ },
+ "rice": {
+  "en": "Rice",
+  "ko": "라이스"
+ },
+ "noodles": {
+  "en": "Noodles",
+  "ko": "누들"
+ },
+ "potato-salad": {
+  "en": "Potato Salad",
+  "ko": "감자샐러드"
+ },
+ "cheese": {
+  "en": "Cheese",
+  "ko": "슬라이스치즈"
+ },
+ "banana": {
+  "en": "Banana",
+  "ko": "바나나슬라이스"
+ },
+ "strawberry": {
+  "en": "Strawberry",
+  "ko": "딸기슬라이스"
+ },
+ "apple": {
+  "en": "Apple",
+  "ko": "사과슬라이스"
+ },
+ "kiwi": {
+  "en": "Kiwi",
+  "ko": "키위슬라이스"
+ },
+ "pineapple": {
+  "en": "Pineapple",
+  "ko": "파인애플슬라이스"
+ },
+ "jalapeno": {
+  "en": "Jalapeño",
+  "ko": "할라페뇨"
+ },
+ "horseradish": {
+  "en": "Horseradish",
+  "ko": "호스래디시"
+ },
+ "curry-powder": {
+  "en": "Curry Powder",
+  "ko": "카레파우더"
+ },
+ "wasabi": {
+  "en": "Wasabi",
+  "ko": "와사비소스"
+ },
+ "watercress": {
+  "en": "Watercress",
+  "ko": "물냉이"
+ },
+ "basil": {
+  "en": "Basil",
+  "ko": "바질"
+ },
+ "venonat-fang": {
+  "en": "Venonat Fang",
+  "ko": "콘팡의이빨"
+ },
+ "diglett-dirt": {
+  "en": "Diglett Dirt",
+  "ko": "디그다의흙"
+ },
+ "meowth-fur": {
+  "en": "Meowth Fur",
+  "ko": "나옹의털"
+ },
+ "psyduck-down": {
+  "en": "Psyduck Down",
+  "ko": "고라파덕의솜털"
+ },
+ "mankey-fur": {
+  "en": "Mankey Fur",
+  "ko": "망키의털"
+ },
+ "growlithe-fur": {
+  "en": "Growlithe Fur",
+  "ko": "가디의털"
+ },
+ "slowpoke-claw": {
+  "en": "Slowpoke Claw",
+  "ko": "야돈의발톱"
+ },
+ "magnemite-screw": {
+  "en": "Magnemite Screw",
+  "ko": "코일의나사"
+ },
+ "grimer-toxin": {
+  "en": "Grimer Toxin",
+  "ko": "질퍽이의독소"
+ },
+ "shellder-pearl": {
+  "en": "Shellder Pearl",
+  "ko": "셀러의진주"
+ },
+ "gastly-gas": {
+  "en": "Gastly Gas",
+  "ko": "고오스의가스"
+ },
+ "drowzee-fur": {
+  "en": "Drowzee Fur",
+  "ko": "슬리프의털"
+ },
+ "voltorb-sparks": {
+  "en": "Voltorb Sparks",
+  "ko": "찌리리공의전기"
+ },
+ "scyther-claw": {
+  "en": "Scyther Claw",
+  "ko": "스라크의발톱"
+ },
+ "tauros-hair": {
+  "en": "Tauros Hair",
+  "ko": "켄타로스의털"
+ },
+ "magikarp-scales": {
+  "en": "Magikarp Scales",
+  "ko": "잉어킹의비늘"
+ },
+ "ditto-goo": {
+  "en": "Ditto Goo",
+  "ko": "메타몽의끈끈이"
+ },
+ "eevee-fur": {
+  "en": "Eevee Fur",
+  "ko": "이브이의털"
+ },
+ "dratini-scales": {
+  "en": "Dratini Scales",
+  "ko": "미뇽의비늘"
+ },
+ "pichu-fur": {
+  "en": "Pichu Fur",
+  "ko": "피츄의털"
+ },
+ "igglybuff-fluff": {
+  "en": "Igglybuff Fluff",
+  "ko": "푸푸린의털"
+ },
+ "mareep-wool": {
+  "en": "Mareep Wool",
+  "ko": "메리프의털뭉치"
+ },
+ "hoppip-leaf": {
+  "en": "Hoppip Leaf",
+  "ko": "통통코의잎"
+ },
+ "sunkern-leaf": {
+  "en": "Sunkern Leaf",
+  "ko": "해너츠의잎"
+ },
+ "murkrow-bauble": {
+  "en": "Murkrow Bauble",
+  "ko": "니로우의보물"
+ },
+ "misdreavus-tears": {
+  "en": "Misdreavus Tears",
+  "ko": "무우마의눈물"
+ },
+ "girafarig-fur": {
+  "en": "Girafarig Fur",
+  "ko": "키링키의털"
+ },
+ "pineco-husk": {
+  "en": "Pineco Husk",
+  "ko": "피콘의껍데기"
+ },
+ "dunsparce-scales": {
+  "en": "Dunsparce Scales",
+  "ko": "노고치의비늘"
+ },
+ "qwilfish-spines": {
+  "en": "Qwilfish Spines",
+  "ko": "침바루의가시"
+ },
+ "heracross-claw": {
+  "en": "Heracross Claw",
+  "ko": "헤라크로스의발톱"
+ },
+ "sneasel-claw": {
+  "en": "Sneasel Claw",
+  "ko": "포푸니의손톱"
+ },
+ "teddiursa-claw": {
+  "en": "Teddiursa Claw",
+  "ko": "깜지곰의손톱"
+ },
+ "delibird-parcel": {
+  "en": "Delibird Parcel",
+  "ko": "딜리버드의짐"
+ },
+ "houndour-fang": {
+  "en": "Houndour Fang",
+  "ko": "델빌의이빨"
+ },
+ "phanpy-nail": {
+  "en": "Phanpy Nail",
+  "ko": "코코리의발톱"
+ },
+ "stantler-hair": {
+  "en": "Stantler Hair",
+  "ko": "노라키의털"
+ },
+ "larvitar-claw": {
+  "en": "Larvitar Claw",
+  "ko": "애버라스의발톱"
+ },
+ "wingull-feather": {
+  "en": "Wingull Feather",
+  "ko": "갈모매의깃털"
+ },
+ "ralts-dust": {
+  "en": "Ralts Dust",
+  "ko": "랄토스의유실물"
+ },
+ "surskit-syrup": {
+  "en": "Surskit Syrup",
+  "ko": "비구술의꿀"
+ },
+ "shroomish-spores": {
+  "en": "Shroomish Spores",
+  "ko": "버섯꼬의포자"
+ },
+ "slakoth-fur": {
+  "en": "Slakoth Fur",
+  "ko": "게을로의털"
+ },
+ "makuhita-sweat": {
+  "en": "Makuhita Sweat",
+  "ko": "마크탕의땀"
+ },
+ "azurill-fur": {
+  "en": "Azurill Fur",
+  "ko": "루리리의털"
+ },
+ "sableye-gem": {
+  "en": "Sableye Gem",
+  "ko": "깜까미의보석"
+ },
+ "meditite-sweat": {
+  "en": "Meditite Sweat",
+  "ko": "요가랑의땀"
+ },
+ "gulpin-mucus": {
+  "en": "Gulpin Mucus",
+  "ko": "꼴깍몬의점액"
+ },
+ "numel-lava": {
+  "en": "Numel Lava",
+  "ko": "둔타의용암"
+ },
+ "torkoal-coal": {
+  "en": "Torkoal Coal",
+  "ko": "코터스의석탄"
+ },
+ "spoink-pearl": {
+  "en": "Spoink Pearl",
+  "ko": "피그점프의진주"
+ },
+ "cacnea-needle": {
+  "en": "Cacnea Needle",
+  "ko": "선인왕의가시"
+ },
+ "swablu-fluff": {
+  "en": "Swablu Fluff",
+  "ko": "파비코의깃털"
+ },
+ "zangoose-claw": {
+  "en": "Zangoose Claw",
+  "ko": "쟝고의발톱"
+ },
+ "seviper-fang": {
+  "en": "Seviper Fang",
+  "ko": "세비퍼의이빨"
+ },
+ "barboach-slime": {
+  "en": "Barboach Slime",
+  "ko": "미꾸리의점액"
+ },
+ "shuppet-scrap": {
+  "en": "Shuppet Scrap",
+  "ko": "어둠대신의천조각"
+ },
+ "tropius-leaf": {
+  "en": "Tropius Leaf",
+  "ko": "트로피우스의잎"
+ },
+ "snorunt-fur": {
+  "en": "Snorunt Fur",
+  "ko": "눈꼬마의털"
+ },
+ "luvdisc-scales": {
+  "en": "Luvdisc Scales",
+  "ko": "사랑동이의비늘"
+ },
+ "bagon-scales": {
+  "en": "Bagon Scales",
+  "ko": "아공이의비늘"
+ },
+ "starly-feather": {
+  "en": "Starly Feather",
+  "ko": "찌르꼬의깃털"
+ },
+ "kricketot-shell": {
+  "en": "Kricketot Shell",
+  "ko": "귀뚤뚜기의허물"
+ },
+ "shinx-fang": {
+  "en": "Shinx Fang",
+  "ko": "꼬링크의이빨"
+ },
+ "combee-honey": {
+  "en": "Combee Honey",
+  "ko": "세꿀버리의꿀"
+ },
+ "pachirisu-fur": {
+  "en": "Pachirisu Fur",
+  "ko": "파치리스의털"
+ },
+ "buizel-fur": {
+  "en": "Buizel Fur",
+  "ko": "브이젤의털"
+ },
+ "shellos-mucus": {
+  "en": "Shellos Mucus",
+  "ko": "깝질무의점액"
+ },
+ "drifloon-gas": {
+  "en": "Drifloon Gas",
+  "ko": "흔들풍손의가스"
+ },
+ "stunky-fur": {
+  "en": "Stunky Fur",
+  "ko": "스컹뿡의털"
+ },
+ "bronzor-fragment": {
+  "en": "Bronzor Fragment",
+  "ko": "동미러의조각"
+ },
+ "bonsly-tears": {
+  "en": "Bonsly Tears",
+  "ko": "꼬지지의눈물"
+ },
+ "happiny-dust": {
+  "en": "Happiny Dust",
+  "ko": "핑복의유실물"
+ },
+ "spiritomb-fragment": {
+  "en": "Spiritomb Fragment",
+  "ko": "화강돌의조각"
+ },
+ "gible-scales": {
+  "en": "Gible Scales",
+  "ko": "딥상어동의비늘"
+ },
+ "riolu-fur": {
+  "en": "Riolu Fur",
+  "ko": "리오르의털"
+ },
+ "hippopotas-sand": {
+  "en": "Hippopotas Sand",
+  "ko": "히포포타스의모래"
+ },
+ "croagunk-poison": {
+  "en": "Croagunk Poison",
+  "ko": "삐딱구리의독소"
+ },
+ "finneon-scales": {
+  "en": "Finneon Scales",
+  "ko": "형광어의비늘"
+ },
+ "snover-berries": {
+  "en": "Snover Berries",
+  "ko": "눈쓰개의열매"
+ },
+ "rotom-sparks": {
+  "en": "Rotom Sparks",
+  "ko": "로토무의전기"
+ },
+ "petilil-leaf": {
+  "en": "Petilil Leaf",
+  "ko": "치릴리의잎"
+ },
+ "basculin-fang": {
+  "en": "Basculin Fang",
+  "ko": "배쓰나이의이빨"
+ },
+ "sandile-claw": {
+  "en": "Sandile Claw",
+  "ko": "깜눈크의발톱"
+ },
+ "zorua-fur": {
+  "en": "Zorua Fur",
+  "ko": "조로아의털"
+ },
+ "gothita-eyelash": {
+  "en": "Gothita Eyelash",
+  "ko": "고디탱의속눈썹"
+ },
+ "deerling-hair": {
+  "en": "Deerling Hair",
+  "ko": "사철록의털"
+ },
+ "foongus-spores": {
+  "en": "Foongus Spores",
+  "ko": "깜놀버슬의포자"
+ },
+ "alomomola-mucus": {
+  "en": "Alomomola Mucus",
+  "ko": "맘복치의점액"
+ },
+ "tynamo-slime": {
+  "en": "Tynamo Slime",
+  "ko": "저리어의점액"
+ },
+ "axew-scales": {
+  "en": "Axew Scales",
+  "ko": "터검니의비늘"
+ },
+ "cubchoo-fur": {
+  "en": "Cubchoo Fur",
+  "ko": "코고미의털"
+ },
+ "cryogonal-ice": {
+  "en": "Cryogonal Ice",
+  "ko": "프리지오의얼음"
+ },
+ "pawniard-blade": {
+  "en": "Pawniard Blade",
+  "ko": "자망칼의칼날"
+ },
+ "rufflet-feather": {
+  "en": "Rufflet Feather",
+  "ko": "수리둥보의깃털"
+ },
+ "deino-scales": {
+  "en": "Deino Scales",
+  "ko": "모노두의비늘"
+ },
+ "larvesta-fuzz": {
+  "en": "Larvesta Fuzz",
+  "ko": "활화르바의털"
+ },
+ "fletchling-feather": {
+  "en": "Fletchling Feather",
+  "ko": "화살꼬빈의깃털"
+ },
+ "scatterbug-powder": {
+  "en": "Scatterbug Powder",
+  "ko": "분이벌레의가루"
+ },
+ "litleo-tuft": {
+  "en": "Litleo Tuft",
+  "ko": "레오꼬의갈기"
+ },
+ "flabebe-pollen": {
+  "en": "Flabébé Pollen",
+  "ko": "플라베베의꽃가루"
+ },
+ "skiddo-leaf": {
+  "en": "Skiddo Leaf",
+  "ko": "메이클의잎"
+ },
+ "skrelp-kelp": {
+  "en": "Skrelp Kelp",
+  "ko": "수레기의해초"
+ },
+ "clauncher-claw": {
+  "en": "Clauncher Claw",
+  "ko": "완철포의집게"
+ },
+ "hawlucha-down": {
+  "en": "Hawlucha Down",
+  "ko": "루차불의솜털"
+ },
+ "dedenne-fur": {
+  "en": "Dedenne Fur",
+  "ko": "데덴네의털"
+ },
+ "goomy-goo": {
+  "en": "Goomy Goo",
+  "ko": "미끄메라의점액"
+ },
+ "klefki-key": {
+  "en": "Klefki Key",
+  "ko": "클레피의열쇠"
+ },
+ "bergmite-ice": {
+  "en": "Bergmite Ice",
+  "ko": "꽁어름의얼음"
+ },
+ "noibat-fur": {
+  "en": "Noibat Fur",
+  "ko": "음뱃의털"
+ },
+ "yungoos-fur": {
+  "en": "Yungoos Fur",
+  "ko": "영구스의털"
+ },
+ "crabrawler-shell": {
+  "en": "Crabrawler Shell",
+  "ko": "오기지게의껍데기"
+ },
+ "oricorio-feather": {
+  "en": "Oricorio Feather",
+  "ko": "춤추새의깃털"
+ },
+ "rockruff-rock": {
+  "en": "Rockruff Rock",
+  "ko": "암멍이의바위"
+ },
+ "mareanie-spike": {
+  "en": "Mareanie Spike",
+  "ko": "시마사리의가시"
+ },
+ "mudbray-mud": {
+  "en": "Mudbray Mud",
+  "ko": "머드나기의진흙"
+ },
+ "fomantis-leaf": {
+  "en": "Fomantis Leaf",
+  "ko": "짜랑랑의잎"
+ },
+ "salandit-gas": {
+  "en": "Salandit Gas",
+  "ko": "야도뇽의가스"
+ },
+ "bounsweet-sweat": {
+  "en": "Bounsweet Sweat",
+  "ko": "달콤아의땀"
+ },
+ "oranguru-fur": {
+  "en": "Oranguru Fur",
+  "ko": "하랑우탄의털"
+ },
+ "passimian-fur": {
+  "en": "Passimian Fur",
+  "ko": "내던숭이의털"
+ },
+ "sandygast-sand": {
+  "en": "Sandygast Sand",
+  "ko": "모래꿍의모래"
+ },
+ "komala-claw": {
+  "en": "Komala Claw",
+  "ko": "자말라의발톱"
+ },
+ "mimikyu-scrap": {
+  "en": "Mimikyu Scrap",
+  "ko": "따라큐의천조각"
+ },
+ "bruxish-tooth": {
+  "en": "Bruxish Tooth",
+  "ko": "치갈기의이빨"
+ },
+ "chewtle-claw": {
+  "en": "Chewtle Claw",
+  "ko": "깨물부기의발톱"
+ },
+ "skwovet-fur": {
+  "en": "Skwovet Fur",
+  "ko": "탐리스의털"
+ },
+ "arrokuda-scales": {
+  "en": "Arrokuda Scales",
+  "ko": "찌로꼬치의비늘"
+ },
+ "rookidee-feather": {
+  "en": "Rookidee Feather",
+  "ko": "파라꼬의깃털"
+ },
+ "toxel-sparks": {
+  "en": "Toxel Sparks",
+  "ko": "일레즌의전기"
+ },
+ "falinks-sweat": {
+  "en": "Falinks Sweat",
+  "ko": "대여르의땀"
+ },
+ "cufant-tarnish": {
+  "en": "Cufant Tarnish",
+  "ko": "끼리동의녹"
+ },
+ "rolycoly-coal": {
+  "en": "Rolycoly Coal",
+  "ko": "탄동의석탄"
+ },
+ "silicobra-sand": {
+  "en": "Silicobra Sand",
+  "ko": "모래뱀의모래"
+ },
+ "indeedee-fur": {
+  "en": "Indeedee Fur",
+  "ko": "에써르의털"
+ },
+ "pincurchin-spines": {
+  "en": "Pincurchin Spines",
+  "ko": "찌르성게의가시"
+ },
+ "snom-thread": {
+  "en": "Snom Thread",
+  "ko": "누니머기의실"
+ },
+ "impidimp-hair": {
+  "en": "Impidimp Hair",
+  "ko": "메롱꿍의털"
+ },
+ "applin-juice": {
+  "en": "Applin Juice",
+  "ko": "과사삭벌레의과즙"
+ },
+ "sinistea-chip": {
+  "en": "Sinistea Chip",
+  "ko": "데인차의조각"
+ },
+ "hatenna-dust": {
+  "en": "Hatenna Dust",
+  "ko": "몸지브림의유실물"
+ },
+ "stonjourner-stone": {
+  "en": "Stonjourner Stone",
+  "ko": "돌헨진의바위"
+ },
+ "eiscue-down": {
+  "en": "Eiscue Down",
+  "ko": "빙큐보의솜털"
+ },
+ "dreepy-powder": {
+  "en": "Dreepy Powder",
+  "ko": "드라꼰의가루"
+ },
+ "lechonk-hair": {
+  "en": "Lechonk Hair",
+  "ko": "맛보돈의털"
+ },
+ "tarountula-thread": {
+  "en": "Tarountula Thread",
+  "ko": "타랜툴라의실"
+ },
+ "nymble-claw": {
+  "en": "Nymble Claw",
+  "ko": "콩알뚜기의발톱"
+ },
+ "rellor-mud": {
+  "en": "Rellor Mud",
+  "ko": "구르데의진흙"
+ },
+ "greavard-wax": {
+  "en": "Greavard Wax",
+  "ko": "망망이의촛농"
+ },
+ "flittle-down": {
+  "en": "Flittle Down",
+  "ko": "하느라기의솜털"
+ },
+ "wiglett-sand": {
+  "en": "Wiglett Sand",
+  "ko": "바다그다의모래"
+ },
+ "dondozo-whisker": {
+  "en": "Dondozo Whisker",
+  "ko": "어써러셔의수염"
+ },
+ "veluza-fillet": {
+  "en": "Veluza Fillet",
+  "ko": "가비루사의토막"
+ },
+ "finizen-mucus": {
+  "en": "Finizen Mucus",
+  "ko": "맨돌핀의점액"
+ },
+ "smoliv-oil": {
+  "en": "Smoliv Oil",
+  "ko": "미니브의오일"
+ },
+ "capsakid-seed": {
+  "en": "Capsakid Seed",
+  "ko": "캡싸이의씨앗"
+ },
+ "tadbulb-mucus": {
+  "en": "Tadbulb Mucus",
+  "ko": "빈나두의점액"
+ },
+ "varoom-fume": {
+  "en": "Varoom Fume",
+  "ko": "부르롱의가스"
+ },
+ "orthworm-tarnish": {
+  "en": "Orthworm Tarnish",
+  "ko": "꿈트렁의녹"
+ },
+ "tandemaus-fur": {
+  "en": "Tandemaus Fur",
+  "ko": "두리쥐의털"
+ },
+ "cetoddle-grease": {
+  "en": "Cetoddle Grease",
+  "ko": "터벅고래의기름"
+ },
+ "frigibax-scales": {
+  "en": "Frigibax Scales",
+  "ko": "드니차의비늘"
+ },
+ "tatsugiri-scales": {
+  "en": "Tatsugiri Scales",
+  "ko": "싸리용의비늘"
+ },
+ "cyclizar-scales": {
+  "en": "Cyclizar Scales",
+  "ko": "모토마의비늘"
+ },
+ "pawmi-fur": {
+  "en": "Pawmi Fur",
+  "ko": "빠모의털"
+ },
+ "wattrel-feather": {
+  "en": "Wattrel Feather",
+  "ko": "찌리비의깃털"
+ },
+ "bombirdier-feather": {
+  "en": "Bombirdier Feather",
+  "ko": "떨구새의깃털"
+ },
+ "squawkabilly-feather": {
+  "en": "Squawkabilly Feather",
+  "ko": "시비꼬의깃털"
+ },
+ "flamigo-down": {
+  "en": "Flamigo Down",
+  "ko": "꼬이밍고의솜털"
+ },
+ "klawf-claw": {
+  "en": "Klawf Claw",
+  "ko": "절벼게의집게"
+ },
+ "nacli-salt": {
+  "en": "Nacli Salt",
+  "ko": "베베솔트의소금"
+ },
+ "glimmet-crystal": {
+  "en": "Glimmet Crystal",
+  "ko": "초롱순의결정"
+ },
+ "shroodle-ink": {
+  "en": "Shroodle Ink",
+  "ko": "땃쭈르의잉크"
+ },
+ "fidough-fur": {
+  "en": "Fidough Fur",
+  "ko": "쫀도기의털"
+ },
+ "maschiff-fang": {
+  "en": "Maschiff Fang",
+  "ko": "오라티프의이빨"
+ },
+ "bramblin-twig": {
+  "en": "Bramblin Twig",
+  "ko": "그푸리의가지"
+ },
+ "gimmighoul-coin": {
+  "en": "Gimmighoul Coin",
+  "ko": "모으령의코인"
+ },
+ "tinkatink-hair": {
+  "en": "Tinkatink Hair",
+  "ko": "어리짱의털"
+ },
+ "charcadet-soot": {
+  "en": "Charcadet Soot",
+  "ko": "카르본의검댕"
+ },
+ "toedscool-flaps": {
+  "en": "Toedscool Flaps",
+  "ko": "들눈해의갓"
+ },
+ "wooper-slime": {
+  "en": "Wooper Slime",
+  "ko": "우파의점액"
+ },
+ "tm101": {
+  "en": "TM101",
+  "ko": "기술머신101"
+ },
+ "tm102": {
+  "en": "TM102",
+  "ko": "기술머신102"
+ },
+ "tm103": {
+  "en": "TM103",
+  "ko": "기술머신103"
+ },
+ "tm104": {
+  "en": "TM104",
+  "ko": "기술머신104"
+ },
+ "tm105": {
+  "en": "TM105",
+  "ko": "기술머신105"
+ },
+ "tm106": {
+  "en": "TM106",
+  "ko": "기술머신106"
+ },
+ "tm107": {
+  "en": "TM107",
+  "ko": "기술머신107"
+ },
+ "tm108": {
+  "en": "TM108",
+  "ko": "기술머신108"
+ },
+ "tm109": {
+  "en": "TM109",
+  "ko": "기술머신109"
+ },
+ "tm110": {
+  "en": "TM110",
+  "ko": "기술머신110"
+ },
+ "tm111": {
+  "en": "TM111",
+  "ko": "기술머신111"
+ },
+ "tm112": {
+  "en": "TM112",
+  "ko": "기술머신112"
+ },
+ "tm113": {
+  "en": "TM113",
+  "ko": "기술머신113"
+ },
+ "tm114": {
+  "en": "TM114",
+  "ko": "기술머신114"
+ },
+ "tm115": {
+  "en": "TM115",
+  "ko": "기술머신115"
+ },
+ "tm116": {
+  "en": "TM116",
+  "ko": "기술머신116"
+ },
+ "tm117": {
+  "en": "TM117",
+  "ko": "기술머신117"
+ },
+ "tm118": {
+  "en": "TM118",
+  "ko": "기술머신118"
+ },
+ "tm119": {
+  "en": "TM119",
+  "ko": "기술머신119"
+ },
+ "tm120": {
+  "en": "TM120",
+  "ko": "기술머신120"
+ },
+ "tm121": {
+  "en": "TM121",
+  "ko": "기술머신121"
+ },
+ "tm122": {
+  "en": "TM122",
+  "ko": "기술머신122"
+ },
+ "tm123": {
+  "en": "TM123",
+  "ko": "기술머신123"
+ },
+ "tm124": {
+  "en": "TM124",
+  "ko": "기술머신124"
+ },
+ "tm125": {
+  "en": "TM125",
+  "ko": "기술머신125"
+ },
+ "tm126": {
+  "en": "TM126",
+  "ko": "기술머신126"
+ },
+ "tm127": {
+  "en": "TM127",
+  "ko": "기술머신127"
+ },
+ "tm128": {
+  "en": "TM128",
+  "ko": "기술머신128"
+ },
+ "tm129": {
+  "en": "TM129",
+  "ko": "기술머신129"
+ },
+ "tm130": {
+  "en": "TM130",
+  "ko": "기술머신130"
+ },
+ "tm131": {
+  "en": "TM131",
+  "ko": "기술머신131"
+ },
+ "tm132": {
+  "en": "TM132",
+  "ko": "기술머신132"
+ },
+ "tm133": {
+  "en": "TM133",
+  "ko": "기술머신133"
+ },
+ "tm134": {
+  "en": "TM134",
+  "ko": "기술머신134"
+ },
+ "tm135": {
+  "en": "TM135",
+  "ko": "기술머신135"
+ },
+ "tm136": {
+  "en": "TM136",
+  "ko": "기술머신136"
+ },
+ "tm137": {
+  "en": "TM137",
+  "ko": "기술머신137"
+ },
+ "tm138": {
+  "en": "TM138",
+  "ko": "기술머신138"
+ },
+ "tm139": {
+  "en": "TM139",
+  "ko": "기술머신139"
+ },
+ "tm140": {
+  "en": "TM140",
+  "ko": "기술머신140"
+ },
+ "tm141": {
+  "en": "TM141",
+  "ko": "기술머신141"
+ },
+ "tm142": {
+  "en": "TM142",
+  "ko": "기술머신142"
+ },
+ "tm143": {
+  "en": "TM143",
+  "ko": "기술머신143"
+ },
+ "tm144": {
+  "en": "TM144",
+  "ko": "기술머신144"
+ },
+ "tm145": {
+  "en": "TM145",
+  "ko": "기술머신145"
+ },
+ "tm146": {
+  "en": "TM146",
+  "ko": "기술머신146"
+ },
+ "tm147": {
+  "en": "TM147",
+  "ko": "기술머신147"
+ },
+ "tm148": {
+  "en": "TM148",
+  "ko": "기술머신148"
+ },
+ "tm149": {
+  "en": "TM149",
+  "ko": "기술머신149"
+ },
+ "tm150": {
+  "en": "TM150",
+  "ko": "기술머신150"
+ },
+ "tm151": {
+  "en": "TM151",
+  "ko": "기술머신151"
+ },
+ "tm152": {
+  "en": "TM152",
+  "ko": "기술머신152"
+ },
+ "tm153": {
+  "en": "TM153",
+  "ko": "기술머신153"
+ },
+ "tm154": {
+  "en": "TM154",
+  "ko": "기술머신154"
+ },
+ "tm155": {
+  "en": "TM155",
+  "ko": "기술머신155"
+ },
+ "tm156": {
+  "en": "TM156",
+  "ko": "기술머신156"
+ },
+ "tm157": {
+  "en": "TM157",
+  "ko": "기술머신157"
+ },
+ "tm158": {
+  "en": "TM158",
+  "ko": "기술머신158"
+ },
+ "tm159": {
+  "en": "TM159",
+  "ko": "기술머신159"
+ },
+ "tm160": {
+  "en": "TM160",
+  "ko": "기술머신160"
+ },
+ "tm161": {
+  "en": "TM161",
+  "ko": "기술머신161"
+ },
+ "tm162": {
+  "en": "TM162",
+  "ko": "기술머신162"
+ },
+ "tm163": {
+  "en": "TM163",
+  "ko": "기술머신163"
+ },
+ "tm164": {
+  "en": "TM164",
+  "ko": "기술머신164"
+ },
+ "tm165": {
+  "en": "TM165",
+  "ko": "기술머신165"
+ },
+ "tm166": {
+  "en": "TM166",
+  "ko": "기술머신166"
+ },
+ "tm167": {
+  "en": "TM167",
+  "ko": "기술머신167"
+ },
+ "tm168": {
+  "en": "TM168",
+  "ko": "기술머신168"
+ },
+ "tm169": {
+  "en": "TM169",
+  "ko": "기술머신169"
+ },
+ "tm170": {
+  "en": "TM170",
+  "ko": "기술머신170"
+ },
+ "tm171": {
+  "en": "TM171",
+  "ko": "기술머신171"
+ },
+ "picnic-set": {
+  "en": "Picnic Set",
+  "ko": "피크닉세트"
+ },
+ "academy-bottle": {
+  "en": "Academy Bottle",
+  "ko": "스쿨 보틀"
+ },
+ "polka-dot-bottle": {
+  "en": "Polka-Dot Bottle",
+  "ko": "물방울 보틀"
+ },
+ "striped-bottle": {
+  "en": "Striped Bottle",
+  "ko": "줄무늬 보틀"
+ },
+ "diamond-bottle": {
+  "en": "Diamond Bottle",
+  "ko": "다이아 보틀"
+ },
+ "academy-cup": {
+  "en": "Academy Cup",
+  "ko": "스쿨 컵"
+ },
+ "striped-cup": {
+  "en": "Striped Cup",
+  "ko": "세로 줄무늬 컵"
+ },
+ "polka-dot-cup": {
+  "en": "Polka-Dot Cup",
+  "ko": "물방울 컵"
+ },
+ "flower-pattern-cup": {
+  "en": "Flower Pattern Cup",
+  "ko": "플라워 컵"
+ },
+ "academy-tablecloth": {
+  "en": "Academy Tablecloth",
+  "ko": "스쿨 테이블보"
+ },
+ "whimsical-tablecloth": {
+  "en": "Whimsical Tablecloth",
+  "ko": "팬시 테이블보"
+ },
+ "leafy-tablecloth": {
+  "en": "Leafy Tablecloth",
+  "ko": "네이처 테이블보"
+ },
+ "spooky-tablecloth": {
+  "en": "Spooky Tablecloth",
+  "ko": "원망 테이블보"
+ },
+ "academy-ball": {
+  "en": "Academy Ball",
+  "ko": "스쿨볼"
+ },
+ "marill-ball": {
+  "en": "Marill Ball",
+  "ko": "마릴볼"
+ },
+ "yarn-ball": {
+  "en": "Yarn Ball",
+  "ko": "털실볼"
+ },
+ "cyber-ball": {
+  "en": "Cyber Ball",
+  "ko": "게이밍볼"
+ },
+ "gold-pick": {
+  "en": "Gold Pick",
+  "ko": "골드 픽"
+ },
+ "silver-pick": {
+  "en": "Silver Pick",
+  "ko": "실버 픽"
+ },
+ "red-flag-pick": {
+  "en": "Red-Flag Pick",
+  "ko": "빨강 깃발 픽"
+ },
+ "blue-flag-pick": {
+  "en": "Blue-Flag Pick",
+  "ko": "파랑 깃발 픽"
+ },
+ "pika-pika-pick": {
+  "en": "Pika-Pika Pick",
+  "ko": "피카피카 픽"
+ },
+ "winking-pika-pick": {
+  "en": "Winking Pika Pick",
+  "ko": "윙크피카 픽"
+ },
+ "vee-vee-pick": {
+  "en": "Vee-Vee Pick",
+  "ko": "브이브이 픽"
+ },
+ "smiling-vee-pick": {
+  "en": "Smiling Vee Pick",
+  "ko": "방긋브이 픽"
+ },
+ "blue-poke-ball-pick": {
+  "en": "Blue Poké Ball Pick",
+  "ko": "파랑 볼 픽"
+ },
+ "auspicious-armor": {
+  "en": "Auspicious Armor",
+  "ko": "축복받은갑옷"
+ },
+ "leaders-crest": {
+  "en": "Leader’s Crest",
+  "ko": "대장의징표"
+ },
+ "pink-bottle": {
+  "en": "Pink Bottle",
+  "ko": "핑크 보틀"
+ },
+ "blue-bottle": {
+  "en": "Blue Bottle",
+  "ko": "블루 보틀"
+ },
+ "yellow-bottle": {
+  "en": "Yellow Bottle",
+  "ko": "옐로 보틀"
+ },
+ "steel-bottle-r": {
+  "en": "Steel Bottle (R)",
+  "ko": "R 스테인리스 보틀"
+ },
+ "steel-bottle-y": {
+  "en": "Steel Bottle (Y)",
+  "ko": "Y 스테인리스 보틀"
+ },
+ "steel-bottle-b": {
+  "en": "Steel Bottle (B)",
+  "ko": "B 스테인리스 보틀"
+ },
+ "silver-bottle": {
+  "en": "Silver Bottle",
+  "ko": "실버 티탄 보틀"
+ },
+ "barred-cup": {
+  "en": "Barred Cup",
+  "ko": "가로 줄무늬 컵"
+ },
+ "diamond-pattern-cup": {
+  "en": "Diamond Pattern Cup",
+  "ko": "다이아 컵"
+ },
+ "fire-pattern-cup": {
+  "en": "Fire Pattern Cup",
+  "ko": "파이어 컵"
+ },
+ "pink-cup": {
+  "en": "Pink Cup",
+  "ko": "핑크 컵"
+ },
+ "blue-cup": {
+  "en": "Blue Cup",
+  "ko": "블루 컵"
+ },
+ "yellow-cup": {
+  "en": "Yellow Cup",
+  "ko": "옐로 컵"
+ },
+ "pikachu-cup": {
+  "en": "Pikachu Cup",
+  "ko": "피카츄 컵"
+ },
+ "eevee-cup": {
+  "en": "Eevee Cup",
+  "ko": "이브이 컵"
+ },
+ "slowpoke-cup": {
+  "en": "Slowpoke Cup",
+  "ko": "야돈 컵"
+ },
+ "silver-cup": {
+  "en": "Silver Cup",
+  "ko": "실버 티탄 컵"
+ },
+ "exercise-ball": {
+  "en": "Exercise Ball",
+  "ko": "밸런스볼"
+ },
+ "plaid-tablecloth-y": {
+  "en": "Plaid Tablecloth (Y)",
+  "ko": "옐로 체크 테이블보"
+ },
+ "plaid-tablecloth-b": {
+  "en": "Plaid Tablecloth (B)",
+  "ko": "블루 체크 테이블보"
+ },
+ "plaid-tablecloth-r": {
+  "en": "Plaid Tablecloth (R)",
+  "ko": "레드 체크 테이블보"
+ },
+ "bw-grass-tablecloth": {
+  "en": "B&W Grass Tablecloth",
+  "ko": "풀숲 흑백 테이블보"
+ },
+ "battle-tablecloth": {
+  "en": "Battle Tablecloth",
+  "ko": "배틀 테이블보"
+ },
+ "monstrous-tablecloth": {
+  "en": "Monstrous Tablecloth",
+  "ko": "괴수 테이블보"
+ },
+ "striped-tablecloth": {
+  "en": "Striped Tablecloth",
+  "ko": "줄무늬 테이블보"
+ },
+ "diamond-tablecloth": {
+  "en": "Diamond Tablecloth",
+  "ko": "다이아 테이블보"
+ },
+ "polka-dot-tablecloth": {
+  "en": "Polka-Dot Tablecloth",
+  "ko": "물방울 테이블보"
+ },
+ "lilac-tablecloth": {
+  "en": "Lilac Tablecloth",
+  "ko": "퍼플 테이블보"
+ },
+ "mint-tablecloth": {
+  "en": "Mint Tablecloth",
+  "ko": "민트 테이블보"
+ },
+ "peach-tablecloth": {
+  "en": "Peach Tablecloth",
+  "ko": "베이지 테이블보"
+ },
+ "yellow-tablecloth": {
+  "en": "Yellow Tablecloth",
+  "ko": "옐로 테이블보"
+ },
+ "blue-tablecloth": {
+  "en": "Blue Tablecloth",
+  "ko": "블루 테이블보"
+ },
+ "pink-tablecloth": {
+  "en": "Pink Tablecloth",
+  "ko": "핑크 테이블보"
+ },
+ "gold-bottle": {
+  "en": "Gold Bottle",
+  "ko": "골드 티탄 보틀"
+ },
+ "bronze-bottle": {
+  "en": "Bronze Bottle",
+  "ko": "브론즈 티탄 보틀"
+ },
+ "gold-cup": {
+  "en": "Gold Cup",
+  "ko": "골드 티탄 컵"
+ },
+ "bronze-cup": {
+  "en": "Bronze Cup",
+  "ko": "브론즈 티탄 컵"
+ },
+ "green-poke-ball-pick": {
+  "en": "Green Poké Ball Pick",
+  "ko": "초록 볼 픽"
+ },
+ "red-poke-ball-pick": {
+  "en": "Red Poké Ball Pick",
+  "ko": "빨강 볼 픽"
+ },
+ "party-sparkler-pick": {
+  "en": "Party Sparkler Pick",
+  "ko": "축하 폭죽 픽"
+ },
+ "heroic-sword-pick": {
+  "en": "Heroic Sword Pick",
+  "ko": "용사의 검 픽"
+ },
+ "magical-star-pick": {
+  "en": "Magical Star Pick",
+  "ko": "매지컬 스타 픽"
+ },
+ "magical-heart-pick": {
+  "en": "Magical Heart Pick",
+  "ko": "매지컬 하트 픽"
+ },
+ "parasol-pick": {
+  "en": "Parasol Pick",
+  "ko": "파라솔 픽"
+ },
+ "blue-sky-flower-pick": {
+  "en": "Blue-Sky Flower Pick",
+  "ko": "푸른하늘 꽃 픽"
+ },
+ "sunset-flower-pick": {
+  "en": "Sunset Flower Pick",
+  "ko": "저녁노을 꽃 픽"
+ },
+ "sunrise-flower-pick": {
+  "en": "Sunrise Flower Pick",
+  "ko": "아침노을 꽃 픽"
+ },
+ "blue-dish": {
+  "en": "Blue Dish",
+  "ko": "블루 플레이트"
+ },
+ "green-dish": {
+  "en": "Green Dish",
+  "ko": "그린 플레이트"
+ },
+ "orange-dish": {
+  "en": "Orange Dish",
+  "ko": "오렌지 플레이트"
+ },
+ "red-dish": {
+  "en": "Red Dish",
+  "ko": "레드 플레이트"
+ },
+ "white-dish": {
+  "en": "White Dish",
+  "ko": "화이트 플레이트"
+ },
+ "yellow-dish": {
+  "en": "Yellow Dish",
+  "ko": "옐로 플레이트"
+ },
+ "roto-stick": {
+  "en": "Roto Stick",
+  "ko": ""
+ },
+ "teal-style-card": {
+  "en": "Teal Style Card",
+  "ko": "멋쟁이카드 그린"
+ },
+ "teal-mask": {
+  "en": "Teal Mask",
+  "ko": "벽록의가면"
+ },
+ "glimmering-charm": {
+  "en": "Glimmering Charm",
+  "ko": "반짝이는부적"
+ },
+ "crystal-cluster": {
+  "en": "Crystal Cluster",
+  "ko": "결정조각"
+ },
+ "fairy-feather": {
+  "en": "Fairy Feather",
+  "ko": "요정의깃털"
+ },
+ "wellspring-mask": {
+  "en": "Wellspring Mask",
+  "ko": "우물의가면"
+ },
+ "hearthflame-mask": {
+  "en": "Hearthflame Mask",
+  "ko": "화덕의가면"
+ },
+ "cornerstone-mask": {
+  "en": "Cornerstone Mask",
+  "ko": "주춧돌의가면"
+ },
+ "syrupy-apple": {
+  "en": "Syrupy Apple",
+  "ko": "꿀맛사과"
+ },
+ "unremarkable-teacup": {
+  "en": "Unremarkable Teacup",
+  "ko": "범작찻잔"
+ },
+ "masterpiece-teacup": {
+  "en": "Masterpiece Teacup",
+  "ko": "걸작찻잔"
+ },
+ "health-mochi": {
+  "en": "Health Mochi",
+  "ko": "체력떡"
+ },
+ "muscle-mochi": {
+  "en": "Muscle Mochi",
+  "ko": "근력떡"
+ },
+ "resist-mochi": {
+  "en": "Resist Mochi",
+  "ko": "저항력떡"
+ },
+ "genius-mochi": {
+  "en": "Genius Mochi",
+  "ko": "지력떡"
+ },
+ "clever-mochi": {
+  "en": "Clever Mochi",
+  "ko": "정신력떡"
+ },
+ "swift-mochi": {
+  "en": "Swift Mochi",
+  "ko": "순발력떡"
+ },
+ "fresh-start-mochi": {
+  "en": "Fresh Start Mochi",
+  "ko": ""
+ },
+ "ekans-fang": {
+  "en": "Ekans Fang",
+  "ko": "아보의이빨"
+ },
+ "sandshrew-claw": {
+  "en": "Sandshrew Claw",
+  "ko": "모래두지의발톱"
+ },
+ "cleffa-fur": {
+  "en": "Cleffa Fur",
+  "ko": "삐의털"
+ },
+ "vulpix-fur": {
+  "en": "Vulpix Fur",
+  "ko": "식스테일의털"
+ },
+ "poliwag-slime": {
+  "en": "Poliwag Slime",
+  "ko": "발챙이의점액"
+ },
+ "bellsprout-vine": {
+  "en": "Bellsprout Vine",
+  "ko": "모다피의덩굴"
+ },
+ "geodude-fragment": {
+  "en": "Geodude Fragment",
+  "ko": "꼬마돌의조각"
+ },
+ "koffing-gas": {
+  "en": "Koffing Gas",
+  "ko": "또가스의가스"
+ },
+ "munchlax-fang": {
+  "en": "Munchlax Fang",
+  "ko": "먹고자의이빨"
+ },
+ "sentret-fur": {
+  "en": "Sentret Fur",
+  "ko": "꼬리선의털"
+ },
+ "hoothoot-feather": {
+  "en": "Hoothoot Feather",
+  "ko": "부우부의깃털"
+ },
+ "spinarak-thread": {
+  "en": "Spinarak Thread",
+  "ko": "페이검의실"
+ },
+ "aipom-hair": {
+  "en": "Aipom Hair",
+  "ko": "에이팜의털"
+ },
+ "yanma-spike": {
+  "en": "Yanma Spike",
+  "ko": "왕자리의가시"
+ },
+ "gligar-fang": {
+  "en": "Gligar Fang",
+  "ko": "글라이거의이빨"
+ },
+ "slugma-lava": {
+  "en": "Slugma Lava",
+  "ko": "마그마그의용암"
+ },
+ "swinub-hair": {
+  "en": "Swinub Hair",
+  "ko": "꾸꾸리의털"
+ },
+ "poochyena-fang": {
+  "en": "Poochyena Fang",
+  "ko": "포챠나의이빨"
+ },
+ "lotad-leaf": {
+  "en": "Lotad Leaf",
+  "ko": "연꽃몬의잎"
+ },
+ "seedot-stem": {
+  "en": "Seedot Stem",
+  "ko": "도토링의가지"
+ },
+ "nosepass-fragment": {
+  "en": "Nosepass Fragment",
+  "ko": "코코파스의조각"
+ },
+ "volbeat-fluid": {
+  "en": "Volbeat Fluid",
+  "ko": "볼비트의체액"
+ },
+ "illumise-fluid": {
+  "en": "Illumise Fluid",
+  "ko": "네오비트의체액"
+ },
+ "corphish-shell": {
+  "en": "Corphish Shell",
+  "ko": "가재군의껍데기"
+ },
+ "feebas-scales": {
+  "en": "Feebas Scales",
+  "ko": "빈티나의비늘"
+ },
+ "duskull-fragment": {
+  "en": "Duskull Fragment",
+  "ko": "해골몽의조각"
+ },
+ "chingling-fragment": {
+  "en": "Chingling Fragment",
+  "ko": "랑딸랑의조각"
+ },
+ "timburr-sweat": {
+  "en": "Timburr Sweat",
+  "ko": "으랏차의땀"
+ },
+ "sewaddle-leaf": {
+  "en": "Sewaddle Leaf",
+  "ko": "두르보의잎"
+ },
+ "ducklett-feather": {
+  "en": "Ducklett Feather",
+  "ko": "꼬지보리의깃털"
+ },
+ "litwick-soot": {
+  "en": "Litwick Soot",
+  "ko": "불켜미의검댕"
+ },
+ "mienfoo-claw": {
+  "en": "Mienfoo Claw",
+  "ko": "비조푸의손톱"
+ },
+ "vullaby-feather": {
+  "en": "Vullaby Feather",
+  "ko": "벌차이의깃털"
+ },
+ "carbink-jewel": {
+  "en": "Carbink Jewel",
+  "ko": "멜리시의보석"
+ },
+ "phantump-twig": {
+  "en": "Phantump Twig",
+  "ko": "나목령의가지"
+ },
+ "grubbin-thread": {
+  "en": "Grubbin Thread",
+  "ko": "턱지충이의실"
+ },
+ "cutiefly-powder": {
+  "en": "Cutiefly Powder",
+  "ko": "에블리의가루"
+ },
+ "jangmo-o-scales": {
+  "en": "Jangmo-o Scales",
+  "ko": "짜랑꼬의비늘"
+ },
+ "cramorant-down": {
+  "en": "Cramorant Down",
+  "ko": "윽우지의솜털"
+ },
+ "morpeko-snack": {
+  "en": "Morpeko Snack",
+  "ko": "모르페코의씨앗"
+ },
+ "poltchageist-powder": {
+  "en": "Poltchageist Powder",
+  "ko": "차데스의가루"
+ },
+ "linking-cord": {
+  "en": "Linking Cord",
+  "ko": "연결의끈"
+ },
+ "tm172": {
+  "en": "TM172",
+  "ko": "기술머신172"
+ },
+ "tm173": {
+  "en": "TM173",
+  "ko": "기술머신173"
+ },
+ "tm174": {
+  "en": "TM174",
+  "ko": "기술머신174"
+ },
+ "tm175": {
+  "en": "TM175",
+  "ko": "기술머신175"
+ },
+ "tm176": {
+  "en": "TM176",
+  "ko": "기술머신176"
+ },
+ "tm177": {
+  "en": "TM177",
+  "ko": "기술머신177"
+ },
+ "tm178": {
+  "en": "TM178",
+  "ko": "기술머신178"
+ },
+ "tm179": {
+  "en": "TM179",
+  "ko": "기술머신179"
+ },
+ "tm180": {
+  "en": "TM180",
+  "ko": "기술머신180"
+ },
+ "tm181": {
+  "en": "TM181",
+  "ko": "기술머신181"
+ },
+ "tm182": {
+  "en": "TM182",
+  "ko": "기술머신182"
+ },
+ "tm183": {
+  "en": "TM183",
+  "ko": "기술머신183"
+ },
+ "tm184": {
+  "en": "TM184",
+  "ko": "기술머신184"
+ },
+ "tm185": {
+  "en": "TM185",
+  "ko": "기술머신185"
+ },
+ "tm186": {
+  "en": "TM186",
+  "ko": "기술머신186"
+ },
+ "tm187": {
+  "en": "TM187",
+  "ko": "기술머신187"
+ },
+ "tm188": {
+  "en": "TM188",
+  "ko": "기술머신188"
+ },
+ "tm189": {
+  "en": "TM189",
+  "ko": "기술머신189"
+ },
+ "tm190": {
+  "en": "TM190",
+  "ko": "기술머신190"
+ },
+ "tm191": {
+  "en": "TM191",
+  "ko": "기술머신191"
+ },
+ "tm192": {
+  "en": "TM192",
+  "ko": "기술머신192"
+ },
+ "tm193": {
+  "en": "TM193",
+  "ko": "기술머신193"
+ },
+ "tm194": {
+  "en": "TM194",
+  "ko": "기술머신194"
+ },
+ "tm195": {
+  "en": "TM195",
+  "ko": "기술머신195"
+ },
+ "tm196": {
+  "en": "TM196",
+  "ko": "기술머신196"
+ },
+ "tm197": {
+  "en": "TM197",
+  "ko": "기술머신197"
+ },
+ "tm198": {
+  "en": "TM198",
+  "ko": "기술머신198"
+ },
+ "tm199": {
+  "en": "TM199",
+  "ko": "기술머신199"
+ },
+ "tm200": {
+  "en": "TM200",
+  "ko": "기술머신200"
+ },
+ "tm201": {
+  "en": "TM201",
+  "ko": "기술머신201"
+ },
+ "tm202": {
+  "en": "TM202",
+  "ko": "기술머신202"
+ },
+ "tm203": {
+  "en": "TM203",
+  "ko": "기술머신203"
+ },
+ "tm204": {
+  "en": "TM204",
+  "ko": "기술머신204"
+ },
+ "tm205": {
+  "en": "TM205",
+  "ko": "기술머신205"
+ },
+ "tm206": {
+  "en": "TM206",
+  "ko": "기술머신206"
+ },
+ "tm207": {
+  "en": "TM207",
+  "ko": "기술머신207"
+ },
+ "tm208": {
+  "en": "TM208",
+  "ko": "기술머신208"
+ },
+ "tm209": {
+  "en": "TM209",
+  "ko": "기술머신209"
+ },
+ "tm210": {
+  "en": "TM210",
+  "ko": "기술머신210"
+ },
+ "tm211": {
+  "en": "TM211",
+  "ko": "기술머신211"
+ },
+ "tm212": {
+  "en": "TM212",
+  "ko": "기술머신212"
+ },
+ "tm213": {
+  "en": "TM213",
+  "ko": "기술머신213"
+ },
+ "tm214": {
+  "en": "TM214",
+  "ko": "기술머신214"
+ },
+ "tm215": {
+  "en": "TM215",
+  "ko": "기술머신215"
+ },
+ "tm216": {
+  "en": "TM216",
+  "ko": "기술머신216"
+ },
+ "tm217": {
+  "en": "TM217",
+  "ko": "기술머신217"
+ },
+ "tm218": {
+  "en": "TM218",
+  "ko": "기술머신218"
+ },
+ "tm219": {
+  "en": "TM219",
+  "ko": "기술머신219"
+ },
+ "tm220": {
+  "en": "TM220",
+  "ko": "기술머신220"
+ },
+ "tm221": {
+  "en": "TM221",
+  "ko": "기술머신221"
+ },
+ "tm222": {
+  "en": "TM222",
+  "ko": "기술머신222"
+ },
+ "tm223": {
+  "en": "TM223",
+  "ko": "기술머신223"
+ },
+ "tm224": {
+  "en": "TM224",
+  "ko": "기술머신224"
+ },
+ "tm225": {
+  "en": "TM225",
+  "ko": "기술머신225"
+ },
+ "tm226": {
+  "en": "TM226",
+  "ko": "기술머신226"
+ },
+ "tm227": {
+  "en": "TM227",
+  "ko": "기술머신227"
+ },
+ "tm228": {
+  "en": "TM228",
+  "ko": "기술머신228"
+ },
+ "tm229": {
+  "en": "TM229",
+  "ko": "기술머신229"
+ },
+ "lastrange-ball": {
+  "en": "Strange Ball",
+  "ko": "스트레인지볼"
+ },
+ "lapoke-ball": {
+  "en": "Poké Ball",
+  "ko": "몬스터볼"
+ },
+ "lagreat-ball": {
+  "en": "Great Ball",
+  "ko": "슈퍼볼"
+ },
+ "laultra-ball": {
+  "en": "Ultra Ball",
+  "ko": "하이퍼볼"
+ },
+ "laheavy-ball": {
+  "en": "Heavy Ball",
+  "ko": "헤비볼"
+ },
+ "laleaden-ball": {
+  "en": "Leaden Ball",
+  "ko": "메가톤볼"
+ },
+ "lagigaton-ball": {
+  "en": "Gigaton Ball",
+  "ko": "기가톤볼"
+ },
+ "lafeather-ball": {
+  "en": "Feather Ball",
+  "ko": "페더볼"
+ },
+ "lawing-ball": {
+  "en": "Wing Ball",
+  "ko": "윙볼"
+ },
+ "lajet-ball": {
+  "en": "Jet Ball",
+  "ko": "제트볼"
+ },
+ "laorigin-ball": {
+  "en": "Origin Ball",
+  "ko": "오리진볼"
+ },
+ "black-augurite": {
+  "en": "Black Augurite",
+  "ko": "검은휘석"
+ },
+ "peat-block": {
+  "en": "Peat Block",
+  "ko": "피트블록"
+ }
+}
