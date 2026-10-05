@@ -1,5 +1,6 @@
 #pragma once
 
+#include <QSet>
 #include <QSortFilterProxyModel>
 
 #include <functional>
@@ -22,6 +23,9 @@ public:
     void setSearchText(const QString &text); // 이름 ko/en/ja · 효과 문구에 들어 있으면 통과
     void setCategoryFilter(CategoryFilter filter); // 비어 있으면(nullptr) 모든 분류 통과
     void setOnlyInGeneration(bool only);           // true면 지금 세대에 있는 아이템만
+    // 게임(시리즈)별 존재: 비어 있지 않으면 이 identifier만 통과(그 게임의 입수 사전이 정한다).
+    // 비면 거르지 않는다(사전이 없는 게임은 세대 기준 그대로)
+    void setAllowedItems(const QSet<QString> &identifiers);
 
 protected:
     bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const override;
@@ -30,5 +34,6 @@ private:
     QString m_search;
     CategoryFilter m_categoryFilter;
     bool m_onlyInGeneration = false;
+    QSet<QString> m_allowed;
 };
 } // namespace com::yamada::studio

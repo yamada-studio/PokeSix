@@ -5,6 +5,7 @@
 #include "data/repository/repository.h"
 #include "data/sprites/spritecache.h"
 #include "data/state/appstate.h"
+#include "ui/dex/gameselector.h"
 #include "ui/dex/guidebook.h"
 #include "ui/items/categorybutton.h"
 #include "ui/items/itemdetailpane.h"
@@ -95,6 +96,9 @@ ItemsPage::ItemsPage(Repository *repository, AppState *state, QWidget *parent)
     m_listPanel = new PanelFrame;
     m_listPanel->setPanelStyle(kListPanel);
     m_listPanel->setBody(buildListBody());
+    m_games = new GameSelector;
+    m_listPanel->setHeaderWidget(m_games); // 머리 띠 오른쪽: 게임 칩
+    connect(m_games, &GameSelector::gameSelected, this, &ItemsPage::selectGame);
     layout->addWidget(m_listPanel, 1);
 
     m_detailPanel = new PanelFrame;
@@ -236,8 +240,20 @@ void ItemsPage::onGenerationChanged()
 void ItemsPage::load()
 {
     const int generation = m_state->generation();
-    m_model->setRows(m_repository->itemsForGeneration(generation), generation);
+    const QList<GameInfo> games = m_repository->gamesForGeneration(generation);
+    // 지금 게임이 이 세대 것이 아니면(세대를 바꿨다) 대표 게임으로
+    const bool inGeneration = std::any_of(games.cbegin(), games.cend(), [this](const GameInfo &g) {
+        return g.versionGroup == m_versionGroup;
+    });
+    if (!inGeneration)
+        m_versionGroup = Repository::representativeVersionGroup(generation);
+    m_games->setGames(games, m_state->language(), m_versionGroup);
+    m_model->setRows(m_repository->itemsForGeneration(generation, m_versionGroup), generation);
     m_delegate->setGeneration(generation);
+    // 그 게임의 입수 사전에 아이템 목록이 있으면 그 목록으로 게임별 존재를 거른다
+    m_proxy->setAllowedItems(guidebook::hasItemBook(m_versionGroup)
+                                     ? guidebook::itemsIn(m_versionGroup)
+                                     : QSet<QString>());
     m_detail->clear();
     m_loaded = m_model->rowCount() > 0; // 비어 있으면(DB가 아직 없음) 다음에 보일 때 다시
     updateTitle();
@@ -252,6 +268,14 @@ void ItemsPage::selectGroup(const QString &key)
     updateTitle();
 }
 
+void ItemsPage::selectGame(const QString &versionGroup)
+{
+    if (versionGroup == m_versionGroup)
+        return;
+    m_versionGroup = versionGroup;
+    load(); // 기술머신 내용 · 게임별 존재가 바뀐다
+}
+
 void ItemsPage::showDetail(const QModelIndex &proxyIndex)
 {
     if (!proxyIndex.isValid()) {
@@ -260,12 +284,10 @@ void ItemsPage::showDetail(const QModelIndex &proxyIndex)
     }
     const int generation = m_state->generation();
     const ItemRow &item = m_model->rowAt(m_proxy->mapToSource(proxyIndex).row());
-    // 진화 대상과, 기술머신이면 획득처(사전은 지금 Pt만 — 세대의 대표 게임 기준)
+    // 진화 대상과 입수처(고른 게임의 입수 사전 — 기술머신 · 도구 모두)
     const QList<ItemEvolution> evolutions = m_repository->evolutionsWithItem(item.id, generation);
-    QStringList places;
-    if (!item.machineMove.isEmpty())
-        places = guidebook::machinePlaces(Repository::representativeVersionGroup(generation),
-                                          item.identifier);
+    const QStringList places
+            = guidebook::itemSources(m_versionGroup, item.identifier, m_state->language());
     m_detail->setItem(item, generation, m_state->language(), evolutions, places);
 }
 

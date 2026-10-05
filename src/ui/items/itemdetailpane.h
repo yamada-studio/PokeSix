@@ -20,7 +20,7 @@ public:
     explicit ItemDetailPane(SpriteCache *sprites, QWidget *parent = nullptr);
 
     void setItem(const ItemRow &item, int generation, Language language,
-                 const QList<ItemEvolution> &evolutions, const QStringList &machinePlaces);
+                 const QList<ItemEvolution> &evolutions, const QStringList &sources);
     void clear();
 
 private:
@@ -33,7 +33,9 @@ private:
     GenerationCells *m_generations = nullptr;
     QLabel *m_effectCaption = nullptr;
     QLabel *m_effect = nullptr;
-    QLabel *m_extraCaption = nullptr; // "획득처" 또는 "진화" (없으면 숨김)
+    QLabel *m_extraCaption = nullptr; // "진화" (진화 아이템만)
     QLabel *m_extra = nullptr;
+    QLabel *m_sourceCaption = nullptr; // "입수처" — 고른 게임의 입수 사전(없으면 안내 문구)
+    QLabel *m_sources = nullptr;
 };
 } // namespace com::yamada::studio

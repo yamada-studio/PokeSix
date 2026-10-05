@@ -7,6 +7,16 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- The Items page picks a game, not just a generation: version chips in the list header switch
+  TM/HM contents to that game's machine table (Let's Go's TM01 is Headbutt, Sun/Moon's is Work Up;
+  TMs the game does not have disappear), and the detail pane gains a "입수처" section from the
+  game's acquisition book. Per-game acquisition books (`resources/data/acquisition/<game>.json`)
+  replace the Platinum TM-location and tutor-cost dictionaries with one schema — method, PokéAPI
+  location, place text, content, cost (money · BP · coins · shards …) and conditions — rendered in
+  the current language ("상점 · 장막시티 · 10,000원"). When a game's book lists items beyond
+  TMs, the Items page shows only the items obtainable in that game. Request templates for all 30
+  games (with PokéAPI's TM and tutor lists prefilled) and identifier references live in
+  `docs/i18n/`.
 - A fill-in dictionary for Korean (and Japanese) names and descriptions PokéAPI lacks
   (`resources/data/names.json`, read by `data/text/namebook.h`): item, move, ability and version
   names plus item/move/ability descriptions get their empty language slots filled at run time, so

@@ -1,0 +1,59 @@
+{
+  "versionGroup": "brilliant-diamond-shining-pearl",
+  "generation": 8,
+  "_games": [
+    "브릴리언트 다이아몬드 (Brilliant Diamond)",
+    "샤이닝 펄 (Shining Pearl)"
+  ],
+  "_sources": [],
+  "_tms": {
+    "tm10": "분발 / Work Up",
+    "tm21": "매지컬샤인 / Dazzling Gleam",
+    "tm27": "로킥 / Low Sweep",
+    "tm43": "볼트체인지 / Volt Switch",
+    "tm49": "열탕 / Scald",
+    "tm62": "벌레의야단법석 / Bug Buzz",
+    "tm63": "나쁜음모 / Nasty Plot",
+    "tm78": "바크아웃 / Snarl",
+    "tm83": "땅고르기 / Bulldoze",
+    "hm01": "풀베기 / Cut",
+    "hm02": "공중날기 / Fly",
+    "hm03": "파도타기 / Surf",
+    "hm04": "괴력 / Strength",
+    "hm05": "안개제거 / Defog",
+    "hm06": "바위깨기 / Rock Smash",
+    "hm07": "폭포오르기 / Waterfall",
+    "hm08": "록클라임 / Rock Climb"
+  },
+  "_tutors": {
+    "blast-burn": "블라스트번 / Blast Burn",
+    "hydro-cannon": "하이드로캐논 / Hydro Cannon",
+    "frenzy-plant": "하드플랜트 / Frenzy Plant",
+    "draco-meteor": "용성군 / Draco Meteor"
+  },
+  "items": {
+    "tm10": [],
+    "tm21": [],
+    "tm27": [],
+    "tm43": [],
+    "tm49": [],
+    "tm62": [],
+    "tm63": [],
+    "tm78": [],
+    "tm83": [],
+    "hm01": [],
+    "hm02": [],
+    "hm03": [],
+    "hm04": [],
+    "hm05": [],
+    "hm06": [],
+    "hm07": [],
+    "hm08": []
+  },
+  "tutors": {
+    "blast-burn": [],
+    "hydro-cannon": [],
+    "frenzy-plant": [],
+    "draco-meteor": []
+  }
+}

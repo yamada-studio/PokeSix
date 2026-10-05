@@ -35,10 +35,24 @@ void ItemFilterProxy::setOnlyInGeneration(bool only)
     QSortFilterProxyModel::invalidateFilter();
 }
 
+void ItemFilterProxy::setAllowedItems(const QSet<QString> &identifiers)
+{
+    if (identifiers == m_allowed)
+        return;
+    m_allowed = identifiers;
+    QSortFilterProxyModel::invalidateFilter();
+}
+
 bool ItemFilterProxy::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
 {
     const QModelIndex index = sourceModel()->index(sourceRow, 0, sourceParent);
     if (m_onlyInGeneration && !index.data(ItemTableModel::InGenerationRole).toBool())
+        return false;
+    // 게임별: 기술머신 · 비전머신은 그 게임의 기술머신 표에 담긴 기술이 있으면 통과(목록에 기술이
+    // 붙어 있다), 나머지는 입수 사전에 있어야 통과
+    if (!m_allowed.isEmpty()
+        && !m_allowed.contains(index.data(ItemTableModel::IdentifierRole).toString())
+        && index.data(ItemTableModel::MachineMoveRole).toString().isEmpty())
         return false;
     if (m_categoryFilter
         && !m_categoryFilter(index.data(ItemTableModel::CategoryRole).toString(),

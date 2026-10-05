@@ -249,7 +249,9 @@ public:
     // 어느 세대에든 있었던 아이템 전부(id 순). 세대별 존재(generations)는 전부 담고, 효과 문구는
     // generation 기준이다: 그 세대 이하에서 가장 최근 문구, 없으면(1–5세대) 가장 이른 문구(6세대).
     // 그 세대에 없는 아이템도 넣는다 — 화면이 흐리게 보여 줄지 뺄지 정한다(프록시).
-    QList<ItemRow> itemsForGeneration(int generation);
+    // versionGroup을 주면 기술머신에 담긴 기술을 그 게임 것으로(같은 7세대라도 레츠고 ≠ 썬문,
+    // 8세대 소드실드 ≠ BDSP). 비우면 세대 기준(그 세대 첫 게임)
+    QList<ItemRow> itemsForGeneration(int generation, const QString &versionGroup = {});
 
     // 포켓몬 하나의 상세(기본 모습 pokemonId, 세대 generation). 없으면 isValid() == false.
     // versionGroup: 기술 · 기술머신의 기준 게임 묶음("heartgold-soulsilver"). 비었거나 그 세대

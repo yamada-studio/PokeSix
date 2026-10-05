@@ -610,7 +610,15 @@ to see its details here</translation>
     </message>
     <message>
         <source>획득처</source>
-        <translation>Locations</translation>
+        <translation type="vanished">Locations</translation>
+    </message>
+    <message>
+        <source>입수처</source>
+        <translation>Where to get</translation>
+    </message>
+    <message>
+        <source>이 게임의 입수 정보가 아직 없어요</source>
+        <translation>No acquisition data for this game yet</translation>
     </message>
 </context>
 <context>
@@ -1251,6 +1259,93 @@ abilities &amp; natures (gen 3+) and held items (gen 2+)</translation>
     <message>
         <source>스피드</source>
         <translation>Spe</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::guidebook</name>
+    <message>
+        <source>필드</source>
+        <translation>Field</translation>
+    </message>
+    <message>
+        <source>숨겨진 아이템</source>
+        <translation>Hidden item</translation>
+    </message>
+    <message>
+        <source>받기</source>
+        <translation>Gift</translation>
+    </message>
+    <message>
+        <source>상점</source>
+        <translation>Shop</translation>
+    </message>
+    <message>
+        <source>교환</source>
+        <translation>Exchange</translation>
+    </message>
+    <message>
+        <source>경품</source>
+        <translation>Prize</translation>
+    </message>
+    <message>
+        <source>보상</source>
+        <translation>Reward</translation>
+    </message>
+    <message>
+        <source>야생 포켓몬 소지</source>
+        <translation>Held by wild Pokémon</translation>
+    </message>
+    <message>
+        <source>교환(통신)</source>
+        <translation>Trade</translation>
+    </message>
+    <message>
+        <source>NPC 가르침</source>
+        <translation>Move tutor</translation>
+    </message>
+    <message>
+        <source>%1원</source>
+        <translation>₽%1</translation>
+    </message>
+    <message>
+        <source>%1BP</source>
+        <translation>%1 BP</translation>
+    </message>
+    <message>
+        <source>코인 %1</source>
+        <translation>%1 coins</translation>
+    </message>
+    <message>
+        <source>빨강조각 %1개</source>
+        <translation>%1 Red Shards</translation>
+    </message>
+    <message>
+        <source>파랑조각 %1개</source>
+        <translation>%1 Blue Shards</translation>
+    </message>
+    <message>
+        <source>노랑조각 %1개</source>
+        <translation>%1 Yellow Shards</translation>
+    </message>
+    <message>
+        <source>초록조각 %1개</source>
+        <translation>%1 Green Shards</translation>
+    </message>
+    <message>
+        <source>하트비늘 %1개</source>
+        <translation>%1 Heart Scales</translation>
+    </message>
+    <message>
+        <source>%1포인트</source>
+        <translation>%1 Athlete Points</translation>
+    </message>
+    <message>
+        <source>%1와트</source>
+        <translation>%1 W</translation>
+    </message>
+    <message>
+        <source>%1LP</source>
+        <translation>%1 LP</translation>
     </message>
 </context>
 <context>
