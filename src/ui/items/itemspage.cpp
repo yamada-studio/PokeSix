@@ -248,13 +248,18 @@ void ItemsPage::load()
     if (!inGeneration)
         m_versionGroup = Repository::representativeVersionGroup(generation);
     m_games->setGames(games, m_state->language(), m_versionGroup);
+    // 보고 있던 아이템을 기억해 둔다 — 게임 칩 · 세대를 바꿔도 상세가 풀리지 않게
+    const QModelIndex before = m_table->currentIndex();
+    const QString selected = before.isValid()
+                                     ? m_model->rowAt(m_proxy->mapToSource(before).row()).identifier
+                                     : QString();
     m_model->setRows(m_repository->itemsForGeneration(generation, m_versionGroup), generation);
     m_delegate->setGeneration(generation);
     // 그 게임의 입수 사전에 아이템 목록이 있으면 그 목록으로 게임별 존재를 거른다
     m_proxy->setAllowedItems(guidebook::hasItemBook(m_versionGroup)
                                      ? guidebook::itemsIn(m_versionGroup)
                                      : QSet<QString>());
-    m_detail->clear();
+    reselect(selected); // 새 목록에도 있으면 다시 고른다(currentRowChanged → 상세 갱신)
     m_loaded = m_model->rowCount() > 0; // 비어 있으면(DB가 아직 없음) 다음에 보일 때 다시
     updateTitle();
     qCInfo(lcUi) << "items loaded" << m_model->rowCount() << "for generation" << generation;
@@ -266,6 +271,21 @@ void ItemsPage::selectGroup(const QString &key)
     m_proxy->setCategoryFilter(itemstyle::filterFor(key)); // 규칙은 itemstyle.json — 화면은 key만
     m_table->scrollToTop();
     updateTitle();
+}
+
+void ItemsPage::reselect(const QString &identifier)
+{
+    if (!identifier.isEmpty()) {
+        for (int row = 0; row < m_proxy->rowCount(); ++row) {
+            const QModelIndex index = m_proxy->index(row, 0);
+            if (index.data(ItemTableModel::IdentifierRole).toString() == identifier) {
+                m_table->selectRow(row);
+                m_table->scrollTo(index);
+                return;
+            }
+        }
+    }
+    m_detail->clear(); // 새 목록에 없다(그 게임에 없는 아이템)
 }
 
 void ItemsPage::selectGame(const QString &versionGroup)

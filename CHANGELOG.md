@@ -192,6 +192,10 @@ and the project uses [Semantic Versioning](https://semver.org/).
   arrow from shifting the label.
 
 ### Fixed
+- Switching the game chips (Items) or the dex chips (Pokédex list) no longer drops the selection:
+  the item or species you were reading is re-selected in the refreshed list, scrolled into view,
+  and the detail/preview pane stays on it. It only clears when the entry does not exist in the
+  newly chosen game or dex.
 - The home fan's bottom arc was cut flat: the widget's height estimate did not cover how far the
   outer cards sag after the fan was widened (a widget cannot paint outside its own rect — no
   z-order involved). The height now follows the real geometry, and dragging clamps the swing so
