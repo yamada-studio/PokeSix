@@ -205,6 +205,10 @@ struct ItemEvolution
     LocalizedText from;
     LocalizedText to;
     bool held = false; // true = 지니고(통신교환 등), false = 사용
+    int speciesId = 0; // 진화한 종(to)
+    // 같은 묶음 중 이 진화를 할 수 있는 버전(진화 사슬이 버전 한정일 때만 — 비면 모든 버전).
+    // Repository가 아니라 화면이 게임 묶음을 보고 채운다
+    QStringList onlyVersions;
 };
 
 struct GameInfo

@@ -186,6 +186,7 @@ DexPage::DexPage(Repository *repository, AppState *state, QWidget *parent)
     toolbar->addStretch();
     // 게임 칩(앱 전체의 게임): 고른 버전에서 얻을 수 없는 다른 버전 한정 포켓몬은 목록에서 빠진다
     m_games = new GameSelector;
+    m_games->setSplitVersions(true);
     toolbar->addWidget(m_games);
     connect(m_games, &GameSelector::versionSelected, m_state, &AppState::setGame);
     bodyLayout->addLayout(toolbar);

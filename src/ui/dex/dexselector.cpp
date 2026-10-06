@@ -205,7 +205,8 @@ void DexSelector::rebuild(int checkedId)
     }
 
     // 2) [전국] + 지방 도감. 보이는 규칙(숨김 · 이름 · 배지 색)은 dexstyle.json이 정한다.
-    addButton(new DexButton(tr("전국"), {}), tr("그 세대까지 나온 포켓몬 전부"), kNational);
+    if (m_showNational)
+        addButton(new DexButton(tr("전국"), {}), tr("그 세대까지 나온 포켓몬 전부"), kNational);
     for (const DexInfo &dex : std::as_const(m_dexes)) {
         const dexstyle::DexStyle rule = dexstyle::dex(dex.identifier);
         if (rule.hidden)
@@ -235,8 +236,17 @@ void DexSelector::rebuild(int checkedId)
     // 3) 고른 도감을 켠다(없어졌으면 전국). 4) sizeHint가 바뀌었다 → 부모(PanelFrame)가 자리를 다시
     // 잡는다.
     QAbstractButton *checked = m_group->button(checkedId);
-    (checked ? checked : m_group->button(kNational))->setChecked(true);
+    if (checked == nullptr)
+        checked = m_showNational ? m_group->button(kNational) : m_group->buttons().value(0);
+    if (checked != nullptr)
+        checked->setChecked(true);
     QWidget::updateGeometry();
+}
+
+void DexSelector::setCurrent(int id)
+{
+    if (QAbstractButton *button = m_group->button(id))
+        button->setChecked(true);
 }
 
 void DexSelector::addButton(QAbstractButton *button, const QString &toolTip, int id)

@@ -628,6 +628,10 @@ to see its details here</translation>
         <source>이 게임의 입수 정보가 아직 없어요</source>
         <translation>No acquisition data for this game yet</translation>
     </message>
+    <message>
+        <source> (%1 한정)</source>
+        <translation> (%1 only)</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::ItemRowDelegate</name>

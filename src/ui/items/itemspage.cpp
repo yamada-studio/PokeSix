@@ -5,13 +5,14 @@
 #include "data/repository/repository.h"
 #include "data/sprites/spritecache.h"
 #include "data/state/appstate.h"
-#include "ui/dex/gameselector.h"
+#include "ui/dex/dexselector.h"
 #include "ui/dex/guidebook.h"
 #include "ui/items/categorybutton.h"
 #include "ui/items/itemdetailpane.h"
 #include "ui/items/itemheaderview.h"
 #include "ui/items/itemrowdelegate.h"
 #include "ui/logging/logging.h"
+#include "ui/theme/dexstyle.h"
 #include "ui/theme/itemstyle.h"
 #include "ui/theme/tokens.h"
 #include "ui/widgets/panelframe.h"
@@ -96,9 +97,19 @@ ItemsPage::ItemsPage(Repository *repository, AppState *state, QWidget *parent)
     m_listPanel = new PanelFrame;
     m_listPanel->setPanelStyle(kListPanel);
     m_listPanel->setBody(buildListBody());
-    m_games = new GameSelector;
-    m_listPanel->setHeaderWidget(m_games); // 머리 띠 오른쪽: 게임 칩
-    connect(m_games, &GameSelector::versionSelected, m_state, &AppState::setGame);
+    // 머리 띠 오른쪽: 게임 칩 — 도감 백과의 도감 칩과 같은 모양("신오 [D|P]")으로 게임 묶음을
+    // 고른다. 같은 묶음의 버전 차이는 상세에 버전 약칭으로 적는다. 여기서 고른 묶음은 이 화면
+    // 안에서만 (스쿼드의 버전은 그대로)
+    m_games = new DexSelector;
+    m_games->setShowNational(false);
+    m_listPanel->setHeaderWidget(m_games);
+    connect(m_games, &DexSelector::dexSelected, this, [this](int id) {
+        const QString group = m_gameList.value(id - 1).versionGroup;
+        if (group.isEmpty() || group == m_versionGroup)
+            return;
+        m_versionGroup = group;
+        load();
+    });
     layout->addWidget(m_listPanel, 1);
 
     m_detailPanel = new PanelFrame;
@@ -114,7 +125,10 @@ ItemsPage::ItemsPage(Repository *repository, AppState *state, QWidget *parent)
     layout->addWidget(m_detailPanel);
 
     connect(m_state, &AppState::generationChanged, this, &ItemsPage::onGenerationChanged);
-    connect(m_state, &AppState::gameChanged, this, &ItemsPage::onGenerationChanged);
+    connect(m_state, &AppState::gameChanged, this, [this] {
+        m_versionGroup.clear(); // 앱의 게임(스쿼드 등)을 바꿨다 → 그 버전의 묶음으로
+        onGenerationChanged();
+    });
     connect(m_state, &AppState::languageChanged, this, &ItemsPage::applyLanguage);
     selectGroup(QString::fromLatin1(itemstyle::kAll)); // "전체"도 숨길 분류는 빼야 해서 꼭 한 번
     applyLanguage();
@@ -219,6 +233,7 @@ void ItemsPage::applyLanguage()
     for (QAbstractButton *button : m_groups->buttons())
         static_cast<CategoryButton *>(button)->setLanguage(language);
     m_table->viewport()->update();
+    m_games->setLanguage(language);
     showDetail(m_table->currentIndex()); // 상세 창도 새 언어로
     updateTitle();
 }
@@ -243,9 +258,14 @@ void ItemsPage::load()
     const int generation = m_state->generation();
     const QList<GameInfo> games = m_repository->gamesForGeneration(generation);
     // 게임 = 앱이 고른 버전(스쿼드 · 도감과 같다). 고른 적이 없으면 대표 게임
-    m_version = m_repository->resolveVersion(generation, m_state->game());
-    m_versionGroup = versionGroupOf(games, m_version);
-    m_games->setGames(games, m_state->language(), m_version);
+    // 게임 묶음: 이 화면에서 고른 묶음(그 세대 것일 때), 아니면 앱이 고른 버전의 묶음
+    const bool inGeneration = std::any_of(games.cbegin(), games.cend(), [this](const GameInfo &g) {
+        return g.versionGroup == m_versionGroup;
+    });
+    if (!inGeneration)
+        m_versionGroup
+                = versionGroupOf(games, m_repository->resolveVersion(generation, m_state->game()));
+    setGameChips(games);
     // 보고 있던 아이템을 기억해 둔다 — 게임 칩 · 세대를 바꿔도 상세가 풀리지 않게
     const QModelIndex before = m_table->currentIndex();
     const QString selected = before.isValid()
@@ -295,10 +315,57 @@ void ItemsPage::showDetail(const QModelIndex &proxyIndex)
     const int generation = m_state->generation();
     const ItemRow &item = m_model->rowAt(m_proxy->mapToSource(proxyIndex).row());
     // 진화 대상과 입수처(고른 게임의 입수 사전 — 기술머신 · 도구 모두)
-    const QList<ItemEvolution> evolutions = m_repository->evolutionsWithItem(item.id, generation);
-    const QStringList places = guidebook::itemSources(m_versionGroup, item.identifier,
-                                                      m_state->language(), m_version);
+    QList<ItemEvolution> evolutions = m_repository->evolutionsWithItem(item.id, generation);
+    // 같은 묶음의 버전마다 다르면 상세에 버전을 적는다: 버전 한정 포켓몬의 진화("SS 한정"),
+    // 버전 한정 입수처("W2 — 13번 도로" — 입수 사전이 붙인다)
+    const auto game
+            = std::find_if(m_gameList.cbegin(), m_gameList.cend(),
+                           [this](const GameInfo &g) { return g.versionGroup == m_versionGroup; });
+    if (game != m_gameList.cend() && game->versions.size() > 1) {
+        for (ItemEvolution &evolution : evolutions) {
+            QStringList obtainable;
+            for (const QString &version : game->versions)
+                if (!m_repository->otherVersionSpecies(version).contains(evolution.speciesId))
+                    obtainable.append(version);
+            if (obtainable.size() < game->versions.size())
+                evolution.onlyVersions = obtainable;
+        }
+    }
+    const QStringList places
+            = guidebook::itemSources(m_versionGroup, item.identifier, m_state->language());
     m_detail->setItem(item, generation, m_state->language(), evolutions, places);
+}
+
+void ItemsPage::setGameChips(const QList<GameInfo> &games)
+{
+    // 게임 묶음마다 도감 칩 하나: 이름은 그 묶음이 쓰는 지방 도감의 이름(신오 · 성도 …), 배지는 그
+    // 묶음의 버전. 버튼 id = 목록 위치 + 1
+    m_gameList = games;
+    const QList<DexInfo> dexes = m_repository->dexesForGeneration(m_state->generation());
+    QList<DexInfo> chips;
+    int current = 0;
+    for (qsizetype i = 0; i < games.size(); ++i) {
+        const GameInfo &game = games.at(i);
+        DexInfo chip;
+        chip.pokedexId = int(i) + 1;
+        for (const DexInfo &dex : dexes)
+            if (dex.versionGroups.contains(game.versionGroup)
+                && !dexstyle::dex(dex.identifier).hidden) {
+                chip.identifier = dex.identifier; // 이름 바꾸기 규칙(DLC 도감 등)도 같이
+                chip.region = dex.region;
+                break;
+            }
+        if (chip.region.isEmpty())
+            chip.region = dexstyle::groupLabel(game.versionGroup);
+        chip.versions = game.versions;
+        chip.versionNames = game.versionNames;
+        chip.versionGroups = {game.versionGroup};
+        chips.append(chip);
+        if (game.versionGroup == m_versionGroup)
+            current = chip.pokedexId;
+    }
+    m_games->setDexes(chips);
+    m_games->setCurrent(current);
 }
 
 void ItemsPage::updateTitle()
