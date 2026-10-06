@@ -1,13 +1,11 @@
 {
   "_comment": [
     "게임(버전 그룹)별 입수 사전 (ui/dex/guidebook.h가 읽는다). 형식은 docs/i18n/README.md 참고.",
-    "items: 아이템 identifier → 입수 방법 목록. tutors: 기술 identifier → NPC 가르침 방법 목록.",
-    "항목: how(field·hidden·gift·shop·exchange·prize·reward·held·trade·tutor·other), where(PokéAPI 장소 identifier),",
-    "place(장소 글자 — identifier가 없을 때), content(컨텐츠: 배틀프런티어 · 포케슬론 …), cost([{amount, unit}]), detail(조건 · 메모).",
-    "글자 칸은 한국어 글자 하나 또는 {ko, en, ja}. 이 게임에 사전 항목이 있으면, 아이템 백과는 이 게임에서 구할 수 있는 아이템만 보여 준다."
+    "scripts/i18n/check_acquisition.py로 검증해 넣었다. 출처는 _sources."
   ],
   "_sources": [
-    "네이버 블로그 '미오시티의 작은 도서관' — 포켓몬스터 플라티나: 기술머신/비전머신 입수 방법(2016-08-26 수정). 사용자 요청으로 옮김"
+    "네이버 블로그 '미오시티의 작은 도서관' — 포켓몬스터 플라티나: 기술머신/비전머신 입수 방법(2016-08-26 수정). 사용자 요청으로 옮김",
+    "네이버 블로그 '미오시티의 작은 도서관' — 포켓몬스터 플라티나: NPC 기술[2판](2016-08-21 수정). 사용자 제공"
   ],
   "versionGroup": "platinum",
   "items": {
@@ -590,5 +588,685 @@
       }
     ]
   },
-  "tutors": {}
+  "tutors": {
+    "dive": [
+      {
+        "how": "tutor",
+        "place": "212번 도로 민가(비 내리는 쪽)",
+        "cost": [
+          {
+            "amount": 2,
+            "unit": "red-shard"
+          },
+          {
+            "amount": 4,
+            "unit": "blue-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "yellow-shard"
+          }
+        ]
+      }
+    ],
+    "fury-cutter": [
+      {
+        "how": "tutor",
+        "place": "212번 도로 민가(비 내리는 쪽)",
+        "cost": [
+          {
+            "amount": 8,
+            "unit": "blue-shard"
+          }
+        ]
+      }
+    ],
+    "icy-wind": [
+      {
+        "how": "tutor",
+        "place": "212번 도로 민가(비 내리는 쪽)",
+        "cost": [
+          {
+            "amount": 6,
+            "unit": "blue-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "green-shard"
+          }
+        ]
+      }
+    ],
+    "thunder-punch": [
+      {
+        "how": "tutor",
+        "place": "212번 도로 민가(비 내리는 쪽)",
+        "cost": [
+          {
+            "amount": 2,
+            "unit": "red-shard"
+          },
+          {
+            "amount": 6,
+            "unit": "blue-shard"
+          }
+        ]
+      }
+    ],
+    "fire-punch": [
+      {
+        "how": "tutor",
+        "place": "212번 도로 민가(비 내리는 쪽)",
+        "cost": [
+          {
+            "amount": 2,
+            "unit": "red-shard"
+          },
+          {
+            "amount": 6,
+            "unit": "blue-shard"
+          }
+        ]
+      }
+    ],
+    "ice-punch": [
+      {
+        "how": "tutor",
+        "place": "212번 도로 민가(비 내리는 쪽)",
+        "cost": [
+          {
+            "amount": 2,
+            "unit": "red-shard"
+          },
+          {
+            "amount": 6,
+            "unit": "blue-shard"
+          }
+        ]
+      }
+    ],
+    "ominous-wind": [
+      {
+        "how": "tutor",
+        "place": "212번 도로 민가(비 내리는 쪽)",
+        "cost": [
+          {
+            "amount": 6,
+            "unit": "blue-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "green-shard"
+          }
+        ]
+      }
+    ],
+    "air-cutter": [
+      {
+        "how": "tutor",
+        "place": "212번 도로 민가(비 내리는 쪽)",
+        "cost": [
+          {
+            "amount": 2,
+            "unit": "red-shard"
+          },
+          {
+            "amount": 4,
+            "unit": "blue-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "green-shard"
+          }
+        ]
+      }
+    ],
+    "zen-headbutt": [
+      {
+        "how": "tutor",
+        "place": "212번 도로 민가(비 내리는 쪽)",
+        "cost": [
+          {
+            "amount": 4,
+            "unit": "blue-shard"
+          },
+          {
+            "amount": 4,
+            "unit": "yellow-shard"
+          }
+        ]
+      }
+    ],
+    "vacuum-wave": [
+      {
+        "how": "tutor",
+        "place": "212번 도로 민가(비 내리는 쪽)",
+        "cost": [
+          {
+            "amount": 2,
+            "unit": "red-shard"
+          },
+          {
+            "amount": 4,
+            "unit": "blue-shard"
+          }
+        ]
+      }
+    ],
+    "trick": [
+      {
+        "how": "tutor",
+        "place": "212번 도로 민가(비 내리는 쪽)",
+        "cost": [
+          {
+            "amount": 4,
+            "unit": "blue-shard"
+          },
+          {
+            "amount": 4,
+            "unit": "yellow-shard"
+          }
+        ]
+      }
+    ],
+    "knock-off": [
+      {
+        "how": "tutor",
+        "place": "212번 도로 민가(비 내리는 쪽)",
+        "cost": [
+          {
+            "amount": 4,
+            "unit": "red-shard"
+          },
+          {
+            "amount": 4,
+            "unit": "blue-shard"
+          }
+        ]
+      }
+    ],
+    "sucker-punch": [
+      {
+        "how": "tutor",
+        "place": "212번 도로 민가(비 내리는 쪽)",
+        "cost": [
+          {
+            "amount": 6,
+            "unit": "blue-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "yellow-shard"
+          }
+        ]
+      }
+    ],
+    "snore": [
+      {
+        "how": "tutor",
+        "place": "선단시티 민가",
+        "cost": [
+          {
+            "amount": 2,
+            "unit": "red-shard"
+          },
+          {
+            "amount": 4,
+            "unit": "yellow-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "green-shard"
+          }
+        ]
+      }
+    ],
+    "spite": [
+      {
+        "how": "tutor",
+        "place": "선단시티 민가",
+        "cost": [
+          {
+            "amount": 8,
+            "unit": "yellow-shard"
+          }
+        ]
+      }
+    ],
+    "helping-hand": [
+      {
+        "how": "tutor",
+        "place": "선단시티 민가",
+        "cost": [
+          {
+            "amount": 2,
+            "unit": "red-shard"
+          },
+          {
+            "amount": 4,
+            "unit": "yellow-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "green-shard"
+          }
+        ]
+      }
+    ],
+    "synthesis": [
+      {
+        "how": "tutor",
+        "place": "선단시티 민가",
+        "cost": [
+          {
+            "amount": 2,
+            "unit": "yellow-shard"
+          },
+          {
+            "amount": 6,
+            "unit": "green-shard"
+          }
+        ]
+      }
+    ],
+    "magnet-rise": [
+      {
+        "how": "tutor",
+        "place": "선단시티 민가",
+        "cost": [
+          {
+            "amount": 2,
+            "unit": "blue-shard"
+          },
+          {
+            "amount": 4,
+            "unit": "yellow-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "green-shard"
+          }
+        ]
+      }
+    ],
+    "last-resort": [
+      {
+        "how": "tutor",
+        "place": "선단시티 민가",
+        "cost": [
+          {
+            "amount": 8,
+            "unit": "green-shard"
+          }
+        ]
+      }
+    ],
+    "swift": [
+      {
+        "how": "tutor",
+        "place": "선단시티 민가",
+        "cost": [
+          {
+            "amount": 2,
+            "unit": "blue-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "yellow-shard"
+          },
+          {
+            "amount": 4,
+            "unit": "green-shard"
+          }
+        ]
+      }
+    ],
+    "uproar": [
+      {
+        "how": "tutor",
+        "place": "선단시티 민가",
+        "cost": [
+          {
+            "amount": 6,
+            "unit": "yellow-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "green-shard"
+          }
+        ]
+      }
+    ],
+    "mud-slap": [
+      {
+        "how": "tutor",
+        "place": "서바이벌에리어 민가",
+        "cost": [
+          {
+            "amount": 4,
+            "unit": "red-shard"
+          },
+          {
+            "amount": 4,
+            "unit": "blue-shard"
+          }
+        ]
+      }
+    ],
+    "rollout": [
+      {
+        "how": "tutor",
+        "place": "서바이벌에리어 민가",
+        "cost": [
+          {
+            "amount": 4,
+            "unit": "red-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "blue-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "green-shard"
+          }
+        ]
+      }
+    ],
+    "superpower": [
+      {
+        "how": "tutor",
+        "place": "서바이벌에리어 민가",
+        "cost": [
+          {
+            "amount": 8,
+            "unit": "red-shard"
+          }
+        ]
+      }
+    ],
+    "iron-head": [
+      {
+        "how": "tutor",
+        "place": "서바이벌에리어 민가",
+        "cost": [
+          {
+            "amount": 6,
+            "unit": "red-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "yellow-shard"
+          }
+        ]
+      }
+    ],
+    "aqua-tail": [
+      {
+        "how": "tutor",
+        "place": "서바이벌에리어 민가",
+        "cost": [
+          {
+            "amount": 6,
+            "unit": "red-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "green-shard"
+          }
+        ]
+      }
+    ],
+    "gastro-acid": [
+      {
+        "how": "tutor",
+        "place": "서바이벌에리어 민가",
+        "cost": [
+          {
+            "amount": 4,
+            "unit": "red-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "yellow-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "green-shard"
+          }
+        ]
+      }
+    ],
+    "endeavor": [
+      {
+        "how": "tutor",
+        "place": "서바이벌에리어 민가",
+        "cost": [
+          {
+            "amount": 4,
+            "unit": "red-shard"
+          },
+          {
+            "amount": 4,
+            "unit": "yellow-shard"
+          }
+        ]
+      }
+    ],
+    "outrage": [
+      {
+        "how": "tutor",
+        "place": "서바이벌에리어 민가",
+        "cost": [
+          {
+            "amount": 6,
+            "unit": "red-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "yellow-shard"
+          }
+        ]
+      }
+    ],
+    "ancient-power": [
+      {
+        "how": "tutor",
+        "place": "서바이벌에리어 민가",
+        "cost": [
+          {
+            "amount": 6,
+            "unit": "red-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "green-shard"
+          }
+        ]
+      }
+    ],
+    "signal-beam": [
+      {
+        "how": "tutor",
+        "place": "서바이벌에리어 민가",
+        "cost": [
+          {
+            "amount": 2,
+            "unit": "red-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "blue-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "yellow-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "green-shard"
+          }
+        ]
+      }
+    ],
+    "earth-power": [
+      {
+        "how": "tutor",
+        "place": "서바이벌에리어 민가",
+        "cost": [
+          {
+            "amount": 6,
+            "unit": "red-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "green-shard"
+          }
+        ]
+      }
+    ],
+    "gunk-shot": [
+      {
+        "how": "tutor",
+        "place": "서바이벌에리어 민가",
+        "cost": [
+          {
+            "amount": 4,
+            "unit": "red-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "blue-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "green-shard"
+          }
+        ]
+      }
+    ],
+    "twister": [
+      {
+        "how": "tutor",
+        "place": "서바이벌에리어 민가",
+        "cost": [
+          {
+            "amount": 6,
+            "unit": "red-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "green-shard"
+          }
+        ]
+      }
+    ],
+    "seed-bomb": [
+      {
+        "how": "tutor",
+        "place": "서바이벌에리어 민가",
+        "cost": [
+          {
+            "amount": 4,
+            "unit": "red-shard"
+          },
+          {
+            "amount": 4,
+            "unit": "green-shard"
+          }
+        ]
+      }
+    ],
+    "iron-defense": [
+      {
+        "how": "tutor",
+        "place": "서바이벌에리어 민가",
+        "cost": [
+          {
+            "amount": 4,
+            "unit": "red-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "blue-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "yellow-shard"
+          }
+        ]
+      }
+    ],
+    "bounce": [
+      {
+        "how": "tutor",
+        "place": "서바이벌에리어 민가",
+        "cost": [
+          {
+            "amount": 4,
+            "unit": "red-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "yellow-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "green-shard"
+          }
+        ]
+      }
+    ],
+    "heat-wave": [
+      {
+        "how": "tutor",
+        "place": "서바이벌에리어 민가",
+        "cost": [
+          {
+            "amount": 4,
+            "unit": "red-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "yellow-shard"
+          },
+          {
+            "amount": 2,
+            "unit": "green-shard"
+          }
+        ]
+      }
+    ],
+    "draco-meteor": [
+      {
+        "how": "tutor",
+        "place": "210번 도로 북쪽 민가(안개 지역, 락클라임 필요)",
+        "detail": "드래곤 타입 · 친밀도 최대 (무료)"
+      }
+    ],
+    "frenzy-plant": [
+      {
+        "how": "tutor",
+        "where": "sinnoh-route-228",
+        "place": "228번 도로 민가(도로변)",
+        "detail": "스타팅 최종 진화 · 친밀도 최대 (무료)"
+      }
+    ],
+    "blast-burn": [
+      {
+        "how": "tutor",
+        "where": "sinnoh-route-228",
+        "place": "228번 도로 민가(도로변)",
+        "detail": "스타팅 최종 진화 · 친밀도 최대 (무료)"
+      }
+    ],
+    "hydro-cannon": [
+      {
+        "how": "tutor",
+        "where": "sinnoh-route-228",
+        "place": "228번 도로 민가(도로변)",
+        "detail": "스타팅 최종 진화 · 친밀도 최대 (무료)"
+      }
+    ]
+  }
 }

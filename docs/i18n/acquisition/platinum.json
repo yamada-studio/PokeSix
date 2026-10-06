@@ -1,780 +1,1418 @@
 {
-  "versionGroup": "platinum",
-  "generation": 4,
-  "_games": [
-    "기라티나 (Platinum)"
+ "versionGroup": "platinum",
+ "generation": 4,
+ "_games": [
+  "기라티나 (Platinum)"
+ ],
+ "_sources": [
+  "네이버 블로그 '미오시티의 작은 도서관' — 포켓몬스터 플라티나: 기술머신/비전머신 입수 방법(2016-08-26 수정). 사용자 요청으로 옮김",
+  "네이버 블로그 '미오시티의 작은 도서관' — 포켓몬스터 플라티나: NPC 기술[2판](2016-08-21 수정). 사용자 제공"
+ ],
+ "_tms": {
+  "tm01": "힘껏펀치 / Focus Punch",
+  "tm02": "드래곤클로 / Dragon Claw",
+  "tm03": "물의파동 / Water Pulse",
+  "tm04": "명상 / Calm Mind",
+  "tm05": "울부짖기 / Roar",
+  "tm06": "맹독 / Toxic",
+  "tm07": "싸라기눈 / Hail",
+  "tm08": "벌크업 / Bulk Up",
+  "tm09": "씨기관총 / Bullet Seed",
+  "tm10": "잠재파워 / Hidden Power",
+  "tm11": "쾌청 / Sunny Day",
+  "tm12": "도발 / Taunt",
+  "tm13": "냉동빔 / Ice Beam",
+  "tm14": "눈보라 / Blizzard",
+  "tm15": "파괴광선 / Hyper Beam",
+  "tm16": "빛의장막 / Light Screen",
+  "tm17": "방어 / Protect",
+  "tm18": "비바라기 / Rain Dance",
+  "tm19": "기가드레인 / Giga Drain",
+  "tm20": "신비의부적 / Safeguard",
+  "tm21": "화풀이 / Frustration",
+  "tm22": "솔라빔 / Solar Beam",
+  "tm23": "아이언테일 / Iron Tail",
+  "tm24": "10만볼트 / Thunderbolt",
+  "tm25": "번개 / Thunder",
+  "tm26": "지진 / Earthquake",
+  "tm27": "은혜갚기 / Return",
+  "tm28": "구멍파기 / Dig",
+  "tm29": "사이코키네시스 / Psychic",
+  "tm30": "섀도볼 / Shadow Ball",
+  "tm31": "깨뜨리다 / Brick Break",
+  "tm32": "그림자분신 / Double Team",
+  "tm33": "리플렉터 / Reflect",
+  "tm34": "전격파 / Shock Wave",
+  "tm35": "화염방사 / Flamethrower",
+  "tm36": "오물폭탄 / Sludge Bomb",
+  "tm37": "모래바람 / Sandstorm",
+  "tm38": "불대문자 / Fire Blast",
+  "tm39": "암석봉인 / Rock Tomb",
+  "tm40": "제비반환 / Aerial Ace",
+  "tm41": "트집 / Torment",
+  "tm42": "객기 / Facade",
+  "tm43": "비밀의힘 / Secret Power",
+  "tm44": "잠자기 / Rest",
+  "tm45": "헤롱헤롱 / Attract",
+  "tm46": "도둑질 / Thief",
+  "tm47": "강철날개 / Steel Wing",
+  "tm48": "스킬스왑 / Skill Swap",
+  "tm49": "가로채기 / Snatch",
+  "tm50": "오버히트 / Overheat",
+  "tm51": "날개쉬기 / Roost",
+  "tm52": "기합구슬 / Focus Blast",
+  "tm53": "에너지볼 / Energy Ball",
+  "tm54": "칼등치기 / False Swipe",
+  "tm55": "소금물 / Brine",
+  "tm56": "내던지기 / Fling",
+  "tm57": "차지빔 / Charge Beam",
+  "tm58": "버티기 / Endure",
+  "tm59": "용의파동 / Dragon Pulse",
+  "tm60": "드레인펀치 / Drain Punch",
+  "tm61": "도깨비불 / Will-O-Wisp",
+  "tm62": "은빛바람 / Silver Wind",
+  "tm63": "금제 / Embargo",
+  "tm64": "대폭발 / Explosion",
+  "tm65": "섀도클로 / Shadow Claw",
+  "tm66": "보복 / Payback",
+  "tm67": "리사이클 / Recycle",
+  "tm68": "기가임팩트 / Giga Impact",
+  "tm69": "록커트 / Rock Polish",
+  "tm70": "플래시 / Flash",
+  "tm71": "스톤에지 / Stone Edge",
+  "tm72": "눈사태 / Avalanche",
+  "tm73": "전기자석파 / Thunder Wave",
+  "tm74": "자이로볼 / Gyro Ball",
+  "tm75": "칼춤 / Swords Dance",
+  "tm76": "스텔스록 / Stealth Rock",
+  "tm77": "자기암시 / Psych Up",
+  "tm78": "유혹 / Captivate",
+  "tm79": "악의파동 / Dark Pulse",
+  "tm80": "스톤샤워 / Rock Slide",
+  "tm81": "시저크로스 / X-Scissor",
+  "tm82": "잠꼬대 / Sleep Talk",
+  "tm83": "자연의은혜 / Natural Gift",
+  "tm84": "독찌르기 / Poison Jab",
+  "tm85": "꿈먹기 / Dream Eater",
+  "tm86": "풀묶기 / Grass Knot",
+  "tm87": "뽐내기 / Swagger",
+  "tm88": "쪼아대기 / Pluck",
+  "tm89": "유턴 / U-turn",
+  "tm90": "대타출동 / Substitute",
+  "tm91": "러스터캐논 / Flash Cannon",
+  "tm92": "트릭룸 / Trick Room",
+  "hm01": "풀베기 / Cut",
+  "hm02": "공중날기 / Fly",
+  "hm03": "파도타기 / Surf",
+  "hm04": "괴력 / Strength",
+  "hm05": "안개제거 / Defog",
+  "hm06": "바위깨기 / Rock Smash",
+  "hm07": "폭포오르기 / Waterfall",
+  "hm08": "록클라임 / Rock Climb"
+ },
+ "_tutors": {
+  "fire-punch": "불꽃펀치 / Fire Punch",
+  "ice-punch": "냉동펀치 / Ice Punch",
+  "thunder-punch": "번개펀치 / Thunder Punch",
+  "swift": "스피드스타 / Swift",
+  "snore": "코골기 / Snore",
+  "spite": "원한 / Spite",
+  "mud-slap": "진흙뿌리기 / Mud-Slap",
+  "icy-wind": "얼어붙은바람 / Icy Wind",
+  "outrage": "역린 / Outrage",
+  "rollout": "구르기 / Rollout",
+  "fury-cutter": "연속자르기 / Fury Cutter",
+  "synthesis": "광합성 / Synthesis",
+  "twister": "회오리 / Twister",
+  "ancient-power": "원시의힘 / Ancient Power",
+  "uproar": "소란피기 / Uproar",
+  "heat-wave": "열풍 / Heat Wave",
+  "helping-hand": "도우미 / Helping Hand",
+  "trick": "트릭 / Trick",
+  "superpower": "엄청난힘 / Superpower",
+  "knock-off": "탁쳐서떨구기 / Knock Off",
+  "endeavor": "죽기살기 / Endeavor",
+  "dive": "다이빙 / Dive",
+  "blast-burn": "블라스트번 / Blast Burn",
+  "hydro-cannon": "하이드로캐논 / Hydro Cannon",
+  "air-cutter": "에어커터 / Air Cutter",
+  "signal-beam": "시그널빔 / Signal Beam",
+  "iron-defense": "철벽 / Iron Defense",
+  "frenzy-plant": "하드플랜트 / Frenzy Plant",
+  "bounce": "뛰어오르기 / Bounce",
+  "gastro-acid": "위액 / Gastro Acid",
+  "last-resort": "비장의무기 / Last Resort",
+  "sucker-punch": "기습 / Sucker Punch",
+  "magnet-rise": "전자부유 / Magnet Rise",
+  "aqua-tail": "아쿠아테일 / Aqua Tail",
+  "seed-bomb": "씨폭탄 / Seed Bomb",
+  "vacuum-wave": "진공파 / Vacuum Wave",
+  "earth-power": "대지의힘 / Earth Power",
+  "zen-headbutt": "사념의박치기 / Zen Headbutt",
+  "draco-meteor": "용성군 / Draco Meteor",
+  "gunk-shot": "더스트슈트 / Gunk Shot",
+  "iron-head": "아이언헤드 / Iron Head",
+  "ominous-wind": "괴상한바람 / Ominous Wind"
+ },
+ "items": {
+  "tm01": [
+   {
+    "place": "무쇠게이트 지하 1층"
+   }
   ],
-  "_sources": [
-    "네이버 블로그 '미오시티의 작은 도서관' — 포켓몬스터 플라티나: 기술머신/비전머신 입수 방법(2016-08-26 수정). 사용자 요청으로 옮김"
+  "tm02": [
+   {
+    "place": "천관산"
+   }
   ],
-  "_tms": {
-    "tm01": "힘껏펀치 / Focus Punch",
-    "tm02": "드래곤클로 / Dragon Claw",
-    "tm03": "물의파동 / Water Pulse",
-    "tm04": "명상 / Calm Mind",
-    "tm05": "울부짖기 / Roar",
-    "tm06": "맹독 / Toxic",
-    "tm07": "싸라기눈 / Hail",
-    "tm08": "벌크업 / Bulk Up",
-    "tm09": "씨기관총 / Bullet Seed",
-    "tm10": "잠재파워 / Hidden Power",
-    "tm11": "쾌청 / Sunny Day",
-    "tm12": "도발 / Taunt",
-    "tm13": "냉동빔 / Ice Beam",
-    "tm14": "눈보라 / Blizzard",
-    "tm15": "파괴광선 / Hyper Beam",
-    "tm16": "빛의장막 / Light Screen",
-    "tm17": "방어 / Protect",
-    "tm18": "비바라기 / Rain Dance",
-    "tm19": "기가드레인 / Giga Drain",
-    "tm20": "신비의부적 / Safeguard",
-    "tm21": "화풀이 / Frustration",
-    "tm22": "솔라빔 / Solar Beam",
-    "tm23": "아이언테일 / Iron Tail",
-    "tm24": "10만볼트 / Thunderbolt",
-    "tm25": "번개 / Thunder",
-    "tm26": "지진 / Earthquake",
-    "tm27": "은혜갚기 / Return",
-    "tm28": "구멍파기 / Dig",
-    "tm29": "사이코키네시스 / Psychic",
-    "tm30": "섀도볼 / Shadow Ball",
-    "tm31": "깨뜨리다 / Brick Break",
-    "tm32": "그림자분신 / Double Team",
-    "tm33": "리플렉터 / Reflect",
-    "tm34": "전격파 / Shock Wave",
-    "tm35": "화염방사 / Flamethrower",
-    "tm36": "오물폭탄 / Sludge Bomb",
-    "tm37": "모래바람 / Sandstorm",
-    "tm38": "불대문자 / Fire Blast",
-    "tm39": "암석봉인 / Rock Tomb",
-    "tm40": "제비반환 / Aerial Ace",
-    "tm41": "트집 / Torment",
-    "tm42": "객기 / Facade",
-    "tm43": "비밀의힘 / Secret Power",
-    "tm44": "잠자기 / Rest",
-    "tm45": "헤롱헤롱 / Attract",
-    "tm46": "도둑질 / Thief",
-    "tm47": "강철날개 / Steel Wing",
-    "tm48": "스킬스왑 / Skill Swap",
-    "tm49": "가로채기 / Snatch",
-    "tm50": "오버히트 / Overheat",
-    "tm51": "날개쉬기 / Roost",
-    "tm52": "기합구슬 / Focus Blast",
-    "tm53": "에너지볼 / Energy Ball",
-    "tm54": "칼등치기 / False Swipe",
-    "tm55": "소금물 / Brine",
-    "tm56": "내던지기 / Fling",
-    "tm57": "차지빔 / Charge Beam",
-    "tm58": "버티기 / Endure",
-    "tm59": "용의파동 / Dragon Pulse",
-    "tm60": "드레인펀치 / Drain Punch",
-    "tm61": "도깨비불 / Will-O-Wisp",
-    "tm62": "은빛바람 / Silver Wind",
-    "tm63": "금제 / Embargo",
-    "tm64": "대폭발 / Explosion",
-    "tm65": "섀도클로 / Shadow Claw",
-    "tm66": "보복 / Payback",
-    "tm67": "리사이클 / Recycle",
-    "tm68": "기가임팩트 / Giga Impact",
-    "tm69": "록커트 / Rock Polish",
-    "tm70": "플래시 / Flash",
-    "tm71": "스톤에지 / Stone Edge",
-    "tm72": "눈사태 / Avalanche",
-    "tm73": "전기자석파 / Thunder Wave",
-    "tm74": "자이로볼 / Gyro Ball",
-    "tm75": "칼춤 / Swords Dance",
-    "tm76": "스텔스록 / Stealth Rock",
-    "tm77": "자기암시 / Psych Up",
-    "tm78": "유혹 / Captivate",
-    "tm79": "악의파동 / Dark Pulse",
-    "tm80": "스톤샤워 / Rock Slide",
-    "tm81": "시저크로스 / X-Scissor",
-    "tm82": "잠꼬대 / Sleep Talk",
-    "tm83": "자연의은혜 / Natural Gift",
-    "tm84": "독찌르기 / Poison Jab",
-    "tm85": "꿈먹기 / Dream Eater",
-    "tm86": "풀묶기 / Grass Knot",
-    "tm87": "뽐내기 / Swagger",
-    "tm88": "쪼아대기 / Pluck",
-    "tm89": "유턴 / U-turn",
-    "tm90": "대타출동 / Substitute",
-    "tm91": "러스터캐논 / Flash Cannon",
-    "tm92": "트릭룸 / Trick Room",
-    "hm01": "풀베기 / Cut",
-    "hm02": "공중날기 / Fly",
-    "hm03": "파도타기 / Surf",
-    "hm04": "괴력 / Strength",
-    "hm05": "안개제거 / Defog",
-    "hm06": "바위깨기 / Rock Smash",
-    "hm07": "폭포오르기 / Waterfall",
-    "hm08": "록클라임 / Rock Climb"
-  },
-  "_tutors": {
-    "fire-punch": "불꽃펀치 / Fire Punch",
-    "ice-punch": "냉동펀치 / Ice Punch",
-    "thunder-punch": "번개펀치 / Thunder Punch",
-    "swift": "스피드스타 / Swift",
-    "snore": "코골기 / Snore",
-    "spite": "원한 / Spite",
-    "mud-slap": "진흙뿌리기 / Mud-Slap",
-    "icy-wind": "얼어붙은바람 / Icy Wind",
-    "outrage": "역린 / Outrage",
-    "rollout": "구르기 / Rollout",
-    "fury-cutter": "연속자르기 / Fury Cutter",
-    "synthesis": "광합성 / Synthesis",
-    "twister": "회오리 / Twister",
-    "ancient-power": "원시의힘 / Ancient Power",
-    "uproar": "소란피기 / Uproar",
-    "heat-wave": "열풍 / Heat Wave",
-    "helping-hand": "도우미 / Helping Hand",
-    "trick": "트릭 / Trick",
-    "superpower": "엄청난힘 / Superpower",
-    "knock-off": "탁쳐서떨구기 / Knock Off",
-    "endeavor": "죽기살기 / Endeavor",
-    "dive": "다이빙 / Dive",
-    "blast-burn": "블라스트번 / Blast Burn",
-    "hydro-cannon": "하이드로캐논 / Hydro Cannon",
-    "air-cutter": "에어커터 / Air Cutter",
-    "signal-beam": "시그널빔 / Signal Beam",
-    "iron-defense": "철벽 / Iron Defense",
-    "frenzy-plant": "하드플랜트 / Frenzy Plant",
-    "bounce": "뛰어오르기 / Bounce",
-    "gastro-acid": "위액 / Gastro Acid",
-    "last-resort": "비장의무기 / Last Resort",
-    "sucker-punch": "기습 / Sucker Punch",
-    "magnet-rise": "전자부유 / Magnet Rise",
-    "aqua-tail": "아쿠아테일 / Aqua Tail",
-    "seed-bomb": "씨폭탄 / Seed Bomb",
-    "vacuum-wave": "진공파 / Vacuum Wave",
-    "earth-power": "대지의힘 / Earth Power",
-    "zen-headbutt": "사념의박치기 / Zen Headbutt",
-    "draco-meteor": "용성군 / Draco Meteor",
-    "gunk-shot": "더스트슈트 / Gunk Shot",
-    "iron-head": "아이언헤드 / Iron Head",
-    "ominous-wind": "괴상한바람 / Ominous Wind"
-  },
-  "items": {
-    "tm01": [
-      {
-        "place": "무쇠게이트 지하 1층"
-      }
-    ],
-    "tm02": [
-      {
-        "place": "천관산"
-      }
-    ],
-    "tm03": [
-      {
-        "place": "험한 샛길"
-      }
-    ],
-    "tm04": [
-      {
-        "place": "배틀프론티어 BP교환소에서 48BP와 교환"
-      }
-    ],
-    "tm05": [
-      {
-        "place": "213번 도로"
-      }
-    ],
-    "tm06": [
-      {
-        "place": "212번 도로"
-      },
-      {
-        "place": "배틀프론티어 BP교환소에서 32BP와 교환"
-      }
-    ],
-    "tm07": [
-      {
-        "place": "217번 도로"
-      }
-    ],
-    "tm08": [
-      {
-        "place": "배틀프론티어 BP교환소에서 48BP와 교환"
-      }
-    ],
-    "tm09": [
-      {
-        "place": "204번 도로"
-      }
-    ],
-    "tm10": [
-      {
-        "place": "장막시티 게임코너에서 코인 6000개와 교환"
-      }
-    ],
-    "tm11": [
-      {
-        "place": "212번 도로"
-      }
-    ],
-    "tm12": [
-      {
-        "place": "211번 도로"
-      }
-    ],
-    "tm13": [
-      {
-        "place": "216번 도로"
-      },
-      {
-        "place": "장막시티 게임코너에서 코인 10000개와 교환"
-      }
-    ],
-    "tm14": [
-      {
-        "place": "예지호수"
-      },
-      {
-        "place": "장막시티 백화점에서 5500원에 구입"
-      }
-    ],
-    "tm15": [
-      {
-        "place": "장막시티 백화점에서 7500원에 구입"
-      }
-    ],
-    "tm16": [
-      {
-        "place": "장막시티 백화점에서 2000원에 구입"
-      }
-    ],
-    "tm17": [
-      {
-        "place": "장막시티 백화점에서 2000원에 구입"
-      }
-    ],
-    "tm18": [
-      {
-        "place": "223번 수로"
-      }
-    ],
-    "tm19": [
-      {
-        "place": "209번 도로"
-      }
-    ],
-    "tm20": [
-      {
-        "place": "장막시티 백화점에서 2000원에 구입"
-      }
-    ],
-    "tm21": [
-      {
-        "place": "장막시티 갤럭시단 아지트"
-      },
-      {
-        "place": "장막시티 게임코너에서 코인 8000개와 교환"
-      }
-    ],
-    "tm22": [
-      {
-        "place": "장막시티 백화점에서 3000원에 구입"
-      }
-    ],
-    "tm23": [
-      {
-        "place": "강철섬"
-      }
-    ],
-    "tm24": [
-      {
-        "place": "골짜기발전소(파도타기 필요)"
-      },
-      {
-        "place": "장막시티 게임코너에서 동전 10000개와 교환"
-      }
-    ],
-    "tm25": [
-      {
-        "place": "입지호수"
-      },
-      {
-        "place": "장막시티 백화점에서 5500원에 구입"
-      }
-    ],
-    "tm26": [
-      {
-        "place": "미혹의동굴(숨겨진 입구쪽 지하 1층)"
-      },
-      {
-        "place": "배틀프론티어 BP교환소에서 80BP와 교환"
-      }
-    ],
-    "tm27": [
-      {
-        "place": "마박사에게 입수[스토리 진행 중 자동 입수]"
-      },
-      {
-        "place": "209번 도로 로스트타워"
-      },
-      {
-        "place": "장막시티 게임코너에서 동전 8000개와 교환"
-      }
-    ],
-    "tm28": [
-      {
-        "place": "214번 도로 유적마니아굴"
-      }
-    ],
-    "tm29": [
-      {
-        "place": "211번 도로(동쪽/봉신마을)"
-      },
-      {
-        "place": "장막시티 게임코너에서 동전 10000개와 교환"
-      }
-    ],
-    "tm30": [
-      {
-        "place": "210번 도로"
-      },
-      {
-        "place": "배틀프론티어 BP교환소에서 64BP와 교환"
-      }
-    ],
-    "tm31": [
-      {
-        "place": "무쇠게이트 지하 1층"
-      },
-      {
-        "place": "배틀프론티어 BP교환소에서 40BP와 교환"
-      }
-    ],
-    "tm32": [
-      {
-        "place": "미혹의동굴"
-      },
-      {
-        "place": "장막시티 게임코너에서 동전 4000개와 교환"
-      }
-    ],
-    "tm33": [
-      {
-        "place": "장막시티 백화점에서 2000원에 구입"
-      }
-    ],
-    "tm34": [
-      {
-        "place": "215번 도로"
-      }
-    ],
-    "tm35": [
-      {
-        "place": "골풀무제철소"
-      },
-      {
-        "place": "장막시티 게임코너에서 동전 10000개와 교환"
-      }
-    ],
-    "tm36": [
-      {
-        "place": "장막시티 갤럭시단빌딩"
-      },
-      {
-        "place": "배틀프론티어 BP교환소에서 80BP와 교환"
-      }
-    ],
-    "tm37": [
-      {
-        "place": "228번 도로"
-      }
-    ],
-    "tm38": [
-      {
-        "place": "진실호수"
-      },
-      {
-        "place": "장막시티 백화점에서 5500원에 구입"
-      }
-    ],
-    "tm39": [
-      {
-        "place": "험한 샛길"
-      }
-    ],
-    "tm40": [
-      {
-        "place": "213번 도로"
-      },
-      {
-        "place": "배틀프론티어 BP교환소에서 40BP와 교환"
-      }
-    ],
-    "tm41": [
-      {
-        "place": "챔피언로드"
-      }
-    ],
-    "tm42": [
-      {
-        "place": "서바이벌에리어"
-      }
-    ],
-    "tm43": [
-      {
-        "place": "연고시티 상호교류광장"
-      }
-    ],
-    "tm44": [
-      {
-        "place": "장막시티 게임코너에서 동전 6000개와 교환"
-      },
-      {
-        "place": "특성 픽업을 가진 Lv 51~70의 포켓몬이 소지"
-      }
-    ],
-    "tm45": [
-      {
-        "place": "연고시티 상호교류광장"
-      },
-      {
-        "place": "배틀프론티어 BP교환소에서 32BP와 교환"
-      }
-    ],
-    "tm46": [
-      {
-        "place": "영원시티"
-      }
-    ],
-    "tm47": [
-      {
-        "place": "209번 도로"
-      }
-    ],
-    "tm48": [
-      {
-        "place": "운하시티"
-      }
-    ],
-    "tm49": [
-      {
-        "place": "장막시티 갤럭시단창고"
-      }
-    ],
-    "tm50": [
-      {
-        "place": "하드마운틴"
-      }
-    ],
-    "tm51": [
-      {
-        "place": "210번도로"
-      }
-    ],
-    "tm52": [
-      {
-        "place": "장막시티 백화점에서 5500원에 구입"
-      }
-    ],
-    "tm53": [
-      {
-        "place": "226번 수로"
-      },
-      {
-        "place": "배틀프론티어 BP교환소에서 64BP와 교환"
-      }
-    ],
-    "tm54": [
-      {
-        "place": "장막시티 백화점에서 2000원에 구입"
-      }
-    ],
-    "tm55": [
-      {
-        "place": "들판시티 체육관 관장 맥실러에게 승리[스토리 진행 중 자동 입수]"
-      }
-    ],
-    "tm56": [
-      {
-        "place": "222번 도로"
-      }
-    ],
-    "tm57": [
-      {
-        "place": "물가시티 체육관 관장 전진에게 승리[스토리 진행 중 자동 입수]"
-      }
-    ],
-    "tm58": [
-      {
-        "place": "장막시티 게임코너에서 동전 2000개와 교환"
-      }
-    ],
-    "tm59": [
-      {
-        "place": "챔피언로드"
-      },
-      {
-        "place": "배틀프론티어 BP교환소에서 80BP와 교환"
-      }
-    ],
-    "tm60": [
-      {
-        "place": "장막시티 체육관 관장 자두에게 승리[스토리 진행 중 자동 입수]"
-      }
-    ],
-    "tm61": [
-      {
-        "place": "배틀프론티어 BP교환소에서 32BP와 교환"
-      }
-    ],
-    "tm62": [
-      {
-        "place": "212번 도로(남쪽/들판시티쪽)"
-      }
-    ],
-    "tm63": [
-      {
-        "place": "장막시티"
-      }
-    ],
-    "tm64": [
-      {
-        "place": "장막시티 게임코너"
-      }
-    ],
-    "tm65": [
-      {
-        "place": "연고시티 체육관 관장 멜리사에게 승리[스토리 진행 중 자동 입수]"
-      }
-    ],
-    "tm66": [
-      {
-        "place": "215번 도로"
-      }
-    ],
-    "tm67": [
-      {
-        "place": "영원시티"
-      }
-    ],
-    "tm68": [
-      {
-        "place": "장막시티 게임코너에서 코인 20000개와 교환"
-      }
-    ],
-    "tm69": [
-      {
-        "place": "천관산"
-      }
-    ],
-    "tm70": [
-      {
-        "place": "무쇠게이트 지하 1층"
-      },
-      {
-        "place": "장막시티 백화점에서 1000원에 구입"
-      }
-    ],
-    "tm71": [
-      {
-        "place": "챔피언로드"
-      },
-      {
-        "place": "배틀프론티어 BP교환소에서 80BP와 교환"
-      }
-    ],
-    "tm72": [
-      {
-        "place": "선단시티 체육관 관장 무청에게 승리[스토리 진행 중 자동 입수]"
-      }
-    ],
-    "tm73": [
-      {
-        "place": "배틀프론티어 BP교환소에서 32BP와 교환"
-      }
-    ],
-    "tm74": [
-      {
-        "place": "장막시티 게임코너에서 동전 15000개와 교환"
-      }
-    ],
-    "tm75": [
-      {
-        "place": "장막시티 게임코너에서 동전 4000개와 교환"
-      }
-    ],
-    "tm76": [
-      {
-        "place": "무쇠시티 체육관 관장 강석에게 승리[스토리 진행 중 자동 입수]"
-      }
-    ],
-    "tm77": [
-      {
-        "place": "211번 도로(동쪽/봉신마을쪽)"
-      }
-    ],
-    "tm78": [
-      {
-        "place": "204번 도로(북쪽/꽃향기마을쪽)"
-      }
-    ],
-    "tm79": [
-      {
-        "place": "챔피언로드"
-      }
-    ],
-    "tm80": [
-      {
-        "place": "천관산"
-      }
-    ],
-    "tm81": [
-      {
-        "place": "221번 도로"
-      },
-      {
-        "place": "배틀프론티어 BP교환소에서 64BP와 교환"
-      }
-    ],
-    "tm82": [
-      {
-        "place": "영원의숲(바깥쪽 좁은 길)"
-      }
-    ],
-    "tm83": [
-      {
-        "place": "장막시티 백화점에서 2000원에 구입"
-      }
-    ],
-    "tm84": [
-      {
-        "place": "212번 도로(남쪽/들판시티쪽)"
-      }
-    ],
-    "tm85": [
-      {
-        "place": "입지호수 근처"
-      }
-    ],
-    "tm86": [
-      {
-        "place": "영원시티 체육관 관장 유채에게 승리[스토리 진행 중 자동 입수]"
-      }
-    ],
-    "tm87": [
-      {
-        "place": "212번 도로 포켓몬저택"
-      }
-    ],
-    "tm88": [
-      {
-        "place": "꽃향기마을"
-      }
-    ],
-    "tm89": [
-      {
-        "place": "운하시티(파도타기 필요)"
-      },
-      {
-        "place": "장막시티 게임코너에서 동전 6000개와 교환"
-      }
-    ],
-    "tm90": [
-      {
-        "place": "영원의 숲 내 숲의 양옥집"
-      },
-      {
-        "place": "장막시티 게임코너에서 동전 2000개와 교환"
-      }
-    ],
-    "tm91": [
-      {
-        "place": "운하시티 체육관 관장 동관에게 승리[스토리 진행 중 자동 입수]"
-      }
-    ],
-    "tm92": [
-      {
-        "place": "213번 도로 호텔그랜드레이크"
-      }
-    ],
-    "hm01": [
-      {
-        "place": "포켓몬상 이벤트 후 갤럭시단 빌딩 앞에서 난천에게 입수[스토리 진행 중 자동 입수]"
-      }
-    ],
-    "hm02": [
-      {
-        "place": "장막시티 체육관 관장 자두에게 승리 후 갤럭시단창고 이벤트 후 핸섬에게 입수[스토리 진행 중 자동 입수]"
-      }
-    ],
-    "hm03": [
-      {
-        "place": "봉신마을 유적에서 갤릭시단 보스 태홍에게 승리한 후 장로에게 입수[스토리 진행 중 자동 입수]"
-      }
-    ],
-    "hm04": [
-      {
-        "place": "운하시티 선착장을 통해 갈 수 있는 강철섬 동굴 입구에서 현에게 입수"
-      }
-    ],
-    "hm05": [
-      {
-        "place": "신수마을 내 신수유적 최하층"
-      }
-    ],
-    "hm06": [
-      {
-        "place": "무쇠게이트에 처음 들어서면 등산객에게서 입수[스토리 진행 중 자동 입수]"
-      }
-    ],
-    "hm07": [
-      {
-        "place": "물가시티 체육관 관장 전진에게 승리한 후 해변에 있는 규리에게 입수[스토리 진행 중 자동 입수]"
-      }
-    ],
-    "hm08": [
-      {
-        "place": "217번 도로 민가 근처에서 입수 가능"
-      }
+  "tm03": [
+   {
+    "place": "험한 샛길"
+   }
+  ],
+  "tm04": [
+   {
+    "place": "배틀프론티어 BP교환소에서 48BP와 교환"
+   }
+  ],
+  "tm05": [
+   {
+    "place": "213번 도로"
+   }
+  ],
+  "tm06": [
+   {
+    "place": "212번 도로"
+   },
+   {
+    "place": "배틀프론티어 BP교환소에서 32BP와 교환"
+   }
+  ],
+  "tm07": [
+   {
+    "place": "217번 도로"
+   }
+  ],
+  "tm08": [
+   {
+    "place": "배틀프론티어 BP교환소에서 48BP와 교환"
+   }
+  ],
+  "tm09": [
+   {
+    "place": "204번 도로"
+   }
+  ],
+  "tm10": [
+   {
+    "place": "장막시티 게임코너에서 코인 6000개와 교환"
+   }
+  ],
+  "tm11": [
+   {
+    "place": "212번 도로"
+   }
+  ],
+  "tm12": [
+   {
+    "place": "211번 도로"
+   }
+  ],
+  "tm13": [
+   {
+    "place": "216번 도로"
+   },
+   {
+    "place": "장막시티 게임코너에서 코인 10000개와 교환"
+   }
+  ],
+  "tm14": [
+   {
+    "place": "예지호수"
+   },
+   {
+    "place": "장막시티 백화점에서 5500원에 구입"
+   }
+  ],
+  "tm15": [
+   {
+    "place": "장막시티 백화점에서 7500원에 구입"
+   }
+  ],
+  "tm16": [
+   {
+    "place": "장막시티 백화점에서 2000원에 구입"
+   }
+  ],
+  "tm17": [
+   {
+    "place": "장막시티 백화점에서 2000원에 구입"
+   }
+  ],
+  "tm18": [
+   {
+    "place": "223번 수로"
+   }
+  ],
+  "tm19": [
+   {
+    "place": "209번 도로"
+   }
+  ],
+  "tm20": [
+   {
+    "place": "장막시티 백화점에서 2000원에 구입"
+   }
+  ],
+  "tm21": [
+   {
+    "place": "장막시티 갤럭시단 아지트"
+   },
+   {
+    "place": "장막시티 게임코너에서 코인 8000개와 교환"
+   }
+  ],
+  "tm22": [
+   {
+    "place": "장막시티 백화점에서 3000원에 구입"
+   }
+  ],
+  "tm23": [
+   {
+    "place": "강철섬"
+   }
+  ],
+  "tm24": [
+   {
+    "place": "골짜기발전소(파도타기 필요)"
+   },
+   {
+    "place": "장막시티 게임코너에서 동전 10000개와 교환"
+   }
+  ],
+  "tm25": [
+   {
+    "place": "입지호수"
+   },
+   {
+    "place": "장막시티 백화점에서 5500원에 구입"
+   }
+  ],
+  "tm26": [
+   {
+    "place": "미혹의동굴(숨겨진 입구쪽 지하 1층)"
+   },
+   {
+    "place": "배틀프론티어 BP교환소에서 80BP와 교환"
+   }
+  ],
+  "tm27": [
+   {
+    "place": "마박사에게 입수[스토리 진행 중 자동 입수]"
+   },
+   {
+    "place": "209번 도로 로스트타워"
+   },
+   {
+    "place": "장막시티 게임코너에서 동전 8000개와 교환"
+   }
+  ],
+  "tm28": [
+   {
+    "place": "214번 도로 유적마니아굴"
+   }
+  ],
+  "tm29": [
+   {
+    "place": "211번 도로(동쪽/봉신마을)"
+   },
+   {
+    "place": "장막시티 게임코너에서 동전 10000개와 교환"
+   }
+  ],
+  "tm30": [
+   {
+    "place": "210번 도로"
+   },
+   {
+    "place": "배틀프론티어 BP교환소에서 64BP와 교환"
+   }
+  ],
+  "tm31": [
+   {
+    "place": "무쇠게이트 지하 1층"
+   },
+   {
+    "place": "배틀프론티어 BP교환소에서 40BP와 교환"
+   }
+  ],
+  "tm32": [
+   {
+    "place": "미혹의동굴"
+   },
+   {
+    "place": "장막시티 게임코너에서 동전 4000개와 교환"
+   }
+  ],
+  "tm33": [
+   {
+    "place": "장막시티 백화점에서 2000원에 구입"
+   }
+  ],
+  "tm34": [
+   {
+    "place": "215번 도로"
+   }
+  ],
+  "tm35": [
+   {
+    "place": "골풀무제철소"
+   },
+   {
+    "place": "장막시티 게임코너에서 동전 10000개와 교환"
+   }
+  ],
+  "tm36": [
+   {
+    "place": "장막시티 갤럭시단빌딩"
+   },
+   {
+    "place": "배틀프론티어 BP교환소에서 80BP와 교환"
+   }
+  ],
+  "tm37": [
+   {
+    "place": "228번 도로"
+   }
+  ],
+  "tm38": [
+   {
+    "place": "진실호수"
+   },
+   {
+    "place": "장막시티 백화점에서 5500원에 구입"
+   }
+  ],
+  "tm39": [
+   {
+    "place": "험한 샛길"
+   }
+  ],
+  "tm40": [
+   {
+    "place": "213번 도로"
+   },
+   {
+    "place": "배틀프론티어 BP교환소에서 40BP와 교환"
+   }
+  ],
+  "tm41": [
+   {
+    "place": "챔피언로드"
+   }
+  ],
+  "tm42": [
+   {
+    "place": "서바이벌에리어"
+   }
+  ],
+  "tm43": [
+   {
+    "place": "연고시티 상호교류광장"
+   }
+  ],
+  "tm44": [
+   {
+    "place": "장막시티 게임코너에서 동전 6000개와 교환"
+   },
+   {
+    "place": "특성 픽업을 가진 Lv 51~70의 포켓몬이 소지"
+   }
+  ],
+  "tm45": [
+   {
+    "place": "연고시티 상호교류광장"
+   },
+   {
+    "place": "배틀프론티어 BP교환소에서 32BP와 교환"
+   }
+  ],
+  "tm46": [
+   {
+    "place": "영원시티"
+   }
+  ],
+  "tm47": [
+   {
+    "place": "209번 도로"
+   }
+  ],
+  "tm48": [
+   {
+    "place": "운하시티"
+   }
+  ],
+  "tm49": [
+   {
+    "place": "장막시티 갤럭시단창고"
+   }
+  ],
+  "tm50": [
+   {
+    "place": "하드마운틴"
+   }
+  ],
+  "tm51": [
+   {
+    "place": "210번도로"
+   }
+  ],
+  "tm52": [
+   {
+    "place": "장막시티 백화점에서 5500원에 구입"
+   }
+  ],
+  "tm53": [
+   {
+    "place": "226번 수로"
+   },
+   {
+    "place": "배틀프론티어 BP교환소에서 64BP와 교환"
+   }
+  ],
+  "tm54": [
+   {
+    "place": "장막시티 백화점에서 2000원에 구입"
+   }
+  ],
+  "tm55": [
+   {
+    "place": "들판시티 체육관 관장 맥실러에게 승리[스토리 진행 중 자동 입수]"
+   }
+  ],
+  "tm56": [
+   {
+    "place": "222번 도로"
+   }
+  ],
+  "tm57": [
+   {
+    "place": "물가시티 체육관 관장 전진에게 승리[스토리 진행 중 자동 입수]"
+   }
+  ],
+  "tm58": [
+   {
+    "place": "장막시티 게임코너에서 동전 2000개와 교환"
+   }
+  ],
+  "tm59": [
+   {
+    "place": "챔피언로드"
+   },
+   {
+    "place": "배틀프론티어 BP교환소에서 80BP와 교환"
+   }
+  ],
+  "tm60": [
+   {
+    "place": "장막시티 체육관 관장 자두에게 승리[스토리 진행 중 자동 입수]"
+   }
+  ],
+  "tm61": [
+   {
+    "place": "배틀프론티어 BP교환소에서 32BP와 교환"
+   }
+  ],
+  "tm62": [
+   {
+    "place": "212번 도로(남쪽/들판시티쪽)"
+   }
+  ],
+  "tm63": [
+   {
+    "place": "장막시티"
+   }
+  ],
+  "tm64": [
+   {
+    "place": "장막시티 게임코너"
+   }
+  ],
+  "tm65": [
+   {
+    "place": "연고시티 체육관 관장 멜리사에게 승리[스토리 진행 중 자동 입수]"
+   }
+  ],
+  "tm66": [
+   {
+    "place": "215번 도로"
+   }
+  ],
+  "tm67": [
+   {
+    "place": "영원시티"
+   }
+  ],
+  "tm68": [
+   {
+    "place": "장막시티 게임코너에서 코인 20000개와 교환"
+   }
+  ],
+  "tm69": [
+   {
+    "place": "천관산"
+   }
+  ],
+  "tm70": [
+   {
+    "place": "무쇠게이트 지하 1층"
+   },
+   {
+    "place": "장막시티 백화점에서 1000원에 구입"
+   }
+  ],
+  "tm71": [
+   {
+    "place": "챔피언로드"
+   },
+   {
+    "place": "배틀프론티어 BP교환소에서 80BP와 교환"
+   }
+  ],
+  "tm72": [
+   {
+    "place": "선단시티 체육관 관장 무청에게 승리[스토리 진행 중 자동 입수]"
+   }
+  ],
+  "tm73": [
+   {
+    "place": "배틀프론티어 BP교환소에서 32BP와 교환"
+   }
+  ],
+  "tm74": [
+   {
+    "place": "장막시티 게임코너에서 동전 15000개와 교환"
+   }
+  ],
+  "tm75": [
+   {
+    "place": "장막시티 게임코너에서 동전 4000개와 교환"
+   }
+  ],
+  "tm76": [
+   {
+    "place": "무쇠시티 체육관 관장 강석에게 승리[스토리 진행 중 자동 입수]"
+   }
+  ],
+  "tm77": [
+   {
+    "place": "211번 도로(동쪽/봉신마을쪽)"
+   }
+  ],
+  "tm78": [
+   {
+    "place": "204번 도로(북쪽/꽃향기마을쪽)"
+   }
+  ],
+  "tm79": [
+   {
+    "place": "챔피언로드"
+   }
+  ],
+  "tm80": [
+   {
+    "place": "천관산"
+   }
+  ],
+  "tm81": [
+   {
+    "place": "221번 도로"
+   },
+   {
+    "place": "배틀프론티어 BP교환소에서 64BP와 교환"
+   }
+  ],
+  "tm82": [
+   {
+    "place": "영원의숲(바깥쪽 좁은 길)"
+   }
+  ],
+  "tm83": [
+   {
+    "place": "장막시티 백화점에서 2000원에 구입"
+   }
+  ],
+  "tm84": [
+   {
+    "place": "212번 도로(남쪽/들판시티쪽)"
+   }
+  ],
+  "tm85": [
+   {
+    "place": "입지호수 근처"
+   }
+  ],
+  "tm86": [
+   {
+    "place": "영원시티 체육관 관장 유채에게 승리[스토리 진행 중 자동 입수]"
+   }
+  ],
+  "tm87": [
+   {
+    "place": "212번 도로 포켓몬저택"
+   }
+  ],
+  "tm88": [
+   {
+    "place": "꽃향기마을"
+   }
+  ],
+  "tm89": [
+   {
+    "place": "운하시티(파도타기 필요)"
+   },
+   {
+    "place": "장막시티 게임코너에서 동전 6000개와 교환"
+   }
+  ],
+  "tm90": [
+   {
+    "place": "영원의 숲 내 숲의 양옥집"
+   },
+   {
+    "place": "장막시티 게임코너에서 동전 2000개와 교환"
+   }
+  ],
+  "tm91": [
+   {
+    "place": "운하시티 체육관 관장 동관에게 승리[스토리 진행 중 자동 입수]"
+   }
+  ],
+  "tm92": [
+   {
+    "place": "213번 도로 호텔그랜드레이크"
+   }
+  ],
+  "hm01": [
+   {
+    "place": "포켓몬상 이벤트 후 갤럭시단 빌딩 앞에서 난천에게 입수[스토리 진행 중 자동 입수]"
+   }
+  ],
+  "hm02": [
+   {
+    "place": "장막시티 체육관 관장 자두에게 승리 후 갤럭시단창고 이벤트 후 핸섬에게 입수[스토리 진행 중 자동 입수]"
+   }
+  ],
+  "hm03": [
+   {
+    "place": "봉신마을 유적에서 갤릭시단 보스 태홍에게 승리한 후 장로에게 입수[스토리 진행 중 자동 입수]"
+   }
+  ],
+  "hm04": [
+   {
+    "place": "운하시티 선착장을 통해 갈 수 있는 강철섬 동굴 입구에서 현에게 입수"
+   }
+  ],
+  "hm05": [
+   {
+    "place": "신수마을 내 신수유적 최하층"
+   }
+  ],
+  "hm06": [
+   {
+    "place": "무쇠게이트에 처음 들어서면 등산객에게서 입수[스토리 진행 중 자동 입수]"
+   }
+  ],
+  "hm07": [
+   {
+    "place": "물가시티 체육관 관장 전진에게 승리한 후 해변에 있는 규리에게 입수[스토리 진행 중 자동 입수]"
+   }
+  ],
+  "hm08": [
+   {
+    "place": "217번 도로 민가 근처에서 입수 가능"
+   }
+  ]
+ },
+ "tutors": {
+  "dive": [
+   {
+    "how": "tutor",
+    "place": "212번 도로 민가(비 내리는 쪽)",
+    "cost": [
+     {
+      "amount": 2,
+      "unit": "red-shard"
+     },
+     {
+      "amount": 4,
+      "unit": "blue-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "yellow-shard"
+     }
     ]
-  },
-  "tutors": {
-    "fire-punch": [],
-    "ice-punch": [],
-    "thunder-punch": [],
-    "swift": [],
-    "snore": [],
-    "spite": [],
-    "mud-slap": [],
-    "icy-wind": [],
-    "outrage": [],
-    "rollout": [],
-    "fury-cutter": [],
-    "synthesis": [],
-    "twister": [],
-    "ancient-power": [],
-    "uproar": [],
-    "heat-wave": [],
-    "helping-hand": [],
-    "trick": [],
-    "superpower": [],
-    "knock-off": [],
-    "endeavor": [],
-    "dive": [],
-    "blast-burn": [],
-    "hydro-cannon": [],
-    "air-cutter": [],
-    "signal-beam": [],
-    "iron-defense": [],
-    "frenzy-plant": [],
-    "bounce": [],
-    "gastro-acid": [],
-    "last-resort": [],
-    "sucker-punch": [],
-    "magnet-rise": [],
-    "aqua-tail": [],
-    "seed-bomb": [],
-    "vacuum-wave": [],
-    "earth-power": [],
-    "zen-headbutt": [],
-    "draco-meteor": [],
-    "gunk-shot": [],
-    "iron-head": [],
-    "ominous-wind": []
-  }
+   }
+  ],
+  "fury-cutter": [
+   {
+    "how": "tutor",
+    "place": "212번 도로 민가(비 내리는 쪽)",
+    "cost": [
+     {
+      "amount": 8,
+      "unit": "blue-shard"
+     }
+    ]
+   }
+  ],
+  "icy-wind": [
+   {
+    "how": "tutor",
+    "place": "212번 도로 민가(비 내리는 쪽)",
+    "cost": [
+     {
+      "amount": 6,
+      "unit": "blue-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "green-shard"
+     }
+    ]
+   }
+  ],
+  "thunder-punch": [
+   {
+    "how": "tutor",
+    "place": "212번 도로 민가(비 내리는 쪽)",
+    "cost": [
+     {
+      "amount": 2,
+      "unit": "red-shard"
+     },
+     {
+      "amount": 6,
+      "unit": "blue-shard"
+     }
+    ]
+   }
+  ],
+  "fire-punch": [
+   {
+    "how": "tutor",
+    "place": "212번 도로 민가(비 내리는 쪽)",
+    "cost": [
+     {
+      "amount": 2,
+      "unit": "red-shard"
+     },
+     {
+      "amount": 6,
+      "unit": "blue-shard"
+     }
+    ]
+   }
+  ],
+  "ice-punch": [
+   {
+    "how": "tutor",
+    "place": "212번 도로 민가(비 내리는 쪽)",
+    "cost": [
+     {
+      "amount": 2,
+      "unit": "red-shard"
+     },
+     {
+      "amount": 6,
+      "unit": "blue-shard"
+     }
+    ]
+   }
+  ],
+  "ominous-wind": [
+   {
+    "how": "tutor",
+    "place": "212번 도로 민가(비 내리는 쪽)",
+    "cost": [
+     {
+      "amount": 6,
+      "unit": "blue-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "green-shard"
+     }
+    ]
+   }
+  ],
+  "air-cutter": [
+   {
+    "how": "tutor",
+    "place": "212번 도로 민가(비 내리는 쪽)",
+    "cost": [
+     {
+      "amount": 2,
+      "unit": "red-shard"
+     },
+     {
+      "amount": 4,
+      "unit": "blue-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "green-shard"
+     }
+    ]
+   }
+  ],
+  "zen-headbutt": [
+   {
+    "how": "tutor",
+    "place": "212번 도로 민가(비 내리는 쪽)",
+    "cost": [
+     {
+      "amount": 4,
+      "unit": "blue-shard"
+     },
+     {
+      "amount": 4,
+      "unit": "yellow-shard"
+     }
+    ]
+   }
+  ],
+  "vacuum-wave": [
+   {
+    "how": "tutor",
+    "place": "212번 도로 민가(비 내리는 쪽)",
+    "cost": [
+     {
+      "amount": 2,
+      "unit": "red-shard"
+     },
+     {
+      "amount": 4,
+      "unit": "blue-shard"
+     }
+    ]
+   }
+  ],
+  "trick": [
+   {
+    "how": "tutor",
+    "place": "212번 도로 민가(비 내리는 쪽)",
+    "cost": [
+     {
+      "amount": 4,
+      "unit": "blue-shard"
+     },
+     {
+      "amount": 4,
+      "unit": "yellow-shard"
+     }
+    ]
+   }
+  ],
+  "knock-off": [
+   {
+    "how": "tutor",
+    "place": "212번 도로 민가(비 내리는 쪽)",
+    "cost": [
+     {
+      "amount": 4,
+      "unit": "red-shard"
+     },
+     {
+      "amount": 4,
+      "unit": "blue-shard"
+     }
+    ]
+   }
+  ],
+  "sucker-punch": [
+   {
+    "how": "tutor",
+    "place": "212번 도로 민가(비 내리는 쪽)",
+    "cost": [
+     {
+      "amount": 6,
+      "unit": "blue-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "yellow-shard"
+     }
+    ]
+   }
+  ],
+  "snore": [
+   {
+    "how": "tutor",
+    "place": "선단시티 민가",
+    "cost": [
+     {
+      "amount": 2,
+      "unit": "red-shard"
+     },
+     {
+      "amount": 4,
+      "unit": "yellow-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "green-shard"
+     }
+    ]
+   }
+  ],
+  "spite": [
+   {
+    "how": "tutor",
+    "place": "선단시티 민가",
+    "cost": [
+     {
+      "amount": 8,
+      "unit": "yellow-shard"
+     }
+    ]
+   }
+  ],
+  "helping-hand": [
+   {
+    "how": "tutor",
+    "place": "선단시티 민가",
+    "cost": [
+     {
+      "amount": 2,
+      "unit": "red-shard"
+     },
+     {
+      "amount": 4,
+      "unit": "yellow-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "green-shard"
+     }
+    ]
+   }
+  ],
+  "synthesis": [
+   {
+    "how": "tutor",
+    "place": "선단시티 민가",
+    "cost": [
+     {
+      "amount": 2,
+      "unit": "yellow-shard"
+     },
+     {
+      "amount": 6,
+      "unit": "green-shard"
+     }
+    ]
+   }
+  ],
+  "magnet-rise": [
+   {
+    "how": "tutor",
+    "place": "선단시티 민가",
+    "cost": [
+     {
+      "amount": 2,
+      "unit": "blue-shard"
+     },
+     {
+      "amount": 4,
+      "unit": "yellow-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "green-shard"
+     }
+    ]
+   }
+  ],
+  "last-resort": [
+   {
+    "how": "tutor",
+    "place": "선단시티 민가",
+    "cost": [
+     {
+      "amount": 8,
+      "unit": "green-shard"
+     }
+    ]
+   }
+  ],
+  "swift": [
+   {
+    "how": "tutor",
+    "place": "선단시티 민가",
+    "cost": [
+     {
+      "amount": 2,
+      "unit": "blue-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "yellow-shard"
+     },
+     {
+      "amount": 4,
+      "unit": "green-shard"
+     }
+    ]
+   }
+  ],
+  "uproar": [
+   {
+    "how": "tutor",
+    "place": "선단시티 민가",
+    "cost": [
+     {
+      "amount": 6,
+      "unit": "yellow-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "green-shard"
+     }
+    ]
+   }
+  ],
+  "mud-slap": [
+   {
+    "how": "tutor",
+    "place": "서바이벌에리어 민가",
+    "cost": [
+     {
+      "amount": 4,
+      "unit": "red-shard"
+     },
+     {
+      "amount": 4,
+      "unit": "blue-shard"
+     }
+    ]
+   }
+  ],
+  "rollout": [
+   {
+    "how": "tutor",
+    "place": "서바이벌에리어 민가",
+    "cost": [
+     {
+      "amount": 4,
+      "unit": "red-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "blue-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "green-shard"
+     }
+    ]
+   }
+  ],
+  "superpower": [
+   {
+    "how": "tutor",
+    "place": "서바이벌에리어 민가",
+    "cost": [
+     {
+      "amount": 8,
+      "unit": "red-shard"
+     }
+    ]
+   }
+  ],
+  "iron-head": [
+   {
+    "how": "tutor",
+    "place": "서바이벌에리어 민가",
+    "cost": [
+     {
+      "amount": 6,
+      "unit": "red-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "yellow-shard"
+     }
+    ]
+   }
+  ],
+  "aqua-tail": [
+   {
+    "how": "tutor",
+    "place": "서바이벌에리어 민가",
+    "cost": [
+     {
+      "amount": 6,
+      "unit": "red-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "green-shard"
+     }
+    ]
+   }
+  ],
+  "gastro-acid": [
+   {
+    "how": "tutor",
+    "place": "서바이벌에리어 민가",
+    "cost": [
+     {
+      "amount": 4,
+      "unit": "red-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "yellow-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "green-shard"
+     }
+    ]
+   }
+  ],
+  "endeavor": [
+   {
+    "how": "tutor",
+    "place": "서바이벌에리어 민가",
+    "cost": [
+     {
+      "amount": 4,
+      "unit": "red-shard"
+     },
+     {
+      "amount": 4,
+      "unit": "yellow-shard"
+     }
+    ]
+   }
+  ],
+  "outrage": [
+   {
+    "how": "tutor",
+    "place": "서바이벌에리어 민가",
+    "cost": [
+     {
+      "amount": 6,
+      "unit": "red-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "yellow-shard"
+     }
+    ]
+   }
+  ],
+  "ancient-power": [
+   {
+    "how": "tutor",
+    "place": "서바이벌에리어 민가",
+    "cost": [
+     {
+      "amount": 6,
+      "unit": "red-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "green-shard"
+     }
+    ]
+   }
+  ],
+  "signal-beam": [
+   {
+    "how": "tutor",
+    "place": "서바이벌에리어 민가",
+    "cost": [
+     {
+      "amount": 2,
+      "unit": "red-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "blue-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "yellow-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "green-shard"
+     }
+    ]
+   }
+  ],
+  "earth-power": [
+   {
+    "how": "tutor",
+    "place": "서바이벌에리어 민가",
+    "cost": [
+     {
+      "amount": 6,
+      "unit": "red-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "green-shard"
+     }
+    ]
+   }
+  ],
+  "gunk-shot": [
+   {
+    "how": "tutor",
+    "place": "서바이벌에리어 민가",
+    "cost": [
+     {
+      "amount": 4,
+      "unit": "red-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "blue-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "green-shard"
+     }
+    ]
+   }
+  ],
+  "twister": [
+   {
+    "how": "tutor",
+    "place": "서바이벌에리어 민가",
+    "cost": [
+     {
+      "amount": 6,
+      "unit": "red-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "green-shard"
+     }
+    ]
+   }
+  ],
+  "seed-bomb": [
+   {
+    "how": "tutor",
+    "place": "서바이벌에리어 민가",
+    "cost": [
+     {
+      "amount": 4,
+      "unit": "red-shard"
+     },
+     {
+      "amount": 4,
+      "unit": "green-shard"
+     }
+    ]
+   }
+  ],
+  "iron-defense": [
+   {
+    "how": "tutor",
+    "place": "서바이벌에리어 민가",
+    "cost": [
+     {
+      "amount": 4,
+      "unit": "red-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "blue-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "yellow-shard"
+     }
+    ]
+   }
+  ],
+  "bounce": [
+   {
+    "how": "tutor",
+    "place": "서바이벌에리어 민가",
+    "cost": [
+     {
+      "amount": 4,
+      "unit": "red-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "yellow-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "green-shard"
+     }
+    ]
+   }
+  ],
+  "heat-wave": [
+   {
+    "how": "tutor",
+    "place": "서바이벌에리어 민가",
+    "cost": [
+     {
+      "amount": 4,
+      "unit": "red-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "yellow-shard"
+     },
+     {
+      "amount": 2,
+      "unit": "green-shard"
+     }
+    ]
+   }
+  ],
+  "draco-meteor": [
+   {
+    "how": "tutor",
+    "place": "210번 도로 북쪽 민가(안개 지역, 락클라임 필요)",
+    "detail": "드래곤 타입 · 친밀도 최대 (무료)"
+   }
+  ],
+  "frenzy-plant": [
+   {
+    "how": "tutor",
+    "where": "sinnoh-route-228",
+    "place": "228번 도로 민가(도로변)",
+    "detail": "스타팅 최종 진화 · 친밀도 최대 (무료)"
+   }
+  ],
+  "blast-burn": [
+   {
+    "how": "tutor",
+    "where": "sinnoh-route-228",
+    "place": "228번 도로 민가(도로변)",
+    "detail": "스타팅 최종 진화 · 친밀도 최대 (무료)"
+   }
+  ],
+  "hydro-cannon": [
+   {
+    "how": "tutor",
+    "where": "sinnoh-route-228",
+    "place": "228번 도로 민가(도로변)",
+    "detail": "스타팅 최종 진화 · 친밀도 최대 (무료)"
+   }
+  ]
+ }
 }

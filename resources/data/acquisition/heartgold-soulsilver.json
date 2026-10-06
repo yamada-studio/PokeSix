@@ -1,0 +1,1570 @@
+{
+  "_comment": [
+    "게임(버전 그룹)별 입수 사전 (ui/dex/guidebook.h가 읽는다). 형식은 docs/i18n/README.md 참고.",
+    "scripts/i18n/check_acquisition.py로 검증해 넣었다. 출처는 _sources."
+  ],
+  "_sources": [
+    "네이버 블로그 '미오시티의 작은 도서관' — 포켓몬스터 하트골드/소울실버: 기술머신/비전머신 리스트[2판](2013-06-19 수정). 사용자 제공",
+    "네이버 블로그 '미오시티의 작은 도서관' — 포켓몬스터 하트골드/소울실버: NPC 기술[2판]. 사용자 제공"
+  ],
+  "versionGroup": "heartgold-soulsilver",
+  "items": {
+    "tm01": [
+      {
+        "place": "진청시티 체육관 관장 사도에게 이기면 배지와 함께 받을 수 있다. [스토리 진행시 자동 입수]"
+      }
+    ],
+    "tm02": [
+      {
+        "place": "27번 도로에서 줍는다(바다회오리 필요)"
+      },
+      {
+        "place": "매주 일요일 금빛시티 백화점 6F 오른쪽 코너에서 하는 제비뽑기 1등 경품(1회 300원)"
+      }
+    ],
+    "tm03": [
+      {
+        "place": "블루시티 체육관 관장 이슬에게 이기면 배지와 함께 받을 수 있다. [스토리 진행시 자동 입수]"
+      }
+    ],
+    "tm04": [
+      {
+        "place": "배틀 프론티어 입구에 보이는 카운터 중 오른쪽 카운터에서 '변화 기술' 항목을 선택해서 48BP와 교환한다."
+      }
+    ],
+    "tm05": [
+      {
+        "place": "32번 도로에서 풀베기를 한 뒤 그 안에 있는 뚱뚱한 남자에게 받는다."
+      }
+    ],
+    "tm06": [
+      {
+        "place": "배틀프론티어 입구에 보이는 카운터 중 오른쪽 카운터에서 '변화 기술' 항목을 선택해서 32BP와 교환한다."
+      }
+    ],
+    "tm07": [
+      {
+        "place": "황토마을 체육관 관장 류옹에게 이기면 뱃지와 함께 받을 수 있다. [스토리 진행 시 자동 입수]"
+      }
+    ],
+    "tm08": [
+      {
+        "place": "배틀 프론티어 입구에 보이는 카운터 중 오른쪽 카운터에서 '변화 기술' 항목을 선택해서 48BP와 교환한다."
+      }
+    ],
+    "tm09": [
+      {
+        "place": "32번 도로에서 줍는다."
+      }
+    ],
+    "tm10": [
+      {
+        "place": "무지개시티 게임코너에서 코인 6000개와 교환한다."
+      },
+      {
+        "place": "분노의호수의 북쪽 민가에서 받는다(수초로 된 미로를 통과해야 함)"
+      }
+    ],
+    "tm11": [
+      {
+        "place": "금빛시티 라디오타워에서의 로켓단 이벤트를 마친 뒤 라디오타워 3층 문(카드키 사용해서 열어야 하는 곳)에 있는 여자에게 받는다."
+      }
+    ],
+    "tm12": [
+      {
+        "place": "무지개시티 백화점 3층에서 1500원에 판매하고 있다."
+      },
+      {
+        "place": "너도밤나무숲 북쪽 게이트 카운터에서 받는다."
+      }
+    ],
+    "tm13": [
+      {
+        "place": "금빛시티 게임코너에서 코인 10000개와 교환한다."
+      },
+      {
+        "place": "쌍둥이섬 지하 4층에서 줍는다."
+      }
+    ],
+    "tm14": [
+      {
+        "place": "금빛시티 백화점 5층에서 5500원에 판매하고 있다."
+      }
+    ],
+    "tm15": [
+      {
+        "place": "금빛시티 백화점 5층에서 7500원에 판매하고 있다."
+      }
+    ],
+    "tm16": [
+      {
+        "place": "금빛시티 백화점 5층에서 2000원에 판매하고 있다."
+      }
+    ],
+    "tm17": [
+      {
+        "place": "금빛시티 백화점 5층에서 2000원에 판매하고 있다."
+      }
+    ],
+    "tm18": [
+      {
+        "place": "야돈의 우물 물가에서 파도타기를 해서 지하 2층으로 내려가면 주을 수 있다."
+      }
+    ],
+    "tm19": [
+      {
+        "place": "무지개시티 체육관 관장 민화에게 이기면 뱃지와 함께 받을 수 있다. [스토리 진행시 자동 입수]"
+      }
+    ],
+    "tm20": [
+      {
+        "place": "무지개시티 백화점 3층에서 2000원에 판매하고 있다."
+      }
+    ],
+    "tm21": [
+      {
+        "place": "무지개시티 백화점 3층에서 1000원에 판매하고 있다."
+      },
+      {
+        "place": "매주 일요일에 무지개시티 백화점 5층에 있는 여자아이에게 선두 포켓몬의 친밀도를 체크받아서 친밀도가 낮다면 받을 수 있다."
+      }
+    ],
+    "tm22": [
+      {
+        "place": "금빛시티 백화점 5층에서 3000원에 판매하고 있다."
+      }
+    ],
+    "tm23": [
+      {
+        "place": "담청시티 체육관 관장 규리에게 이기면 배지와 함께 받을 수 있다."
+      }
+    ],
+    "tm24": [
+      {
+        "place": "금빛시티 게임코너에서 코인 10000개와 교환한다."
+      },
+      {
+        "place": "블루시티동굴 2층에서 주을 수 있다."
+      }
+    ],
+    "tm25": [
+      {
+        "place": "금빛시티 백화점 5층에서 5500원에 판매하고 있다."
+      }
+    ],
+    "tm26": [
+      {
+        "place": "배틀프론티어 입구에 보이는 카운터 중 오른쪽 카운터에서 '물리 기술' 항목을 선택해서 80BP와 교환한다."
+      },
+      {
+        "place": "챔피언로드에서 줍는다."
+      },
+      {
+        "place": "특성 '픽업'을 가진 포켓몬이 레벨 90 ~100 사이이면 1% 확률로 지니게 된다."
+      }
+    ],
+    "tm27": [
+      {
+        "place": "무지개시티 백화점 3층에서 1000원에 판매하고 있다."
+      },
+      {
+        "place": "매주 일요일에 무지개시티 백화점 5층에 있는 여자아이에게 선두 포켓몬의"
+      }
+    ],
+    "tm28": [
+      {
+        "place": "무지개시티 백화점 3층에서 2000원에 판매하고 있다."
+      },
+      {
+        "place": "자연공원에서 줍는다. 화단 뒤쪽으로 돌아가야한다."
+      }
+    ],
+    "tm29": [
+      {
+        "place": "무지개시티 게임코너에서 코인 10000개와 교환한다."
+      },
+      {
+        "place": "노랑시티 민가에서 받을 수 있다."
+      }
+    ],
+    "tm30": [
+      {
+        "place": "인주시티 체육관 관장 유빈에게 이기면 배지와 함께 받을 수 있다. [스토리 진행 시 자동 입수]"
+      },
+      {
+        "place": "배틀프론티어 입구에 보이는 카운터 중 오른쪽 카운터에서 '특수 기술' 항목을 선택해서 64BP와 교환한다."
+      }
+    ],
+    "tm31": [
+      {
+        "place": "배틀프론티어 입구에 보이는 카운터 중 오른쪽 카운터에서 '물리 기술' 항목을 선택해서 40BP와 교환한다."
+      }
+    ],
+    "tm32": [
+      {
+        "place": "무지개시티 게임코너에서 코인 4000개와 교환한다."
+      }
+    ],
+    "tm33": [
+      {
+        "place": "금빛시티 백화점 5층에서 2000원에 판매하고 있다."
+      }
+    ],
+    "tm34": [
+      {
+        "place": "갈색시티 체육관 관장 마티스에게 이기면 배지와 함께 받을 수 있다. [스토리 진행 시 자동 입수]"
+      }
+    ],
+    "tm35": [
+      {
+        "place": "금빛시티 게임코너에서 코인 10000개와 교환한다."
+      },
+      {
+        "place": "28번 도로에서 줍는다."
+      }
+    ],
+    "tm36": [
+      {
+        "place": "배틀프론티어 입구에 보이는 카운터 중 오른쪽 카운터에서 '특수 기술' 항목을 선택해서 80BP와 교환한다."
+      },
+      {
+        "place": "43번 도로 중간에 있는 게이트에서 황토마을 로켓단 이벤트가 끝난 후 받는다."
+      }
+    ],
+    "tm37": [
+      {
+        "place": "27번 도로 민가(동성폭포 근처)에서 받을 수 있다."
+      }
+    ],
+    "tm38": [
+      {
+        "place": "금빛시티 백화점 5층에서 5500원에 판매하고 있다."
+      }
+    ],
+    "tm39": [
+      {
+        "place": "연결동굴 지하 1층에서 줍는다."
+      }
+    ],
+    "tm40": [
+      {
+        "place": "배틀프론티어 입구에 보이는 카운터 중 오른쪽 카운터에서 '물리 기술' 항목을 선택해서 40BP와 교환한다."
+      },
+      {
+        "place": "절구산 폭포를 올라가면 줍는다."
+      }
+    ],
+    "tm41": [
+      {
+        "place": "무지개시티 백화점 3층에서 1500원에 판매하고 있다."
+      },
+      {
+        "place": "8번 도로 서쪽 오토바이에 탄 남자들 아래에서 줍는다."
+      }
+    ],
+    "tm42": [
+      {
+        "place": "매주 금요일 금빛시티 백화점 6F 오른쪽 코너에서 하는 제비뽑기 1등 경품이다. (1회 300원)"
+      }
+    ],
+    "tm43": [
+      {
+        "place": "분노의호수의 물가 주변에서 줍는다(수초로 된 미로를 통과해야 함)"
+      }
+    ],
+    "tm44": [
+      {
+        "place": "금빛시티 게임코너에서 코인 6000개와 교환한다."
+      }
+    ],
+    "tm45": [
+      {
+        "place": "금빛시티 체육관 리더 꼭두에게 이기면 배지와 함께 받을 수 있다. [스토리 진행 시 자동 입수]"
+      },
+      {
+        "place": "배틀프론티어 입구에 보이는 카운터 중 오른쪽 카운터에서 '변화 기술' 항목을 선택해서 32BP와 교환한다.."
+      }
+    ],
+    "tm46": [
+      {
+        "place": "황토마을 로켓단 아지트에서 줍는다."
+      }
+    ],
+    "tm47": [
+      {
+        "place": "28번 도로 민가에서 받는다. 민가에 가려면 은빛산을 거쳐서 가야한다."
+      }
+    ],
+    "tm48": [
+      {
+        "place": "노랑시티 체육관 관장 초련에게 이기면 뱃지와 함께 받을 수 있다. [스토리 진행 시 자동 입수]"
+      }
+    ],
+    "tm49": [
+      {
+        "place": "황토마을 로켓단 아지트에서 줍는다."
+      }
+    ],
+    "tm50": [
+      {
+        "place": "홍련섬 체육관 관장 강연에게 이기면 뱃지와 함께 받을 수 있다. [스토리 진행 시 자동 입수]"
+      }
+    ],
+    "tm51": [
+      {
+        "place": "도라지시티 체육관 관장 비상에게 이기면 배지와 함께 받을 수 있다. [스토리 진행 시 자동 입수]"
+      }
+    ],
+    "tm52": [
+      {
+        "place": "금빛시티 백화점 5층에서 5500원에 판매하고 있다."
+      }
+    ],
+    "tm53": [
+      {
+        "place": "배틀프론티어 입구에 보이는 카운터 중 오른쪽 카운터에서 '특수 기술' 항목을 선택해서 64BP와 교환한다."
+      }
+    ],
+    "tm54": [
+      {
+        "place": "금빛시티 백화점 5층에서 2000원에 판매하고 있다."
+      },
+      {
+        "place": "어둠동굴에서 줍는다."
+      }
+    ],
+    "tm55": [
+      {
+        "place": "무지개시티 백화점 3층에서 3000원에 판매하고 있다."
+      }
+    ],
+    "tm56": [
+      {
+        "place": "돌산터널에서 줍는다."
+      },
+      {
+        "place": "특성 '픽업'을 가진 포켓몬이 레벨 51~70이면 1% 확률로 지니게 된다."
+      }
+    ],
+    "tm57": [
+      {
+        "place": "블루시티 체육관에 있는 기계부품을 관동발전소 소장에게 가져다 주면 받을 수 있다. [스토리 진행 시 자동 입수]"
+      },
+      {
+        "place": "담청시티에서 파도타기를 통해 이동하여 주을 수도 있다."
+      },
+      {
+        "place": "매주 수요일 금빛시티 백화점 6F 오른쪽 코너에서 하는 제비뽑기 1등 경품이다. (1회 300원)"
+      }
+    ],
+    "tm58": [
+      {
+        "place": "무지개시티 게임코너에서 코인 2000개와 교환한다."
+      }
+    ],
+    "tm59": [
+      {
+        "place": "검은먹시티 체육관 관장 이향에게 이긴 뒤, 용의굴 안에 있는 사당에서 장로가 내는 문제에 답하고, 이향에게서 배지를 받은 뒤 밖으로 나가는 지역 부근에서 이향에게서 받을 수 있다. [스토리 진행 시 자동 입수]"
+      },
+      {
+        "place": "배틀프론티어 입구에 보이는 카운터 중 오른쪽 카운터에서 '특수 기술' 항목을 선택해서 80BP와 교환한다."
+      }
+    ],
+    "tm60": [
+      {
+        "place": "39번 도로에서 줍는다."
+      },
+      {
+        "place": "매주 목요일 금빛시티 백화점 6F 오른쪽 코너에서 하는 제비뽑기 1등 경품이다. (1회 300원)"
+      }
+    ],
+    "tm61": [
+      {
+        "place": "배틀프론티어 입구에 보이는 카운터 중 오른쪽 카운터에서 '변화 기술' 항목을 선택해서 32BP와 교환한다."
+      }
+    ],
+    "tm62": [
+      {
+        "place": "6번 도로에서 줍는다."
+      },
+      {
+        "place": "매주 토요일 금빛시티 백화점 6F 오른쪽 코너에서 하는 제비뽑기 1등 경품이다. (1회 300원)"
+      }
+    ],
+    "tm63": [
+      {
+        "place": "34번 도로에서 줍는다."
+      }
+    ],
+    "tm64": [
+      {
+        "place": "황토마을 체육관에서 배지를 획득한 다음, 민가 앞의 아저씨에게 분노의호두과자를 300원 주고 구입한다. 이후 관동 지방의 발전소 사건을 해결하고 5번 도로와 6번 도로를 잇는 지하통로에 있는 아저씨에게 건네주면 받을 수 있다."
+      }
+    ],
+    "tm65": [
+      {
+        "place": "42번 도로에서 줍는다."
+      },
+      {
+        "place": "매주 월요일 금빛시티 백화점 6F 오른쪽 코너에서 하는 제비뽑기 1등 경품이다. (1회 300원)"
+      }
+    ],
+    "tm66": [
+      {
+        "place": "35번 도로에서 줍는다."
+      }
+    ],
+    "tm67": [
+      {
+        "place": "무지개시티에서 주을 수 있다."
+      }
+    ],
+    "tm68": [
+      {
+        "place": "무지개시티 게임코너에서 코인 15000개와 교환한다."
+      }
+    ],
+    "tm69": [
+      {
+        "place": "10번 도로 남쪽에서 줍는다."
+      }
+    ],
+    "tm70": [
+      {
+        "place": "모다피의탑에서 장로를 이기면 받는다."
+      },
+      {
+        "place": "금빛시티 백화점 5층에서 1000원에 판매하고 있다."
+      }
+    ],
+    "tm71": [
+      {
+        "place": "배틀프론티어 입구에 보이는 카운터 중 오른쪽 카운터에서 '물리 기술' 항목을 선택해서 80BP와 교환한다."
+      }
+    ],
+    "tm72": [
+      {
+        "place": "얼음샛길 지하 2층에서 줍는다."
+      },
+      {
+        "place": "무지개시티 백화점 3층에서 3000원에 판매하고 있다."
+      }
+    ],
+    "tm73": [
+      {
+        "place": "배틀프론티어 입구에 보이는 카운터 중 오른쪽 카운터에서 '변화 기술' 항목을 선택해서 32BP와 교환한다.."
+      }
+    ],
+    "tm74": [
+      {
+        "place": "무지개시티 게임코너에서 코인 10000개와 교환한다."
+      }
+    ],
+    "tm75": [
+      {
+        "place": "금빛시티 게임코너에서 코인 4000개와 교환한다."
+      }
+    ],
+    "tm76": [
+      {
+        "place": "무지개시티 백화점 3층에서 2000원에 판매하고 있다."
+      }
+    ],
+    "tm77": [
+      {
+        "place": "상록숲에서 줍는다."
+      }
+    ],
+    "tm78": [
+      {
+        "place": "금빛시티 게임코너에서 줍는다."
+      },
+      {
+        "place": "무지개시티 백화점 3층에서 3000원에 판매하고 있다."
+      }
+    ],
+    "tm79": [
+      {
+        "place": "챔피언로드에서 줍는다."
+      },
+      {
+        "place": "무지개시티 백화점 3층에서 3000원에 판매하고 있다."
+      }
+    ],
+    "tm80": [
+      {
+        "place": "회색시티 체육관 관장 웅에게 이기면 배지와 함께 받을 수 있다. [스토리 진행 시 자동 입수]"
+      }
+    ],
+    "tm81": [
+      {
+        "place": "배틀프론티어 입구에 보이는 카운터 중 오른쪽 카운터에서 '물리 기술' 항목을 선택해서 64BP와 교환한다."
+      }
+    ],
+    "tm82": [
+      {
+        "place": "금빛시티 백화점 지하에서 주을 수 있다."
+      }
+    ],
+    "tm83": [
+      {
+        "place": "39번 도로 모모목장에서 밀탱크에게 오랭열매 7개를 주면 받는다."
+      },
+      {
+        "place": "금빛시티 백화점 5층에서 2000원에 판매하고 있다."
+      }
+    ],
+    "tm84": [
+      {
+        "place": "연분홍시티 체육관 관장 도희에게 이기면 배지와 함께 받을 수 있다. [스토리 진행 시 자동 입수]"
+      }
+    ],
+    "tm85": [
+      {
+        "place": "상록시티에서 풀베기를 하고 들어가는 곳에 있는 남자에게 받는다."
+      }
+    ],
+    "tm86": [
+      {
+        "place": "11번 도로에서 줍는다."
+      },
+      {
+        "place": "특성 '픽업'을 가진 포켓몬이 레벨 71~ 90 사이이면 1% 확률로 지니게 된다."
+      }
+    ],
+    "tm87": [
+      {
+        "place": "담청등대 4층에서 줍는다."
+      },
+      {
+        "place": "무지개시티 백화점 3층에서 1500원에 판매하고 있다."
+      }
+    ],
+    "tm88": [
+      {
+        "place": "40번 수로에서 줍는다."
+      }
+    ],
+    "tm89": [
+      {
+        "place": "고동마을 체육관 관장 호일에게 이기면 배지와 함께 받을 수 있다."
+      },
+      {
+        "place": "배틀프론티어 입구에 보이는 카운터 중 오른쪽 카운터에서 '물리 기술' 항목을 선택하여 40BP와 교환한다."
+      }
+    ],
+    "tm90": [
+      {
+        "place": "금빛시티 게임코너에서 코인 2000개와 교환한다."
+      }
+    ],
+    "tm91": [
+      {
+        "place": "9번 도로에서 줍는다."
+      },
+      {
+        "place": "매주 화요일 금빛시티 백화점 6F 오른쪽 코너에서 하는 제비뽑기 1등 경품이다. (1회 300원)"
+      }
+    ],
+    "tm92": [
+      {
+        "place": "상록시티 체육관 관장 그린에게 이기면 뱃지와 함께 받을 수 있다. [스토리 진행 중 자동 입수]"
+      }
+    ],
+    "hm01": [
+      {
+        "place": "너도밤나무숲에 있는 파오리 2마리를 남자에게 돌아오도록 몰아주면 받을 수 있다. [스토리 진행 시 자동 입수]"
+      }
+    ],
+    "hm02": [
+      {
+        "place": "진청시티 체육관 관장 사도를 이긴 뒤 체육관 밖으로 나오면 아주머니에게서 받을 수 있다. [스토리 진행 시 자동 입수]"
+      }
+    ],
+    "hm03": [
+      {
+        "place": "인주시티 무도장에서 로켓단원을 이기게 되면 신사에게서 받을 수 있다."
+      }
+    ],
+    "hm04": [
+      {
+        "place": "절구산 왼쪽 입구 근처에 있는 등산객에게서 받을 수 있다."
+      }
+    ],
+    "hm05": [
+      {
+        "place": "황토마을 내 로켓단 이벤트를 끝내고 나면 목호에게서 받을 수 있다. [스토리 진행 시 자동 입수]"
+      }
+    ],
+    "hm06": [
+      {
+        "place": "36번 도로에 있는 뚱뚱한 남자에게서 받을 수 있다."
+      }
+    ],
+    "hm07": [
+      {
+        "place": "얼음샛길에서 입수한다. [스토리 진행 시 반드시 입수]"
+      }
+    ],
+    "hm08": [
+      {
+        "place": "16개의 배지를 모두 획득한 후, 태초마을에 있는 오박사에게서 받을 수 있다. [스토리 진행 시 자동 입수]"
+      }
+    ]
+  },
+  "tutors": {
+    "fury-cutter": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 32,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 왼쪽 아저씨"
+      }
+    ],
+    "air-cutter": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 48,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 왼쪽 아저씨"
+      }
+    ],
+    "bug-bite": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 32,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 왼쪽 아저씨"
+      }
+    ],
+    "vacuum-wave": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 48,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 왼쪽 아저씨"
+      }
+    ],
+    "dive": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 40,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 왼쪽 아저씨"
+      }
+    ],
+    "trick": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 48,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 왼쪽 아저씨"
+      }
+    ],
+    "knock-off": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 40,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 왼쪽 아저씨"
+      }
+    ],
+    "thunder-punch": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 64,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 왼쪽 아저씨"
+      }
+    ],
+    "sucker-punch": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 48,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 왼쪽 아저씨"
+      }
+    ],
+    "fire-punch": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 64,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 왼쪽 아저씨"
+      }
+    ],
+    "icy-wind": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 48,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 왼쪽 아저씨"
+      }
+    ],
+    "ice-punch": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 64,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 왼쪽 아저씨"
+      }
+    ],
+    "ominous-wind": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 48,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 왼쪽 아저씨"
+      }
+    ],
+    "zen-headbutt": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 64,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 왼쪽 아저씨"
+      }
+    ],
+    "snore": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 32,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 오른쪽 아저씨"
+      }
+    ],
+    "synthesis": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 40,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 오른쪽 아저씨"
+      }
+    ],
+    "string-shot": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 32,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 오른쪽 아저씨"
+      }
+    ],
+    "magnet-rise": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 40,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 오른쪽 아저씨"
+      }
+    ],
+    "gravity": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 32,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 오른쪽 아저씨"
+      }
+    ],
+    "swift": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 40,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 오른쪽 아저씨"
+      }
+    ],
+    "worry-seed": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 32,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 오른쪽 아저씨"
+      }
+    ],
+    "last-resort": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 48,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 오른쪽 아저씨"
+      }
+    ],
+    "magic-coat": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 32,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 오른쪽 아저씨"
+      }
+    ],
+    "uproar": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 48,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 오른쪽 아저씨"
+      }
+    ],
+    "block": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 32,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 오른쪽 아저씨"
+      }
+    ],
+    "tailwind": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 48,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 오른쪽 아저씨"
+      }
+    ],
+    "spite": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 40,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 오른쪽 아저씨"
+      }
+    ],
+    "role-play": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 48,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 오른쪽 아저씨"
+      }
+    ],
+    "helping-hand": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 40,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 오른쪽 아저씨"
+      }
+    ],
+    "heal-bell": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 48,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 식탁 오른쪽 아저씨"
+      }
+    ],
+    "mud-slap": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 32,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 위쪽 아저씨"
+      }
+    ],
+    "twister": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 40,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 위쪽 아저씨"
+      }
+    ],
+    "rollout": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 32,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 위쪽 아저씨"
+      }
+    ],
+    "seed-bomb": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 40,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 위쪽 아저씨"
+      }
+    ],
+    "gastro-acid": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 32,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 위쪽 아저씨"
+      }
+    ],
+    "iron-defense": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 40,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 위쪽 아저씨"
+      }
+    ],
+    "gunk-shot": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 32,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 위쪽 아저씨"
+      }
+    ],
+    "super-fang": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 40,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 위쪽 아저씨"
+      }
+    ],
+    "bounce": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 32,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 위쪽 아저씨"
+      }
+    ],
+    "outrage": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 48,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 위쪽 아저씨"
+      }
+    ],
+    "low-kick": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 32,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 위쪽 아저씨"
+      }
+    ],
+    "superpower": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 48,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 위쪽 아저씨"
+      }
+    ],
+    "iron-head": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 40,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 위쪽 아저씨"
+      }
+    ],
+    "heat-wave": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 48,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 위쪽 아저씨"
+      }
+    ],
+    "aqua-tail": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 40,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 위쪽 아저씨"
+      }
+    ],
+    "endeavor": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 64,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 위쪽 아저씨"
+      }
+    ],
+    "ancient-power": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 40,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 위쪽 아저씨"
+      }
+    ],
+    "pain-split": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 64,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 위쪽 아저씨"
+      }
+    ],
+    "signal-beam": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 40,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 위쪽 아저씨"
+      }
+    ],
+    "sky-attack": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 64,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 위쪽 아저씨"
+      }
+    ],
+    "earth-power": [
+      {
+        "how": "tutor",
+        "where": "battle-frontier",
+        "content": {
+          "ko": "배틀프런티어",
+          "en": "Battle Frontier",
+          "ja": "バトルフロンティア"
+        },
+        "cost": [
+          {
+            "amount": 40,
+            "unit": "bp"
+          }
+        ],
+        "detail": "프런티어게이트 민가 위쪽 아저씨"
+      }
+    ],
+    "headbutt": [
+      {
+        "how": "tutor",
+        "where": "ilex-forest",
+        "detail": "무료 · 횟수 제한 없음"
+      }
+    ],
+    "draco-meteor": [
+      {
+        "how": "tutor",
+        "place": "검은먹시티 민가",
+        "detail": "드래곤 타입 · 친밀도 최대 (무료)"
+      }
+    ],
+    "frenzy-plant": [
+      {
+        "how": "tutor",
+        "place": "검은먹시티 민가",
+        "detail": "스타팅 최종 진화 · 친밀도 최대 (무료)"
+      }
+    ],
+    "blast-burn": [
+      {
+        "how": "tutor",
+        "place": "검은먹시티 민가",
+        "detail": "스타팅 최종 진화 · 친밀도 최대 (무료)"
+      }
+    ],
+    "hydro-cannon": [
+      {
+        "how": "tutor",
+        "place": "검은먹시티 민가",
+        "detail": "스타팅 최종 진화 · 친밀도 최대 (무료)"
+      }
+    ]
+  }
+}
