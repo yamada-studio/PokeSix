@@ -374,7 +374,13 @@ void CardBarrel::paintCard(QPainter &painter, const Layout &barrel, int index) c
     const QRect label(face.left(), face.bottom() - 46, face.width(), 24);
     painter.setFont(theme::font(theme::kFamilyBody, 14, QFont::Bold));
     painter.setPen(QColor(tok::kText1));
-    painter.drawText(label, Qt::AlignCenter, card.region.text(m_state->language()));
+    QStringList regions;
+    for (const LocalizedText &region : card.regions)
+        regions.append(region.text(m_state->language()));
+    painter.drawText(label, Qt::AlignCenter,
+                     QFontMetricsF(painter.font())
+                             .elidedText(regions.join(QStringLiteral(" · ")), Qt::ElideRight,
+                                         label.width() - 12));
     if (card.rangeFrom > 0) {
         painter.setFont(theme::font(theme::kFamilyData, 11, QFont::Bold));
         painter.setPen(QColor(tok::kText3));
@@ -404,40 +410,54 @@ void CardBarrel::paintCard(QPainter &painter, const Layout &barrel, int index) c
     painter.drawText(stage.adjusted(0, -6, 0, -6), Qt::AlignCenter,
                      QString::number(card.generation));
 
-    // 스타팅 셋: 2번째가 가운데 앞(크게), 양옆은 작게 뒤 — 같은 바닥선에 세운다
-    const qreal ground = stage.bottom() - 12;
-    const int count = int(card.pokemon.size());
+    // 시리즈별 스타팅 층: 첫 층(그 세대 첫 시리즈)이 맨 앞 바닥, 다음 시리즈는 한 층씩 작게 뒤 ·
+    // 위로 쌓는다(겹쳐도 된다). 그리는 순서는 뒤 층부터. 층 안에서는 2번째가 가운데 앞(크게),
+    // 양옆이 뒤
     struct Spot
     {
         qreal x;      // 가운데 기준 가로 위치(스테이지 폭 비율)
         qreal height; // 그림 높이(스테이지 높이 비율)
     };
     const Spot one[] = {{0, 0.52}};
+    const Spot two[] = {{-0.17, 0.46}, {0.17, 0.46}};
     const Spot three[] = {{-0.30, 0.38}, {0, 0.52}, {0.30, 0.38}};
-    const Spot *spots = count >= 3 ? three : one;
-    const int shown = count >= 3 ? 3 : std::min(count, 1);
-    // 그리는 순서: 양옆 먼저, 가운데를 맨 위에
-    const int order3[] = {0, 2, 1};
-    for (int k = 0; k < shown; ++k) {
-        const int slot = shown == 3 ? order3[k] : k;
-        const QPixmap sprite = pokemonSprite(card.pokemon.at(shown == 3 ? slot : 0));
-        const Spot &spot = spots[slot];
-        const qreal cx = stage.center().x() + spot.x * stage.width();
-        // 발밑 그림자(눌린 타원) — 서 있는 느낌
-        QColor shade(QColor(tok::kInk));
-        shade.setAlphaF(0.10);
-        const qreal shadowW = stage.width() * (spot.height > 0.5 ? 0.30 : 0.22);
-        painter.setPen(Qt::NoPen);
-        painter.setBrush(shade);
-        painter.drawEllipse(QPointF(cx, ground + 3), shadowW / 2, 6);
-        if (sprite.isNull())
-            continue;
-        qreal scale = stage.height() * spot.height / sprite.height();
-        scale = std::min(scale, stage.width() * 0.34 / sprite.width());
-        const QSizeF size = sprite.size() * scale;
-        painter.drawPixmap(
-                QRectF(cx - size.width() / 2, ground - size.height(), size.width(), size.height()),
-                sprite, sprite.rect());
+    const int layerCount = int(card.layers.size());
+    // 층이 많을수록 앞 층을 조금 줄여 뒤 층이 머리 위로 보이게
+    const qreal frontScale = layerCount <= 1 ? 1.0 : layerCount == 2 ? 0.86 : 0.76;
+    const qreal lift = stage.height() * (layerCount == 2 ? 0.30 : 0.24); // 층 사이 높이
+    for (int layer = layerCount - 1; layer >= 0; --layer) {
+        const QList<int> &ids = card.layers.at(layer);
+        const int count = std::min<int>(int(ids.size()), 3);
+        const Spot *spots = count == 3 ? three : count == 2 ? two : one;
+        const qreal layerScale = frontScale * std::pow(0.74, layer);
+        const qreal ground = stage.bottom() - 12 - layer * lift;
+        // 그리는 순서: 양옆 먼저, 가운데를 맨 위에
+        const int order3[] = {0, 2, 1};
+        for (int k = 0; k < count; ++k) {
+            const int slot = count == 3 ? order3[k] : k;
+            const QPixmap sprite = pokemonSprite(ids.at(slot));
+            const Spot &spot = spots[slot];
+            const qreal cx = stage.center().x() + spot.x * stage.width();
+            // 뒤 층의 가운데는 앞 층의 큰 가운데에 가려지기 쉽다 → 반 층 더 올린다
+            const qreal feet = ground - (layer > 0 && count == 3 && slot == 1 ? lift * 0.45 : 0);
+            // 발밑 그림자(눌린 타원) — 서 있는 느낌. 뒤 층일수록 옅고 작게
+            QColor shade(QColor(tok::kInk));
+            shade.setAlphaF(layer == 0 ? 0.10 : 0.07);
+            const qreal shadowW = stage.width() * (spot.height > 0.5 ? 0.30 : 0.22) * layerScale;
+            painter.setPen(Qt::NoPen);
+            painter.setBrush(shade);
+            painter.drawEllipse(QPointF(cx, feet + 3), shadowW / 2, 6 * layerScale);
+            if (sprite.isNull())
+                continue;
+            // 뒤 층은 셋을 같은 크기로(가운데를 키우면 앞 층을 더 가린다)
+            const qreal height = layer > 0 ? std::min(spot.height, 0.42) : spot.height;
+            qreal scale = stage.height() * height * layerScale / sprite.height();
+            scale = std::min(scale, stage.width() * 0.34 * layerScale / sprite.width());
+            const QSizeF size = sprite.size() * scale;
+            painter.drawPixmap(QRectF(cx - size.width() / 2, feet - size.height(), size.width(),
+                                      size.height()),
+                               sprite, sprite.rect());
+        }
     }
     painter.restore();
     painter.setPen(QPen(QColor(tok::kLine), 1.5)); // 무대 테
