@@ -32,7 +32,11 @@ QList<homecards::Card> load()
         const QJsonObject c = value.toObject();
         homecards::Card card;
         card.generation = c.value(QStringLiteral("generation")).toInt();
-        card.mascot = c.value(QStringLiteral("mascot")).toInt();
+        for (const QJsonValue &id : c.value(QStringLiteral("pokemon")).toArray())
+            card.pokemon.append(id.toInt());
+        const QJsonArray range = c.value(QStringLiteral("range")).toArray();
+        card.rangeFrom = range.size() > 0 ? range.at(0).toInt() : 0;
+        card.rangeTo = range.size() > 1 ? range.at(1).toInt() : 0;
         card.accent = QColor::fromString(c.value(QStringLiteral("accent")).toString());
         if (!card.accent.isValid())
             card.accent = QColor(tok::kWhite);

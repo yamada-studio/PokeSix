@@ -65,7 +65,7 @@ DLC(갑옷의 외딴섬, 왕관의 설원)와 Champions는 기술머신 표가 �
 | 칸 | 뜻 | 값 |
 |---|---|---|
 | `how` | 방법 | `field` 필드에서 줍기 · `hidden` 숨겨진 아이템 · `gift` NPC가 줌 · `shop` 상점 · `exchange` 포인트 교환(BP·조각 등) · `prize` 게임코너 경품 · `reward` 배틀·이벤트 보상 · `held` 야생 포켓몬 소지(드롭) · `trade` 교환 · `tutor` NPC 가르침 · `other` |
-| `where` | 장소 | PokéAPI 장소 identifier ([location-ids.json](location-ids.json)에서 고른다). 없으면 생략 |
+| `where` | 장소 | PokéAPI 장소 identifier ([location-ids.json](loc<!--  -->ation-ids.json)에서 고른다). 없으면 생략 |
 | `place` | 장소 글자 | `where`로 부족할 때 쓴다. 층·건물처럼 세부 위치를 적는다(한국어) |
 | `content` | 컨텐츠 | 배틀프런티어, 배틀서브웨이, 포케슬론, 게임코너 등. 한국어 글자 또는 `{ko, en, ja}` |
 | `cost` | 비용 | `[{amount, unit}]`. 여러 개면 합쳐서 낸다. unit: `money`(원) · `bp` · `coins` · `red-shard`·`blue-shard`·`yellow-shard`·`green-shard` · `heart-scale` · `athlete-points`(포케슬론) · `watts` · `league-points`. 목록에 없는 단위는 영어 소문자-하이픈으로 |

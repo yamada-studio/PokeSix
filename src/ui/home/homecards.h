@@ -12,8 +12,10 @@ namespace com::yamada::studio::homecards {
 struct Card
 {
     int generation = 0;
-    int mascot = 0; // 카드 가운데 그림의 포켓몬(전국 번호)
-    QColor accent;  // 윗띠 색. 파일에 없으면 흰색
+    QList<int> pokemon; // 카드의 포켓몬들(전국 번호). 2번째가 가운데 큰 자리 — 그 세대 스타팅 셋
+    int rangeFrom = 0;  // 그 세대 전국도감 구간(No.387–493)
+    int rangeTo = 0;
+    QColor accent; // 윗띠 · 배경 패턴 색. 파일에 없으면 흰색
     LocalizedText region;
 };
 

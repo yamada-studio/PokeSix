@@ -284,15 +284,14 @@ void CardBarrel::wheelEvent(QWheelEvent *event)
     event->accept();
 }
 
-QPixmap CardBarrel::mascotSprite(int index) const
+QPixmap CardBarrel::pokemonSprite(int pokemonId) const
 {
-    const homecards::Card &card = m_cards.at(index);
-    const auto it = m_mascots.constFind(card.mascot);
+    const auto it = m_mascots.constFind(pokemonId);
     if (it != m_mascots.constEnd())
         return *it;
     // 모든 세대가 같은 기본(96×96) 그림을 쓴다 — 세대 그림은 해상도 · 여백이 제각각이라
     // 카드마다 크기가 들쭉날쭉했다.
-    const QString key = QStringLiteral("default/%1").arg(card.mascot);
+    const QString key = QStringLiteral("default/%1").arg(pokemonId);
     const QString file = m_fronts->path(key);
     QImage image;
     if (file.isEmpty() || !image.load(file)) {
@@ -310,7 +309,7 @@ QPixmap CardBarrel::mascotSprite(int index) const
     }
     const QPixmap trimmed
             = QPixmap::fromImage(scale2x(scale2x(bounds.isNull() ? alpha : alpha.copy(bounds))));
-    m_mascots.insert(card.mascot, trimmed);
+    m_mascots.insert(pokemonId, trimmed);
     return trimmed;
 }
 
@@ -348,24 +347,79 @@ void CardBarrel::paintCard(QPainter &painter, const Layout &barrel, int index) c
         painter.fillPath(cursor, QColor(tok::kWhite));
     }
 
-    // 아래: 지방 이름 띠(고정 높이) — 그림은 이 띠를 침범하지 않는다
-    const QRect label(face.left(), face.bottom() - 32, face.width(), 26);
+    // 아래: 지방 이름 + 전국도감 구간 — 그림은 이 띠를 침범하지 않는다
+    const QRect label(face.left(), face.bottom() - 46, face.width(), 24);
     painter.setFont(theme::font(theme::kFamilyBody, 14, QFont::Bold));
     painter.setPen(QColor(tok::kText1));
     painter.drawText(label, Qt::AlignCenter, card.region.text(m_state->language()));
-
-    // 가운데: 마스코트. 모두 같은 높이로 바닥선에 세운다.
-    const QRect spriteBox(face.left() + 10, band.bottom() + 10, face.width() - 20,
-                          label.top() - band.bottom() - 16);
-    const QPixmap sprite = mascotSprite(index);
-    if (!sprite.isNull()) {
-        qreal scale = spriteBox.height() / qreal(sprite.height());
-        scale = std::min(scale, spriteBox.width() / qreal(sprite.width()));
-        const QSizeF size = sprite.size() * scale;
-        const QRectF target(spriteBox.center().x() - size.width() / 2,
-                            spriteBox.bottom() - size.height(), size.width(), size.height());
-        painter.drawPixmap(target, sprite, sprite.rect()); // SmoothPixmapTransform은 paintEvent에서
+    if (card.rangeFrom > 0) {
+        painter.setFont(theme::font(theme::kFamilyData, 11, QFont::Bold));
+        painter.setPen(QColor(tok::kText3));
+        painter.drawText(QRect(face.left(), label.bottom(), face.width(), 16), Qt::AlignCenter,
+                         QStringLiteral("No.%1–%2").arg(card.rangeFrom).arg(card.rangeTo));
     }
+
+    // 무대: 액센트를 옅게 푼 바탕 + 사선 무늬 + 흐린 세대 숫자(인트로 배경과 같은 문법)
+    const QRect stage(face.left() + 8, band.bottom() + 10, face.width() - 16,
+                      label.top() - band.bottom() - 16);
+    const auto mix = [&card](qreal keep) { // 액센트 ↔ 흰색
+        const QColor a = card.accent;
+        return QColor(int(a.red() * keep + 255 * (1 - keep)),
+                      int(a.green() * keep + 255 * (1 - keep)),
+                      int(a.blue() * keep + 255 * (1 - keep)));
+    };
+    QPainterPath stageClip;
+    stageClip.addRoundedRect(stage, 8, 8);
+    painter.save();
+    painter.setClipPath(stageClip, Qt::IntersectClip);
+    painter.fillPath(stageClip, mix(0.10));
+    painter.setPen(QPen(mix(0.16), 7));
+    for (int x = stage.left() - stage.height(); x < stage.right(); x += 18) // 사선 무늬
+        painter.drawLine(QPointF(x, stage.bottom()), QPointF(x + stage.height(), stage.top()));
+    painter.setFont(theme::font(theme::kFamilyTitle, int(stage.height() * 0.72)));
+    painter.setPen(mix(0.26));
+    painter.drawText(stage.adjusted(0, -6, 0, -6), Qt::AlignCenter,
+                     QString::number(card.generation));
+
+    // 스타팅 셋: 2번째가 가운데 앞(크게), 양옆은 작게 뒤 — 같은 바닥선에 세운다
+    const qreal ground = stage.bottom() - 12;
+    const int count = int(card.pokemon.size());
+    struct Spot
+    {
+        qreal x;      // 가운데 기준 가로 위치(스테이지 폭 비율)
+        qreal height; // 그림 높이(스테이지 높이 비율)
+    };
+    const Spot one[] = {{0, 0.52}};
+    const Spot three[] = {{-0.30, 0.38}, {0, 0.52}, {0.30, 0.38}};
+    const Spot *spots = count >= 3 ? three : one;
+    const int shown = count >= 3 ? 3 : std::min(count, 1);
+    // 그리는 순서: 양옆 먼저, 가운데를 맨 위에
+    const int order3[] = {0, 2, 1};
+    for (int k = 0; k < shown; ++k) {
+        const int slot = shown == 3 ? order3[k] : k;
+        const QPixmap sprite = pokemonSprite(card.pokemon.at(shown == 3 ? slot : 0));
+        const Spot &spot = spots[slot];
+        const qreal cx = stage.center().x() + spot.x * stage.width();
+        // 발밑 그림자(눌린 타원) — 서 있는 느낌
+        QColor shade(QColor(tok::kInk));
+        shade.setAlphaF(0.10);
+        const qreal shadowW = stage.width() * (spot.height > 0.5 ? 0.30 : 0.22);
+        painter.setPen(Qt::NoPen);
+        painter.setBrush(shade);
+        painter.drawEllipse(QPointF(cx, ground + 3), shadowW / 2, 6);
+        if (sprite.isNull())
+            continue;
+        qreal scale = stage.height() * spot.height / sprite.height();
+        scale = std::min(scale, stage.width() * 0.34 / sprite.width());
+        const QSizeF size = sprite.size() * scale;
+        painter.drawPixmap(
+                QRectF(cx - size.width() / 2, ground - size.height(), size.width(), size.height()),
+                sprite, sprite.rect());
+    }
+    painter.restore();
+    painter.setPen(QPen(QColor(tok::kLine), 1.5)); // 무대 테
+    painter.setBrush(Qt::NoBrush);
+    painter.drawRoundedRect(QRectF(stage).adjusted(0.75, 0.75, -0.75, -0.75), 8, 8);
 
     // 고른 카드: 노란 테 (선택 칸의 문법, 디자인 시트 §3)
     if (card.generation == m_state->generation()) {

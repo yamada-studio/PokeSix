@@ -1,19 +1,19 @@
 {
   "_comment": [
     "홈(인트로) 세대 카드 설정 (ui/home/homecards.h가 읽는다).",
-    "mascot: 카드 가운데 그림의 포켓몬(전국 번호). 그림은 기본(96×96) 정면 스프라이트를 쓴다 — 카드끼리 그림체 · 크기가 맞게.",
-    "accent: 카드 윗띠 색. region: 카드 아래 지방 이름(언어별).",
+    "pokemon: 카드의 포켓몬들(전국 번호, 2번째가 가운데 큰 자리) — 그 세대 스타팅 셋. 그림은 기본(96×96) 정면 스프라이트.",
+    "range: 그 세대 전국도감 구간 [부터, 까지]. accent: 카드 윗띠 · 배경 패턴 색. region: 지방 이름(언어별).",
     "색은 앱 팔레트(red · blue · green · yellow)를 돌려 쓴다 — ui/theme/tokens.h와 같은 값."
   ],
   "cards": [
-    { "generation": 1, "mascot": 25, "accent": "#D8322B", "region": { "ko": "관동", "en": "Kanto", "ja": "カントー" } },
-    { "generation": 2, "mascot": 152, "accent": "#2C64B0", "region": { "ko": "성도", "en": "Johto", "ja": "ジョウト" } },
-    { "generation": 3, "mascot": 255, "accent": "#2A7D38", "region": { "ko": "호연", "en": "Hoenn", "ja": "ホウエン" } },
-    { "generation": 4, "mascot": 393, "accent": "#F2C12E", "region": { "ko": "신오", "en": "Sinnoh", "ja": "シンオウ" } },
-    { "generation": 5, "mascot": 511, "accent": "#D8322B", "region": { "ko": "하나", "en": "Unova", "ja": "イッシュ" } },
-    { "generation": 6, "mascot": 656, "accent": "#2C64B0", "region": { "ko": "칼로스", "en": "Kalos", "ja": "カロス" } },
-    { "generation": 7, "mascot": 722, "accent": "#2A7D38", "region": { "ko": "알로라", "en": "Alola", "ja": "アローラ" } },
-    { "generation": 8, "mascot": 810, "accent": "#F2C12E", "region": { "ko": "가라르", "en": "Galar", "ja": "ガラル" } },
-    { "generation": 9, "mascot": 909, "accent": "#D8322B", "region": { "ko": "팔데아", "en": "Paldea", "ja": "パルデア" } }
+    { "generation": 1, "pokemon": [1, 25, 7], "range": [1, 151], "accent": "#D8322B", "region": { "ko": "관동", "en": "Kanto", "ja": "カントー" } },
+    { "generation": 2, "pokemon": [152, 155, 158], "range": [152, 251], "accent": "#2C64B0", "region": { "ko": "성도", "en": "Johto", "ja": "ジョウト" } },
+    { "generation": 3, "pokemon": [252, 255, 258], "range": [252, 386], "accent": "#2A7D38", "region": { "ko": "호연", "en": "Hoenn", "ja": "ホウエン" } },
+    { "generation": 4, "pokemon": [387, 393, 390], "range": [387, 493], "accent": "#F2C12E", "region": { "ko": "신오", "en": "Sinnoh", "ja": "シンオウ" } },
+    { "generation": 5, "pokemon": [495, 501, 498], "range": [494, 649], "accent": "#D8322B", "region": { "ko": "하나", "en": "Unova", "ja": "イッシュ" } },
+    { "generation": 6, "pokemon": [650, 656, 653], "range": [650, 721], "accent": "#2C64B0", "region": { "ko": "칼로스", "en": "Kalos", "ja": "カロス" } },
+    { "generation": 7, "pokemon": [722, 728, 725], "range": [722, 809], "accent": "#2A7D38", "region": { "ko": "알로라", "en": "Alola", "ja": "アローラ" } },
+    { "generation": 8, "pokemon": [810, 816, 813], "range": [810, 905], "accent": "#F2C12E", "region": { "ko": "가라르", "en": "Galar", "ja": "ガラル" } },
+    { "generation": 9, "pokemon": [906, 909, 912], "range": [906, 1025], "accent": "#D8322B", "region": { "ko": "팔데아", "en": "Paldea", "ja": "パルデア" } }
   ]
 }
