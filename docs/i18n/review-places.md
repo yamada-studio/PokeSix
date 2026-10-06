@@ -30,11 +30,4 @@ Merged but single-source: worth a spot check.
 
 | identifier | English | Korean | source |
 |---|---|---|---|
-| abandoned-ship | Abandoned Ship | 버려진배 | https://pokemon.fandom.com/ko/wiki/%EB%B2%84%EB%A0%A4%EC%A7%84%EB%B0%B0 https://pokemon.fandom.com/ko/wiki/108%EB%B2%88%EC%88%98%EB%A1%9C https://www.pokewiki.de/Schiffswrack |
-| artisan-cave | Artisan Cave | 아틀리에의 동굴 | https://pokemon.fandom.com/ko/wiki/%EC%95%84%ED%8B%80%EB%A6%AC%EC%97%90%EC%9D%98_%EB%8F%99%EA%B5%B4 https://www.pokewiki.de/H%C3%B6hlenatelier |
-| desert-underpass | Desert Underpass | 사막의 지하도 | https://pokemon.fandom.com/ko/wiki/%EC%82%AC%EB%A7%89%EC%9D%98_%EC%A7%80%ED%95%98%EB%8F%84 https://www.pokewiki.de/W%C3%BCstentunnel |
-| faraway-island | Faraway Island | 마지막고도 | https://pokemon.fandom.com/ko/wiki/%EB%A7%88%EC%A7%80%EB%A7%89%EA%B3%A0%EB%8F%84 https://www.pokewiki.de/Ferneiland |
-| hoenn-altering-cave | Altering Cave | 요괴의 굴 | https://pokemon.fandom.com/ko/wiki/%EC%9A%94%EA%B4%B4%EC%9D%98_%EA%B5%B4 https://www.pokewiki.de/Wandelh%C3%B6hle |
-| marine-cave | Marine Cave | 바다 동굴 | https://pokemon.fandom.com/ko/wiki/%EB%B0%94%EB%8B%A4_%EB%8F%99%EA%B5%B4 https://www.pokewiki.de/Ozeanh%C3%B6hle |
-| mirage-tower | Mirage Tower | 신기루탑 | https://pokemon.fandom.com/ko/wiki/%EC%8B%A0%EA%B8%B0%EB%A3%A8%ED%83%91 https://www.pokewiki.de/Wunderturm |
-| terra-cave | Terra Cave | 육지 동굴 | https://pokemon.fandom.com/ko/wiki/%EC%9C%A1%EC%A7%80_%EB%8F%99%EA%B5%B4 https://www.pokewiki.de/Terrah%C3%B6hle |
+| ice-column-chamber | Ice Column Chamber | 빙주의 방 | https://wiki.52poke.com/wiki/冰柱窟 https://www.bisafans.de/routendex/hisui/eissaeulenkammer.php |
