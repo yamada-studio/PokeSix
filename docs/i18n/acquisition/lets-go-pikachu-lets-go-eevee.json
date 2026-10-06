@@ -1,159 +1,3152 @@
 {
-  "versionGroup": "lets-go-pikachu-lets-go-eevee",
-  "generation": 7,
-  "_games": [
-    "레츠고! 피카츄 (Let’s Go, Pikachu!)",
-    "레츠고! 이브이 (Let’s Go, Eevee!)"
+ "versionGroup": "lets-go-pikachu-lets-go-eevee",
+ "generation": 7,
+ "_games": [
+  "레츠고! 피카츄 (Let’s Go, Pikachu!)",
+  "레츠고! 이브이 (Let’s Go, Eevee!)"
+ ],
+ "_sources": [
+  "Serebii.net ItemDex (https://www.serebii.net/itemdex/) — 장소는 PokéAPI/게임 텍스트로 한국어화"
+ ],
+ "_tms": {
+  "tm01": "박치기 / Headbutt",
+  "tm02": "도발 / Taunt",
+  "tm03": "도우미 / Helping Hand",
+  "tm04": "순간이동 / Teleport",
+  "tm05": "잠자기 / Rest",
+  "tm06": "빛의장막 / Light Screen",
+  "tm07": "방어 / Protect",
+  "tm08": "대타출동 / Substitute",
+  "tm09": "리플렉터 / Reflect",
+  "tm10": "구멍파기 / Dig",
+  "tm11": "도깨비불 / Will-O-Wisp",
+  "tm12": "객기 / Facade",
+  "tm13": "깨뜨리다 / Brick Break",
+  "tm14": "공중날기 / Fly",
+  "tm15": "지구던지기 / Seismic Toss",
+  "tm16": "전기자석파 / Thunder Wave",
+  "tm17": "드래곤테일 / Dragon Tail",
+  "tm18": "유턴 / U-turn",
+  "tm19": "아이언테일 / Iron Tail",
+  "tm20": "악의파동 / Dark Pulse",
+  "tm21": "속임수 / Foul Play",
+  "tm22": "스톤샤워 / Rock Slide",
+  "tm23": "번개펀치 / Thunder Punch",
+  "tm24": "시저크로스 / X-Scissor",
+  "tm25": "폭포오르기 / Waterfall",
+  "tm26": "독찌르기 / Poison Jab",
+  "tm27": "맹독 / Toxic",
+  "tm28": "트라이어택 / Tri Attack",
+  "tm29": "열탕 / Scald",
+  "tm30": "벌크업 / Bulk Up",
+  "tm31": "불꽃펀치 / Fire Punch",
+  "tm32": "매지컬샤인 / Dazzling Gleam",
+  "tm33": "명상 / Calm Mind",
+  "tm34": "용의파동 / Dragon Pulse",
+  "tm35": "냉동펀치 / Ice Punch",
+  "tm36": "10만볼트 / Thunderbolt",
+  "tm37": "화염방사 / Flamethrower",
+  "tm38": "번개 / Thunder",
+  "tm39": "역린 / Outrage",
+  "tm40": "사이코키네시스 / Psychic",
+  "tm41": "지진 / Earthquake",
+  "tm42": "자폭 / Self-Destruct",
+  "tm43": "섀도볼 / Shadow Ball",
+  "tm44": "치근거리기 / Play Rough",
+  "tm45": "솔라빔 / Solar Beam",
+  "tm46": "불대문자 / Fire Blast",
+  "tm47": "파도타기 / Surf",
+  "tm48": "파괴광선 / Hyper Beam",
+  "tm49": "엄청난힘 / Superpower",
+  "tm50": "날개쉬기 / Roost",
+  "tm51": "눈보라 / Blizzard",
+  "tm52": "오물폭탄 / Sludge Bomb",
+  "tm53": "메가드레인 / Mega Drain",
+  "tm54": "러스터캐논 / Flash Cannon",
+  "tm55": "냉동빔 / Ice Beam",
+  "tm56": "스텔스록 / Stealth Rock",
+  "tm57": "고양이돈받기 / Pay Day",
+  "tm58": "드릴라이너 / Drill Run",
+  "tm59": "꿈먹기 / Dream Eater",
+  "tm60": "메가혼 / Megahorn"
+ },
+ "_tutors": {
+  "zippy-zap": "파찌파찌액셀 / Zippy Zap",
+  "splishy-splash": "참방참방서핑 / Splishy Splash",
+  "floaty-fall": "둥실둥실폴 / Floaty Fall",
+  "bouncy-bubble": "생생버블 / Bouncy Bubble",
+  "buzzy-buzz": "찌릿찌릿일렉 / Buzzy Buzz",
+  "sizzly-slide": "이글이글번 / Sizzly Slide",
+  "glitzy-glow": "콸콸오라 / Glitzy Glow",
+  "baddy-bad": "아그아그존 / Baddy Bad",
+  "sappy-seed": "쑥쑥봄버 / Sappy Seed",
+  "freezy-frost": "꽁꽁프로스트 / Freezy Frost",
+  "sparkly-swirl": "반짝반짝스톰 / Sparkly Swirl"
+ },
+ "items": {
+  "abra-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 캐이시",
+     "en": "Wild Abra"
+    }
+   }
   ],
-  "_sources": [],
-  "_tms": {
-    "tm01": "박치기 / Headbutt",
-    "tm02": "도발 / Taunt",
-    "tm03": "도우미 / Helping Hand",
-    "tm04": "순간이동 / Teleport",
-    "tm05": "잠자기 / Rest",
-    "tm06": "빛의장막 / Light Screen",
-    "tm07": "방어 / Protect",
-    "tm08": "대타출동 / Substitute",
-    "tm09": "리플렉터 / Reflect",
-    "tm10": "구멍파기 / Dig",
-    "tm11": "도깨비불 / Will-O-Wisp",
-    "tm12": "객기 / Facade",
-    "tm13": "깨뜨리다 / Brick Break",
-    "tm14": "공중날기 / Fly",
-    "tm15": "지구던지기 / Seismic Toss",
-    "tm16": "전기자석파 / Thunder Wave",
-    "tm17": "드래곤테일 / Dragon Tail",
-    "tm18": "유턴 / U-turn",
-    "tm19": "아이언테일 / Iron Tail",
-    "tm20": "악의파동 / Dark Pulse",
-    "tm21": "속임수 / Foul Play",
-    "tm22": "스톤샤워 / Rock Slide",
-    "tm23": "번개펀치 / Thunder Punch",
-    "tm24": "시저크로스 / X-Scissor",
-    "tm25": "폭포오르기 / Waterfall",
-    "tm26": "독찌르기 / Poison Jab",
-    "tm27": "맹독 / Toxic",
-    "tm28": "트라이어택 / Tri Attack",
-    "tm29": "열탕 / Scald",
-    "tm30": "벌크업 / Bulk Up",
-    "tm31": "불꽃펀치 / Fire Punch",
-    "tm32": "매지컬샤인 / Dazzling Gleam",
-    "tm33": "명상 / Calm Mind",
-    "tm34": "용의파동 / Dragon Pulse",
-    "tm35": "냉동펀치 / Ice Punch",
-    "tm36": "10만볼트 / Thunderbolt",
-    "tm37": "화염방사 / Flamethrower",
-    "tm38": "번개 / Thunder",
-    "tm39": "역린 / Outrage",
-    "tm40": "사이코키네시스 / Psychic",
-    "tm41": "지진 / Earthquake",
-    "tm42": "자폭 / Self-Destruct",
-    "tm43": "섀도볼 / Shadow Ball",
-    "tm44": "치근거리기 / Play Rough",
-    "tm45": "솔라빔 / Solar Beam",
-    "tm46": "불대문자 / Fire Blast",
-    "tm47": "파도타기 / Surf",
-    "tm48": "파괴광선 / Hyper Beam",
-    "tm49": "엄청난힘 / Superpower",
-    "tm50": "날개쉬기 / Roost",
-    "tm51": "눈보라 / Blizzard",
-    "tm52": "오물폭탄 / Sludge Bomb",
-    "tm53": "메가드레인 / Mega Drain",
-    "tm54": "러스터캐논 / Flash Cannon",
-    "tm55": "냉동빔 / Ice Beam",
-    "tm56": "스텔스록 / Stealth Rock",
-    "tm57": "고양이돈받기 / Pay Day",
-    "tm58": "드릴라이너 / Drill Run",
-    "tm59": "꿈먹기 / Dream Eater",
-    "tm60": "메가혼 / Megahorn"
-  },
-  "_tutors": {
-    "zippy-zap": "파찌파찌액셀 / Zippy Zap",
-    "splishy-splash": "참방참방서핑 / Splishy Splash",
-    "floaty-fall": "둥실둥실폴 / Floaty Fall",
-    "bouncy-bubble": "생생버블 / Bouncy Bubble",
-    "buzzy-buzz": "찌릿찌릿일렉 / Buzzy Buzz",
-    "sizzly-slide": "이글이글번 / Sizzly Slide",
-    "glitzy-glow": "콸콸오라 / Glitzy Glow",
-    "baddy-bad": "아그아그존 / Baddy Bad",
-    "sappy-seed": "쑥쑥봄버 / Sappy Seed",
-    "freezy-frost": "꽁꽁프로스트 / Freezy Frost",
-    "sparkly-swirl": "반짝반짝스톰 / Sparkly Swirl"
-  },
-  "items": {
-    "tm01": [],
-    "tm02": [],
-    "tm03": [],
-    "tm04": [],
-    "tm05": [],
-    "tm06": [],
-    "tm07": [],
-    "tm08": [],
-    "tm09": [],
-    "tm10": [],
-    "tm11": [],
-    "tm12": [],
-    "tm13": [],
-    "tm14": [],
-    "tm15": [],
-    "tm16": [],
-    "tm17": [],
-    "tm18": [],
-    "tm19": [],
-    "tm20": [],
-    "tm21": [],
-    "tm22": [],
-    "tm23": [],
-    "tm24": [],
-    "tm25": [],
-    "tm26": [],
-    "tm27": [],
-    "tm28": [],
-    "tm29": [],
-    "tm30": [],
-    "tm31": [],
-    "tm32": [],
-    "tm33": [],
-    "tm34": [],
-    "tm35": [],
-    "tm36": [],
-    "tm37": [],
-    "tm38": [],
-    "tm39": [],
-    "tm40": [],
-    "tm41": [],
-    "tm42": [],
-    "tm43": [],
-    "tm44": [],
-    "tm45": [],
-    "tm46": [],
-    "tm47": [],
-    "tm48": [],
-    "tm49": [],
-    "tm50": [],
-    "tm51": [],
-    "tm52": [],
-    "tm53": [],
-    "tm54": [],
-    "tm55": [],
-    "tm56": [],
-    "tm57": [],
-    "tm58": [],
-    "tm59": [],
-    "tm60": []
-  },
-  "tutors": {
-    "zippy-zap": [],
-    "splishy-splash": [],
-    "floaty-fall": [],
-    "bouncy-bubble": [],
-    "buzzy-buzz": [],
-    "sizzly-slide": [],
-    "glitzy-glow": [],
-    "baddy-bad": [],
-    "sappy-seed": [],
-    "freezy-frost": [],
-    "sparkly-swirl": []
-  }
+  "aerodactyl-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 프테라",
+     "en": "Wild Aerodactyl"
+    }
+   }
+  ],
+  "antidote": [
+   {
+    "where": "kanto-route-22"
+   },
+   {
+    "where": "cinnabar-island"
+   },
+   {
+    "where": "viridian-forest"
+   }
+  ],
+  "articuno-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 프리져",
+     "en": "Wild Articuno"
+    }
+   }
+  ],
+  "autograph": [
+   {
+    "where": "vermilion-city"
+   }
+  ],
+  "awakening": [
+   {
+    "where": "kanto-route-12"
+   },
+   {
+    "where": "kanto-route-16"
+   },
+   {
+    "where": "mt-moon"
+   },
+   {
+    "where": "pokemon-tower"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   }
+  ],
+  "beach-glass": [
+   {
+    "place": "Partner Pokémon Gift"
+   }
+  ],
+  "bellsprout-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 모다피",
+     "en": "Wild Bellsprout"
+    }
+   }
+  ],
+  "big-mushroom": [
+   {
+    "where": "kanto-route-8"
+   },
+   {
+    "where": "mt-moon"
+   }
+  ],
+  "big-pearl": [
+   {
+    "where": "pewter-city"
+   },
+   {
+    "place": "Underground Path 5-6"
+   },
+   {
+    "place": "Underground Path 7-8"
+   },
+   {
+    "where": "pokemon-tower"
+   },
+   {
+    "where": "seafoam-islands"
+   },
+   {
+    "place": {
+     "ko": "19번수로",
+     "en": "Route 19"
+    }
+   },
+   {
+    "place": "Route 25 & Viridian City Found by any of your Pokémon in Cerulean Cave"
+   }
+  ],
+  "blastoisinite": [
+   {
+    "where": "pallet-town"
+   }
+  ],
+  "bottle-cap": [
+   {
+    "where": "vermilion-city"
+   },
+   {
+    "where": "celadon-city"
+   }
+  ],
+  "bulbasaur-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 이상해씨",
+     "en": "Wild Bulbasaur"
+    }
+   }
+  ],
+  "card-key": [
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   }
+  ],
+  "card-key--letsgo": [
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   }
+  ],
+  "caterpie-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 캐터피",
+     "en": "Wild Caterpie"
+    }
+   }
+  ],
+  "chalky-stone": [
+   {
+    "place": "Partner Pokémon Gift"
+   }
+  ],
+  "chansey-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 럭키",
+     "en": "Wild Chansey"
+    }
+   }
+  ],
+  "charizardite-x": [
+   {
+    "where": "pallet-town"
+   }
+  ],
+  "charizardite-y": [
+   {
+    "where": "pallet-town"
+   }
+  ],
+  "charmander-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 파이리",
+     "en": "Wild Charmander"
+    }
+   }
+  ],
+  "clefairy-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 삐삐",
+     "en": "Wild Clefairy"
+    }
+   }
+  ],
+  "courage-candy": [
+   {
+    "where": "celadon-city"
+   },
+   {
+    "where": "fuchsia-city"
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 이상해풀",
+     "en": "Wild Ivysaur"
+    }
+   }
+  ],
+  "courage-candy-l": [
+   {
+    "where": "celadon-city"
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 이상해풀",
+     "en": "Wild Ivysaur"
+    }
+   }
+  ],
+  "courage-candy-xl": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 이상해풀",
+     "en": "Wild Ivysaur"
+    }
+   }
+  ],
+  "cubone-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 탕구리",
+     "en": "Wild Cubone"
+    }
+   }
+  ],
+  "diglett-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 디그다",
+     "en": "Wild Diglett"
+    }
+   }
+  ],
+  "dire-hit": [
+   {
+    "where": "rock-tunnel"
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   }
+  ],
+  "ditto-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 메타몽",
+     "en": "Wild Ditto"
+    }
+   }
+  ],
+  "doduo-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 두두",
+     "en": "Wild Doduo"
+    }
+   }
+  ],
+  "dome-fossil": [
+   {
+    "where": "mt-moon"
+   },
+   {
+    "where": "cerulean-cave"
+   }
+  ],
+  "dratini-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 미뇽",
+     "en": "Wild Dratini"
+    }
+   }
+  ],
+  "drowzee-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 슬리프",
+     "en": "Wild Drowzee"
+    }
+   }
+  ],
+  "eevee-candy": [
+   {
+    "where": "kanto-route-11"
+   },
+   {
+    "where": "kanto-victory-road-1"
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 이브이",
+     "en": "Wild Eevee"
+    }
+   }
+  ],
+  "ekans-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 아보",
+     "en": "Wild Ekans"
+    }
+   }
+  ],
+  "electabuzz-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 에레브",
+     "en": "Wild Electabuzz"
+    }
+   }
+  ],
+  "elixir": [
+   {
+    "where": "kanto-route-7"
+   },
+   {
+    "where": "kanto-route-17"
+   },
+   {
+    "where": "kanto-route-18"
+   },
+   {
+    "where": "ss-anne"
+   },
+   {
+    "where": "pokemon-tower"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   }
+  ],
+  "escape-rope": [
+   {
+    "where": "kanto-route-4"
+   },
+   {
+    "where": "cerulean-city"
+   },
+   {
+    "where": "cerulean-cave"
+   },
+   {
+    "where": "rock-tunnel"
+   },
+   {
+    "where": "pokemon-tower"
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "seafoam-islands"
+   }
+  ],
+  "ether": [
+   {
+    "where": "kanto-route-5"
+   },
+   {
+    "where": "kanto-route-9"
+   },
+   {
+    "where": "kanto-route-25"
+   },
+   {
+    "where": "mt-moon"
+   }
+  ],
+  "exeggcute-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 아라리",
+     "en": "Wild Exeggcute"
+    }
+   }
+  ],
+  "farfetchd-candy": [
+   {
+    "place": "Farfetch'd"
+   }
+  ],
+  "fire-stone": [
+   {
+    "where": "kanto-route-8"
+   },
+   {
+    "where": "pokemon-mansion"
+   },
+   {
+    "where": "rock-tunnel"
+   }
+  ],
+  "fresh-water": [
+   {
+    "place": "Underground Path 5-6"
+   },
+   {
+    "place": "Underground Path 7-8"
+   },
+   {
+    "where": "kanto-victory-road-1"
+   }
+  ],
+  "full-heal": [
+   {
+    "where": "kanto-route-13"
+   },
+   {
+    "place": {
+     "ko": "19번수로",
+     "en": "Route 19"
+    }
+   },
+   {
+    "where": "vermilion-city"
+   },
+   {
+    "where": "cerulean-cave"
+   },
+   {
+    "where": "rock-tunnel"
+   },
+   {
+    "where": "ss-anne"
+   },
+   {
+    "where": "pokemon-tower"
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "pokemon-mansion"
+   }
+  ],
+  "full-restore": [
+   {
+    "where": "cerulean-cave"
+   },
+   {
+    "where": "kanto-victory-road-1"
+   }
+  ],
+  "gastly-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 고오스",
+     "en": "Wild Gastly"
+    }
+   }
+  ],
+  "geodude-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 꼬마돌",
+     "en": "Wild Geodude"
+    }
+   }
+  ],
+  "gold-bottle-cap": [
+   {
+    "where": "celadon-city"
+   }
+  ],
+  "gold-leaf": [
+   {
+    "place": "Partner Pokémon Gift"
+   }
+  ],
+  "gold-teeth": [
+   {
+    "where": "fuchsia-city"
+   }
+  ],
+  "goldeen-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 콘치",
+     "en": "Wild Goldeen"
+    }
+   }
+  ],
+  "golden-nanab-berry": [
+   {
+    "where": "kanto-route-5"
+   },
+   {
+    "where": "kanto-route-15"
+   },
+   {
+    "where": "kanto-route-23"
+   },
+   {
+    "where": "cerulean-cave"
+   },
+   {
+    "where": "kanto-victory-road-1"
+   },
+   {
+    "place": "Capture Reward Walk with a Pokémon in the PokéBall Plus From bushes in routes by any following Pokémon"
+   }
+  ],
+  "golden-pinap-berry": [
+   {
+    "where": "kanto-route-5"
+   },
+   {
+    "where": "kanto-route-13"
+   },
+   {
+    "where": "kanto-route-14"
+   },
+   {
+    "where": "kanto-route-23"
+   },
+   {
+    "place": "Capture Reward Walk with a Pokémon in the PokéBall Plus From bushes in routes by any following Pokémon"
+   }
+  ],
+  "golden-razz-berry": [
+   {
+    "where": "kanto-route-5"
+   },
+   {
+    "where": "kanto-route-14"
+   },
+   {
+    "where": "kanto-route-23"
+   },
+   {
+    "where": "cerulean-cave"
+   },
+   {
+    "place": "Capture Reward Walk with a Pokémon in the PokéBall Plus From bushes in routes by any following Pokémon"
+   }
+  ],
+  "great-ball": [
+   {
+    "where": "kanto-route-2"
+   },
+   {
+    "where": "kanto-route-3"
+   },
+   {
+    "where": "kanto-route-4"
+   },
+   {
+    "where": "kanto-route-5"
+   },
+   {
+    "where": "kanto-route-6"
+   },
+   {
+    "where": "kanto-route-9"
+   },
+   {
+    "where": "kanto-route-10"
+   },
+   {
+    "where": "kanto-route-11"
+   },
+   {
+    "where": "kanto-route-12"
+   },
+   {
+    "where": "kanto-route-13"
+   },
+   {
+    "where": "kanto-route-14"
+   },
+   {
+    "where": "kanto-route-15"
+   },
+   {
+    "where": "kanto-route-17"
+   },
+   {
+    "place": {
+     "ko": "20번수로",
+     "en": "Route 20"
+    }
+   },
+   {
+    "where": "kanto-route-24"
+   },
+   {
+    "where": "kanto-route-25"
+   },
+   {
+    "where": "pewter-city"
+   },
+   {
+    "where": "lavender-town"
+   },
+   {
+    "where": "mt-moon"
+   },
+   {
+    "where": "cerulean-cave"
+   },
+   {
+    "where": "rock-tunnel"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "seafoam-islands"
+   }
+  ],
+  "grimer-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 질퍽이",
+     "en": "Wild Grimer"
+    }
+   }
+  ],
+  "growlithe-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 가디",
+     "en": "Wild Growlithe"
+    }
+   }
+  ],
+  "health-candy": [
+   {
+    "where": "celadon-city"
+   },
+   {
+    "where": "fuchsia-city"
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 캐터피",
+     "en": "Wild Caterpie"
+    }
+   }
+  ],
+  "health-candy-l": [
+   {
+    "where": "celadon-city"
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 캐터피",
+     "en": "Wild Caterpie"
+    }
+   }
+  ],
+  "health-candy-xl": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 캐터피",
+     "en": "Wild Caterpie"
+    }
+   }
+  ],
+  "heart-scale": [
+   {
+    "place": {
+     "ko": "20번수로",
+     "en": "Route 20"
+    }
+   },
+   {
+    "where": "cerulean-city"
+   },
+   {
+    "where": "seafoam-islands"
+   },
+   {
+    "where": "cerulean-cave"
+   }
+  ],
+  "helix-fossil": [
+   {
+    "where": "mt-moon"
+   },
+   {
+    "where": "cerulean-cave"
+   }
+  ],
+  "hitmonchan-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 홍수몬",
+     "en": "Wild Hitmonchan"
+    }
+   }
+  ],
+  "hitmonlee-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 시라소몬",
+     "en": "Wild Hitmonlee"
+    }
+   }
+  ],
+  "horsea-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 쏘드라",
+     "en": "Wild Horsea"
+    }
+   }
+  ],
+  "hyper-potion": [
+   {
+    "where": "kanto-route-14"
+   },
+   {
+    "where": "kanto-route-15"
+   },
+   {
+    "place": {
+     "ko": "21번수로",
+     "en": "Route 21"
+    }
+   },
+   {
+    "place": "Underground Path 5-6"
+   },
+   {
+    "place": "Underground Path 7-8"
+   },
+   {
+    "where": "pokemon-tower"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "seafoam-islands"
+   },
+   {
+    "where": "pokemon-mansion"
+   }
+  ],
+  "ice-heal": [
+   {
+    "where": "seafoam-islands"
+   }
+  ],
+  "ice-stone": [
+   {
+    "where": "pokemon-tower"
+   },
+   {
+    "where": "seafoam-islands"
+   }
+  ],
+  "jigglypuff-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 푸린",
+     "en": "Wild Jigglypuff"
+    }
+   }
+  ],
+  "jynx-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 루주라",
+     "en": "Wild Jynx"
+    }
+   }
+  ],
+  "kabuto-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 투구",
+     "en": "Wild Kabuto"
+    }
+   }
+  ],
+  "kangaskhan-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 캥카",
+     "en": "Wild Kangaskhan"
+    }
+   }
+  ],
+  "key-stone": [
+   {
+    "where": "pallet-town"
+   }
+  ],
+  "koffing-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 또가스",
+     "en": "Wild Koffing"
+    }
+   }
+  ],
+  "krabby-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 크랩",
+     "en": "Wild Krabby"
+    }
+   }
+  ],
+  "lagreat-ball": [
+   {
+    "where": "kanto-route-2"
+   },
+   {
+    "where": "kanto-route-3"
+   },
+   {
+    "where": "kanto-route-4"
+   },
+   {
+    "where": "kanto-route-5"
+   },
+   {
+    "where": "kanto-route-6"
+   },
+   {
+    "where": "kanto-route-9"
+   },
+   {
+    "where": "kanto-route-10"
+   },
+   {
+    "where": "kanto-route-11"
+   },
+   {
+    "where": "kanto-route-12"
+   },
+   {
+    "where": "kanto-route-13"
+   },
+   {
+    "where": "kanto-route-14"
+   },
+   {
+    "where": "kanto-route-15"
+   },
+   {
+    "where": "kanto-route-17"
+   },
+   {
+    "place": {
+     "ko": "20번수로",
+     "en": "Route 20"
+    }
+   },
+   {
+    "where": "kanto-route-24"
+   },
+   {
+    "where": "kanto-route-25"
+   },
+   {
+    "where": "pewter-city"
+   },
+   {
+    "where": "lavender-town"
+   },
+   {
+    "where": "mt-moon"
+   },
+   {
+    "where": "cerulean-cave"
+   },
+   {
+    "where": "rock-tunnel"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "seafoam-islands"
+   }
+  ],
+  "lapoke-ball": [
+   {
+    "where": "kanto-route-1"
+   },
+   {
+    "where": "kanto-route-3"
+   },
+   {
+    "where": "kanto-route-4"
+   },
+   {
+    "where": "kanto-route-6"
+   },
+   {
+    "where": "kanto-route-8"
+   },
+   {
+    "where": "kanto-route-9"
+   },
+   {
+    "where": "kanto-route-10"
+   },
+   {
+    "where": "kanto-route-11"
+   },
+   {
+    "where": "kanto-route-12"
+   },
+   {
+    "where": "kanto-route-13"
+   },
+   {
+    "where": "kanto-route-14"
+   },
+   {
+    "where": "kanto-route-15"
+   },
+   {
+    "where": "kanto-route-16"
+   },
+   {
+    "where": "kanto-route-17"
+   },
+   {
+    "where": "kanto-route-18"
+   },
+   {
+    "place": {
+     "ko": "19번수로",
+     "en": "Route 19"
+    }
+   },
+   {
+    "place": {
+     "ko": "20번수로",
+     "en": "Route 20"
+    }
+   },
+   {
+    "place": {
+     "ko": "21번수로",
+     "en": "Route 21"
+    }
+   },
+   {
+    "where": "kanto-route-22"
+   },
+   {
+    "where": "kanto-route-24"
+   },
+   {
+    "where": "kanto-route-25"
+   },
+   {
+    "where": "saffron-city"
+   },
+   {
+    "where": "viridian-forest"
+   },
+   {
+    "where": "mt-moon"
+   },
+   {
+    "where": "cerulean-cave"
+   },
+   {
+    "where": "rock-tunnel"
+   },
+   {
+    "where": "ss-anne"
+   },
+   {
+    "where": "pokemon-tower"
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "pokemon-mansion"
+   },
+   {
+    "where": "kanto-victory-road-1"
+   }
+  ],
+  "lapras-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 라프라스",
+     "en": "Wild Lapras"
+    }
+   }
+  ],
+  "laultra-ball": [
+   {
+    "where": "kanto-route-7"
+   },
+   {
+    "where": "kanto-route-8"
+   },
+   {
+    "where": "kanto-route-12"
+   },
+   {
+    "where": "kanto-route-13"
+   },
+   {
+    "where": "kanto-route-14"
+   },
+   {
+    "where": "kanto-route-15"
+   },
+   {
+    "where": "kanto-route-17"
+   },
+   {
+    "place": {
+     "ko": "20번수로",
+     "en": "Route 20"
+    }
+   },
+   {
+    "where": "cerulean-cave"
+   },
+   {
+    "where": "rock-tunnel"
+   },
+   {
+    "where": "pokemon-tower"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "seafoam-islands"
+   },
+   {
+    "where": "pokemon-mansion"
+   },
+   {
+    "where": "kanto-victory-road-1"
+   }
+  ],
+  "leaf-letter--eevee": [
+   {
+    "place": "Partner Pokémon Gift"
+   }
+  ],
+  "leaf-letter--pikachu": [
+   {
+    "place": "Partner Pokémon Gift"
+   }
+  ],
+  "leaf-stone": [
+   {
+    "where": "kanto-route-2"
+   },
+   {
+    "where": "kanto-victory-road-1"
+   }
+  ],
+  "lickitung-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 내루미",
+     "en": "Wild Lickitung"
+    }
+   }
+  ],
+  "lift-key": [
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   }
+  ],
+  "lone-earring": [
+   {
+    "place": "Partner Pokémon Gift"
+   }
+  ],
+  "lure": [
+   {
+    "where": "kanto-route-3"
+   },
+   {
+    "where": "kanto-route-11"
+   },
+   {
+    "where": "kanto-route-12"
+   },
+   {
+    "where": "kanto-route-25"
+   },
+   {
+    "where": "viridian-forest"
+   },
+   {
+    "place": "Underground Path 5-6"
+   },
+   {
+    "place": "Underground Path 7-8"
+   }
+  ],
+  "machop-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 알통몬",
+     "en": "Wild Machop"
+    }
+   }
+  ],
+  "magikarp-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 잉어킹",
+     "en": "Wild Magikarp"
+    }
+   }
+  ],
+  "magmar-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 마그마",
+     "en": "Wild Magmar"
+    }
+   }
+  ],
+  "magnemite-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 코일",
+     "en": "Wild Magnemite"
+    }
+   }
+  ],
+  "mankey-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 망키",
+     "en": "Wild Mankey"
+    }
+   }
+  ],
+  "marble": [
+   {
+    "place": "Partner Pokémon Gift"
+   }
+  ],
+  "master-ball": [
+   {
+    "where": "cerulean-cave"
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   }
+  ],
+  "max-elixir": [
+   {
+    "where": "cerulean-cave"
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "pokemon-mansion"
+   }
+  ],
+  "max-ether": [
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "pokemon-mansion"
+   }
+  ],
+  "max-lure": [
+   {
+    "where": "kanto-route-12"
+   },
+   {
+    "where": "cerulean-cave"
+   },
+   {
+    "place": "Underground Path 5-6"
+   },
+   {
+    "place": "Underground Path 7-8"
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "pokemon-mansion"
+   }
+  ],
+  "max-potion": [
+   {
+    "place": {
+     "ko": "무인발전소",
+     "en": "Power Plant"
+    }
+   },
+   {
+    "where": "seafoam-islands"
+   },
+   {
+    "where": "pokemon-mansion"
+   },
+   {
+    "where": "kanto-victory-road-1"
+   }
+  ],
+  "max-repel": [
+   {
+    "place": {
+     "ko": "20번수로",
+     "en": "Route 20"
+    }
+   },
+   {
+    "where": "cerulean-cave"
+   },
+   {
+    "place": "Underground Path 5-6"
+   },
+   {
+    "place": "Underground Path 7-8"
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "pokemon-mansion"
+   }
+  ],
+  "max-revive": [
+   {
+    "where": "cerulean-cave"
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "place": {
+     "ko": "무인발전소",
+     "en": "Power Plant"
+    }
+   },
+   {
+    "where": "seafoam-islands"
+   },
+   {
+    "where": "pokemon-mansion"
+   },
+   {
+    "where": "kanto-victory-road-1"
+   }
+  ],
+  "meltan-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 멜탄",
+     "en": "Wild Meltan"
+    }
+   }
+  ],
+  "meowth-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 나옹",
+     "en": "Wild Meowth"
+    }
+   }
+  ],
+  "mew-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 뮤",
+     "en": "Wild Mew"
+    }
+   }
+  ],
+  "mewtwo-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 뮤츠",
+     "en": "Wild Mewtwo"
+    }
+   }
+  ],
+  "mewtwonite-x": [
+   {
+    "where": "cerulean-cave"
+   }
+  ],
+  "mewtwonite-y": [
+   {
+    "where": "cerulean-cave"
+   }
+  ],
+  "mighty-candy": [
+   {
+    "where": "celadon-city"
+   },
+   {
+    "where": "fuchsia-city"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   },
+   {
+    "where": "kanto-victory-road-1"
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 독침붕",
+     "en": "Wild Beedrill"
+    }
+   }
+  ],
+  "mighty-candy-l": [
+   {
+    "where": "celadon-city"
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 독침붕",
+     "en": "Wild Beedrill"
+    }
+   }
+  ],
+  "mighty-candy-xl": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 독침붕",
+     "en": "Wild Beedrill"
+    }
+   }
+  ],
+  "moltres-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 파이어",
+     "en": "Wild Moltres"
+    }
+   }
+  ],
+  "moon-stone": [
+   {
+    "where": "saffron-city"
+   },
+   {
+    "where": "mt-moon"
+   }
+  ],
+  "nanab-berry": [
+   {
+    "where": "kanto-route-5"
+   },
+   {
+    "where": "kanto-route-10"
+   },
+   {
+    "where": "kanto-route-17"
+   },
+   {
+    "where": "pewter-city"
+   },
+   {
+    "where": "celadon-city"
+   },
+   {
+    "place": "Capture Reward Walk with a Pokémon in the PokéBall Plus From bushes in routes by any following Pokémon"
+   }
+  ],
+  "nugget": [
+   {
+    "where": "kanto-route-14"
+   },
+   {
+    "where": "kanto-route-17"
+   },
+   {
+    "where": "kanto-route-24"
+   },
+   {
+    "where": "celadon-city"
+   },
+   {
+    "where": "fuchsia-city"
+   },
+   {
+    "where": "mt-moon"
+   },
+   {
+    "place": "Underground Path 5-6"
+   },
+   {
+    "place": "Underground Path 7-8"
+   },
+   {
+    "where": "ss-anne"
+   },
+   {
+    "where": "pokemon-tower"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "rock-tunnel"
+   }
+  ],
+  "oddish-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 뚜벅쵸",
+     "en": "Wild Oddish"
+    }
+   }
+  ],
+  "old-amber": [
+   {
+    "where": "pewter-city"
+   },
+   {
+    "where": "cerulean-cave"
+   }
+  ],
+  "omanyte-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 암나이트",
+     "en": "Wild Omanyte"
+    }
+   }
+  ],
+  "onix-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 롱스톤",
+     "en": "Wild Onix"
+    }
+   }
+  ],
+  "paralyze-heal": [
+   {
+    "where": "kanto-route-4"
+   },
+   {
+    "where": "kanto-route-6"
+   },
+   {
+    "where": "ss-anne"
+   },
+   {
+    "place": {
+     "ko": "무인발전소",
+     "en": "Power Plant"
+    }
+   }
+  ],
+  "paras-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 파라스",
+     "en": "Wild Paras"
+    }
+   }
+  ],
+  "pearl": [
+   {
+    "where": "mt-moon"
+   },
+   {
+    "where": "rock-tunnel"
+   },
+   {
+    "place": "Underground Path 5-6"
+   },
+   {
+    "place": "Underground Path 7-8"
+   },
+   {
+    "where": "pokemon-tower"
+   },
+   {
+    "place": {
+     "ko": "19번수로",
+     "en": "Route 19"
+    }
+   },
+   {
+    "place": "Route 25 & Viridian City Found by any of your Pokémon in Cerulean Cave"
+   }
+  ],
+  "pewter-crunchies": [
+   {
+    "where": "celadon-city"
+   }
+  ],
+  "pidgey-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 구구",
+     "en": "Wild Pidgey"
+    }
+   }
+  ],
+  "pikachu-candy": [
+   {
+    "where": "kanto-route-11"
+   },
+   {
+    "where": "pokemon-tower"
+   },
+   {
+    "where": "kanto-victory-road-1"
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 피카츄",
+     "en": "Wild Pikachu"
+    }
+   }
+  ],
+  "pinap-berry": [
+   {
+    "where": "kanto-route-5"
+   },
+   {
+    "where": "kanto-route-9"
+   },
+   {
+    "where": "kanto-route-17"
+   },
+   {
+    "where": "celadon-city"
+   },
+   {
+    "where": "ss-anne"
+   },
+   {
+    "place": "Capture Reward Walk with a Pokémon in the PokéBall Plus From bushes in routes by any following Pokémon"
+   }
+  ],
+  "pinsir-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 쁘사이저",
+     "en": "Wild Pinsir"
+    }
+   }
+  ],
+  "poke-ball": [
+   {
+    "where": "kanto-route-1"
+   },
+   {
+    "where": "kanto-route-3"
+   },
+   {
+    "where": "kanto-route-4"
+   },
+   {
+    "where": "kanto-route-6"
+   },
+   {
+    "where": "kanto-route-8"
+   },
+   {
+    "where": "kanto-route-9"
+   },
+   {
+    "where": "kanto-route-10"
+   },
+   {
+    "where": "kanto-route-11"
+   },
+   {
+    "where": "kanto-route-12"
+   },
+   {
+    "where": "kanto-route-13"
+   },
+   {
+    "where": "kanto-route-14"
+   },
+   {
+    "where": "kanto-route-15"
+   },
+   {
+    "where": "kanto-route-16"
+   },
+   {
+    "where": "kanto-route-17"
+   },
+   {
+    "where": "kanto-route-18"
+   },
+   {
+    "place": {
+     "ko": "19번수로",
+     "en": "Route 19"
+    }
+   },
+   {
+    "place": {
+     "ko": "20번수로",
+     "en": "Route 20"
+    }
+   },
+   {
+    "place": {
+     "ko": "21번수로",
+     "en": "Route 21"
+    }
+   },
+   {
+    "where": "kanto-route-22"
+   },
+   {
+    "where": "kanto-route-24"
+   },
+   {
+    "where": "kanto-route-25"
+   },
+   {
+    "where": "saffron-city"
+   },
+   {
+    "where": "viridian-forest"
+   },
+   {
+    "where": "mt-moon"
+   },
+   {
+    "where": "cerulean-cave"
+   },
+   {
+    "where": "rock-tunnel"
+   },
+   {
+    "where": "ss-anne"
+   },
+   {
+    "where": "pokemon-tower"
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "pokemon-mansion"
+   },
+   {
+    "where": "kanto-victory-road-1"
+   }
+  ],
+  "poke-flute": [
+   {
+    "where": "lavender-town"
+   }
+  ],
+  "polished-mud-ball": [
+   {
+    "place": "Partner Pokémon Gift"
+   }
+  ],
+  "poliwag-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 발챙이",
+     "en": "Wild Poliwag"
+    }
+   }
+  ],
+  "ponyta-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 포니타",
+     "en": "Wild Ponyta"
+    }
+   }
+  ],
+  "porygon-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 폴리곤",
+     "en": "Wild Porygon"
+    }
+   }
+  ],
+  "potion": [
+   {
+    "where": "kanto-route-1"
+   },
+   {
+    "where": "kanto-route-3"
+   },
+   {
+    "where": "viridian-city"
+   },
+   {
+    "where": "pewter-city"
+   },
+   {
+    "where": "viridian-forest"
+   },
+   {
+    "where": "mt-moon"
+   },
+   {
+    "place": "Underground Path 5-6"
+   },
+   {
+    "place": "Underground Path 7-8"
+   }
+  ],
+  "pp-max": [
+   {
+    "where": "celadon-city"
+   },
+   {
+    "where": "cerulean-cave"
+   },
+   {
+    "where": "kanto-victory-road-1"
+   }
+  ],
+  "pp-up": [
+   {
+    "where": "kanto-route-13"
+   },
+   {
+    "where": "kanto-route-16"
+   },
+   {
+    "place": {
+     "ko": "21번수로",
+     "en": "Route 21"
+    }
+   },
+   {
+    "where": "pokemon-tower"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "pokemon-mansion"
+   }
+  ],
+  "pretty-wing": [
+   {
+    "place": "Underground Path 5-6"
+   },
+   {
+    "place": "Underground Path 7-8"
+   },
+   {
+    "place": {
+     "ko": "무인발전소",
+     "en": "Power Plant"
+    }
+   },
+   {
+    "where": "seafoam-islands"
+   },
+   {
+    "where": "kanto-victory-road-1"
+   },
+   {
+    "place": "Partner Pokémon Gift Found by your Grass-type Pokémon in in Viridian City"
+   },
+   {
+    "place": {
+     "ko": "블루시티",
+     "en": "Cerulean City"
+    }
+   },
+   {
+    "place": {
+     "ko": "갈색시티",
+     "en": "Vermilion City"
+    }
+   },
+   {
+    "place": {
+     "ko": "무지개시티",
+     "en": "Celadon City"
+    }
+   },
+   {
+    "place": "Saffron City & Lavender Town"
+   }
+  ],
+  "psyduck-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 고라파덕",
+     "en": "Wild Psyduck"
+    }
+   }
+  ],
+  "quick-candy": [
+   {
+    "where": "celadon-city"
+   },
+   {
+    "where": "fuchsia-city"
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 파이리",
+     "en": "Wild Charmander"
+    }
+   }
+  ],
+  "quick-candy-l": [
+   {
+    "where": "celadon-city"
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 파이리",
+     "en": "Wild Charmander"
+    }
+   }
+  ],
+  "quick-candy-xl": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 파이리",
+     "en": "Wild Charmander"
+    }
+   }
+  ],
+  "rare-candy": [
+   {
+    "where": "kanto-route-5"
+   },
+   {
+    "where": "kanto-route-17"
+   },
+   {
+    "where": "cerulean-city"
+   },
+   {
+    "where": "celadon-city"
+   },
+   {
+    "where": "mt-moon"
+   },
+   {
+    "where": "cerulean-cave"
+   },
+   {
+    "where": "pokemon-tower"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "place": {
+     "ko": "무인발전소",
+     "en": "Power Plant"
+    }
+   },
+   {
+    "where": "seafoam-islands"
+   },
+   {
+    "where": "pokemon-mansion"
+   },
+   {
+    "place": "Capture Reward Walk with a Pokémon in the PokéBall Plus"
+   }
+  ],
+  "rattata-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 꼬렛",
+     "en": "Wild Rattata"
+    }
+   }
+  ],
+  "razz-berry": [
+   {
+    "where": "kanto-route-1"
+   },
+   {
+    "where": "kanto-route-3"
+   },
+   {
+    "where": "kanto-route-4"
+   },
+   {
+    "where": "kanto-route-5"
+   },
+   {
+    "where": "kanto-route-17"
+   },
+   {
+    "where": "kanto-route-24"
+   },
+   {
+    "where": "pallet-town"
+   },
+   {
+    "where": "celadon-city"
+   },
+   {
+    "where": "viridian-forest"
+   },
+   {
+    "place": "Capture Reward Walk with a Pokémon in the PokéBall Plus From bushes in routes by any following Pokémon"
+   }
+  ],
+  "repel": [
+   {
+    "where": "kanto-route-4"
+   },
+   {
+    "where": "kanto-route-12"
+   },
+   {
+    "where": "mt-moon"
+   },
+   {
+    "where": "rock-tunnel"
+   },
+   {
+    "place": "Underground Path 5-6"
+   },
+   {
+    "place": "Underground Path 7-8"
+   }
+  ],
+  "revive": [
+   {
+    "where": "kanto-route-3"
+   },
+   {
+    "where": "kanto-route-5"
+   },
+   {
+    "where": "kanto-route-11"
+   },
+   {
+    "where": "viridian-city"
+   },
+   {
+    "where": "vermilion-city"
+   },
+   {
+    "where": "mt-moon"
+   },
+   {
+    "where": "rock-tunnel"
+   },
+   {
+    "where": "ss-anne"
+   },
+   {
+    "where": "pokemon-tower"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   }
+  ],
+  "rhyhorn-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 뿔카노",
+     "en": "Wild Rhyhorn"
+    }
+   }
+  ],
+  "sandshrew-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 모래두지",
+     "en": "Wild Sandshrew"
+    }
+   }
+  ],
+  "scyther-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 스라크",
+     "en": "Wild Scyther"
+    }
+   }
+  ],
+  "secret-key": [
+   {
+    "where": "pokemon-mansion"
+   }
+  ],
+  "secret-key--letsgo": [
+   {
+    "where": "pokemon-mansion"
+   }
+  ],
+  "seel-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 쥬쥬",
+     "en": "Wild Seel"
+    }
+   }
+  ],
+  "shalour-sable": [
+   {
+    "where": "ss-anne"
+   }
+  ],
+  "shellder-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 셀러",
+     "en": "Wild Shellder"
+    }
+   }
+  ],
+  "shiny-charm": [
+   {
+    "where": "celadon-city"
+   }
+  ],
+  "silph-scope": [
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   }
+  ],
+  "silver-leaf": [
+   {
+    "place": "Partner Pokémon Gift"
+   }
+  ],
+  "silver-nanab-berry": [
+   {
+    "where": "kanto-route-5"
+   },
+   {
+    "where": "kanto-route-13"
+   },
+   {
+    "where": "kanto-route-14"
+   },
+   {
+    "place": "Capture Reward Walk with a Pokémon in the PokéBall Plus From bushes in routes by any following Pokémon"
+   }
+  ],
+  "silver-pinap-berry": [
+   {
+    "where": "kanto-route-5"
+   },
+   {
+    "where": "kanto-route-17"
+   },
+   {
+    "place": "Capture Reward Walk with a Pokémon in the PokéBall Plus From bushes in routes by any following Pokémon"
+   }
+  ],
+  "silver-razz-berry": [
+   {
+    "where": "kanto-route-5"
+   },
+   {
+    "where": "kanto-route-18"
+   },
+   {
+    "where": "pokemon-mansion"
+   },
+   {
+    "place": "Capture Reward Walk with a Pokémon in the PokéBall Plus From bushes in routes by any following Pokémon"
+   }
+  ],
+  "slowpoke-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 야돈",
+     "en": "Wild Slowpoke"
+    }
+   }
+  ],
+  "small-bouquet": [
+   {
+    "place": "Partner Pokémon Gift"
+   }
+  ],
+  "smart-candy": [
+   {
+    "where": "celadon-city"
+   },
+   {
+    "where": "fuchsia-city"
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 이상해씨",
+     "en": "Wild Bulbasaur"
+    }
+   }
+  ],
+  "smart-candy-l": [
+   {
+    "where": "celadon-city"
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 이상해씨",
+     "en": "Wild Bulbasaur"
+    }
+   }
+  ],
+  "smart-candy-xl": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 이상해씨",
+     "en": "Wild Bulbasaur"
+    }
+   }
+  ],
+  "snorlax-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 잠만보",
+     "en": "Wild Snorlax"
+    }
+   }
+  ],
+  "spearow-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 깨비참",
+     "en": "Wild Spearow"
+    }
+   }
+  ],
+  "squirtle-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 꼬부기",
+     "en": "Wild Squirtle"
+    }
+   }
+  ],
+  "star-piece": [
+   {
+    "where": "pokemon-tower"
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   }
+  ],
+  "stardust": [
+   {
+    "place": {
+     "ko": "21번수로",
+     "en": "Route 21"
+    }
+   },
+   {
+    "where": "mt-moon"
+   },
+   {
+    "where": "rock-tunnel"
+   }
+  ],
+  "staryu-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 별가사리",
+     "en": "Wild Staryu"
+    }
+   }
+  ],
+  "stretchy-spring": [
+   {
+    "place": "Partner Pokémon Gift"
+   }
+  ],
+  "super-lure": [
+   {
+    "where": "kanto-route-17"
+   },
+   {
+    "where": "fuchsia-city"
+   },
+   {
+    "place": "Underground Path 5-6"
+   },
+   {
+    "place": "Underground Path 7-8"
+   },
+   {
+    "where": "seafoam-islands"
+   }
+  ],
+  "super-potion": [
+   {
+    "where": "kanto-route-2"
+   },
+   {
+    "where": "kanto-route-6"
+   },
+   {
+    "where": "kanto-route-9"
+   },
+   {
+    "where": "kanto-route-10"
+   },
+   {
+    "where": "kanto-route-11"
+   },
+   {
+    "where": "kanto-route-17"
+   },
+   {
+    "where": "kanto-route-25"
+   },
+   {
+    "where": "rock-tunnel"
+   },
+   {
+    "place": "Underground Path 5-6"
+   },
+   {
+    "place": "Underground Path 7-8"
+   },
+   {
+    "where": "ss-anne"
+   },
+   {
+    "where": "pokemon-tower"
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   }
+  ],
+  "super-repel": [
+   {
+    "where": "kanto-route-11"
+   },
+   {
+    "where": "kanto-route-17"
+   },
+   {
+    "place": "Underground Path 5-6"
+   },
+   {
+    "place": "Underground Path 7-8"
+   },
+   {
+    "where": "ss-anne"
+   },
+   {
+    "where": "seafoam-islands"
+   }
+  ],
+  "tangela-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 덩쿠리",
+     "en": "Wild Tangela"
+    }
+   }
+  ],
+  "tauros-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 켄타로스",
+     "en": "Wild Tauros"
+    }
+   }
+  ],
+  "tea": [
+   {
+    "where": "celadon-city"
+   }
+  ],
+  "tentacool-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 왕눈해",
+     "en": "Wild Tentacool"
+    }
+   }
+  ],
+  "thunder-stone": [
+   {
+    "where": "kanto-route-10"
+   },
+   {
+    "place": {
+     "ko": "무인발전소",
+     "en": "Power Plant"
+    }
+   },
+   {
+    "where": "rock-tunnel"
+   }
+  ],
+  "tiny-mushroom": [
+   {
+    "where": "viridian-forest"
+   },
+   {
+    "where": "ss-anne"
+   },
+   {
+    "where": "mt-moon"
+   }
+  ],
+  "tm01": [
+   {
+    "where": "pewter-city"
+   }
+  ],
+  "tm02": [
+   {
+    "where": "cinnabar-island"
+   }
+  ],
+  "tm03": [
+   {
+    "where": "celadon-city"
+   }
+  ],
+  "tm04": [
+   {
+    "where": "pokemon-tower"
+   }
+  ],
+  "tm05": [
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   }
+  ],
+  "tm06": [
+   {
+    "where": "celadon-city"
+   }
+  ],
+  "tm07": [
+   {
+    "where": "celadon-city"
+   }
+  ],
+  "tm08": [
+   {
+    "where": "saffron-city"
+   }
+  ],
+  "tm09": [
+   {
+    "where": "celadon-city"
+   }
+  ],
+  "tm10": [
+   {
+    "where": "cerulean-city"
+   }
+  ],
+  "tm11": [
+   {
+    "where": "viridian-city"
+   }
+  ],
+  "tm12": [
+   {
+    "where": "kanto-route-7"
+   }
+  ],
+  "tm13": [
+   {
+    "where": "kanto-route-10"
+   }
+  ],
+  "tm14": [
+   {
+    "where": "kanto-route-16"
+   }
+  ],
+  "tm15": [
+   {
+    "where": "kanto-route-25"
+   }
+  ],
+  "tm16": [
+   {
+    "where": "kanto-route-25"
+   }
+  ],
+  "tm17": [],
+  "tm18": [],
+  "tm19": [],
+  "tm20": [
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   }
+  ],
+  "tm21": [
+   {
+    "where": "pokemon-mansion"
+   }
+  ],
+  "tm22": [
+   {
+    "where": "pokemon-mansion"
+   }
+  ],
+  "tm23": [
+   {
+    "where": "saffron-city"
+   }
+  ],
+  "tm24": [],
+  "tm25": [],
+  "tm26": [
+   {
+    "where": "celadon-city"
+   }
+  ],
+  "tm27": [
+   {
+    "where": "kanto-route-12"
+   },
+   {
+    "where": "fuchsia-city"
+   }
+  ],
+  "tm28": [],
+  "tm29": [
+   {
+    "where": "cerulean-city"
+   }
+  ],
+  "tm30": [],
+  "tm31": [
+   {
+    "where": "kanto-route-15"
+   }
+  ],
+  "tm32": [
+   {
+    "where": "kanto-route-12"
+   }
+  ],
+  "tm33": [
+   {
+    "where": "saffron-city"
+   }
+  ],
+  "tm34": [
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   }
+  ],
+  "tm35": [
+   {
+    "place": {
+     "ko": "21번수로",
+     "en": "Route 21"
+    }
+   }
+  ],
+  "tm36": [
+   {
+    "where": "vermilion-city"
+   }
+  ],
+  "tm37": [
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   }
+  ],
+  "tm38": [
+   {
+    "place": {
+     "ko": "무인발전소",
+     "en": "Power Plant"
+    }
+   }
+  ],
+  "tm39": [
+   {
+    "where": "kanto-victory-road-1"
+   }
+  ],
+  "tm40": [
+   {
+    "where": "saffron-city"
+   }
+  ],
+  "tm41": [
+   {
+    "where": "viridian-city"
+   }
+  ],
+  "tm42": [
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   }
+  ],
+  "tm43": [],
+  "tm44": [
+   {
+    "where": "celadon-city"
+   }
+  ],
+  "tm45": [
+   {
+    "where": "kanto-victory-road-1"
+   }
+  ],
+  "tm46": [
+   {
+    "where": "cinnabar-island"
+   }
+  ],
+  "tm47": [
+   {
+    "where": "kanto-route-15"
+   }
+  ],
+  "tm48": [],
+  "tm49": [
+   {
+    "where": "kanto-victory-road-1"
+   }
+  ],
+  "tm50": [
+   {
+    "where": "kanto-route-12"
+   }
+  ],
+  "tm51": [
+   {
+    "where": "kanto-victory-road-1"
+   }
+  ],
+  "tm52": [
+   {
+    "where": "pokemon-mansion"
+   }
+  ],
+  "tm53": [
+   {
+    "where": "celadon-city"
+   }
+  ],
+  "tm54": [
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   }
+  ],
+  "tm55": [
+   {
+    "where": "seafoam-islands"
+   }
+  ],
+  "tm56": [
+   {
+    "where": "kanto-victory-road-1"
+   }
+  ],
+  "tm57": [
+   {
+    "where": "kanto-route-4"
+   }
+  ],
+  "tm58": [
+   {
+    "where": "kanto-route-17"
+   }
+  ],
+  "tm59": [
+   {
+    "where": "kanto-route-12"
+   }
+  ],
+  "tm60": [
+   {
+    "where": "cerulean-city"
+   }
+  ],
+  "tough-candy": [
+   {
+    "where": "celadon-city"
+   },
+   {
+    "where": "fuchsia-city"
+   },
+   {
+    "where": "kanto-victory-road-1"
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 꼬부기",
+     "en": "Wild Squirtle"
+    }
+   }
+  ],
+  "tough-candy-l": [
+   {
+    "where": "celadon-city"
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 꼬부기",
+     "en": "Wild Squirtle"
+    }
+   }
+  ],
+  "tough-candy-xl": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 꼬부기",
+     "en": "Wild Squirtle"
+    }
+   }
+  ],
+  "town-map": [
+   {
+    "where": "pallet-town"
+   }
+  ],
+  "tropical-shell": [
+   {
+    "place": "Partner Pokémon Gift"
+   }
+  ],
+  "ultra-ball": [
+   {
+    "where": "kanto-route-7"
+   },
+   {
+    "where": "kanto-route-8"
+   },
+   {
+    "where": "kanto-route-12"
+   },
+   {
+    "where": "kanto-route-13"
+   },
+   {
+    "where": "kanto-route-14"
+   },
+   {
+    "where": "kanto-route-15"
+   },
+   {
+    "where": "kanto-route-17"
+   },
+   {
+    "place": {
+     "ko": "20번수로",
+     "en": "Route 20"
+    }
+   },
+   {
+    "where": "cerulean-cave"
+   },
+   {
+    "where": "rock-tunnel"
+   },
+   {
+    "where": "pokemon-tower"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "seafoam-islands"
+   },
+   {
+    "where": "pokemon-mansion"
+   },
+   {
+    "where": "kanto-victory-road-1"
+   }
+  ],
+  "venonat-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 콘팡",
+     "en": "Wild Venonat"
+    }
+   }
+  ],
+  "venusaurite": [
+   {
+    "where": "pallet-town"
+   }
+  ],
+  "voltorb-candy": [
+   {
+    "place": {
+     "ko": "무인발전소",
+     "en": "Power Plant"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 찌리리공",
+     "en": "Wild Voltorb"
+    }
+   }
+  ],
+  "vulpix-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 식스테일",
+     "en": "Wild Vulpix"
+    }
+   }
+  ],
+  "water-stone": [
+   {
+    "where": "kanto-route-12"
+   },
+   {
+    "place": {
+     "ko": "21번수로",
+     "en": "Route 21"
+    }
+   },
+   {
+    "where": "rock-tunnel"
+   }
+  ],
+  "weedle-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 뿔충이",
+     "en": "Wild Weedle"
+    }
+   }
+  ],
+  "x-accuracy": [
+   {
+    "where": "pokemon-mansion"
+   }
+  ],
+  "x-attack": [
+   {
+    "where": "pokemon-tower"
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   }
+  ],
+  "x-defense": [
+   {
+    "where": "kanto-route-11"
+   },
+   {
+    "where": "pewter-city"
+   }
+  ],
+  "x-speed": [
+   {
+    "where": "kanto-route-8"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   },
+   {
+    "where": "seafoam-islands"
+   }
+  ],
+  "zapdos-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 썬더",
+     "en": "Wild Zapdos"
+    }
+   }
+  ],
+  "zubat-candy": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 주뱃",
+     "en": "Wild Zubat"
+    }
+   }
+  ]
+ },
+ "tutors": {
+  "zippy-zap": [],
+  "splishy-splash": [],
+  "floaty-fall": [],
+  "bouncy-bubble": [],
+  "buzzy-buzz": [],
+  "sizzly-slide": [],
+  "glitzy-glow": [],
+  "baddy-bad": [],
+  "sappy-seed": [],
+  "freezy-frost": [],
+  "sparkly-swirl": []
+ }
 }

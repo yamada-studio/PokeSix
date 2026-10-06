@@ -1,128 +1,1688 @@
 {
-  "versionGroup": "legends-arceus",
-  "generation": 8,
-  "_games": [
-    "LEGENDS 아르세우스 (Legends: Arceus)"
+ "versionGroup": "legends-arceus",
+ "generation": 8,
+ "_games": [
+  "LEGENDS 아르세우스 (Legends: Arceus)"
+ ],
+ "_sources": [
+  "Serebii.net ItemDex (https://www.serebii.net/itemdex/) — 장소는 PokéAPI/게임 텍스트로 한국어화"
+ ],
+ "_tms": {},
+ "_tutors": {
+  "fire-punch": "불꽃펀치 / Fire Punch",
+  "ice-punch": "냉동펀치 / Ice Punch",
+  "thunder-punch": "번개펀치 / Thunder Punch",
+  "flamethrower": "화염방사 / Flamethrower",
+  "ice-beam": "냉동빔 / Ice Beam",
+  "hyper-beam": "파괴광선 / Hyper Beam",
+  "thunderbolt": "10만볼트 / Thunderbolt",
+  "psychic": "사이코키네시스 / Psychic",
+  "focus-energy": "기충전 / Focus Energy",
+  "swift": "스피드스타 / Swift",
+  "rest": "잠자기 / Rest",
+  "rock-slide": "스톤샤워 / Rock Slide",
+  "sludge-bomb": "오물폭탄 / Sludge Bomb",
+  "spikes": "압정뿌리기 / Spikes",
+  "icy-wind": "얼어붙은바람 / Icy Wind",
+  "outrage": "역린 / Outrage",
+  "false-swipe": "칼등치기 / False Swipe",
+  "iron-tail": "아이언테일 / Iron Tail",
+  "shadow-ball": "섀도볼 / Shadow Ball",
+  "rock-smash": "바위깨기 / Rock Smash",
+  "ice-ball": "아이스볼 / Ice Ball",
+  "aerial-ace": "제비반환 / Aerial Ace",
+  "bulk-up": "벌크업 / Bulk Up",
+  "magical-leaf": "매지컬리프 / Magical Leaf",
+  "calm-mind": "명상 / Calm Mind",
+  "water-pulse": "물의파동 / Water Pulse",
+  "poison-jab": "독찌르기 / Poison Jab",
+  "dark-pulse": "악의파동 / Dark Pulse",
+  "aqua-tail": "아쿠아테일 / Aqua Tail",
+  "x-scissor": "시저크로스 / X-Scissor",
+  "drain-punch": "드레인펀치 / Drain Punch",
+  "energy-ball": "에너지볼 / Energy Ball",
+  "earth-power": "대지의힘 / Earth Power",
+  "giga-impact": "기가임팩트 / Giga Impact",
+  "shadow-claw": "섀도클로 / Shadow Claw",
+  "thunder-fang": "번개엄니 / Thunder Fang",
+  "ice-fang": "얼음엄니 / Ice Fang",
+  "fire-fang": "불꽃엄니 / Fire Fang",
+  "psycho-cut": "사이코커터 / Psycho Cut",
+  "zen-headbutt": "사념의박치기 / Zen Headbutt",
+  "flash-cannon": "러스터캐논 / Flash Cannon",
+  "draco-meteor": "용성군 / Draco Meteor",
+  "iron-head": "아이언헤드 / Iron Head",
+  "stone-edge": "스톤에지 / Stone Edge",
+  "stealth-rock": "스텔스록 / Stealth Rock",
+  "charge-beam": "차지빔 / Charge Beam",
+  "ominous-wind": "괴상한바람 / Ominous Wind",
+  "bulldoze": "땅고르기 / Bulldoze",
+  "wild-charge": "와일드볼트 / Wild Charge",
+  "snarl": "바크아웃 / Snarl",
+  "play-rough": "치근거리기 / Play Rough",
+  "mystical-fire": "매지컬플레임 / Mystical Fire",
+  "dazzling-gleam": "매지컬샤인 / Dazzling Gleam",
+  "baby-doll-eyes": "초롱초롱눈동자 / Baby-Doll Eyes",
+  "high-horsepower": "10만마력 / High Horsepower",
+  "steel-beam": "철제광선 / Steel Beam",
+  "power-shift": "파워시프트 / Power Shift"
+ },
+ "items": {
+  "adamant-crystal": [
+   {
+    "where": "hisui-lake-valor"
+   }
   ],
-  "_sources": [],
-  "_tms": {},
-  "_tutors": {
-    "fire-punch": "불꽃펀치 / Fire Punch",
-    "ice-punch": "냉동펀치 / Ice Punch",
-    "thunder-punch": "번개펀치 / Thunder Punch",
-    "flamethrower": "화염방사 / Flamethrower",
-    "ice-beam": "냉동빔 / Ice Beam",
-    "hyper-beam": "파괴광선 / Hyper Beam",
-    "thunderbolt": "10만볼트 / Thunderbolt",
-    "psychic": "사이코키네시스 / Psychic",
-    "focus-energy": "기충전 / Focus Energy",
-    "swift": "스피드스타 / Swift",
-    "rest": "잠자기 / Rest",
-    "rock-slide": "스톤샤워 / Rock Slide",
-    "sludge-bomb": "오물폭탄 / Sludge Bomb",
-    "spikes": "압정뿌리기 / Spikes",
-    "icy-wind": "얼어붙은바람 / Icy Wind",
-    "outrage": "역린 / Outrage",
-    "false-swipe": "칼등치기 / False Swipe",
-    "iron-tail": "아이언테일 / Iron Tail",
-    "shadow-ball": "섀도볼 / Shadow Ball",
-    "rock-smash": "바위깨기 / Rock Smash",
-    "ice-ball": "아이스볼 / Ice Ball",
-    "aerial-ace": "제비반환 / Aerial Ace",
-    "bulk-up": "벌크업 / Bulk Up",
-    "magical-leaf": "매지컬리프 / Magical Leaf",
-    "calm-mind": "명상 / Calm Mind",
-    "water-pulse": "물의파동 / Water Pulse",
-    "poison-jab": "독찌르기 / Poison Jab",
-    "dark-pulse": "악의파동 / Dark Pulse",
-    "aqua-tail": "아쿠아테일 / Aqua Tail",
-    "x-scissor": "시저크로스 / X-Scissor",
-    "drain-punch": "드레인펀치 / Drain Punch",
-    "energy-ball": "에너지볼 / Energy Ball",
-    "earth-power": "대지의힘 / Earth Power",
-    "giga-impact": "기가임팩트 / Giga Impact",
-    "shadow-claw": "섀도클로 / Shadow Claw",
-    "thunder-fang": "번개엄니 / Thunder Fang",
-    "ice-fang": "얼음엄니 / Ice Fang",
-    "fire-fang": "불꽃엄니 / Fire Fang",
-    "psycho-cut": "사이코커터 / Psycho Cut",
-    "zen-headbutt": "사념의박치기 / Zen Headbutt",
-    "flash-cannon": "러스터캐논 / Flash Cannon",
-    "draco-meteor": "용성군 / Draco Meteor",
-    "iron-head": "아이언헤드 / Iron Head",
-    "stone-edge": "스톤에지 / Stone Edge",
-    "stealth-rock": "스텔스록 / Stealth Rock",
-    "charge-beam": "차지빔 / Charge Beam",
-    "ominous-wind": "괴상한바람 / Ominous Wind",
-    "bulldoze": "땅고르기 / Bulldoze",
-    "wild-charge": "와일드볼트 / Wild Charge",
-    "snarl": "바크아웃 / Snarl",
-    "play-rough": "치근거리기 / Play Rough",
-    "mystical-fire": "매지컬플레임 / Mystical Fire",
-    "dazzling-gleam": "매지컬샤인 / Dazzling Gleam",
-    "baby-doll-eyes": "초롱초롱눈동자 / Baby-Doll Eyes",
-    "high-horsepower": "10만마력 / High Horsepower",
-    "steel-beam": "철제광선 / Steel Beam",
-    "power-shift": "파워시프트 / Power Shift"
-  },
-  "items": {},
-  "tutors": {
-    "fire-punch": [],
-    "ice-punch": [],
-    "thunder-punch": [],
-    "flamethrower": [],
-    "ice-beam": [],
-    "hyper-beam": [],
-    "thunderbolt": [],
-    "psychic": [],
-    "focus-energy": [],
-    "swift": [],
-    "rest": [],
-    "rock-slide": [],
-    "sludge-bomb": [],
-    "spikes": [],
-    "icy-wind": [],
-    "outrage": [],
-    "false-swipe": [],
-    "iron-tail": [],
-    "shadow-ball": [],
-    "rock-smash": [],
-    "ice-ball": [],
-    "aerial-ace": [],
-    "bulk-up": [],
-    "magical-leaf": [],
-    "calm-mind": [],
-    "water-pulse": [],
-    "poison-jab": [],
-    "dark-pulse": [],
-    "aqua-tail": [],
-    "x-scissor": [],
-    "drain-punch": [],
-    "energy-ball": [],
-    "earth-power": [],
-    "giga-impact": [],
-    "shadow-claw": [],
-    "thunder-fang": [],
-    "ice-fang": [],
-    "fire-fang": [],
-    "psycho-cut": [],
-    "zen-headbutt": [],
-    "flash-cannon": [],
-    "draco-meteor": [],
-    "iron-head": [],
-    "stone-edge": [],
-    "stealth-rock": [],
-    "charge-beam": [],
-    "ominous-wind": [],
-    "bulldoze": [],
-    "wild-charge": [],
-    "snarl": [],
-    "play-rough": [],
-    "mystical-fire": [],
-    "dazzling-gleam": [],
-    "baby-doll-eyes": [],
-    "high-horsepower": [],
-    "steel-beam": [],
-    "power-shift": []
-  }
+  "adamant-mint": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Pesselle's Easy Errand"
+   }
+  ],
+  "aguav-berry": [
+   {
+    "place": {
+     "ko": "습지 기지",
+     "en": "Mirelands Camp"
+    }
+   },
+   {
+    "place": {
+     "ko": "산정 기지",
+     "en": "Summit Camp"
+    }
+   },
+   {
+    "place": {
+     "ko": "빙산 기지",
+     "en": "Icepeak Camp"
+    }
+   },
+   {
+    "place": "Farm Harvest Drop from wild Pokémon in a Berry focused Massive Mass Outbreak"
+   }
+  ],
+  "aspear-berry": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 식스테일",
+     "en": "Wild Vulpix"
+    }
+   }
+  ],
+  "azure-flute": [
+   {
+    "where": "temple-of-sinnoh"
+   }
+  ],
+  "black-augurite": [
+   {
+    "place": "A Nosepass to Guide the Way"
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 딱구리",
+     "en": "Wild Golem"
+    }
+   }
+  ],
+  "blank-plate": [
+   {
+    "where": "hisui-snowpoint-temple"
+   }
+  ],
+  "blue-shard": [
+   {
+    "where": "obsidian-falls"
+   },
+   {
+    "place": "On floor in Space-time Distortions Space-time Distortion Items"
+   }
+  ],
+  "bold-mint": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Farm Harvest"
+   }
+  ],
+  "brave-mint": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Farm Harvest"
+   }
+  ],
+  "calm-mint": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Farm Harvest"
+   }
+  ],
+  "careful-mint": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Farm Harvest"
+   }
+  ],
+  "cheri-berry": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 꼬링크",
+     "en": "Wild Shinx"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 럭시오",
+     "en": "Wild Luxio"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 렌트라",
+     "en": "Wild Luxray"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 에레키드",
+     "en": "Wild Elekid"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 에레브",
+     "en": "Wild Electabuzz"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 에레키블",
+     "en": "Wild Electivire"
+    }
+   }
+  ],
+  "chesto-berry": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 주뱃",
+     "en": "Wild Zubat"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 골뱃",
+     "en": "Wild Golbat"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 크로뱃",
+     "en": "Wild Crobat"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 흉내내",
+     "en": "Wild Mime Jr."
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 마임맨",
+     "en": "Wild Mr. Mime"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 고오스",
+     "en": "Wild Gastly"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 고우스트",
+     "en": "Wild Haunter"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 팬텀",
+     "en": "Wild Gengar"
+    }
+   }
+  ],
+  "comet-shard": [
+   {
+    "place": "The Sea's Legend"
+   },
+   {
+    "place": "The Diamond Clan's Treasure"
+   },
+   {
+    "place": "The Pearl Clan's Treasure"
+   }
+  ],
+  "dawn-stone": [
+   {
+    "place": "Traces of a Lost Village"
+   },
+   {
+    "place": "Daybreak"
+   }
+  ],
+  "draco-plate": [
+   {
+    "where": "hisui-lake-verity"
+   },
+   {
+    "where": "hisui-lake-valor"
+   },
+   {
+    "where": "hisui-lake-acuity"
+   }
+  ],
+  "dread-plate": [
+   {
+    "where": "moonview-arena"
+   }
+  ],
+  "dubious-disc": [
+   {
+    "place": "On floor in Space-time Distortions Gift for completion of Path of Tenacity Battle Space-time Distortion Items"
+   }
+  ],
+  "dusk-stone": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Red Ore deposits Grey Ore deposits On floor in Space-time Distortions Gift for completion of Path of Tenacity Battle Space-time Distortion Items"
+   }
+  ],
+  "earth-plate": [
+   {
+    "where": "sludge-mound"
+   }
+  ],
+  "electirizer": [
+   {
+    "place": "On floor in Space-time Distortions Gift for completion of Path of Tenacity Battle Space-time Distortion Items"
+   }
+  ],
+  "figy-berry": [
+   {
+    "place": "Farm Harvest"
+   }
+  ],
+  "fire-stone": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Red Ore deposits On floor in Space-time Distortions Gift for completion of Path of Tenacity Battle Space-time Distortion Items"
+   }
+  ],
+  "fist-plate": [
+   {
+    "where": "jubilife-village"
+   }
+  ],
+  "flame-plate": [
+   {
+    "where": "molten-arena"
+   }
+  ],
+  "full-heal": [
+   {
+    "place": "Croagunk's Curative Poison"
+   }
+  ],
+  "full-restore": [
+   {
+    "place": "In Search of a Fiery Pokémon"
+   }
+  ],
+  "gentle-mint": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Farm Harvest"
+   }
+  ],
+  "gracidea": [
+   {
+    "place": {
+     "ko": "들판 기지",
+     "en": "Fieldlands Camp"
+    }
+   }
+  ],
+  "green-shard": [
+   {
+    "place": "On floor in Space-time Distortions Space-time Distortion Items"
+   }
+  ],
+  "griseous-core": [
+   {
+    "where": "hisui-turnback-cave"
+   }
+  ],
+  "hasty-mint": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Farm Harvest"
+   }
+  ],
+  "hyper-potion": [
+   {
+    "place": "Boxes in Cobalt Coastlands Request Rewards : Poor"
+   },
+   {
+    "place": "Peckish Piplup Crafting"
+   }
+  ],
+  "iapapa-berry": [
+   {
+    "place": "Farm Harvest"
+   }
+  ],
+  "ice-stone": [
+   {
+    "where": "avalanche-slopes"
+   },
+   {
+    "place": "Irida's Wish"
+   }
+  ],
+  "icicle-plate": [
+   {
+    "where": "icepeak-arena"
+   }
+  ],
+  "impish-mint": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Farm Harvest"
+   }
+  ],
+  "insect-plate": [
+   {
+    "where": "grandtree-arena"
+   }
+  ],
+  "iron-plate": [
+   {
+    "place": {
+     "ko": "화구의 사당",
+     "en": "Lava Dome Sanctum"
+    }
+   }
+  ],
+  "jolly-mint": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Farm Harvest"
+   }
+  ],
+  "lafeather-ball": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Balloon Race in the Fieldlands"
+   }
+  ],
+  "lagigaton-ball": [
+   {
+    "place": {
+     "ko": "산정 기지",
+     "en": "Summit Camp"
+    }
+   },
+   {
+    "place": {
+     "ko": "빙산 기지",
+     "en": "Icepeak Camp"
+    }
+   }
+  ],
+  "lajet-ball": [
+   {
+    "place": {
+     "ko": "산정 기지",
+     "en": "Summit Camp"
+    }
+   },
+   {
+    "place": {
+     "ko": "빙산 기지",
+     "en": "Icepeak Camp"
+    }
+   }
+  ],
+  "laleaden-ball": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "where": "coastlands-camp"
+   }
+  ],
+  "laorigin-ball": [
+   {
+    "where": "jubilife-village"
+   }
+  ],
+  "lawing-ball": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "where": "coastlands-camp"
+   }
+  ],
+  "lax-mint": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Farm Harvest"
+   }
+  ],
+  "leaf-stone": [
+   {
+    "place": "Which Is the Real Burmy"
+   },
+   {
+    "place": "Adaman's Hope"
+   }
+  ],
+  "leppa-berry": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 토게피",
+     "en": "Wild Togepi"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 토게틱",
+     "en": "Wild Togetic"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 토게키스",
+     "en": "Wild Togekiss"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 삐",
+     "en": "Wild Cleffa"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 삐삐",
+     "en": "Wild Clefairy"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 픽시",
+     "en": "Wild Clefable"
+    }
+   }
+  ],
+  "linking-cord": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Getting to Know Ghosts"
+   }
+  ],
+  "lonely-mint": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Farm Harvest"
+   }
+  ],
+  "lum-berry": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 도롱충이",
+     "en": "Wild Burmy"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 도롱마담",
+     "en": "Wild Wormadam"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 체리버",
+     "en": "Wild Cherubi"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 체리꼬",
+     "en": "Wild Cherrim"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 치릴리",
+     "en": "Wild Petilil"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 드레디어",
+     "en": "Wild Lilligant"
+    }
+   }
+  ],
+  "lustrous-globe": [
+   {
+    "where": "pearl-settlement"
+   }
+  ],
+  "magmarizer": [
+   {
+    "place": "On floor in Space-time Distortions Gift for completion of Path of Tenacity Battle Space-time Distortion Items"
+   }
+  ],
+  "mago-berry": [
+   {
+    "place": "Farm Harvest"
+   }
+  ],
+  "max-elixir": [
+   {
+    "place": "Boxes in Cobalt Coastlands Crafting"
+   }
+  ],
+  "max-ether": [
+   {
+    "place": "Boxes in Cobalt Coastlands Crafting"
+   }
+  ],
+  "max-potion": [
+   {
+    "place": {
+     "ko": "산정 기지",
+     "en": "Summit Camp"
+    }
+   },
+   {
+    "place": "Boxes in Cobalt Coastlands Crafting"
+   }
+  ],
+  "max-revive": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "The Headache-Stricken Psyduck"
+   },
+   {
+    "place": "A Bit of Help from Blissey"
+   }
+  ],
+  "meadow-plate": [
+   {
+    "where": "brava-arena"
+   }
+  ],
+  "metal-coat": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 핫삼",
+     "en": "Wild Scizor"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 강철톤",
+     "en": "Wild Steelix"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 코일",
+     "en": "Wild Magnemite"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 레어코일",
+     "en": "Wild Magneton"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 자포코일",
+     "en": "Wild Magnezone"
+    }
+   }
+  ],
+  "mild-mint": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Farm Harvest"
+   }
+  ],
+  "mind-plate": [
+   {
+    "where": "heights-camp"
+   }
+  ],
+  "modest-mint": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Pesselle's Easy Errand"
+   }
+  ],
+  "moon-stone": [
+   {
+    "where": "fabled-spring"
+   },
+   {
+    "place": "On floor in Space-time Distortions Hidden in ground and dug up by Ursaluna (Random chance) Gift for completion of Path of Tenacity Battle"
+   }
+  ],
+  "naive-mint": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Farm Harvest"
+   }
+  ],
+  "nanab-berry": [
+   {
+    "place": "Strange Happenings at Midnight"
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 겟핸보숭",
+     "en": "Wild Ambipom"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 깝질무",
+     "en": "Wild Shellos"
+    }
+   }
+  ],
+  "naughty-mint": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Farm Harvest"
+   }
+  ],
+  "nugget": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "where": "heights-camp"
+   },
+   {
+    "where": "coastlands-camp"
+   },
+   {
+    "place": {
+     "ko": "산정 기지",
+     "en": "Summit Camp"
+    }
+   },
+   {
+    "place": {
+     "ko": "산중 기지",
+     "en": "Mountain Camp"
+    }
+   },
+   {
+    "place": {
+     "ko": "빙산 기지",
+     "en": "Icepeak Camp"
+    }
+   },
+   {
+    "place": "Aim for the Big Leagues!"
+   },
+   {
+    "place": "Balloon Race in the Coastlands"
+   },
+   {
+    "place": "Balloon Race in the Icelands"
+   },
+   {
+    "place": "The Ultimate Balloon Race"
+   }
+  ],
+  "odd-keystone": [
+   {
+    "where": "jubilife-village"
+   }
+  ],
+  "old-gateau": [
+   {
+    "place": "Crafting"
+   }
+  ],
+  "oran-berry": [
+   {
+    "place": "Farm Harvest Berry Trees in all areas Request Rewards : Big Buizel"
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 나몰빼미",
+     "en": "Wild Rowlet"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 브케인",
+     "en": "Wild Cyndaquil"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 수댕이",
+     "en": "Wild Oshawott"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 비버니",
+     "en": "Wild Bidoof"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 비버통",
+     "en": "Wild Bibarel"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 피츄",
+     "en": "Wild Pichu"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 피카츄",
+     "en": "Wild Pikachu"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 불꽃숭이",
+     "en": "Wild Chimchar"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 이어롤",
+     "en": "Wild Buneary"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 이어롭",
+     "en": "Wild Lopunny"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 미꾸리",
+     "en": "Wild Barboach"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 파치리스",
+     "en": "Wild Pachirisu"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 모부기",
+     "en": "Wild Turtwig"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 팽도리",
+     "en": "Wild Piplup"
+    }
+   }
+  ],
+  "oval-stone": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 핑복",
+     "en": "Wild Happiny"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 럭키",
+     "en": "Wild Chansey"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 해피너스",
+     "en": "Wild Blissey"
+    }
+   }
+  ],
+  "peat-block": [
+   {
+    "place": "Gone Astray...in the Icelands"
+   }
+  ],
+  "pecha-berry": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 스컹뿡",
+     "en": "Wild Stunky"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 스컹탱크",
+     "en": "Wild Skuntank"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 왕눈해",
+     "en": "Wild Tentacool"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 독파리",
+     "en": "Wild Tentacruel"
+    }
+   }
+  ],
+  "pinap-berry": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 트리토돈",
+     "en": "Wild Gastrodon"
+    }
+   }
+  ],
+  "pixie-plate": [
+   {
+    "place": {
+     "ko": "숨겨진 옛마을",
+     "en": "Ancient Retreat"
+    }
+   }
+  ],
+  "potion": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "What Did Shinx's Ears Look Like"
+   }
+  ],
+  "protector": [
+   {
+    "place": "On floor in Space-time Distortions Gift for completion of Path of Tenacity Battle Space-time Distortion Items"
+   }
+  ],
+  "quiet-mint": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Farm Harvest"
+   }
+  ],
+  "rare-candy": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "where": "heights-camp"
+   },
+   {
+    "place": "Bothersome Bidoof"
+   },
+   {
+    "place": "Balloon Race in the Fieldlands"
+   },
+   {
+    "place": "Measuring Your Compatibility"
+   },
+   {
+    "place": "All about Magikarp"
+   },
+   {
+    "place": "Eevee's Evolutions"
+   },
+   {
+    "place": "At Home under the Eaves"
+   },
+   {
+    "place": "Rolling with Spheal"
+   }
+  ],
+  "rash-mint": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Farm Harvest"
+   }
+  ],
+  "rawst-berry": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 포니타",
+     "en": "Wild Ponyta"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 날쌩마",
+     "en": "Wild Rapidash"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 가디",
+     "en": "Wild Growlithe"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 윈디",
+     "en": "Wild Arcanine"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 나인테일",
+     "en": "Wild Ninetales"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 마그비",
+     "en": "Wild Magby"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 마그마",
+     "en": "Wild Magmar"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 마그마번",
+     "en": "Wild Magmortar"
+    }
+   }
+  ],
+  "razor-claw": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 포푸니",
+     "en": "Wild Sneasel"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 포푸니크",
+     "en": "Wild Sneasler"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 포푸니라",
+     "en": "Wild Weavile"
+    }
+   }
+  ],
+  "razor-fang": [
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 글라이거",
+     "en": "Wild Gligar"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 글라이온",
+     "en": "Wild Gliscor"
+    }
+   }
+  ],
+  "razz-berry": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "where": "heights-camp"
+   },
+   {
+    "where": "coastlands-camp"
+   },
+   {
+    "place": "A Peculiar Ponyta"
+   },
+   {
+    "place": "Poor"
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 이브이",
+     "en": "Wild Eevee"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 샤미드",
+     "en": "Wild Vaporeon"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 쥬피썬더",
+     "en": "Wild Jolteon"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 부스터",
+     "en": "Wild Flareon"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 에브이",
+     "en": "Wild Espeon"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 블래키",
+     "en": "Wild Umbreon"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 리피아",
+     "en": "Wild Leafeon"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 글레이시아",
+     "en": "Wild Glaceon"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 님피아",
+     "en": "Wild Sylveon"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 핑복",
+     "en": "Wild Happiny"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 럭키",
+     "en": "Wild Chansey"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 해피너스",
+     "en": "Wild Blissey"
+    }
+   }
+  ],
+  "reaper-cloth": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 해골몽",
+     "en": "Wild Duskull"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 미라몽",
+     "en": "Wild Dusclops"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 야느와르몽",
+     "en": "Wild Dusknoir"
+    }
+   }
+  ],
+  "red-chain": [
+   {
+    "where": "shrouded-ruins"
+   }
+  ],
+  "red-shard": [
+   {
+    "where": "obsidian-falls"
+   },
+   {
+    "place": "On floor in Space-time Distortions Space-time Distortion Items"
+   }
+  ],
+  "relaxed-mint": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Farm Harvest"
+   }
+  ],
+  "reveal-glass": [
+   {
+    "place": {
+     "ko": "숨겨진 옛마을",
+     "en": "Ancient Retreat"
+    }
+   }
+  ],
+  "revive": [
+   {
+    "place": "Berry Helpful"
+   }
+  ],
+  "sassy-mint": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Farm Harvest"
+   }
+  ],
+  "serious-mint": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Farm Harvest"
+   }
+  ],
+  "shiny-charm": [
+   {
+    "where": "jubilife-village"
+   }
+  ],
+  "shiny-stone": [
+   {
+    "place": "A Bit of Help from Blissey"
+   }
+  ],
+  "sitrus-berry": [
+   {
+    "where": "grandtree-arena"
+   },
+   {
+    "place": "Battling with Pachirisu"
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 모크나이퍼",
+     "en": "Wild Decidueye"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 마그케인",
+     "en": "Wild Quilava"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 블레이범",
+     "en": "Wild Typhlosion"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 쌍검자비",
+     "en": "Wild Dewott"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 대검귀",
+     "en": "Wild Samurott"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 먹고자",
+     "en": "Wild Munchlax"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 잠만보",
+     "en": "Wild Snorlax"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 라이츄",
+     "en": "Wild Raichu"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 파이숭이",
+     "en": "Wild Monferno"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 초염몽",
+     "en": "Wild Infernape"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 메깅",
+     "en": "Wild Whiscash"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 다투곰",
+     "en": "Wild Ursaluna"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 수풀부기",
+     "en": "Wild Grotle"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 토대부기",
+     "en": "Wild Torterra"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 팽태자",
+     "en": "Wild Prinplup"
+    }
+   },
+   {
+    "how": "held",
+    "place": {
+     "ko": "야생 엠페르트",
+     "en": "Wild Empoleon"
+    }
+   }
+  ],
+  "sky-plate": [
+   {
+    "where": "hisui-snowpoint-temple"
+   }
+  ],
+  "splash-plate": [
+   {
+    "where": "ginkgo-landing"
+   }
+  ],
+  "spooky-plate": [
+   {
+    "where": "temple-of-sinnoh"
+   }
+  ],
+  "star-piece": [
+   {
+    "place": {
+     "ko": "산정 기지",
+     "en": "Summit Camp"
+    }
+   },
+   {
+    "place": {
+     "ko": "빙산 기지",
+     "en": "Icepeak Camp"
+    }
+   },
+   {
+    "place": "Red Ore deposits Grey Ore deposits On floor in Space-time Distortions Hidden in ground and dug up by Ursaluna (Random chance) Gift for completion of Eternal Battle Reverie Request Rewards : Double the Tails"
+   },
+   {
+    "place": "Double the Fun"
+   },
+   {
+    "place": "Gone Astray...in the Coastlands"
+   },
+   {
+    "place": "Gone Astray...in the Highlands"
+   },
+   {
+    "place": "Gone Astray...in the Fieldlands"
+   },
+   {
+    "place": "Gone Astray...in the Icelands"
+   },
+   {
+    "place": "Tricky Treat Strategy"
+   }
+  ],
+  "stardust": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "where": "heights-camp"
+   },
+   {
+    "where": "coastlands-camp"
+   },
+   {
+    "where": "celestica-trail"
+   },
+   {
+    "place": {
+     "ko": "산정 기지",
+     "en": "Summit Camp"
+    }
+   },
+   {
+    "place": {
+     "ko": "빙산 기지",
+     "en": "Icepeak Camp"
+    }
+   },
+   {
+    "place": "Playing with Drifloon"
+   },
+   {
+    "place": "Gone Astray...in the Mirelands"
+   }
+  ],
+  "stone-plate": [
+   {
+    "where": "grueling-grove"
+   }
+  ],
+  "sun-stone": [
+   {
+    "place": "At Home under the Eaves"
+   }
+  ],
+  "super-potion": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Boxes in Cobalt Coastlands Crafting"
+   }
+  ],
+  "thunder-stone": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Grey Ore deposits On floor in Space-time Distortions Gift for completion of Path of Tenacity Battle Space-time Distortion Items"
+   }
+  ],
+  "timid-mint": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Farm Harvest"
+   }
+  ],
+  "toxic-plate": [
+   {
+    "where": "clamberclaw-cliffs"
+   }
+  ],
+  "up-grade": [
+   {
+    "place": "On floor in Space-time Distortions Space-time Distortion Items"
+   }
+  ],
+  "water-stone": [
+   {
+    "where": "jubilife-village"
+   },
+   {
+    "place": "Blue Ore Deposits On floor in Space-time Distortions Gift for completion of Path of Tenacity Battle Space-time Distortion Items"
+   }
+  ],
+  "wiki-berry": [
+   {
+    "place": "Farm Harvest"
+   }
+  ],
+  "zap-plate": [
+   {
+    "where": "moonview-arena"
+   }
+  ]
+ },
+ "tutors": {
+  "fire-punch": [],
+  "ice-punch": [],
+  "thunder-punch": [],
+  "flamethrower": [],
+  "ice-beam": [],
+  "hyper-beam": [],
+  "thunderbolt": [],
+  "psychic": [],
+  "focus-energy": [],
+  "swift": [],
+  "rest": [],
+  "rock-slide": [],
+  "sludge-bomb": [],
+  "spikes": [],
+  "icy-wind": [],
+  "outrage": [],
+  "false-swipe": [],
+  "iron-tail": [],
+  "shadow-ball": [],
+  "rock-smash": [],
+  "ice-ball": [],
+  "aerial-ace": [],
+  "bulk-up": [],
+  "magical-leaf": [],
+  "calm-mind": [],
+  "water-pulse": [],
+  "poison-jab": [],
+  "dark-pulse": [],
+  "aqua-tail": [],
+  "x-scissor": [],
+  "drain-punch": [],
+  "energy-ball": [],
+  "earth-power": [],
+  "giga-impact": [],
+  "shadow-claw": [],
+  "thunder-fang": [],
+  "ice-fang": [],
+  "fire-fang": [],
+  "psycho-cut": [],
+  "zen-headbutt": [],
+  "flash-cannon": [],
+  "draco-meteor": [],
+  "iron-head": [],
+  "stone-edge": [],
+  "stealth-rock": [],
+  "charge-beam": [],
+  "ominous-wind": [],
+  "bulldoze": [],
+  "wild-charge": [],
+  "snarl": [],
+  "play-rough": [],
+  "mystical-fire": [],
+  "dazzling-gleam": [],
+  "baby-doll-eyes": [],
+  "high-horsepower": [],
+  "steel-beam": [],
+  "power-shift": []
+ }
 }

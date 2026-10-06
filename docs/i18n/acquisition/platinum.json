@@ -6,7 +6,8 @@
  ],
  "_sources": [
   "네이버 블로그 '미오시티의 작은 도서관' — 포켓몬스터 플라티나: 기술머신/비전머신 입수 방법(2016-08-26 수정). 사용자 요청으로 옮김",
-  "네이버 블로그 '미오시티의 작은 도서관' — 포켓몬스터 플라티나: NPC 기술[2판](2016-08-21 수정). 사용자 제공"
+  "네이버 블로그 '미오시티의 작은 도서관' — 포켓몬스터 플라티나: NPC 기술[2판](2016-08-21 수정). 사용자 제공",
+  "Serebii.net ItemDex (https://www.serebii.net/itemdex/) — 장소는 PokéAPI/게임 텍스트로 한국어화"
  ],
  "_tms": {
   "tm01": "힘껏펀치 / Focus Punch",
@@ -155,6 +156,2836 @@
   "ominous-wind": "괴상한바람 / Ominous Wind"
  },
  "items": {
+  "adamant-orb": [
+   {
+    "where": "mt-coronet"
+   }
+  ],
+  "aguav-berry": [
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   },
+   {
+    "where": "sinnoh-route-210"
+   },
+   {
+    "where": "sinnoh-route-213"
+   },
+   {
+    "where": "sinnoh-route-222"
+   }
+  ],
+  "amulet-coin": [
+   {
+    "where": "amity-square"
+   }
+  ],
+  "antidote": [
+   {
+    "where": "sinnoh-route-204"
+   },
+   {
+    "where": "sinnoh-route-219"
+   },
+   {
+    "where": "ravaged-path"
+   },
+   {
+    "where": "eterna-forest"
+   }
+  ],
+  "aspear-berry": [
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   },
+   {
+    "where": "sinnoh-route-210"
+   },
+   {
+    "where": "sinnoh-route-211"
+   },
+   {
+    "where": "sinnoh-route-212"
+   }
+  ],
+  "awakening": [
+   {
+    "where": "sinnoh-route-204"
+   },
+   {
+    "where": "sinnoh-route-213",
+    "how": "hidden",
+    "detail": "다우징머신"
+   }
+  ],
+  "babiri-berry": [
+   {
+    "where": "pastoria-city"
+   }
+  ],
+  "bicycle": [
+   {
+    "where": "eterna-city"
+   }
+  ],
+  "big-mushroom": [
+   {
+    "where": "sinnoh-route-212",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-214"
+   },
+   {
+    "where": "sinnoh-route-222",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-225",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "place": {
+     "ko": "226번수로",
+     "en": "Route 226"
+    },
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "fuego-ironworks",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "hearthome-city",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "solaceon-town"
+   },
+   {
+    "where": "valor-lakefront",
+    "how": "hidden",
+    "detail": "다우징머신"
+   }
+  ],
+  "big-pearl": [
+   {
+    "where": "sinnoh-route-213",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "place": {
+     "ko": "220번수로",
+     "en": "Route 220"
+    },
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-224",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "oreburgh-gate"
+   },
+   {
+    "where": "old-chateau"
+   },
+   {
+    "where": "sinnoh-victory-road"
+   }
+  ],
+  "big-root": [
+   {
+    "where": "sinnoh-route-214"
+   }
+  ],
+  "black-belt": [
+   {
+    "where": "sinnoh-route-221"
+   }
+  ],
+  "black-flute": [
+   {
+    "where": "mt-coronet"
+   }
+  ],
+  "black-glasses": [
+   {
+    "where": "celestic-town"
+   }
+  ],
+  "blue-scarf": [
+   {
+    "where": "pastoria-city"
+   }
+  ],
+  "blue-shard": [
+   {
+    "where": "sinnoh-route-216"
+   },
+   {
+    "place": {
+     "ko": "230번수로",
+     "en": "Route 230"
+    }
+   },
+   {
+    "where": "fuego-ironworks",
+    "detail": "From Mr. Fuego"
+   },
+   {
+    "where": "wayward-cave"
+   },
+   {
+    "where": "mt-coronet",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "great-marsh"
+   },
+   {
+    "place": "Eterna Galactic Building"
+   }
+  ],
+  "bluk-berry": [
+   {
+    "where": "sinnoh-route-205"
+   },
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   },
+   {
+    "where": "sinnoh-route-208"
+   },
+   {
+    "where": "sinnoh-route-215"
+   },
+   {
+    "where": "sinnoh-route-224"
+   }
+  ],
+  "burn-heal": [
+   {
+    "where": "sinnoh-route-206"
+   },
+   {
+    "where": "fuego-ironworks"
+   }
+  ],
+  "calcium": [
+   {
+    "where": "sinnoh-route-209"
+   },
+   {
+    "where": "sinnoh-route-211",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-213",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-217",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-228",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "fuego-ironworks"
+   },
+   {
+    "where": "veilstone-city",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-victory-road"
+   },
+   {
+    "where": "stark-mountain",
+    "how": "hidden",
+    "detail": "다우징머신"
+   }
+  ],
+  "carbos": [
+   {
+    "where": "sinnoh-route-208"
+   },
+   {
+    "where": "sinnoh-route-214",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "place": {
+     "ko": "220번수로",
+     "en": "Route 220"
+    }
+   },
+   {
+    "where": "sinnoh-route-221",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-222"
+   },
+   {
+    "place": {
+     "ko": "226번수로",
+     "en": "Route 226"
+    }
+   },
+   {
+    "place": {
+     "ko": "230번수로",
+     "en": "Route 230"
+    },
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sunyshore-city",
+    "how": "hidden",
+    "detail": "다우징머신"
+   }
+  ],
+  "charcoal": [
+   {
+    "where": "sinnoh-route-227"
+   }
+  ],
+  "charti-berry": [
+   {
+    "where": "pastoria-city"
+   }
+  ],
+  "cheri-berry": [
+   {
+    "where": "sinnoh-route-205"
+   },
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   },
+   {
+    "where": "sinnoh-route-214"
+   },
+   {
+    "where": "floaroma-town"
+   }
+  ],
+  "chesto-berry": [
+   {
+    "where": "sinnoh-route-205"
+   },
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   },
+   {
+    "where": "sinnoh-route-209"
+   },
+   {
+    "where": "sinnoh-route-210"
+   },
+   {
+    "where": "sinnoh-route-214"
+   },
+   {
+    "where": "floaroma-town"
+   }
+  ],
+  "chilan-berry": [
+   {
+    "where": "pastoria-city"
+   }
+  ],
+  "choice-specs": [
+   {
+    "where": "celestic-town"
+   }
+  ],
+  "chople-berry": [
+   {
+    "where": "pastoria-city"
+   }
+  ],
+  "cleanse-tag": [
+   {
+    "where": "sinnoh-route-221"
+   },
+   {
+    "where": "lost-tower"
+   }
+  ],
+  "coba-berry": [
+   {
+    "where": "pastoria-city"
+   }
+  ],
+  "coin-case": [
+   {
+    "where": "veilstone-city"
+   }
+  ],
+  "colbur-berry": [
+   {
+    "where": "pastoria-city"
+   }
+  ],
+  "cornn-berry": [
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   }
+  ],
+  "coupon-1": [
+   {
+    "where": "jubilife-city"
+   }
+  ],
+  "coupon-2": [
+   {
+    "where": "jubilife-city"
+   }
+  ],
+  "coupon-3": [
+   {
+    "where": "jubilife-city"
+   }
+  ],
+  "dawn-stone": [
+   {
+    "where": "sinnoh-route-212",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-225"
+   },
+   {
+    "where": "mt-coronet"
+   }
+  ],
+  "destiny-knot": [
+   {
+    "where": "sinnoh-route-224"
+   }
+  ],
+  "dire-hit": [
+   {
+    "where": "oreburgh-city"
+   }
+  ],
+  "dive-ball": [
+   {
+    "place": {
+     "ko": "223번수로",
+     "en": "Route 223"
+    }
+   },
+   {
+    "where": "solaceon-town",
+    "how": "gift",
+    "detail": "포켓몬 신문사"
+   }
+  ],
+  "draco-plate": [
+   {
+    "where": "eterna-city"
+   }
+  ],
+  "dragon-fang": [
+   {
+    "where": "celestic-town"
+   }
+  ],
+  "dread-plate": [
+   {
+    "where": "old-chateau"
+   }
+  ],
+  "dubious-disc": [
+   {
+    "where": "sinnoh-route-225"
+   },
+   {
+    "place": "Veilstone Galactic Building"
+   }
+  ],
+  "dusk-ball": [
+   {
+    "where": "oreburgh-city"
+   },
+   {
+    "where": "solaceon-town",
+    "how": "gift",
+    "detail": "포켓몬 신문사"
+   },
+   {
+    "where": "iron-island"
+   }
+  ],
+  "dusk-stone": [
+   {
+    "where": "sinnoh-victory-road"
+   },
+   {
+    "where": "wayward-cave"
+   },
+   {
+    "place": "Galactic Warehouse"
+   }
+  ],
+  "earth-plate": [
+   {
+    "where": "oreburgh-gate"
+   }
+  ],
+  "electirizer": [
+   {
+    "where": "valley-windworks"
+   }
+  ],
+  "elixir": [
+   {
+    "where": "sinnoh-route-212"
+   },
+   {
+    "where": "iron-island"
+   },
+   {
+    "where": "sinnoh-victory-road"
+   },
+   {
+    "place": "Veilstone Galactic Building",
+    "how": "hidden",
+    "detail": "다우징머신"
+   }
+  ],
+  "energy-powder": [
+   {
+    "where": "mt-coronet",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "mt-coronet"
+   }
+  ],
+  "escape-rope": [
+   {
+    "where": "oreburgh-mine"
+   },
+   {
+    "where": "wayward-cave"
+   },
+   {
+    "where": "mt-coronet"
+   },
+   {
+    "where": "iron-island"
+   },
+   {
+    "where": "stark-mountain"
+   }
+  ],
+  "ether": [
+   {
+    "where": "sinnoh-route-206",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-208"
+   },
+   {
+    "where": "sinnoh-route-209",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "eterna-forest"
+   },
+   {
+    "where": "stark-mountain"
+   }
+  ],
+  "everstone": [
+   {
+    "where": "snowpoint-city"
+   }
+  ],
+  "expert-belt": [
+   {
+    "where": "sinnoh-route-221"
+   }
+  ],
+  "explorer-kit": [
+   {
+    "where": "eterna-city",
+    "detail": "From Byron's Father"
+   }
+  ],
+  "fashion-case": [
+   {
+    "where": "jubilife-city"
+   }
+  ],
+  "figy-berry": [
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   },
+   {
+    "where": "sinnoh-route-218"
+   },
+   {
+    "where": "solaceon-town"
+   }
+  ],
+  "fire-stone": [
+   {
+    "where": "fuego-ironworks"
+   },
+   {
+    "where": "solaceon-ruins",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "stark-mountain",
+    "how": "hidden",
+    "detail": "다우징머신"
+   }
+  ],
+  "fist-plate": [
+   {
+    "where": "sinnoh-route-215"
+   }
+  ],
+  "flame-plate": [
+   {
+    "where": "oreburgh-mine",
+    "detail": "Show Hiker an Arceus"
+   },
+   {
+    "where": "stark-mountain"
+   }
+  ],
+  "focus-sash": [
+   {
+    "where": "sinnoh-route-221"
+   }
+  ],
+  "fresh-water": [
+   {
+    "where": "sinnoh-route-225"
+   }
+  ],
+  "full-heal": [
+   {
+    "where": "sinnoh-route-206",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-210",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-212"
+   },
+   {
+    "where": "sinnoh-route-215"
+   },
+   {
+    "where": "sinnoh-route-216",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-217",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-227"
+   },
+   {
+    "where": "fuego-ironworks",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "snowpoint-temple"
+   },
+   {
+    "where": "stark-mountain"
+   },
+   {
+    "where": "floaroma-meadow",
+    "how": "hidden",
+    "detail": "다우징머신"
+   }
+  ],
+  "full-incense": [
+   {
+    "where": "veilstone-city"
+   }
+  ],
+  "full-restore": [
+   {
+    "where": "sinnoh-route-222"
+   },
+   {
+    "where": "sinnoh-route-228",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-229"
+   },
+   {
+    "where": "mt-coronet"
+   },
+   {
+    "where": "snowpoint-temple",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-victory-road"
+   },
+   {
+    "where": "stark-mountain"
+   },
+   {
+    "place": "Veilstone Galactic Building"
+   }
+  ],
+  "galactic-key": [
+   {
+    "place": "Galactic Warehouse"
+   }
+  ],
+  "good-rod": [
+   {
+    "where": "hearthome-city",
+    "detail": "Fishing Guru"
+   }
+  ],
+  "gracidea": [
+   {
+    "where": "floaroma-town",
+    "detail": "Show Lady Shaymin"
+   }
+  ],
+  "great-ball": [
+   {
+    "where": "sinnoh-route-207",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-208"
+   },
+   {
+    "where": "sinnoh-route-209"
+   },
+   {
+    "where": "sinnoh-route-211",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-213",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "oreburgh-city"
+   },
+   {
+    "where": "wayward-cave",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "lost-tower",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "solaceon-town",
+    "how": "gift",
+    "detail": "포켓몬 신문사"
+   },
+   {
+    "where": "celestic-town"
+   }
+  ],
+  "green-scarf": [
+   {
+    "where": "pastoria-city"
+   }
+  ],
+  "green-shard": [
+   {
+    "where": "sinnoh-route-212"
+   },
+   {
+    "where": "sinnoh-route-225"
+   },
+   {
+    "where": "fuego-ironworks",
+    "detail": "From Mr. Fuego"
+   },
+   {
+    "where": "eterna-forest",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "wayward-cave",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "solaceon-ruins"
+   },
+   {
+    "where": "great-marsh"
+   },
+   {
+    "place": "Veilstone Galactic Building"
+   }
+  ],
+  "grepa-berry": [
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   },
+   {
+    "where": "sinnoh-route-211"
+   },
+   {
+    "where": "sinnoh-route-229"
+   },
+   {
+    "place": {
+     "ko": "230번수로",
+     "en": "Route 230"
+    }
+   },
+   {
+    "where": "resort-area"
+   }
+  ],
+  "grip-claw": [
+   {
+    "where": "wayward-cave"
+   }
+  ],
+  "griseous-orb": [
+   {
+    "where": "distortion-world"
+   }
+  ],
+  "haban-berry": [
+   {
+    "where": "pastoria-city"
+   }
+  ],
+  "hard-stone": [
+   {
+    "where": "sinnoh-route-228"
+   }
+  ],
+  "heal-ball": [
+   {
+    "where": "sinnoh-route-205"
+   },
+   {
+    "where": "oreburgh-city"
+   },
+   {
+    "where": "solaceon-town",
+    "how": "gift",
+    "detail": "포켓몬 신문사"
+   }
+  ],
+  "heart-scale": [
+   {
+    "where": "sinnoh-route-213",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-222",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "place": {
+     "ko": "223번수로",
+     "en": "Route 223"
+    },
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-224",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "place": {
+     "ko": "226번수로",
+     "en": "Route 226"
+    },
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "oreburgh-city",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-victory-road",
+    "how": "hidden",
+    "detail": "다우징머신"
+   }
+  ],
+  "hm01": [
+   {
+    "place": "포켓몬상 이벤트 후 갤럭시단 빌딩 앞에서 난천에게 입수[스토리 진행 중 자동 입수]"
+   }
+  ],
+  "hm02": [
+   {
+    "place": "장막시티 체육관 관장 자두에게 승리 후 갤럭시단창고 이벤트 후 핸섬에게 입수[스토리 진행 중 자동 입수]"
+   }
+  ],
+  "hm03": [
+   {
+    "place": "봉신마을 유적에서 갤릭시단 보스 태홍에게 승리한 후 장로에게 입수[스토리 진행 중 자동 입수]"
+   }
+  ],
+  "hm04": [
+   {
+    "place": "운하시티 선착장을 통해 갈 수 있는 강철섬 동굴 입구에서 현에게 입수"
+   }
+  ],
+  "hm05": [
+   {
+    "place": "신수마을 내 신수유적 최하층"
+   }
+  ],
+  "hm06": [
+   {
+    "place": "무쇠게이트에 처음 들어서면 등산객에게서 입수[스토리 진행 중 자동 입수]"
+   }
+  ],
+  "hm07": [
+   {
+    "place": "물가시티 체육관 관장 전진에게 승리한 후 해변에 있는 규리에게 입수[스토리 진행 중 자동 입수]"
+   }
+  ],
+  "hm08": [
+   {
+    "place": "217번 도로 민가 근처에서 입수 가능"
+   }
+  ],
+  "hondew-berry": [
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   },
+   {
+    "where": "sinnoh-route-221"
+   },
+   {
+    "where": "sinnoh-route-228"
+   },
+   {
+    "where": "fight-area"
+   }
+  ],
+  "honey": [
+   {
+    "where": "eterna-forest"
+   },
+   {
+    "where": "lost-tower",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "floaroma-meadow"
+   }
+  ],
+  "hp-up": [
+   {
+    "where": "sinnoh-route-204"
+   },
+   {
+    "where": "sinnoh-route-215"
+   },
+   {
+    "where": "sinnoh-route-216"
+   },
+   {
+    "where": "sinnoh-route-225"
+   },
+   {
+    "place": {
+     "ko": "230번수로",
+     "en": "Route 230"
+    },
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "lake-valor",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "iron-island"
+   },
+   {
+    "where": "sinnoh-victory-road",
+    "how": "hidden",
+    "detail": "다우징머신"
+   }
+  ],
+  "hyper-potion": [
+   {
+    "where": "sinnoh-route-209"
+   },
+   {
+    "where": "sinnoh-route-210"
+   },
+   {
+    "where": "sinnoh-route-210",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-212"
+   },
+   {
+    "where": "sinnoh-route-213",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-215"
+   },
+   {
+    "where": "sinnoh-route-218"
+   },
+   {
+    "where": "fuego-ironworks",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "snowpoint-city",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "floaroma-meadow",
+    "how": "hidden",
+    "detail": "다우징머신"
+   }
+  ],
+  "iapapa-berry": [
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   },
+   {
+    "where": "sinnoh-route-211"
+   },
+   {
+    "where": "sinnoh-route-213"
+   }
+  ],
+  "ice-heal": [
+   {
+    "where": "mt-coronet"
+   }
+  ],
+  "icicle-plate": [
+   {
+    "where": "sinnoh-route-217"
+   }
+  ],
+  "insect-plate": [
+   {
+    "where": "eterna-forest"
+   }
+  ],
+  "iron": [
+   {
+    "where": "sinnoh-route-207"
+   },
+   {
+    "where": "sinnoh-route-208",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-212"
+   },
+   {
+    "where": "sinnoh-route-215",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-217"
+   },
+   {
+    "where": "sinnoh-route-228"
+   },
+   {
+    "where": "valor-lakefront"
+   },
+   {
+    "where": "stark-mountain",
+    "how": "hidden",
+    "detail": "다우징머신"
+   }
+  ],
+  "iron-ball": [
+   {
+    "where": "stark-mountain"
+   }
+  ],
+  "iron-plate": [
+   {
+    "where": "iron-island"
+   }
+  ],
+  "kasib-berry": [
+   {
+    "where": "pastoria-city"
+   }
+  ],
+  "kebia-berry": [
+   {
+    "where": "pastoria-city"
+   }
+  ],
+  "kelpsy-berry": [
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   },
+   {
+    "where": "sinnoh-route-225"
+   },
+   {
+    "place": {
+     "ko": "230번수로",
+     "en": "Route 230"
+    }
+   },
+   {
+    "where": "fuego-ironworks"
+   }
+  ],
+  "kings-rock": [
+   {
+    "where": "celestic-town",
+    "how": "hidden",
+    "detail": "다우징머신"
+   }
+  ],
+  "lagging-tail": [
+   {
+    "place": {
+     "ko": "226번수로",
+     "en": "Route 226"
+    }
+   }
+  ],
+  "lagreat-ball": [
+   {
+    "where": "sinnoh-route-207",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-208"
+   },
+   {
+    "where": "sinnoh-route-209"
+   },
+   {
+    "where": "sinnoh-route-211",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-213",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "oreburgh-city"
+   },
+   {
+    "where": "wayward-cave",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "lost-tower",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "solaceon-town",
+    "how": "gift",
+    "detail": "포켓몬 신문사"
+   },
+   {
+    "where": "celestic-town"
+   }
+  ],
+  "lapoke-ball": [
+   {
+    "where": "sinnoh-route-202",
+    "detail": "From Lucas/Dawn"
+   },
+   {
+    "where": "sinnoh-route-205"
+   },
+   {
+    "where": "sinnoh-route-207"
+   },
+   {
+    "where": "oreburgh-mine"
+   },
+   {
+    "where": "solaceon-town",
+    "how": "gift",
+    "detail": "포켓몬 신문사"
+   }
+  ],
+  "laultra-ball": [
+   {
+    "where": "sinnoh-route-210",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-212",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-215",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-216"
+   },
+   {
+    "where": "sinnoh-route-217",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-221"
+   },
+   {
+    "where": "sinnoh-route-222",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "place": {
+     "ko": "223번수로",
+     "en": "Route 223"
+    }
+   },
+   {
+    "where": "sinnoh-route-224"
+   },
+   {
+    "where": "sinnoh-route-224",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-225",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-228",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "place": {
+     "ko": "230번수로",
+     "en": "Route 230"
+    },
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "jubilife-city",
+    "detail": "Get 1 Number in the Lottery"
+   },
+   {
+    "where": "fuego-ironworks",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "mt-coronet"
+   },
+   {
+    "where": "solaceon-town",
+    "how": "gift",
+    "detail": "포켓몬 신문사"
+   },
+   {
+    "where": "valor-lakefront"
+   },
+   {
+    "where": "iron-island"
+   },
+   {
+    "where": "acuity-lakefront"
+   },
+   {
+    "where": "snowpoint-city"
+   },
+   {
+    "where": "sinnoh-victory-road",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-victory-road"
+   },
+   {
+    "where": "stark-mountain"
+   },
+   {
+    "where": "floaroma-meadow"
+   }
+  ],
+  "lax-incense": [
+   {
+    "where": "sinnoh-route-225"
+   }
+  ],
+  "leaf-stone": [
+   {
+    "where": "floaroma-meadow"
+   }
+  ],
+  "leftovers": [
+   {
+    "where": "sinnoh-victory-road"
+   }
+  ],
+  "leppa-berry": [
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   },
+   {
+    "where": "sinnoh-route-209"
+   },
+   {
+    "where": "sinnoh-route-221"
+   },
+   {
+    "where": "resort-area"
+   }
+  ],
+  "life-orb": [
+   {
+    "where": "sinnoh-route-227"
+   }
+  ],
+  "light-clay": [
+   {
+    "where": "mt-coronet"
+   }
+  ],
+  "luck-incense": [
+   {
+    "where": "ravaged-path"
+   }
+  ],
+  "lum-berry": [
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   },
+   {
+    "where": "sinnoh-route-212"
+   },
+   {
+    "where": "resort-area"
+   }
+  ],
+  "lunar-wing": [
+   {
+    "where": "fullmoon-island"
+   }
+  ],
+  "lustrous-orb": [
+   {
+    "where": "mt-coronet"
+   }
+  ],
+  "luxury-ball": [
+   {
+    "where": "solaceon-town",
+    "how": "gift",
+    "detail": "포켓몬 신문사"
+   },
+   {
+    "place": {
+     "ko": "포켓몬저택",
+     "en": "Pokemon Mansion"
+    }
+   }
+  ],
+  "macho-brace": [
+   {
+    "where": "pastoria-city",
+    "detail": "Show a trainer a Male & Female Combee"
+   }
+  ],
+  "magmarizer": [
+   {
+    "where": "sinnoh-route-214"
+   }
+  ],
+  "magnet": [
+   {
+    "where": "iron-island"
+   }
+  ],
+  "mago-berry": [
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   },
+   {
+    "where": "sinnoh-route-215"
+   },
+   {
+    "where": "sinnoh-route-221"
+   },
+   {
+    "where": "sinnoh-route-222"
+   }
+  ],
+  "magost-berry": [
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   }
+  ],
+  "master-ball": [
+   {
+    "where": "jubilife-city",
+    "detail": "Get all the Numbers in the Lottery"
+   },
+   {
+    "place": "Veilstone Galactic Building"
+   }
+  ],
+  "max-elixir": [
+   {
+    "where": "sinnoh-route-227"
+   },
+   {
+    "where": "valley-windworks",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "mt-coronet"
+   },
+   {
+    "where": "sinnoh-victory-road"
+   },
+   {
+    "where": "stark-mountain"
+   },
+   {
+    "place": "Veilstone Galactic Building"
+   }
+  ],
+  "max-ether": [
+   {
+    "where": "sinnoh-route-212",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-215"
+   },
+   {
+    "where": "wayward-cave"
+   }
+  ],
+  "max-potion": [
+   {
+    "where": "sinnoh-route-216"
+   },
+   {
+    "where": "sinnoh-route-217",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "fuego-ironworks",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "iron-island"
+   },
+   {
+    "place": "Veilstone Galactic Building"
+   }
+  ],
+  "max-repel": [
+   {
+    "where": "sinnoh-route-210"
+   },
+   {
+    "where": "sinnoh-route-212",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-214"
+   },
+   {
+    "where": "sinnoh-route-217",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "place": {
+     "ko": "220번수로",
+     "en": "Route 220"
+    }
+   },
+   {
+    "where": "sinnoh-route-228",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "mt-coronet"
+   },
+   {
+    "where": "iron-island"
+   },
+   {
+    "where": "sinnoh-victory-road"
+   }
+  ],
+  "max-revive": [
+   {
+    "where": "sinnoh-route-213"
+   },
+   {
+    "where": "sinnoh-route-217",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "jubilife-city",
+    "detail": "Get 4 Numbers in the Lottery"
+   },
+   {
+    "where": "mt-coronet"
+   },
+   {
+    "where": "sinnoh-victory-road",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "stark-mountain"
+   },
+   {
+    "where": "stark-mountain",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "place": "Veilstone Galactic Building"
+   },
+   {
+    "place": "Grand Lake Hotel"
+   },
+   {
+    "where": "floaroma-meadow",
+    "how": "hidden",
+    "detail": "다우징머신"
+   }
+  ],
+  "meadow-plate": [
+   {
+    "where": "sinnoh-route-210",
+    "how": "hidden",
+    "detail": "다우징머신"
+   }
+  ],
+  "mental-herb": [
+   {
+    "where": "sinnoh-route-216"
+   }
+  ],
+  "metal-coat": [
+   {
+    "where": "iron-island"
+   }
+  ],
+  "mind-plate": [
+   {
+    "where": "solaceon-ruins"
+   }
+  ],
+  "miracle-seed": [
+   {
+    "where": "floaroma-meadow"
+   }
+  ],
+  "moon-stone": [
+   {
+    "where": "eterna-city"
+   }
+  ],
+  "mystic-water": [
+   {
+    "where": "pastoria-city"
+   }
+  ],
+  "nanab-berry": [
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   },
+   {
+    "where": "sinnoh-route-224"
+   },
+   {
+    "where": "solaceon-town"
+   },
+   {
+    "where": "pastoria-city"
+   }
+  ],
+  "nest-ball": [
+   {
+    "where": "sinnoh-route-210",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "solaceon-town",
+    "how": "gift",
+    "detail": "포켓몬 신문사"
+   }
+  ],
+  "net-ball": [
+   {
+    "where": "eterna-forest"
+   },
+   {
+    "where": "solaceon-town",
+    "how": "gift",
+    "detail": "포켓몬 신문사"
+   }
+  ],
+  "nomel-berry": [
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   }
+  ],
+  "nugget": [
+   {
+    "where": "sinnoh-route-217"
+   },
+   {
+    "where": "sinnoh-route-228",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-229"
+   },
+   {
+    "where": "mt-coronet",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "solaceon-ruins"
+   },
+   {
+    "where": "iron-island",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-victory-road",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-victory-road"
+   },
+   {
+    "where": "stark-mountain"
+   },
+   {
+    "where": "resort-area"
+   },
+   {
+    "where": "resort-area",
+    "how": "hidden",
+    "detail": "다우징머신"
+   }
+  ],
+  "occa-berry": [
+   {
+    "where": "pastoria-city"
+   }
+  ],
+  "odd-incense": [
+   {
+    "where": "solaceon-ruins"
+   }
+  ],
+  "odd-keystone": [
+   {
+    "where": "sinnoh-route-208"
+   },
+   {
+    "where": "twinleaf-town"
+   }
+  ],
+  "old-charm": [
+   {
+    "where": "sinnoh-route-210"
+   }
+  ],
+  "old-gateau": [
+   {
+    "where": "old-chateau"
+   }
+  ],
+  "old-rod": [
+   {
+    "where": "jubilife-city",
+    "detail": "Fishing Guru"
+   }
+  ],
+  "oran-berry": [
+   {
+    "where": "sinnoh-route-205"
+   },
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   },
+   {
+    "where": "floaroma-town"
+   }
+  ],
+  "oval-stone": [
+   {
+    "where": "lost-tower"
+   }
+  ],
+  "paralyze-heal": [
+   {
+    "where": "sinnoh-route-204"
+   },
+   {
+    "where": "eterna-forest"
+   }
+  ],
+  "parcel": [
+   {
+    "where": "twinleaf-town",
+    "detail": "After obtaining Pokédex"
+   }
+  ],
+  "parcel--letsgo": [
+   {
+    "where": "twinleaf-town",
+    "detail": "After obtaining Pokédex"
+   }
+  ],
+  "passho-berry": [
+   {
+    "where": "pastoria-city"
+   }
+  ],
+  "payapa-berry": [
+   {
+    "where": "pastoria-city"
+   }
+  ],
+  "pearl": [
+   {
+    "where": "sinnoh-route-212",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-213",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-222",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-224",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "oreburgh-city",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "canalave-city",
+    "how": "hidden",
+    "detail": "다우징머신"
+   }
+  ],
+  "pecha-berry": [
+   {
+    "where": "sinnoh-route-205"
+   },
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   },
+   {
+    "where": "sinnoh-route-211"
+   },
+   {
+    "where": "sinnoh-route-212"
+   },
+   {
+    "where": "sinnoh-route-215"
+   },
+   {
+    "where": "sinnoh-route-221"
+   },
+   {
+    "where": "floaroma-town"
+   }
+  ],
+  "persim-berry": [
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   },
+   {
+    "where": "sinnoh-route-218"
+   },
+   {
+    "where": "solaceon-town"
+   },
+   {
+    "where": "pastoria-city"
+   }
+  ],
+  "pinap-berry": [
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   },
+   {
+    "where": "sinnoh-route-208"
+   },
+   {
+    "where": "sinnoh-route-210"
+   },
+   {
+    "where": "sinnoh-route-212"
+   },
+   {
+    "where": "sinnoh-route-218"
+   }
+  ],
+  "pink-scarf": [
+   {
+    "where": "pastoria-city"
+   }
+  ],
+  "poffin-case": [
+   {
+    "where": "hearthome-city"
+   }
+  ],
+  "poison-barb": [
+   {
+    "where": "sinnoh-route-206"
+   }
+  ],
+  "poke-ball": [
+   {
+    "where": "sinnoh-route-202",
+    "detail": "From Lucas/Dawn"
+   },
+   {
+    "where": "sinnoh-route-205"
+   },
+   {
+    "where": "sinnoh-route-207"
+   },
+   {
+    "where": "oreburgh-mine"
+   },
+   {
+    "where": "solaceon-town",
+    "how": "gift",
+    "detail": "포켓몬 신문사"
+   }
+  ],
+  "poke-radar": [
+   {
+    "where": "sandgem-town",
+    "detail": "From Professor Rowan"
+   }
+  ],
+  "pomeg-berry": [
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   },
+   {
+    "where": "sinnoh-route-214"
+   },
+   {
+    "place": {
+     "ko": "226번수로",
+     "en": "Route 226"
+    }
+   }
+  ],
+  "potion": [
+   {
+    "where": "sinnoh-route-201"
+   },
+   {
+    "where": "sinnoh-route-202"
+   },
+   {
+    "where": "sinnoh-route-205"
+   },
+   {
+    "where": "jubilife-city"
+   },
+   {
+    "where": "oreburgh-mine"
+   },
+   {
+    "where": "ravaged-path"
+   },
+   {
+    "where": "valley-windworks"
+   },
+   {
+    "where": "eterna-forest"
+   }
+  ],
+  "pp-max": [
+   {
+    "where": "sinnoh-route-224"
+   },
+   {
+    "place": {
+     "ko": "226번수로",
+     "en": "Route 226"
+    },
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-228",
+    "how": "hidden",
+    "detail": "다우징머신"
+   }
+  ],
+  "pp-up": [
+   {
+    "where": "sinnoh-route-206",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-213"
+   },
+   {
+    "where": "sinnoh-route-216"
+   },
+   {
+    "where": "sinnoh-route-216",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-222",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "jubilife-city",
+    "detail": "Get 2 Numbers in the Lottery"
+   },
+   {
+    "where": "eterna-city",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "solaceon-town"
+   },
+   {
+    "where": "veilstone-city",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "valor-lakefront"
+   },
+   {
+    "where": "survival-area",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "stark-mountain"
+   },
+   {
+    "where": "floaroma-meadow",
+    "how": "hidden",
+    "detail": "다우징머신"
+   }
+  ],
+  "protector": [
+   {
+    "where": "sinnoh-route-228"
+   },
+   {
+    "where": "iron-island"
+   }
+  ],
+  "protein": [
+   {
+    "where": "sinnoh-route-213",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-217",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-221"
+   },
+   {
+    "where": "sinnoh-route-227",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-229"
+   },
+   {
+    "where": "fuego-ironworks",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "mt-coronet"
+   },
+   {
+    "place": "Veilstone Galactic Building",
+    "how": "hidden",
+    "detail": "다우징머신"
+   }
+  ],
+  "pure-incense": [
+   {
+    "where": "sinnoh-route-221"
+   }
+  ],
+  "qualot-berry": [
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   },
+   {
+    "where": "sinnoh-route-222"
+   },
+   {
+    "place": {
+     "ko": "226번수로",
+     "en": "Route 226"
+    }
+   },
+   {
+    "where": "sinnoh-route-229"
+   },
+   {
+    "where": "resort-area"
+   }
+  ],
+  "quick-ball": [
+   {
+    "where": "sinnoh-route-222"
+   },
+   {
+    "where": "solaceon-town",
+    "how": "gift",
+    "detail": "포켓몬 신문사"
+   }
+  ],
+  "quick-claw": [
+   {
+    "where": "jubilife-city"
+   }
+  ],
+  "rabuta-berry": [
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   }
+  ],
+  "rare-bone": [
+   {
+    "where": "turnback-cave"
+   }
+  ],
+  "rare-candy": [
+   {
+    "where": "sinnoh-route-207",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-210",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-212",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-214"
+   },
+   {
+    "where": "sinnoh-route-216"
+   },
+   {
+    "where": "sinnoh-route-218"
+   },
+   {
+    "place": {
+     "ko": "223번수로",
+     "en": "Route 223"
+    }
+   },
+   {
+    "where": "sinnoh-route-224",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-225"
+   },
+   {
+    "place": {
+     "ko": "226번수로",
+     "en": "Route 226"
+    },
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-228"
+   },
+   {
+    "place": {
+     "ko": "230번수로",
+     "en": "Route 230"
+    }
+   },
+   {
+    "where": "old-chateau"
+   },
+   {
+    "where": "wayward-cave"
+   },
+   {
+    "where": "mt-coronet"
+   },
+   {
+    "where": "mt-coronet",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "veilstone-city"
+   },
+   {
+    "where": "snowpoint-city",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-victory-road"
+   },
+   {
+    "where": "sinnoh-victory-road",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "survival-area"
+   },
+   {
+    "where": "stark-mountain"
+   },
+   {
+    "where": "floaroma-meadow"
+   }
+  ],
+  "rawst-berry": [
+   {
+    "where": "sinnoh-route-206"
+   },
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   },
+   {
+    "where": "sinnoh-route-213"
+   },
+   {
+    "where": "sinnoh-route-218"
+   },
+   {
+    "where": "floaroma-town"
+   }
+  ],
+  "razor-claw": [
+   {
+    "where": "sinnoh-route-224"
+   },
+   {
+    "where": "sinnoh-victory-road"
+   },
+   {
+    "place": "Veilstone Galactic Building",
+    "how": "hidden",
+    "detail": "다우징머신"
+   }
+  ],
+  "razor-fang": [
+   {
+    "where": "sinnoh-route-214",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-225"
+   }
+  ],
+  "razz-berry": [
+   {
+    "where": "sinnoh-route-205"
+   },
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   },
+   {
+    "where": "sinnoh-route-208"
+   },
+   {
+    "where": "sinnoh-route-210"
+   }
+  ],
+  "reaper-cloth": [
+   {
+    "where": "sinnoh-route-229"
+   },
+   {
+    "where": "acuity-lakefront"
+   },
+   {
+    "where": "turnback-cave"
+   }
+  ],
+  "red-scarf": [
+   {
+    "where": "pastoria-city"
+   }
+  ],
+  "red-shard": [
+   {
+    "where": "sinnoh-route-210"
+   },
+   {
+    "where": "sinnoh-route-213",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-214"
+   },
+   {
+    "where": "fuego-ironworks",
+    "detail": "From Mr. Fuego"
+   },
+   {
+    "where": "wayward-cave",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "mt-coronet",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "great-marsh"
+   },
+   {
+    "where": "iron-island"
+   },
+   {
+    "where": "survival-area"
+   }
+  ],
+  "repeat-ball": [
+   {
+    "where": "sinnoh-route-224"
+   },
+   {
+    "where": "solaceon-town",
+    "how": "gift",
+    "detail": "포켓몬 신문사"
+   }
+  ],
+  "repel": [
+   {
+    "where": "sinnoh-route-203"
+   },
+   {
+    "where": "sinnoh-route-205"
+   }
+  ],
+  "revive": [
+   {
+    "where": "sinnoh-route-207"
+   },
+   {
+    "where": "sinnoh-route-209",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-215",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-216"
+   },
+   {
+    "where": "sinnoh-route-225"
+   },
+   {
+    "where": "wayward-cave"
+   },
+   {
+    "where": "mt-coronet"
+   },
+   {
+    "where": "mt-coronet",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "lost-tower"
+   },
+   {
+    "where": "iron-island",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "floaroma-meadow",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "place": "Eterna Galactic Building"
+   }
+  ],
+  "rindo-berry": [
+   {
+    "where": "pastoria-city"
+   }
+  ],
+  "rock-incense": [
+   {
+    "where": "fuego-ironworks"
+   }
+  ],
+  "rose-incense": [
+   {
+    "where": "sinnoh-route-212"
+   }
+  ],
+  "scope-lens": [
+   {
+    "where": "fight-area"
+   }
+  ],
+  "sea-incense": [
+   {
+    "where": "sinnoh-route-204"
+   }
+  ],
+  "seal-case": [
+   {
+    "where": "solaceon-town"
+   }
+  ],
+  "secret-potion": [
+   {
+    "where": "valor-lakefront"
+   }
+  ],
+  "shed-shell": [
+   {
+    "where": "sinnoh-route-228"
+   }
+  ],
+  "shell-bell": [
+   {
+    "where": "hearthome-city"
+   }
+  ],
+  "shiny-stone": [
+   {
+    "where": "sinnoh-route-210",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-228"
+   },
+   {
+    "where": "iron-island"
+   }
+  ],
+  "shuca-berry": [
+   {
+    "where": "pastoria-city"
+   }
+  ],
+  "silver-powder": [
+   {
+    "where": "sinnoh-route-205"
+   }
+  ],
+  "sitrus-berry": [
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   },
+   {
+    "where": "sinnoh-route-210"
+   },
+   {
+    "where": "sinnoh-route-212"
+   },
+   {
+    "where": "sinnoh-route-214"
+   },
+   {
+    "where": "sinnoh-route-224"
+   },
+   {
+    "where": "fuego-ironworks"
+   }
+  ],
+  "sky-plate": [
+   {
+    "where": "sinnoh-pokemon-league",
+    "how": "hidden",
+    "detail": "다우징머신"
+   }
+  ],
+  "smoke-ball": [
+   {
+    "where": "sinnoh-route-210"
+   }
+  ],
+  "soft-sand": [
+   {
+    "where": "mt-coronet"
+   }
+  ],
+  "soothe-bell": [
+   {
+    "where": "eterna-forest"
+   },
+   {
+    "place": {
+     "ko": "포켓몬저택",
+     "en": "Pokemon Mansion"
+    }
+   }
+  ],
+  "spell-tag": [
+   {
+    "where": "sinnoh-route-217"
+   },
+   {
+    "where": "lost-tower"
+   }
+  ],
+  "splash-plate": [
+   {
+    "place": {
+     "ko": "220번수로",
+     "en": "Route 220"
+    }
+   }
+  ],
+  "spooky-plate": [
+   {
+    "where": "amity-square"
+   }
+  ],
+  "sprayduck": [
+   {
+    "where": "floaroma-town"
+   }
+  ],
+  "star-piece": [
+   {
+    "where": "sinnoh-route-208",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-227",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-228",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "fuego-ironworks",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "mt-coronet",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "iron-island",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "stark-mountain",
+    "how": "hidden",
+    "detail": "다우징머신"
+   }
+  ],
+  "stardust": [
+   {
+    "where": "sinnoh-route-205",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-209",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "jubilife-city"
+   },
+   {
+    "where": "wayward-cave"
+   },
+   {
+    "where": "mt-coronet"
+   },
+   {
+    "where": "stark-mountain",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "turnback-cave"
+   }
+  ],
+  "stone-plate": [
+   {
+    "where": "mt-coronet"
+   }
+  ],
+  "storage-key": [
+   {
+    "where": "veilstone-city"
+   }
+  ],
+  "storage-key--galactic-warehouse": [
+   {
+    "where": "veilstone-city"
+   }
+  ],
+  "storage-key--sea-mauville": [
+   {
+    "where": "veilstone-city"
+   }
+  ],
+  "suite-key": [
+   {
+    "place": "Grand Lake Hotel",
+    "how": "hidden",
+    "detail": "다우징머신"
+   }
+  ],
+  "sun-stone": [
+   {
+    "place": "Grand Lake Hotel",
+    "how": "hidden",
+    "detail": "다우징머신"
+   }
+  ],
+  "super-potion": [
+   {
+    "where": "sinnoh-route-205",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-207"
+   },
+   {
+    "where": "sinnoh-route-207",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-212",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-213",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "oreburgh-city"
+   },
+   {
+    "where": "eterna-city"
+   },
+   {
+    "where": "wayward-cave",
+    "how": "hidden",
+    "detail": "다우징머신"
+   }
+  ],
+  "super-repel": [
+   {
+    "where": "sinnoh-route-205"
+   },
+   {
+    "where": "sinnoh-route-206"
+   },
+   {
+    "where": "sinnoh-route-209",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-210"
+   }
+  ],
+  "super-rod": [
+   {
+    "where": "fight-area",
+    "detail": "Fishing Guru"
+   }
+  ],
+  "tamato-berry": [
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   },
+   {
+    "where": "sinnoh-route-212"
+   },
+   {
+    "where": "sinnoh-route-225"
+   },
+   {
+    "where": "sinnoh-route-228"
+   }
+  ],
+  "tanga-berry": [
+   {
+    "where": "pastoria-city"
+   }
+  ],
+  "thunder-stone": [
+   {
+    "where": "sinnoh-route-229"
+   },
+   {
+    "where": "solaceon-ruins",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sunyshore-city"
+   }
+  ],
+  "timer-ball": [
+   {
+    "where": "solaceon-town",
+    "how": "gift",
+    "detail": "포켓몬 신문사"
+   }
+  ],
+  "tiny-mushroom": [
+   {
+    "where": "sinnoh-route-206",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-208"
+   },
+   {
+    "where": "sinnoh-route-222",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "place": {
+     "ko": "226번수로",
+     "en": "Route 226"
+    },
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-229",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "verity-lakefront"
+   }
+  ],
   "tm01": [
    {
     "place": "무쇠게이트 지하 1층"
@@ -693,44 +3524,299 @@
     "place": "213번 도로 호텔그랜드레이크"
    }
   ],
-  "hm01": [
+  "town-map": [
    {
-    "place": "포켓몬상 이벤트 후 갤럭시단 빌딩 앞에서 난천에게 입수[스토리 진행 중 자동 입수]"
+    "where": "jubilife-city",
+    "detail": "From Rival"
    }
   ],
-  "hm02": [
+  "ultra-ball": [
    {
-    "place": "장막시티 체육관 관장 자두에게 승리 후 갤럭시단창고 이벤트 후 핸섬에게 입수[스토리 진행 중 자동 입수]"
+    "where": "sinnoh-route-210",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-212",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-215",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-216"
+   },
+   {
+    "where": "sinnoh-route-217",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-221"
+   },
+   {
+    "where": "sinnoh-route-222",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "place": {
+     "ko": "223번수로",
+     "en": "Route 223"
+    }
+   },
+   {
+    "where": "sinnoh-route-224"
+   },
+   {
+    "where": "sinnoh-route-224",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-225",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-228",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "place": {
+     "ko": "230번수로",
+     "en": "Route 230"
+    },
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "jubilife-city",
+    "detail": "Get 1 Number in the Lottery"
+   },
+   {
+    "where": "fuego-ironworks",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "mt-coronet"
+   },
+   {
+    "where": "solaceon-town",
+    "how": "gift",
+    "detail": "포켓몬 신문사"
+   },
+   {
+    "where": "valor-lakefront"
+   },
+   {
+    "where": "iron-island"
+   },
+   {
+    "where": "acuity-lakefront"
+   },
+   {
+    "where": "snowpoint-city"
+   },
+   {
+    "where": "sinnoh-victory-road",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-victory-road"
+   },
+   {
+    "where": "stark-mountain"
+   },
+   {
+    "where": "floaroma-meadow"
    }
   ],
-  "hm03": [
+  "up-grade": [
    {
-    "place": "봉신마을 유적에서 갤릭시단 보스 태홍에게 승리한 후 장로에게 입수[스토리 진행 중 자동 입수]"
+    "where": "sinnoh-route-224"
+   },
+   {
+    "place": "Eterna Galactic Building"
    }
   ],
-  "hm04": [
+  "wacan-berry": [
    {
-    "place": "운하시티 선착장을 통해 갈 수 있는 강철섬 동굴 입구에서 현에게 입수"
+    "where": "pastoria-city"
    }
   ],
-  "hm05": [
+  "water-stone": [
    {
-    "place": "신수마을 내 신수유적 최하층"
+    "where": "sinnoh-route-213"
+   },
+   {
+    "place": {
+     "ko": "230번수로",
+     "en": "Route 230"
+    },
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "solaceon-ruins",
+    "how": "hidden",
+    "detail": "다우징머신"
    }
   ],
-  "hm06": [
+  "wave-incense": [
    {
-    "place": "무쇠게이트에 처음 들어서면 등산객에게서 입수[스토리 진행 중 자동 입수]"
+    "where": "sinnoh-route-210"
    }
   ],
-  "hm07": [
+  "wepear-berry": [
    {
-    "place": "물가시티 체육관 관장 전진에게 승리한 후 해변에 있는 규리에게 입수[스토리 진행 중 자동 입수]"
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   },
+   {
+    "where": "sinnoh-route-224"
+   },
+   {
+    "where": "fuego-ironworks"
    }
   ],
-  "hm08": [
+  "white-flute": [
    {
-    "place": "217번 도로 민가 근처에서 입수 가능"
+    "place": "Grand Lake Hotel",
+    "detail": "Return Suite Key"
+   }
+  ],
+  "wiki-berry": [
+   {
+    "where": "sinnoh-route-208",
+    "how": "gift",
+    "detail": "나무열매 명인"
+   },
+   {
+    "where": "sinnoh-route-210"
+   },
+   {
+    "where": "sinnoh-route-215"
+   },
+   {
+    "where": "sinnoh-route-222"
+   }
+  ],
+  "wise-glasses": [
+   {
+    "where": "celestic-town"
+   }
+  ],
+  "works-key": [
+   {
+    "where": "floaroma-meadow"
+   }
+  ],
+  "x-accuracy": [
+   {
+    "where": "sinnoh-route-218"
+   }
+  ],
+  "x-attack": [
+   {
+    "where": "jubilife-city"
+   }
+  ],
+  "x-defense": [
+   {
+    "where": "sinnoh-route-203"
+   }
+  ],
+  "x-speed": [
+   {
+    "place": "Eterna Galactic Building"
+   }
+  ],
+  "yache-berry": [
+   {
+    "where": "pastoria-city"
+   }
+  ],
+  "yellow-scarf": [
+   {
+    "where": "pastoria-city"
+   }
+  ],
+  "yellow-shard": [
+   {
+    "where": "sinnoh-route-227"
+   },
+   {
+    "where": "oreburgh-city"
+   },
+   {
+    "where": "fuego-ironworks",
+    "detail": "From Mr. Fuego"
+   },
+   {
+    "where": "wayward-cave",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "mt-coronet",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "great-marsh"
+   },
+   {
+    "where": "iron-island"
+   }
+  ],
+  "zap-plate": [
+   {
+    "where": "sunyshore-city",
+    "how": "hidden",
+    "detail": "다우징머신"
+   }
+  ],
+  "zinc": [
+   {
+    "where": "sinnoh-route-210"
+   },
+   {
+    "where": "sinnoh-route-211"
+   },
+   {
+    "where": "sinnoh-route-212"
+   },
+   {
+    "where": "sinnoh-route-219",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-224",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-route-227"
+   },
+   {
+    "where": "pastoria-city",
+    "how": "hidden",
+    "detail": "다우징머신"
+   },
+   {
+    "where": "sinnoh-victory-road"
+   },
+   {
+    "place": "Galactic Warehouse"
    }
   ]
  },

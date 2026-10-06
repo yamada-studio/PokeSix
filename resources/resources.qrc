@@ -13,6 +13,33 @@
     <file>data/acquisition/platinum.json</file> <!-- 게임별 입수 사전(기술머신 · 도구 · NPC 가르침) -->
     <file>data/acquisition/emerald.json</file>
     <file>data/acquisition/heartgold-soulsilver.json</file>
+    <file>data/acquisition/black-2-white-2.json</file>
+    <file>data/acquisition/black-white.json</file>
+    <file>data/acquisition/blue-japan.json</file>
+    <file>data/acquisition/brilliant-diamond-shining-pearl.json</file>
+    <file>data/acquisition/champions.json</file>
+    <file>data/acquisition/crystal.json</file>
+    <file>data/acquisition/diamond-pearl.json</file>
+    <file>data/acquisition/firered-leafgreen.json</file>
+    <file>data/acquisition/gold-silver.json</file>
+    <file>data/acquisition/legends-arceus.json</file>
+    <file>data/acquisition/legends-za.json</file>
+    <file>data/acquisition/lets-go-pikachu-lets-go-eevee.json</file>
+    <file>data/acquisition/mega-dimension.json</file>
+    <file>data/acquisition/omega-ruby-alpha-sapphire.json</file>
+    <file>data/acquisition/red-blue.json</file>
+    <file>data/acquisition/red-green-japan.json</file>
+    <file>data/acquisition/ruby-sapphire.json</file>
+    <file>data/acquisition/scarlet-violet.json</file>
+    <file>data/acquisition/sun-moon.json</file>
+    <file>data/acquisition/sword-shield.json</file>
+    <file>data/acquisition/the-crown-tundra.json</file>
+    <file>data/acquisition/the-indigo-disk.json</file>
+    <file>data/acquisition/the-isle-of-armor.json</file>
+    <file>data/acquisition/the-teal-mask.json</file>
+    <file>data/acquisition/ultra-sun-ultra-moon.json</file>
+    <file>data/acquisition/x-y.json</file>
+    <file>data/acquisition/yellow.json</file>
     <file>data/place-names.json</file>       <!-- 장소 한국어 이름 사전 -->
     <file>data/names.json</file>             <!-- 이름 · 설명 보충 사전 (PokéAPI에 없는 한국어) -->
     <file>data/encounter-methods.json</file> <!-- 야생 출현 방법 이름 -->

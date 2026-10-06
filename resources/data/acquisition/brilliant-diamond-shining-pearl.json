@@ -1,0 +1,3711 @@
+{
+  "_comment": [
+    "게임(버전 그룹)별 입수 사전 (ui/dex/guidebook.h가 읽는다). 형식은 docs/i18n/README.md 참고.",
+    "scripts/i18n/check_acquisition.py로 검증해 넣었다. 출처는 _sources."
+  ],
+  "_sources": [
+    "Serebii.net ItemDex (https://www.serebii.net/itemdex/) — 장소는 PokéAPI/게임 텍스트로 한국어화"
+  ],
+  "versionGroup": "brilliant-diamond-shining-pearl",
+  "items": {
+    "ability-capsule": [
+      {
+        "where": "battle-park"
+      }
+    ],
+    "adamant-mint": [
+      {
+        "where": "battle-park"
+      }
+    ],
+    "adamant-orb": [
+      {
+        "where": "spear-pillar"
+      }
+    ],
+    "aguav-berry": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-210"
+      },
+      {
+        "where": "sinnoh-route-213"
+      },
+      {
+        "where": "sinnoh-route-222"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "amulet-coin": [
+      {
+        "where": "amity-square"
+      }
+    ],
+    "antidote": [
+      {
+        "where": "sinnoh-route-205"
+      },
+      {
+        "where": "sinnoh-route-212"
+      },
+      {
+        "where": "sinnoh-route-219"
+      },
+      {
+        "where": "ravaged-path"
+      },
+      {
+        "where": "eterna-forest"
+      },
+      {
+        "where": "old-chateau"
+      },
+      {
+        "where": "great-marsh"
+      },
+      {
+        "where": "floaroma-meadow"
+      }
+    ],
+    "apicot-berry": [
+      {
+        "place": {
+          "ko": "해당화파크",
+          "en": "Ramanas Park"
+        }
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "armor-fossil": [
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "aspear-berry": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-210"
+      },
+      {
+        "where": "sinnoh-route-211"
+      },
+      {
+        "where": "sinnoh-route-212"
+      }
+    ],
+    "awakening": [
+      {
+        "where": "sinnoh-route-204"
+      },
+      {
+        "where": "sinnoh-route-209"
+      }
+    ],
+    "azure-flute": [
+      {
+        "where": "twinleaf-town"
+      }
+    ],
+    "babiri-berry": [
+      {
+        "where": "pastoria-city"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "belue-berry": [
+      {
+        "where": "amity-square"
+      }
+    ],
+    "bicycle": [
+      {
+        "where": "eterna-city"
+      }
+    ],
+    "big-mushroom": [
+      {
+        "where": "sinnoh-route-222"
+      },
+      {
+        "place": {
+          "ko": "226번수로",
+          "en": "Route 226"
+        }
+      },
+      {
+        "where": "sinnoh-route-229"
+      },
+      {
+        "where": "mt-coronet"
+      },
+      {
+        "where": "solaceon-ruins"
+      },
+      {
+        "where": "sinnoh-victory-road"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "big-pearl": [
+      {
+        "where": "sinnoh-route-213"
+      },
+      {
+        "place": {
+          "ko": "223번수로",
+          "en": "Route 223"
+        }
+      },
+      {
+        "where": "sinnoh-route-224"
+      },
+      {
+        "place": {
+          "ko": "226번수로",
+          "en": "Route 226"
+        }
+      },
+      {
+        "where": "sinnoh-victory-road"
+      }
+    ],
+    "big-root": [
+      {
+        "where": "sinnoh-route-214"
+      }
+    ],
+    "black-belt": [
+      {
+        "where": "sinnoh-route-221"
+      }
+    ],
+    "black-glasses": [
+      {
+        "where": "celestic-town"
+      }
+    ],
+    "blue-scarf": [
+      {
+        "where": "pastoria-city"
+      }
+    ],
+    "blue-shard": [
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "bluk-berry": [
+      {
+        "where": "sinnoh-route-207"
+      },
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-215"
+      },
+      {
+        "where": "sinnoh-route-224"
+      },
+      {
+        "where": "eterna-forest"
+      }
+    ],
+    "bold-mint": [
+      {
+        "where": "battle-park"
+      }
+    ],
+    "bottle-cap": [
+      {
+        "where": "battle-park"
+      }
+    ],
+    "brave-mint": [
+      {
+        "where": "battle-park"
+      }
+    ],
+    "burn-heal": [
+      {
+        "where": "sinnoh-route-206"
+      },
+      {
+        "where": "sinnoh-route-212"
+      },
+      {
+        "where": "fuego-ironworks"
+      },
+      {
+        "where": "wayward-cave"
+      },
+      {
+        "where": "stark-mountain"
+      }
+    ],
+    "calcium": [
+      {
+        "where": "sinnoh-route-209"
+      },
+      {
+        "where": "sinnoh-route-213"
+      },
+      {
+        "where": "sinnoh-route-228"
+      },
+      {
+        "where": "snowpoint-temple"
+      },
+      {
+        "where": "stark-mountain"
+      }
+    ],
+    "calm-mint": [
+      {
+        "where": "battle-park"
+      }
+    ],
+    "carbos": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "place": {
+          "ko": "220번수로",
+          "en": "Route 220"
+        }
+      },
+      {
+        "where": "sinnoh-route-221"
+      },
+      {
+        "where": "sinnoh-route-222"
+      },
+      {
+        "place": {
+          "ko": "226번수로",
+          "en": "Route 226"
+        }
+      },
+      {
+        "place": {
+          "ko": "230번수로",
+          "en": "Route 230"
+        }
+      }
+    ],
+    "careful-mint": [
+      {
+        "where": "battle-park"
+      }
+    ],
+    "catching-charm": [
+      {
+        "place": "Hotel Grand Lake"
+      }
+    ],
+    "charcoal": [
+      {
+        "where": "sinnoh-route-227"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "charti-berry": [
+      {
+        "where": "pastoria-city"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "cheri-berry": [
+      {
+        "where": "sinnoh-route-207"
+      },
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-214"
+      },
+      {
+        "where": "floaroma-town"
+      },
+      {
+        "where": "eterna-forest"
+      }
+    ],
+    "chesto-berry": [
+      {
+        "where": "sinnoh-route-205"
+      },
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-209"
+      },
+      {
+        "where": "sinnoh-route-210"
+      },
+      {
+        "where": "sinnoh-route-214"
+      }
+    ],
+    "chilan-berry": [
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "choice-specs": [
+      {
+        "where": "celestic-town"
+      }
+    ],
+    "chople-berry": [
+      {
+        "where": "pastoria-city"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "claw-fossil": [
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "cleanse-tag": [
+      {
+        "where": "lost-tower"
+      }
+    ],
+    "coba-berry": [
+      {
+        "where": "pastoria-city"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "colbur-berry": [
+      {
+        "where": "pastoria-city"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "cornn-berry": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "amity-square"
+      }
+    ],
+    "coupon-1": [
+      {
+        "where": "jubilife-city"
+      }
+    ],
+    "coupon-2": [
+      {
+        "where": "jubilife-city"
+      }
+    ],
+    "coupon-3": [
+      {
+        "where": "jubilife-city"
+      }
+    ],
+    "custap-berry": [
+      {
+        "place": {
+          "ko": "해당화파크",
+          "en": "Ramanas Park"
+        }
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "damp-rock": [
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "dawn-stone": [
+      {
+        "where": "sinnoh-route-225"
+      },
+      {
+        "where": "mt-coronet"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "deep-sea-scale": [
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "deep-sea-tooth": [
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "destiny-knot": [
+      {
+        "where": "sinnoh-route-224"
+      }
+    ],
+    "dire-hit": [
+      {
+        "where": "sinnoh-route-207"
+      }
+    ],
+    "dive-ball": [
+      {
+        "where": "eterna-city"
+      },
+      {
+        "where": "solaceon-town"
+      }
+    ],
+    "dome-fossil": [
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "draco-plate": [
+      {
+        "where": "eterna-city"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "dragon-fang": [
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "dread-plate": [
+      {
+        "where": "old-chateau"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "dubious-disc": [
+      {
+        "where": "sinnoh-route-225"
+      }
+    ],
+    "durin-berry": [
+      {
+        "where": "amity-square"
+      }
+    ],
+    "dusk-ball": [
+      {
+        "where": "oreburgh-city"
+      },
+      {
+        "where": "eterna-city"
+      },
+      {
+        "where": "solaceon-town"
+      }
+    ],
+    "dusk-stone": [
+      {
+        "where": "sinnoh-victory-road"
+      },
+      {
+        "place": "Galactic Warehouse"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "earth-plate": [
+      {
+        "where": "oreburgh-gate"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "elixir": [
+      {
+        "where": "sinnoh-route-206"
+      },
+      {
+        "where": "sinnoh-route-212"
+      },
+      {
+        "where": "mt-coronet"
+      },
+      {
+        "where": "sinnoh-victory-road"
+      },
+      {
+        "place": "Veilstone Galactic Building"
+      }
+    ],
+    "enigma-berry": [
+      {
+        "place": {
+          "ko": "해당화파크",
+          "en": "Ramanas Park"
+        }
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "escape-rope": [
+      {
+        "where": "oreburgh-mine"
+      },
+      {
+        "where": "wayward-cave"
+      },
+      {
+        "where": "mt-coronet"
+      },
+      {
+        "where": "solaceon-ruins"
+      },
+      {
+        "where": "iron-island"
+      },
+      {
+        "where": "stark-mountain"
+      }
+    ],
+    "ether": [
+      {
+        "where": "sinnoh-route-215"
+      },
+      {
+        "place": {
+          "ko": "220번수로",
+          "en": "Route 220"
+        }
+      },
+      {
+        "where": "eterna-forest"
+      },
+      {
+        "where": "mt-coronet"
+      },
+      {
+        "where": "stark-mountain"
+      }
+    ],
+    "everstone": [
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "expert-belt": [
+      {
+        "where": "sinnoh-route-221"
+      }
+    ],
+    "explorer-kit": [
+      {
+        "where": "eterna-city"
+      }
+    ],
+    "figy-berry": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-218"
+      },
+      {
+        "where": "solaceon-town"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "fire-stone": [
+      {
+        "where": "fuego-ironworks"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "fist-plate": [
+      {
+        "where": "sinnoh-route-215"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "flame-plate": [
+      {
+        "where": "stark-mountain"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "focus-sash": [
+      {
+        "where": "sinnoh-route-221"
+      }
+    ],
+    "fresh-water": [
+      {
+        "where": "sinnoh-route-225"
+      }
+    ],
+    "full-heal": [
+      {
+        "where": "sinnoh-route-215"
+      },
+      {
+        "where": "sinnoh-route-216"
+      },
+      {
+        "where": "sinnoh-route-227"
+      },
+      {
+        "where": "fuego-ironworks"
+      },
+      {
+        "where": "mt-coronet"
+      },
+      {
+        "where": "pastoria-city"
+      },
+      {
+        "where": "sinnoh-victory-road"
+      },
+      {
+        "where": "stark-mountain"
+      }
+    ],
+    "full-incense": [
+      {
+        "where": "veilstone-city"
+      }
+    ],
+    "full-restore": [
+      {
+        "where": "sinnoh-route-228"
+      },
+      {
+        "where": "sinnoh-route-229"
+      },
+      {
+        "where": "mt-coronet"
+      },
+      {
+        "where": "iron-island"
+      },
+      {
+        "where": "snowpoint-temple"
+      },
+      {
+        "where": "sinnoh-victory-road"
+      },
+      {
+        "where": "stark-mountain"
+      }
+    ],
+    "galactic-key": [
+      {
+        "place": "Galactic Warehouse"
+      }
+    ],
+    "ganlon-berry": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "place": {
+          "ko": "해당화파크",
+          "en": "Ramanas Park"
+        }
+      }
+    ],
+    "gentle-mint": [
+      {
+        "where": "battle-park"
+      }
+    ],
+    "gold-bottle-cap": [
+      {
+        "where": "battle-park"
+      }
+    ],
+    "good-rod": [
+      {
+        "where": "sinnoh-route-209"
+      }
+    ],
+    "gracidea": [
+      {
+        "where": "floaroma-town"
+      }
+    ],
+    "great-ball": [
+      {
+        "where": "sinnoh-route-210"
+      },
+      {
+        "where": "sinnoh-route-212"
+      },
+      {
+        "where": "sinnoh-route-213"
+      },
+      {
+        "where": "oreburgh-city"
+      },
+      {
+        "where": "eterna-forest"
+      },
+      {
+        "where": "lost-tower"
+      },
+      {
+        "where": "solaceon-town"
+      },
+      {
+        "where": "great-marsh"
+      },
+      {
+        "where": "celestic-town"
+      }
+    ],
+    "green-scarf": [
+      {
+        "where": "pastoria-city"
+      }
+    ],
+    "green-shard": [
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "grepa-berry": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-211"
+      },
+      {
+        "where": "sinnoh-route-229"
+      },
+      {
+        "place": {
+          "ko": "230번수로",
+          "en": "Route 230"
+        }
+      },
+      {
+        "where": "resort-area"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "grip-claw": [
+      {
+        "where": "wayward-cave"
+      }
+    ],
+    "griseous-orb": [
+      {
+        "place": {
+          "ko": "해당화파크",
+          "en": "Ramanas Park"
+        }
+      }
+    ],
+    "haban-berry": [
+      {
+        "where": "pastoria-city"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "hard-stone": [
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "hasty-mint": [
+      {
+        "where": "battle-park"
+      }
+    ],
+    "heal-ball": [
+      {
+        "where": "oreburgh-city"
+      },
+      {
+        "where": "solaceon-town"
+      }
+    ],
+    "heart-scale": [
+      {
+        "where": "sinnoh-route-212"
+      },
+      {
+        "where": "sinnoh-route-214"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "heat-rock": [
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "helix-fossil": [
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "hondew-berry": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-221"
+      },
+      {
+        "where": "sinnoh-route-228"
+      },
+      {
+        "where": "fight-area"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "honey": [
+      {
+        "where": "sinnoh-route-205"
+      },
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-209"
+      },
+      {
+        "where": "sinnoh-route-214"
+      },
+      {
+        "where": "sinnoh-route-215"
+      },
+      {
+        "where": "sinnoh-route-218"
+      },
+      {
+        "where": "sinnoh-route-221"
+      },
+      {
+        "where": "sinnoh-route-222"
+      },
+      {
+        "where": "eterna-forest"
+      },
+      {
+        "where": "solaceon-town"
+      },
+      {
+        "where": "great-marsh"
+      },
+      {
+        "where": "floaroma-meadow"
+      }
+    ],
+    "hp-up": [
+      {
+        "where": "sinnoh-route-216"
+      },
+      {
+        "where": "sinnoh-route-225"
+      },
+      {
+        "place": {
+          "ko": "230번수로",
+          "en": "Route 230"
+        }
+      },
+      {
+        "where": "mt-coronet"
+      },
+      {
+        "where": "iron-island"
+      }
+    ],
+    "hyper-potion": [
+      {
+        "where": "sinnoh-route-210"
+      },
+      {
+        "where": "sinnoh-route-215"
+      },
+      {
+        "where": "fuego-ironworks"
+      },
+      {
+        "where": "mt-coronet"
+      },
+      {
+        "where": "snowpoint-city"
+      },
+      {
+        "where": "stark-mountain"
+      },
+      {
+        "where": "floaroma-meadow"
+      }
+    ],
+    "iapapa-berry": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-211"
+      },
+      {
+        "where": "sinnoh-route-213"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "ice-heal": [
+      {
+        "where": "sinnoh-route-216"
+      }
+    ],
+    "icicle-plate": [
+      {
+        "where": "sinnoh-route-217"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "icy-rock": [
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "impish-mint": [
+      {
+        "where": "battle-park"
+      }
+    ],
+    "insect-plate": [
+      {
+        "where": "eterna-forest"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "iron": [
+      {
+        "where": "sinnoh-route-207"
+      },
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-217"
+      },
+      {
+        "where": "sinnoh-route-228"
+      },
+      {
+        "where": "iron-island"
+      },
+      {
+        "where": "stark-mountain"
+      }
+    ],
+    "iron-ball": [
+      {
+        "where": "iron-island"
+      },
+      {
+        "where": "stark-mountain"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "iron-plate": [
+      {
+        "where": "iron-island"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "jaboca-berry": [
+      {
+        "where": "pastoria-city"
+      },
+      {
+        "place": {
+          "ko": "해당화파크",
+          "en": "Ramanas Park"
+        }
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "jolly-mint": [
+      {
+        "where": "battle-park"
+      }
+    ],
+    "kasib-berry": [
+      {
+        "where": "pastoria-city"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "kebia-berry": [
+      {
+        "where": "pastoria-city"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "kelpsy-berry": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-225"
+      },
+      {
+        "place": {
+          "ko": "230번수로",
+          "en": "Route 230"
+        }
+      },
+      {
+        "where": "fuego-ironworks"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "lagging-tail": [
+      {
+        "place": {
+          "ko": "226번수로",
+          "en": "Route 226"
+        }
+      }
+    ],
+    "lagreat-ball": [
+      {
+        "where": "sinnoh-route-210"
+      },
+      {
+        "where": "sinnoh-route-212"
+      },
+      {
+        "where": "sinnoh-route-213"
+      },
+      {
+        "where": "oreburgh-city"
+      },
+      {
+        "where": "eterna-forest"
+      },
+      {
+        "where": "lost-tower"
+      },
+      {
+        "where": "solaceon-town"
+      },
+      {
+        "where": "great-marsh"
+      },
+      {
+        "where": "celestic-town"
+      }
+    ],
+    "lansat-berry": [
+      {
+        "where": "battle-park"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "lapoke-ball": [
+      {
+        "where": "sinnoh-route-202"
+      },
+      {
+        "where": "sinnoh-route-203"
+      },
+      {
+        "where": "sinnoh-route-205"
+      },
+      {
+        "where": "sinnoh-route-207"
+      },
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-211"
+      },
+      {
+        "where": "solaceon-town"
+      },
+      {
+        "where": "great-marsh"
+      }
+    ],
+    "laultra-ball": [
+      {
+        "where": "sinnoh-route-210"
+      },
+      {
+        "where": "sinnoh-route-217"
+      },
+      {
+        "where": "sinnoh-route-221"
+      },
+      {
+        "where": "sinnoh-route-222"
+      },
+      {
+        "where": "sinnoh-route-225"
+      },
+      {
+        "where": "sinnoh-route-228"
+      },
+      {
+        "where": "jubilife-city"
+      },
+      {
+        "where": "fuego-ironworks"
+      },
+      {
+        "where": "mt-coronet"
+      },
+      {
+        "where": "solaceon-town"
+      },
+      {
+        "where": "iron-island"
+      },
+      {
+        "where": "acuity-lakefront"
+      },
+      {
+        "where": "sinnoh-victory-road"
+      },
+      {
+        "where": "stark-mountain"
+      }
+    ],
+    "lava-cookie": [
+      {
+        "place": "Hotel Grand Lake"
+      }
+    ],
+    "lax-incense": [
+      {
+        "where": "sinnoh-route-225"
+      }
+    ],
+    "lax-mint": [
+      {
+        "where": "battle-park"
+      }
+    ],
+    "leaf-stone": [
+      {
+        "where": "floaroma-meadow"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "leftovers": [
+      {
+        "where": "sinnoh-victory-road"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "leppa-berry": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-209"
+      },
+      {
+        "where": "sinnoh-route-221"
+      },
+      {
+        "where": "resort-area"
+      }
+    ],
+    "liechi-berry": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "place": {
+          "ko": "해당화파크",
+          "en": "Ramanas Park"
+        }
+      }
+    ],
+    "life-orb": [
+      {
+        "where": "stark-mountain"
+      }
+    ],
+    "light-clay": [
+      {
+        "where": "mt-coronet"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "luck-incense": [
+      {
+        "where": "ravaged-path"
+      }
+    ],
+    "lucky-egg": [
+      {
+        "where": "jubilife-city"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "lum-berry": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-212"
+      },
+      {
+        "where": "resort-area"
+      }
+    ],
+    "lunar-wing": [
+      {
+        "where": "fullmoon-island"
+      }
+    ],
+    "lustrous-orb": [
+      {
+        "where": "spear-pillar"
+      }
+    ],
+    "luxury-ball": [
+      {
+        "where": "solaceon-town"
+      }
+    ],
+    "macho-brace": [
+      {
+        "where": "pastoria-city"
+      }
+    ],
+    "magnet": [
+      {
+        "where": "iron-island"
+      }
+    ],
+    "mago-berry": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-215"
+      },
+      {
+        "where": "sinnoh-route-221"
+      },
+      {
+        "where": "sinnoh-route-222"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "magost-berry": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "amity-square"
+      }
+    ],
+    "master-ball": [
+      {
+        "where": "jubilife-city"
+      },
+      {
+        "place": "Veilstone Galactic Building"
+      }
+    ],
+    "max-elixir": [
+      {
+        "where": "mt-coronet"
+      },
+      {
+        "where": "sinnoh-victory-road"
+      },
+      {
+        "where": "stark-mountain"
+      }
+    ],
+    "max-ether": [
+      {
+        "where": "wayward-cave"
+      },
+      {
+        "where": "valor-lakefront"
+      },
+      {
+        "where": "iron-island"
+      },
+      {
+        "where": "sinnoh-victory-road"
+      }
+    ],
+    "max-potion": [
+      {
+        "where": "sinnoh-route-214"
+      },
+      {
+        "where": "sinnoh-route-217"
+      },
+      {
+        "where": "fuego-ironworks"
+      },
+      {
+        "where": "mt-coronet"
+      },
+      {
+        "where": "iron-island"
+      }
+    ],
+    "max-repel": [
+      {
+        "where": "sinnoh-route-217"
+      }
+    ],
+    "max-revive": [
+      {
+        "where": "sinnoh-route-213"
+      },
+      {
+        "where": "sinnoh-route-217"
+      },
+      {
+        "where": "sinnoh-route-221"
+      },
+      {
+        "where": "jubilife-city"
+      },
+      {
+        "where": "mt-coronet"
+      },
+      {
+        "where": "sinnoh-victory-road"
+      },
+      {
+        "where": "survival-area"
+      },
+      {
+        "where": "stark-mountain"
+      },
+      {
+        "place": "Veilstone Galactic Building"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "meadow-plate": [
+      {
+        "where": "sinnoh-route-210"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "mental-herb": [
+      {
+        "where": "sinnoh-route-216"
+      }
+    ],
+    "metal-coat": [
+      {
+        "where": "iron-island"
+      }
+    ],
+    "metronome": [
+      {
+        "where": "veilstone-city"
+      }
+    ],
+    "micle-berry": [
+      {
+        "place": {
+          "ko": "해당화파크",
+          "en": "Ramanas Park"
+        }
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "mild-mint": [
+      {
+        "where": "battle-park"
+      }
+    ],
+    "mind-plate": [
+      {
+        "where": "solaceon-ruins"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "miracle-seed": [
+      {
+        "where": "floaroma-meadow"
+      }
+    ],
+    "modest-mint": [
+      {
+        "where": "battle-park"
+      }
+    ],
+    "moomoo-milk": [
+      {
+        "where": "sinnoh-route-210"
+      }
+    ],
+    "moon-stone": [
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "mystic-water": [
+      {
+        "where": "pastoria-city"
+      }
+    ],
+    "naive-mint": [
+      {
+        "where": "battle-park"
+      }
+    ],
+    "nanab-berry": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-224"
+      },
+      {
+        "where": "solaceon-town"
+      }
+    ],
+    "naughty-mint": [
+      {
+        "where": "battle-park"
+      }
+    ],
+    "nest-ball": [
+      {
+        "where": "solaceon-town"
+      }
+    ],
+    "net-ball": [
+      {
+        "where": "sinnoh-route-222"
+      },
+      {
+        "where": "solaceon-town"
+      }
+    ],
+    "nomel-berry": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "amity-square"
+      }
+    ],
+    "nugget": [
+      {
+        "where": "sinnoh-route-210"
+      },
+      {
+        "where": "sinnoh-route-229"
+      },
+      {
+        "where": "wayward-cave"
+      },
+      {
+        "where": "mt-coronet"
+      },
+      {
+        "where": "solaceon-ruins"
+      },
+      {
+        "where": "sinnoh-victory-road"
+      },
+      {
+        "where": "stark-mountain"
+      },
+      {
+        "where": "resort-area"
+      },
+      {
+        "place": "Veilstone Galactic Building"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "occa-berry": [
+      {
+        "where": "pastoria-city"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "odd-incense": [
+      {
+        "where": "solaceon-ruins"
+      }
+    ],
+    "odd-keystone": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "twinleaf-town"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "old-amber": [
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "old-charm": [
+      {
+        "where": "sinnoh-route-210"
+      }
+    ],
+    "old-gateau": [
+      {
+        "where": "old-chateau"
+      }
+    ],
+    "old-rod": [
+      {
+        "where": "jubilife-city"
+      }
+    ],
+    "oran-berry": [
+      {
+        "where": "sinnoh-route-205"
+      },
+      {
+        "where": "sinnoh-route-207"
+      },
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "floaroma-town"
+      },
+      {
+        "where": "eterna-forest"
+      }
+    ],
+    "oval-charm": [
+      {
+        "place": "Hotel Grand Lake"
+      }
+    ],
+    "oval-stone": [
+      {
+        "where": "lost-tower"
+      }
+    ],
+    "pamtre-berry": [
+      {
+        "where": "amity-square"
+      }
+    ],
+    "paralyze-heal": [
+      {
+        "where": "sinnoh-route-204"
+      },
+      {
+        "where": "jubilife-city"
+      },
+      {
+        "where": "eterna-forest"
+      },
+      {
+        "where": "valor-lakefront"
+      },
+      {
+        "where": "great-marsh"
+      },
+      {
+        "where": "floaroma-meadow"
+      }
+    ],
+    "parcel": [
+      {
+        "where": "twinleaf-town"
+      }
+    ],
+    "parcel--letsgo": [
+      {
+        "where": "twinleaf-town"
+      }
+    ],
+    "passho-berry": [
+      {
+        "where": "pastoria-city"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "payapa-berry": [
+      {
+        "where": "pastoria-city"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "pearl": [
+      {
+        "where": "sinnoh-route-213"
+      },
+      {
+        "place": {
+          "ko": "220번수로",
+          "en": "Route 220"
+        }
+      },
+      {
+        "place": {
+          "ko": "223번수로",
+          "en": "Route 223"
+        }
+      },
+      {
+        "where": "sinnoh-route-224"
+      },
+      {
+        "where": "canalave-city"
+      },
+      {
+        "where": "sunyshore-city"
+      },
+      {
+        "where": "sinnoh-victory-road"
+      }
+    ],
+    "pecha-berry": [
+      {
+        "where": "sinnoh-route-205"
+      },
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-211"
+      },
+      {
+        "where": "sinnoh-route-212"
+      },
+      {
+        "where": "sinnoh-route-215"
+      },
+      {
+        "where": "sinnoh-route-221"
+      },
+      {
+        "where": "floaroma-town"
+      }
+    ],
+    "persim-berry": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-218"
+      },
+      {
+        "where": "solaceon-town"
+      }
+    ],
+    "petaya-berry": [
+      {
+        "place": {
+          "ko": "해당화파크",
+          "en": "Ramanas Park"
+        }
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "pinap-berry": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-210"
+      },
+      {
+        "where": "sinnoh-route-212"
+      },
+      {
+        "where": "sinnoh-route-218"
+      }
+    ],
+    "pink-scarf": [
+      {
+        "where": "pastoria-city"
+      }
+    ],
+    "pixie-plate": [
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "poffin-case": [
+      {
+        "where": "hearthome-city"
+      }
+    ],
+    "point-card": [
+      {
+        "where": "battle-park"
+      }
+    ],
+    "poison-barb": [
+      {
+        "where": "sinnoh-route-206"
+      }
+    ],
+    "poke-ball": [
+      {
+        "where": "sinnoh-route-202"
+      },
+      {
+        "where": "sinnoh-route-203"
+      },
+      {
+        "where": "sinnoh-route-205"
+      },
+      {
+        "where": "sinnoh-route-207"
+      },
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-211"
+      },
+      {
+        "where": "solaceon-town"
+      },
+      {
+        "where": "great-marsh"
+      }
+    ],
+    "poke-radar": [
+      {
+        "where": "sandgem-town"
+      }
+    ],
+    "pomeg-berry": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-214"
+      },
+      {
+        "place": {
+          "ko": "226번수로",
+          "en": "Route 226"
+        }
+      },
+      {
+        "where": "fight-area"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "potion": [
+      {
+        "where": "sinnoh-route-201"
+      },
+      {
+        "where": "sinnoh-route-202"
+      },
+      {
+        "where": "sinnoh-route-205"
+      },
+      {
+        "where": "sinnoh-route-206"
+      },
+      {
+        "where": "oreburgh-mine"
+      },
+      {
+        "where": "valley-windworks"
+      },
+      {
+        "where": "eterna-forest"
+      },
+      {
+        "where": "wayward-cave"
+      },
+      {
+        "where": "great-marsh"
+      },
+      {
+        "where": "floaroma-meadow"
+      }
+    ],
+    "pp-max": [
+      {
+        "where": "sinnoh-route-224"
+      },
+      {
+        "where": "battle-park"
+      }
+    ],
+    "pp-up": [
+      {
+        "where": "sinnoh-route-213"
+      },
+      {
+        "where": "sinnoh-route-217"
+      },
+      {
+        "place": {
+          "ko": "226번수로",
+          "en": "Route 226"
+        }
+      },
+      {
+        "where": "sinnoh-route-228"
+      },
+      {
+        "where": "jubilife-city"
+      },
+      {
+        "where": "eterna-city"
+      },
+      {
+        "where": "mt-coronet"
+      },
+      {
+        "where": "veilstone-city"
+      },
+      {
+        "where": "battle-park"
+      },
+      {
+        "where": "stark-mountain"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "protector": [
+      {
+        "where": "sinnoh-route-228"
+      }
+    ],
+    "protein": [
+      {
+        "where": "sinnoh-route-212"
+      },
+      {
+        "where": "sinnoh-route-213"
+      },
+      {
+        "where": "sinnoh-route-221"
+      },
+      {
+        "where": "sinnoh-route-227"
+      },
+      {
+        "where": "sinnoh-route-229"
+      },
+      {
+        "where": "mt-coronet"
+      }
+    ],
+    "pure-incense": [
+      {
+        "where": "sinnoh-route-221"
+      }
+    ],
+    "qualot-berry": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-222"
+      },
+      {
+        "place": {
+          "ko": "226번수로",
+          "en": "Route 226"
+        }
+      },
+      {
+        "where": "sinnoh-route-229"
+      },
+      {
+        "where": "resort-area"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "quick-ball": [
+      {
+        "where": "eterna-city"
+      },
+      {
+        "where": "solaceon-town"
+      }
+    ],
+    "quick-claw": [
+      {
+        "where": "jubilife-city"
+      }
+    ],
+    "quiet-mint": [
+      {
+        "where": "battle-park"
+      }
+    ],
+    "rabuta-berry": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "amity-square"
+      }
+    ],
+    "rare-bone": [
+      {
+        "where": "turnback-cave"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "rare-candy": [
+      {
+        "where": "sinnoh-route-207"
+      },
+      {
+        "where": "sinnoh-route-212"
+      },
+      {
+        "where": "sinnoh-route-214"
+      },
+      {
+        "where": "sinnoh-route-218"
+      },
+      {
+        "where": "sinnoh-route-224"
+      },
+      {
+        "where": "sinnoh-route-225"
+      },
+      {
+        "place": {
+          "ko": "230번수로",
+          "en": "Route 230"
+        }
+      },
+      {
+        "where": "eterna-city"
+      },
+      {
+        "where": "wayward-cave"
+      },
+      {
+        "where": "mt-coronet"
+      },
+      {
+        "where": "solaceon-ruins"
+      },
+      {
+        "where": "sinnoh-victory-road"
+      },
+      {
+        "where": "battle-park"
+      },
+      {
+        "where": "stark-mountain"
+      },
+      {
+        "place": "Hotel Grand Lake"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "rash-mint": [
+      {
+        "where": "battle-park"
+      }
+    ],
+    "rawst-berry": [
+      {
+        "where": "sinnoh-route-206"
+      },
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-213"
+      },
+      {
+        "where": "sinnoh-route-218"
+      }
+    ],
+    "razor-claw": [
+      {
+        "where": "sinnoh-route-224"
+      },
+      {
+        "where": "sinnoh-victory-road"
+      }
+    ],
+    "razor-fang": [
+      {
+        "where": "battle-park"
+      }
+    ],
+    "razz-berry": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-209"
+      },
+      {
+        "where": "sinnoh-route-210"
+      },
+      {
+        "where": "eterna-forest"
+      }
+    ],
+    "reaper-cloth": [
+      {
+        "where": "sinnoh-route-229"
+      }
+    ],
+    "red-scarf": [
+      {
+        "where": "pastoria-city"
+      }
+    ],
+    "red-shard": [
+      {
+        "where": "sinnoh-route-213"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "relaxed-mint": [
+      {
+        "where": "battle-park"
+      }
+    ],
+    "repeat-ball": [
+      {
+        "where": "solaceon-town"
+      }
+    ],
+    "repel": [
+      {
+        "where": "sinnoh-route-203"
+      },
+      {
+        "where": "solaceon-ruins"
+      }
+    ],
+    "revive": [
+      {
+        "where": "sinnoh-route-212"
+      },
+      {
+        "where": "sinnoh-route-225"
+      },
+      {
+        "where": "wayward-cave"
+      },
+      {
+        "where": "mt-coronet"
+      },
+      {
+        "where": "lost-tower"
+      },
+      {
+        "where": "veilstone-city"
+      },
+      {
+        "where": "iron-island"
+      },
+      {
+        "where": "stark-mountain"
+      },
+      {
+        "where": "floaroma-meadow"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "rindo-berry": [
+      {
+        "where": "pastoria-city"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "rock-incense": [
+      {
+        "where": "fuego-ironworks"
+      }
+    ],
+    "root-fossil": [
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "rose-incense": [
+      {
+        "where": "sinnoh-route-212"
+      }
+    ],
+    "roseli-berry": [
+      {
+        "where": "pastoria-city"
+      },
+      {
+        "place": {
+          "ko": "해당화파크",
+          "en": "Ramanas Park"
+        }
+      }
+    ],
+    "rotom-catalog": [
+      {
+        "place": "Eterna Galactic Building"
+      }
+    ],
+    "rowap-berry": [
+      {
+        "where": "pastoria-city"
+      },
+      {
+        "place": {
+          "ko": "해당화파크",
+          "en": "Ramanas Park"
+        }
+      }
+    ],
+    "salac-berry": [
+      {
+        "place": {
+          "ko": "해당화파크",
+          "en": "Ramanas Park"
+        }
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "sassy-mint": [
+      {
+        "where": "battle-park"
+      }
+    ],
+    "scope-lens": [
+      {
+        "where": "fight-area"
+      }
+    ],
+    "sea-incense": [
+      {
+        "where": "sinnoh-route-204"
+      }
+    ],
+    "secret-key": [
+      {
+        "where": "old-chateau"
+      }
+    ],
+    "secret-key--letsgo": [
+      {
+        "where": "old-chateau"
+      }
+    ],
+    "secret-potion": [
+      {
+        "where": "valor-lakefront"
+      }
+    ],
+    "serious-mint": [
+      {
+        "where": "battle-park"
+      }
+    ],
+    "sharp-beak": [
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "shed-shell": [
+      {
+        "where": "sinnoh-route-228"
+      }
+    ],
+    "shell-bell": [
+      {
+        "where": "hearthome-city"
+      }
+    ],
+    "shiny-charm": [
+      {
+        "place": "Hotel Grand Lake"
+      }
+    ],
+    "shiny-stone": [
+      {
+        "where": "sinnoh-route-228"
+      },
+      {
+        "where": "iron-island"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "shuca-berry": [
+      {
+        "where": "pastoria-city"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "silk-scarf": [
+      {
+        "where": "veilstone-city"
+      }
+    ],
+    "silver-powder": [
+      {
+        "where": "eterna-forest"
+      }
+    ],
+    "sitrus-berry": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-210"
+      },
+      {
+        "where": "sinnoh-route-212"
+      },
+      {
+        "where": "sinnoh-route-214"
+      },
+      {
+        "where": "sinnoh-route-224"
+      },
+      {
+        "where": "fuego-ironworks"
+      }
+    ],
+    "skull-fossil": [
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "sky-plate": [
+      {
+        "where": "sinnoh-pokemon-league"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "smoke-ball": [
+      {
+        "where": "sinnoh-route-210"
+      }
+    ],
+    "smooth-rock": [
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "soft-sand": [
+      {
+        "where": "mt-coronet"
+      }
+    ],
+    "soothe-bell": [
+      {
+        "where": "sinnoh-route-212"
+      }
+    ],
+    "soul-dew": [
+      {
+        "place": {
+          "ko": "해당화파크",
+          "en": "Ramanas Park"
+        }
+      }
+    ],
+    "spell-tag": [
+      {
+        "where": "sinnoh-route-217"
+      }
+    ],
+    "spelon-berry": [
+      {
+        "where": "amity-square"
+      }
+    ],
+    "splash-plate": [
+      {
+        "place": {
+          "ko": "220번수로",
+          "en": "Route 220"
+        }
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "spooky-plate": [
+      {
+        "where": "amity-square"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "sprayduck": [
+      {
+        "where": "floaroma-town"
+      }
+    ],
+    "star-piece": [
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "stardust": [
+      {
+        "where": "sinnoh-route-224"
+      },
+      {
+        "where": "sinnoh-route-228"
+      },
+      {
+        "where": "oreburgh-gate"
+      },
+      {
+        "where": "oreburgh-city"
+      },
+      {
+        "where": "wayward-cave"
+      },
+      {
+        "where": "mt-coronet"
+      },
+      {
+        "where": "lost-tower"
+      }
+    ],
+    "starf-berry": [
+      {
+        "where": "battle-park"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "sticky-barb": [
+      {
+        "where": "veilstone-city"
+      }
+    ],
+    "stone-plate": [
+      {
+        "where": "mt-coronet"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "storage-key": [
+      {
+        "where": "veilstone-city"
+      }
+    ],
+    "storage-key--galactic-warehouse": [
+      {
+        "where": "veilstone-city"
+      }
+    ],
+    "storage-key--sea-mauville": [
+      {
+        "where": "veilstone-city"
+      }
+    ],
+    "suite-key": [
+      {
+        "where": "sinnoh-route-213"
+      }
+    ],
+    "sun-stone": [
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "super-potion": [
+      {
+        "where": "sinnoh-route-207"
+      },
+      {
+        "where": "sinnoh-route-209"
+      },
+      {
+        "where": "sinnoh-route-212"
+      },
+      {
+        "where": "sinnoh-route-213"
+      },
+      {
+        "where": "sinnoh-route-219"
+      },
+      {
+        "where": "oreburgh-city"
+      },
+      {
+        "where": "wayward-cave"
+      },
+      {
+        "where": "great-marsh"
+      },
+      {
+        "where": "floaroma-meadow"
+      }
+    ],
+    "super-repel": [
+      {
+        "where": "sinnoh-route-206"
+      },
+      {
+        "where": "sinnoh-route-210"
+      },
+      {
+        "where": "mt-coronet"
+      },
+      {
+        "where": "great-marsh"
+      },
+      {
+        "where": "iron-island"
+      }
+    ],
+    "super-rod": [
+      {
+        "where": "fight-area"
+      }
+    ],
+    "tamato-berry": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-212"
+      },
+      {
+        "where": "sinnoh-route-225"
+      },
+      {
+        "where": "sinnoh-route-228"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "tanga-berry": [
+      {
+        "where": "pastoria-city"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "thunder-stone": [
+      {
+        "where": "sunyshore-city"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "timer-ball": [
+      {
+        "where": "solaceon-town"
+      }
+    ],
+    "timid-mint": [
+      {
+        "where": "battle-park"
+      }
+    ],
+    "tiny-mushroom": [
+      {
+        "where": "sinnoh-route-209"
+      },
+      {
+        "where": "sinnoh-route-221"
+      },
+      {
+        "place": {
+          "ko": "226번수로",
+          "en": "Route 226"
+        }
+      },
+      {
+        "where": "wayward-cave"
+      },
+      {
+        "where": "mt-coronet"
+      },
+      {
+        "where": "hearthome-city"
+      },
+      {
+        "where": "veilstone-city"
+      },
+      {
+        "where": "iron-island"
+      }
+    ],
+    "tm01": [
+      {
+        "where": "oreburgh-gate"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "tm02": [
+      {
+        "where": "mt-coronet"
+      }
+    ],
+    "tm03": [
+      {
+        "where": "ravaged-path"
+      }
+    ],
+    "tm04": [
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "tm05": [
+      {
+        "where": "sinnoh-route-212"
+      }
+    ],
+    "tm06": [
+      {
+        "where": "sinnoh-route-212"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "tm07": [
+      {
+        "where": "sinnoh-route-212"
+      },
+      {
+        "where": "sinnoh-route-217"
+      }
+    ],
+    "tm09": [
+      {
+        "where": "sinnoh-route-204"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "tm10": [
+      {
+        "where": "jubilife-city"
+      }
+    ],
+    "tm11": [
+      {
+        "where": "sinnoh-route-212"
+      }
+    ],
+    "tm12": [
+      {
+        "where": "sinnoh-route-211"
+      }
+    ],
+    "tm13": [
+      {
+        "where": "sinnoh-route-216"
+      }
+    ],
+    "tm14": [
+      {
+        "where": "lake-acuity"
+      }
+    ],
+    "tm18": [
+      {
+        "where": "sinnoh-route-212"
+      },
+      {
+        "place": {
+          "ko": "223번수로",
+          "en": "Route 223"
+        }
+      }
+    ],
+    "tm19": [
+      {
+        "where": "sinnoh-route-209"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "tm21": [
+      {
+        "place": "Galactic Warehouse"
+      }
+    ],
+    "tm23": [
+      {
+        "where": "iron-island"
+      }
+    ],
+    "tm24": [
+      {
+        "where": "valley-windworks"
+      }
+    ],
+    "tm25": [
+      {
+        "where": "lake-valor"
+      }
+    ],
+    "tm26": [
+      {
+        "where": "wayward-cave"
+      }
+    ],
+    "tm27": [
+      {
+        "where": "lost-tower"
+      }
+    ],
+    "tm28": [
+      {
+        "place": "Ruins Maniac's Cave"
+      }
+    ],
+    "tm29": [
+      {
+        "where": "sinnoh-route-211"
+      }
+    ],
+    "tm30": [
+      {
+        "where": "sinnoh-route-210"
+      }
+    ],
+    "tm31": [
+      {
+        "where": "oreburgh-gate"
+      }
+    ],
+    "tm32": [
+      {
+        "where": "wayward-cave"
+      }
+    ],
+    "tm34": [
+      {
+        "where": "sinnoh-route-215"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "tm35": [
+      {
+        "where": "fuego-ironworks"
+      }
+    ],
+    "tm36": [
+      {
+        "place": "Galactic Warehouse"
+      }
+    ],
+    "tm37": [
+      {
+        "where": "sinnoh-route-212"
+      },
+      {
+        "where": "sinnoh-route-228"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "tm38": [
+      {
+        "where": "lake-verity"
+      }
+    ],
+    "tm39": [
+      {
+        "where": "ravaged-path"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "tm40": [
+      {
+        "where": "sinnoh-route-213"
+      }
+    ],
+    "tm41": [
+      {
+        "where": "sinnoh-victory-road"
+      }
+    ],
+    "tm42": [
+      {
+        "where": "survival-area"
+      }
+    ],
+    "tm43": [
+      {
+        "where": "amity-square"
+      }
+    ],
+    "tm45": [
+      {
+        "where": "amity-square"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "tm46": [
+      {
+        "where": "eterna-city"
+      }
+    ],
+    "tm47": [
+      {
+        "where": "sinnoh-route-209"
+      }
+    ],
+    "tm48": [
+      {
+        "where": "canalave-city"
+      }
+    ],
+    "tm49": [
+      {
+        "place": "Veilstone Galactic Building"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "tm50": [
+      {
+        "where": "stark-mountain"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "tm51": [
+      {
+        "where": "sinnoh-route-210"
+      }
+    ],
+    "tm53": [
+      {
+        "place": {
+          "ko": "226번수로",
+          "en": "Route 226"
+        }
+      }
+    ],
+    "tm55": [
+      {
+        "where": "pastoria-city"
+      }
+    ],
+    "tm56": [
+      {
+        "where": "sinnoh-route-222"
+      }
+    ],
+    "tm57": [
+      {
+        "where": "sunyshore-city"
+      }
+    ],
+    "tm59": [
+      {
+        "where": "sinnoh-victory-road"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "tm60": [
+      {
+        "where": "veilstone-city"
+      }
+    ],
+    "tm62": [
+      {
+        "where": "sinnoh-route-212"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "tm63": [
+      {
+        "where": "veilstone-city"
+      }
+    ],
+    "tm65": [
+      {
+        "where": "hearthome-city"
+      }
+    ],
+    "tm66": [
+      {
+        "where": "sinnoh-route-215"
+      }
+    ],
+    "tm67": [
+      {
+        "where": "eterna-city"
+      }
+    ],
+    "tm69": [
+      {
+        "where": "mt-coronet"
+      }
+    ],
+    "tm70": [
+      {
+        "where": "oreburgh-gate"
+      }
+    ],
+    "tm71": [
+      {
+        "where": "sinnoh-victory-road"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "tm72": [
+      {
+        "where": "snowpoint-city"
+      }
+    ],
+    "tm76": [
+      {
+        "where": "oreburgh-city"
+      }
+    ],
+    "tm77": [
+      {
+        "where": "sinnoh-route-211"
+      }
+    ],
+    "tm78": [
+      {
+        "where": "sinnoh-route-204"
+      }
+    ],
+    "tm79": [
+      {
+        "where": "sinnoh-victory-road"
+      }
+    ],
+    "tm80": [
+      {
+        "where": "mt-coronet"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "tm81": [
+      {
+        "where": "sinnoh-route-221"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "tm82": [
+      {
+        "where": "eterna-forest"
+      }
+    ],
+    "tm84": [
+      {
+        "where": "sinnoh-route-212"
+      }
+    ],
+    "tm85": [
+      {
+        "place": "Hotel Grand Lake"
+      }
+    ],
+    "tm86": [
+      {
+        "where": "eterna-city"
+      }
+    ],
+    "tm87": [
+      {
+        "where": "sinnoh-route-212"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "tm88": [
+      {
+        "where": "floaroma-town"
+      }
+    ],
+    "tm89": [
+      {
+        "where": "canalave-city"
+      }
+    ],
+    "tm90": [
+      {
+        "where": "old-chateau"
+      }
+    ],
+    "tm91": [
+      {
+        "where": "canalave-city"
+      }
+    ],
+    "tm92": [
+      {
+        "where": "sinnoh-route-213"
+      }
+    ],
+    "tm93": [
+      {
+        "where": "eterna-city"
+      }
+    ],
+    "tm94": [
+      {
+        "place": "Galactic Warehouse"
+      }
+    ],
+    "tm95": [
+      {
+        "where": "celestic-town"
+      }
+    ],
+    "tm96": [
+      {
+        "where": "lost-tower"
+      }
+    ],
+    "tm97": [
+      {
+        "where": "great-marsh"
+      }
+    ],
+    "tm98": [
+      {
+        "where": "oreburgh-gate"
+      }
+    ],
+    "tm99": [
+      {
+        "where": "sunyshore-city"
+      }
+    ],
+    "town-map": [
+      {
+        "where": "jubilife-city"
+      }
+    ],
+    "toxic-plate": [
+      {
+        "where": "great-marsh"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "twisted-spoon": [
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "ultra-ball": [
+      {
+        "where": "sinnoh-route-210"
+      },
+      {
+        "where": "sinnoh-route-217"
+      },
+      {
+        "where": "sinnoh-route-221"
+      },
+      {
+        "where": "sinnoh-route-222"
+      },
+      {
+        "where": "sinnoh-route-225"
+      },
+      {
+        "where": "sinnoh-route-228"
+      },
+      {
+        "where": "jubilife-city"
+      },
+      {
+        "where": "fuego-ironworks"
+      },
+      {
+        "where": "mt-coronet"
+      },
+      {
+        "where": "solaceon-town"
+      },
+      {
+        "where": "iron-island"
+      },
+      {
+        "where": "acuity-lakefront"
+      },
+      {
+        "where": "sinnoh-victory-road"
+      },
+      {
+        "where": "stark-mountain"
+      }
+    ],
+    "up-grade": [
+      {
+        "where": "eterna-city"
+      }
+    ],
+    "wacan-berry": [
+      {
+        "where": "pastoria-city"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "water-stone": [
+      {
+        "where": "sinnoh-route-213"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "watmel-berry": [
+      {
+        "where": "amity-square"
+      }
+    ],
+    "wave-incense": [
+      {
+        "where": "sinnoh-route-210"
+      }
+    ],
+    "wepear-berry": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-224"
+      },
+      {
+        "where": "fuego-ironworks"
+      }
+    ],
+    "wide-lens": [
+      {
+        "where": "veilstone-city"
+      }
+    ],
+    "wiki-berry": [
+      {
+        "where": "sinnoh-route-208"
+      },
+      {
+        "where": "sinnoh-route-210"
+      },
+      {
+        "where": "sinnoh-route-215"
+      },
+      {
+        "where": "sinnoh-route-222"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "wise-glasses": [
+      {
+        "where": "celestic-town"
+      }
+    ],
+    "works-key": [
+      {
+        "where": "floaroma-meadow"
+      }
+    ],
+    "x-accuracy": [
+      {
+        "where": "sinnoh-route-209"
+      }
+    ],
+    "x-attack": [
+      {
+        "where": "sinnoh-route-205"
+      }
+    ],
+    "x-defense": [
+      {
+        "where": "oreburgh-mine"
+      }
+    ],
+    "x-speed": [
+      {
+        "where": "sinnoh-route-208"
+      }
+    ],
+    "yache-berry": [
+      {
+        "where": "pastoria-city"
+      },
+      {
+        "place": {
+          "ko": "동행 포켓몬이 주워 온다",
+          "en": "Talk to Following Pokémon"
+        }
+      }
+    ],
+    "yellow-scarf": [
+      {
+        "where": "pastoria-city"
+      }
+    ],
+    "yellow-shard": [
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "zap-plate": [
+      {
+        "where": "sunyshore-city"
+      },
+      {
+        "place": {
+          "ko": "지하대동굴",
+          "en": "Grand Underground"
+        }
+      }
+    ],
+    "zinc": [
+      {
+        "where": "sinnoh-route-211"
+      },
+      {
+        "where": "sinnoh-route-212"
+      },
+      {
+        "where": "sinnoh-route-215"
+      },
+      {
+        "where": "sinnoh-route-227"
+      },
+      {
+        "where": "sinnoh-victory-road"
+      },
+      {
+        "place": "Galactic Warehouse"
+      }
+    ],
+    "zoom-lens": [
+      {
+        "where": "veilstone-city"
+      }
+    ]
+  },
+  "tutors": {}
+}

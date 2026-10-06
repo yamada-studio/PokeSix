@@ -1,0 +1,3823 @@
+{
+  "_comment": [
+    "게임(버전 그룹)별 입수 사전 (ui/dex/guidebook.h가 읽는다). 형식은 docs/i18n/README.md 참고.",
+    "scripts/i18n/check_acquisition.py로 검증해 넣었다. 출처는 _sources."
+  ],
+  "_sources": [
+    "Serebii.net ItemDex (https://www.serebii.net/itemdex/) — 장소는 PokéAPI/게임 텍스트로 한국어화"
+  ],
+  "versionGroup": "sword-shield",
+  "items": {
+    "ability-capsule": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "absorb-bulb": [
+      {
+        "where": "galar-route-5"
+      }
+    ],
+    "adamant-mint": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "adamant-orb": [
+      {
+        "where": "stow-on-side"
+      }
+    ],
+    "adventure-rules": [
+      {
+        "place": "Start of game"
+      }
+    ],
+    "aguav-berry": [
+      {
+        "where": "galar-route-9"
+      },
+      {
+        "where": "bridge-field"
+      }
+    ],
+    "air-balloon": [
+      {
+        "where": "wyndon"
+      }
+    ],
+    "amulet-coin": [
+      {
+        "where": "motostoke-outskirts"
+      }
+    ],
+    "apicot-berry": [
+      {
+        "where": "galar-route-9"
+      },
+      {
+        "where": "dappled-grove"
+      },
+      {
+        "where": "giants-cap"
+      },
+      {
+        "where": "lake-of-outrage"
+      }
+    ],
+    "aspear-berry": [
+      {
+        "where": "galar-route-7"
+      },
+      {
+        "where": "giants-seat"
+      },
+      {
+        "where": "north-lake-miloch"
+      }
+    ],
+    "assault-vest": [
+      {
+        "where": "lake-of-outrage"
+      }
+    ],
+    "babiri-berry": [
+      {
+        "where": "bridge-field"
+      }
+    ],
+    "bachs-food-tin": [
+      {
+        "place": "From wild Pokémon that come into your Camp"
+      }
+    ],
+    "balm-mushroom": [
+      {
+        "where": "galar-route-7"
+      },
+      {
+        "where": "ballonlea"
+      },
+      {
+        "where": "bridge-field"
+      },
+      {
+        "where": "dappled-grove"
+      },
+      {
+        "where": "giants-seat"
+      },
+      {
+        "where": "motostoke-riverbank"
+      },
+      {
+        "where": "stony-wilderness"
+      }
+    ],
+    "beast-ball": [
+      {
+        "where": "stow-on-side"
+      },
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "berry-juice": [
+      {
+        "where": "hammerlocke"
+      }
+    ],
+    "berry-sweet": [
+      {
+        "where": "hammerlocke"
+      },
+      {
+        "where": "motostoke"
+      },
+      {
+        "where": "wyndon"
+      }
+    ],
+    "big-malasada": [
+      {
+        "where": "hammerlocke"
+      },
+      {
+        "where": "motostoke"
+      },
+      {
+        "where": "wyndon"
+      }
+    ],
+    "big-mushroom": [
+      {
+        "where": "galar-route-3"
+      },
+      {
+        "where": "galar-route-5"
+      },
+      {
+        "where": "ballonlea"
+      },
+      {
+        "where": "bridge-field"
+      },
+      {
+        "where": "dappled-grove"
+      },
+      {
+        "where": "dusty-bowl"
+      },
+      {
+        "where": "giants-mirror"
+      },
+      {
+        "where": "hammerlocke-hills"
+      },
+      {
+        "where": "lake-of-outrage"
+      },
+      {
+        "where": "north-lake-miloch"
+      },
+      {
+        "where": "south-lake-miloch"
+      },
+      {
+        "where": "west-lake-axewell"
+      }
+    ],
+    "big-nugget": [
+      {
+        "where": "galar-route-8"
+      },
+      {
+        "where": "hulbury"
+      },
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "big-pearl": [
+      {
+        "where": "galar-route-9"
+      },
+      {
+        "where": "axews-eye"
+      },
+      {
+        "where": "east-lake-axewell"
+      },
+      {
+        "where": "giants-seat"
+      },
+      {
+        "where": "lake-of-outrage"
+      },
+      {
+        "where": "south-lake-miloch"
+      },
+      {
+        "where": "west-lake-axewell"
+      }
+    ],
+    "big-root": [
+      {
+        "where": "glimwood-tangle"
+      }
+    ],
+    "black-belt": [
+      {
+        "where": "galar-route-9"
+      }
+    ],
+    "black-glasses": [
+      {
+        "where": "motostoke"
+      }
+    ],
+    "black-sludge": [
+      {
+        "where": "wyndon"
+      }
+    ],
+    "bobs-food-tin": [
+      {
+        "place": "From wild Pokémon that come into your Camp"
+      }
+    ],
+    "boiled-egg": [
+      {
+        "place": "From wild Pokémon that come into your Camp"
+      }
+    ],
+    "bold-mint": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "bottle-cap": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "brave-mint": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "bread": [
+      {
+        "place": "Talk to other players avatars in the Wild Area From wild Pokémon that come into your Camp Return with a Pokémon from a PokéJob"
+      }
+    ],
+    "bright-powder": [
+      {
+        "where": "glimwood-tangle"
+      }
+    ],
+    "brittle-bones": [
+      {
+        "place": "From wild Pokémon that come into your Camp"
+      }
+    ],
+    "bug-memory": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "burn-drive": [
+      {
+        "where": "stow-on-side"
+      }
+    ],
+    "burn-heal": [
+      {
+        "where": "galar-route-3"
+      },
+      {
+        "where": "motostoke"
+      }
+    ],
+    "calm-mint": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "camping-gear": [
+      {
+        "where": "wedgehurst"
+      }
+    ],
+    "careful-mint": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "casteliacone": [
+      {
+        "where": "hammerlocke"
+      },
+      {
+        "where": "motostoke"
+      },
+      {
+        "where": "wyndon"
+      }
+    ],
+    "catching-charm": [
+      {
+        "where": "circhester"
+      }
+    ],
+    "cell-battery": [
+      {
+        "where": "wyndon"
+      }
+    ],
+    "charcoal": [
+      {
+        "where": "motostoke"
+      }
+    ],
+    "charti-berry": [
+      {
+        "where": "lake-of-outrage"
+      }
+    ],
+    "cheri-berry": [
+      {
+        "where": "galar-route-3"
+      },
+      {
+        "where": "galar-route-4"
+      },
+      {
+        "where": "galar-route-5"
+      },
+      {
+        "where": "rolling-fields"
+      },
+      {
+        "where": "watchtower-ruins"
+      }
+    ],
+    "chesto-berry": [
+      {
+        "where": "galar-route-5"
+      },
+      {
+        "where": "dappled-grove"
+      },
+      {
+        "where": "giants-seat"
+      }
+    ],
+    "chilan-berry": [
+      {
+        "where": "galar-route-5"
+      },
+      {
+        "where": "dappled-grove"
+      }
+    ],
+    "chill-drive": [
+      {
+        "where": "stow-on-side"
+      }
+    ],
+    "choice-band": [
+      {
+        "where": "galar-route-2"
+      }
+    ],
+    "choice-scarf": [
+      {
+        "where": "ballonlea"
+      }
+    ],
+    "choice-specs": [
+      {
+        "where": "spikemuth"
+      }
+    ],
+    "chople-berry": [
+      {
+        "where": "galar-route-9"
+      },
+      {
+        "where": "bridge-field"
+      }
+    ],
+    "cleanse-tag": [
+      {
+        "where": "galar-route-4"
+      }
+    ],
+    "clever-wing": [
+      {
+        "where": "galar-route-5"
+      },
+      {
+        "where": "motostoke-outskirts"
+      }
+    ],
+    "clover-sweet": [
+      {
+        "where": "hammerlocke"
+      },
+      {
+        "where": "motostoke"
+      },
+      {
+        "where": "wyndon"
+      }
+    ],
+    "coba-berry": [
+      {
+        "where": "motostoke-riverbank"
+      }
+    ],
+    "coconut-milk": [
+      {
+        "place": "From wild Pokémon that come into your Camp"
+      }
+    ],
+    "colbur-berry": [
+      {
+        "where": "axews-eye"
+      }
+    ],
+    "comet-shard": [
+      {
+        "where": "galar-route-10"
+      }
+    ],
+    "cracked-pot": [
+      {
+        "where": "stow-on-side"
+      }
+    ],
+    "damp-rock": [
+      {
+        "where": "hammerlocke"
+      }
+    ],
+    "dark-memory": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "dawn-stone": [
+      {
+        "where": "giants-cap"
+      },
+      {
+        "where": "lake-of-outrage"
+      }
+    ],
+    "destiny-knot": [
+      {
+        "place": {
+          "ko": "특성 픽업",
+          "en": "Pickup"
+        }
+      }
+    ],
+    "dire-hit": [
+      {
+        "where": "galar-route-9"
+      },
+      {
+        "where": "hammerlocke"
+      }
+    ],
+    "dive-ball": [
+      {
+        "where": "galar-route-9"
+      },
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "dna-splicers": [
+      {
+        "where": "stow-on-side"
+      }
+    ],
+    "dna-splicers--merge": [
+      {
+        "where": "stow-on-side"
+      }
+    ],
+    "dna-splicers--split": [
+      {
+        "where": "stow-on-side"
+      }
+    ],
+    "douse-drive": [
+      {
+        "where": "stow-on-side"
+      }
+    ],
+    "dragon-memory": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "dream-ball": [
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "dusk-ball": [
+      {
+        "where": "galar-mine-no-2"
+      },
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "dusk-stone": [
+      {
+        "where": "lake-of-outrage"
+      },
+      {
+        "where": "stow-on-side"
+      }
+    ],
+    "dynamax-band": [
+      {
+        "where": "galar-route-2"
+      }
+    ],
+    "dynamax-candy": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "electric-memory": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "electric-seed": [
+      {
+        "where": "wyndon"
+      }
+    ],
+    "elixir": [
+      {
+        "where": "galar-route-8"
+      },
+      {
+        "where": "slumbering-weald"
+      }
+    ],
+    "endorsement": [
+      {
+        "where": "galar-route-2"
+      }
+    ],
+    "energy-powder": [
+      {
+        "where": "galar-route-4"
+      }
+    ],
+    "energy-root": [
+      {
+        "where": "galar-route-4"
+      },
+      {
+        "where": "east-lake-axewell"
+      },
+      {
+        "where": "giants-seat"
+      },
+      {
+        "where": "hammerlocke-hills"
+      },
+      {
+        "where": "motostoke-riverbank"
+      },
+      {
+        "where": "rolling-fields"
+      },
+      {
+        "where": "turffield"
+      }
+    ],
+    "escape-rope": [
+      {
+        "where": "galar-route-3"
+      }
+    ],
+    "ether": [
+      {
+        "where": "galar-route-4"
+      },
+      {
+        "where": "galar-route-7"
+      },
+      {
+        "where": "galar-mine"
+      }
+    ],
+    "everstone": [
+      {
+        "where": "turffield"
+      }
+    ],
+    "eviolite": [
+      {
+        "where": "ballonlea"
+      }
+    ],
+    "expert-belt": [
+      {
+        "where": "turffield"
+      }
+    ],
+    "fairy-memory": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "fancy-apple": [
+      {
+        "where": "axews-eye"
+      },
+      {
+        "where": "dappled-grove"
+      }
+    ],
+    "fast-ball": [
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      },
+      {
+        "place": {
+          "ko": "와일드에리어",
+          "en": "Wild Area"
+        }
+      }
+    ],
+    "fighting-memory": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "figy-berry": [
+      {
+        "where": "galar-route-7"
+      },
+      {
+        "where": "bridge-field"
+      }
+    ],
+    "fire-memory": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "fire-stone": [
+      {
+        "where": "lake-of-outrage"
+      },
+      {
+        "where": "motostoke-riverbank"
+      }
+    ],
+    "flame-orb": [
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "float-stone": [
+      {
+        "place": "Digging Duo"
+      }
+    ],
+    "flower-sweet": [
+      {
+        "where": "hammerlocke"
+      },
+      {
+        "where": "motostoke"
+      },
+      {
+        "where": "wyndon"
+      }
+    ],
+    "flying-memory": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "focus-sash": [
+      {
+        "where": "hammerlocke"
+      },
+      {
+        "where": "lake-of-outrage"
+      }
+    ],
+    "fossilized-bird": [
+      {
+        "where": "dusty-bowl"
+      },
+      {
+        "where": "stow-on-side"
+      }
+    ],
+    "fossilized-dino": [
+      {
+        "where": "galar-route-6"
+      },
+      {
+        "where": "dusty-bowl"
+      }
+    ],
+    "fossilized-drake": [
+      {
+        "where": "dusty-bowl"
+      },
+      {
+        "where": "stow-on-side"
+      }
+    ],
+    "fossilized-fish": [
+      {
+        "where": "galar-route-6"
+      },
+      {
+        "where": "dusty-bowl"
+      }
+    ],
+    "fresh-cream": [
+      {
+        "place": "From wild Pokémon that come into your Camp"
+      }
+    ],
+    "fresh-water": [
+      {
+        "where": "galar-route-2"
+      },
+      {
+        "where": "motostoke"
+      }
+    ],
+    "fried-food": [
+      {
+        "place": "Talk to other players avatars in the Wild Area From wild Pokémon that come into your Camp"
+      }
+    ],
+    "friend-ball": [
+      {
+        "where": "turffield"
+      },
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "fruit-bunch": [
+      {
+        "place": "From wild Pokémon that come into your Camp"
+      }
+    ],
+    "full-heal": [
+      {
+        "where": "glimwood-tangle"
+      },
+      {
+        "where": "hulbury"
+      }
+    ],
+    "full-restore": [
+      {
+        "where": "slumbering-weald"
+      }
+    ],
+    "ganlon-berry": [
+      {
+        "where": "galar-route-7"
+      },
+      {
+        "where": "bridge-field"
+      },
+      {
+        "where": "giants-cap"
+      },
+      {
+        "where": "giants-seat"
+      }
+    ],
+    "genius-wing": [
+      {
+        "where": "galar-route-5"
+      },
+      {
+        "where": "motostoke-outskirts"
+      }
+    ],
+    "gentle-mint": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "ghost-memory": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "gigantamix": [
+      {
+        "place": "Very rare chance from 3☆"
+      },
+      {
+        "place": "4☆ or 5☆ Max Raid Battles"
+      }
+    ],
+    "gold-bottle-cap": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "grass-memory": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "grassy-seed": [
+      {
+        "where": "wyndon"
+      }
+    ],
+    "great-ball": [
+      {
+        "where": "galar-route-2"
+      },
+      {
+        "where": "bridge-field"
+      },
+      {
+        "where": "galar-mine"
+      },
+      {
+        "where": "giants-mirror"
+      },
+      {
+        "where": "hammerlocke-hills"
+      },
+      {
+        "where": "motostoke-outskirts"
+      },
+      {
+        "where": "motostoke-riverbank"
+      },
+      {
+        "where": "north-lake-miloch"
+      }
+    ],
+    "grepa-berry": [
+      {
+        "where": "galar-route-7"
+      },
+      {
+        "where": "bridge-field"
+      },
+      {
+        "where": "dappled-grove"
+      },
+      {
+        "where": "giants-mirror"
+      },
+      {
+        "where": "hammerlocke-hills"
+      },
+      {
+        "where": "motostoke-riverbank"
+      }
+    ],
+    "grip-claw": [
+      {
+        "where": "galar-mine-no-2"
+      }
+    ],
+    "griseous-orb": [
+      {
+        "where": "stow-on-side"
+      }
+    ],
+    "ground-memory": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "haban-berry": [
+      {
+        "where": "lake-of-outrage"
+      }
+    ],
+    "hard-stone": [
+      {
+        "place": "Digging Duo"
+      }
+    ],
+    "hasty-mint": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "heal-ball": [
+      {
+        "where": "galar-route-3"
+      },
+      {
+        "where": "galar-route-5"
+      },
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "health-wing": [
+      {
+        "where": "galar-route-5"
+      },
+      {
+        "where": "motostoke-outskirts"
+      }
+    ],
+    "heat-rock": [
+      {
+        "where": "hammerlocke"
+      }
+    ],
+    "heavy-ball": [
+      {
+        "where": "stow-on-side"
+      },
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "hondew-berry": [
+      {
+        "where": "galar-route-7"
+      },
+      {
+        "where": "bridge-field"
+      },
+      {
+        "where": "giants-mirror"
+      },
+      {
+        "where": "hammerlocke-hills"
+      },
+      {
+        "where": "motostoke-riverbank"
+      },
+      {
+        "where": "north-lake-miloch"
+      }
+    ],
+    "honey": [
+      {
+        "where": "dappled-grove"
+      },
+      {
+        "where": "rolling-fields"
+      }
+    ],
+    "hyper-potion": [
+      {
+        "where": "galar-route-8"
+      },
+      {
+        "where": "glimwood-tangle"
+      },
+      {
+        "where": "hammerlocke"
+      }
+    ],
+    "iapapa-berry": [
+      {
+        "where": "galar-route-9"
+      },
+      {
+        "where": "hammerlocke-hills"
+      }
+    ],
+    "ice-memory": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "ice-stone": [
+      {
+        "where": "galar-route-9"
+      },
+      {
+        "where": "lake-of-outrage"
+      }
+    ],
+    "icy-rock": [
+      {
+        "where": "hammerlocke"
+      }
+    ],
+    "impish-mint": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "instant-noodles": [
+      {
+        "place": "From wild Pokémon that come into your Camp"
+      }
+    ],
+    "iron-ball": [
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "jolly-mint": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "kasib-berry": [
+      {
+        "where": "bridge-field"
+      }
+    ],
+    "kebia-berry": [
+      {
+        "where": "axews-eye"
+      }
+    ],
+    "kee-berry": [
+      {
+        "where": "axews-eye"
+      }
+    ],
+    "kelpsy-berry": [
+      {
+        "where": "galar-route-7"
+      },
+      {
+        "where": "bridge-field"
+      },
+      {
+        "where": "giants-mirror"
+      },
+      {
+        "where": "hammerlocke-hills"
+      },
+      {
+        "where": "motostoke-riverbank"
+      },
+      {
+        "where": "rolling-fields"
+      }
+    ],
+    "kings-rock": [
+      {
+        "where": "galar-route-8"
+      }
+    ],
+    "lagging-tail": [
+      {
+        "place": "Digging Duo"
+      }
+    ],
+    "lagreat-ball": [
+      {
+        "where": "galar-route-2"
+      },
+      {
+        "where": "bridge-field"
+      },
+      {
+        "where": "galar-mine"
+      },
+      {
+        "where": "giants-mirror"
+      },
+      {
+        "where": "hammerlocke-hills"
+      },
+      {
+        "where": "motostoke-outskirts"
+      },
+      {
+        "where": "motostoke-riverbank"
+      },
+      {
+        "where": "north-lake-miloch"
+      }
+    ],
+    "laheavy-ball": [
+      {
+        "where": "stow-on-side"
+      },
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "lansat-berry": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "lapoke-ball": [
+      {
+        "where": "galar-route-2"
+      },
+      {
+        "where": "giants-cap"
+      },
+      {
+        "where": "motostoke"
+      },
+      {
+        "where": "rolling-fields"
+      },
+      {
+        "where": "south-lake-miloch"
+      },
+      {
+        "where": "stony-wilderness"
+      },
+      {
+        "where": "watchtower-ruins"
+      },
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "large-leek": [
+      {
+        "where": "giants-cap"
+      }
+    ],
+    "laultra-ball": [
+      {
+        "where": "galar-route-6"
+      },
+      {
+        "where": "bridge-field"
+      }
+    ],
+    "lava-cookie": [
+      {
+        "where": "hammerlocke"
+      },
+      {
+        "where": "wyndon"
+      }
+    ],
+    "lax-mint": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "leaf-stone": [
+      {
+        "where": "lake-of-outrage"
+      },
+      {
+        "where": "turffield"
+      }
+    ],
+    "leftovers": [
+      {
+        "where": "bridge-field"
+      },
+      {
+        "where": "giants-cap"
+      },
+      {
+        "where": "giants-mirror"
+      },
+      {
+        "where": "giants-seat"
+      },
+      {
+        "where": "hammerlocke-hills"
+      },
+      {
+        "where": "lake-of-outrage"
+      },
+      {
+        "where": "motostoke-riverbank"
+      }
+    ],
+    "lemonade": [
+      {
+        "place": "Return with a Pokémon from a PokéJob"
+      }
+    ],
+    "leppa-berry": [
+      {
+        "where": "galar-route-4"
+      },
+      {
+        "where": "galar-route-6"
+      },
+      {
+        "where": "dappled-grove"
+      },
+      {
+        "where": "giants-seat"
+      },
+      {
+        "where": "hammerlocke-hills"
+      },
+      {
+        "where": "motostoke-riverbank"
+      },
+      {
+        "where": "watchtower-ruins"
+      }
+    ],
+    "level-ball": [
+      {
+        "where": "hammerlocke"
+      },
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "liechi-berry": [
+      {
+        "where": "galar-route-7"
+      },
+      {
+        "where": "bridge-field"
+      },
+      {
+        "where": "watchtower-ruins"
+      }
+    ],
+    "life-orb": [
+      {
+        "where": "slumbering-weald"
+      },
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "light-clay": [
+      {
+        "where": "galar-route-6"
+      }
+    ],
+    "lonely-mint": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "love-ball": [
+      {
+        "where": "ballonlea"
+      },
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "love-sweet": [
+      {
+        "where": "hammerlocke"
+      },
+      {
+        "where": "motostoke"
+      },
+      {
+        "where": "wyndon"
+      }
+    ],
+    "lucky-egg": [
+      {
+        "where": "hulbury"
+      }
+    ],
+    "lum-berry": [
+      {
+        "where": "galar-route-7"
+      },
+      {
+        "where": "galar-route-9"
+      },
+      {
+        "where": "axews-eye"
+      },
+      {
+        "where": "giants-cap"
+      }
+    ],
+    "luminous-moss": [
+      {
+        "where": "glimwood-tangle"
+      }
+    ],
+    "lumiose-galette": [
+      {
+        "where": "hammerlocke"
+      },
+      {
+        "where": "motostoke"
+      },
+      {
+        "where": "wyndon"
+      }
+    ],
+    "lure-ball": [
+      {
+        "where": "hulbury"
+      },
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "lustrous-orb": [
+      {
+        "where": "stow-on-side"
+      }
+    ],
+    "luxury-ball": [
+      {
+        "where": "galar-route-8"
+      },
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "magnet": [
+      {
+        "where": "hulbury"
+      }
+    ],
+    "mago-berry": [
+      {
+        "where": "hammerlocke-hills"
+      }
+    ],
+    "maranga-berry": [
+      {
+        "where": "axews-eye"
+      }
+    ],
+    "master-ball": [
+      {
+        "where": "postwick"
+      }
+    ],
+    "max-elixir": [
+      {
+        "where": "galar-route-9"
+      }
+    ],
+    "max-ether": [
+      {
+        "where": "galar-route-2"
+      }
+    ],
+    "max-potion": [
+      {
+        "where": "galar-route-9"
+      }
+    ],
+    "max-repel": [
+      {
+        "place": {
+          "ko": "특성 픽업",
+          "en": "Pickup"
+        }
+      }
+    ],
+    "max-revive": [
+      {
+        "where": "galar-route-8"
+      },
+      {
+        "where": "galar-route-9"
+      },
+      {
+        "where": "galar-route-10"
+      },
+      {
+        "where": "giants-seat"
+      },
+      {
+        "where": "postwick"
+      },
+      {
+        "where": "spikemuth"
+      },
+      {
+        "where": "stony-wilderness"
+      },
+      {
+        "where": "stow-on-side"
+      },
+      {
+        "where": "turffield"
+      },
+      {
+        "where": "watchtower-ruins"
+      },
+      {
+        "where": "wyndon"
+      }
+    ],
+    "mental-herb": [
+      {
+        "where": "slumbering-weald"
+      }
+    ],
+    "metal-coat": [
+      {
+        "where": "stow-on-side"
+      }
+    ],
+    "mild-mint": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "miracle-seed": [
+      {
+        "where": "motostoke"
+      }
+    ],
+    "misty-seed": [
+      {
+        "where": "slumbering-weald"
+      }
+    ],
+    "mixed-mushrooms": [
+      {
+        "place": "Talk to other players avatars in the Wild Area From wild Pokémon that come into your Camp"
+      }
+    ],
+    "modest-mint": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "moomoo-cheese": [
+      {
+        "place": "From wild Pokémon that come into your Camp Return with a Pokémon from a PokéJob"
+      }
+    ],
+    "moomoo-milk": [
+      {
+        "where": "hammerlocke"
+      },
+      {
+        "where": "motostoke"
+      },
+      {
+        "where": "wyndon"
+      }
+    ],
+    "moon-ball": [
+      {
+        "where": "circhester"
+      },
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "moon-stone": [
+      {
+        "where": "dusty-bowl"
+      }
+    ],
+    "muscle-band": [
+      {
+        "where": "hammerlocke"
+      }
+    ],
+    "muscle-wing": [
+      {
+        "where": "galar-route-5"
+      }
+    ],
+    "mystic-water": [
+      {
+        "where": "motostoke"
+      }
+    ],
+    "naive-mint": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "naughty-mint": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "nest-ball": [
+      {
+        "where": "galar-route-4"
+      },
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "net-ball": [
+      {
+        "where": "hulbury"
+      },
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "normal-gem": [
+      {
+        "place": "Digging Duo"
+      }
+    ],
+    "nugget": [
+      {
+        "where": "galar-route-8"
+      },
+      {
+        "where": "hulbury"
+      },
+      {
+        "where": "motostoke"
+      },
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "occa-berry": [
+      {
+        "where": "bridge-field"
+      }
+    ],
+    "old-letter": [
+      {
+        "where": "hammerlocke"
+      }
+    ],
+    "oran-berry": [
+      {
+        "where": "galar-route-3"
+      },
+      {
+        "where": "galar-route-4"
+      },
+      {
+        "where": "dappled-grove"
+      },
+      {
+        "where": "rolling-fields"
+      },
+      {
+        "where": "watchtower-ruins"
+      }
+    ],
+    "oval-charm": [
+      {
+        "where": "circhester"
+      }
+    ],
+    "pack-of-potatoes": [
+      {
+        "place": "From wild Pokémon that come into your Camp"
+      }
+    ],
+    "packaged-curry": [
+      {
+        "place": "From wild Pokémon that come into your Camp Return with a Pokémon from a PokéJob"
+      }
+    ],
+    "paralyze-heal": [
+      {
+        "where": "galar-route-1"
+      },
+      {
+        "where": "galar-route-4"
+      },
+      {
+        "where": "motostoke"
+      }
+    ],
+    "passho-berry": [
+      {
+        "where": "bridge-field"
+      }
+    ],
+    "pasta": [
+      {
+        "place": "Talk to other players avatars in the Wild Area From wild Pokémon that come into your Camp"
+      }
+    ],
+    "payapa-berry": [
+      {
+        "where": "hammerlocke-hills"
+      }
+    ],
+    "pearl": [
+      {
+        "where": "axews-eye"
+      },
+      {
+        "where": "east-lake-axewell"
+      },
+      {
+        "where": "lake-of-outrage"
+      },
+      {
+        "where": "north-lake-miloch"
+      },
+      {
+        "where": "south-lake-miloch"
+      },
+      {
+        "where": "west-lake-axewell"
+      }
+    ],
+    "pearl-string": [
+      {
+        "where": "galar-route-9"
+      },
+      {
+        "where": "lake-of-outrage"
+      }
+    ],
+    "pecha-berry": [
+      {
+        "where": "galar-route-4"
+      },
+      {
+        "where": "dappled-grove"
+      },
+      {
+        "where": "rolling-fields"
+      }
+    ],
+    "persim-berry": [
+      {
+        "where": "galar-route-3"
+      },
+      {
+        "where": "galar-route-5"
+      },
+      {
+        "where": "galar-route-6"
+      },
+      {
+        "where": "dappled-grove"
+      },
+      {
+        "where": "north-lake-miloch"
+      },
+      {
+        "where": "rolling-fields"
+      }
+    ],
+    "petaya-berry": [
+      {
+        "where": "galar-route-9"
+      },
+      {
+        "where": "hammerlocke-hills"
+      },
+      {
+        "where": "lake-of-outrage"
+      },
+      {
+        "where": "north-lake-miloch"
+      }
+    ],
+    "pewter-crunchies": [
+      {
+        "where": "hammerlocke"
+      },
+      {
+        "where": "motostoke"
+      },
+      {
+        "where": "wyndon"
+      }
+    ],
+    "pixie-plate": [
+      {
+        "where": "galar-route-8"
+      }
+    ],
+    "poison-memory": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "poke-ball": [
+      {
+        "where": "galar-route-2"
+      },
+      {
+        "where": "giants-cap"
+      },
+      {
+        "where": "motostoke"
+      },
+      {
+        "where": "rolling-fields"
+      },
+      {
+        "where": "south-lake-miloch"
+      },
+      {
+        "where": "stony-wilderness"
+      },
+      {
+        "where": "watchtower-ruins"
+      },
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "poke-doll": [
+      {
+        "where": "meetup-spot"
+      },
+      {
+        "where": "motostoke"
+      },
+      {
+        "where": "wedgehurst"
+      }
+    ],
+    "pokemon-box": [
+      {
+        "where": "meetup-spot"
+      }
+    ],
+    "pokemon-box-link": [
+      {
+        "where": "meetup-spot"
+      }
+    ],
+    "pomeg-berry": [
+      {
+        "where": "galar-route-7"
+      },
+      {
+        "where": "bridge-field"
+      },
+      {
+        "where": "dappled-grove"
+      },
+      {
+        "where": "giants-mirror"
+      },
+      {
+        "where": "hammerlocke-hills"
+      },
+      {
+        "where": "motostoke-riverbank"
+      }
+    ],
+    "potion": [
+      {
+        "where": "galar-route-1"
+      },
+      {
+        "where": "galar-route-2"
+      },
+      {
+        "where": "wedgehurst"
+      }
+    ],
+    "power-herb": [
+      {
+        "where": "galar-route-10"
+      }
+    ],
+    "pp-max": [
+      {
+        "where": "galar-route-2"
+      },
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "pp-up": [
+      {
+        "where": "galar-route-9"
+      },
+      {
+        "where": "galar-route-10"
+      },
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "precooked-burger": [
+      {
+        "place": "Talk to other players avatars in the Wild Area From wild Pokémon that come into your Camp"
+      }
+    ],
+    "premier-ball": [
+      {
+        "place": "Purchase 10 Balls in a shop"
+      }
+    ],
+    "pretty-wing": [
+      {
+        "where": "galar-route-5"
+      },
+      {
+        "where": "dappled-grove"
+      },
+      {
+        "where": "giants-seat"
+      },
+      {
+        "where": "motostoke-riverbank"
+      }
+    ],
+    "prism-scale": [
+      {
+        "where": "galar-route-2"
+      },
+      {
+        "where": "south-lake-miloch"
+      }
+    ],
+    "protector": [
+      {
+        "where": "galar-route-9"
+      }
+    ],
+    "psychic-memory": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "psychic-seed": [
+      {
+        "where": "galar-route-2"
+      }
+    ],
+    "pungent-root": [
+      {
+        "where": "bridge-field"
+      },
+      {
+        "where": "east-lake-axewell"
+      },
+      {
+        "where": "giants-cap"
+      },
+      {
+        "where": "giants-mirror"
+      },
+      {
+        "where": "west-lake-axewell"
+      }
+    ],
+    "qualot-berry": [
+      {
+        "where": "galar-route-7"
+      },
+      {
+        "where": "bridge-field"
+      },
+      {
+        "where": "giants-cap"
+      },
+      {
+        "where": "giants-mirror"
+      },
+      {
+        "where": "giants-seat"
+      },
+      {
+        "where": "motostoke-riverbank"
+      }
+    ],
+    "quick-ball": [
+      {
+        "where": "galar-route-7"
+      },
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "quiet-mint": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "rage-candy-bar": [
+      {
+        "where": "hammerlocke"
+      },
+      {
+        "where": "motostoke"
+      },
+      {
+        "where": "wyndon"
+      }
+    ],
+    "rare-bone": [
+      {
+        "where": "galar-route-6"
+      },
+      {
+        "where": "dusty-bowl"
+      },
+      {
+        "where": "stow-on-side"
+      }
+    ],
+    "rare-candy": [
+      {
+        "where": "galar-route-2"
+      },
+      {
+        "where": "galar-route-4"
+      },
+      {
+        "where": "galar-route-6"
+      },
+      {
+        "where": "axews-eye"
+      },
+      {
+        "where": "galar-battle-tower"
+      },
+      {
+        "where": "hammerlocke"
+      },
+      {
+        "where": "wyndon"
+      },
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "rash-mint": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "rawst-berry": [
+      {
+        "where": "galar-route-3"
+      },
+      {
+        "where": "galar-route-6"
+      },
+      {
+        "where": "dappled-grove"
+      },
+      {
+        "where": "north-lake-miloch"
+      },
+      {
+        "where": "watchtower-ruins"
+      }
+    ],
+    "razor-claw": [
+      {
+        "where": "dusty-bowl"
+      }
+    ],
+    "relaxed-mint": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "repeat-ball": [
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "repel": [
+      {
+        "where": "galar-route-2"
+      },
+      {
+        "where": "galar-route-4"
+      },
+      {
+        "where": "motostoke"
+      }
+    ],
+    "resist-wing": [
+      {
+        "where": "galar-route-5"
+      }
+    ],
+    "reveal-glass": [
+      {
+        "where": "stow-on-side"
+      }
+    ],
+    "revival-herb": [
+      {
+        "where": "galar-route-4"
+      },
+      {
+        "where": "giants-cap"
+      },
+      {
+        "where": "giants-seat"
+      },
+      {
+        "where": "hammerlocke-hills"
+      },
+      {
+        "where": "motostoke"
+      }
+    ],
+    "revive": [
+      {
+        "where": "galar-route-3"
+      },
+      {
+        "where": "galar-route-5"
+      },
+      {
+        "where": "east-lake-axewell"
+      },
+      {
+        "where": "galar-mine"
+      },
+      {
+        "where": "hammerlocke"
+      },
+      {
+        "where": "hammerlocke-hills"
+      },
+      {
+        "where": "lake-of-outrage"
+      },
+      {
+        "where": "north-lake-miloch"
+      },
+      {
+        "where": "stony-wilderness"
+      },
+      {
+        "where": "stow-on-side"
+      },
+      {
+        "where": "turffield"
+      },
+      {
+        "where": "watchtower-ruins"
+      },
+      {
+        "where": "wedgehurst"
+      }
+    ],
+    "rindo-berry": [
+      {
+        "where": "bridge-field"
+      }
+    ],
+    "rock-memory": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "rocky-helmet": [
+      {
+        "where": "stow-on-side"
+      }
+    ],
+    "roseli-berry": [
+      {
+        "where": "galar-route-9"
+      },
+      {
+        "where": "bridge-field"
+      }
+    ],
+    "rotom-bike": [
+      {
+        "where": "galar-route-5"
+      },
+      {
+        "where": "galar-route-9"
+      }
+    ],
+    "rotom-bike--glistening-black": [
+      {
+        "where": "galar-route-5"
+      },
+      {
+        "where": "galar-route-9"
+      }
+    ],
+    "rotom-bike--sparkling-white": [
+      {
+        "where": "galar-route-5"
+      },
+      {
+        "where": "galar-route-9"
+      }
+    ],
+    "rotom-bike--water-mode": [
+      {
+        "where": "galar-route-5"
+      },
+      {
+        "where": "galar-route-9"
+      }
+    ],
+    "rotom-catalog": [
+      {
+        "where": "wyndon"
+      }
+    ],
+    "rusted-shield": [
+      {
+        "where": "slumbering-weald"
+      }
+    ],
+    "rusted-sword": [
+      {
+        "where": "slumbering-weald"
+      }
+    ],
+    "sachet": [
+      {
+        "where": "motostoke"
+      },
+      {
+        "where": "wyndon"
+      }
+    ],
+    "safety-goggles": [
+      {
+        "where": "galar-route-7"
+      }
+    ],
+    "salac-berry": [
+      {
+        "where": "galar-route-9"
+      },
+      {
+        "where": "axews-eye"
+      },
+      {
+        "where": "motostoke-riverbank"
+      }
+    ],
+    "salad-mix": [
+      {
+        "place": "Talk to other players avatars in the Wild Area From wild Pokémon that come into your Camp"
+      }
+    ],
+    "sassy-mint": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "sausages": [
+      {
+        "place": {
+          "ko": "와일드에리어",
+          "en": "Wild Area"
+        }
+      }
+    ],
+    "scope-lens": [
+      {
+        "where": "galar-route-9"
+      }
+    ],
+    "serious-mint": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "shalour-sable": [
+      {
+        "where": "hammerlocke"
+      },
+      {
+        "where": "motostoke"
+      },
+      {
+        "where": "wyndon"
+      }
+    ],
+    "sharp-beak": [
+      {
+        "where": "galar-route-4"
+      }
+    ],
+    "shed-shell": [
+      {
+        "where": "galar-route-5"
+      }
+    ],
+    "shell-bell": [
+      {
+        "where": "hulbury"
+      }
+    ],
+    "shiny-charm": [
+      {
+        "where": "circhester"
+      }
+    ],
+    "shiny-stone": [
+      {
+        "where": "galar-route-8"
+      },
+      {
+        "where": "lake-of-outrage"
+      }
+    ],
+    "shock-drive": [
+      {
+        "where": "stow-on-side"
+      }
+    ],
+    "shuca-berry": [
+      {
+        "where": "lake-of-outrage"
+      }
+    ],
+    "silk-scarf": [
+      {
+        "where": "motostoke"
+      }
+    ],
+    "silver-powder": [
+      {
+        "where": "galar-route-4"
+      }
+    ],
+    "sitrus-berry": [
+      {
+        "where": "galar-route-6"
+      },
+      {
+        "where": "bridge-field"
+      },
+      {
+        "where": "giants-seat"
+      },
+      {
+        "where": "hammerlocke-hills"
+      },
+      {
+        "where": "motostoke-riverbank"
+      },
+      {
+        "where": "watchtower-ruins"
+      }
+    ],
+    "smoke-ball": [
+      {
+        "where": "slumbering-weald"
+      }
+    ],
+    "smooth-rock": [
+      {
+        "where": "hammerlocke"
+      }
+    ],
+    "snowball": [
+      {
+        "place": "From wild Pokémon that come into your Camp"
+      }
+    ],
+    "soda-pop": [
+      {
+        "place": "Return with a Pokémon from a PokéJob"
+      }
+    ],
+    "soft-sand": [
+      {
+        "where": "galar-mine-no-2"
+      }
+    ],
+    "sonias-book": [
+      {
+        "where": "slumbering-weald"
+      }
+    ],
+    "soothe-bell": [
+      {
+        "where": "hammerlocke"
+      }
+    ],
+    "soul-dew": [
+      {
+        "where": "stow-on-side"
+      }
+    ],
+    "spice-mix": [
+      {
+        "place": "Talk to other players avatars in the Wild Area From wild Pokémon that come into your Camp"
+      }
+    ],
+    "star-piece": [
+      {
+        "where": "galar-mine"
+      },
+      {
+        "where": "galar-mine-no-2"
+      },
+      {
+        "where": "giants-cap"
+      },
+      {
+        "where": "hammerlocke-hills"
+      },
+      {
+        "where": "motostoke"
+      },
+      {
+        "where": "stony-wilderness"
+      }
+    ],
+    "stardust": [
+      {
+        "where": "dusty-bowl"
+      },
+      {
+        "where": "galar-mine"
+      },
+      {
+        "where": "stony-wilderness"
+      }
+    ],
+    "starf-berry": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "steel-memory": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "sticky-barb": [
+      {
+        "place": "Digging Duo"
+      }
+    ],
+    "strawberry-sweet": [
+      {
+        "where": "hammerlocke"
+      },
+      {
+        "where": "motostoke"
+      },
+      {
+        "where": "wyndon"
+      }
+    ],
+    "sun-stone": [
+      {
+        "where": "dusty-bowl"
+      }
+    ],
+    "super-potion": [
+      {
+        "where": "galar-route-3"
+      },
+      {
+        "where": "galar-mine"
+      },
+      {
+        "where": "hulbury"
+      }
+    ],
+    "super-repel": [
+      {
+        "where": "hammerlocke"
+      }
+    ],
+    "sweet-apple": [
+      {
+        "where": "axews-eye"
+      },
+      {
+        "where": "hammerlocke"
+      }
+    ],
+    "sweet-heart": [
+      {
+        "where": "hammerlocke"
+      },
+      {
+        "where": "motostoke"
+      },
+      {
+        "where": "wyndon"
+      }
+    ],
+    "swift-wing": [
+      {
+        "where": "galar-route-5"
+      }
+    ],
+    "tamato-berry": [
+      {
+        "where": "galar-route-7"
+      },
+      {
+        "where": "bridge-field"
+      },
+      {
+        "where": "giants-cap"
+      },
+      {
+        "where": "giants-mirror"
+      },
+      {
+        "where": "motostoke-riverbank"
+      }
+    ],
+    "tanga-berry": [
+      {
+        "where": "galar-route-9"
+      },
+      {
+        "where": "motostoke-riverbank"
+      }
+    ],
+    "tart-apple": [
+      {
+        "where": "axews-eye"
+      },
+      {
+        "where": "hammerlocke"
+      }
+    ],
+    "terrain-extender": [
+      {
+        "where": "galar-route-8"
+      }
+    ],
+    "throat-spray": [
+      {
+        "where": "motostoke"
+      }
+    ],
+    "thunder-stone": [
+      {
+        "where": "lake-of-outrage"
+      },
+      {
+        "where": "north-lake-miloch"
+      }
+    ],
+    "timer-ball": [
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "timid-mint": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "tin-of-beans": [
+      {
+        "place": "Talk to other players avatars in the Wild Area From wild Pokémon that come into your Camp"
+      }
+    ],
+    "tiny-mushroom": [
+      {
+        "where": "bridge-field"
+      },
+      {
+        "where": "dappled-grove"
+      },
+      {
+        "where": "dusty-bowl"
+      },
+      {
+        "where": "east-lake-axewell"
+      },
+      {
+        "where": "rolling-fields"
+      },
+      {
+        "where": "south-lake-miloch"
+      },
+      {
+        "where": "watchtower-ruins"
+      }
+    ],
+    "tm02": [
+      {
+        "where": "motostoke"
+      }
+    ],
+    "tm06": [
+      {
+        "where": "stow-on-side"
+      }
+    ],
+    "tm07": [
+      {
+        "where": "galar-route-4"
+      }
+    ],
+    "tm10": [
+      {
+        "where": "turffield"
+      }
+    ],
+    "tm11": [
+      {
+        "where": "turffield"
+      }
+    ],
+    "tm14": [
+      {
+        "place": {
+          "ko": "와일드에리어",
+          "en": "Wild Area"
+        }
+      }
+    ],
+    "tm15": [
+      {
+        "where": "galar-route-6"
+      }
+    ],
+    "tm16": [
+      {
+        "where": "circhester"
+      }
+    ],
+    "tm21": [
+      {
+        "where": "ballonlea"
+      }
+    ],
+    "tm22": [
+      {
+        "where": "galar-route-9"
+      }
+    ],
+    "tm24": [
+      {
+        "where": "glimwood-tangle"
+      }
+    ],
+    "tm26": [
+      {
+        "where": "galar-mine"
+      }
+    ],
+    "tm27": [
+      {
+        "where": "circhester"
+      }
+    ],
+    "tm29": [
+      {
+        "where": "hammerlocke"
+      }
+    ],
+    "tm30": [
+      {
+        "where": "galar-route-6"
+      }
+    ],
+    "tm31": [
+      {
+        "where": "galar-route-5"
+      }
+    ],
+    "tm36": [
+      {
+        "where": "hulbury"
+      }
+    ],
+    "tm37": [
+      {
+        "where": "galar-route-3"
+      }
+    ],
+    "tm38": [
+      {
+        "where": "motostoke"
+      }
+    ],
+    "tm39": [
+      {
+        "where": "motostoke-riverbank"
+      }
+    ],
+    "tm40": [
+      {
+        "where": "wedgehurst"
+      }
+    ],
+    "tm42": [
+      {
+        "where": "stow-on-side"
+      }
+    ],
+    "tm43": [
+      {
+        "where": "galar-route-8"
+      }
+    ],
+    "tm45": [
+      {
+        "where": "galar-route-9"
+      }
+    ],
+    "tm47": [
+      {
+        "where": "circhester"
+      }
+    ],
+    "tm48": [
+      {
+        "where": "circhester"
+      }
+    ],
+    "tm49": [
+      {
+        "where": "galar-mine-no-2"
+      }
+    ],
+    "tm51": [
+      {
+        "where": "circhester"
+      }
+    ],
+    "tm53": [
+      {
+        "where": "galar-mine-no-2"
+      }
+    ],
+    "tm54": [
+      {
+        "where": "galar-route-3"
+      }
+    ],
+    "tm56": [
+      {
+        "where": "glimwood-tangle"
+      }
+    ],
+    "tm57": [
+      {
+        "where": "galar-route-2"
+      }
+    ],
+    "tm58": [
+      {
+        "where": "galar-route-7"
+      }
+    ],
+    "tm64": [
+      {
+        "where": "galar-route-9"
+      }
+    ],
+    "tm65": [
+      {
+        "where": "lake-of-outrage"
+      }
+    ],
+    "tm69": [
+      {
+        "where": "galar-route-2"
+      }
+    ],
+    "tm73": [
+      {
+        "where": "dusty-bowl"
+      }
+    ],
+    "tm74": [
+      {
+        "where": "stow-on-side"
+      }
+    ],
+    "tm75": [
+      {
+        "where": "bridge-field"
+      }
+    ],
+    "tm77": [
+      {
+        "where": "ballonlea"
+      }
+    ],
+    "tm78": [
+      {
+        "where": "ballonlea"
+      }
+    ],
+    "tm79": [
+      {
+        "where": "hulbury"
+      }
+    ],
+    "tm80": [
+      {
+        "place": {
+          "ko": "와일드에리어",
+          "en": "Wild Area"
+        }
+      }
+    ],
+    "tm81": [
+      {
+        "where": "giants-seat"
+      }
+    ],
+    "tm82": [
+      {
+        "where": "hulbury"
+      }
+    ],
+    "tm84": [
+      {
+        "where": "rolling-fields"
+      }
+    ],
+    "tm85": [
+      {
+        "where": "spikemuth"
+      }
+    ],
+    "tm86": [
+      {
+        "where": "slumbering-weald"
+      }
+    ],
+    "tm87": [
+      {
+        "where": "ballonlea"
+      }
+    ],
+    "tm93": [
+      {
+        "where": "wyndon"
+      }
+    ],
+    "tm95": [
+      {
+        "where": "axews-eye"
+      }
+    ],
+    "tm96": [
+      {
+        "where": "galar-route-8"
+      }
+    ],
+    "tm97": [
+      {
+        "where": "turffield"
+      }
+    ],
+    "tm98": [
+      {
+        "where": "galar-route-10"
+      }
+    ],
+    "tm99": [
+      {
+        "where": "hammerlocke"
+      }
+    ],
+    "toxic-orb": [
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "tr00": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr01": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr02": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr03": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr04": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr05": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr06": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr07": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr08": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr09": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr10": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr11": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr12": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr13": [
+      {
+        "where": "motostoke"
+      }
+    ],
+    "tr14": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr15": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr16": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr17": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr18": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr19": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr20": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr21": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr22": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr23": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr24": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr25": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr26": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr27": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr28": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr29": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr30": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr31": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr32": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr33": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr34": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr35": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr36": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr37": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr38": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr39": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr40": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr41": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr42": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr43": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr44": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr45": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr46": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr47": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr48": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr49": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr50": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr51": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr52": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr53": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr54": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr55": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr56": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr57": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr58": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr59": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr60": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr61": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr62": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr63": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr64": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr65": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr66": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr67": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr68": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr69": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr70": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr71": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr72": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr73": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr74": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr75": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr76": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr77": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr78": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr79": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr80": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr81": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr82": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr83": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr84": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr85": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr86": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr87": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr88": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr89": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr90": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr91": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr92": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr93": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr94": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr95": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr96": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr97": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr98": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "tr99": [
+      {
+        "place": {
+          "ko": "맥스 레이드배틀",
+          "en": "Max Raid Battles"
+        }
+      }
+    ],
+    "ultra-ball": [
+      {
+        "where": "galar-route-6"
+      },
+      {
+        "where": "bridge-field"
+      }
+    ],
+    "utility-umbrella": [
+      {
+        "where": "hammerlocke"
+      }
+    ],
+    "wacan-berry": [
+      {
+        "where": "hammerlocke-hills"
+      }
+    ],
+    "water-memory": [
+      {
+        "where": "galar-battle-tower"
+      }
+    ],
+    "water-stone": [
+      {
+        "where": "galar-route-2"
+      },
+      {
+        "where": "bridge-field"
+      },
+      {
+        "where": "lake-of-outrage"
+      }
+    ],
+    "whipped-dream": [
+      {
+        "where": "hammerlocke"
+      },
+      {
+        "where": "motostoke"
+      }
+    ],
+    "white-herb": [
+      {
+        "where": "watchtower-ruins"
+      }
+    ],
+    "wide-lens": [
+      {
+        "where": "circhester"
+      }
+    ],
+    "wiki-berry": [
+      {
+        "where": "galar-route-9"
+      },
+      {
+        "where": "bridge-field"
+      }
+    ],
+    "wise-glasses": [
+      {
+        "where": "hammerlocke"
+      }
+    ],
+    "wishing-piece": [
+      {
+        "where": "dappled-grove"
+      },
+      {
+        "where": "motostoke-riverbank"
+      },
+      {
+        "place": {
+          "ko": "슛스타디움",
+          "en": "Wyndon Stadium"
+        }
+      }
+    ],
+    "wishing-star": [
+      {
+        "where": "galar-route-2"
+      }
+    ],
+    "x-accuracy": [
+      {
+        "where": "galar-route-4"
+      },
+      {
+        "where": "motostoke"
+      }
+    ],
+    "x-attack": [
+      {
+        "where": "galar-route-10"
+      },
+      {
+        "where": "hammerlocke"
+      },
+      {
+        "where": "turffield"
+      }
+    ],
+    "x-defense": [
+      {
+        "where": "galar-route-3"
+      },
+      {
+        "where": "galar-route-8"
+      }
+    ],
+    "x-speed": [
+      {
+        "where": "wyndon"
+      }
+    ],
+    "yache-berry": [
+      {
+        "where": "lake-of-outrage"
+      }
+    ],
+    "zoom-lens": [
+      {
+        "where": "galar-route-9"
+      }
+    ],
+    "zygarde-cube": [
+      {
+        "where": "stow-on-side"
+      }
+    ]
+  },
+  "tutors": {}
+}

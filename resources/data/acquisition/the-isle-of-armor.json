@@ -1,0 +1,2450 @@
+{
+  "_comment": [
+    "게임(버전 그룹)별 입수 사전 (ui/dex/guidebook.h가 읽는다). 형식은 docs/i18n/README.md 참고.",
+    "scripts/i18n/check_acquisition.py로 검증해 넣었다. 출처는 _sources."
+  ],
+  "_sources": [
+    "Serebii.net ItemDex (https://www.serebii.net/itemdex/) — 장소는 PokéAPI/게임 텍스트로 한국어화"
+  ],
+  "versionGroup": "the-isle-of-armor",
+  "items": {
+    "ability-capsule": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "absorb-bulb": [
+      {
+        "where": "training-lowlands"
+      }
+    ],
+    "adamant-mint": [
+      {
+        "where": "soothing-wetlands"
+      },
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "adrenaline-orb": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "aguav-berry": [
+      {
+        "where": "soothing-wetlands"
+      },
+      {
+        "where": "workout-sea"
+      }
+    ],
+    "air-balloon": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "amulet-coin": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "apicot-berry": [
+      {
+        "where": "soothing-wetlands"
+      }
+    ],
+    "armorite-ore": [
+      {
+        "where": "challenge-road"
+      },
+      {
+        "where": "courageous-cavern"
+      },
+      {
+        "where": "potbottom-desert"
+      },
+      {
+        "where": "stepping-stone-sea"
+      },
+      {
+        "where": "master-dojo"
+      },
+      {
+        "place": {
+          "ko": "갑옷섬",
+          "en": "Isle of Armor"
+        }
+      }
+    ],
+    "assault-vest": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "balm-mushroom": [
+      {
+        "where": "forest-of-focus"
+      }
+    ],
+    "big-mushroom": [
+      {
+        "where": "fields-of-honor"
+      },
+      {
+        "where": "forest-of-focus"
+      },
+      {
+        "where": "training-lowlands"
+      }
+    ],
+    "big-nugget": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "big-pearl": [
+      {
+        "where": "fields-of-honor"
+      },
+      {
+        "where": "challenge-beach"
+      },
+      {
+        "where": "loop-lagoon"
+      },
+      {
+        "where": "training-lowlands"
+      },
+      {
+        "where": "workout-sea"
+      },
+      {
+        "where": "stepping-stone-sea"
+      },
+      {
+        "where": "honeycalm-sea"
+      }
+    ],
+    "black-apricorn": [
+      {
+        "where": "fields-of-honor"
+      },
+      {
+        "where": "forest-of-focus"
+      },
+      {
+        "where": "challenge-beach"
+      },
+      {
+        "place": {
+          "ko": "갑옷섬",
+          "en": "Isle of Armor"
+        }
+      }
+    ],
+    "black-glasses": [
+      {
+        "where": "challenge-road"
+      }
+    ],
+    "black-sludge": [
+      {
+        "where": "soothing-wetlands"
+      }
+    ],
+    "blue-apricorn": [
+      {
+        "where": "forest-of-focus"
+      },
+      {
+        "where": "challenge-beach"
+      },
+      {
+        "place": {
+          "ko": "갑옷섬",
+          "en": "Isle of Armor"
+        }
+      }
+    ],
+    "blunder-policy": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "bold-mint": [
+      {
+        "where": "soothing-wetlands"
+      },
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "bottle-cap": [
+      {
+        "where": "potbottom-desert"
+      }
+    ],
+    "brave-mint": [
+      {
+        "where": "soothing-wetlands"
+      },
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "bright-powder": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "calcium": [
+      {
+        "where": "workout-sea"
+      }
+    ],
+    "calm-mint": [
+      {
+        "where": "soothing-wetlands"
+      },
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "carbos": [
+      {
+        "where": "training-lowlands"
+      }
+    ],
+    "careful-mint": [
+      {
+        "where": "soothing-wetlands"
+      },
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "cell-battery": [
+      {
+        "where": "challenge-beach"
+      }
+    ],
+    "charcoal": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "cleanse-tag": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "clever-wing": [
+      {
+        "where": "workout-sea"
+      },
+      {
+        "where": "stepping-stone-sea"
+      },
+      {
+        "where": "insular-sea"
+      },
+      {
+        "where": "honeycalm-sea"
+      }
+    ],
+    "coba-berry": [
+      {
+        "where": "fields-of-honor"
+      },
+      {
+        "where": "training-lowlands"
+      }
+    ],
+    "comet-shard": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "cracked-pot": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "damp-rock": [
+      {
+        "where": "soothing-wetlands"
+      }
+    ],
+    "destiny-knot": [
+      {
+        "where": "workout-sea"
+      }
+    ],
+    "dive-ball": [
+      {
+        "where": "challenge-beach"
+      },
+      {
+        "where": "workout-sea"
+      }
+    ],
+    "dragon-fang": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "dragon-scale": [
+      {
+        "where": "honeycalm-sea"
+      },
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "dubious-disc": [
+      {
+        "where": "workout-sea"
+      }
+    ],
+    "dusk-ball": [
+      {
+        "where": "brawlers-cave"
+      },
+      {
+        "where": "courageous-cavern"
+      }
+    ],
+    "electric-seed": [
+      {
+        "where": "stepping-stone-sea"
+      }
+    ],
+    "energy-powder": [
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "energy-root": [
+      {
+        "where": "fields-of-honor"
+      }
+    ],
+    "ether": [
+      {
+        "where": "training-lowlands"
+      }
+    ],
+    "everstone": [
+      {
+        "where": "challenge-road"
+      }
+    ],
+    "eviolite": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "expert-belt": [
+      {
+        "where": "fields-of-honor"
+      }
+    ],
+    "fancy-apple": [
+      {
+        "where": "fields-of-honor"
+      }
+    ],
+    "fast-ball": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "figy-berry": [
+      {
+        "where": "soothing-wetlands"
+      }
+    ],
+    "fire-stone": [
+      {
+        "where": "potbottom-desert"
+      }
+    ],
+    "flame-orb": [
+      {
+        "where": "potbottom-desert"
+      }
+    ],
+    "float-stone": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "friend-ball": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "galarica-cuff": [
+      {
+        "where": "workout-sea"
+      }
+    ],
+    "galarica-twig": [
+      {
+        "where": "fields-of-honor"
+      },
+      {
+        "where": "soothing-wetlands"
+      },
+      {
+        "where": "forest-of-focus"
+      },
+      {
+        "where": "challenge-beach"
+      },
+      {
+        "where": "loop-lagoon"
+      },
+      {
+        "where": "workout-sea"
+      },
+      {
+        "where": "stepping-stone-sea"
+      },
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "ganlon-berry": [
+      {
+        "where": "soothing-wetlands"
+      }
+    ],
+    "genius-wing": [
+      {
+        "where": "workout-sea"
+      },
+      {
+        "where": "stepping-stone-sea"
+      },
+      {
+        "where": "insular-sea"
+      },
+      {
+        "where": "honeycalm-sea"
+      }
+    ],
+    "gentle-mint": [
+      {
+        "where": "soothing-wetlands"
+      },
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "gold-bottle-cap": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "grassy-seed": [
+      {
+        "where": "stepping-stone-sea"
+      }
+    ],
+    "great-ball": [
+      {
+        "where": "fields-of-honor"
+      },
+      {
+        "where": "courageous-cavern"
+      },
+      {
+        "where": "training-lowlands"
+      }
+    ],
+    "green-apricorn": [
+      {
+        "where": "soothing-wetlands"
+      },
+      {
+        "where": "forest-of-focus"
+      },
+      {
+        "place": {
+          "ko": "갑옷섬",
+          "en": "Isle of Armor"
+        }
+      }
+    ],
+    "grepa-berry": [
+      {
+        "where": "training-lowlands"
+      }
+    ],
+    "grip-claw": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "hard-stone": [
+      {
+        "where": "brawlers-cave"
+      },
+      {
+        "where": "challenge-road"
+      }
+    ],
+    "hasty-mint": [
+      {
+        "where": "soothing-wetlands"
+      },
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "heal-ball": [
+      {
+        "where": "challenge-beach"
+      },
+      {
+        "where": "brawlers-cave"
+      },
+      {
+        "where": "warm-up-tunnel"
+      }
+    ],
+    "health-wing": [
+      {
+        "where": "workout-sea"
+      },
+      {
+        "where": "stepping-stone-sea"
+      },
+      {
+        "where": "insular-sea"
+      },
+      {
+        "where": "honeycalm-sea"
+      }
+    ],
+    "heat-rock": [
+      {
+        "where": "loop-lagoon"
+      }
+    ],
+    "heavy-ball": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "hondew-berry": [
+      {
+        "where": "stepping-stone-sea"
+      }
+    ],
+    "honey": [
+      {
+        "where": "loop-lagoon"
+      },
+      {
+        "where": "insular-sea"
+      },
+      {
+        "where": "honeycalm-island"
+      }
+    ],
+    "hp-up": [
+      {
+        "where": "fields-of-honor"
+      }
+    ],
+    "hyper-potion": [
+      {
+        "where": "forest-of-focus"
+      },
+      {
+        "where": "brawlers-cave"
+      }
+    ],
+    "iapapa-berry": [
+      {
+        "where": "soothing-wetlands"
+      }
+    ],
+    "icy-rock": [
+      {
+        "where": "courageous-cavern"
+      }
+    ],
+    "impish-mint": [
+      {
+        "where": "soothing-wetlands"
+      },
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "iron": [
+      {
+        "where": "brawlers-cave"
+      }
+    ],
+    "jolly-mint": [
+      {
+        "where": "soothing-wetlands"
+      },
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "kasib-berry": [
+      {
+        "where": "fields-of-honor"
+      }
+    ],
+    "kelpsy-berry": [
+      {
+        "where": "workout-sea"
+      }
+    ],
+    "kings-rock": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "lagreat-ball": [
+      {
+        "where": "fields-of-honor"
+      },
+      {
+        "where": "courageous-cavern"
+      },
+      {
+        "where": "training-lowlands"
+      }
+    ],
+    "laheavy-ball": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "lapoke-ball": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "large-leek": [
+      {
+        "where": "fields-of-honor"
+      },
+      {
+        "where": "challenge-beach"
+      },
+      {
+        "where": "training-lowlands"
+      }
+    ],
+    "laultra-ball": [
+      {
+        "where": "training-lowlands"
+      },
+      {
+        "where": "potbottom-desert"
+      }
+    ],
+    "lax-mint": [
+      {
+        "where": "soothing-wetlands"
+      },
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "leaf-stone": [
+      {
+        "where": "forest-of-focus"
+      }
+    ],
+    "leppa-berry": [
+      {
+        "where": "fields-of-honor"
+      }
+    ],
+    "level-ball": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "liechi-berry": [
+      {
+        "where": "soothing-wetlands"
+      }
+    ],
+    "life-orb": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "light-ball": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "light-clay": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "lonely-mint": [
+      {
+        "where": "soothing-wetlands"
+      },
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "love-ball": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "lure-ball": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "luxury-ball": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "macho-brace": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "magnet": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "mago-berry": [
+      {
+        "where": "soothing-wetlands"
+      }
+    ],
+    "maranga-berry": [
+      {
+        "where": "challenge-beach"
+      }
+    ],
+    "mark-charm": [
+      {
+        "where": "fields-of-honor"
+      }
+    ],
+    "max-mushrooms": [
+      {
+        "where": "forest-of-focus"
+      },
+      {
+        "where": "brawlers-cave"
+      },
+      {
+        "where": "courageous-cavern"
+      },
+      {
+        "where": "warm-up-tunnel"
+      }
+    ],
+    "max-potion": [
+      {
+        "where": "training-lowlands"
+      }
+    ],
+    "max-repel": [
+      {
+        "where": "potbottom-desert"
+      }
+    ],
+    "max-revive": [
+      {
+        "where": "fields-of-honor"
+      },
+      {
+        "where": "brawlers-cave"
+      },
+      {
+        "where": "courageous-cavern"
+      }
+    ],
+    "metal-coat": [
+      {
+        "where": "challenge-road"
+      }
+    ],
+    "metal-powder": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "mild-mint": [
+      {
+        "where": "soothing-wetlands"
+      },
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "miracle-seed": [
+      {
+        "where": "forest-of-focus"
+      }
+    ],
+    "misty-seed": [
+      {
+        "where": "stepping-stone-sea"
+      }
+    ],
+    "modest-mint": [
+      {
+        "where": "soothing-wetlands"
+      },
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "moomoo-milk": [
+      {
+        "where": "training-lowlands"
+      }
+    ],
+    "moon-ball": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "moon-stone": [
+      {
+        "where": "brawlers-cave"
+      }
+    ],
+    "muscle-band": [
+      {
+        "where": "challenge-road"
+      }
+    ],
+    "muscle-wing": [
+      {
+        "where": "workout-sea"
+      },
+      {
+        "where": "stepping-stone-sea"
+      },
+      {
+        "where": "insular-sea"
+      },
+      {
+        "where": "honeycalm-sea"
+      }
+    ],
+    "mystic-water": [
+      {
+        "where": "challenge-beach"
+      }
+    ],
+    "naive-mint": [
+      {
+        "where": "soothing-wetlands"
+      },
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "naughty-mint": [
+      {
+        "where": "soothing-wetlands"
+      },
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "nest-ball": [
+      {
+        "where": "brawlers-cave"
+      }
+    ],
+    "net-ball": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "normal-gem": [
+      {
+        "where": "brawlers-cave"
+      }
+    ],
+    "nugget": [
+      {
+        "where": "fields-of-honor"
+      }
+    ],
+    "odd-incense": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "old-gateau": [
+      {
+        "where": "forest-of-focus"
+      }
+    ],
+    "oval-stone": [
+      {
+        "where": "courageous-cavern"
+      }
+    ],
+    "pearl": [
+      {
+        "where": "fields-of-honor"
+      },
+      {
+        "where": "challenge-beach"
+      },
+      {
+        "where": "loop-lagoon"
+      },
+      {
+        "where": "training-lowlands"
+      },
+      {
+        "where": "workout-sea"
+      },
+      {
+        "where": "stepping-stone-sea"
+      },
+      {
+        "where": "honeycalm-sea"
+      }
+    ],
+    "pearl-string": [
+      {
+        "where": "fields-of-honor"
+      },
+      {
+        "where": "challenge-beach"
+      },
+      {
+        "where": "loop-lagoon"
+      },
+      {
+        "where": "stepping-stone-sea"
+      },
+      {
+        "where": "honeycalm-sea"
+      }
+    ],
+    "pecha-berry": [
+      {
+        "where": "fields-of-honor"
+      }
+    ],
+    "petaya-berry": [
+      {
+        "where": "challenge-beach"
+      }
+    ],
+    "pink-apricorn": [
+      {
+        "where": "fields-of-honor"
+      },
+      {
+        "where": "soothing-wetlands"
+      },
+      {
+        "where": "forest-of-focus"
+      },
+      {
+        "place": {
+          "ko": "갑옷섬",
+          "en": "Isle of Armor"
+        }
+      }
+    ],
+    "poison-barb": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "poke-ball": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "poke-doll": [
+      {
+        "where": "soothing-wetlands"
+      }
+    ],
+    "pomeg-berry": [
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "pp-up": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "premier-ball": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "pretty-wing": [
+      {
+        "where": "workout-sea"
+      },
+      {
+        "where": "stepping-stone-sea"
+      },
+      {
+        "where": "insular-sea"
+      },
+      {
+        "where": "honeycalm-sea"
+      }
+    ],
+    "prism-scale": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "protector": [
+      {
+        "where": "potbottom-desert"
+      }
+    ],
+    "protein": [
+      {
+        "where": "soothing-wetlands"
+      }
+    ],
+    "psychic-seed": [
+      {
+        "where": "stepping-stone-sea"
+      }
+    ],
+    "qualot-berry": [
+      {
+        "where": "loop-lagoon"
+      }
+    ],
+    "quick-ball": [
+      {
+        "where": "courageous-cavern"
+      },
+      {
+        "where": "potbottom-desert"
+      }
+    ],
+    "quick-powder": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "quiet-mint": [
+      {
+        "where": "soothing-wetlands"
+      },
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "rare-bone": [
+      {
+        "where": "brawlers-cave"
+      },
+      {
+        "where": "potbottom-desert"
+      }
+    ],
+    "rare-candy": [
+      {
+        "where": "training-lowlands"
+      },
+      {
+        "where": "workout-sea"
+      }
+    ],
+    "rash-mint": [
+      {
+        "where": "soothing-wetlands"
+      },
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "rawst-berry": [
+      {
+        "where": "fields-of-honor"
+      }
+    ],
+    "razor-claw": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "reaper-cloth": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "red-apricorn": [
+      {
+        "where": "fields-of-honor"
+      },
+      {
+        "where": "soothing-wetlands"
+      },
+      {
+        "where": "forest-of-focus"
+      },
+      {
+        "place": {
+          "ko": "갑옷섬",
+          "en": "Isle of Armor"
+        }
+      }
+    ],
+    "red-card": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "relaxed-mint": [
+      {
+        "where": "soothing-wetlands"
+      },
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "repeat-ball": [
+      {
+        "where": "workout-sea"
+      }
+    ],
+    "resist-wing": [
+      {
+        "where": "workout-sea"
+      },
+      {
+        "where": "stepping-stone-sea"
+      },
+      {
+        "where": "insular-sea"
+      },
+      {
+        "where": "honeycalm-sea"
+      }
+    ],
+    "revival-herb": [
+      {
+        "where": "challenge-beach"
+      },
+      {
+        "where": "training-lowlands"
+      }
+    ],
+    "revive": [
+      {
+        "where": "fields-of-honor"
+      },
+      {
+        "where": "challenge-beach"
+      }
+    ],
+    "ring-target": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "rocky-helmet": [
+      {
+        "where": "potbottom-desert"
+      }
+    ],
+    "room-service": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "sachet": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "safari-ball": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "salac-berry": [
+      {
+        "where": "soothing-wetlands"
+      }
+    ],
+    "sassy-mint": [
+      {
+        "where": "soothing-wetlands"
+      },
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "scope-lens": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "sea-incense": [
+      {
+        "where": "loop-lagoon"
+      }
+    ],
+    "serious-mint": [
+      {
+        "where": "soothing-wetlands"
+      },
+      {
+        "where": "challenge-beach"
+      },
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "sharp-beak": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "shed-shell": [
+      {
+        "where": "forest-of-focus"
+      }
+    ],
+    "shell-bell": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "silver-powder": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "sitrus-berry": [
+      {
+        "where": "forest-of-focus"
+      }
+    ],
+    "smoke-ball": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "smooth-rock": [
+      {
+        "where": "potbottom-desert"
+      }
+    ],
+    "snowball": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "soft-sand": [
+      {
+        "where": "fields-of-honor"
+      },
+      {
+        "where": "challenge-beach"
+      },
+      {
+        "where": "loop-lagoon"
+      },
+      {
+        "where": "training-lowlands"
+      },
+      {
+        "where": "potbottom-desert"
+      },
+      {
+        "where": "workout-sea"
+      }
+    ],
+    "spell-tag": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "sport-ball": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "star-piece": [
+      {
+        "where": "brawlers-cave"
+      },
+      {
+        "where": "stepping-stone-sea"
+      },
+      {
+        "where": "honeycalm-sea"
+      }
+    ],
+    "stardust": [
+      {
+        "where": "fields-of-honor"
+      },
+      {
+        "where": "brawlers-cave"
+      },
+      {
+        "where": "courageous-cavern"
+      },
+      {
+        "where": "loop-lagoon"
+      },
+      {
+        "where": "potbottom-desert"
+      },
+      {
+        "where": "workout-sea"
+      },
+      {
+        "where": "stepping-stone-sea"
+      },
+      {
+        "where": "honeycalm-sea"
+      }
+    ],
+    "sticky-barb": [
+      {
+        "where": "forest-of-focus"
+      }
+    ],
+    "strawberry-sweet": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "style-card": [
+      {
+        "where": "fields-of-honor"
+      }
+    ],
+    "sun-stone": [
+      {
+        "where": "fields-of-honor"
+      },
+      {
+        "where": "potbottom-desert"
+      }
+    ],
+    "swift-wing": [
+      {
+        "where": "workout-sea"
+      },
+      {
+        "where": "stepping-stone-sea"
+      },
+      {
+        "where": "insular-sea"
+      },
+      {
+        "where": "honeycalm-sea"
+      }
+    ],
+    "tamato-berry": [
+      {
+        "where": "workout-sea"
+      }
+    ],
+    "terrain-extender": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "thick-club": [
+      {
+        "where": "warm-up-tunnel"
+      }
+    ],
+    "timer-ball": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "timid-mint": [
+      {
+        "where": "soothing-wetlands"
+      },
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "tiny-mushroom": [
+      {
+        "where": "fields-of-honor"
+      },
+      {
+        "where": "forest-of-focus"
+      },
+      {
+        "where": "courageous-cavern"
+      }
+    ],
+    "tm00": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "toxic-orb": [
+      {
+        "where": "stepping-stone-sea"
+      }
+    ],
+    "tr00": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr01": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr02": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr03": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr04": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr05": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr06": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr07": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr08": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr09": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr10": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr11": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr12": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr13": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr14": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr15": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr16": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr17": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr18": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr19": [
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "tr20": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr21": [
+      {
+        "where": "potbottom-desert"
+      }
+    ],
+    "tr22": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr23": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr24": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr25": [
+      {
+        "where": "loop-lagoon"
+      }
+    ],
+    "tr26": [
+      {
+        "where": "soothing-wetlands"
+      }
+    ],
+    "tr27": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr28": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr29": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr30": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr31": [
+      {
+        "where": "brawlers-cave"
+      }
+    ],
+    "tr32": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr33": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr34": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr35": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr36": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr37": [
+      {
+        "where": "courageous-cavern"
+      }
+    ],
+    "tr38": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr39": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr40": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr41": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr42": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr43": [
+      {
+        "where": "workout-sea"
+      }
+    ],
+    "tr44": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr45": [
+      {
+        "where": "soothing-wetlands"
+      }
+    ],
+    "tr46": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr47": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr48": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr49": [
+      {
+        "where": "training-lowlands"
+      }
+    ],
+    "tr50": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr51": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr52": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr53": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr54": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr55": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr56": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr57": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr58": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr59": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr60": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr61": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr62": [
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "tr63": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr64": [
+      {
+        "where": "fields-of-honor"
+      }
+    ],
+    "tr65": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr66": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr67": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr68": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr69": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr70": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr71": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr72": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr73": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr74": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr75": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr76": [
+      {
+        "where": "warm-up-tunnel"
+      }
+    ],
+    "tr77": [
+      {
+        "where": "soothing-wetlands"
+      }
+    ],
+    "tr78": [
+      {
+        "where": "forest-of-focus"
+      }
+    ],
+    "tr79": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr80": [
+      {
+        "where": "challenge-beach"
+      }
+    ],
+    "tr81": [
+      {
+        "where": "potbottom-desert"
+      }
+    ],
+    "tr82": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr83": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr84": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr85": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr86": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr87": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr88": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr89": [
+      {
+        "where": "stepping-stone-sea"
+      }
+    ],
+    "tr90": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr91": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr92": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr93": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr94": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr95": [
+      {
+        "where": "challenge-road"
+      }
+    ],
+    "tr96": [
+      {
+        "where": "honeycalm-island"
+      }
+    ],
+    "tr97": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "tr98": [
+      {
+        "where": "challenge-beach"
+      }
+    ],
+    "ultra-ball": [
+      {
+        "where": "training-lowlands"
+      },
+      {
+        "where": "potbottom-desert"
+      }
+    ],
+    "up-grade": [
+      {
+        "where": "training-lowlands"
+      }
+    ],
+    "utility-umbrella": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "weakness-policy": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "whipped-dream": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "white-apricorn": [
+      {
+        "where": "forest-of-focus"
+      },
+      {
+        "place": {
+          "ko": "갑옷섬",
+          "en": "Isle of Armor"
+        }
+      }
+    ],
+    "white-herb": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "wide-lens": [
+      {
+        "place": {
+          "ko": "우라오스의 합체 머신(마스터도장)",
+          "en": "Cram-o-Matic"
+        }
+      }
+    ],
+    "wiki-berry": [
+      {
+        "where": "challenge-beach"
+      }
+    ],
+    "wishing-piece": [
+      {
+        "where": "fields-of-honor"
+      },
+      {
+        "where": "forest-of-focus"
+      },
+      {
+        "where": "loop-lagoon"
+      },
+      {
+        "where": "potbottom-desert"
+      },
+      {
+        "where": "stepping-stone-sea"
+      },
+      {
+        "where": "insular-sea"
+      }
+    ],
+    "yellow-apricorn": [
+      {
+        "where": "fields-of-honor"
+      },
+      {
+        "where": "soothing-wetlands"
+      },
+      {
+        "where": "forest-of-focus"
+      },
+      {
+        "place": {
+          "ko": "갑옷섬",
+          "en": "Isle of Armor"
+        }
+      }
+    ],
+    "zinc": [
+      {
+        "where": "challenge-beach"
+      }
+    ]
+  },
+  "tutors": {}
+}

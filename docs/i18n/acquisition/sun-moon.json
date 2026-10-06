@@ -1,239 +1,3103 @@
 {
-  "versionGroup": "sun-moon",
-  "generation": 7,
-  "_games": [
-    "썬 (Sun)",
-    "문 (Moon)"
+ "versionGroup": "sun-moon",
+ "generation": 7,
+ "_games": [
+  "썬 (Sun)",
+  "문 (Moon)"
+ ],
+ "_sources": [
+  "Serebii.net ItemDex (https://www.serebii.net/itemdex/) — 장소는 PokéAPI/게임 텍스트로 한국어화"
+ ],
+ "_tms": {
+  "tm01": "분발 / Work Up",
+  "tm02": "드래곤클로 / Dragon Claw",
+  "tm03": "사이코쇼크 / Psyshock",
+  "tm04": "명상 / Calm Mind",
+  "tm05": "울부짖기 / Roar",
+  "tm06": "맹독 / Toxic",
+  "tm07": "싸라기눈 / Hail",
+  "tm08": "벌크업 / Bulk Up",
+  "tm09": "베놈쇼크 / Venoshock",
+  "tm10": "잠재파워 / Hidden Power",
+  "tm11": "쾌청 / Sunny Day",
+  "tm12": "도발 / Taunt",
+  "tm13": "냉동빔 / Ice Beam",
+  "tm14": "눈보라 / Blizzard",
+  "tm15": "파괴광선 / Hyper Beam",
+  "tm16": "빛의장막 / Light Screen",
+  "tm17": "방어 / Protect",
+  "tm18": "비바라기 / Rain Dance",
+  "tm19": "날개쉬기 / Roost",
+  "tm20": "신비의부적 / Safeguard",
+  "tm21": "화풀이 / Frustration",
+  "tm22": "솔라빔 / Solar Beam",
+  "tm23": "떨어뜨리기 / Smack Down",
+  "tm24": "10만볼트 / Thunderbolt",
+  "tm25": "번개 / Thunder",
+  "tm26": "지진 / Earthquake",
+  "tm27": "은혜갚기 / Return",
+  "tm28": "흡혈 / Leech Life",
+  "tm29": "사이코키네시스 / Psychic",
+  "tm30": "섀도볼 / Shadow Ball",
+  "tm31": "깨뜨리다 / Brick Break",
+  "tm32": "그림자분신 / Double Team",
+  "tm33": "리플렉터 / Reflect",
+  "tm34": "오물웨이브 / Sludge Wave",
+  "tm35": "화염방사 / Flamethrower",
+  "tm36": "오물폭탄 / Sludge Bomb",
+  "tm37": "모래바람 / Sandstorm",
+  "tm38": "불대문자 / Fire Blast",
+  "tm39": "암석봉인 / Rock Tomb",
+  "tm40": "제비반환 / Aerial Ace",
+  "tm41": "트집 / Torment",
+  "tm42": "객기 / Facade",
+  "tm43": "니트로차지 / Flame Charge",
+  "tm44": "잠자기 / Rest",
+  "tm45": "헤롱헤롱 / Attract",
+  "tm46": "도둑질 / Thief",
+  "tm47": "로킥 / Low Sweep",
+  "tm48": "돌림노래 / Round",
+  "tm49": "에코보이스 / Echoed Voice",
+  "tm50": "오버히트 / Overheat",
+  "tm51": "강철날개 / Steel Wing",
+  "tm52": "기합구슬 / Focus Blast",
+  "tm53": "에너지볼 / Energy Ball",
+  "tm54": "칼등치기 / False Swipe",
+  "tm55": "열탕 / Scald",
+  "tm56": "내던지기 / Fling",
+  "tm57": "차지빔 / Charge Beam",
+  "tm58": "프리폴 / Sky Drop",
+  "tm59": "세차게휘두르기 / Brutal Swing",
+  "tm60": "순서미루기 / Quash",
+  "tm61": "도깨비불 / Will-O-Wisp",
+  "tm62": "애크러뱃 / Acrobatics",
+  "tm63": "금제 / Embargo",
+  "tm64": "대폭발 / Explosion",
+  "tm65": "섀도클로 / Shadow Claw",
+  "tm66": "보복 / Payback",
+  "tm67": "스마트혼 / Smart Strike",
+  "tm68": "기가임팩트 / Giga Impact",
+  "tm69": "록커트 / Rock Polish",
+  "tm70": "오로라베일 / Aurora Veil",
+  "tm71": "스톤에지 / Stone Edge",
+  "tm72": "볼트체인지 / Volt Switch",
+  "tm73": "전기자석파 / Thunder Wave",
+  "tm74": "자이로볼 / Gyro Ball",
+  "tm75": "칼춤 / Swords Dance",
+  "tm76": "공중날기 / Fly",
+  "tm77": "자기암시 / Psych Up",
+  "tm78": "땅고르기 / Bulldoze",
+  "tm79": "얼음숨결 / Frost Breath",
+  "tm80": "스톤샤워 / Rock Slide",
+  "tm81": "시저크로스 / X-Scissor",
+  "tm82": "드래곤테일 / Dragon Tail",
+  "tm83": "엉겨붙기 / Infestation",
+  "tm84": "독찌르기 / Poison Jab",
+  "tm85": "꿈먹기 / Dream Eater",
+  "tm86": "풀묶기 / Grass Knot",
+  "tm87": "뽐내기 / Swagger",
+  "tm88": "잠꼬대 / Sleep Talk",
+  "tm89": "유턴 / U-turn",
+  "tm90": "대타출동 / Substitute",
+  "tm91": "러스터캐논 / Flash Cannon",
+  "tm92": "트릭룸 / Trick Room",
+  "tm93": "와일드볼트 / Wild Charge",
+  "tm94": "파도타기 / Surf",
+  "tm95": "바크아웃 / Snarl",
+  "tm96": "자연의힘 / Nature Power",
+  "tm97": "악의파동 / Dark Pulse",
+  "tm98": "폭포오르기 / Waterfall",
+  "tm99": "매지컬샤인 / Dazzling Gleam",
+  "tm100": "비밀이야기 / Confide"
+ },
+ "_tutors": {
+  "blast-burn": "블라스트번 / Blast Burn",
+  "hydro-cannon": "하이드로캐논 / Hydro Cannon",
+  "frenzy-plant": "하드플랜트 / Frenzy Plant",
+  "volt-tackle": "볼트태클 / Volt Tackle",
+  "draco-meteor": "용성군 / Draco Meteor",
+  "water-pledge": "물의맹세 / Water Pledge",
+  "fire-pledge": "불꽃의맹세 / Fire Pledge",
+  "grass-pledge": "풀의맹세 / Grass Pledge",
+  "relic-song": "옛노래 / Relic Song",
+  "secret-sword": "신비의칼 / Secret Sword",
+  "dragon-ascent": "화룡점정 / Dragon Ascent"
+ },
+ "items": {
+  "ability-capsule": [
+   {
+    "where": "battle-tree"
+   }
   ],
-  "_sources": [],
-  "_tms": {
-    "tm01": "분발 / Work Up",
-    "tm02": "드래곤클로 / Dragon Claw",
-    "tm03": "사이코쇼크 / Psyshock",
-    "tm04": "명상 / Calm Mind",
-    "tm05": "울부짖기 / Roar",
-    "tm06": "맹독 / Toxic",
-    "tm07": "싸라기눈 / Hail",
-    "tm08": "벌크업 / Bulk Up",
-    "tm09": "베놈쇼크 / Venoshock",
-    "tm10": "잠재파워 / Hidden Power",
-    "tm11": "쾌청 / Sunny Day",
-    "tm12": "도발 / Taunt",
-    "tm13": "냉동빔 / Ice Beam",
-    "tm14": "눈보라 / Blizzard",
-    "tm15": "파괴광선 / Hyper Beam",
-    "tm16": "빛의장막 / Light Screen",
-    "tm17": "방어 / Protect",
-    "tm18": "비바라기 / Rain Dance",
-    "tm19": "날개쉬기 / Roost",
-    "tm20": "신비의부적 / Safeguard",
-    "tm21": "화풀이 / Frustration",
-    "tm22": "솔라빔 / Solar Beam",
-    "tm23": "떨어뜨리기 / Smack Down",
-    "tm24": "10만볼트 / Thunderbolt",
-    "tm25": "번개 / Thunder",
-    "tm26": "지진 / Earthquake",
-    "tm27": "은혜갚기 / Return",
-    "tm28": "흡혈 / Leech Life",
-    "tm29": "사이코키네시스 / Psychic",
-    "tm30": "섀도볼 / Shadow Ball",
-    "tm31": "깨뜨리다 / Brick Break",
-    "tm32": "그림자분신 / Double Team",
-    "tm33": "리플렉터 / Reflect",
-    "tm34": "오물웨이브 / Sludge Wave",
-    "tm35": "화염방사 / Flamethrower",
-    "tm36": "오물폭탄 / Sludge Bomb",
-    "tm37": "모래바람 / Sandstorm",
-    "tm38": "불대문자 / Fire Blast",
-    "tm39": "암석봉인 / Rock Tomb",
-    "tm40": "제비반환 / Aerial Ace",
-    "tm41": "트집 / Torment",
-    "tm42": "객기 / Facade",
-    "tm43": "니트로차지 / Flame Charge",
-    "tm44": "잠자기 / Rest",
-    "tm45": "헤롱헤롱 / Attract",
-    "tm46": "도둑질 / Thief",
-    "tm47": "로킥 / Low Sweep",
-    "tm48": "돌림노래 / Round",
-    "tm49": "에코보이스 / Echoed Voice",
-    "tm50": "오버히트 / Overheat",
-    "tm51": "강철날개 / Steel Wing",
-    "tm52": "기합구슬 / Focus Blast",
-    "tm53": "에너지볼 / Energy Ball",
-    "tm54": "칼등치기 / False Swipe",
-    "tm55": "열탕 / Scald",
-    "tm56": "내던지기 / Fling",
-    "tm57": "차지빔 / Charge Beam",
-    "tm58": "프리폴 / Sky Drop",
-    "tm59": "세차게휘두르기 / Brutal Swing",
-    "tm60": "순서미루기 / Quash",
-    "tm61": "도깨비불 / Will-O-Wisp",
-    "tm62": "애크러뱃 / Acrobatics",
-    "tm63": "금제 / Embargo",
-    "tm64": "대폭발 / Explosion",
-    "tm65": "섀도클로 / Shadow Claw",
-    "tm66": "보복 / Payback",
-    "tm67": "스마트혼 / Smart Strike",
-    "tm68": "기가임팩트 / Giga Impact",
-    "tm69": "록커트 / Rock Polish",
-    "tm70": "오로라베일 / Aurora Veil",
-    "tm71": "스톤에지 / Stone Edge",
-    "tm72": "볼트체인지 / Volt Switch",
-    "tm73": "전기자석파 / Thunder Wave",
-    "tm74": "자이로볼 / Gyro Ball",
-    "tm75": "칼춤 / Swords Dance",
-    "tm76": "공중날기 / Fly",
-    "tm77": "자기암시 / Psych Up",
-    "tm78": "땅고르기 / Bulldoze",
-    "tm79": "얼음숨결 / Frost Breath",
-    "tm80": "스톤샤워 / Rock Slide",
-    "tm81": "시저크로스 / X-Scissor",
-    "tm82": "드래곤테일 / Dragon Tail",
-    "tm83": "엉겨붙기 / Infestation",
-    "tm84": "독찌르기 / Poison Jab",
-    "tm85": "꿈먹기 / Dream Eater",
-    "tm86": "풀묶기 / Grass Knot",
-    "tm87": "뽐내기 / Swagger",
-    "tm88": "잠꼬대 / Sleep Talk",
-    "tm89": "유턴 / U-turn",
-    "tm90": "대타출동 / Substitute",
-    "tm91": "러스터캐논 / Flash Cannon",
-    "tm92": "트릭룸 / Trick Room",
-    "tm93": "와일드볼트 / Wild Charge",
-    "tm94": "파도타기 / Surf",
-    "tm95": "바크아웃 / Snarl",
-    "tm96": "자연의힘 / Nature Power",
-    "tm97": "악의파동 / Dark Pulse",
-    "tm98": "폭포오르기 / Waterfall",
-    "tm99": "매지컬샤인 / Dazzling Gleam",
-    "tm100": "비밀이야기 / Confide"
-  },
-  "_tutors": {
-    "blast-burn": "블라스트번 / Blast Burn",
-    "hydro-cannon": "하이드로캐논 / Hydro Cannon",
-    "frenzy-plant": "하드플랜트 / Frenzy Plant",
-    "volt-tackle": "볼트태클 / Volt Tackle",
-    "draco-meteor": "용성군 / Draco Meteor",
-    "water-pledge": "물의맹세 / Water Pledge",
-    "fire-pledge": "불꽃의맹세 / Fire Pledge",
-    "grass-pledge": "풀의맹세 / Grass Pledge",
-    "relic-song": "옛노래 / Relic Song",
-    "secret-sword": "신비의칼 / Secret Sword",
-    "dragon-ascent": "화룡점정 / Dragon Ascent"
-  },
-  "items": {
-    "tm01": [],
-    "tm02": [],
-    "tm03": [],
-    "tm04": [],
-    "tm05": [],
-    "tm06": [],
-    "tm07": [],
-    "tm08": [],
-    "tm09": [],
-    "tm10": [],
-    "tm11": [],
-    "tm12": [],
-    "tm13": [],
-    "tm14": [],
-    "tm15": [],
-    "tm16": [],
-    "tm17": [],
-    "tm18": [],
-    "tm19": [],
-    "tm20": [],
-    "tm21": [],
-    "tm22": [],
-    "tm23": [],
-    "tm24": [],
-    "tm25": [],
-    "tm26": [],
-    "tm27": [],
-    "tm28": [],
-    "tm29": [],
-    "tm30": [],
-    "tm31": [],
-    "tm32": [],
-    "tm33": [],
-    "tm34": [],
-    "tm35": [],
-    "tm36": [],
-    "tm37": [],
-    "tm38": [],
-    "tm39": [],
-    "tm40": [],
-    "tm41": [],
-    "tm42": [],
-    "tm43": [],
-    "tm44": [],
-    "tm45": [],
-    "tm46": [],
-    "tm47": [],
-    "tm48": [],
-    "tm49": [],
-    "tm50": [],
-    "tm51": [],
-    "tm52": [],
-    "tm53": [],
-    "tm54": [],
-    "tm55": [],
-    "tm56": [],
-    "tm57": [],
-    "tm58": [],
-    "tm59": [],
-    "tm60": [],
-    "tm61": [],
-    "tm62": [],
-    "tm63": [],
-    "tm64": [],
-    "tm65": [],
-    "tm66": [],
-    "tm67": [],
-    "tm68": [],
-    "tm69": [],
-    "tm70": [],
-    "tm71": [],
-    "tm72": [],
-    "tm73": [],
-    "tm74": [],
-    "tm75": [],
-    "tm76": [],
-    "tm77": [],
-    "tm78": [],
-    "tm79": [],
-    "tm80": [],
-    "tm81": [],
-    "tm82": [],
-    "tm83": [],
-    "tm84": [],
-    "tm85": [],
-    "tm86": [],
-    "tm87": [],
-    "tm88": [],
-    "tm89": [],
-    "tm90": [],
-    "tm91": [],
-    "tm92": [],
-    "tm93": [],
-    "tm94": [],
-    "tm95": [],
-    "tm96": [],
-    "tm97": [],
-    "tm98": [],
-    "tm99": [],
-    "tm100": []
-  },
-  "tutors": {
-    "blast-burn": [],
-    "hydro-cannon": [],
-    "frenzy-plant": [],
-    "volt-tackle": [],
-    "draco-meteor": [],
-    "water-pledge": [],
-    "fire-pledge": [],
-    "grass-pledge": [],
-    "relic-song": [],
-    "secret-sword": [],
-    "dragon-ascent": []
-  }
+  "adrenaline-orb": [
+   {
+    "where": "alola-route-4"
+   },
+   {
+    "where": "alola-route-13"
+   },
+   {
+    "where": "ancient-poni-path"
+   },
+   {
+    "where": "memorial-hill"
+   },
+   {
+    "where": "resolution-cave"
+   },
+   {
+    "where": "ulaula-meadow"
+   }
+  ],
+  "aguav-berry": [
+   {
+    "where": "alola-route-4"
+   }
+  ],
+  "air-balloon": [
+   {
+    "where": "malie-garden"
+   }
+  ],
+  "alakazite": [
+   {
+    "where": "ancient-poni-path"
+   }
+  ],
+  "aloraichium-z--bag": [
+   {
+    "where": "seafolk-village"
+   }
+  ],
+  "aloraichium-z--held": [
+   {
+    "where": "seafolk-village"
+   }
+  ],
+  "amulet-coin": [
+   {
+    "where": "paniola-ranch"
+   }
+  ],
+  "antidote": [
+   {
+    "where": "alola-route-1--hauoli-outskirts"
+   },
+   {
+    "where": "alola-route-7"
+   },
+   {
+    "where": "hano-beach"
+   },
+   {
+    "where": "malie-city-proper"
+   }
+  ],
+  "apicot-berry": [
+   {
+    "where": "secluded-shore"
+   }
+  ],
+  "aspear-berry": [
+   {
+    "where": "alola-route-16"
+   },
+   {
+    "where": "secluded-shore"
+   }
+  ],
+  "awakening": [
+   {
+    "where": "alola-route-1--hauoli-outskirts"
+   },
+   {
+    "where": "alola-route-8"
+   },
+   {
+    "where": "ancient-poni-path"
+   },
+   {
+    "where": "lush-jungle"
+   }
+  ],
+  "babiri-berry": [
+   {
+    "where": "poni-wilds"
+   }
+  ],
+  "balm-mushroom": [
+   {
+    "place": "PickUp Item"
+   }
+  ],
+  "beast-ball": [
+   {
+    "where": "alola-route-2"
+   },
+   {
+    "where": "alola-route-8"
+   },
+   {
+    "where": "alola-route-13"
+   },
+   {
+    "where": "aether-paradise"
+   },
+   {
+    "where": "seafolk-village"
+   }
+  ],
+  "berry-juice": [
+   {
+    "place": {
+     "ko": "페스서클",
+     "en": "Festival Plaza"
+    }
+   }
+  ],
+  "big-malasada": [
+   {
+    "where": "aether-paradise"
+   }
+  ],
+  "big-mushroom": [
+   {
+    "where": "alola-route-11"
+   },
+   {
+    "where": "akala-outskirts"
+   },
+   {
+    "place": {
+     "ko": "나무열매 밭",
+     "en": "Berry Fields"
+    }
+   },
+   {
+    "where": "hauoli-cemetery"
+   },
+   {
+    "where": "heahea-city"
+   },
+   {
+    "where": "malie-garden"
+   },
+   {
+    "where": "paniola-ranch"
+   }
+  ],
+  "big-nugget": [
+   {
+    "where": "malie-garden"
+   },
+   {
+    "where": "resolution-cave"
+   },
+   {
+    "where": "poni-breaker-coast"
+   },
+   {
+    "where": "poni-wilds"
+   }
+  ],
+  "big-pearl": [
+   {
+    "where": "alola-route-8"
+   },
+   {
+    "where": "alola-route-14"
+   },
+   {
+    "where": "exeggutor-island"
+   },
+   {
+    "where": "kalae-bay"
+   },
+   {
+    "where": "konikoni-city"
+   },
+   {
+    "where": "poni-gauntlet"
+   },
+   {
+    "where": "poni-wilds"
+   },
+   {
+    "where": "secluded-shore"
+   }
+  ],
+  "big-root": [
+   {
+    "where": "digletts-tunnel"
+   },
+   {
+    "where": "poni-coast"
+   },
+   {
+    "where": "vast-poni-canyon"
+   },
+   {
+    "where": "verdant-cavern--trial-site"
+   }
+  ],
+  "black-belt": [
+   {
+    "where": "poni-plains"
+   }
+  ],
+  "black-glasses": [
+   {
+    "where": "hano-beach"
+   }
+  ],
+  "blastoisinite": [
+   {
+    "where": "battle-tree"
+   }
+  ],
+  "blue-shard": [
+   {
+    "place": {
+     "ko": "포켓리조트",
+     "en": "Poké Pelago"
+    }
+   }
+  ],
+  "bluk-berry": [
+   {
+    "where": "royal-avenue"
+   }
+  ],
+  "bottle-cap": [
+   {
+    "where": "battle-tree"
+   },
+   {
+    "where": "poni-gauntlet"
+   },
+   {
+    "where": "seafolk-village"
+   }
+  ],
+  "bug-memory": [
+   {
+    "where": "aether-paradise"
+   }
+  ],
+  "buginium-z--bag": [
+   {
+    "where": "shady-house"
+   }
+  ],
+  "buginium-z--held": [
+   {
+    "where": "shady-house"
+   }
+  ],
+  "burn-drive": [
+   {
+    "where": "alola-route-8"
+   }
+  ],
+  "burn-heal": [
+   {
+    "where": "alola-route-12"
+   },
+   {
+    "where": "ten-carat-hill"
+   },
+   {
+    "where": "wela-volcano-park"
+   }
+  ],
+  "calcium": [
+   {
+    "place": {
+     "ko": "페스서클",
+     "en": "Festival Plaza"
+    }
+   }
+  ],
+  "carbos": [
+   {
+    "where": "alola-route-6"
+   },
+   {
+    "where": "poni-plains"
+   }
+  ],
+  "casteliacone": [
+   {
+    "place": "Festival Plaza Café gift"
+   }
+  ],
+  "charcoal": [
+   {
+    "where": "wela-volcano-park"
+   }
+  ],
+  "charizardite-x": [
+   {
+    "where": "battle-tree"
+   }
+  ],
+  "charizardite-y": [
+   {
+    "where": "battle-tree"
+   }
+  ],
+  "charti-berry": [
+   {
+    "where": "poni-wilds"
+   }
+  ],
+  "cheri-berry": [
+   {
+    "where": "alola-route-3"
+   },
+   {
+    "where": "alola-route-5"
+   },
+   {
+    "where": "alola-route-8"
+   },
+   {
+    "where": "secluded-shore"
+   }
+  ],
+  "chesto-berry": [
+   {
+    "where": "alola-route-2"
+   },
+   {
+    "where": "alola-route-3"
+   },
+   {
+    "where": "alola-route-8"
+   },
+   {
+    "where": "secluded-shore"
+   }
+  ],
+  "chilan-berry": [
+   {
+    "where": "poni-wilds"
+   }
+  ],
+  "chill-drive": [
+   {
+    "where": "alola-route-8"
+   }
+  ],
+  "chople-berry": [
+   {
+    "where": "poni-wilds"
+   }
+  ],
+  "cleanse-tag": [
+   {
+    "where": "memorial-hill"
+   }
+  ],
+  "clever-wing": [
+   {
+    "where": "alola-route-10"
+   },
+   {
+    "where": "alola-route-17"
+   }
+  ],
+  "coba-berry": [
+   {
+    "where": "poni-wilds"
+   }
+  ],
+  "colbur-berry": [
+   {
+    "where": "poni-wilds"
+   }
+  ],
+  "comet-shard": [
+   {
+    "where": "haina-desert"
+   },
+   {
+    "where": "hokulani-observatory"
+   },
+   {
+    "where": "poni-coast"
+   }
+  ],
+  "damp-rock": [
+   {
+    "where": "malie-city-proper"
+   }
+  ],
+  "dark-memory": [
+   {
+    "where": "aether-paradise"
+   }
+  ],
+  "darkinium-z--bag": [
+   {
+    "where": "malie-city-proper"
+   }
+  ],
+  "darkinium-z--held": [
+   {
+    "where": "malie-city-proper"
+   }
+  ],
+  "dawn-stone": [
+   {
+    "where": "hauoli-city--beachfront"
+   }
+  ],
+  "decidium-z--bag": [
+   {
+    "where": "alola-route-1--hauoli-outskirts"
+   },
+   {
+    "where": "malie-garden"
+   }
+  ],
+  "decidium-z--held": [
+   {
+    "where": "alola-route-1--hauoli-outskirts"
+   },
+   {
+    "where": "malie-garden"
+   }
+  ],
+  "destiny-knot": [
+   {
+    "place": "PickUp Item"
+   }
+  ],
+  "dire-hit": [
+   {
+    "where": "alola-route-5"
+   },
+   {
+    "where": "alola-route-17"
+   },
+   {
+    "where": "paniola-town"
+   }
+  ],
+  "dive-ball": [
+   {
+    "where": "alola-route-8"
+   },
+   {
+    "where": "alola-route-15"
+   },
+   {
+    "where": "brooklet-hill"
+   },
+   {
+    "where": "hano-beach"
+   },
+   {
+    "where": "kalae-bay"
+   }
+  ],
+  "dna-splicers": [
+   {
+    "where": "aether-paradise"
+   }
+  ],
+  "dna-splicers--merge": [
+   {
+    "where": "aether-paradise"
+   }
+  ],
+  "dna-splicers--split": [
+   {
+    "where": "aether-paradise"
+   }
+  ],
+  "douse-drive": [
+   {
+    "where": "alola-route-8"
+   }
+  ],
+  "draco-plate": [
+   {
+    "where": "hauoli-city--beachfront"
+   }
+  ],
+  "dragon-fang": [
+   {
+    "where": "konikoni-city"
+   }
+  ],
+  "dragon-memory": [
+   {
+    "where": "aether-paradise"
+   }
+  ],
+  "dragonium-z--bag": [
+   {
+    "where": "vast-poni-canyon"
+   }
+  ],
+  "dragonium-z--held": [
+   {
+    "where": "vast-poni-canyon"
+   }
+  ],
+  "dubious-disc": [
+   {
+    "where": "aether-paradise"
+   }
+  ],
+  "dusk-ball": [
+   {
+    "where": "alola-route-14"
+   },
+   {
+    "where": "digletts-tunnel"
+   },
+   {
+    "where": "memorial-hill"
+   },
+   {
+    "where": "vast-poni-canyon"
+   }
+  ],
+  "dusk-stone": [
+   {
+    "where": "poni-wilds"
+   }
+  ],
+  "earth-plate": [
+   {
+    "where": "alola-route-1--hauoli-outskirts"
+   }
+  ],
+  "eevium-z--bag": [
+   {
+    "where": "royal-avenue"
+   }
+  ],
+  "eevium-z--held": [
+   {
+    "where": "royal-avenue"
+   }
+  ],
+  "electirizer": [
+   {
+    "where": "seafolk-village"
+   }
+  ],
+  "electric-memory": [
+   {
+    "where": "aether-paradise"
+   }
+  ],
+  "electric-seed": [
+   {
+    "where": "mahalo-trail"
+   }
+  ],
+  "electrium-z--bag": [
+   {
+    "where": "hokulani-observatory"
+   }
+  ],
+  "electrium-z--held": [
+   {
+    "where": "hokulani-observatory"
+   }
+  ],
+  "elixir": [
+   {
+    "where": "alola-route-12"
+   },
+   {
+    "where": "brooklet-hill"
+   },
+   {
+    "where": "resolution-cave"
+   },
+   {
+    "where": "vast-poni-canyon"
+   }
+  ],
+  "energy-root": [
+   {
+    "where": "alola-route-4"
+   }
+  ],
+  "enigmatic-card": [
+   {
+    "where": "alola-route-1--hauoli-outskirts"
+   }
+  ],
+  "escape-rope": [
+   {
+    "where": "mount-lanakila"
+   },
+   {
+    "where": "seaward-cave"
+   },
+   {
+    "where": "shady-house"
+   },
+   {
+    "where": "vast-poni-canyon"
+   }
+  ],
+  "ether": [
+   {
+    "where": "hauoli-cemetery"
+   },
+   {
+    "where": "hauoli-city--beachfront"
+   },
+   {
+    "where": "paniola-ranch"
+   }
+  ],
+  "everstone": [
+   {
+    "where": "hauoli-city--beachfront"
+   }
+  ],
+  "eviolite": [
+   {
+    "where": "konikoni-city"
+   }
+  ],
+  "expert-belt": [
+   {
+    "where": "seaward-cave"
+   }
+  ],
+  "fairium-z--bag": [
+   {
+    "where": "vast-poni-canyon"
+   }
+  ],
+  "fairium-z--held": [
+   {
+    "where": "vast-poni-canyon"
+   }
+  ],
+  "fairy-memory": [
+   {
+    "where": "aether-paradise"
+   }
+  ],
+  "fast-ball": [
+   {
+    "where": "mount-hokulani"
+   }
+  ],
+  "festival-ticket": [
+   {
+    "place": {
+     "ko": "페스서클",
+     "en": "Festival Plaza"
+    }
+   }
+  ],
+  "fighting-memory": [
+   {
+    "where": "aether-paradise"
+   }
+  ],
+  "fightinium-z--bag": [
+   {
+    "where": "iki-town"
+   }
+  ],
+  "fightinium-z--held": [
+   {
+    "where": "iki-town"
+   }
+  ],
+  "figy-berry": [
+   {
+    "where": "alola-route-4"
+   }
+  ],
+  "fire-memory": [
+   {
+    "where": "aether-paradise"
+   }
+  ],
+  "fire-stone": [
+   {
+    "where": "digletts-tunnel"
+   }
+  ],
+  "firium-z--bag": [
+   {
+    "where": "wela-volcano-park"
+   }
+  ],
+  "firium-z--held": [
+   {
+    "where": "wela-volcano-park"
+   }
+  ],
+  "flame-orb": [
+   {
+    "where": "ulaula-meadow"
+   }
+  ],
+  "flame-plate": [
+   {
+    "where": "alola-route-1--hauoli-outskirts"
+   }
+  ],
+  "float-stone": [
+   {
+    "place": {
+     "ko": "포켓리조트",
+     "en": "Poké Pelago"
+    }
+   }
+  ],
+  "flying-memory": [
+   {
+    "where": "aether-paradise"
+   }
+  ],
+  "flyinium-z--bag": [
+   {
+    "where": "ten-carat-hill"
+   }
+  ],
+  "flyinium-z--held": [
+   {
+    "where": "ten-carat-hill"
+   }
+  ],
+  "focus-band": [
+   {
+    "where": "alola-route-9"
+   }
+  ],
+  "focus-sash": [
+   {
+    "where": "poni-wilds"
+   }
+  ],
+  "forage-bag": [
+   {
+    "where": "lush-jungle"
+   }
+  ],
+  "fresh-water": [
+   {
+    "where": "hauoli-city--beachfront"
+   },
+   {
+    "where": "paniola-ranch"
+   },
+   {
+    "where": "paniola-town"
+   }
+  ],
+  "friend-ball": [
+   {
+    "where": "malie-city-proper"
+   }
+  ],
+  "full-heal": [
+   {
+    "where": "alola-route-17"
+   },
+   {
+    "where": "aether-paradise"
+   },
+   {
+    "where": "vast-poni-canyon"
+   }
+  ],
+  "full-restore": [
+   {
+    "where": "aether-paradise"
+   },
+   {
+    "where": "mount-lanakila"
+   },
+   {
+    "where": "vast-poni-canyon"
+   }
+  ],
+  "ganlon-berry": [
+   {
+    "where": "alola-route-17"
+   }
+  ],
+  "genius-wing": [
+   {
+    "where": "poni-plains"
+   }
+  ],
+  "ghost-memory": [
+   {
+    "where": "aether-paradise"
+   }
+  ],
+  "ghostium-z--bag": [
+   {
+    "where": "alola-route-14"
+   }
+  ],
+  "ghostium-z--held": [
+   {
+    "where": "alola-route-14"
+   }
+  ],
+  "gold-bottle-cap": [
+   {
+    "place": "Festival Plaza Poké Pelago"
+   }
+  ],
+  "gracidea": [
+   {
+    "where": "hauoli-city--beachfront"
+   }
+  ],
+  "grass-memory": [
+   {
+    "where": "aether-paradise"
+   }
+  ],
+  "grassium-z--bag": [
+   {
+    "where": "lush-jungle"
+   }
+  ],
+  "grassium-z--held": [
+   {
+    "where": "lush-jungle"
+   }
+  ],
+  "grassy-seed": [
+   {
+    "where": "malie-garden"
+   }
+  ],
+  "great-ball": [
+   {
+    "where": "alola-route-1--hauoli-outskirts"
+   },
+   {
+    "where": "alola-route-4"
+   },
+   {
+    "where": "hauoli-cemetery"
+   },
+   {
+    "where": "hauoli-city--beachfront"
+   },
+   {
+    "where": "melemele-meadow"
+   },
+   {
+    "where": "ten-carat-hill"
+   },
+   {
+    "where": "verdant-cavern--trial-site"
+   }
+  ],
+  "green-shard": [
+   {
+    "place": {
+     "ko": "포켓리조트",
+     "en": "Poké Pelago"
+    }
+   }
+  ],
+  "grepa-berry": [
+   {
+    "where": "alola-route-10"
+   }
+  ],
+  "ground-memory": [
+   {
+    "where": "aether-paradise"
+   }
+  ],
+  "groundium-z--bag": [
+   {
+    "where": "vast-poni-canyon"
+   }
+  ],
+  "groundium-z--held": [
+   {
+    "where": "vast-poni-canyon"
+   }
+  ],
+  "haban-berry": [
+   {
+    "where": "poni-wilds"
+   }
+  ],
+  "hard-stone": [
+   {
+    "where": "ten-carat-hill"
+   }
+  ],
+  "heal-ball": [
+   {
+    "where": "alola-route-2"
+   },
+   {
+    "where": "alola-route-3"
+   },
+   {
+    "where": "hauoli-city--beachfront"
+   },
+   {
+    "where": "paniola-ranch"
+   },
+   {
+    "where": "seaward-cave"
+   }
+  ],
+  "heal-powder": [
+   {
+    "where": "lush-jungle"
+   },
+   {
+    "where": "memorial-hill"
+   },
+   {
+    "where": "shady-house"
+   }
+  ],
+  "health-wing": [
+   {
+    "where": "alola-route-17"
+   },
+   {
+    "where": "poni-plains"
+   }
+  ],
+  "heart-scale": [
+   {
+    "where": "exeggutor-island"
+   },
+   {
+    "where": "konikoni-city"
+   },
+   {
+    "where": "seafolk-village"
+   }
+  ],
+  "heat-rock": [
+   {
+    "where": "malie-city-proper"
+   }
+  ],
+  "heavy-ball": [
+   {
+    "where": "mount-hokulani"
+   }
+  ],
+  "hondew-berry": [
+   {
+    "where": "alola-route-10"
+   }
+  ],
+  "honey": [
+   {
+    "where": "poni-meadow"
+   }
+  ],
+  "hp-up": [
+   {
+    "where": "hauoli-city--beachfront"
+   },
+   {
+    "where": "royal-avenue"
+   }
+  ],
+  "hyper-potion": [
+   {
+    "where": "alola-route-5"
+   },
+   {
+    "where": "alola-route-8"
+   },
+   {
+    "where": "alola-route-12"
+   },
+   {
+    "where": "alola-route-15"
+   },
+   {
+    "where": "aether-paradise"
+   },
+   {
+    "where": "brooklet-hill"
+   },
+   {
+    "where": "digletts-tunnel"
+   },
+   {
+    "where": "lush-jungle"
+   },
+   {
+    "where": "memorial-hill"
+   },
+   {
+    "where": "wela-volcano-park"
+   }
+  ],
+  "iapapa-berry": [
+   {
+    "where": "alola-route-4"
+   }
+  ],
+  "ice-memory": [
+   {
+    "where": "aether-paradise"
+   }
+  ],
+  "ice-stone": [
+   {
+    "where": "po-town"
+   }
+  ],
+  "icicle-plate": [
+   {
+    "where": "hauoli-city--beachfront"
+   }
+  ],
+  "icium-z--bag": [
+   {
+    "where": "mount-lanakila"
+   }
+  ],
+  "icium-z--held": [
+   {
+    "where": "mount-lanakila"
+   }
+  ],
+  "icy-rock": [
+   {
+    "where": "malie-city-proper"
+   }
+  ],
+  "incinium-z--bag": [
+   {
+    "where": "alola-route-1--hauoli-outskirts"
+   },
+   {
+    "where": "malie-garden"
+   }
+  ],
+  "incinium-z--held": [
+   {
+    "where": "alola-route-1--hauoli-outskirts"
+   },
+   {
+    "where": "malie-garden"
+   }
+  ],
+  "insect-plate": [
+   {
+    "where": "hauoli-city--beachfront"
+   }
+  ],
+  "iron": [
+   {
+    "where": "alola-route-8"
+   },
+   {
+    "where": "shady-house"
+   }
+  ],
+  "kasib-berry": [
+   {
+    "where": "poni-wilds"
+   }
+  ],
+  "kebia-berry": [
+   {
+    "where": "poni-wilds"
+   }
+  ],
+  "kee-berry": [
+   {
+    "where": "alola-route-10"
+   }
+  ],
+  "kelpsy-berry": [
+   {
+    "where": "alola-route-10"
+   }
+  ],
+  "key-stone": [
+   {
+    "where": "ancient-poni-path"
+   }
+  ],
+  "kings-rock": [
+   {
+    "where": "alola-route-1--hauoli-outskirts"
+   }
+  ],
+  "lagreat-ball": [
+   {
+    "where": "alola-route-1--hauoli-outskirts"
+   },
+   {
+    "where": "alola-route-4"
+   },
+   {
+    "where": "hauoli-cemetery"
+   },
+   {
+    "where": "hauoli-city--beachfront"
+   },
+   {
+    "where": "melemele-meadow"
+   },
+   {
+    "where": "ten-carat-hill"
+   },
+   {
+    "where": "verdant-cavern--trial-site"
+   }
+  ],
+  "laheavy-ball": [
+   {
+    "where": "mount-hokulani"
+   }
+  ],
+  "lansat-berry": [
+   {
+    "where": "battle-tree"
+   }
+  ],
+  "lapoke-ball": [
+   {
+    "where": "alola-route-1--hauoli-outskirts"
+   },
+   {
+    "where": "hauoli-city--beachfront"
+   }
+  ],
+  "laultra-ball": [
+   {
+    "where": "alola-route-8"
+   },
+   {
+    "where": "hauoli-city--beachfront"
+   },
+   {
+    "where": "royal-avenue"
+   },
+   {
+    "where": "tapu-village"
+   }
+  ],
+  "lava-cookie": [
+   {
+    "place": "Festival Plaza Café gift"
+   }
+  ],
+  "leaf-stone": [
+   {
+    "place": {
+     "ko": "포켓리조트",
+     "en": "Poké Pelago"
+    }
+   }
+  ],
+  "leftovers": [
+   {
+    "place": "PickUp Item"
+   }
+  ],
+  "lemonade": [
+   {
+    "where": "alola-route-10"
+   },
+   {
+    "where": "alola-route-17"
+   },
+   {
+    "where": "heahea-city"
+   },
+   {
+    "where": "royal-avenue"
+   }
+  ],
+  "lens-case": [
+   {
+    "where": "hauoli-city--beachfront"
+   }
+  ],
+  "leppa-berry": [
+   {
+    "where": "alola-route-2"
+   },
+   {
+    "where": "alola-route-3"
+   },
+   {
+    "where": "alola-route-17"
+   },
+   {
+    "where": "secluded-shore"
+   }
+  ],
+  "level-ball": [
+   {
+    "where": "mount-hokulani"
+   }
+  ],
+  "liechi-berry": [
+   {
+    "where": "poni-wilds"
+   }
+  ],
+  "life-orb": [
+   {
+    "where": "resolution-cave"
+   }
+  ],
+  "light-ball": [
+   {
+    "where": "resolution-cave"
+   }
+  ],
+  "love-ball": [
+   {
+    "where": "malie-city-proper"
+   }
+  ],
+  "lucky-egg": [
+   {
+    "where": "alola-route-1--hauoli-outskirts"
+   }
+  ],
+  "lucky-punch": [
+   {
+    "where": "seafolk-village"
+   }
+  ],
+  "lum-berry": [
+   {
+    "where": "alola-route-4"
+   },
+   {
+    "where": "alola-route-5"
+   },
+   {
+    "where": "alola-route-8"
+   },
+   {
+    "where": "alola-route-16"
+   },
+   {
+    "where": "alola-route-17"
+   }
+  ],
+  "lumiose-galette": [
+   {
+    "where": "hauoli-city--beachfront"
+   }
+  ],
+  "lure-ball": [
+   {
+    "where": "blush-mountain"
+   }
+  ],
+  "luxury-ball": [
+   {
+    "where": "alola-route-15"
+   },
+   {
+    "where": "malie-garden"
+   }
+  ],
+  "magmarizer": [
+   {
+    "where": "seafolk-village"
+   }
+  ],
+  "mago-berry": [
+   {
+    "where": "alola-route-4"
+   },
+   {
+    "where": "lush-jungle"
+   },
+   {
+    "where": "royal-avenue"
+   }
+  ],
+  "maranga-berry": [
+   {
+    "where": "poni-plains"
+   }
+  ],
+  "master-ball": [
+   {
+    "where": "aether-paradise"
+   },
+   {
+    "where": "hauoli-city--beachfront"
+   }
+  ],
+  "max-elixir": [
+   {
+    "where": "haina-desert"
+   },
+   {
+    "where": "mount-lanakila"
+   },
+   {
+    "where": "poni-gauntlet"
+   }
+  ],
+  "max-ether": [
+   {
+    "where": "digletts-tunnel"
+   },
+   {
+    "where": "poni-grove"
+   }
+  ],
+  "max-potion": [
+   {
+    "where": "alola-route-13"
+   },
+   {
+    "where": "alola-route-14"
+   },
+   {
+    "where": "konikoni-city"
+   },
+   {
+    "where": "mount-hokulani"
+   },
+   {
+    "where": "poni-grove"
+   },
+   {
+    "where": "poni-wilds"
+   },
+   {
+    "where": "vast-poni-canyon"
+   }
+  ],
+  "max-repel": [
+   {
+    "where": "alola-route-7"
+   },
+   {
+    "where": "brooklet-hill"
+   },
+   {
+    "where": "po-town"
+   },
+   {
+    "where": "poni-wilds"
+   }
+  ],
+  "max-revive": [
+   {
+    "where": "aether-paradise"
+   },
+   {
+    "where": "digletts-tunnel"
+   },
+   {
+    "where": "lush-jungle"
+   },
+   {
+    "where": "mount-lanakila"
+   },
+   {
+    "where": "poni-coast"
+   },
+   {
+    "where": "seaward-cave"
+   },
+   {
+    "where": "shady-house"
+   },
+   {
+    "where": "vast-poni-canyon"
+   }
+  ],
+  "meadow-plate": [
+   {
+    "where": "hauoli-city--beachfront"
+   }
+  ],
+  "metronome": [
+   {
+    "where": "hano-grand-resort"
+   }
+  ],
+  "mind-plate": [
+   {
+    "where": "alola-route-1--hauoli-outskirts"
+   }
+  ],
+  "miracle-seed": [
+   {
+    "where": "alola-route-8"
+   },
+   {
+    "where": "lush-jungle"
+   }
+  ],
+  "misty-seed": [
+   {
+    "where": "poni-gauntlet"
+   }
+  ],
+  "moomoo-milk": [
+   {
+    "where": "battle-tree"
+   },
+   {
+    "where": "hauoli-city--beachfront"
+   },
+   {
+    "where": "paniola-ranch"
+   }
+  ],
+  "moon-ball": [
+   {
+    "where": "mount-hokulani"
+   }
+  ],
+  "moon-flute": [
+   {
+    "where": "exeggutor-island"
+   }
+  ],
+  "moon-stone": [
+   {
+    "where": "alola-route-13"
+   }
+  ],
+  "muscle-band": [
+   {
+    "where": "konikoni-city"
+   }
+  ],
+  "muscle-wing": [
+   {
+    "where": "poni-plains"
+   }
+  ],
+  "mystic-water": [
+   {
+    "where": "paniola-ranch"
+   }
+  ],
+  "nest-ball": [
+   {
+    "where": "alola-route-1--hauoli-outskirts"
+   },
+   {
+    "where": "alola-route-2"
+   },
+   {
+    "where": "alola-route-3"
+   },
+   {
+    "where": "lush-jungle"
+   }
+  ],
+  "net-ball": [
+   {
+    "where": "alola-route-7"
+   },
+   {
+    "where": "alola-route-9"
+   },
+   {
+    "where": "brooklet-hill"
+   },
+   {
+    "where": "kalae-bay"
+   },
+   {
+    "where": "melemele-meadow"
+   }
+  ],
+  "normal-gem": [
+   {
+    "where": "alola-route-15"
+   }
+  ],
+  "normalium-z--bag": [
+   {
+    "where": "verdant-cavern--trial-site"
+   }
+  ],
+  "normalium-z--held": [
+   {
+    "where": "verdant-cavern--trial-site"
+   }
+  ],
+  "nugget": [
+   {
+    "where": "alola-route-1--hauoli-outskirts"
+   },
+   {
+    "where": "malie-city-proper"
+   },
+   {
+    "where": "seafolk-village"
+   },
+   {
+    "where": "ten-carat-hill"
+   },
+   {
+    "where": "vast-poni-canyon"
+   },
+   {
+    "where": "poni-breaker-coast"
+   },
+   {
+    "where": "poni-wilds"
+   }
+  ],
+  "occa-berry": [
+   {
+    "where": "poni-plains"
+   },
+   {
+    "where": "poni-wilds"
+   }
+  ],
+  "old-gateau": [
+   {
+    "place": "Festival Plaza Café gift"
+   }
+  ],
+  "oran-berry": [
+   {
+    "where": "alola-route-2"
+   },
+   {
+    "where": "alola-route-8"
+   },
+   {
+    "where": "alola-route-16"
+   },
+   {
+    "place": {
+     "ko": "나무열매 밭",
+     "en": "Berry Fields"
+    }
+   },
+   {
+    "where": "royal-avenue"
+   }
+  ],
+  "oval-charm": [
+   {
+    "where": "heahea-city"
+   }
+  ],
+  "oval-stone": [
+   {
+    "where": "paniola-ranch"
+   }
+  ],
+  "paralyze-heal": [
+   {
+    "where": "alola-route-1--hauoli-outskirts"
+   },
+   {
+    "where": "alola-route-10"
+   },
+   {
+    "where": "hauoli-cemetery"
+   }
+  ],
+  "passho-berry": [
+   {
+    "where": "poni-plains"
+   },
+   {
+    "where": "poni-wilds"
+   }
+  ],
+  "payapa-berry": [
+   {
+    "where": "poni-wilds"
+   }
+  ],
+  "pearl": [
+   {
+    "where": "alola-route-7"
+   },
+   {
+    "where": "alola-route-14"
+   },
+   {
+    "where": "alola-route-15"
+   },
+   {
+    "where": "hauoli-city--beachfront"
+   },
+   {
+    "where": "poni-wilds"
+   },
+   {
+    "where": "secluded-shore"
+   }
+  ],
+  "pearl-string": [
+   {
+    "where": "hano-beach"
+   },
+   {
+    "where": "poni-wilds"
+   }
+  ],
+  "pecha-berry": [
+   {
+    "where": "alola-route-3"
+   },
+   {
+    "where": "alola-route-4"
+   },
+   {
+    "where": "alola-route-5"
+   },
+   {
+    "where": "alola-route-8"
+   },
+   {
+    "where": "alola-route-16"
+   },
+   {
+    "where": "alola-route-17"
+   }
+  ],
+  "persim-berry": [
+   {
+    "where": "alola-route-2"
+   },
+   {
+    "where": "alola-route-5"
+   },
+   {
+    "where": "alola-route-8"
+   },
+   {
+    "where": "alola-route-16"
+   }
+  ],
+  "petaya-berry": [
+   {
+    "where": "poni-wilds"
+   }
+  ],
+  "pikanium-z--bag": [
+   {
+    "where": "konikoni-city"
+   }
+  ],
+  "pikanium-z--held": [
+   {
+    "where": "konikoni-city"
+   }
+  ],
+  "pinap-berry": [
+   {
+    "where": "royal-avenue"
+   }
+  ],
+  "pink-nectar": [
+   {
+    "where": "royal-avenue"
+   }
+  ],
+  "poison-barb": [
+   {
+    "where": "melemele-meadow"
+   }
+  ],
+  "poison-memory": [
+   {
+    "where": "aether-paradise"
+   }
+  ],
+  "poisonium-z--bag": [
+   {
+    "where": "ancient-poni-path"
+   }
+  ],
+  "poisonium-z--held": [
+   {
+    "where": "ancient-poni-path"
+   }
+  ],
+  "poke-ball": [
+   {
+    "where": "alola-route-1--hauoli-outskirts"
+   },
+   {
+    "where": "hauoli-city--beachfront"
+   }
+  ],
+  "poke-doll": [
+   {
+    "where": "hauoli-city--beachfront"
+   }
+  ],
+  "poke-toy": [
+   {
+    "place": {
+     "ko": "페스서클",
+     "en": "Festival Plaza"
+    }
+   }
+  ],
+  "pomeg-berry": [
+   {
+    "where": "alola-route-10"
+   }
+  ],
+  "potion": [
+   {
+    "where": "alola-route-1--hauoli-outskirts"
+   },
+   {
+    "where": "hauoli-city--beachfront"
+   }
+  ],
+  "power-herb": [
+   {
+    "where": "poni-meadow"
+   }
+  ],
+  "pp-max": [
+   {
+    "where": "alola-route-15"
+   },
+   {
+    "where": "battle-tree"
+   },
+   {
+    "where": "hauoli-city--beachfront"
+   },
+   {
+    "where": "mount-lanakila"
+   },
+   {
+    "where": "poni-plains"
+   },
+   {
+    "where": "vast-poni-canyon"
+   }
+  ],
+  "pp-up": [
+   {
+    "where": "alola-route-5"
+   },
+   {
+    "where": "alola-route-12"
+   },
+   {
+    "where": "alola-route-16"
+   },
+   {
+    "where": "battle-tree"
+   },
+   {
+    "where": "hauoli-city--beachfront"
+   }
+  ],
+  "pretty-wing": [
+   {
+    "where": "alola-route-3"
+   }
+  ],
+  "primarium-z--bag": [
+   {
+    "where": "alola-route-1--hauoli-outskirts"
+   },
+   {
+    "where": "malie-garden"
+   }
+  ],
+  "primarium-z--held": [
+   {
+    "where": "alola-route-1--hauoli-outskirts"
+   },
+   {
+    "where": "malie-garden"
+   }
+  ],
+  "prism-scale": [
+   {
+    "where": "exeggutor-island"
+   }
+  ],
+  "prison-bottle": [
+   {
+    "where": "aether-paradise"
+   }
+  ],
+  "professors-mask": [
+   {
+    "where": "hokulani-observatory"
+   }
+  ],
+  "protector": [
+   {
+    "where": "paniola-town"
+   }
+  ],
+  "protein": [
+   {
+    "place": {
+     "ko": "페스서클",
+     "en": "Festival Plaza"
+    }
+   }
+  ],
+  "psychic-memory": [
+   {
+    "where": "aether-paradise"
+   }
+  ],
+  "psychium-z--bag": [
+   {
+    "where": "haina-desert"
+   }
+  ],
+  "psychium-z--held": [
+   {
+    "where": "haina-desert"
+   }
+  ],
+  "purple-nectar": [
+   {
+    "where": "poni-meadow"
+   }
+  ],
+  "qualot-berry": [
+   {
+    "where": "alola-route-10"
+   }
+  ],
+  "quick-ball": [
+   {
+    "where": "alola-route-11"
+   },
+   {
+    "where": "paniola-town"
+   },
+   {
+    "where": "wela-volcano-park"
+   }
+  ],
+  "quick-claw": [
+   {
+    "where": "alola-route-1--hauoli-outskirts"
+   }
+  ],
+  "rage-candy-bar": [
+   {
+    "where": "malie-garden"
+   }
+  ],
+  "rare-bone": [
+   {
+    "where": "malie-garden"
+   }
+  ],
+  "rare-candy": [
+   {
+    "where": "alola-route-6"
+   },
+   {
+    "place": "Aether House"
+   },
+   {
+    "where": "aether-paradise"
+   },
+   {
+    "where": "battle-tree"
+   },
+   {
+    "where": "brooklet-hill"
+   },
+   {
+    "where": "hauoli-city--beachfront"
+   },
+   {
+    "where": "lush-jungle"
+   },
+   {
+    "where": "melemele-sea"
+   },
+   {
+    "where": "po-town"
+   },
+   {
+    "where": "poni-wilds"
+   },
+   {
+    "where": "royal-avenue"
+   },
+   {
+    "where": "vast-poni-canyon"
+   }
+  ],
+  "rawst-berry": [
+   {
+    "where": "alola-route-5"
+   },
+   {
+    "where": "alola-route-17"
+   },
+   {
+    "where": "royal-avenue"
+   }
+  ],
+  "reaper-cloth": [
+   {
+    "where": "malie-city-proper"
+   }
+  ],
+  "red-card": [
+   {
+    "where": "alola-route-3"
+   }
+  ],
+  "red-nectar": [
+   {
+    "where": "ulaula-meadow"
+   }
+  ],
+  "red-shard": [
+   {
+    "place": {
+     "ko": "포켓리조트",
+     "en": "Poké Pelago"
+    }
+   }
+  ],
+  "repeat-ball": [
+   {
+    "where": "poni-wilds"
+   },
+   {
+    "where": "ulaula-meadow"
+   }
+  ],
+  "repel": [
+   {
+    "where": "alola-route-2"
+   },
+   {
+    "place": {
+     "ko": "나무열매 밭",
+     "en": "Berry Fields"
+    }
+   },
+   {
+    "where": "paniola-ranch"
+   }
+  ],
+  "resist-wing": [
+   {
+    "where": "alola-route-10"
+   },
+   {
+    "where": "alola-route-17"
+   }
+  ],
+  "reveal-glass": [
+   {
+    "where": "heahea-city"
+   }
+  ],
+  "revival-herb": [
+   {
+    "where": "ancient-poni-path"
+   },
+   {
+    "where": "lush-jungle"
+   },
+   {
+    "where": "memorial-hill"
+   }
+  ],
+  "revive": [
+   {
+    "where": "alola-route-2"
+   },
+   {
+    "where": "alola-route-4"
+   },
+   {
+    "where": "alola-route-5"
+   },
+   {
+    "place": {
+     "ko": "나무열매 밭",
+     "en": "Berry Fields"
+    }
+   },
+   {
+    "where": "brooklet-hill"
+   },
+   {
+    "where": "hauoli-city--beachfront"
+   },
+   {
+    "where": "paniola-town"
+   },
+   {
+    "where": "vast-poni-canyon"
+   },
+   {
+    "where": "verdant-cavern--trial-site"
+   }
+  ],
+  "ride-pager": [
+   {
+    "where": "iki-town"
+   }
+  ],
+  "rindo-berry": [
+   {
+    "where": "poni-plains"
+   },
+   {
+    "where": "poni-wilds"
+   }
+  ],
+  "rock-memory": [
+   {
+    "where": "aether-paradise"
+   }
+  ],
+  "rockium-z--bag": [
+   {
+    "where": "ruins-of-life"
+   }
+  ],
+  "rockium-z--held": [
+   {
+    "where": "ruins-of-life"
+   }
+  ],
+  "roseli-berry": [
+   {
+    "where": "poni-wilds"
+   }
+  ],
+  "sachet": [
+   {
+    "where": "konikoni-city"
+   }
+  ],
+  "sacred-ash": [
+   {
+    "place": {
+     "ko": "페스서클",
+     "en": "Festival Plaza"
+    }
+   }
+  ],
+  "safety-goggles": [
+   {
+    "where": "haina-desert"
+   }
+  ],
+  "salac-berry": [
+   {
+    "where": "poni-wilds"
+   }
+  ],
+  "scope-lens": [
+   {
+    "where": "paniola-ranch"
+   }
+  ],
+  "shalour-sable": [
+   {
+    "place": "Festival Plaza Café gift"
+   }
+  ],
+  "sharp-beak": [
+   {
+    "where": "alola-route-3"
+   }
+  ],
+  "shell-bell": [
+   {
+    "where": "hauoli-city--beachfront"
+   }
+  ],
+  "shiny-charm": [
+   {
+    "where": "heahea-city"
+   }
+  ],
+  "shiny-stone": [
+   {
+    "where": "ancient-poni-path"
+   }
+  ],
+  "shock-drive": [
+   {
+    "where": "alola-route-8"
+   }
+  ],
+  "shuca-berry": [
+   {
+    "where": "poni-plains"
+   },
+   {
+    "where": "poni-wilds"
+   }
+  ],
+  "silk-scarf": [
+   {
+    "where": "hauoli-city--beachfront"
+   }
+  ],
+  "silver-powder": [
+   {
+    "place": {
+     "ko": "나무열매 밭",
+     "en": "Berry Fields"
+    }
+   }
+  ],
+  "sitrus-berry": [
+   {
+    "where": "alola-route-2"
+   },
+   {
+    "where": "alola-route-3"
+   },
+   {
+    "where": "alola-route-8"
+   },
+   {
+    "where": "alola-route-16"
+   },
+   {
+    "where": "alola-route-17"
+   },
+   {
+    "place": {
+     "ko": "나무열매 밭",
+     "en": "Berry Fields"
+    }
+   },
+   {
+    "where": "royal-avenue"
+   }
+  ],
+  "smoke-ball": [
+   {
+    "where": "po-town"
+   }
+  ],
+  "smooth-rock": [
+   {
+    "where": "malie-city-proper"
+   }
+  ],
+  "soda-pop": [
+   {
+    "where": "hano-beach"
+   },
+   {
+    "where": "paniola-ranch"
+   },
+   {
+    "where": "royal-avenue"
+   }
+  ],
+  "soft-sand": [
+   {
+    "where": "melemele-sea"
+   },
+   {
+    "where": "poni-coast"
+   },
+   {
+    "where": "vast-poni-canyon"
+   },
+   {
+    "where": "verdant-cavern--trial-site"
+   }
+  ],
+  "soothe-bell": [
+   {
+    "where": "alola-route-3"
+   }
+  ],
+  "soul-dew": [
+   {
+    "where": "aether-paradise"
+   }
+  ],
+  "sparkling-stone": [
+   {
+    "where": "mahalo-trail"
+   }
+  ],
+  "spell-tag": [
+   {
+    "where": "memorial-hill"
+   }
+  ],
+  "spooky-plate": [
+   {
+    "where": "hauoli-cemetery"
+   }
+  ],
+  "star-piece": [
+   {
+    "where": "alola-route-2"
+   },
+   {
+    "where": "alola-route-5"
+   },
+   {
+    "where": "poni-plains"
+   },
+   {
+    "where": "resolution-cave"
+   },
+   {
+    "where": "seaward-cave"
+   }
+  ],
+  "stardust": [
+   {
+    "where": "alola-route-2"
+   },
+   {
+    "where": "alola-route-3"
+   },
+   {
+    "where": "alola-route-11"
+   },
+   {
+    "where": "alola-route-15"
+   },
+   {
+    "where": "hauoli-city--beachfront"
+   },
+   {
+    "where": "seaward-cave"
+   },
+   {
+    "where": "vast-poni-canyon"
+   }
+  ],
+  "starf-berry": [
+   {
+    "where": "battle-tree"
+   }
+  ],
+  "steel-memory": [
+   {
+    "where": "aether-paradise"
+   }
+  ],
+  "steelium-z--bag": [
+   {
+    "where": "hokulani-observatory"
+   }
+  ],
+  "steelium-z--held": [
+   {
+    "where": "hokulani-observatory"
+   }
+  ],
+  "stick": [
+   {
+    "where": "aether-paradise"
+   }
+  ],
+  "sticky-barb": [
+   {
+    "where": "poni-meadow"
+   }
+  ],
+  "strange-souvenir": [
+   {
+    "where": "malie-city-proper"
+   }
+  ],
+  "sun-flute": [
+   {
+    "where": "exeggutor-island"
+   }
+  ],
+  "sun-stone": [
+   {
+    "where": "blush-mountain"
+   }
+  ],
+  "super-potion": [
+   {
+    "where": "alola-route-2"
+   },
+   {
+    "where": "alola-route-3"
+   },
+   {
+    "where": "alola-route-5"
+   },
+   {
+    "where": "alola-route-6"
+   },
+   {
+    "where": "hauoli-cemetery"
+   },
+   {
+    "where": "hauoli-city--beachfront"
+   },
+   {
+    "where": "seaward-cave"
+   },
+   {
+    "where": "tapu-village"
+   },
+   {
+    "where": "verdant-cavern--trial-site"
+   }
+  ],
+  "super-repel": [
+   {
+    "where": "melemele-sea"
+   },
+   {
+    "where": "memorial-hill"
+   },
+   {
+    "where": "paniola-ranch"
+   },
+   {
+    "where": "paniola-town"
+   }
+  ],
+  "sweet-heart": [
+   {
+    "place": "Café gift"
+   }
+  ],
+  "swift-wing": [
+   {
+    "where": "alola-route-17"
+   },
+   {
+    "where": "poni-plains"
+   }
+  ],
+  "tamato-berry": [
+   {
+    "where": "alola-route-10"
+   },
+   {
+    "where": "royal-avenue"
+   }
+  ],
+  "tanga-berry": [
+   {
+    "where": "poni-wilds"
+   }
+  ],
+  "tapunium-z--bag": [
+   {
+    "where": "ruins-of-conflict"
+   }
+  ],
+  "tapunium-z--held": [
+   {
+    "where": "ruins-of-conflict"
+   }
+  ],
+  "terrain-extender": [
+   {
+    "where": "resolution-cave"
+   }
+  ],
+  "thunder-stone": [
+   {
+    "where": "alola-route-8"
+   }
+  ],
+  "timer-ball": [
+   {
+    "where": "blush-mountain"
+   }
+  ],
+  "tiny-mushroom": [
+   {
+    "where": "alola-route-4"
+   },
+   {
+    "where": "alola-route-10"
+   },
+   {
+    "where": "alola-route-11"
+   },
+   {
+    "where": "akala-outskirts"
+   },
+   {
+    "where": "hauoli-city--beachfront"
+   },
+   {
+    "where": "lush-jungle"
+   }
+  ],
+  "tm01": [
+   {
+    "where": "alola-route-1--hauoli-outskirts"
+   }
+  ],
+  "tm02": [
+   {
+    "where": "vast-poni-canyon"
+   }
+  ],
+  "tm03": [
+   {
+    "where": "lake-of-the-moone"
+   }
+  ],
+  "tm04": [],
+  "tm05": [
+   {
+    "where": "kalae-bay"
+   }
+  ],
+  "tm06": [
+   {
+    "where": "aether-paradise"
+   }
+  ],
+  "tm07": [],
+  "tm08": [],
+  "tm09": [],
+  "tm10": [
+   {
+    "where": "paniola-ranch"
+   }
+  ],
+  "tm100": [],
+  "tm11": [],
+  "tm12": [
+   {
+    "where": "alola-route-13"
+   }
+  ],
+  "tm13": [
+   {
+    "where": "mount-lanakila"
+   }
+  ],
+  "tm14": [],
+  "tm15": [],
+  "tm16": [],
+  "tm17": [],
+  "tm18": [],
+  "tm19": [],
+  "tm20": [],
+  "tm21": [
+   {
+    "where": "malie-city-proper"
+   }
+  ],
+  "tm22": [],
+  "tm23": [],
+  "tm24": [
+   {
+    "where": "poni-plains"
+   }
+  ],
+  "tm25": [],
+  "tm26": [
+   {
+    "where": "resolution-cave"
+   }
+  ],
+  "tm27": [
+   {
+    "where": "malie-city-proper"
+   }
+  ],
+  "tm28": [
+   {
+    "where": "akala-outskirts"
+   }
+  ],
+  "tm29": [
+   {
+    "where": "aether-paradise"
+   }
+  ],
+  "tm30": [
+   {
+    "where": "alola-route-14"
+   }
+  ],
+  "tm31": [
+   {
+    "where": "verdant-cavern--trial-site"
+   }
+  ],
+  "tm32": [],
+  "tm33": [],
+  "tm34": [],
+  "tm35": [
+   {
+    "where": "vast-poni-canyon"
+   }
+  ],
+  "tm36": [
+   {
+    "where": "shady-house"
+   }
+  ],
+  "tm37": [],
+  "tm38": [],
+  "tm39": [
+   {
+    "where": "wela-volcano-park"
+   }
+  ],
+  "tm40": [],
+  "tm41": [
+   {
+    "where": "alola-route-5"
+   }
+  ],
+  "tm42": [],
+  "tm43": [
+   {
+    "where": "alola-route-8"
+   }
+  ],
+  "tm44": [
+   {
+    "where": "royal-avenue"
+   }
+  ],
+  "tm45": [
+   {
+    "where": "hano-grand-resort"
+   }
+  ],
+  "tm46": [
+   {
+    "where": "verdant-cavern--trial-site"
+   }
+  ],
+  "tm47": [],
+  "tm48": [
+   {
+    "where": "hauoli-city--beachfront"
+   }
+  ],
+  "tm49": [
+   {
+    "where": "hauoli-city--beachfront"
+   }
+  ],
+  "tm50": [
+   {
+    "where": "poni-meadow"
+   }
+  ],
+  "tm51": [],
+  "tm52": [],
+  "tm53": [
+   {
+    "where": "alola-route-8"
+   }
+  ],
+  "tm54": [
+   {
+    "where": "iki-town"
+   }
+  ],
+  "tm55": [
+   {
+    "where": "brooklet-hill"
+   }
+  ],
+  "tm56": [
+   {
+    "where": "hauoli-cemetery"
+   }
+  ],
+  "tm57": [
+   {
+    "where": "alola-route-5"
+   }
+  ],
+  "tm58": [
+   {
+    "where": "alola-route-8"
+   }
+  ],
+  "tm59": [],
+  "tm60": [
+   {
+    "where": "poni-plains"
+   }
+  ],
+  "tm61": [
+   {
+    "where": "konikoni-city"
+   }
+  ],
+  "tm62": [
+   {
+    "where": "ten-carat-hill"
+   }
+  ],
+  "tm63": [
+   {
+    "where": "blush-mountain"
+   }
+  ],
+  "tm64": [
+   {
+    "where": "ten-carat-hill"
+   }
+  ],
+  "tm65": [],
+  "tm66": [],
+  "tm67": [
+   {
+    "where": "lush-jungle"
+   }
+  ],
+  "tm68": [],
+  "tm69": [],
+  "tm70": [],
+  "tm71": [],
+  "tm72": [
+   {
+    "where": "mount-hokulani"
+   }
+  ],
+  "tm73": [
+   {
+    "where": "alola-route-7"
+   }
+  ],
+  "tm74": [
+   {
+    "where": "alola-route-11"
+   }
+  ],
+  "tm75": [],
+  "tm76": [
+   {
+    "where": "malie-city-proper"
+   }
+  ],
+  "tm77": [
+   {
+    "where": "alola-route-12"
+   }
+  ],
+  "tm78": [],
+  "tm79": [
+   {
+    "where": "ancient-poni-path"
+   }
+  ],
+  "tm80": [
+   {
+    "where": "melemele-sea"
+   }
+  ],
+  "tm81": [
+   {
+    "where": "alola-route-16"
+   }
+  ],
+  "tm82": [],
+  "tm83": [
+   {
+    "where": "alola-route-3"
+   }
+  ],
+  "tm84": [
+   {
+    "where": "alola-route-17"
+   }
+  ],
+  "tm85": [
+   {
+    "where": "haina-desert"
+   }
+  ],
+  "tm86": [
+   {
+    "where": "lush-jungle"
+   }
+  ],
+  "tm87": [
+   {
+    "where": "alola-route-2"
+   }
+  ],
+  "tm88": [
+   {
+    "where": "paniola-town"
+   }
+  ],
+  "tm89": [],
+  "tm90": [
+   {
+    "where": "alola-route-1--hauoli-outskirts"
+   }
+  ],
+  "tm91": [
+   {
+    "where": "seafolk-village"
+   }
+  ],
+  "tm92": [
+   {
+    "where": "hano-grand-resort"
+   }
+  ],
+  "tm93": [
+   {
+    "where": "alola-route-15"
+   }
+  ],
+  "tm94": [
+   {
+    "where": "poni-breaker-coast"
+   }
+  ],
+  "tm95": [
+   {
+    "where": "mount-hokulani"
+   }
+  ],
+  "tm96": [
+   {
+    "where": "alola-route-5"
+   }
+  ],
+  "tm97": [
+   {
+    "where": "poni-coast"
+   }
+  ],
+  "tm98": [
+   {
+    "where": "poni-breaker-coast"
+   }
+  ],
+  "tm99": [
+   {
+    "where": "vast-poni-canyon"
+   }
+  ],
+  "toxic-plate": [
+   {
+    "where": "hauoli-city--beachfront"
+   }
+  ],
+  "twisted-spoon": [
+   {
+    "where": "malie-city-proper"
+   }
+  ],
+  "ultra-ball": [
+   {
+    "where": "alola-route-8"
+   },
+   {
+    "where": "hauoli-city--beachfront"
+   },
+   {
+    "where": "royal-avenue"
+   },
+   {
+    "where": "tapu-village"
+   }
+  ],
+  "up-grade": [
+   {
+    "place": "Aether House"
+   }
+  ],
+  "venusaurite": [
+   {
+    "where": "battle-tree"
+   }
+  ],
+  "wacan-berry": [
+   {
+    "where": "poni-plains"
+   },
+   {
+    "where": "poni-wilds"
+   }
+  ],
+  "water-memory": [
+   {
+    "where": "aether-paradise"
+   }
+  ],
+  "water-stone": [
+   {
+    "where": "alola-route-8"
+   }
+  ],
+  "waterium-z--bag": [
+   {
+    "where": "brooklet-hill"
+   }
+  ],
+  "waterium-z--held": [
+   {
+    "where": "brooklet-hill"
+   }
+  ],
+  "whipped-dream": [
+   {
+    "where": "konikoni-city"
+   }
+  ],
+  "wide-lens": [
+   {
+    "where": "alola-route-1--hauoli-outskirts"
+   }
+  ],
+  "wiki-berry": [
+   {
+    "where": "alola-route-4"
+   }
+  ],
+  "x-accuracy": [
+   {
+    "where": "alola-route-9"
+   },
+   {
+    "where": "alola-route-10"
+   }
+  ],
+  "x-attack": [
+   {
+    "where": "alola-route-12"
+   },
+   {
+    "where": "alola-route-17"
+   },
+   {
+    "where": "hauoli-city--beachfront"
+   },
+   {
+    "where": "lush-jungle"
+   },
+   {
+    "where": "tapu-village"
+   },
+   {
+    "where": "vast-poni-canyon"
+   }
+  ],
+  "x-defense": [
+   {
+    "where": "hauoli-city--beachfront"
+   },
+   {
+    "where": "lush-jungle"
+   },
+   {
+    "where": "poni-plains"
+   },
+   {
+    "where": "vast-poni-canyon"
+   },
+   {
+    "where": "verdant-cavern--trial-site"
+   }
+  ],
+  "x-speed": [
+   {
+    "where": "alola-route-6"
+   },
+   {
+    "where": "malie-city-proper"
+   }
+  ],
+  "yache-berry": [
+   {
+    "where": "poni-plains"
+   },
+   {
+    "where": "poni-wilds"
+   }
+  ],
+  "yellow-nectar": [
+   {
+    "where": "melemele-meadow"
+   }
+  ],
+  "yellow-shard": [
+   {
+    "place": {
+     "ko": "포켓리조트",
+     "en": "Poké Pelago"
+    }
+   }
+  ],
+  "zinc": [
+   {
+    "where": "blush-mountain"
+   }
+  ],
+  "zoom-lens": [
+   {
+    "where": "heahea-city"
+   }
+  ],
+  "zygarde-cube": [
+   {
+    "where": "heahea-city"
+   }
+  ]
+ },
+ "tutors": {
+  "blast-burn": [],
+  "hydro-cannon": [],
+  "frenzy-plant": [],
+  "volt-tackle": [],
+  "draco-meteor": [],
+  "water-pledge": [],
+  "fire-pledge": [],
+  "grass-pledge": [],
+  "relic-song": [],
+  "secret-sword": [],
+  "dragon-ascent": []
+ }
 }

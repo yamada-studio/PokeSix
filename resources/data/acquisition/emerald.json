@@ -1,16 +1,1636 @@
 {
   "_comment": [
     "게임(버전 그룹)별 입수 사전 (ui/dex/guidebook.h가 읽는다). 형식은 docs/i18n/README.md 참고.",
-    "items: 아이템 identifier → 입수 방법 목록. tutors: 기술 identifier → NPC 가르침 방법 목록.",
-    "항목: how(field·hidden·gift·shop·exchange·prize·reward·held·trade·tutor·other), where(PokéAPI 장소 identifier),",
-    "place(장소 글자 — identifier가 없을 때), content(컨텐츠: 배틀프런티어 · 포케슬론 …), cost([{amount, unit}]), detail(조건 · 메모).",
-    "글자 칸은 한국어 글자 하나 또는 {ko, en, ja}. 이 게임에 사전 항목이 있으면, 아이템 백과는 이 게임에서 구할 수 있는 아이템만 보여 준다."
+    "scripts/i18n/check_acquisition.py로 검증해 넣었다. 출처는 _sources."
   ],
   "_sources": [
-    "에메랄드 배틀프런티어 BP 교환 튜터(널리 알려진 값)"
+    "에메랄드 배틀프런티어 BP 교환 튜터(널리 알려진 값)",
+    "Serebii.net ItemDex (https://www.serebii.net/itemdex/) — 장소는 PokéAPI/게임 텍스트로 한국어화"
   ],
   "versionGroup": "emerald",
-  "items": {},
+  "items": {
+    "acro-bike": [
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "amulet-coin": [
+      {
+        "where": "littleroot-town"
+      }
+    ],
+    "antidote": [
+      {
+        "where": "hoenn-route-104"
+      }
+    ],
+    "aspear-berry": [
+      {
+        "where": "hoenn-route-120"
+      },
+      {
+        "where": "hoenn-route-121"
+      }
+    ],
+    "basement-key": [
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "basement-key--goldenrod": [
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "basement-key--new-mauville": [
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "belue-berry": [
+      {
+        "where": "hoenn-route-123",
+        "how": "gift",
+        "detail": "나무열매 명인의 아내"
+      }
+    ],
+    "big-pearl": [
+      {
+        "where": "hoenn-route-105"
+      },
+      {
+        "where": "hoenn-route-124"
+      },
+      {
+        "where": "hoenn-route-125"
+      },
+      {
+        "where": "hoenn-route-126"
+      },
+      {
+        "where": "hoenn-route-133"
+      },
+      {
+        "where": "shoal-cave"
+      }
+    ],
+    "black-belt": [
+      {
+        "where": "hoenn-route-115",
+        "detail": "Thief from Blackbelt Nob"
+      }
+    ],
+    "black-glasses": [
+      {
+        "where": "hoenn-route-116"
+      }
+    ],
+    "blue-orb": [
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "blue-shard": [
+      {
+        "where": "hoenn-route-126"
+      }
+    ],
+    "bluk-berry": [
+      {
+        "where": "hoenn-route-111"
+      },
+      {
+        "where": "hoenn-route-114",
+        "how": "gift",
+        "detail": "매일 한 번"
+      },
+      {
+        "where": "hoenn-route-115"
+      }
+    ],
+    "calcium": [
+      {
+        "where": "hoenn-route-119"
+      },
+      {
+        "where": "hoenn-route-123"
+      },
+      {
+        "where": "hoenn-route-124"
+      }
+    ],
+    "carbos": [
+      {
+        "where": "hoenn-route-114"
+      },
+      {
+        "where": "hoenn-route-121"
+      },
+      {
+        "where": "hoenn-route-124"
+      },
+      {
+        "where": "hoenn-route-127"
+      },
+      {
+        "where": "hoenn-route-134"
+      },
+      {
+        "where": "artisan-cave"
+      }
+    ],
+    "charcoal": [
+      {
+        "where": "lavaridge-town"
+      }
+    ],
+    "cheri-berry": [
+      {
+        "where": "hoenn-route-103"
+      },
+      {
+        "where": "hoenn-route-104"
+      }
+    ],
+    "chesto-berry": [
+      {
+        "where": "hoenn-route-104"
+      },
+      {
+        "where": "hoenn-route-116"
+      },
+      {
+        "where": "hoenn-route-121"
+      }
+    ],
+    "claw-fossil": [
+      {
+        "where": "hoenn-route-111"
+      },
+      {
+        "where": "desert-underpass"
+      },
+      {
+        "where": "mirage-tower"
+      }
+    ],
+    "cleanse-tag": [
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "coin-case": [
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "contest-pass": [
+      {
+        "where": "verdanturf-town"
+      }
+    ],
+    "cornn-berry": [
+      {
+        "where": "hoenn-route-123",
+        "how": "gift",
+        "detail": "나무열매 명인"
+      }
+    ],
+    "deep-sea-scale": [
+      {
+        "where": "slateport-city",
+        "detail": "Capt Stern"
+      }
+    ],
+    "deep-sea-tooth": [
+      {
+        "where": "slateport-city",
+        "detail": "Capt Stern"
+      }
+    ],
+    "devon-goods": [
+      {
+        "where": "rusturf-tunnel"
+      }
+    ],
+    "devon-scope": [
+      {
+        "where": "hoenn-route-120",
+        "detail": "Steven"
+      }
+    ],
+    "dire-hit": [
+      {
+        "where": "hoenn-route-104"
+      }
+    ],
+    "dive-ball": [
+      {
+        "where": "abandoned-ship"
+      }
+    ],
+    "dragon-fang": [
+      {
+        "where": "meteor-falls",
+        "detail": "Thief from Dragon Tamer Nicolas"
+      },
+      {
+        "where": "meteor-falls"
+      }
+    ],
+    "durin-berry": [
+      {
+        "where": "hoenn-route-123",
+        "how": "gift",
+        "detail": "나무열매 명인의 아내"
+      }
+    ],
+    "elixir": [
+      {
+        "where": "hoenn-route-111"
+      },
+      {
+        "where": "hoenn-route-119"
+      },
+      {
+        "where": "hoenn-route-123"
+      },
+      {
+        "where": "sootopolis-city"
+      }
+    ],
+    "escape-rope": [
+      {
+        "where": "granite-cave"
+      },
+      {
+        "where": "abandoned-ship"
+      },
+      {
+        "where": "new-mauville"
+      }
+    ],
+    "ether": [
+      {
+        "where": "hoenn-route-109"
+      },
+      {
+        "where": "hoenn-route-113"
+      },
+      {
+        "where": "hoenn-route-116"
+      },
+      {
+        "where": "petalburg-city"
+      },
+      {
+        "where": "sootopolis-city"
+      },
+      {
+        "where": "petalburg-woods"
+      }
+    ],
+    "everstone": [
+      {
+        "where": "granite-cave"
+      }
+    ],
+    "fire-stone": [
+      {
+        "where": "hoenn-route-124",
+        "how": "exchange",
+        "cost": [
+          {
+            "amount": 1,
+            "unit": "red-shard"
+          }
+        ]
+      },
+      {
+        "where": "fiery-path"
+      }
+    ],
+    "focus-band": [
+      {
+        "where": "shoal-cave"
+      }
+    ],
+    "full-heal": [
+      {
+        "where": "hoenn-route-110"
+      },
+      {
+        "where": "hoenn-route-119"
+      },
+      {
+        "where": "hoenn-route-120"
+      },
+      {
+        "where": "hoenn-route-121"
+      },
+      {
+        "where": "jagged-pass"
+      },
+      {
+        "where": "hoenn-victory-road"
+      }
+    ],
+    "full-restore": [
+      {
+        "where": "hoenn-safari-zone"
+      },
+      {
+        "where": "hoenn-victory-road"
+      }
+    ],
+    "good-rod": [
+      {
+        "where": "hoenn-route-118",
+        "detail": "Fisherman"
+      }
+    ],
+    "great-ball": [
+      {
+        "where": "hoenn-route-109"
+      },
+      {
+        "where": "hoenn-route-110"
+      },
+      {
+        "where": "hoenn-route-115"
+      },
+      {
+        "where": "hoenn-route-117"
+      },
+      {
+        "where": "rustboro-city"
+      },
+      {
+        "where": "petalburg-woods",
+        "detail": "Man"
+      },
+      {
+        "where": "jagged-pass"
+      }
+    ],
+    "green-shard": [
+      {
+        "where": "hoenn-route-124"
+      }
+    ],
+    "grepa-berry": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "harbor-mail": [
+      {
+        "where": "abandoned-ship"
+      }
+    ],
+    "hard-stone": [
+      {
+        "where": "hoenn-route-110",
+        "detail": "Trick House 3"
+      }
+    ],
+    "heal-powder": [
+      {
+        "where": "hoenn-route-115"
+      }
+    ],
+    "heart-scale": [
+      {
+        "where": "hoenn-route-104"
+      },
+      {
+        "where": "hoenn-route-105"
+      },
+      {
+        "where": "hoenn-route-106"
+      },
+      {
+        "where": "hoenn-route-109"
+      },
+      {
+        "where": "hoenn-route-115"
+      },
+      {
+        "where": "hoenn-route-118"
+      },
+      {
+        "where": "hoenn-route-124"
+      },
+      {
+        "where": "hoenn-route-126"
+      },
+      {
+        "where": "hoenn-route-127"
+      },
+      {
+        "where": "hoenn-route-128"
+      },
+      {
+        "where": "lilycove-city"
+      }
+    ],
+    "hm01": [
+      {
+        "where": "rustboro-city"
+      }
+    ],
+    "hm02": [
+      {
+        "where": "hoenn-route-119",
+        "detail": "Rival"
+      }
+    ],
+    "hm03": [
+      {
+        "where": "petalburg-city",
+        "detail": "Wally's Family"
+      }
+    ],
+    "hm04": [
+      {
+        "where": "rusturf-tunnel"
+      }
+    ],
+    "hm05": [
+      {
+        "where": "granite-cave",
+        "detail": "Hiker"
+      }
+    ],
+    "hm06": [
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "hm07": [
+      {
+        "where": "cave-of-origin"
+      }
+    ],
+    "hm08": [
+      {
+        "where": "mossdeep-city",
+        "detail": "Steven"
+      }
+    ],
+    "hondew-berry": [
+      {
+        "where": "hoenn-route-119"
+      }
+    ],
+    "hp-up": [
+      {
+        "where": "hoenn-route-111"
+      },
+      {
+        "where": "hoenn-route-116"
+      },
+      {
+        "where": "hoenn-route-121"
+      },
+      {
+        "where": "hoenn-route-127"
+      }
+    ],
+    "hyper-potion": [
+      {
+        "where": "hoenn-route-118"
+      },
+      {
+        "where": "hoenn-route-119"
+      },
+      {
+        "where": "hoenn-route-120"
+      },
+      {
+        "where": "hoenn-route-123"
+      },
+      {
+        "where": "shoal-cave"
+      }
+    ],
+    "ice-heal": [
+      {
+        "where": "lavaridge-town"
+      },
+      {
+        "where": "shoal-cave"
+      }
+    ],
+    "iron": [
+      {
+        "where": "hoenn-route-105"
+      },
+      {
+        "where": "hoenn-route-115"
+      },
+      {
+        "where": "hoenn-route-118"
+      },
+      {
+        "where": "hoenn-route-126"
+      },
+      {
+        "where": "artisan-cave"
+      }
+    ],
+    "kelpsy-berry": [
+      {
+        "where": "hoenn-route-115"
+      }
+    ],
+    "lagreat-ball": [
+      {
+        "where": "hoenn-route-109"
+      },
+      {
+        "where": "hoenn-route-110"
+      },
+      {
+        "where": "hoenn-route-115"
+      },
+      {
+        "where": "hoenn-route-117"
+      },
+      {
+        "where": "rustboro-city"
+      },
+      {
+        "where": "petalburg-woods",
+        "detail": "Man"
+      },
+      {
+        "where": "jagged-pass"
+      }
+    ],
+    "lapoke-ball": [
+      {
+        "where": "hoenn-route-104"
+      },
+      {
+        "where": "hoenn-route-106"
+      },
+      {
+        "where": "hoenn-route-110"
+      },
+      {
+        "where": "hoenn-route-123"
+      },
+      {
+        "where": "hoenn-route-126"
+      },
+      {
+        "where": "lilycove-city"
+      },
+      {
+        "where": "petalburg-woods"
+      },
+      {
+        "where": "rusturf-tunnel"
+      },
+      {
+        "where": "granite-cave"
+      },
+      {
+        "where": "hoenn-victory-road"
+      }
+    ],
+    "laultra-ball": [
+      {
+        "where": "hoenn-route-119"
+      },
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "lax-incense": [
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "leaf-stone": [
+      {
+        "where": "hoenn-route-119"
+      },
+      {
+        "where": "hoenn-route-124",
+        "how": "exchange",
+        "cost": [
+          {
+            "amount": 1,
+            "unit": "green-shard"
+          }
+        ]
+      }
+    ],
+    "leftovers": [
+      {
+        "where": "ss-tidal"
+      }
+    ],
+    "leppa-berry": [
+      {
+        "where": "hoenn-route-103"
+      },
+      {
+        "where": "hoenn-route-104"
+      },
+      {
+        "where": "hoenn-route-119"
+      },
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "liechi-berry": [
+      {
+        "where": "mirage-spot-island"
+      }
+    ],
+    "lum-berry": [
+      {
+        "where": "hoenn-route-123",
+        "how": "gift",
+        "detail": "나무열매 명인"
+      }
+    ],
+    "luxury-ball": [
+      {
+        "where": "abandoned-ship"
+      }
+    ],
+    "mach-bike": [
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "macho-brace": [
+      {
+        "where": "hoenn-route-111"
+      }
+    ],
+    "magma-emblem": [
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "magnet": [
+      {
+        "where": "hoenn-route-110",
+        "detail": "Trick House 6"
+      }
+    ],
+    "magost-berry": [
+      {
+        "where": "hoenn-route-123",
+        "how": "gift",
+        "detail": "나무열매 명인"
+      }
+    ],
+    "master-ball": [
+      {
+        "place": "Magma/Aqua Hideout"
+      }
+    ],
+    "max-elixir": [
+      {
+        "where": "hoenn-victory-road"
+      }
+    ],
+    "max-ether": [
+      {
+        "where": "hoenn-route-119"
+      },
+      {
+        "where": "rusturf-tunnel"
+      },
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "max-potion": [
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "max-repel": [
+      {
+        "where": "hoenn-victory-road"
+      }
+    ],
+    "max-revive": [
+      {
+        "where": "hoenn-route-121"
+      },
+      {
+        "where": "hoenn-route-133"
+      },
+      {
+        "where": "petalburg-city"
+      }
+    ],
+    "mental-herb": [
+      {
+        "where": "fortree-city"
+      }
+    ],
+    "miracle-seed": [
+      {
+        "where": "petalburg-woods"
+      }
+    ],
+    "moon-stone": [
+      {
+        "where": "meteor-falls"
+      }
+    ],
+    "nanab-berry": [
+      {
+        "where": "hoenn-route-111"
+      },
+      {
+        "where": "hoenn-route-114",
+        "how": "gift",
+        "detail": "매일 한 번"
+      },
+      {
+        "where": "hoenn-route-120"
+      },
+      {
+        "where": "hoenn-route-121"
+      }
+    ],
+    "nest-ball": [
+      {
+        "where": "hoenn-route-120"
+      }
+    ],
+    "nomel-berry": [
+      {
+        "where": "hoenn-route-123",
+        "how": "gift",
+        "detail": "나무열매 명인"
+      }
+    ],
+    "nugget": [
+      {
+        "where": "hoenn-route-113"
+      },
+      {
+        "where": "hoenn-route-120"
+      },
+      {
+        "where": "hoenn-route-121"
+      },
+      {
+        "place": "Fallabor Town"
+      },
+      {
+        "where": "mirage-tower"
+      }
+    ],
+    "old-rod": [
+      {
+        "where": "dewford-town",
+        "detail": "Fisherman"
+      }
+    ],
+    "oran-berry": [
+      {
+        "where": "hoenn-route-102"
+      },
+      {
+        "where": "hoenn-route-104"
+      },
+      {
+        "where": "hoenn-route-111"
+      }
+    ],
+    "pamtre-berry": [
+      {
+        "where": "hoenn-route-123",
+        "how": "gift",
+        "detail": "나무열매 명인의 아내"
+      }
+    ],
+    "paralyze-heal": [
+      {
+        "where": "petalburg-woods"
+      }
+    ],
+    "pearl": [
+      {
+        "where": "hoenn-route-124"
+      },
+      {
+        "where": "hoenn-route-126"
+      },
+      {
+        "where": "hoenn-route-128"
+      }
+    ],
+    "pecha-berry": [
+      {
+        "where": "hoenn-route-102"
+      },
+      {
+        "where": "hoenn-route-112"
+      },
+      {
+        "where": "hoenn-route-120"
+      },
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "persim-berry": [
+      {
+        "where": "hoenn-route-114"
+      },
+      {
+        "where": "hoenn-route-121"
+      },
+      {
+        "where": "hoenn-route-123",
+        "how": "gift",
+        "detail": "나무열매 명인"
+      }
+    ],
+    "pinap-berry": [
+      {
+        "where": "hoenn-route-111"
+      },
+      {
+        "where": "hoenn-route-114",
+        "how": "gift",
+        "detail": "매일 한 번"
+      },
+      {
+        "where": "hoenn-route-116"
+      },
+      {
+        "where": "hoenn-route-120"
+      }
+    ],
+    "poke-ball": [
+      {
+        "where": "hoenn-route-104"
+      },
+      {
+        "where": "hoenn-route-106"
+      },
+      {
+        "where": "hoenn-route-110"
+      },
+      {
+        "where": "hoenn-route-123"
+      },
+      {
+        "where": "hoenn-route-126"
+      },
+      {
+        "where": "lilycove-city"
+      },
+      {
+        "where": "petalburg-woods"
+      },
+      {
+        "where": "rusturf-tunnel"
+      },
+      {
+        "where": "granite-cave"
+      },
+      {
+        "where": "hoenn-victory-road"
+      }
+    ],
+    "pokeblock-case": [
+      {
+        "where": "slateport-city",
+        "detail": "Contest House Girl"
+      }
+    ],
+    "pomeg-berry": [
+      {
+        "where": "hoenn-route-119"
+      },
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "potion": [
+      {
+        "where": "hoenn-route-102"
+      },
+      {
+        "where": "hoenn-route-104"
+      },
+      {
+        "where": "hoenn-route-116"
+      },
+      {
+        "where": "oldale-town"
+      },
+      {
+        "where": "petalburg-woods"
+      }
+    ],
+    "powder-jar": [
+      {
+        "where": "slateport-city"
+      }
+    ],
+    "pp-max": [
+      {
+        "where": "hoenn-route-110",
+        "detail": "Trick House 7"
+      }
+    ],
+    "pp-up": [
+      {
+        "where": "hoenn-route-103"
+      },
+      {
+        "where": "hoenn-route-104"
+      },
+      {
+        "where": "hoenn-route-109"
+      },
+      {
+        "where": "hoenn-route-115"
+      },
+      {
+        "where": "hoenn-route-123"
+      },
+      {
+        "where": "lilycove-city"
+      },
+      {
+        "where": "hoenn-safari-zone"
+      },
+      {
+        "where": "hoenn-victory-road"
+      }
+    ],
+    "premier-ball": [
+      {
+        "where": "rustboro-city"
+      }
+    ],
+    "protein": [
+      {
+        "where": "hoenn-route-106"
+      },
+      {
+        "where": "hoenn-route-111"
+      },
+      {
+        "where": "hoenn-route-114"
+      },
+      {
+        "where": "hoenn-route-128"
+      },
+      {
+        "where": "artisan-cave"
+      }
+    ],
+    "qualot-berry": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "quick-claw": [
+      {
+        "where": "rustboro-city"
+      }
+    ],
+    "rabuta-berry": [
+      {
+        "where": "hoenn-route-123",
+        "how": "gift",
+        "detail": "나무열매 명인"
+      }
+    ],
+    "rare-candy": [
+      {
+        "where": "hoenn-route-108"
+      },
+      {
+        "where": "hoenn-route-110",
+        "detail": "Trick House 1"
+      },
+      {
+        "where": "hoenn-route-111"
+      },
+      {
+        "where": "hoenn-route-119"
+      },
+      {
+        "where": "hoenn-route-120"
+      },
+      {
+        "where": "hoenn-route-123"
+      },
+      {
+        "where": "hoenn-route-127"
+      },
+      {
+        "where": "hoenn-route-132"
+      },
+      {
+        "where": "hoenn-safari-zone"
+      },
+      {
+        "where": "shoal-cave"
+      },
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "rawst-berry": [
+      {
+        "where": "hoenn-route-112"
+      },
+      {
+        "where": "hoenn-route-121"
+      },
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "razz-berry": [
+      {
+        "where": "hoenn-route-111"
+      },
+      {
+        "where": "hoenn-route-114",
+        "how": "gift",
+        "detail": "매일 한 번"
+      },
+      {
+        "where": "hoenn-route-120"
+      }
+    ],
+    "red-orb": [
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "red-shard": [
+      {
+        "where": "hoenn-route-127"
+      }
+    ],
+    "repeat-ball": [
+      {
+        "where": "hoenn-route-116",
+        "detail": "Devon Employee"
+      }
+    ],
+    "repel": [
+      {
+        "where": "hoenn-route-116"
+      },
+      {
+        "where": "hoenn-route-117"
+      }
+    ],
+    "revival-herb": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "revive": [
+      {
+        "where": "hoenn-route-110"
+      },
+      {
+        "where": "hoenn-route-114"
+      },
+      {
+        "where": "hoenn-route-117"
+      },
+      {
+        "where": "hoenn-route-120"
+      },
+      {
+        "where": "hoenn-route-121"
+      },
+      {
+        "where": "hoenn-route-123"
+      },
+      {
+        "where": "abandoned-ship"
+      }
+    ],
+    "root-fossil": [
+      {
+        "where": "hoenn-route-111"
+      },
+      {
+        "where": "desert-underpass"
+      },
+      {
+        "where": "mirage-tower"
+      }
+    ],
+    "sacred-ash": [
+      {
+        "place": "Navel Rock"
+      }
+    ],
+    "scanner": [
+      {
+        "where": "abandoned-ship"
+      }
+    ],
+    "sea-incense": [
+      {
+        "where": "shoal-cave",
+        "detail": "Trade for Shoal Salts & Shoal Shells"
+      },
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "shoal-salt": [
+      {
+        "where": "shoal-cave"
+      }
+    ],
+    "shoal-shell": [
+      {
+        "where": "shoal-cave"
+      }
+    ],
+    "silk-scarf": [
+      {
+        "where": "dewford-town"
+      }
+    ],
+    "silver-powder": [
+      {
+        "where": "hoenn-route-120",
+        "detail": "Thief from Bug Maniac Brandon"
+      }
+    ],
+    "sitrus-berry": [
+      {
+        "where": "hoenn-route-118"
+      },
+      {
+        "where": "hoenn-route-119"
+      },
+      {
+        "where": "hoenn-route-123"
+      },
+      {
+        "where": "hoenn-route-123",
+        "how": "gift",
+        "detail": "나무열매 명인"
+      }
+    ],
+    "smoke-ball": [
+      {
+        "where": "hoenn-route-110",
+        "detail": "Trick House 4"
+      }
+    ],
+    "soft-sand": [
+      {
+        "where": "hoenn-route-109",
+        "detail": "Youngster"
+      }
+    ],
+    "soot-sack": [
+      {
+        "where": "hoenn-route-113"
+      }
+    ],
+    "soothe-bell": [
+      {
+        "where": "slateport-city"
+      }
+    ],
+    "soul-dew": [
+      {
+        "where": "southern-island",
+        "detail": "Attached to Latios/Latias"
+      }
+    ],
+    "spell-tag": [
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "spelon-berry": [
+      {
+        "where": "hoenn-route-123",
+        "how": "gift",
+        "detail": "나무열매 명인의 아내"
+      }
+    ],
+    "star-piece": [
+      {
+        "where": "hoenn-route-127"
+      },
+      {
+        "where": "hoenn-route-133"
+      },
+      {
+        "where": "hoenn-route-134"
+      }
+    ],
+    "stardust": [
+      {
+        "where": "hoenn-route-106"
+      },
+      {
+        "where": "hoenn-route-111"
+      },
+      {
+        "where": "hoenn-route-126"
+      }
+    ],
+    "storage-key": [
+      {
+        "where": "abandoned-ship"
+      }
+    ],
+    "storage-key--galactic-warehouse": [
+      {
+        "where": "abandoned-ship"
+      }
+    ],
+    "storage-key--sea-mauville": [
+      {
+        "where": "abandoned-ship"
+      }
+    ],
+    "sun-stone": [
+      {
+        "where": "mossdeep-city",
+        "detail": "Space Center"
+      }
+    ],
+    "super-potion": [
+      {
+        "where": "hoenn-route-104"
+      },
+      {
+        "where": "hoenn-route-115"
+      },
+      {
+        "where": "hoenn-route-116"
+      }
+    ],
+    "super-repel": [
+      {
+        "where": "hoenn-route-119"
+      },
+      {
+        "where": "hoenn-route-123"
+      },
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "super-rod": [
+      {
+        "where": "mossdeep-city",
+        "detail": "Fisherman"
+      }
+    ],
+    "tamato-berry": [
+      {
+        "where": "hoenn-route-123",
+        "how": "gift",
+        "detail": "나무열매 명인"
+      }
+    ],
+    "thunder-stone": [
+      {
+        "where": "hoenn-route-124",
+        "how": "exchange",
+        "cost": [
+          {
+            "amount": 1,
+            "unit": "yellow-shard"
+          }
+        ]
+      }
+    ],
+    "timer-ball": [
+      {
+        "where": "hoenn-route-110",
+        "detail": "Trick House 2"
+      }
+    ],
+    "tiny-mushroom": [
+      {
+        "where": "petalburg-woods"
+      }
+    ],
+    "tm01": [
+      {
+        "where": "hoenn-route-115"
+      }
+    ],
+    "tm03": [
+      {
+        "where": "sootopolis-city",
+        "detail": "Wallace/Juan"
+      }
+    ],
+    "tm04": [
+      {
+        "where": "mossdeep-city",
+        "detail": "Tate & Liza"
+      }
+    ],
+    "tm05": [
+      {
+        "where": "hoenn-route-114"
+      }
+    ],
+    "tm06": [
+      {
+        "where": "fiery-path"
+      }
+    ],
+    "tm07": [
+      {
+        "where": "shoal-cave"
+      }
+    ],
+    "tm08": [
+      {
+        "where": "dewford-town",
+        "detail": "Brawly"
+      }
+    ],
+    "tm09": [
+      {
+        "where": "hoenn-route-104",
+        "detail": "Man"
+      }
+    ],
+    "tm10": [
+      {
+        "where": "fortree-city"
+      }
+    ],
+    "tm11": [
+      {
+        "where": "scorched-slab"
+      }
+    ],
+    "tm12": [
+      {
+        "where": "hoenn-route-110",
+        "detail": "Trick House 5"
+      }
+    ],
+    "tm13": [
+      {
+        "where": "abandoned-ship"
+      }
+    ],
+    "tm18": [
+      {
+        "where": "abandoned-ship"
+      }
+    ],
+    "tm19": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "tm21": [
+      {
+        "where": "pacifidlog-town"
+      }
+    ],
+    "tm24": [
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "tm26": [
+      {
+        "where": "seafloor-cavern"
+      }
+    ],
+    "tm27": [
+      {
+        "place": "Fallabor Town",
+        "detail": "Prof. Cozmo"
+      },
+      {
+        "where": "pacifidlog-town",
+        "detail": "Gentleman"
+      }
+    ],
+    "tm28": [
+      {
+        "where": "hoenn-route-114"
+      }
+    ],
+    "tm29": [
+      {
+        "where": "hoenn-victory-road"
+      }
+    ],
+    "tm30": [
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "tm31": [
+      {
+        "where": "sootopolis-city"
+      }
+    ],
+    "tm32": [
+      {
+        "where": "hoenn-route-113"
+      },
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "tm34": [
+      {
+        "where": "mauville-city",
+        "detail": "Wattson"
+      }
+    ],
+    "tm37": [
+      {
+        "where": "hoenn-route-111"
+      }
+    ],
+    "tm39": [
+      {
+        "where": "rustboro-city",
+        "detail": "Roxanne"
+      }
+    ],
+    "tm40": [
+      {
+        "where": "fortree-city",
+        "detail": "Winona"
+      }
+    ],
+    "tm41": [
+      {
+        "where": "slateport-city",
+        "detail": "Sailor"
+      }
+    ],
+    "tm43": [
+      {
+        "where": "hoenn-route-111"
+      }
+    ],
+    "tm46": [
+      {
+        "where": "petalburg-city",
+        "detail": "Norman"
+      },
+      {
+        "where": "slateport-city"
+      }
+    ],
+    "tm47": [
+      {
+        "where": "granite-cave",
+        "detail": "Steven"
+      }
+    ],
+    "tm48": [
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "tm49": [
+      {
+        "where": "ss-tidal"
+      }
+    ],
+    "tm50": [
+      {
+        "where": "lavaridge-town",
+        "detail": "Flannery"
+      }
+    ],
+    "ultra-ball": [
+      {
+        "where": "hoenn-route-119"
+      },
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "wailmer-pail": [
+      {
+        "where": "hoenn-route-104",
+        "detail": "Flower Shop"
+      }
+    ],
+    "water-stone": [
+      {
+        "where": "hoenn-route-124",
+        "how": "exchange",
+        "cost": [
+          {
+            "amount": 1,
+            "unit": "blue-shard"
+          }
+        ]
+      },
+      {
+        "where": "abandoned-ship"
+      }
+    ],
+    "watmel-berry": [
+      {
+        "where": "hoenn-route-123",
+        "how": "gift",
+        "detail": "나무열매 명인의 아내"
+      }
+    ],
+    "wepear-berry": [
+      {
+        "where": "hoenn-route-111"
+      },
+      {
+        "where": "hoenn-route-114",
+        "how": "gift",
+        "detail": "매일 한 번"
+      },
+      {
+        "where": "hoenn-route-117"
+      },
+      {
+        "where": "hoenn-route-120"
+      }
+    ],
+    "white-herb": [
+      {
+        "where": "hoenn-route-104",
+        "detail": "Woman"
+      }
+    ],
+    "x-accuracy": [
+      {
+        "where": "hoenn-route-104"
+      }
+    ],
+    "x-defense": [
+      {
+        "where": "rustboro-city"
+      }
+    ],
+    "x-speed": [
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "yellow-shard": [
+      {
+        "where": "hoenn-route-126"
+      }
+    ],
+    "zinc": [
+      {
+        "where": "hoenn-route-119"
+      },
+      {
+        "where": "hoenn-route-120"
+      },
+      {
+        "where": "hoenn-route-121"
+      },
+      {
+        "where": "hoenn-route-127"
+      },
+      {
+        "where": "hoenn-safari-zone"
+      },
+      {
+        "where": "mt-pyre"
+      },
+      {
+        "where": "artisan-cave"
+      }
+    ]
+  },
   "tutors": {
     "fire-punch": [
       {

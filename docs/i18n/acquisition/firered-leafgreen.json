@@ -1,169 +1,1739 @@
 {
-  "versionGroup": "firered-leafgreen",
-  "generation": 3,
-  "_games": [
-    "파이어레드 (FireRed)",
-    "리프그린 (LeafGreen)"
+ "versionGroup": "firered-leafgreen",
+ "generation": 3,
+ "_games": [
+  "파이어레드 (FireRed)",
+  "리프그린 (LeafGreen)"
+ ],
+ "_sources": [
+  "Serebii.net ItemDex (https://www.serebii.net/itemdex/) — 장소는 PokéAPI/게임 텍스트로 한국어화"
+ ],
+ "_tms": {
+  "tm01": "힘껏펀치 / Focus Punch",
+  "tm02": "드래곤클로 / Dragon Claw",
+  "tm03": "물의파동 / Water Pulse",
+  "tm04": "명상 / Calm Mind",
+  "tm05": "울부짖기 / Roar",
+  "tm06": "맹독 / Toxic",
+  "tm07": "싸라기눈 / Hail",
+  "tm08": "벌크업 / Bulk Up",
+  "tm09": "씨기관총 / Bullet Seed",
+  "tm10": "잠재파워 / Hidden Power",
+  "tm11": "쾌청 / Sunny Day",
+  "tm12": "도발 / Taunt",
+  "tm13": "냉동빔 / Ice Beam",
+  "tm14": "눈보라 / Blizzard",
+  "tm15": "파괴광선 / Hyper Beam",
+  "tm16": "빛의장막 / Light Screen",
+  "tm17": "방어 / Protect",
+  "tm18": "비바라기 / Rain Dance",
+  "tm19": "기가드레인 / Giga Drain",
+  "tm20": "신비의부적 / Safeguard",
+  "tm21": "화풀이 / Frustration",
+  "tm22": "솔라빔 / Solar Beam",
+  "tm23": "아이언테일 / Iron Tail",
+  "tm24": "10만볼트 / Thunderbolt",
+  "tm25": "번개 / Thunder",
+  "tm26": "지진 / Earthquake",
+  "tm27": "은혜갚기 / Return",
+  "tm28": "구멍파기 / Dig",
+  "tm29": "사이코키네시스 / Psychic",
+  "tm30": "섀도볼 / Shadow Ball",
+  "tm31": "깨뜨리다 / Brick Break",
+  "tm32": "그림자분신 / Double Team",
+  "tm33": "리플렉터 / Reflect",
+  "tm34": "전격파 / Shock Wave",
+  "tm35": "화염방사 / Flamethrower",
+  "tm36": "오물폭탄 / Sludge Bomb",
+  "tm37": "모래바람 / Sandstorm",
+  "tm38": "불대문자 / Fire Blast",
+  "tm39": "암석봉인 / Rock Tomb",
+  "tm40": "제비반환 / Aerial Ace",
+  "tm41": "트집 / Torment",
+  "tm42": "객기 / Facade",
+  "tm43": "비밀의힘 / Secret Power",
+  "tm44": "잠자기 / Rest",
+  "tm45": "헤롱헤롱 / Attract",
+  "tm46": "도둑질 / Thief",
+  "tm47": "강철날개 / Steel Wing",
+  "tm48": "스킬스왑 / Skill Swap",
+  "tm49": "가로채기 / Snatch",
+  "tm50": "오버히트 / Overheat",
+  "hm01": "풀베기 / Cut",
+  "hm02": "공중날기 / Fly",
+  "hm03": "파도타기 / Surf",
+  "hm04": "괴력 / Strength",
+  "hm05": "플래시 / Flash",
+  "hm06": "바위깨기 / Rock Smash",
+  "hm07": "폭포오르기 / Waterfall",
+  "hm08": "다이빙 / Dive"
+ },
+ "_tutors": {
+  "mega-punch": "메가톤펀치 / Mega Punch",
+  "swords-dance": "칼춤 / Swords Dance",
+  "mega-kick": "메가톤킥 / Mega Kick",
+  "body-slam": "누르기 / Body Slam",
+  "double-edge": "이판사판태클 / Double-Edge",
+  "counter": "카운터 / Counter",
+  "seismic-toss": "지구던지기 / Seismic Toss",
+  "thunder-wave": "전기자석파 / Thunder Wave",
+  "mimic": "흉내내기 / Mimic",
+  "metronome": "손가락흔들기 / Metronome",
+  "soft-boiled": "알낳기 / Soft-Boiled",
+  "dream-eater": "꿈먹기 / Dream Eater",
+  "explosion": "대폭발 / Explosion",
+  "rock-slide": "스톤샤워 / Rock Slide",
+  "substitute": "대타출동 / Substitute",
+  "blast-burn": "블라스트번 / Blast Burn",
+  "hydro-cannon": "하이드로캐논 / Hydro Cannon",
+  "frenzy-plant": "하드플랜트 / Frenzy Plant"
+ },
+ "items": {
+  "amulet-coin": [
+   {
+    "where": "kanto-route-16",
+    "detail": "Professor Oak's Aide"
+   }
   ],
-  "_sources": [],
-  "_tms": {
-    "tm01": "힘껏펀치 / Focus Punch",
-    "tm02": "드래곤클로 / Dragon Claw",
-    "tm03": "물의파동 / Water Pulse",
-    "tm04": "명상 / Calm Mind",
-    "tm05": "울부짖기 / Roar",
-    "tm06": "맹독 / Toxic",
-    "tm07": "싸라기눈 / Hail",
-    "tm08": "벌크업 / Bulk Up",
-    "tm09": "씨기관총 / Bullet Seed",
-    "tm10": "잠재파워 / Hidden Power",
-    "tm11": "쾌청 / Sunny Day",
-    "tm12": "도발 / Taunt",
-    "tm13": "냉동빔 / Ice Beam",
-    "tm14": "눈보라 / Blizzard",
-    "tm15": "파괴광선 / Hyper Beam",
-    "tm16": "빛의장막 / Light Screen",
-    "tm17": "방어 / Protect",
-    "tm18": "비바라기 / Rain Dance",
-    "tm19": "기가드레인 / Giga Drain",
-    "tm20": "신비의부적 / Safeguard",
-    "tm21": "화풀이 / Frustration",
-    "tm22": "솔라빔 / Solar Beam",
-    "tm23": "아이언테일 / Iron Tail",
-    "tm24": "10만볼트 / Thunderbolt",
-    "tm25": "번개 / Thunder",
-    "tm26": "지진 / Earthquake",
-    "tm27": "은혜갚기 / Return",
-    "tm28": "구멍파기 / Dig",
-    "tm29": "사이코키네시스 / Psychic",
-    "tm30": "섀도볼 / Shadow Ball",
-    "tm31": "깨뜨리다 / Brick Break",
-    "tm32": "그림자분신 / Double Team",
-    "tm33": "리플렉터 / Reflect",
-    "tm34": "전격파 / Shock Wave",
-    "tm35": "화염방사 / Flamethrower",
-    "tm36": "오물폭탄 / Sludge Bomb",
-    "tm37": "모래바람 / Sandstorm",
-    "tm38": "불대문자 / Fire Blast",
-    "tm39": "암석봉인 / Rock Tomb",
-    "tm40": "제비반환 / Aerial Ace",
-    "tm41": "트집 / Torment",
-    "tm42": "객기 / Facade",
-    "tm43": "비밀의힘 / Secret Power",
-    "tm44": "잠자기 / Rest",
-    "tm45": "헤롱헤롱 / Attract",
-    "tm46": "도둑질 / Thief",
-    "tm47": "강철날개 / Steel Wing",
-    "tm48": "스킬스왑 / Skill Swap",
-    "tm49": "가로채기 / Snatch",
-    "tm50": "오버히트 / Overheat",
-    "hm01": "풀베기 / Cut",
-    "hm02": "공중날기 / Fly",
-    "hm03": "파도타기 / Surf",
-    "hm04": "괴력 / Strength",
-    "hm05": "플래시 / Flash",
-    "hm06": "바위깨기 / Rock Smash",
-    "hm07": "폭포오르기 / Waterfall",
-    "hm08": "다이빙 / Dive"
-  },
-  "_tutors": {
-    "mega-punch": "메가톤펀치 / Mega Punch",
-    "swords-dance": "칼춤 / Swords Dance",
-    "mega-kick": "메가톤킥 / Mega Kick",
-    "body-slam": "누르기 / Body Slam",
-    "double-edge": "이판사판태클 / Double-Edge",
-    "counter": "카운터 / Counter",
-    "seismic-toss": "지구던지기 / Seismic Toss",
-    "thunder-wave": "전기자석파 / Thunder Wave",
-    "mimic": "흉내내기 / Mimic",
-    "metronome": "손가락흔들기 / Metronome",
-    "soft-boiled": "알낳기 / Soft-Boiled",
-    "dream-eater": "꿈먹기 / Dream Eater",
-    "explosion": "대폭발 / Explosion",
-    "rock-slide": "스톤샤워 / Rock Slide",
-    "substitute": "대타출동 / Substitute",
-    "blast-burn": "블라스트번 / Blast Burn",
-    "hydro-cannon": "하이드로캐논 / Hydro Cannon",
-    "frenzy-plant": "하드플랜트 / Frenzy Plant"
-  },
-  "items": {
-    "tm01": [],
-    "tm02": [],
-    "tm03": [],
-    "tm04": [],
-    "tm05": [],
-    "tm06": [],
-    "tm07": [],
-    "tm08": [],
-    "tm09": [],
-    "tm10": [],
-    "tm11": [],
-    "tm12": [],
-    "tm13": [],
-    "tm14": [],
-    "tm15": [],
-    "tm16": [],
-    "tm17": [],
-    "tm18": [],
-    "tm19": [],
-    "tm20": [],
-    "tm21": [],
-    "tm22": [],
-    "tm23": [],
-    "tm24": [],
-    "tm25": [],
-    "tm26": [],
-    "tm27": [],
-    "tm28": [],
-    "tm29": [],
-    "tm30": [],
-    "tm31": [],
-    "tm32": [],
-    "tm33": [],
-    "tm34": [],
-    "tm35": [],
-    "tm36": [],
-    "tm37": [],
-    "tm38": [],
-    "tm39": [],
-    "tm40": [],
-    "tm41": [],
-    "tm42": [],
-    "tm43": [],
-    "tm44": [],
-    "tm45": [],
-    "tm46": [],
-    "tm47": [],
-    "tm48": [],
-    "tm49": [],
-    "tm50": [],
-    "hm01": [],
-    "hm02": [],
-    "hm03": [],
-    "hm04": [],
-    "hm05": [],
-    "hm06": [],
-    "hm07": [],
-    "hm08": []
-  },
-  "tutors": {
-    "mega-punch": [],
-    "swords-dance": [],
-    "mega-kick": [],
-    "body-slam": [],
-    "double-edge": [],
-    "counter": [],
-    "seismic-toss": [],
-    "thunder-wave": [],
-    "mimic": [],
-    "metronome": [],
-    "soft-boiled": [],
-    "dream-eater": [],
-    "explosion": [],
-    "rock-slide": [],
-    "substitute": [],
-    "blast-burn": [],
-    "hydro-cannon": [],
-    "frenzy-plant": []
-  }
+  "antidote": [
+   {
+    "where": "viridian-forest"
+   },
+   {
+    "where": "mt-moon"
+   },
+   {
+    "place": "Underground Path 5-6",
+    "detail": "Visit SS Anne"
+   },
+   {
+    "place": "Underground Path 7-8",
+    "detail": "Complete Rocket Warehouse"
+   }
+  ],
+  "aspear-berry": [
+   {
+    "where": "kanto-route-23"
+   },
+   {
+    "where": "berry-forest"
+   },
+   {
+    "where": "water-path"
+   }
+  ],
+  "auroraticket": [
+   {
+    "place": "In your bag after beating Elite Four",
+    "detail": "Nintendo Switch Version"
+   }
+  ],
+  "awakening": [
+   {
+    "where": "kanto-route-11"
+   },
+   {
+    "place": "Underground Path 5-6",
+    "detail": "Visit SS Anne"
+   },
+   {
+    "place": "Underground Path 7-8",
+    "detail": "Complete Rocket Warehouse"
+   },
+   {
+    "where": "pokemon-tower"
+   }
+  ],
+  "bicycle": [
+   {
+    "where": "cerulean-city",
+    "detail": "Bicycle Seller"
+   }
+  ],
+  "big-mushroom": [
+   {
+    "where": "mt-moon"
+   },
+   {
+    "where": "pokemon-tower"
+   }
+  ],
+  "big-pearl": [
+   {
+    "where": "seafoam-islands"
+   },
+   {
+    "where": "treasure-beach"
+   },
+   {
+    "where": "resort-gorgeous",
+    "detail": "Selphy"
+   },
+   {
+    "place": {
+     "ko": "로켓단 창고",
+     "en": "Rocket Warehouse"
+    }
+   }
+  ],
+  "bike-voucher": [
+   {
+    "place": {
+     "ko": "갈색시티",
+     "en": "Vermillion City"
+    },
+    "detail": "Head of Pokémon Fan Club"
+   }
+  ],
+  "black-glasses": [
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   }
+  ],
+  "bluk-berry": [
+   {
+    "where": "kanto-route-25"
+   },
+   {
+    "where": "berry-forest"
+   },
+   {
+    "where": "memorial-pillar"
+   }
+  ],
+  "burn-heal": [
+   {
+    "where": "kanto-route-9"
+   },
+   {
+    "place": "Underground Path 5-6",
+    "detail": "Visit SS Anne"
+   },
+   {
+    "place": "Underground Path 7-8",
+    "detail": "Complete Rocket Warehouse"
+   }
+  ],
+  "calcium": [
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "pokemon-mansion"
+   }
+  ],
+  "carbos": [
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "pokemon-mansion"
+   }
+  ],
+  "card-key": [
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   }
+  ],
+  "card-key--letsgo": [
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   }
+  ],
+  "cheri-berry": [
+   {
+    "where": "kanto-route-10"
+   },
+   {
+    "where": "ss-anne"
+   },
+   {
+    "where": "berry-forest"
+   },
+   {
+    "place": "Seavault Canyon"
+   }
+  ],
+  "chesto-berry": [
+   {
+    "where": "kanto-route-9"
+   },
+   {
+    "where": "ss-anne"
+   }
+  ],
+  "cleanse-tag": [
+   {
+    "where": "pokemon-tower"
+   }
+  ],
+  "dire-hit": [
+   {
+    "where": "mt-ember"
+   }
+  ],
+  "dome-fossil": [
+   {
+    "where": "mt-moon"
+   }
+  ],
+  "dragon-scale": [
+   {
+    "where": "water-path"
+   },
+   {
+    "where": "trainer-tower",
+    "detail": "Defeat Double Mode"
+   }
+  ],
+  "elixir": [
+   {
+    "where": "kanto-route-25"
+   },
+   {
+    "where": "pokemon-tower"
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "place": {
+     "ko": "무인발전소",
+     "en": "Power Plant"
+    }
+   },
+   {
+    "where": "pokemon-mansion"
+   },
+   {
+    "where": "water-path"
+   }
+  ],
+  "escape-rope": [
+   {
+    "where": "kanto-route-11"
+   },
+   {
+    "where": "mt-moon"
+   },
+   {
+    "where": "rock-tunnel"
+   },
+   {
+    "where": "pokemon-tower"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "pokemon-mansion"
+   }
+  ],
+  "ether": [
+   {
+    "where": "kanto-route-2"
+   },
+   {
+    "where": "kanto-route-9"
+   },
+   {
+    "where": "kanto-route-25"
+   },
+   {
+    "where": "mt-moon"
+   },
+   {
+    "place": "Underground Path 7-8"
+   },
+   {
+    "where": "ss-anne"
+   }
+  ],
+  "fame-checker": [
+   {
+    "where": "cerulean-city",
+    "detail": "Defeat Rival"
+   }
+  ],
+  "fire-stone": [
+   {
+    "where": "mt-ember"
+   }
+  ],
+  "full-heal": [
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "kanto-victory-road-1"
+   },
+   {
+    "where": "berry-forest"
+   }
+  ],
+  "full-restore": [
+   {
+    "where": "kanto-route-17"
+   },
+   {
+    "where": "kanto-route-23"
+   },
+   {
+    "where": "cerulean-cave"
+   },
+   {
+    "where": "kanto-safari-zone"
+   },
+   {
+    "where": "pokemon-mansion"
+   },
+   {
+    "where": "kanto-victory-road-1"
+   },
+   {
+    "where": "three-island",
+    "detail": "Defeat bikers"
+   },
+   {
+    "where": "icefall-cave"
+   },
+   {
+    "where": "ruin-valley"
+   }
+  ],
+  "gold-teeth": [
+   {
+    "where": "kanto-safari-zone"
+   }
+  ],
+  "great-ball": [
+   {
+    "where": "kanto-route-4"
+   },
+   {
+    "where": "kanto-route-11"
+   },
+   {
+    "where": "ss-anne"
+   },
+   {
+    "where": "pokemon-tower"
+   }
+  ],
+  "helix-fossil": [
+   {
+    "where": "mt-moon"
+   }
+  ],
+  "hm01": [
+   {
+    "where": "ss-anne",
+    "detail": "SS Anne's Captain"
+   }
+  ],
+  "hm02": [
+   {
+    "where": "kanto-route-16"
+   },
+   {
+    "where": "kanto-route-16",
+    "detail": "Girl in house"
+   }
+  ],
+  "hm03": [
+   {
+    "where": "kanto-safari-zone",
+    "detail": "Secret House"
+   }
+  ],
+  "hm04": [
+   {
+    "where": "fuchsia-city",
+    "detail": "Return Gold Teeth to Warden"
+   }
+  ],
+  "hm05": [
+   {
+    "where": "kanto-route-2",
+    "detail": "Professor Oak's Aide"
+   }
+  ],
+  "hm06": [
+   {
+    "where": "kindle-road",
+    "detail": "Old Man in Ember Spa"
+   }
+  ],
+  "hm07": [
+   {
+    "where": "icefall-cave"
+   }
+  ],
+  "hm08": [],
+  "hp-up": [
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "pokemon-mansion"
+   },
+   {
+    "where": "ruin-valley"
+   }
+  ],
+  "hyper-potion": [
+   {
+    "where": "kanto-route-12"
+   },
+   {
+    "where": "ss-anne"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   }
+  ],
+  "iapapa-berry": [
+   {
+    "where": "berry-forest"
+   }
+  ],
+  "ice-heal": [
+   {
+    "place": "Underground Path 5-6",
+    "detail": "Visit SS Anne"
+   },
+   {
+    "place": "Underground Path 7-8",
+    "detail": "Complete Rocket Warehouse"
+   },
+   {
+    "where": "seafoam-islands"
+   }
+  ],
+  "iron": [
+   {
+    "where": "kanto-route-12"
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "pokemon-mansion"
+   }
+  ],
+  "kings-rock": [
+   {
+    "where": "trainer-tower",
+    "detail": "Defeat Mixed Mode"
+   },
+   {
+    "place": "Seavault Canyon"
+   }
+  ],
+  "lagreat-ball": [
+   {
+    "where": "kanto-route-4"
+   },
+   {
+    "where": "kanto-route-11"
+   },
+   {
+    "where": "ss-anne"
+   },
+   {
+    "where": "pokemon-tower"
+   }
+  ],
+  "laultra-ball": [
+   {
+    "where": "kanto-route-23"
+   },
+   {
+    "where": "cerulean-cave"
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "seafoam-islands"
+   },
+   {
+    "where": "kanto-victory-road-1"
+   },
+   {
+    "where": "treasure-beach"
+   },
+   {
+    "where": "mt-ember"
+   },
+   {
+    "where": "four-island"
+   },
+   {
+    "where": "icefall-cave"
+   },
+   {
+    "where": "green-path"
+   }
+  ],
+  "lava-cookie": [
+   {
+    "place": {
+     "ko": "갈색시티",
+     "en": "Vermillion City"
+    }
+   }
+  ],
+  "lax-incense": [
+   {
+    "where": "lost-cave"
+   }
+  ],
+  "leaf-stone": [
+   {
+    "where": "kanto-safari-zone"
+   }
+  ],
+  "leftovers": [
+   {
+    "where": "kanto-route-12"
+   },
+   {
+    "where": "kanto-route-16"
+   }
+  ],
+  "leppa-berry": [
+   {
+    "where": "kanto-route-8"
+   },
+   {
+    "where": "kanto-route-23"
+   },
+   {
+    "where": "six-island"
+   }
+  ],
+  "lift-key": [
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   }
+  ],
+  "lucky-punch": [
+   {
+    "place": "Seavault Canyon"
+   }
+  ],
+  "lum-berry": [
+   {
+    "where": "kanto-route-8"
+   },
+   {
+    "where": "kanto-route-23"
+   }
+  ],
+  "luxury-ball": [
+   {
+    "where": "resort-gorgeous",
+    "detail": "Selphy"
+   }
+  ],
+  "macho-brace": [
+   {
+    "where": "viridian-city",
+    "detail": "Defeat Giovanni"
+   }
+  ],
+  "master-ball": [
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    },
+    "detail": "Giovanni"
+   }
+  ],
+  "max-elixir": [
+   {
+    "where": "kanto-route-17"
+   },
+   {
+    "where": "kanto-route-23"
+   },
+   {
+    "where": "cerulean-cave"
+   },
+   {
+    "place": {
+     "ko": "무인발전소",
+     "en": "Power Plant"
+    }
+   },
+   {
+    "where": "berry-forest"
+   },
+   {
+    "place": "Seavault Canyon"
+   }
+  ],
+  "max-ether": [
+   {
+    "where": "kanto-route-10"
+   },
+   {
+    "where": "kanto-route-23"
+   },
+   {
+    "place": {
+     "ko": "갈색시티",
+     "en": "Vermillion City"
+    }
+   },
+   {
+    "where": "rock-tunnel"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   },
+   {
+    "where": "berry-forest"
+   }
+  ],
+  "max-potion": [
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "kanto-safari-zone"
+   },
+   {
+    "place": {
+     "ko": "무인발전소",
+     "en": "Power Plant"
+    }
+   },
+   {
+    "where": "pokemon-mansion"
+   },
+   {
+    "where": "five-island"
+   }
+  ],
+  "max-repel": [
+   {
+    "where": "bond-bridge"
+   }
+  ],
+  "max-revive": [
+   {
+    "where": "kanto-route-17"
+   },
+   {
+    "where": "fuchsia-city"
+   },
+   {
+    "where": "cerulean-cave"
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "kanto-safari-zone"
+   },
+   {
+    "where": "kanto-victory-road-1"
+   },
+   {
+    "where": "lost-cave"
+   }
+  ],
+  "metal-coat": [
+   {
+    "where": "memorial-pillar"
+   },
+   {
+    "where": "trainer-tower",
+    "detail": "Defeat Knockout Mode"
+   }
+  ],
+  "moon-stone": [
+   {
+    "where": "mt-moon"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   },
+   {
+    "where": "pokemon-mansion"
+   },
+   {
+    "where": "two-island",
+    "detail": "After Rescuing Lostelle"
+   }
+  ],
+  "mysticticket": [
+   {
+    "place": "In your bag after beating Elite Four",
+    "detail": "Nintendo Switch Version"
+   }
+  ],
+  "nanab-berry": [
+   {
+    "where": "kanto-route-10"
+   },
+   {
+    "where": "trainer-tower"
+   }
+  ],
+  "nest-ball": [
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   },
+   {
+    "place": {
+     "ko": "로켓단 창고",
+     "en": "Rocket Warehouse"
+    }
+   },
+   {
+    "where": "water-path",
+    "detail": "Heracross lady when you break record"
+   }
+  ],
+  "net-ball": [
+   {
+    "where": "kanto-route-12",
+    "detail": "Fishing Guru's younger brother"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   },
+   {
+    "place": {
+     "ko": "로켓단 창고",
+     "en": "Rocket Warehouse"
+    }
+   }
+  ],
+  "nugget": [
+   {
+    "where": "saffron-city",
+    "detail": "next to Mimic Tutor's computer"
+   },
+   {
+    "where": "cerulean-cave"
+   },
+   {
+    "where": "pokemon-tower"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "kanto-safari-zone"
+   },
+   {
+    "where": "seafoam-islands"
+   },
+   {
+    "where": "three-isle-path",
+    "detail": "Man digging path"
+   },
+   {
+    "where": "three-isle-path"
+   },
+   {
+    "where": "resort-gorgeous",
+    "detail": "Selphy"
+   },
+   {
+    "place": "Seavault Canyon"
+   }
+  ],
+  "old-amber": [
+   {
+    "where": "pewter-city",
+    "detail": "Museum Scientist"
+   }
+  ],
+  "oran-berry": [
+   {
+    "where": "kanto-route-3"
+   },
+   {
+    "where": "kanto-route-25"
+   },
+   {
+    "where": "berry-forest"
+   },
+   {
+    "where": "water-path"
+   }
+  ],
+  "paralyze-heal": [
+   {
+    "where": "kanto-route-2"
+   },
+   {
+    "where": "mt-moon"
+   },
+   {
+    "place": "Underground Path 5-6",
+    "detail": "Visit SS Anne"
+   },
+   {
+    "place": "Underground Path 7-8",
+    "detail": "Complete Rocket Warehouse"
+   }
+  ],
+  "pearl": [
+   {
+    "where": "rock-tunnel"
+   },
+   {
+    "where": "resort-gorgeous",
+    "detail": "Selphy"
+   },
+   {
+    "place": {
+     "ko": "로켓단 창고",
+     "en": "Rocket Warehouse"
+    }
+   },
+   {
+    "where": "trainer-tower"
+   }
+  ],
+  "pecha-berry": [
+   {
+    "where": "kanto-route-24"
+   },
+   {
+    "where": "ss-anne"
+   }
+  ],
+  "persim-berry": [
+   {
+    "where": "kanto-route-4"
+   },
+   {
+    "where": "kanto-route-10"
+   },
+   {
+    "where": "berry-forest"
+   }
+  ],
+  "pinap-berry": [
+   {
+    "where": "kanto-route-14"
+   },
+   {
+    "where": "berry-forest"
+   },
+   {
+    "where": "water-path"
+   }
+  ],
+  "potion": [
+   {
+    "where": "kanto-route-1",
+    "detail": "Viridian Poké Mart employee"
+   },
+   {
+    "where": "pallet-town",
+    "detail": "PC in Player's house"
+   },
+   {
+    "where": "viridian-forest"
+   },
+   {
+    "where": "mt-moon"
+   },
+   {
+    "place": "Underground Path 5-6",
+    "detail": "Visit SS Anne"
+   },
+   {
+    "place": "Underground Path 7-8",
+    "detail": "Complete Rocket Warehouse"
+   }
+  ],
+  "powder-jar": [
+   {
+    "where": "cerulean-city",
+    "detail": "Berry Powder Man"
+   }
+  ],
+  "pp-max": [
+   {
+    "where": "cape-brink"
+   }
+  ],
+  "pp-up": [
+   {
+    "where": "kanto-route-13"
+   },
+   {
+    "where": "kanto-route-17"
+   },
+   {
+    "where": "celadon-city"
+   },
+   {
+    "where": "cerulean-cave"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "three-island"
+   },
+   {
+    "where": "five-isle-meadow"
+   },
+   {
+    "where": "outcast-island"
+   }
+  ],
+  "protein": [
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "kanto-safari-zone"
+   },
+   {
+    "where": "pokemon-mansion"
+   }
+  ],
+  "quick-claw": [
+   {
+    "where": "kanto-safari-zone"
+   }
+  ],
+  "rainbow-pass": [
+   {
+    "where": "one-island",
+    "detail": "Celio will give it to you once you've given him the Ruby"
+   }
+  ],
+  "rare-candy": [
+   {
+    "where": "kanto-route-6"
+   },
+   {
+    "where": "kanto-route-9"
+   },
+   {
+    "where": "kanto-route-12"
+   },
+   {
+    "where": "kanto-route-17"
+   },
+   {
+    "where": "cerulean-city"
+   },
+   {
+    "where": "mt-moon"
+   },
+   {
+    "where": "pokemon-tower"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "pokemon-mansion"
+   },
+   {
+    "where": "kanto-victory-road-1"
+   },
+   {
+    "where": "cape-brink"
+   },
+   {
+    "where": "resort-gorgeous",
+    "detail": "Selphy"
+   },
+   {
+    "where": "lost-cave"
+   }
+  ],
+  "rawst-berry": [
+   {
+    "where": "kanto-route-8"
+   },
+   {
+    "where": "canyon-entrance"
+   }
+  ],
+  "razz-berry": [
+   {
+    "where": "kanto-route-4"
+   },
+   {
+    "where": "memorial-pillar"
+   }
+  ],
+  "repel": [
+   {
+    "where": "rock-tunnel"
+   }
+  ],
+  "revive": [
+   {
+    "where": "mt-moon"
+   },
+   {
+    "where": "rock-tunnel"
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "seafoam-islands"
+   },
+   {
+    "where": "two-island"
+   }
+  ],
+  "ruby": [
+   {
+    "where": "mt-ember"
+   }
+  ],
+  "sacred-ash": [
+   {
+    "where": "navel-rock"
+   }
+  ],
+  "sapphire": [
+   {
+    "place": {
+     "ko": "로켓단 창고",
+     "en": "Rocket Warehouse"
+    },
+    "detail": "Defeat Boss (Scientist Gioden)"
+   }
+  ],
+  "sea-incense": [
+   {
+    "where": "lost-cave"
+   }
+  ],
+  "secret-key": [
+   {
+    "where": "pokemon-mansion"
+   }
+  ],
+  "secret-key--letsgo": [
+   {
+    "where": "pokemon-mansion"
+   }
+  ],
+  "silk-scarf": [
+   {
+    "where": "lost-cave",
+    "detail": "Defeat Seplhy and then return"
+   }
+  ],
+  "silph-scope": [
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    },
+    "detail": "Defeat Giovanni"
+   }
+  ],
+  "sitrus-berry": [
+   {
+    "where": "kanto-route-6"
+   },
+   {
+    "where": "kanto-route-23"
+   },
+   {
+    "where": "memorial-pillar"
+   }
+  ],
+  "soothe-bell": [
+   {
+    "where": "pokemon-tower"
+   }
+  ],
+  "star-piece": [
+   {
+    "where": "mt-moon"
+   },
+   {
+    "where": "treasure-beach"
+   },
+   {
+    "where": "four-island"
+   },
+   {
+    "where": "resort-gorgeous",
+    "detail": "Selphy"
+   }
+  ],
+  "stardust": [
+   {
+    "where": "ss-anne"
+   },
+   {
+    "where": "four-island"
+   },
+   {
+    "where": "resort-gorgeous"
+   },
+   {
+    "where": "resort-gorgeous",
+    "detail": "Selphy"
+   }
+  ],
+  "sun-stone": [
+   {
+    "where": "ruin-valley"
+   }
+  ],
+  "super-potion": [
+   {
+    "where": "kanto-route-10"
+   },
+   {
+    "where": "ss-anne"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   }
+  ],
+  "super-rod": [
+   {
+    "where": "kanto-route-12",
+    "detail": "Fishing Guru's younger brother"
+   }
+  ],
+  "tea": [
+   {
+    "where": "celadon-city",
+    "detail": "Old Lady in Celadon Mansion"
+   }
+  ],
+  "teachy-tv": [
+   {
+    "where": "viridian-city",
+    "detail": "Old Man"
+   }
+  ],
+  "thunder-stone": [
+   {
+    "place": {
+     "ko": "무인발전소",
+     "en": "Power Plant"
+    }
+   }
+  ],
+  "tiny-mushroom": [
+   {
+    "where": "mt-moon"
+   }
+  ],
+  "tm01": [
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   }
+  ],
+  "tm02": [
+   {
+    "where": "kanto-victory-road-1"
+   }
+  ],
+  "tm03": [
+   {
+    "where": "cerulean-city",
+    "detail": "Defeat Misty"
+   }
+  ],
+  "tm04": [
+   {
+    "where": "saffron-city",
+    "detail": "Defeat Sabrina"
+   }
+  ],
+  "tm05": [
+   {
+    "where": "kanto-route-4"
+   }
+  ],
+  "tm06": [
+   {
+    "where": "fuchsia-city",
+    "detail": "Defeat Koga"
+   }
+  ],
+  "tm07": [
+   {
+    "where": "kanto-victory-road-1"
+   }
+  ],
+  "tm08": [
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   }
+  ],
+  "tm09": [
+   {
+    "where": "mt-moon"
+   }
+  ],
+  "tm10": [],
+  "tm11": [
+   {
+    "where": "kanto-safari-zone"
+   }
+  ],
+  "tm12": [
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   }
+  ],
+  "tm13": [],
+  "tm14": [
+   {
+    "where": "pokemon-mansion"
+   }
+  ],
+  "tm15": [],
+  "tm16": [],
+  "tm17": [
+   {
+    "place": {
+     "ko": "무인발전소",
+     "en": "Power Plant"
+    }
+   }
+  ],
+  "tm18": [
+   {
+    "where": "kanto-route-15"
+   }
+  ],
+  "tm19": [
+   {
+    "where": "celadon-city",
+    "detail": "Defeat Erika"
+   }
+  ],
+  "tm20": [],
+  "tm21": [
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   }
+  ],
+  "tm22": [
+   {
+    "where": "pokemon-mansion"
+   }
+  ],
+  "tm23": [],
+  "tm24": [],
+  "tm25": [
+   {
+    "place": {
+     "ko": "무인발전소",
+     "en": "Power Plant"
+    }
+   }
+  ],
+  "tm26": [
+   {
+    "where": "viridian-city",
+    "detail": "Defeat Giovanni"
+   }
+  ],
+  "tm27": [
+   {
+    "where": "kanto-route-12"
+   }
+  ],
+  "tm28": [
+   {
+    "where": "cerulean-city",
+    "detail": "Defeat Rocket"
+   }
+  ],
+  "tm29": [
+   {
+    "where": "saffron-city",
+    "detail": "Mr. Psychic"
+   }
+  ],
+  "tm30": [],
+  "tm31": [
+   {
+    "where": "ss-anne"
+   }
+  ],
+  "tm32": [
+   {
+    "where": "kanto-safari-zone"
+   }
+  ],
+  "tm33": [
+   {
+    "where": "ss-anne"
+   }
+  ],
+  "tm34": [
+   {
+    "place": {
+     "ko": "갈색시티",
+     "en": "Vermillion City"
+    },
+    "detail": "Defeat Lt. Surge"
+   }
+  ],
+  "tm35": [],
+  "tm36": [
+   {
+    "place": {
+     "ko": "로켓단 창고",
+     "en": "Rocket Warehouse"
+    }
+   }
+  ],
+  "tm37": [
+   {
+    "where": "kanto-victory-road-1"
+   }
+  ],
+  "tm38": [
+   {
+    "where": "cinnabar-island",
+    "detail": "Defeat Blaine"
+   }
+  ],
+  "tm39": [
+   {
+    "where": "pewter-city",
+    "detail": "Defeat Brock"
+   }
+  ],
+  "tm40": [
+   {
+    "where": "kanto-route-9"
+   }
+  ],
+  "tm41": [
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   }
+  ],
+  "tm42": [
+   {
+    "where": "memorial-pillar",
+    "detail": "Put a Lemonade on Onix's grave and the trainer will give it to you"
+   }
+  ],
+  "tm43": [
+   {
+    "where": "kanto-route-25"
+   }
+  ],
+  "tm44": [
+   {
+    "where": "kanto-route-9"
+   }
+  ],
+  "tm45": [
+   {
+    "where": "kanto-route-24"
+   }
+  ],
+  "tm46": [
+   {
+    "where": "mt-moon"
+   }
+  ],
+  "tm47": [
+   {
+    "where": "kanto-safari-zone"
+   }
+  ],
+  "tm48": [
+   {
+    "where": "kanto-route-12"
+   }
+  ],
+  "tm49": [
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   }
+  ],
+  "tm50": [
+   {
+    "where": "kanto-victory-road-1"
+   }
+  ],
+  "town-map": [
+   {
+    "where": "pallet-town",
+    "detail": "Daisy"
+   }
+  ],
+  "tri-pass": [
+   {
+    "where": "one-island"
+   }
+  ],
+  "ultra-ball": [
+   {
+    "where": "kanto-route-23"
+   },
+   {
+    "where": "cerulean-cave"
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "seafoam-islands"
+   },
+   {
+    "where": "kanto-victory-road-1"
+   },
+   {
+    "where": "treasure-beach"
+   },
+   {
+    "where": "mt-ember"
+   },
+   {
+    "where": "four-island"
+   },
+   {
+    "where": "icefall-cave"
+   },
+   {
+    "where": "green-path"
+   }
+  ],
+  "up-grade": [
+   {
+    "place": {
+     "ko": "로켓단 창고",
+     "en": "Rocket Warehouse"
+    }
+   },
+   {
+    "where": "trainer-tower",
+    "detail": "Defeat Single Mode"
+   }
+  ],
+  "water-stone": [
+   {
+    "where": "seafoam-islands"
+   }
+  ],
+  "wepear-berry": [
+   {
+    "where": "kanto-route-7"
+   },
+   {
+    "where": "berry-forest"
+   }
+  ],
+  "x-accuracy": [
+   {
+    "where": "pokemon-tower"
+   }
+  ],
+  "x-attack": [
+   {
+    "where": "ss-anne"
+   }
+  ],
+  "x-defense": [
+   {
+    "where": "kanto-route-11"
+   }
+  ],
+  "x-speed": [
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   }
+  ],
+  "zinc": [
+   {
+    "where": "kanto-route-14"
+   },
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   },
+   {
+    "where": "pokemon-mansion"
+   },
+   {
+    "where": "three-island"
+   }
+  ]
+ },
+ "tutors": {
+  "mega-punch": [],
+  "swords-dance": [],
+  "mega-kick": [],
+  "body-slam": [],
+  "double-edge": [],
+  "counter": [],
+  "seismic-toss": [],
+  "thunder-wave": [],
+  "mimic": [],
+  "metronome": [],
+  "soft-boiled": [],
+  "dream-eater": [],
+  "explosion": [],
+  "rock-slide": [],
+  "substitute": [],
+  "blast-burn": [],
+  "hydro-cannon": [],
+  "frenzy-plant": []
+ }
 }

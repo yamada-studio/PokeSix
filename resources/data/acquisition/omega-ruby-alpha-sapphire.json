@@ -1,0 +1,3261 @@
+{
+  "_comment": [
+    "게임(버전 그룹)별 입수 사전 (ui/dex/guidebook.h가 읽는다). 형식은 docs/i18n/README.md 참고.",
+    "scripts/i18n/check_acquisition.py로 검증해 넣었다. 출처는 _sources."
+  ],
+  "_sources": [
+    "Serebii.net ItemDex (https://www.serebii.net/itemdex/) — 장소는 PokéAPI/게임 텍스트로 한국어화"
+  ],
+  "versionGroup": "omega-ruby-alpha-sapphire",
+  "items": {
+    "abomasite": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "absolite": [
+      {
+        "where": "hoenn-safari-zone"
+      }
+    ],
+    "adamant-orb": [
+      {
+        "where": "hoenn-route-128"
+      }
+    ],
+    "aerodactylite": [
+      {
+        "where": "meteor-falls"
+      }
+    ],
+    "aggronite": [
+      {
+        "where": "rusturf-tunnel"
+      }
+    ],
+    "aguav-berry": [
+      {
+        "where": "hoenn-route-123"
+      },
+      {
+        "where": "sootopolis-city"
+      }
+    ],
+    "alakazite": [
+      {
+        "where": "slateport-city"
+      }
+    ],
+    "altarianite": [
+      {
+        "where": "lilycove-city"
+      }
+    ],
+    "ampharosite": [
+      {
+        "where": "new-mauville"
+      }
+    ],
+    "amulet-coin": [
+      {
+        "where": "littleroot-town"
+      }
+    ],
+    "antidote": [
+      {
+        "where": "hoenn-route-104"
+      }
+    ],
+    "apicot-berry": [
+      {
+        "place": "From Secret Pal in Secret Base"
+      }
+    ],
+    "aqua-suit": [
+      {
+        "where": "sootopolis-city"
+      }
+    ],
+    "armor-fossil": [
+      {
+        "where": "mirage-spot-island"
+      },
+      {
+        "where": "mirage-spot-cave"
+      },
+      {
+        "where": "mirage-spot-mountain"
+      },
+      {
+        "where": "mirage-spot-forest"
+      }
+    ],
+    "aspear-berry": [
+      {
+        "where": "hoenn-route-104"
+      },
+      {
+        "where": "hoenn-route-114"
+      },
+      {
+        "where": "hoenn-route-120"
+      },
+      {
+        "where": "hoenn-route-121"
+      }
+    ],
+    "audinite": [
+      {
+        "where": "battle-resort"
+      }
+    ],
+    "babiri-berry": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "balm-mushroom": [
+      {
+        "where": "petalburg-woods"
+      }
+    ],
+    "banettite": [
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "beedrillite": [
+      {
+        "where": "sea-mauville"
+      }
+    ],
+    "belue-berry": [
+      {
+        "place": "From Fan in Contest Hall"
+      }
+    ],
+    "big-mushroom": [
+      {
+        "where": "hoenn-route-112"
+      },
+      {
+        "where": "battle-resort"
+      },
+      {
+        "where": "mirage-spot-forest"
+      }
+    ],
+    "big-nugget": [
+      {
+        "where": "sea-mauville"
+      }
+    ],
+    "big-pearl": [
+      {
+        "where": "hoenn-route-105"
+      },
+      {
+        "where": "hoenn-route-109"
+      },
+      {
+        "where": "hoenn-route-124"
+      },
+      {
+        "where": "hoenn-route-125"
+      },
+      {
+        "where": "hoenn-route-133"
+      },
+      {
+        "where": "mossdeep-city"
+      },
+      {
+        "where": "pacifidlog-town"
+      },
+      {
+        "where": "hoenn-safari-zone"
+      },
+      {
+        "where": "shoal-cave"
+      },
+      {
+        "where": "mirage-spot-island"
+      },
+      {
+        "where": "battle-resort"
+      },
+      {
+        "where": "mirage-spot-cave"
+      }
+    ],
+    "big-root": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "black-flute": [
+      {
+        "where": "hoenn-route-113"
+      }
+    ],
+    "black-glasses": [
+      {
+        "where": "hoenn-route-116"
+      }
+    ],
+    "blastoisinite": [
+      {
+        "where": "ss-tidal"
+      }
+    ],
+    "blazikenite": [
+      {
+        "where": "hoenn-route-120"
+      }
+    ],
+    "blue-flute": [
+      {
+        "where": "hoenn-route-113"
+      }
+    ],
+    "blue-orb": [
+      {
+        "where": "sootopolis-city"
+      },
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "blue-scarf": [
+      {
+        "where": "slateport-city"
+      }
+    ],
+    "blue-shard": [
+      {
+        "where": "hoenn-route-124"
+      },
+      {
+        "where": "hoenn-route-126"
+      },
+      {
+        "where": "hoenn-route-129"
+      },
+      {
+        "where": "mirage-spot-mountain"
+      }
+    ],
+    "bluk-berry": [
+      {
+        "place": "From Fan in Contest Hall"
+      }
+    ],
+    "burn-drive": [
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "calcium": [
+      {
+        "where": "hoenn-route-119"
+      },
+      {
+        "where": "hoenn-route-123"
+      },
+      {
+        "where": "hoenn-route-124"
+      },
+      {
+        "where": "hoenn-safari-zone"
+      },
+      {
+        "where": "battle-resort"
+      },
+      {
+        "where": "mirage-spot-forest"
+      }
+    ],
+    "cameruptite": [
+      {
+        "where": "magma-hideout"
+      },
+      {
+        "where": "battle-resort"
+      }
+    ],
+    "carbos": [
+      {
+        "where": "hoenn-route-114"
+      },
+      {
+        "where": "hoenn-route-115"
+      },
+      {
+        "where": "hoenn-route-121"
+      },
+      {
+        "where": "hoenn-route-127"
+      },
+      {
+        "where": "hoenn-route-134"
+      },
+      {
+        "where": "mt-pyre"
+      },
+      {
+        "where": "battle-resort"
+      },
+      {
+        "where": "mirage-spot-cave"
+      }
+    ],
+    "casteliacone": [
+      {
+        "where": "hoenn-route-110"
+      },
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "charcoal": [
+      {
+        "where": "lavaridge-town"
+      }
+    ],
+    "charizardite-x": [
+      {
+        "where": "fiery-path"
+      }
+    ],
+    "charizardite-y": [
+      {
+        "where": "scorched-slab"
+      }
+    ],
+    "charti-berry": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "cheri-berry": [
+      {
+        "where": "hoenn-route-104"
+      }
+    ],
+    "chesto-berry": [
+      {
+        "where": "hoenn-route-103"
+      },
+      {
+        "where": "hoenn-route-104"
+      },
+      {
+        "where": "hoenn-route-118"
+      }
+    ],
+    "chilan-berry": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "chill-drive": [
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "chople-berry": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "claw-fossil": [
+      {
+        "where": "hoenn-route-111"
+      }
+    ],
+    "cleanse-tag": [
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "clear-bell": [
+      {
+        "where": "slateport-city"
+      }
+    ],
+    "clever-wing": [
+      {
+        "place": {
+          "ko": "슈퍼트레이닝",
+          "en": "Super Training"
+        }
+      }
+    ],
+    "coba-berry": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "colbur-berry": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "comet-shard": [
+      {
+        "where": "hoenn-route-114"
+      }
+    ],
+    "contest-costume--dress": [
+      {
+        "where": "slateport-city"
+      }
+    ],
+    "contest-costume--jacket": [
+      {
+        "where": "slateport-city"
+      }
+    ],
+    "contest-pass": [
+      {
+        "where": "slateport-city"
+      }
+    ],
+    "cornn-berry": [
+      {
+        "place": "From Fan in Contest Hall"
+      }
+    ],
+    "cover-fossil": [
+      {
+        "where": "mirage-spot-island"
+      },
+      {
+        "where": "mirage-spot-cave"
+      },
+      {
+        "where": "mirage-spot-mountain"
+      },
+      {
+        "where": "mirage-spot-forest"
+      }
+    ],
+    "damp-rock": [
+      {
+        "where": "hoenn-route-119"
+      }
+    ],
+    "dawn-stone": [
+      {
+        "where": "hoenn-victory-road"
+      },
+      {
+        "where": "sea-mauville"
+      }
+    ],
+    "deep-sea-scale": [
+      {
+        "where": "mirage-spot-mountain"
+      }
+    ],
+    "deep-sea-tooth": [
+      {
+        "where": "mirage-spot-cave"
+      }
+    ],
+    "destiny-knot": [
+      {
+        "where": "sea-mauville"
+      }
+    ],
+    "devon-parts": [
+      {
+        "where": "rusturf-tunnel"
+      }
+    ],
+    "devon-scope": [
+      {
+        "where": "hoenn-route-120"
+      }
+    ],
+    "devon-scuba-gear": [
+      {
+        "where": "mossdeep-city"
+      }
+    ],
+    "dire-hit": [
+      {
+        "where": "hoenn-route-110"
+      },
+      {
+        "where": "rusturf-tunnel"
+      },
+      {
+        "where": "jagged-pass"
+      },
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "dive-ball": [
+      {
+        "where": "sea-mauville"
+      }
+    ],
+    "dna-splicers": [
+      {
+        "where": "gnarled-den"
+      }
+    ],
+    "dna-splicers--merge": [
+      {
+        "where": "gnarled-den"
+      }
+    ],
+    "dna-splicers--split": [
+      {
+        "where": "gnarled-den"
+      }
+    ],
+    "dome-fossil": [
+      {
+        "where": "mirage-spot-island"
+      },
+      {
+        "where": "mirage-spot-cave"
+      },
+      {
+        "where": "mirage-spot-mountain"
+      },
+      {
+        "where": "mirage-spot-forest"
+      }
+    ],
+    "douse-drive": [
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "dowsing-machine": [
+      {
+        "where": "hoenn-route-110"
+      }
+    ],
+    "draco-plate": [
+      {
+        "where": "hoenn-route-128"
+      }
+    ],
+    "dragon-scale": [
+      {
+        "where": "sky-pillar"
+      }
+    ],
+    "dread-plate": [
+      {
+        "where": "hoenn-route-127"
+      }
+    ],
+    "durin-berry": [
+      {
+        "place": "From Fan in Contest Hall"
+      }
+    ],
+    "dusk-ball": [
+      {
+        "where": "hoenn-route-120"
+      }
+    ],
+    "dusk-stone": [
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "earth-plate": [
+      {
+        "where": "hoenn-route-130"
+      }
+    ],
+    "elixir": [
+      {
+        "where": "hoenn-route-111"
+      },
+      {
+        "where": "hoenn-route-119"
+      },
+      {
+        "where": "hoenn-route-123"
+      },
+      {
+        "where": "mauville-city"
+      },
+      {
+        "where": "hoenn-victory-road"
+      }
+    ],
+    "energy-powder": [
+      {
+        "where": "hoenn-route-114"
+      }
+    ],
+    "eon-flute": [
+      {
+        "where": "sootopolis-city"
+      }
+    ],
+    "escape-rope": [
+      {
+        "where": "hoenn-route-110"
+      },
+      {
+        "where": "granite-cave"
+      },
+      {
+        "where": "new-mauville"
+      },
+      {
+        "where": "scorched-slab"
+      },
+      {
+        "place": {
+          "ko": "아쿠아단아지트",
+          "en": "Aqua Hideout"
+        }
+      },
+      {
+        "where": "magma-hideout"
+      },
+      {
+        "where": "sea-mauville"
+      }
+    ],
+    "ether": [
+      {
+        "where": "hoenn-route-109"
+      },
+      {
+        "where": "hoenn-route-113"
+      },
+      {
+        "where": "hoenn-route-119"
+      },
+      {
+        "where": "petalburg-city"
+      },
+      {
+        "where": "petalburg-woods"
+      },
+      {
+        "where": "mirage-spot-island"
+      }
+    ],
+    "everstone": [
+      {
+        "where": "granite-cave"
+      }
+    ],
+    "eviolite": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "exeggcute-candy": [
+      {
+        "where": "hoenn-route-104"
+      }
+    ],
+    "expert-belt": [
+      {
+        "where": "hoenn-route-110"
+      }
+    ],
+    "figy-berry": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "fire-stone": [
+      {
+        "where": "hoenn-route-114"
+      },
+      {
+        "where": "hoenn-route-124"
+      },
+      {
+        "where": "fiery-path"
+      }
+    ],
+    "fist-plate": [
+      {
+        "where": "hoenn-route-130"
+      }
+    ],
+    "flame-plate": [
+      {
+        "where": "hoenn-route-107"
+      }
+    ],
+    "float-stone": [
+      {
+        "where": "rustboro-city"
+      }
+    ],
+    "focus-band": [
+      {
+        "where": "shoal-cave"
+      }
+    ],
+    "fresh-water": [
+      {
+        "place": {
+          "ko": "슈퍼트레이닝",
+          "en": "Super Training"
+        }
+      }
+    ],
+    "full-heal": [
+      {
+        "where": "hoenn-route-110"
+      },
+      {
+        "where": "hoenn-route-119"
+      },
+      {
+        "where": "hoenn-route-120"
+      },
+      {
+        "where": "hoenn-route-121"
+      },
+      {
+        "where": "new-mauville"
+      },
+      {
+        "where": "jagged-pass"
+      },
+      {
+        "where": "scorched-slab"
+      },
+      {
+        "where": "meteor-falls"
+      },
+      {
+        "where": "hoenn-victory-road"
+      },
+      {
+        "where": "mirage-spot-cave"
+      }
+    ],
+    "full-restore": [
+      {
+        "where": "hoenn-route-120"
+      },
+      {
+        "where": "meteor-falls"
+      },
+      {
+        "where": "hoenn-victory-road"
+      },
+      {
+        "where": "battle-resort"
+      },
+      {
+        "where": "mirage-spot-mountain"
+      },
+      {
+        "where": "mirage-spot-forest"
+      }
+    ],
+    "galladite": [
+      {
+        "where": "fallarbor-town"
+      }
+    ],
+    "ganlon-berry": [
+      {
+        "place": "From Secret Pal in Secret Base"
+      }
+    ],
+    "garchompite": [
+      {
+        "where": "fortree-city"
+      }
+    ],
+    "gardevoirite": [
+      {
+        "where": "verdanturf-town"
+      }
+    ],
+    "gengarite": [
+      {
+        "where": "battle-resort"
+      }
+    ],
+    "genius-wing": [
+      {
+        "place": {
+          "ko": "슈퍼트레이닝",
+          "en": "Super Training"
+        }
+      }
+    ],
+    "glalitite": [
+      {
+        "where": "shoal-cave"
+      }
+    ],
+    "good-rod": [
+      {
+        "where": "hoenn-route-118"
+      }
+    ],
+    "gracidea": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "great-ball": [
+      {
+        "where": "hoenn-route-109"
+      },
+      {
+        "where": "hoenn-route-110"
+      },
+      {
+        "where": "hoenn-route-115"
+      },
+      {
+        "where": "hoenn-route-117"
+      },
+      {
+        "where": "rustboro-city"
+      },
+      {
+        "where": "petalburg-woods"
+      },
+      {
+        "where": "meteor-falls"
+      }
+    ],
+    "green-scarf": [
+      {
+        "where": "slateport-city"
+      }
+    ],
+    "green-shard": [
+      {
+        "where": "hoenn-route-124"
+      },
+      {
+        "where": "hoenn-route-126"
+      },
+      {
+        "where": "hoenn-route-130"
+      },
+      {
+        "where": "mirage-spot-forest"
+      }
+    ],
+    "grepa-berry": [
+      {
+        "where": "hoenn-route-123"
+      },
+      {
+        "where": "sootopolis-city"
+      }
+    ],
+    "griseous-orb": [
+      {
+        "where": "hoenn-route-130"
+      }
+    ],
+    "gyaradosite": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "haban-berry": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "hard-stone": [
+      {
+        "where": "hoenn-route-110"
+      },
+      {
+        "where": "hoenn-route-111"
+      }
+    ],
+    "heal-ball": [
+      {
+        "where": "hoenn-route-103"
+      },
+      {
+        "where": "hoenn-route-110"
+      }
+    ],
+    "heal-powder": [
+      {
+        "where": "hoenn-route-115"
+      }
+    ],
+    "health-wing": [
+      {
+        "place": {
+          "ko": "슈퍼트레이닝",
+          "en": "Super Training"
+        }
+      }
+    ],
+    "heart-scale": [
+      {
+        "where": "hoenn-route-104"
+      },
+      {
+        "where": "hoenn-route-105"
+      },
+      {
+        "where": "hoenn-route-106"
+      },
+      {
+        "where": "hoenn-route-109"
+      },
+      {
+        "where": "hoenn-route-118"
+      },
+      {
+        "where": "hoenn-route-124"
+      },
+      {
+        "where": "hoenn-route-126"
+      },
+      {
+        "where": "hoenn-route-128"
+      },
+      {
+        "where": "hoenn-route-134"
+      },
+      {
+        "where": "lilycove-city"
+      },
+      {
+        "where": "pacifidlog-town"
+      }
+    ],
+    "heat-rock": [
+      {
+        "where": "hoenn-route-119"
+      }
+    ],
+    "helix-fossil": [
+      {
+        "where": "mirage-spot-island"
+      },
+      {
+        "where": "mirage-spot-cave"
+      },
+      {
+        "where": "mirage-spot-mountain"
+      },
+      {
+        "where": "mirage-spot-forest"
+      }
+    ],
+    "heracronite": [
+      {
+        "where": "hoenn-route-127"
+      }
+    ],
+    "hm01": [
+      {
+        "where": "rustboro-city"
+      }
+    ],
+    "hm02": [
+      {
+        "where": "hoenn-route-119"
+      }
+    ],
+    "hm03": [
+      {
+        "where": "petalburg-city"
+      }
+    ],
+    "hm05": [
+      {
+        "where": "sootopolis-city"
+      }
+    ],
+    "hm06": [
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "hm07": [
+      {
+        "where": "mossdeep-city"
+      }
+    ],
+    "hondew-berry": [
+      {
+        "where": "hoenn-route-119"
+      },
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "honey": [
+      {
+        "where": "fallarbor-town"
+      }
+    ],
+    "houndoominite": [
+      {
+        "where": "lavaridge-town"
+      }
+    ],
+    "hp-up": [
+      {
+        "where": "hoenn-route-111"
+      },
+      {
+        "where": "hoenn-route-116"
+      },
+      {
+        "where": "hoenn-route-117"
+      },
+      {
+        "where": "hoenn-route-121"
+      },
+      {
+        "where": "hoenn-route-127"
+      },
+      {
+        "where": "battle-resort"
+      }
+    ],
+    "hyper-potion": [
+      {
+        "where": "hoenn-route-113"
+      },
+      {
+        "where": "hoenn-route-118"
+      },
+      {
+        "where": "hoenn-route-123"
+      },
+      {
+        "where": "mirage-spot-forest"
+      }
+    ],
+    "iapapa-berry": [
+      {
+        "where": "hoenn-route-120"
+      },
+      {
+        "where": "hoenn-route-123"
+      },
+      {
+        "where": "sootopolis-city"
+      }
+    ],
+    "ice-heal": [
+      {
+        "where": "lavaridge-town"
+      },
+      {
+        "where": "shoal-cave"
+      }
+    ],
+    "icicle-plate": [
+      {
+        "where": "hoenn-route-130"
+      }
+    ],
+    "icy-rock": [
+      {
+        "where": "hoenn-route-119"
+      }
+    ],
+    "insect-plate": [
+      {
+        "where": "hoenn-route-127"
+      }
+    ],
+    "intriguing-stone": [
+      {
+        "where": "verdanturf-town"
+      }
+    ],
+    "iron": [
+      {
+        "where": "hoenn-route-105"
+      },
+      {
+        "where": "hoenn-route-110"
+      },
+      {
+        "where": "hoenn-route-115"
+      },
+      {
+        "where": "hoenn-route-118"
+      },
+      {
+        "where": "hoenn-route-126"
+      },
+      {
+        "where": "mossdeep-city"
+      },
+      {
+        "where": "hoenn-victory-road"
+      },
+      {
+        "where": "battle-resort"
+      },
+      {
+        "where": "mirage-spot-forest"
+      }
+    ],
+    "iron-plate": [
+      {
+        "where": "mossdeep-city"
+      }
+    ],
+    "kangaskhanite": [
+      {
+        "where": "pacifidlog-town"
+      }
+    ],
+    "kasib-berry": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "kebia-berry": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "kee-berry": [
+      {
+        "place": "From Secret Pal in Secret Base"
+      }
+    ],
+    "kelpsy-berry": [
+      {
+        "where": "lilycove-city"
+      },
+      {
+        "where": "battle-resort"
+      }
+    ],
+    "key-to-room-1": [
+      {
+        "where": "sea-mauville"
+      }
+    ],
+    "key-to-room-2": [
+      {
+        "where": "sea-mauville"
+      }
+    ],
+    "key-to-room-4": [
+      {
+        "where": "sea-mauville"
+      }
+    ],
+    "key-to-room-6": [
+      {
+        "where": "sea-mauville"
+      }
+    ],
+    "kings-rock": [
+      {
+        "where": "mossdeep-city"
+      }
+    ],
+    "lagreat-ball": [
+      {
+        "where": "hoenn-route-109"
+      },
+      {
+        "where": "hoenn-route-110"
+      },
+      {
+        "where": "hoenn-route-115"
+      },
+      {
+        "where": "hoenn-route-117"
+      },
+      {
+        "where": "rustboro-city"
+      },
+      {
+        "where": "petalburg-woods"
+      },
+      {
+        "where": "meteor-falls"
+      }
+    ],
+    "lansat-berry": [
+      {
+        "where": "battle-resort"
+      }
+    ],
+    "lapoke-ball": [
+      {
+        "where": "hoenn-route-104"
+      },
+      {
+        "where": "hoenn-route-106"
+      },
+      {
+        "where": "hoenn-route-110"
+      },
+      {
+        "where": "littleroot-town"
+      },
+      {
+        "where": "lilycove-city"
+      },
+      {
+        "where": "rusturf-tunnel"
+      },
+      {
+        "where": "granite-cave"
+      }
+    ],
+    "latiasite": [
+      {
+        "where": "littleroot-town"
+      }
+    ],
+    "latiosite": [
+      {
+        "where": "littleroot-town"
+      }
+    ],
+    "laultra-ball": [
+      {
+        "where": "hoenn-route-102"
+      },
+      {
+        "where": "hoenn-route-104"
+      },
+      {
+        "where": "hoenn-route-117"
+      },
+      {
+        "where": "hoenn-route-119"
+      },
+      {
+        "where": "hoenn-route-123"
+      },
+      {
+        "where": "new-mauville"
+      },
+      {
+        "where": "hoenn-safari-zone"
+      },
+      {
+        "where": "mt-pyre"
+      },
+      {
+        "where": "hoenn-victory-road"
+      }
+    ],
+    "lava-cookie": [
+      {
+        "where": "hoenn-route-110"
+      }
+    ],
+    "lax-incense": [
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "leaf-stone": [
+      {
+        "where": "hoenn-route-118"
+      },
+      {
+        "where": "hoenn-route-119"
+      },
+      {
+        "where": "hoenn-route-124"
+      }
+    ],
+    "leftovers": [
+      {
+        "where": "ss-tidal"
+      }
+    ],
+    "lemonade": [
+      {
+        "place": {
+          "ko": "슈퍼트레이닝",
+          "en": "Super Training"
+        }
+      }
+    ],
+    "leppa-berry": [
+      {
+        "where": "hoenn-route-103"
+      },
+      {
+        "where": "hoenn-route-110"
+      },
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "letter": [
+      {
+        "where": "rustboro-city"
+      }
+    ],
+    "liechi-berry": [
+      {
+        "place": "From Secret Pal in Secret Base"
+      }
+    ],
+    "light-ball": [
+      {
+        "where": "hoenn-route-120"
+      }
+    ],
+    "lopunnite": [
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "lucarionite": [
+      {
+        "where": "lilycove-city"
+      }
+    ],
+    "lum-berry": [
+      {
+        "where": "hoenn-route-123"
+      },
+      {
+        "where": "slateport-city"
+      },
+      {
+        "where": "verdanturf-town"
+      },
+      {
+        "where": "fallarbor-town"
+      },
+      {
+        "where": "lilycove-city"
+      }
+    ],
+    "lumiose-galette": [
+      {
+        "where": "hoenn-route-110"
+      }
+    ],
+    "lustrous-orb": [
+      {
+        "where": "hoenn-route-129"
+      }
+    ],
+    "luxury-ball": [
+      {
+        "where": "hoenn-route-104"
+      },
+      {
+        "where": "mauville-city"
+      },
+      {
+        "where": "sea-mauville"
+      }
+    ],
+    "macho-brace": [
+      {
+        "where": "hoenn-route-111"
+      }
+    ],
+    "magma-suit": [
+      {
+        "where": "sootopolis-city"
+      }
+    ],
+    "magnet": [
+      {
+        "where": "hoenn-route-110"
+      }
+    ],
+    "mago-berry": [
+      {
+        "where": "hoenn-route-123"
+      },
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "magost-berry": [
+      {
+        "place": "From Fan in Contest Hall"
+      }
+    ],
+    "manectite": [
+      {
+        "where": "hoenn-route-110"
+      }
+    ],
+    "mankey-candy": [
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "maranga-berry": [
+      {
+        "place": "From Secret Pal in Secret Base"
+      }
+    ],
+    "master-ball": [
+      {
+        "place": {
+          "ko": "아쿠아단아지트",
+          "en": "Aqua Hideout"
+        }
+      },
+      {
+        "where": "magma-hideout"
+      }
+    ],
+    "mawilite": [
+      {
+        "where": "verdanturf-town"
+      }
+    ],
+    "max-elixir": [
+      {
+        "place": {
+          "ko": "아쿠아단아지트",
+          "en": "Aqua Hideout"
+        }
+      },
+      {
+        "where": "magma-hideout"
+      },
+      {
+        "where": "hoenn-victory-road"
+      },
+      {
+        "where": "mirage-spot-island"
+      },
+      {
+        "where": "mirage-spot-forest"
+      }
+    ],
+    "max-ether": [
+      {
+        "where": "hoenn-route-113"
+      },
+      {
+        "where": "hoenn-route-119"
+      },
+      {
+        "where": "rusturf-tunnel"
+      },
+      {
+        "where": "jagged-pass"
+      },
+      {
+        "where": "mt-pyre"
+      },
+      {
+        "where": "battle-resort"
+      },
+      {
+        "where": "mirage-spot-cave"
+      }
+    ],
+    "max-potion": [
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "max-repel": [
+      {
+        "where": "hoenn-route-106"
+      },
+      {
+        "where": "hoenn-route-113"
+      },
+      {
+        "where": "hoenn-route-119"
+      },
+      {
+        "where": "hoenn-route-121"
+      },
+      {
+        "where": "mauville-city"
+      },
+      {
+        "where": "lilycove-city"
+      },
+      {
+        "where": "new-mauville"
+      },
+      {
+        "where": "hoenn-victory-road"
+      },
+      {
+        "where": "sea-mauville"
+      }
+    ],
+    "max-revive": [
+      {
+        "where": "hoenn-route-121"
+      },
+      {
+        "where": "hoenn-route-133"
+      },
+      {
+        "where": "petalburg-city"
+      },
+      {
+        "where": "hoenn-safari-zone"
+      },
+      {
+        "where": "mirage-spot-mountain"
+      },
+      {
+        "where": "mirage-spot-forest"
+      }
+    ],
+    "meadow-plate": [
+      {
+        "where": "hoenn-route-130"
+      }
+    ],
+    "medichamite": [
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "mega-bracelet": [
+      {
+        "where": "southern-island"
+      }
+    ],
+    "mental-herb": [
+      {
+        "where": "fortree-city"
+      }
+    ],
+    "metagrossite": [
+      {
+        "where": "hoenn-pokemon-league"
+      }
+    ],
+    "metal-coat": [
+      {
+        "where": "new-mauville"
+      }
+    ],
+    "meteorite-shard": [
+      {
+        "where": "granite-cave"
+      }
+    ],
+    "metronome": [
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "mewtwonite-x": [
+      {
+        "where": "littleroot-town"
+      }
+    ],
+    "mewtwonite-y": [
+      {
+        "where": "hoenn-pokemon-league"
+      }
+    ],
+    "mind-plate": [
+      {
+        "where": "hoenn-route-126"
+      }
+    ],
+    "miracle-seed": [
+      {
+        "where": "petalburg-woods"
+      }
+    ],
+    "moomoo-milk": [
+      {
+        "where": "slateport-city"
+      },
+      {
+        "where": "verdanturf-town"
+      },
+      {
+        "where": "fallarbor-town"
+      },
+      {
+        "where": "lilycove-city"
+      }
+    ],
+    "moon-stone": [
+      {
+        "where": "jagged-pass"
+      },
+      {
+        "where": "meteor-falls"
+      }
+    ],
+    "muscle-wing": [
+      {
+        "place": {
+          "ko": "슈퍼트레이닝",
+          "en": "Super Training"
+        }
+      }
+    ],
+    "nanab-berry": [
+      {
+        "where": "hoenn-route-111"
+      },
+      {
+        "where": "hoenn-route-120"
+      },
+      {
+        "where": "hoenn-route-121"
+      }
+    ],
+    "nest-ball": [
+      {
+        "where": "hoenn-route-116"
+      },
+      {
+        "where": "hoenn-route-120"
+      },
+      {
+        "place": {
+          "ko": "아쿠아단아지트",
+          "en": "Aqua Hideout"
+        }
+      },
+      {
+        "where": "magma-hideout"
+      }
+    ],
+    "net-ball": [
+      {
+        "where": "hoenn-route-120"
+      },
+      {
+        "where": "mossdeep-city"
+      },
+      {
+        "where": "petalburg-woods"
+      }
+    ],
+    "nomel-berry": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "nugget": [
+      {
+        "where": "hoenn-route-112"
+      },
+      {
+        "where": "hoenn-route-113"
+      },
+      {
+        "where": "hoenn-route-120"
+      },
+      {
+        "where": "hoenn-route-121"
+      },
+      {
+        "where": "mauville-city"
+      },
+      {
+        "where": "fallarbor-town"
+      },
+      {
+        "where": "scorched-slab"
+      },
+      {
+        "where": "hoenn-safari-zone"
+      },
+      {
+        "place": {
+          "ko": "아쿠아단아지트",
+          "en": "Aqua Hideout"
+        }
+      },
+      {
+        "where": "magma-hideout"
+      },
+      {
+        "where": "sea-mauville"
+      }
+    ],
+    "occa-berry": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "old-amber": [
+      {
+        "where": "mirage-spot-island"
+      },
+      {
+        "where": "mirage-spot-cave"
+      },
+      {
+        "where": "mirage-spot-mountain"
+      },
+      {
+        "where": "mirage-spot-forest"
+      }
+    ],
+    "old-gateau": [
+      {
+        "where": "hoenn-route-110"
+      }
+    ],
+    "old-rod": [
+      {
+        "where": "dewford-town"
+      }
+    ],
+    "oran-berry": [
+      {
+        "where": "hoenn-route-102"
+      },
+      {
+        "where": "hoenn-route-104"
+      },
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "oval-charm": [
+      {
+        "where": "littleroot-town"
+      }
+    ],
+    "pair-of-tickets": [
+      {
+        "where": "littleroot-town"
+      }
+    ],
+    "pamtre-berry": [
+      {
+        "place": "From Fan in Contest Hall"
+      }
+    ],
+    "paralyze-heal": [
+      {
+        "where": "slateport-city"
+      },
+      {
+        "where": "verdanturf-town"
+      },
+      {
+        "where": "fallarbor-town"
+      },
+      {
+        "where": "lilycove-city"
+      },
+      {
+        "where": "petalburg-woods"
+      },
+      {
+        "where": "granite-cave"
+      },
+      {
+        "where": "new-mauville"
+      }
+    ],
+    "passho-berry": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "payapa-berry": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "pearl": [
+      {
+        "where": "hoenn-route-107"
+      },
+      {
+        "where": "hoenn-route-121"
+      },
+      {
+        "where": "hoenn-route-124"
+      },
+      {
+        "where": "hoenn-route-126"
+      },
+      {
+        "where": "hoenn-route-128"
+      },
+      {
+        "where": "shoal-cave"
+      },
+      {
+        "where": "mirage-spot-island"
+      }
+    ],
+    "pearl-string": [
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "pecha-berry": [
+      {
+        "where": "hoenn-route-102"
+      },
+      {
+        "where": "hoenn-route-104"
+      },
+      {
+        "where": "hoenn-route-120"
+      }
+    ],
+    "persim-berry": [
+      {
+        "where": "hoenn-route-112"
+      },
+      {
+        "where": "hoenn-route-121"
+      }
+    ],
+    "petaya-berry": [
+      {
+        "place": "From Secret Pal in Secret Base"
+      }
+    ],
+    "pidgeotite": [
+      {
+        "where": "rustboro-city"
+      }
+    ],
+    "pinap-berry": [
+      {
+        "where": "hoenn-route-114"
+      },
+      {
+        "where": "hoenn-route-117"
+      },
+      {
+        "where": "hoenn-route-120"
+      }
+    ],
+    "pink-scarf": [
+      {
+        "where": "slateport-city"
+      }
+    ],
+    "pinsirite": [
+      {
+        "where": "hoenn-route-124"
+      }
+    ],
+    "pixie-plate": [
+      {
+        "where": "hoenn-route-128"
+      }
+    ],
+    "plume-fossil": [
+      {
+        "where": "mirage-spot-island"
+      },
+      {
+        "where": "mirage-spot-cave"
+      },
+      {
+        "where": "mirage-spot-mountain"
+      },
+      {
+        "where": "mirage-spot-forest"
+      }
+    ],
+    "poke-ball": [
+      {
+        "where": "hoenn-route-104"
+      },
+      {
+        "where": "hoenn-route-106"
+      },
+      {
+        "where": "hoenn-route-110"
+      },
+      {
+        "where": "littleroot-town"
+      },
+      {
+        "where": "lilycove-city"
+      },
+      {
+        "where": "rusturf-tunnel"
+      },
+      {
+        "where": "granite-cave"
+      }
+    ],
+    "poke-doll": [
+      {
+        "where": "hoenn-route-103"
+      }
+    ],
+    "poke-toy": [
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "pokeblock-kit": [
+      {
+        "where": "slateport-city"
+      }
+    ],
+    "pomeg-berry": [
+      {
+        "where": "hoenn-route-119"
+      }
+    ],
+    "ponyta-candy": [
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "potion": [
+      {
+        "where": "hoenn-route-102"
+      },
+      {
+        "where": "hoenn-route-104"
+      },
+      {
+        "where": "hoenn-route-117"
+      },
+      {
+        "where": "oldale-town"
+      },
+      {
+        "where": "petalburg-woods"
+      }
+    ],
+    "pp-max": [
+      {
+        "where": "hoenn-route-119"
+      },
+      {
+        "where": "meteor-falls"
+      },
+      {
+        "place": {
+          "ko": "아쿠아단아지트",
+          "en": "Aqua Hideout"
+        }
+      },
+      {
+        "where": "magma-hideout"
+      },
+      {
+        "where": "hoenn-victory-road"
+      }
+    ],
+    "pp-up": [
+      {
+        "where": "hoenn-route-104"
+      },
+      {
+        "where": "hoenn-route-108"
+      },
+      {
+        "where": "hoenn-route-109"
+      },
+      {
+        "where": "hoenn-route-111"
+      },
+      {
+        "where": "hoenn-route-115"
+      },
+      {
+        "where": "hoenn-route-123"
+      },
+      {
+        "where": "hoenn-victory-road"
+      },
+      {
+        "where": "mirage-spot-cave"
+      }
+    ],
+    "premier-ball": [
+      {
+        "where": "rustboro-city"
+      }
+    ],
+    "pretty-wing": [
+      {
+        "place": {
+          "ko": "슈퍼트레이닝",
+          "en": "Super Training"
+        }
+      }
+    ],
+    "prison-bottle": [
+      {
+        "place": "Any PokéMart - Requires Hoopa"
+      }
+    ],
+    "protein": [
+      {
+        "where": "hoenn-route-106"
+      },
+      {
+        "where": "hoenn-route-111"
+      },
+      {
+        "where": "hoenn-route-114"
+      },
+      {
+        "where": "hoenn-route-115"
+      },
+      {
+        "where": "hoenn-route-128"
+      },
+      {
+        "where": "sootopolis-city"
+      },
+      {
+        "where": "mt-chimney"
+      },
+      {
+        "where": "hoenn-safari-zone"
+      },
+      {
+        "where": "battle-resort"
+      },
+      {
+        "where": "mirage-spot-mountain"
+      }
+    ],
+    "qualot-berry": [
+      {
+        "where": "hoenn-route-123"
+      },
+      {
+        "where": "battle-resort"
+      }
+    ],
+    "quick-ball": [
+      {
+        "where": "hoenn-route-114"
+      }
+    ],
+    "quick-claw": [
+      {
+        "where": "rustboro-city"
+      }
+    ],
+    "rabuta-berry": [
+      {
+        "where": "sootopolis-city"
+      }
+    ],
+    "rage-candy-bar": [
+      {
+        "where": "hoenn-route-110"
+      }
+    ],
+    "rare-bone": [
+      {
+        "where": "hoenn-route-114"
+      }
+    ],
+    "rare-candy": [
+      {
+        "where": "hoenn-route-108"
+      },
+      {
+        "where": "hoenn-route-111"
+      },
+      {
+        "where": "hoenn-route-114"
+      },
+      {
+        "where": "hoenn-route-117"
+      },
+      {
+        "where": "hoenn-route-119"
+      },
+      {
+        "where": "hoenn-route-120"
+      },
+      {
+        "where": "hoenn-route-123"
+      },
+      {
+        "where": "hoenn-route-127"
+      },
+      {
+        "where": "hoenn-route-132"
+      },
+      {
+        "where": "petalburg-city"
+      },
+      {
+        "where": "granite-cave"
+      },
+      {
+        "where": "hoenn-safari-zone"
+      },
+      {
+        "where": "shoal-cave"
+      },
+      {
+        "where": "mt-pyre"
+      },
+      {
+        "where": "mirage-spot-island"
+      },
+      {
+        "where": "mirage-spot-cave"
+      },
+      {
+        "where": "mirage-spot-mountain"
+      }
+    ],
+    "rawst-berry": [
+      {
+        "where": "hoenn-route-111"
+      },
+      {
+        "where": "hoenn-route-121"
+      }
+    ],
+    "razor-claw": [
+      {
+        "where": "mirage-spot-forest"
+      }
+    ],
+    "razor-fang": [
+      {
+        "where": "mirage-spot-island"
+      }
+    ],
+    "razz-berry": [
+      {
+        "where": "hoenn-route-111"
+      },
+      {
+        "where": "hoenn-route-112"
+      },
+      {
+        "where": "hoenn-route-120"
+      }
+    ],
+    "red-flute": [
+      {
+        "where": "hoenn-route-113"
+      }
+    ],
+    "red-orb": [
+      {
+        "where": "sootopolis-city"
+      },
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "red-scarf": [
+      {
+        "where": "slateport-city"
+      }
+    ],
+    "red-shard": [
+      {
+        "where": "hoenn-route-124"
+      },
+      {
+        "where": "hoenn-route-127"
+      },
+      {
+        "where": "mirage-spot-cave"
+      },
+      {
+        "where": "mirage-spot-mountain"
+      }
+    ],
+    "repeat-ball": [
+      {
+        "where": "hoenn-route-110"
+      },
+      {
+        "where": "hoenn-route-116"
+      }
+    ],
+    "repel": [
+      {
+        "where": "hoenn-route-116"
+      },
+      {
+        "where": "verdanturf-town"
+      },
+      {
+        "where": "granite-cave"
+      }
+    ],
+    "resist-wing": [
+      {
+        "place": {
+          "ko": "슈퍼트레이닝",
+          "en": "Super Training"
+        }
+      }
+    ],
+    "reveal-glass": [
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "revival-herb": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "revive": [
+      {
+        "where": "hoenn-route-104"
+      },
+      {
+        "where": "hoenn-route-109"
+      },
+      {
+        "where": "hoenn-route-110"
+      },
+      {
+        "where": "hoenn-route-111"
+      },
+      {
+        "where": "hoenn-route-113"
+      },
+      {
+        "where": "hoenn-route-114"
+      },
+      {
+        "where": "hoenn-route-117"
+      },
+      {
+        "where": "hoenn-route-120"
+      },
+      {
+        "where": "hoenn-route-123"
+      },
+      {
+        "where": "mossdeep-city"
+      },
+      {
+        "where": "ever-grande-city"
+      },
+      {
+        "where": "cave-of-origin"
+      },
+      {
+        "where": "hoenn-safari-zone"
+      },
+      {
+        "where": "sea-mauville"
+      }
+    ],
+    "rindo-berry": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "rocky-helmet": [
+      {
+        "where": "hoenn-route-119"
+      }
+    ],
+    "root-fossil": [
+      {
+        "where": "hoenn-route-111"
+      }
+    ],
+    "roseli-berry": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "sablenite": [
+      {
+        "where": "sootopolis-city"
+      }
+    ],
+    "safety-goggles": [
+      {
+        "where": "hoenn-route-111"
+      }
+    ],
+    "salac-berry": [
+      {
+        "place": "From Secret Pal in Secret Base"
+      }
+    ],
+    "salamencite": [
+      {
+        "where": "meteor-falls"
+      }
+    ],
+    "scanner": [
+      {
+        "where": "sea-mauville"
+      }
+    ],
+    "sceptilite": [
+      {
+        "where": "hoenn-route-120"
+      }
+    ],
+    "scizorite": [
+      {
+        "where": "petalburg-woods"
+      }
+    ],
+    "sea-incense": [
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "shalour-sable": [
+      {
+        "where": "hoenn-route-110"
+      }
+    ],
+    "sharp-beak": [
+      {
+        "where": "ss-tidal"
+      }
+    ],
+    "sharpedonite": [
+      {
+        "place": {
+          "ko": "아쿠아단아지트",
+          "en": "Aqua Hideout"
+        }
+      },
+      {
+        "where": "battle-resort"
+      }
+    ],
+    "shell-bell": [
+      {
+        "where": "shoal-cave"
+      }
+    ],
+    "shiny-charm": [
+      {
+        "where": "littleroot-town"
+      }
+    ],
+    "shiny-stone": [
+      {
+        "where": "hoenn-route-121"
+      },
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "shoal-salt": [
+      {
+        "where": "shoal-cave"
+      }
+    ],
+    "shoal-shell": [
+      {
+        "where": "shoal-cave"
+      }
+    ],
+    "shock-drive": [
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "shuca-berry": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "silk-scarf": [
+      {
+        "where": "dewford-town"
+      }
+    ],
+    "sitrus-berry": [
+      {
+        "where": "hoenn-route-118"
+      },
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "skull-fossil": [
+      {
+        "where": "mirage-spot-island"
+      },
+      {
+        "where": "mirage-spot-cave"
+      },
+      {
+        "where": "mirage-spot-mountain"
+      },
+      {
+        "where": "mirage-spot-forest"
+      }
+    ],
+    "sky-plate": [
+      {
+        "where": "hoenn-route-124"
+      }
+    ],
+    "slowbronite": [
+      {
+        "where": "shoal-cave"
+      }
+    ],
+    "smoke-ball": [
+      {
+        "where": "hoenn-route-110"
+      }
+    ],
+    "smooth-rock": [
+      {
+        "where": "hoenn-route-119"
+      }
+    ],
+    "soda-pop": [
+      {
+        "where": "hoenn-route-109"
+      }
+    ],
+    "soft-sand": [
+      {
+        "where": "hoenn-route-109"
+      },
+      {
+        "where": "hoenn-route-111"
+      }
+    ],
+    "soot-sack": [
+      {
+        "where": "hoenn-route-113"
+      }
+    ],
+    "soothe-bell": [
+      {
+        "where": "slateport-city"
+      }
+    ],
+    "soul-dew": [
+      {
+        "where": "southern-island"
+      }
+    ],
+    "spelon-berry": [
+      {
+        "place": "From Fan in Contest Hall"
+      }
+    ],
+    "splash-plate": [
+      {
+        "where": "hoenn-route-129"
+      }
+    ],
+    "spooky-plate": [
+      {
+        "where": "hoenn-route-127"
+      }
+    ],
+    "star-piece": [
+      {
+        "where": "hoenn-route-108"
+      },
+      {
+        "where": "hoenn-route-111"
+      },
+      {
+        "where": "hoenn-route-127"
+      },
+      {
+        "where": "hoenn-route-133"
+      },
+      {
+        "where": "mossdeep-city"
+      },
+      {
+        "where": "meteor-falls"
+      },
+      {
+        "where": "shoal-cave"
+      },
+      {
+        "where": "mirage-spot-island"
+      }
+    ],
+    "stardust": [
+      {
+        "where": "hoenn-route-106"
+      },
+      {
+        "where": "hoenn-route-109"
+      },
+      {
+        "where": "hoenn-route-111"
+      },
+      {
+        "where": "hoenn-route-118"
+      },
+      {
+        "where": "hoenn-route-126"
+      },
+      {
+        "where": "crescent-isle"
+      }
+    ],
+    "starf-berry": [
+      {
+        "where": "battle-resort"
+      }
+    ],
+    "steelixite": [
+      {
+        "where": "granite-cave"
+      }
+    ],
+    "stone-plate": [
+      {
+        "where": "hoenn-route-128"
+      }
+    ],
+    "storage-key": [
+      {
+        "where": "sea-mauville"
+      }
+    ],
+    "storage-key--galactic-warehouse": [
+      {
+        "where": "sea-mauville"
+      }
+    ],
+    "storage-key--sea-mauville": [
+      {
+        "where": "sea-mauville"
+      }
+    ],
+    "sun-stone": [
+      {
+        "where": "hoenn-route-115"
+      },
+      {
+        "where": "mossdeep-city"
+      }
+    ],
+    "super-potion": [
+      {
+        "where": "hoenn-route-104"
+      },
+      {
+        "where": "hoenn-route-116"
+      },
+      {
+        "where": "sootopolis-city"
+      },
+      {
+        "where": "granite-cave"
+      },
+      {
+        "where": "scorched-slab"
+      }
+    ],
+    "super-repel": [
+      {
+        "where": "hoenn-route-107"
+      },
+      {
+        "where": "hoenn-route-123"
+      },
+      {
+        "where": "fortree-city"
+      },
+      {
+        "where": "jagged-pass"
+      },
+      {
+        "where": "meteor-falls"
+      },
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "super-rod": [
+      {
+        "where": "mossdeep-city"
+      }
+    ],
+    "swampertite": [
+      {
+        "where": "hoenn-route-120"
+      }
+    ],
+    "sweet-heart": [
+      {
+        "place": "From Fan in Contest Hall"
+      }
+    ],
+    "swift-wing": [
+      {
+        "place": {
+          "ko": "슈퍼트레이닝",
+          "en": "Super Training"
+        }
+      }
+    ],
+    "tamato-berry": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "tanga-berry": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "thunder-stone": [
+      {
+        "where": "hoenn-route-118"
+      },
+      {
+        "where": "hoenn-route-124"
+      },
+      {
+        "where": "new-mauville"
+      }
+    ],
+    "tidal-bell": [
+      {
+        "where": "slateport-city"
+      }
+    ],
+    "timer-ball": [
+      {
+        "where": "hoenn-route-119"
+      }
+    ],
+    "tiny-mushroom": [
+      {
+        "where": "fortree-city"
+      },
+      {
+        "where": "petalburg-woods"
+      },
+      {
+        "where": "mirage-spot-forest"
+      }
+    ],
+    "tm02": [
+      {
+        "where": "meteor-falls"
+      }
+    ],
+    "tm03": [
+      {
+        "where": "pacifidlog-town"
+      }
+    ],
+    "tm04": [
+      {
+        "where": "mossdeep-city"
+      }
+    ],
+    "tm05": [
+      {
+        "where": "hoenn-route-114"
+      }
+    ],
+    "tm06": [
+      {
+        "where": "fiery-path"
+      }
+    ],
+    "tm07": [
+      {
+        "where": "shoal-cave"
+      }
+    ],
+    "tm08": [
+      {
+        "where": "dewford-town"
+      }
+    ],
+    "tm10": [
+      {
+        "where": "fortree-city"
+      }
+    ],
+    "tm11": [
+      {
+        "where": "scorched-slab"
+      }
+    ],
+    "tm12": [
+      {
+        "where": "hoenn-route-110"
+      }
+    ],
+    "tm13": [
+      {
+        "where": "sea-mauville"
+      }
+    ],
+    "tm18": [
+      {
+        "where": "sea-mauville"
+      }
+    ],
+    "tm19": [
+      {
+        "where": "fortree-city"
+      }
+    ],
+    "tm21": [
+      {
+        "where": "pacifidlog-town"
+      }
+    ],
+    "tm22": [
+      {
+        "where": "hoenn-safari-zone"
+      }
+    ],
+    "tm23": [
+      {
+        "where": "fallarbor-town"
+      }
+    ],
+    "tm24": [
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "tm26": [
+      {
+        "where": "seafloor-cavern"
+      }
+    ],
+    "tm27": [
+      {
+        "where": "pacifidlog-town"
+      }
+    ],
+    "tm28": [
+      {
+        "where": "hoenn-route-114"
+      }
+    ],
+    "tm29": [
+      {
+        "where": "ever-grande-city"
+      }
+    ],
+    "tm30": [
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "tm31": [
+      {
+        "where": "sootopolis-city"
+      }
+    ],
+    "tm32": [
+      {
+        "where": "hoenn-route-113"
+      }
+    ],
+    "tm34": [
+      {
+        "where": "hoenn-route-132"
+      }
+    ],
+    "tm35": [
+      {
+        "where": "hoenn-victory-road"
+      }
+    ],
+    "tm36": [
+      {
+        "where": "dewford-town"
+      }
+    ],
+    "tm37": [
+      {
+        "where": "hoenn-route-111"
+      }
+    ],
+    "tm39": [
+      {
+        "where": "rustboro-city"
+      }
+    ],
+    "tm41": [
+      {
+        "where": "slateport-city"
+      }
+    ],
+    "tm43": [
+      {
+        "where": "jagged-pass"
+      }
+    ],
+    "tm44": [
+      {
+        "where": "lilycove-city"
+      }
+    ],
+    "tm45": [
+      {
+        "where": "verdanturf-town"
+      }
+    ],
+    "tm46": [
+      {
+        "where": "slateport-city"
+      }
+    ],
+    "tm48": [
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "tm49": [
+      {
+        "where": "hoenn-route-104"
+      }
+    ],
+    "tm50": [
+      {
+        "where": "lavaridge-town"
+      }
+    ],
+    "tm51": [
+      {
+        "where": "granite-cave"
+      }
+    ],
+    "tm53": [
+      {
+        "where": "hoenn-safari-zone"
+      }
+    ],
+    "tm54": [
+      {
+        "where": "rustboro-city"
+      }
+    ],
+    "tm55": [
+      {
+        "where": "seafloor-cavern"
+      }
+    ],
+    "tm56": [
+      {
+        "where": "pacifidlog-town"
+      }
+    ],
+    "tm58": [
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "tm59": [
+      {
+        "where": "mt-chimney"
+      }
+    ],
+    "tm60": [
+      {
+        "where": "mossdeep-city"
+      }
+    ],
+    "tm61": [
+      {
+        "where": "mt-pyre"
+      }
+    ],
+    "tm62": [
+      {
+        "where": "hoenn-route-119"
+      }
+    ],
+    "tm63": [
+      {
+        "where": "ss-tidal"
+      }
+    ],
+    "tm64": [
+      {
+        "where": "sky-pillar"
+      }
+    ],
+    "tm65": [
+      {
+        "where": "granite-cave"
+      }
+    ],
+    "tm66": [
+      {
+        "where": "mirage-spot-island"
+      }
+    ],
+    "tm67": [
+      {
+        "where": "petalburg-city"
+      }
+    ],
+    "tm69": [
+      {
+        "where": "jagged-pass"
+      }
+    ],
+    "tm70": [
+      {
+        "where": "granite-cave"
+      }
+    ],
+    "tm72": [
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "tm74": [
+      {
+        "where": "mirage-spot-forest"
+      }
+    ],
+    "tm75": [
+      {
+        "where": "lavaridge-town"
+      }
+    ],
+    "tm77": [
+      {
+        "where": "hoenn-route-133"
+      }
+    ],
+    "tm79": [
+      {
+        "where": "shoal-cave"
+      }
+    ],
+    "tm80": [
+      {
+        "where": "hoenn-route-134"
+      }
+    ],
+    "tm81": [
+      {
+        "where": "hoenn-victory-road"
+      }
+    ],
+    "tm83": [
+      {
+        "where": "sootopolis-city"
+      }
+    ],
+    "tm84": [
+      {
+        "where": "mirage-spot-mountain"
+      }
+    ],
+    "tm85": [
+      {
+        "where": "hoenn-route-121"
+      }
+    ],
+    "tm86": [
+      {
+        "where": "fortree-city"
+      }
+    ],
+    "tm87": [
+      {
+        "where": "battle-resort"
+      }
+    ],
+    "tm88": [
+      {
+        "where": "mauville-city"
+      },
+      {
+        "where": "lilycove-city"
+      }
+    ],
+    "tm90": [
+      {
+        "where": "mirage-spot-island"
+      }
+    ],
+    "tm91": [
+      {
+        "where": "mirage-spot-island"
+      }
+    ],
+    "tm92": [
+      {
+        "where": "hoenn-route-110"
+      }
+    ],
+    "tm93": [
+      {
+        "where": "hoenn-safari-zone"
+      }
+    ],
+    "tm94": [
+      {
+        "where": "hoenn-route-111"
+      }
+    ],
+    "tm95": [
+      {
+        "where": "mirage-spot-cave"
+      }
+    ],
+    "tm96": [
+      {
+        "where": "fiery-path"
+      }
+    ],
+    "tm97": [
+      {
+        "place": {
+          "ko": "아쿠아단아지트",
+          "en": "Aqua Hideout"
+        }
+      },
+      {
+        "where": "magma-hideout"
+      }
+    ],
+    "tm99": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "toxic-plate": [
+      {
+        "where": "hoenn-route-129"
+      }
+    ],
+    "tyranitarite": [
+      {
+        "where": "jagged-pass"
+      }
+    ],
+    "ultra-ball": [
+      {
+        "where": "hoenn-route-102"
+      },
+      {
+        "where": "hoenn-route-104"
+      },
+      {
+        "where": "hoenn-route-117"
+      },
+      {
+        "where": "hoenn-route-119"
+      },
+      {
+        "where": "hoenn-route-123"
+      },
+      {
+        "where": "new-mauville"
+      },
+      {
+        "where": "hoenn-safari-zone"
+      },
+      {
+        "where": "mt-pyre"
+      },
+      {
+        "where": "hoenn-victory-road"
+      }
+    ],
+    "venusaurite": [
+      {
+        "where": "hoenn-route-119"
+      }
+    ],
+    "wacan-berry": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "water-stone": [
+      {
+        "where": "hoenn-route-106"
+      },
+      {
+        "where": "hoenn-route-124"
+      }
+    ],
+    "watmel-berry": [
+      {
+        "place": "From Fan in Contest Hall"
+      }
+    ],
+    "wepear-berry": [
+      {
+        "where": "hoenn-route-115"
+      },
+      {
+        "where": "hoenn-route-120"
+      }
+    ],
+    "white-flute": [
+      {
+        "where": "hoenn-route-113"
+      }
+    ],
+    "white-herb": [
+      {
+        "where": "hoenn-route-104"
+      },
+      {
+        "where": "sea-mauville"
+      }
+    ],
+    "wide-lens": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "wiki-berry": [
+      {
+        "where": "hoenn-route-123"
+      },
+      {
+        "where": "slateport-city"
+      },
+      {
+        "where": "verdanturf-town"
+      },
+      {
+        "where": "fallarbor-town"
+      },
+      {
+        "where": "lilycove-city"
+      }
+    ],
+    "x-attack": [
+      {
+        "where": "hoenn-route-104"
+      },
+      {
+        "where": "petalburg-woods"
+      },
+      {
+        "where": "cave-of-origin"
+      }
+    ],
+    "x-defense": [
+      {
+        "where": "rustboro-city"
+      },
+      {
+        "where": "mauville-city"
+      },
+      {
+        "where": "granite-cave"
+      },
+      {
+        "where": "jagged-pass"
+      }
+    ],
+    "x-speed": [
+      {
+        "where": "mauville-city"
+      }
+    ],
+    "yache-berry": [
+      {
+        "where": "hoenn-route-123"
+      }
+    ],
+    "yellow-flute": [
+      {
+        "where": "hoenn-route-113"
+      }
+    ],
+    "yellow-scarf": [
+      {
+        "where": "slateport-city"
+      }
+    ],
+    "yellow-shard": [
+      {
+        "where": "hoenn-route-126"
+      },
+      {
+        "where": "mirage-spot-cave"
+      },
+      {
+        "where": "mirage-spot-mountain"
+      }
+    ],
+    "zap-plate": [
+      {
+        "where": "hoenn-route-129"
+      }
+    ],
+    "zinc": [
+      {
+        "where": "hoenn-route-115"
+      },
+      {
+        "where": "hoenn-route-119"
+      },
+      {
+        "where": "hoenn-route-120"
+      },
+      {
+        "where": "hoenn-route-121"
+      },
+      {
+        "where": "hoenn-route-127"
+      },
+      {
+        "where": "hoenn-route-128"
+      },
+      {
+        "where": "mt-chimney"
+      },
+      {
+        "where": "mt-pyre"
+      },
+      {
+        "where": "battle-resort"
+      },
+      {
+        "where": "mirage-spot-mountain"
+      }
+    ]
+  },
+  "tutors": {}
+}

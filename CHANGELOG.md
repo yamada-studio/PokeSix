@@ -7,6 +7,14 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Acquisition books for every main game (30 version groups), built from a full crawl of Serebii's
+  ItemDex (2,088 item pages, fetched politely) by `scripts/i18n/serebii_items.py` and
+  `serebii_books.py`: 22,556 location rows resolved to PokéAPI locations (→ Korean place names),
+  wild held-item entries (→ Korean species names), game-text names or translated feature labels;
+  the untranslated remainder stays in English for review. The blog-sourced Platinum/HGSS entries
+  win over the crawl. Because the crawl misses some sources (BP shops, some DP rows), these books
+  only feed the 입수처 display — the per-game existence filter now needs a book to declare
+  `"completeItemList": true`, so nothing obtainable disappears from the Items list.
 - Acquisition books for HeartGold/SoulSilver and Platinum tutors, from the same Korean guide blog
   as the Platinum TM list (user-provided): all 100 HGSS TMs/HMs with how to get them (the Goldenrod
   Game Corner's 10,000-coin 냉동빔 included), 56 HGSS tutor moves (Battle Frontier BP costs plus
