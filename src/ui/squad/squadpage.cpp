@@ -45,6 +45,7 @@
 #include <QPropertyAnimation>
 #include <QPushButton>
 #include <QResizeEvent>
+#include <QScreen>
 #include <QScrollArea>
 #include <QScrollBar>
 #include <QStyle>
@@ -872,12 +873,16 @@ void SquadPage::showMemberDetail(int slot)
     QDialog dialog(this);
     dialog.setWindowTitle(m_session->detail(slot).name.text(m_state->language()));
     QVBoxLayout *layout = new QVBoxLayout(&dialog);
-    layout->setContentsMargins(0, 0, 0, 0);
+    layout->setContentsMargins(
+            kPageMargins); // 도감 화면과 같은 여백(버튼 · 스크롤바가 창에 붙지 않게)
     DexDetailPage *detail = new DexDetailPage(m_repository, m_state);
     detail->showPokemon(pokemonId, m_session->versionGroup());
     layout->addWidget(detail);
     connect(detail, &DexDetailPage::backRequested, &dialog, &QDialog::accept); // [← 목록] = 닫기
-    dialog.resize(1320, 840);
+    // 내용 폭 1320(도감 상세가 넉넉한 폭) + 여백. 작은 화면에서는 화면 안에 들어오게 줄인다
+    const QSize wanted(1320 + kPageMargins.left() + kPageMargins.right(),
+                       840 + kPageMargins.top() + kPageMargins.bottom());
+    dialog.resize(wanted.boundedTo(screen()->availableGeometry().size() * 0.94));
     dialog.exec();
 }
 
