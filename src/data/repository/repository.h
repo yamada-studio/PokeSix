@@ -308,12 +308,18 @@ public:
     // 그 게임 묶음에서 이 기술머신 · 비전머신(아이템 identifier "tm26")으로 기술을 배울 수 있는 종
     // (기본 모습, 종 번호 순). 기술머신이 아니거나 그 게임에 없으면 빈 목록
     QList<SpeciesRow> machineLearners(const QString &item, const QString &versionGroup);
+    // 그 게임 묶음에서 만나는 종(진화 사슬 단위): 그 게임의 지방 도감(HGSS = 성도 도감 256)에 있는 종 +
+    // 야생(풀숲 · 파도타기 · 낚시 …)에서 잡는 종(관동 도로 · 사파리존처럼 도감 밖). 고정 배치 · 배회 ·
+    // 선물 · 교환은 도감 밖이면 넣지 않는다(HGSS 신오의 유적 기라티나 같은 특별 이벤트). 비면 모른다
+    // (거르지 않는다)
+    QSet<int> gameSpecies(const QString &versionGroup);
 
 private:
     QString m_path;
     QString m_connection;
     QString m_error;
     QHash<QString, QSet<int>> m_otherVersionSpecies; // 버전 → otherVersionSpecies 결과
+    QHash<QString, QSet<int>> m_gameSpecies;         // 게임 묶음 → gameSpecies 결과
     static constexpr qsizetype kDetailCacheSize = 256;
     QHash<QString, PokemonDetail> m_details; // "포켓몬/세대/게임 묶음" → pokemonDetail 결과
 

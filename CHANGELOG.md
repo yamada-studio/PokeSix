@@ -255,6 +255,10 @@ and the project uses [Semantic Versioning](https://semver.org/).
   arrow from shifting the label.
 
 ### Fixed
+- Items detail lists only Pokémon met in the chosen game: TM learners and evolution targets are
+  limited to the game's regional dex plus species caught in the wild there (whole evolution chains),
+  so HGSS no longer shows Giratina, Rayquaza or Arceus (event/static specials outside the Johto dex)
+  while Kanto routes and the Safari Zone still count (`Repository::gameSpecies`).
 - NPC tutor costs are no longer cut off: the cost column takes the width of its longest text (up
   to 380 px, beyond that it elides with a tooltip) and pushes the effect column right. Sources whose
   place and content are the same name print it once ("배틀프런티어 · 배틀프런티어 32BP" →
