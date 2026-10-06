@@ -221,6 +221,10 @@ and the project uses [Semantic Versioning](https://semver.org/).
   arrow from shifting the label.
 
 ### Fixed
+- Clicking another generation card on Home no longer stutters: the barrel used to switch the app's
+  generation the moment the turn began, and the squad session's reload (about 120 ms in a debug
+  build) froze the first frames so the card jumped. The yellow frame now moves at once and the
+  generation is committed when the turn ends (or immediately when leaving Home).
 - The squad member modal gets the same page margins as the Pokédex screen, so [← 목록], the game
   chips and the scrollbar no longer touch the window edges; it opens at 1360×876, shrunk to fit
   smaller screens.
