@@ -11,10 +11,10 @@ namespace com::yamada::studio {
 // 한다(CLAUDE.md §4).
 struct ResolvedMember
 {
-    QStringList types;      // 그 세대 타입
-    QList<MoveEntry> moves; // 그 게임에서 배울 수 있는, 고른 기술(빈 칸 제외)
+    QStringList types; // 그 세대 타입
+    QList<MoveEntry> moves; // 고른 기술(빈 칸 제외). 분류는 그 세대 규칙으로 판정된 값
 };
 
-SquadInput makeSquadInput(const TypeChart &chart, int generation,
+SquadInput makeSquadInput(const TypeChart &chart,
                           const std::array<std::optional<ResolvedMember>, kSquadSize> &members);
 } // namespace com::yamada::studio

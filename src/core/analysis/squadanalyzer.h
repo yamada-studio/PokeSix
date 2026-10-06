@@ -21,7 +21,6 @@ struct MoveInput
 {
     std::optional<Type> type;                      // 없음 = ??? 타입(저주 2–4세대)
     DamageClass damageClass = DamageClass::Status; // 그 세대 규칙의 분류
-    DamageClass otherRuleClass = DamageClass::Status; // 반대 규칙(타입 기준 ↔ 기술 기준)이었다면
 };
 
 struct MemberInput
@@ -69,8 +68,7 @@ struct SquadAnalysis
     std::array<bool, typeCount> covered {}; // 그 (방어) 타입을 효과가 굉장하게 칠 기술이 있다
     bool hasAttackingMove = false; // 공격 기술이 하나라도 있다(없으면 공격 문제를 내지 않는다)
     std::vector<Problem> problems; // 방어(WeakStack → NoResist → Quad) → 공격 순
-    MoveSplit split;
-    MoveSplit otherRuleSplit;
+    MoveSplit split; // 그 세대 규칙(1–3세대 타입 기준 · 4세대부터 기술마다)의 분류
 };
 
 SquadAnalysis analyzeSquad(const SquadInput &input);

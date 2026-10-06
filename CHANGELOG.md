@@ -259,6 +259,10 @@ and the project uses [Semantic Versioning](https://semver.org/).
   arrow from shifting the label.
 
 ### Fixed
+- The squad's physical/special split drops the rule commentary: no more "4세대~ 기술마다 판정"
+  pill or "1–3세대 규칙(타입 기준)이었다면 물리 8 · 특수 12" line — the bar simply shows the split
+  under the generation you are playing (the rule itself stays in the "N세대 규칙" pill's tooltip).
+  The other-rule computation is removed from the analyzer.
 - Copyright clean-up for the public repository: the README screenshots are re-captured without any
   game pictures; the HeartGold/SoulSilver TM/HM sources that quoted a walkthrough blog sentence by
   sentence are rewritten as facts in PokeSix's structured format (method · place · content · cost ·

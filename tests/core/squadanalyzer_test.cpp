@@ -60,11 +60,9 @@ TypeMatrix chartForGeneration4()
     return chart;
 }
 
-// 4세대 규칙: 분류는 기술마다, 반대 규칙(1–3세대)은 타입이 정한다
 MoveInput move(Type type, DamageClass damageClass)
 {
-    return {type, damageClass,
-            damageClass == DamageClass::Status ? DamageClass::Status : typeBasedClass(type)};
+    return {type, damageClass};
 }
 
 // 04 §3 T1 — 샘플 스쿼드 "신오 정주행"
@@ -139,17 +137,14 @@ TEST(SquadAnalyzer, FindsTheThreeProblemsInOrder)
     EXPECT_EQ(a.problems[2].type, Ghost);
 }
 
-TEST(SquadAnalyzer, SplitsMovesByThisAndTheOtherRule)
+TEST(SquadAnalyzer, SplitsMovesByTheGenerationRule)
 {
+    // 분류는 입력이 이미 그 세대 규칙으로 판정한 값이다 — 여기서는 세고 빈 칸만 더한다
     const SquadAnalysis a = analyzeSquad(sinnohRun());
     EXPECT_EQ(a.split.physical, 8);
     EXPECT_EQ(a.split.special, 8);
     EXPECT_EQ(a.split.status, 3);
     EXPECT_EQ(a.split.empty, 1);
-    // 타입 기준(1–3세대)이었다면: 역린 · 스파크 → 특수, 에어슬래시 · 파동탄 · 원시의힘 · 러스트캐논
-    // → 물리
-    EXPECT_EQ(a.otherRuleSplit.physical, 10);
-    EXPECT_EQ(a.otherRuleSplit.special, 6);
 }
 
 TEST(SquadAnalyzer, EmptySquadHasNoProblems)

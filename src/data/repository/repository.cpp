@@ -1176,7 +1176,6 @@ void Repository::fillMoves(QList<MoveEntry> &moves, int generation)
         move.pp = base.pp;
         move.accuracy = base.accuracy;
         move.damageClass = base.damageClass;
-        move.ownDamageClass = base.damageClass;
         move.identifier = base.identifier;
         move.target = base.target;
         move.ailment = base.ailment;

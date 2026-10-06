@@ -981,7 +981,7 @@ to see its details here</translation>
     </message>
     <message>
         <source>물리 %1 · 특수 %2</source>
-        <translation>Physical %1 · Special %2</translation>
+        <translation type="vanished">Physical %1 · Special %2</translation>
     </message>
 </context>
 <context>
@@ -1072,11 +1072,11 @@ to see its details here</translation>
     </message>
     <message>
         <source>4세대~ 기술마다 판정</source>
-        <translation>Gen 4+: per move</translation>
+        <translation type="vanished">Gen 4+: per move</translation>
     </message>
     <message>
         <source>1–3세대 타입마다 판정</source>
-        <translation>Gen 1–3: per type</translation>
+        <translation type="vanished">Gen 1–3: per type</translation>
     </message>
     <message>
         <source>기술 %1 / %2</source>
@@ -1084,11 +1084,11 @@ to see its details here</translation>
     </message>
     <message>
         <source>1–3세대 규칙(타입 기준)이었다면</source>
-        <translation>Under Gen 1–3 rules (by type)</translation>
+        <translation type="vanished">Under Gen 1–3 rules (by type)</translation>
     </message>
     <message>
         <source>4세대 이후 규칙(기술 기준)이었다면</source>
-        <translation>Under Gen 4+ rules (by move)</translation>
+        <translation type="vanished">Under Gen 4+ rules (by move)</translation>
     </message>
     <message>
         <source>%1 공격에 강하고 %2 기술을 가진 포켓몬이면 문제 %3건이 함께 풀려요.</source>

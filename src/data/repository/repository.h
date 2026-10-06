@@ -81,9 +81,6 @@ struct MoveEntry
     // 갖고 있지도 않은 기술(HGSS 화석 프테라 Lv 20의 Lv 1 삼색엄니), 진화 전 단계가 익히지 않는
     // 진화형의 Lv 1 기술(가디안의 치유소원). 이 게임에서 얻을 수 없으면 뒤의 것만 본다.
     bool needsReminder = false;
-    // 기술 자체의 분류(세대 규칙을 적용하기 전). 3세대까지 damageClass는 타입이 정한 값이라, "4세대
-    // 이후 규칙이었다면"(스쿼드 물리 · 특수 분포)을 셀 때 이 값을 쓴다
-    int ownDamageClass = 0;
     // 효과 뼈대(지금 게임 값 — 옛 세대 차이는 UI의 move-effects.json이 덮는다)
     QString identifier; // "swords-dance" — UI 효과 사전의 키
     int target = 0;     // PokéAPI move_targets.id: 7 자신, 10 고른 상대 …
@@ -308,10 +305,10 @@ public:
     // 그 게임 묶음에서 이 기술머신 · 비전머신(아이템 identifier "tm26")으로 기술을 배울 수 있는 종
     // (기본 모습, 종 번호 순). 기술머신이 아니거나 그 게임에 없으면 빈 목록
     QList<SpeciesRow> machineLearners(const QString &item, const QString &versionGroup);
-    // 그 게임 묶음에서 만나는 종(진화 사슬 단위): 그 게임의 지방 도감(HGSS = 성도 도감 256)에 있는 종 +
-    // 야생(풀숲 · 파도타기 · 낚시 …)에서 잡는 종(관동 도로 · 사파리존처럼 도감 밖). 고정 배치 · 배회 ·
-    // 선물 · 교환은 도감 밖이면 넣지 않는다(HGSS 신오의 유적 기라티나 같은 특별 이벤트). 비면 모른다
-    // (거르지 않는다)
+    // 그 게임 묶음에서 만나는 종(진화 사슬 단위): 그 게임의 지방 도감(HGSS = 성도 도감 256)에 있는
+    // 종 + 야생(풀숲 · 파도타기 · 낚시 …)에서 잡는 종(관동 도로 · 사파리존처럼 도감 밖). 고정 배치
+    // · 배회 · 선물 · 교환은 도감 밖이면 넣지 않는다(HGSS 신오의 유적 기라티나 같은 특별 이벤트).
+    // 비면 모른다 (거르지 않는다)
     QSet<int> gameSpecies(const QString &versionGroup);
 
 private:
