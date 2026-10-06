@@ -7,6 +7,13 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Korean names for 600 places and 58 items/moves/abilities/versions that PokéAPI lacks (the
+  Pokédex encounter list now reads 회색시티 rather than "Pewter City"). Values were cross-checked
+  between PKHeX's game-extracted location strings, the WikiDex all-language lists and the Korean
+  fan wikis; places never released in Korean (Orre, Sevii Islands, Gen 3 mail and key items) use
+  fan-wiki names and are listed in `docs/i18n/review-*.md` together with every entry left out.
+  The audit also fixed four Sinnoh names that came from the Platinum blog (험한 샛길,
+  숲의 양옥집, 봉신마을, 유적마니아굴). `scripts/i18n/` holds the merge and validation tools.
 - The Items page picks a game, not just a generation: version chips in the list header switch
   TM/HM contents to that game's machine table (Let's Go's TM01 is Headbutt, Sun/Moon's is Work Up;
   TMs the game does not have disappear), and the detail pane gains a "입수처" section from the

@@ -7,10 +7,84 @@
     "장소 이름은 여기가 아니라 place-names.json(도로 번호 규칙 포함)에 둔다.",
     "채울 목록과 웹 AI에게 줄 요청서는 docs/i18n/에 있다."
   ],
-  "items": {},
-  "moves": {},
-  "abilities": {},
-  "versions": {},
+  "items": {
+    "auroraticket": "오로라티켓",
+    "bead-mail": "보배메일",
+    "berry-pouch": "열매주머니",
+    "bike-voucher": "교환권",
+    "devon-goods": "데봉화물",
+    "dream-mail": "꿈의메일",
+    "fab-mail": "미라클메일",
+    "fame-checker": "보이스체커",
+    "fresh-start-mochi": "순백떡",
+    "glitter-mail": "반짝반짝메일",
+    "harbor-mail": "항구메일",
+    "magma-emblem": "마그마의증표",
+    "mech-mail": "메카니컬메일",
+    "mysticticket": "신비의티켓",
+    "old-sea-map": "오래된해도",
+    "orange-mail": "오렌지메일",
+    "powder-jar": "가루상자",
+    "rainbow-pass": "레인보우패스",
+    "retro-mail": "복고풍메일",
+    "rm-1-key": "1호실열쇠",
+    "rm-2-key": "2호실열쇠",
+    "rm-4-key": "4호실열쇠",
+    "rm-6-key": "6호실열쇠",
+    "roto-stick": "로토무셀카봉",
+    "ruby": "루비",
+    "sapphire": "사파이어",
+    "shadow-mail": "그림자메일",
+    "teachy-tv": "가르침TV",
+    "tri-pass": "트라이패스",
+    "tropic-mail": "열대메일",
+    "wave-mail": "파도메일",
+    "wood-mail": "나무메일"
+  },
+  "moves": {
+    "shadow-blast": "다크블래스트",
+    "shadow-blitz": "다크어택",
+    "shadow-bolt": "다크썬더",
+    "shadow-break": "다크브레이크",
+    "shadow-chill": "다크프리즈",
+    "shadow-down": "다크다운",
+    "shadow-end": "다크엔드",
+    "shadow-fire": "다크파이어",
+    "shadow-half": "다크하프",
+    "shadow-hold": "다크홀드",
+    "shadow-mist": "다크미스트",
+    "shadow-panic": "다크패닉",
+    "shadow-rave": "다크레이브",
+    "shadow-rush": "다크러시",
+    "shadow-shed": "다크리무브",
+    "shadow-sky": "다크웨더",
+    "shadow-storm": "다크스톰",
+    "shadow-wave": "다크웨이브"
+  },
+  "abilities": {
+    "aura-guard": {
+      "ko": "파동의방호",
+      "ja": "はどうのぼうご"
+    },
+    "eelevate": {
+      "ko": "천정부지",
+      "ja": "うなぎのぼり"
+    },
+    "fire-mane": {
+      "ko": "불꽃의갈기",
+      "ja": "ほのおのたてがみ"
+    }
+  },
+  "versions": {
+    "champions": {
+      "ko": "Champions",
+      "ja": "Champions"
+    },
+    "the-indigo-disk-scarlet": "스칼렛: 남청의 원반",
+    "the-indigo-disk-violet": "바이올렛: 남청의 원반",
+    "the-teal-mask-scarlet": "스칼렛: 벽록의 가면",
+    "the-teal-mask-violet": "바이올렛: 벽록의 가면"
+  },
   "item-effects": {},
   "move-effects": {},
   "ability-effects": {}
