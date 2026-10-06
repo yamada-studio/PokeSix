@@ -887,22 +887,25 @@ bool CsvImporter::importPokemonMoves(QSqlDatabase &db)
 {
     // 습득 기술 63만 줄 중 레벨업 · 교배 · NPC · 기술머신(1–4)만. 나머지(스타디움 · 특별 이벤트
     // 등)는 뺀다.
-    Insert insert(db, QStringLiteral("INSERT INTO pokemon_moves (pokemon_id, version_group_id, "
-                                     "move_id, method, level) VALUES (?, ?, ?, ?, ?)"));
+    Insert insert(db,
+                  QStringLiteral("INSERT INTO pokemon_moves (pokemon_id, version_group_id, "
+                                 "move_id, method, level, sort_order) VALUES (?, ?, ?, ?, ?, ?)"));
     if (!insert.isValid())
         return fail(insert.error());
-    return forEachRecord(
-            QStringLiteral("pokemon_moves"),
-            {QStringLiteral("pokemon_id"), QStringLiteral("version_group_id"),
-             QStringLiteral("move_id"), QStringLiteral("pokemon_move_method_id"),
-             QStringLiteral("level")},
-            [&](const QStringList &v) {
-                const int method = v[3].toInt();
-                if (method < 1 || method > 4)
-                    return true;
-                return insert.exec({v[0].toInt(), v[1].toInt(), v[2].toInt(), method, v[4].toInt()})
-                       || fail(insert.error());
-            });
+    return forEachRecord(QStringLiteral("pokemon_moves"),
+                         {QStringLiteral("pokemon_id"), QStringLiteral("version_group_id"),
+                          QStringLiteral("move_id"), QStringLiteral("pokemon_move_method_id"),
+                          QStringLiteral("level"), QStringLiteral("order")},
+                         [&](const QStringList &v) {
+                             const int method = v[3].toInt();
+                             if (method < 1 || method > 4)
+                                 return true;
+                             // order: 같은 레벨에 기술이 여럿일 때만 채워져 있다(게임이 익히는
+                             // 순서)
+                             return insert.exec({v[0].toInt(), v[1].toInt(), v[2].toInt(), method,
+                                                 v[4].toInt(), v[5].toInt()})
+                                    || fail(insert.error());
+                         });
 }
 
 bool CsvImporter::importEncounters(QSqlDatabase &db)

@@ -178,14 +178,13 @@ void MoveList::paintEvent(QPaintEvent *)
             painter.fillRect(QRect(0, top, width(), kRowHeight), QColor(tok::kPaperAlt));
         painter.fillRect(QRect(0, top + kRowHeight - 1, width(), 1), QColor(tok::kLineSoft));
 
-        // 첫 칸: Lv(1이면 하트비늘) · 기술머신 번호(TM06 · HM01)
+        // 첫 칸: Lv(+ 하트비늘) · 기술머신 번호(TM06 · HM01)
         painter.setFont(dataFont);
         painter.setPen(QColor(tok::kText1));
         if (m_mode == Mode::LevelUp) {
             const QRectF first = cell(0, top, kRowHeight);
             painter.drawText(first, Qt::AlignLeft | Qt::AlignVCenter, QString::number(move.level));
-            if (move.needsReminder) { // 진화 전 단계에 없는 Lv 1 기술만(기본 기술은 표시하지
-                                      // 않는다)
+            if (move.needsReminder) {
                 const QString key = ItemRowDelegate::iconKey(QString::fromLatin1(kHeartScale), {},
                                                              m_generation);
                 const QString file = m_icons->path(key);
@@ -255,7 +254,7 @@ void MoveList::paintEvent(QPaintEvent *)
 
 bool MoveList::event(QEvent *event)
 {
-    // 획득처가 잘렸을 때 전체를 툴팁으로. Lv 1 하트비늘에는 설명을.
+    // 획득처가 잘렸을 때 전체를 툴팁으로. 하트비늘에는 설명을.
     if (event->type() == QEvent::ToolTip) {
         const auto *help = static_cast<QHelpEvent *>(event);
         const int row = rowAt(help->pos().y());
@@ -276,9 +275,13 @@ bool MoveList::event(QEvent *event)
             } else if (m_mode == Mode::Machine)
                 tip = placesOf(move).replace(QStringLiteral(" · "), QStringLiteral("\n"));
             else if (move.needsReminder && help->pos().x() < columns().at(0).x + kFirstWidth)
-                tip = tr("진화 전 단계에서는 배우지 않는 기술이에요. 진화한 뒤 기술 "
-                         "떠올리기(하트비늘)로 "
-                         "배워요.");
+                tip = m_earliestLevel > 0
+                              ? tr("이 게임에서는 Lv %1부터 얻어요. 얻을 때 갖고 있지 않으면 기술 "
+                                   "떠올리기(하트비늘)로 배워요.")
+                                        .arg(m_earliestLevel)
+                              : tr("진화 전 단계에서는 배우지 않는 기술이에요. 진화한 뒤 기술 "
+                                   "떠올리기(하트비늘)로 "
+                                   "배워요.");
         }
         if (tip.isEmpty())
             QToolTip::hideText();

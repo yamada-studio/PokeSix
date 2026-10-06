@@ -473,6 +473,27 @@ TEST_F(RepositoryTest, EvolutionTreeAndReminderMoves)
     EXPECT_TRUE(repository.pokemonDetail(445, 4).evolution.isEmpty());
 }
 
+TEST_F(RepositoryTest, ReminderMovesFollowTheObtainLevel)
+{
+    Repository repository(s_dbPath);
+    // 시드의 DP 삐삐는 Lv 16부터 나온다. 그때 가진 기술은 Lv 16 이하의 마지막 4개(노래하기 ·
+    // 연속뺨치기 · 웅크리기 · 날따름)라 Lv 1 막치기(1) · 울음소리(45), Lv 4 앵콜(227)은
+    // 하트비늘이다.
+    const PokemonDetail clefairy = repository.pokemonDetail(35, 4, QStringLiteral("diamond-pearl"));
+    EXPECT_EQ(clefairy.earliestLevel, 16);
+    for (const MoveEntry &move : clefairy.levelMoves) {
+        const bool forgotten = move.moveId == 1 || move.moveId == 45 || move.moveId == 227;
+        EXPECT_EQ(move.needsReminder, forgotten) << move.moveId;
+    }
+    // 픽시(달의돌 — 레벨 조건 없음)는 삐삐를 얻은 레벨에 바로 진화할 수 있다. Lv 1 기술 넷은 모두
+    // 삐삐가 기본으로 갖고 있거나 그 뒤에 배운다.
+    const PokemonDetail clefable = repository.pokemonDetail(36, 4, QStringLiteral("diamond-pearl"));
+    EXPECT_EQ(clefable.earliestLevel, 16);
+    ASSERT_FALSE(clefable.levelMoves.isEmpty());
+    for (const MoveEntry &move : clefable.levelMoves)
+        EXPECT_FALSE(move.needsReminder) << move.moveId;
+}
+
 TEST_F(RepositoryTest, DetailUsesTheChosenGame)
 {
     Repository repository(s_dbPath);

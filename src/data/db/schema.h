@@ -35,7 +35,7 @@
 // [이름] 포켓몬 · 타입 이름은 ko / en / ja 열로 둔다(PokéAPI languages: 3 = ko, 9 = en, 11 = ja).
 //   UI 문구(tr())와는 별개의 경로다(architecture.md §4).
 namespace com::yamada::studio::schema {
-inline constexpr int kVersion = 10; // 스키마를 바꾸면 올린다. meta 표에 기록된다
+inline constexpr int kVersion = 11; // 스키마를 바꾸면 올린다. meta 표에 기록된다
 
 inline constexpr std::array kStatements = {
         // 이 DB를 만든 원천과 스키마 버전 (key = 'schema_version', 'source_commit', 'imported_at')
@@ -128,10 +128,11 @@ inline constexpr std::array kStatements = {
         move_id INTEGER NOT NULL REFERENCES moves(id), until_gen INTEGER NOT NULL,
         type_id INTEGER, power INTEGER, pp INTEGER, accuracy INTEGER))",
         R"(CREATE INDEX move_changelog_move ON move_changelog (move_id))",
-        // 습득 기술(게임마다). method: 1 레벨업 · 2 교배 · 3 NPC(가르침) · 4 기술머신
+        // 습득 기술(게임마다). method: 1 레벨업 · 2 교배 · 3 NPC(가르침) · 4 기술머신.
+        // sort_order: 같은 레벨 안에서 게임이 익히는 순서(얻을 때 가진 기술 4개를 고를 때 쓴다)
         R"(CREATE TABLE pokemon_moves (
         pokemon_id INTEGER NOT NULL, version_group_id INTEGER NOT NULL, move_id INTEGER NOT NULL,
-        method INTEGER NOT NULL, level INTEGER NOT NULL))",
+        method INTEGER NOT NULL, level INTEGER NOT NULL, sort_order INTEGER NOT NULL DEFAULT 0))",
         R"(CREATE INDEX pokemon_moves_pokemon ON pokemon_moves (pokemon_id, version_group_id))",
         // 기술머신(게임마다): 번호 · 아이템 · 담긴 기술
         R"(CREATE TABLE machines (

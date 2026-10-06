@@ -10,8 +10,8 @@ class SpriteCache;
 // 기술 목록 표 (도감 상세): 레벨업 · 기술머신. 줄이 수십 개뿐이고 고정된 목록이라 모델/뷰 대신
 // 위젯 하나가 직접 그린다(스크롤은 상세 화면 전체가 한다).
 //   레벨업:   [Lv] [기술] [타입] [분류] [위력] [명중] [PP]
-//             하트비늘 아이콘: 진화 전 단계가 배우지 않는 Lv 1 기술(MoveEntry::needsReminder —
-//             기술 떠올리기로만 배운다). 기본 단계의 Lv 1 기술(몸통박치기 등)에는 붙이지 않는다.
+//             하트비늘 아이콘: 기술 떠올리기로만 배우는 기술(MoveEntry::needsReminder — 얻는
+//             레벨보다 낮은데 얻을 때 갖고 있지 않은 기술 · 진화 전 단계가 배우지 않는 Lv 1 기술)
 //   기술머신: [번호] [기술] [타입] [분류] [위력] [명중] [PP] [획득처] — 획득처는 공략
 //   사전(guidebook)
 //   가르침 · 알: 첫 칸 없이 [기술]부터 (Mode::Plain)
@@ -28,6 +28,9 @@ public:
     // userTypes: 이 포켓몬의 타입(저주처럼 쓰는 쪽 타입에 따라 효과가 다른 변화 기술)
     void setMoves(const QList<MoveEntry> &moves, const QString &versionGroup, int generation,
                   const QStringList &userTypes, Language language);
+
+    // 이 게임에서 가장 일찍 얻는 레벨(PokemonDetail::earliestLevel) — 하트비늘 툴팁 문구. 0 = 모름
+    void setEarliestLevel(int level) { m_earliestLevel = level; }
 
     QSize sizeHint() const override;
 
@@ -55,6 +58,7 @@ private:
     QString m_versionGroup;
     QStringList m_userTypes;
     int m_generation = 1;
+    int m_earliestLevel = 0;
     Language m_language = Language::Korean;
 };
 } // namespace com::yamada::studio

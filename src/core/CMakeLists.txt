@@ -8,6 +8,8 @@ add_library(pokesix_core STATIC
     types/typekey.cpp
     rules/generationfeatures.h
     rules/damageclass.h
+    rules/movereach.h
+    rules/movereach.cpp
     analysis/squadanalyzer.h
     analysis/squadanalyzer.cpp
 )

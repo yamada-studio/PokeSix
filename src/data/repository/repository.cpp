@@ -1,5 +1,6 @@
 #include "data/repository/repository.h"
 
+#include "core/rules/movereach.h"
 #include "data/db/gamedatabase.h"
 #include "data/logging/logging.h"
 #include "data/text/namebook.h"
@@ -465,9 +466,9 @@ PokemonDetail Repository::pokemonDetail(int pokemonId, int generation, const QSt
     }
 
     // 4) 습득 기술: 레벨업(1) · 기술머신(4, 번호 · 아이템과 함께)
-    query.prepare(
-            QStringLiteral("SELECT move_id, level FROM pokemon_moves WHERE pokemon_id = :p "
-                           "AND version_group_id = :vg AND method = 1 ORDER BY level, move_id"));
+    query.prepare(QStringLiteral(
+            "SELECT move_id, level FROM pokemon_moves WHERE pokemon_id = :p "
+            "AND version_group_id = :vg AND method = 1 ORDER BY level, sort_order, move_id"));
     query.bindValue(QStringLiteral(":p"), pokemonId);
     query.bindValue(QStringLiteral(":vg"), groupId);
     if (query.exec()) {
@@ -597,12 +598,57 @@ void Repository::fillEvolution(PokemonDetail &detail, int versionGroupId)
         if (!steps.contains(step.fromSpeciesId))
             step.fromSpeciesId = 0;
 
-    // 2) 하트비늘: 진화 전 단계(뿌리까지)가 레벨업으로 배우는 기술과 견준다
-    QList<int> ancestors; // 기본 모습 pokemon id
+    // 2) 하트비늘: 이 게임에서 잡기 · 받기 · 진화로 얻는 길을 따라 자연히 익히는 기술과 견준다
+    QList<int> ancestors; // 기본 모습 pokemon id(가까운 단계부터)
+    QList<int> ancestorSpecies;
     for (int from = steps.value(detail.speciesId).fromSpeciesId; from != 0;
-         from = steps.value(from).fromSpeciesId)
+         from = steps.value(from).fromSpeciesId) {
         ancestors.append(steps.value(from).pokemonId);
-    if (!ancestors.isEmpty()) {
+        ancestorSpecies.append(from);
+    }
+    std::vector<movereach::Stage> path; // 뿌리 → 이 포켓몬
+    for (qsizetype i = ancestors.size(); i >= 0; --i) {
+        const int pokemonId = i > 0 ? ancestors.at(i - 1) : detail.pokemonId;
+        const int speciesId = i > 0 ? ancestorSpecies.at(i - 1) : detail.speciesId;
+        movereach::Stage stage;
+        query.prepare(QStringLiteral(
+                "SELECT move_id, level, sort_order FROM pokemon_moves WHERE pokemon_id = :p "
+                "AND version_group_id = :vg AND method = 1"));
+        query.bindValue(QStringLiteral(":p"), pokemonId);
+        query.bindValue(QStringLiteral(":vg"), versionGroupId);
+        if (query.exec())
+            while (query.next())
+                stage.learnset.push_back(
+                        {query.value(0).toInt(), query.value(1).toInt(), query.value(2).toInt()});
+        query.prepare(QStringLiteral("SELECT MIN(e.min_level) FROM encounters e "
+                                     "JOIN versions v ON v.id = e.version_id "
+                                     "WHERE e.pokemon_id = :p AND v.version_group_id = :vg"));
+        query.bindValue(QStringLiteral(":p"), pokemonId);
+        query.bindValue(QStringLiteral(":vg"), versionGroupId);
+        if (query.exec() && query.next() && !query.value(0).isNull())
+            stage.caughtLevel = query.value(0).toInt();
+        if (!path.empty()) {
+            // 그 세대 이하에서 가장 최근 세대의 진화 방법 중 가장 낮은 레벨(레벨 조건 없음 = 0)
+            query.prepare(QStringLiteral(
+                    "SELECT MIN(COALESCE(min_level, 0)) FROM evolutions "
+                    "WHERE evolved_species_id = :s AND generation = (SELECT MAX(generation) "
+                    "FROM evolutions WHERE evolved_species_id = :s2 AND generation <= :g)"));
+            query.bindValue(QStringLiteral(":s"), speciesId);
+            query.bindValue(QStringLiteral(":s2"), speciesId);
+            query.bindValue(QStringLiteral(":g"), generation);
+            if (query.exec() && query.next())
+                stage.evolveLevel = query.value(0).toInt();
+        }
+        path.push_back(std::move(stage));
+    }
+    const movereach::Reach reach = movereach::reachableMoves(path);
+    if (reach.obtainable) {
+        detail.earliestLevel = reach.earliestLevel;
+        for (MoveEntry &move : detail.levelMoves)
+            move.needsReminder = !reach.moves.contains(move.moveId);
+    } else if (!ancestors.isEmpty()) {
+        // 이 게임의 출현 자료로는 얻을 수 없다(다른 게임에서 데려오기 등): 진화 전 단계가
+        // 레벨업으로 배우지 않는 Lv 1 기술만
         QSet<int> inherited; // 진화 전 단계가 레벨업으로 배우는 기술
         for (const int pokemonId : std::as_const(ancestors)) {
             query.prepare(QStringLiteral("SELECT move_id FROM pokemon_moves WHERE pokemon_id = :p "
