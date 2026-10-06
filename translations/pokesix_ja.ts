@@ -873,6 +873,18 @@
         <source>누르면 선택, 끌면 순서를 바꿔요</source>
         <translation>押して選択、ドラッグで並べ替え</translation>
     </message>
+    <message>
+        <source>포켓몬 바꾸기</source>
+        <translation>ポケモンを入れ替える</translation>
+    </message>
+    <message>
+        <source>자리 비우기</source>
+        <translation>枠を空ける</translation>
+    </message>
+    <message>
+        <source>자세히 보기</source>
+        <translation>詳しく見る</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::SpeciesTableModel</name>
@@ -1068,23 +1080,23 @@
     </message>
     <message>
         <source>포켓몬 바꾸기</source>
-        <translation>ポケモンを変更</translation>
+        <translation type="vanished">ポケモンを変更</translation>
     </message>
     <message>
         <source>도감에서 보기</source>
-        <translation>図鑑で見る</translation>
+        <translation type="vanished">図鑑で見る</translation>
     </message>
     <message>
         <source>앞으로</source>
-        <translation>前へ</translation>
+        <translation type="vanished">前へ</translation>
     </message>
     <message>
         <source>뒤로</source>
-        <translation>後ろへ</translation>
+        <translation type="vanished">後ろへ</translation>
     </message>
     <message>
         <source>비우기</source>
-        <translation>空にする</translation>
+        <translation type="vanished">空にする</translation>
     </message>
     <message>
         <source>No.</source>

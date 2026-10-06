@@ -873,6 +873,18 @@ to see its details here</translation>
         <source>누르면 선택, 끌면 순서를 바꿔요</source>
         <translation>Click to select, drag to reorder</translation>
     </message>
+    <message>
+        <source>포켓몬 바꾸기</source>
+        <translation>Swap Pokémon</translation>
+    </message>
+    <message>
+        <source>자리 비우기</source>
+        <translation>Clear slot</translation>
+    </message>
+    <message>
+        <source>자세히 보기</source>
+        <translation>Details</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::SpeciesTableModel</name>
@@ -1068,23 +1080,23 @@ to see its details here</translation>
     </message>
     <message>
         <source>포켓몬 바꾸기</source>
-        <translation>Change Pokémon</translation>
+        <translation type="vanished">Change Pokémon</translation>
     </message>
     <message>
         <source>도감에서 보기</source>
-        <translation>Show in Pokédex</translation>
+        <translation type="vanished">Show in Pokédex</translation>
     </message>
     <message>
         <source>앞으로</source>
-        <translation>Move up</translation>
+        <translation type="vanished">Move up</translation>
     </message>
     <message>
         <source>뒤로</source>
-        <translation>Move down</translation>
+        <translation type="vanished">Move down</translation>
     </message>
     <message>
         <source>비우기</source>
-        <translation>Clear</translation>
+        <translation type="vanished">Clear</translation>
     </message>
     <message>
         <source>No.</source>

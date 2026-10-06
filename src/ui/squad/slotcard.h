@@ -49,8 +49,9 @@ public:
 signals:
     void selectRequested(int slot);
     void addRequested(int slot);
-    void menuRequested(int slot, const QPoint &globalPos);
-    void detailRequested(int slot); // 머리의 [+] — 도감 상세 모달
+    void replaceRequested(int slot); // [⇄] 포켓몬 바꾸기
+    void removeRequested(int slot);  // [휴지통] 자리 비우기
+    void detailRequested(int slot);  // [+] 도감 상세 모달
     void moveRequested(int slot, int index);
     void abilityRequested(int slot, const QPoint &globalPos);
     void natureRequested(int slot, const QPoint &globalPos);
@@ -73,7 +74,8 @@ private:
     enum class Hit {
         None,
         Header,
-        Menu,
+        Swap,   // 머리의 [⇄] — 포켓몬 바꾸기
+        Remove, // 머리의 [휴지통] — 자리 비우기
         Detail, // 머리의 [+] — 이 포켓몬의 상세 모달
         Add,
         Ability,
@@ -88,8 +90,9 @@ private:
     {
         QRect card;   // 링(선택 · 경고) 자리를 뺀 카드
         QRect header; // 머리 띠
-        QRect menu;   // ⋯
-        QRect detail; // + (상세 모달 — 빈 자리에는 없다)
+        QRect swap;   // ⇄ 포켓몬 바꾸기
+        QRect remove; // 휴지통(자리 비우기)
+        QRect detail; // + (상세 모달)
         QRect warn;   // ! (경고가 있을 때)
         QRect types;
         QRect memo;
@@ -100,6 +103,7 @@ private:
     };
     Geometry areas() const;
     Hit hitAt(const QPoint &pos) const;
+    void paintHeaderButtons(QPainter &painter, const Geometry &g, const QColor &color) const;
     bool isEmptySlot() const;
     void paintFilled(QPainter &painter, const Geometry &g);
     void paintEmpty(QPainter &painter, const Geometry &g);

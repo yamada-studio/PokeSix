@@ -159,7 +159,8 @@ SquadPage::SquadPage(Repository *repository, AppState *state, QWidget *parent)
         SlotCard *card = new SlotCard(slot, m_session, m_pokemonIcons, m_itemIcons);
         connect(card, &SlotCard::selectRequested, this, &SquadPage::selectSlot);
         connect(card, &SlotCard::addRequested, this, &SquadPage::pickPokemon);
-        connect(card, &SlotCard::menuRequested, this, &SquadPage::showSlotMenu);
+        connect(card, &SlotCard::replaceRequested, this, &SquadPage::pickPokemon);
+        connect(card, &SlotCard::removeRequested, this, [this](int s) { m_session->clearSlot(s); });
         connect(card, &SlotCard::detailRequested, this, &SquadPage::showMemberDetail);
         connect(card, &SlotCard::moveRequested, this, &SquadPage::pickMove);
         connect(card, &SlotCard::abilityRequested, this, &SquadPage::pickAbility);
@@ -876,37 +877,8 @@ void SquadPage::showMemberDetail(int slot)
     detail->showPokemon(pokemonId, m_session->versionGroup());
     layout->addWidget(detail);
     connect(detail, &DexDetailPage::backRequested, &dialog, &QDialog::accept); // [← 목록] = 닫기
-    dialog.resize(1080, 760);
+    dialog.resize(1200, 800);
     dialog.exec();
-}
-
-void SquadPage::showSlotMenu(int slot, const QPoint &globalPos)
-{
-    QMenu menu(this);
-    connect(menu.addAction(tr("포켓몬 바꾸기")), &QAction::triggered, this,
-            [this, slot] { pickPokemon(slot); });
-    const int pokemonId = m_session->member(slot).pokemonId;
-    connect(menu.addAction(tr("도감에서 보기")), &QAction::triggered, this,
-            [this, pokemonId] { emit dexRequested(pokemonId, m_session->versionGroup()); });
-    menu.addSeparator();
-    QAction *up = menu.addAction(tr("앞으로"));
-    up->setEnabled(slot > 0);
-    connect(up, &QAction::triggered, this, [this, slot] {
-        m_session->swapSlots(slot, slot - 1);
-        if (m_selected == slot)
-            selectSlot(slot - 1);
-    });
-    QAction *down = menu.addAction(tr("뒤로"));
-    down->setEnabled(slot < 5);
-    connect(down, &QAction::triggered, this, [this, slot] {
-        m_session->swapSlots(slot, slot + 1);
-        if (m_selected == slot)
-            selectSlot(slot + 1);
-    });
-    menu.addSeparator();
-    connect(menu.addAction(tr("비우기")), &QAction::triggered, this,
-            [this, slot] { m_session->clearSlot(slot); });
-    menu.exec(globalPos - QPoint(160, 0));
 }
 
 void SquadPage::pickPokemon(int slot)
