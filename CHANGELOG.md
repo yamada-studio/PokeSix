@@ -7,6 +7,11 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Home generation cards show every series of the generation: the first series' starters stand in
+  front and each later series is stacked one tier further back and up (4th: Sinnoh DP·Pt →
+  Johto HGSS; 8th: Galar → BDSP Sinnoh → Hisui; 1st: Kanto → Yellow's Pikachu; 7th: Alola → Let's
+  Go Pikachu/Eevee …), and the caption lists the regions ("신오 · 성도 · 관동").
+  `homecards.json` now has `layers` and `regions` instead of `pokemon` and `region`.
 - The Items detail shows Pokémon: a TM/HM lists every Pokémon that can learn it in the chosen game
   group as a box-icon grid ("배울 수 있는 포켓몬 · 169마리", names in tooltips, version exclusives
   faded with "SS 한정"), and evolution items draw their targets as icon rows ("[무우마] → [무우마직]
