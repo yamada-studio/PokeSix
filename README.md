@@ -1,29 +1,148 @@
 # PokeSix
 
-A desktop companion for playing through the Pokémon series generation by generation.
+**A desktop companion for playing through the Pokémon series, one generation and one cartridge at a time.**
 
-PokeSix answers the questions you actually have mid-playthrough — *in this generation*:
-what a Pokémon's base stats and types are, which moves it learns, and how your
-six-member party holds up against every attacking type.
+PokeSix answers the questions you actually have mid-playthrough — *in the game you are playing*:
+what a Pokémon's stats and types are, which moves it can learn and how, where to find an item,
+and how your six-member party holds up against every attacking type.
 
-> **Status:** early development. Nothing is usable yet; the project skeleton,
-> build system and tests are in place.
+![PokeSix home screen — pick a generation from the card barrel, then open Squad, Pokédex or Items](docs/screenshots/home.png)
 
-<!-- Screenshots go here once the first screens exist.
-![Dex screen](docs/images/dex.png)
-![SixSquad screen](docs/images/squad.png)
--->
+> **Status:** early development (v0.0.x). The Pokédex, Squad and Items screens work end to end;
+> Settings and the global search box in the top bar are not wired up yet. The UI is written in
+> Korean first, with English and Japanese translations.
 
-## Features (planned, in priority order)
+## Contents
 
-1. **Generation-aware Pokédex** — base stats, types, learnsets, and what changed between generations.
-2. **SixSquad editor** — build a party of six and see type coverage and weakness distribution update live.
-3. **Item encyclopedia** — later.
-4. **Emulator overlay** — long-term goal; the architecture leaves room for it.
+- [What it does](#what-it-does)
+- [User guide](#user-guide)
+  - [1. First launch](#1-first-launch)
+  - [2. Pick a generation and a game](#2-pick-a-generation-and-a-game)
+  - [3. Pokédex (도감 백과)](#3-pokédex-도감-백과)
+  - [4. Squad (스쿼드)](#4-squad-스쿼드)
+  - [5. Items (아이템 백과)](#5-items-아이템-백과)
+  - [Keyboard shortcuts](#keyboard-shortcuts)
+  - [Language](#language)
+- [Where the data comes from](#where-the-data-comes-from)
+- [Building](#building)
 
-Game data comes from [PokéAPI](https://pokeapi.co). On first launch PokeSix downloads
-PokéAPI's CSV data files from its GitHub repository — pinned to one commit and checked
-against SHA-256 hashes — converts them into a local SQLite database, and works offline afterwards.
+## What it does
+
+| | |
+|---|---|
+| **Everything follows your game.** | Pick a generation, then the version you are playing (Diamond, Pearl, Platinum, HeartGold, SoulSilver …). Stats, type charts, learnsets, TM numbers, encounters and item locations all switch to that game. Version exclusives you cannot catch are filtered out. |
+| **Pokédex** | Base stats, types, abilities, type matchups, evolution chains with their conditions, where to catch it, and every move it learns — level-up, TM/HM, NPC tutors (with their cost) and egg moves. |
+| **Squad** | Build a party of six per game. A live heatmap shows weaknesses, missing resistances, ×4 weaknesses and offensive coverage holes as you edit, using that generation's rules. |
+| **Items** | Every item of the generation with its effect, where to get it in the chosen game, what it evolves, and — for TMs/HMs — which Pokémon can learn it there. |
+| **Offline** | Game data is downloaded once and kept in a local database. |
+
+## User guide
+
+### 1. First launch
+
+Build and start the app (see [Building](#building) — on Linux it is `scripts/linux/build.sh` and
+`scripts/linux/run.sh`). The first launch downloads PokéAPI's data files (about 29 MB, pinned to one
+commit and checked against SHA-256 hashes) and converts them into a local SQLite database. This takes a
+minute; afterwards PokeSix works offline. Pokémon and item pictures are downloaded the first time they
+are shown and cached on your computer.
+
+### 2. Pick a generation and a game
+
+On the **home screen** the generation cards stand in a rotating barrel. The front card is the
+selected generation — drag the barrel, scroll the mouse wheel, press <kbd>←</kbd> <kbd>→</kbd>, or click a
+side card to bring it to the front. Each card shows the starters of every series in that generation
+(4th: Sinnoh in front, the HeartGold/SoulSilver Johto starters on the step behind) and the regions it
+covers. Then open **Squad**, **Pokédex** or **Items** from the menu below.
+
+Inside the app, the generation button in the top bar switches generations at any time.
+
+The **game** — the version you are actually playing — is chosen with the version chips on each screen
+([D] [P] [Pt] [HG] [SS] on the Squad and Pokédex screens). The choice is shared by every screen and
+remembered per generation, so once you pick SoulSilver, the squad, the Pokédex and the Items screen all
+open on SoulSilver.
+
+### 3. Pokédex (도감 백과)
+
+![Pokédex — filters on the left, the species list in the middle, a preview on the right](docs/screenshots/dex.png)
+
+- **List.** The header chips choose the dex: [전국] (national, everything up to this generation) or
+  a regional dex such as [신오 D|P] or [성도 HG|SS]. The version chips under the header hide Pokémon that
+  only the paired version can obtain (in SoulSilver, Mankey and Growlithe are gone). Search by name or
+  number, sort by any column.
+- **Filters** (left): types, a base-stat-total range, "exclude legendary / mythical" and "final
+  evolutions only".
+- **Preview** (right): click a row for the stat radar and weaknesses; double-click, press
+  <kbd>Enter</kbd> or press **자세히 보기** for the full detail.
+- **Detail.**
+  - **Stats** with a nature picker — the radar marks the raised ▲ and lowered ▼ stat.
+  - **Abilities** and **type matchups** (taken and dealt).
+  - **Evolution chain** with every condition. When an item is needed, where to get it in your
+    game is written right under the step (e.g. "왕의징표석 — 야돈우물").
+  - **Where to catch it** in the chosen version, or which version has it.
+  - **Moves**: level-up, TM/HM (with where to get each TM), NPC tutors (with their cost — BP, shards …)
+    and egg moves.
+  - **Heart Scale mark.** A Heart Scale icon marks level-up moves you can only get from the Move Reminder:
+    moves below the earliest level you can obtain the Pokémon at that it does not already know then
+    (HeartGold's level-20 fossil Aerodactyl and its level-1 fangs), and level-1 moves of an evolution
+    that its earlier stages never learn.
+
+### 4. Squad (스쿼드)
+
+![Squad — six slot cards on the left, the live type analysis on the right](docs/screenshots/squad.png)
+
+- **One squad per game.** The chips next to the title pick the version; each has its own squad
+  ("소울실버 스쿼드"). Click the title to rename it. Changes are saved automatically.
+- **Slot cards.** Click an empty card to choose a Pokémon (the list follows the chosen game and warns
+  about duplicates). On a filled card set the ability, nature, held item, a role memo and four moves —
+  the move picker shows how each move is learned (level, TM number, tutor, egg).
+  The header buttons are **⇄** (pick another Pokémon), **🗑** (clear the slot) and **+** (open the full
+  Pokédex detail in a window, on the squad's game). Drag a card to reorder the party.
+- **Live analysis.**
+  - **Defensive heatmap**: one row per Pokémon, one column per attacking type, cells show the damage
+    taken (×4, ×2, ×½, ×¼, immune).
+  - **Totals** per type: weaknesses, resistances and whether your moves hit it super-effectively.
+  - **Problems**: types three or more members are weak to, weaknesses nobody resists, ×4 weaknesses
+    and coverage holes.
+  - **Physical / special split** of your moves, by the generation's rule: by type in generations 1–3,
+    by move from the 4th on. The count under the other rule is shown next to the bar.
+
+### 5. Items (아이템 백과)
+
+![Items — categories on the left, the item list in the middle, details on the right](docs/screenshots/items.png)
+
+- **Categories** on the left (recovery, Poké Balls, TMs, evolution, battle, berries, other) and a
+  name/effect search.
+- **Game chips** in the header pick the game group ([신오 D|P] [신오 Pt] [성도 HG|SS]); TM contents,
+  numbers and locations follow it.
+- **Detail**: the generations the item exists in, its effect, **where to get it** in that game (shops
+  and prices, BP/coin/shard exchanges, field items, gifts; version-only spots are prefixed like "W2 —"),
+  the Pokémon it **evolves**, and for TMs/HMs **which Pokémon can learn it** in that game (hover an icon
+  for the name; faded icons are exclusive to the other version).
+
+### Keyboard shortcuts
+
+| Keys | Where | Action |
+|---|---|---|
+| <kbd>←</kbd> <kbd>→</kbd>, mouse wheel | Home | Turn the generation barrel |
+| <kbd>Ctrl</kbd>+<kbd>1</kbd> … <kbd>4</kbd> | Main screens | Pokédex · Items · Squad · Settings |
+| <kbd>↑</kbd> <kbd>↓</kbd>, <kbd>Enter</kbd> | Pokédex list | Move the preview, open the detail |
+| <kbd>Esc</kbd> | Pokédex detail | Back to the list |
+
+### Language
+
+The interface is Korean by default. Start the app with `--language en` or `--language ja` for English
+or Japanese (on Linux: `scripts/linux/run.sh -- --language en`). Pokémon, move, item and place names
+follow the same language.
+
+## Where the data comes from
+
+- **Game data** — [PokéAPI](https://pokeapi.co)'s published CSV files, pinned to one commit. Stats, types,
+  learnsets, evolutions, encounters, TM tables and item data come from here.
+- **Korean names and item/tutor locations** that PokéAPI does not have are kept in local dictionaries
+  under `resources/data/`, compiled from game text and community guides (Serebii's ItemDex, Korean
+  walkthrough blogs) and checked against each other. Coverage is best for the 4th generation
+  (Platinum, HeartGold/SoulSilver); some places in other games are still in English. See
+  [docs/i18n/README.md](docs/i18n/README.md).
 
 ## Building
 
@@ -98,6 +217,8 @@ This repository contains **no game assets**. Sprites, artwork, sounds and other
 material from the Pokémon games are copyrighted by their owners and are never
 committed here. Any such content is downloaded at runtime to your local cache for
 personal use. Icons and styles under `resources/` are original to this project.
+The screenshots in `docs/screenshots/` show the running app, including sprites it
+downloaded at runtime, for illustration only.
 
 ## Disclaimer
 

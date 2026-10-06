@@ -7,6 +7,10 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- README becomes an introduction and user guide: a hero screenshot, what the app does, a walkthrough
+  of first launch, choosing a generation and game, the Pokédex, Squad and Items screens, keyboard
+  shortcuts, language options and where the data comes from. Screenshots live in
+  `docs/screenshots/` (home, dex, squad, items).
 - Home generation cards show every series of the generation: the first series' starters stand in
   front and each later series is stacked one tier further back and up (4th: Sinnoh DP·Pt →
   Johto HGSS; 8th: Galar → BDSP Sinnoh → Hisui; 1st: Kanto → Yellow's Pikachu; 7th: Alola → Let's
