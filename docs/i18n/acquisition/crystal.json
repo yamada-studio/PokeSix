@@ -1,136 +1,1249 @@
 {
-  "versionGroup": "crystal",
-  "generation": 2,
-  "_games": [
-    "크리스탈 (Crystal)"
+ "versionGroup": "crystal",
+ "generation": 2,
+ "_games": [
+  "크리스탈 (Crystal)"
+ ],
+ "_sources": [
+  "Serebii.net ItemDex (https://www.serebii.net/itemdex/) — 장소는 PokéAPI/게임 텍스트로 한국어화"
+ ],
+ "_tms": {
+  "tm01": "폭발펀치 / Dynamic Punch",
+  "tm02": "박치기 / Headbutt",
+  "tm03": "저주 / Curse",
+  "tm04": "구르기 / Rollout",
+  "tm05": "울부짖기 / Roar",
+  "tm06": "맹독 / Toxic",
+  "tm07": "전자포 / Zap Cannon",
+  "tm08": "바위깨기 / Rock Smash",
+  "tm09": "자기암시 / Psych Up",
+  "tm10": "잠재파워 / Hidden Power",
+  "tm11": "쾌청 / Sunny Day",
+  "tm12": "달콤한향기 / Sweet Scent",
+  "tm13": "코골기 / Snore",
+  "tm14": "눈보라 / Blizzard",
+  "tm15": "파괴광선 / Hyper Beam",
+  "tm16": "얼어붙은바람 / Icy Wind",
+  "tm17": "방어 / Protect",
+  "tm18": "비바라기 / Rain Dance",
+  "tm19": "기가드레인 / Giga Drain",
+  "tm20": "버티기 / Endure",
+  "tm21": "화풀이 / Frustration",
+  "tm22": "솔라빔 / Solar Beam",
+  "tm23": "아이언테일 / Iron Tail",
+  "tm24": "용의숨결 / Dragon Breath",
+  "tm25": "번개 / Thunder",
+  "tm26": "지진 / Earthquake",
+  "tm27": "은혜갚기 / Return",
+  "tm28": "구멍파기 / Dig",
+  "tm29": "사이코키네시스 / Psychic",
+  "tm30": "섀도볼 / Shadow Ball",
+  "tm31": "진흙뿌리기 / Mud-Slap",
+  "tm32": "그림자분신 / Double Team",
+  "tm33": "냉동펀치 / Ice Punch",
+  "tm34": "뽐내기 / Swagger",
+  "tm35": "잠꼬대 / Sleep Talk",
+  "tm36": "오물폭탄 / Sludge Bomb",
+  "tm37": "모래바람 / Sandstorm",
+  "tm38": "불대문자 / Fire Blast",
+  "tm39": "스피드스타 / Swift",
+  "tm40": "웅크리기 / Defense Curl",
+  "tm41": "번개펀치 / Thunder Punch",
+  "tm42": "꿈먹기 / Dream Eater",
+  "tm43": "판별 / Detect",
+  "tm44": "잠자기 / Rest",
+  "tm45": "헤롱헤롱 / Attract",
+  "tm46": "도둑질 / Thief",
+  "tm47": "강철날개 / Steel Wing",
+  "tm48": "불꽃펀치 / Fire Punch",
+  "tm49": "연속자르기 / Fury Cutter",
+  "tm50": "악몽 / Nightmare",
+  "hm01": "풀베기 / Cut",
+  "hm02": "공중날기 / Fly",
+  "hm03": "파도타기 / Surf",
+  "hm04": "괴력 / Strength",
+  "hm05": "플래시 / Flash",
+  "hm06": "바다회오리 / Whirlpool",
+  "hm07": "폭포오르기 / Waterfall"
+ },
+ "_tutors": {
+  "flamethrower": "화염방사 / Flamethrower",
+  "ice-beam": "냉동빔 / Ice Beam",
+  "thunderbolt": "10만볼트 / Thunderbolt"
+ },
+ "items": {
+  "amulet-coin": [
+   {
+    "place": "Goldenrod Underground"
+   }
   ],
-  "_sources": [],
-  "_tms": {
-    "tm01": "폭발펀치 / Dynamic Punch",
-    "tm02": "박치기 / Headbutt",
-    "tm03": "저주 / Curse",
-    "tm04": "구르기 / Rollout",
-    "tm05": "울부짖기 / Roar",
-    "tm06": "맹독 / Toxic",
-    "tm07": "전자포 / Zap Cannon",
-    "tm08": "바위깨기 / Rock Smash",
-    "tm09": "자기암시 / Psych Up",
-    "tm10": "잠재파워 / Hidden Power",
-    "tm11": "쾌청 / Sunny Day",
-    "tm12": "달콤한향기 / Sweet Scent",
-    "tm13": "코골기 / Snore",
-    "tm14": "눈보라 / Blizzard",
-    "tm15": "파괴광선 / Hyper Beam",
-    "tm16": "얼어붙은바람 / Icy Wind",
-    "tm17": "방어 / Protect",
-    "tm18": "비바라기 / Rain Dance",
-    "tm19": "기가드레인 / Giga Drain",
-    "tm20": "버티기 / Endure",
-    "tm21": "화풀이 / Frustration",
-    "tm22": "솔라빔 / Solar Beam",
-    "tm23": "아이언테일 / Iron Tail",
-    "tm24": "용의숨결 / Dragon Breath",
-    "tm25": "번개 / Thunder",
-    "tm26": "지진 / Earthquake",
-    "tm27": "은혜갚기 / Return",
-    "tm28": "구멍파기 / Dig",
-    "tm29": "사이코키네시스 / Psychic",
-    "tm30": "섀도볼 / Shadow Ball",
-    "tm31": "진흙뿌리기 / Mud-Slap",
-    "tm32": "그림자분신 / Double Team",
-    "tm33": "냉동펀치 / Ice Punch",
-    "tm34": "뽐내기 / Swagger",
-    "tm35": "잠꼬대 / Sleep Talk",
-    "tm36": "오물폭탄 / Sludge Bomb",
-    "tm37": "모래바람 / Sandstorm",
-    "tm38": "불대문자 / Fire Blast",
-    "tm39": "스피드스타 / Swift",
-    "tm40": "웅크리기 / Defense Curl",
-    "tm41": "번개펀치 / Thunder Punch",
-    "tm42": "꿈먹기 / Dream Eater",
-    "tm43": "판별 / Detect",
-    "tm44": "잠자기 / Rest",
-    "tm45": "헤롱헤롱 / Attract",
-    "tm46": "도둑질 / Thief",
-    "tm47": "강철날개 / Steel Wing",
-    "tm48": "불꽃펀치 / Fire Punch",
-    "tm49": "연속자르기 / Fury Cutter",
-    "tm50": "악몽 / Nightmare",
-    "hm01": "풀베기 / Cut",
-    "hm02": "공중날기 / Fly",
-    "hm03": "파도타기 / Surf",
-    "hm04": "괴력 / Strength",
-    "hm05": "플래시 / Flash",
-    "hm06": "바다회오리 / Whirlpool",
-    "hm07": "폭포오르기 / Waterfall"
-  },
-  "_tutors": {
-    "flamethrower": "화염방사 / Flamethrower",
-    "ice-beam": "냉동빔 / Ice Beam",
-    "thunderbolt": "10만볼트 / Thunderbolt"
-  },
-  "items": {
-    "tm01": [],
-    "tm02": [],
-    "tm03": [],
-    "tm04": [],
-    "tm05": [],
-    "tm06": [],
-    "tm07": [],
-    "tm08": [],
-    "tm09": [],
-    "tm10": [],
-    "tm11": [],
-    "tm12": [],
-    "tm13": [],
-    "tm14": [],
-    "tm15": [],
-    "tm16": [],
-    "tm17": [],
-    "tm18": [],
-    "tm19": [],
-    "tm20": [],
-    "tm21": [],
-    "tm22": [],
-    "tm23": [],
-    "tm24": [],
-    "tm25": [],
-    "tm26": [],
-    "tm27": [],
-    "tm28": [],
-    "tm29": [],
-    "tm30": [],
-    "tm31": [],
-    "tm32": [],
-    "tm33": [],
-    "tm34": [],
-    "tm35": [],
-    "tm36": [],
-    "tm37": [],
-    "tm38": [],
-    "tm39": [],
-    "tm40": [],
-    "tm41": [],
-    "tm42": [],
-    "tm43": [],
-    "tm44": [],
-    "tm45": [],
-    "tm46": [],
-    "tm47": [],
-    "tm48": [],
-    "tm49": [],
-    "tm50": [],
-    "hm01": [],
-    "hm02": [],
-    "hm03": [],
-    "hm04": [],
-    "hm05": [],
-    "hm06": [],
-    "hm07": []
-  },
-  "tutors": {
-    "flamethrower": [],
-    "ice-beam": [],
-    "thunderbolt": []
-  }
+  "antidote": [
+   {
+    "where": "johto-route-31"
+   },
+   {
+    "place": "Goldenrod Underground"
+   }
+  ],
+  "awakening": [
+   {
+    "where": "union-cave"
+   }
+  ],
+  "basement-key": [
+   {
+    "where": "radio-tower",
+    "detail": "False Manager"
+   }
+  ],
+  "basement-key--goldenrod": [
+   {
+    "where": "radio-tower",
+    "detail": "False Manager"
+   }
+  ],
+  "basement-key--new-mauville": [
+   {
+    "where": "radio-tower",
+    "detail": "False Manager"
+   }
+  ],
+  "berry-juice": [
+   {
+    "where": "cianwood-city",
+    "detail": "Attached to Shuckle"
+   }
+  ],
+  "bicycle": [
+   {
+    "where": "goldenrod-city",
+    "detail": "Shop Owner"
+   }
+  ],
+  "black-apricorn": [
+   {
+    "where": "johto-route-37"
+   }
+  ],
+  "black-belt": [
+   {
+    "where": "lake-of-rage",
+    "detail": "Wesley, Wednesday only"
+   }
+  ],
+  "black-glasses": [
+   {
+    "where": "dark-cave",
+    "detail": "Shady Guy"
+   }
+  ],
+  "blue-apricorn": [
+   {
+    "where": "johto-route-42"
+   }
+  ],
+  "blue-card": [
+   {
+    "where": "radio-tower",
+    "detail": "Buena"
+   }
+  ],
+  "burn-heal": [
+   {
+    "place": "Burnt Tower"
+   },
+   {
+    "place": "Goldenrod Underground"
+   }
+  ],
+  "calcium": [
+   {
+    "where": "kanto-route-12"
+   },
+   {
+    "where": "kanto-route-13"
+   }
+  ],
+  "carbos": [
+   {
+    "place": {
+     "ko": "방울탑",
+     "en": "Tin Tower"
+    }
+   },
+   {
+    "where": "ice-path"
+   },
+   {
+    "where": "kanto-route-2"
+   }
+  ],
+  "card-key": [
+   {
+    "place": "Goldenrod Underground",
+    "detail": "Manager"
+   }
+  ],
+  "card-key--letsgo": [
+   {
+    "place": "Goldenrod Underground",
+    "detail": "Manager"
+   }
+  ],
+  "charcoal": [
+   {
+    "where": "azalea-town",
+    "detail": "Charcoal Maker, Save apprentice"
+   }
+  ],
+  "cleanse-tag": [
+   {
+    "where": "kanto-route-5",
+    "detail": "Woman inside House"
+   }
+  ],
+  "clear-bell": [
+   {
+    "where": "radio-tower",
+    "detail": "Manager"
+   }
+  ],
+  "coin-case": [
+   {
+    "place": "Goldenrod Underground"
+   }
+  ],
+  "dire-hit": [
+   {
+    "where": "johto-route-46"
+   },
+   {
+    "where": "mt-silver"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   },
+   {
+    "where": "kanto-route-2"
+   }
+  ],
+  "dragon-fang": [
+   {
+    "where": "dragons-den"
+   }
+  ],
+  "dragon-scale": [
+   {
+    "where": "mt-mortar"
+   }
+  ],
+  "elixir": [
+   {
+    "where": "johto-route-45"
+   },
+   {
+    "where": "mt-mortar"
+   },
+   {
+    "where": "dark-cave"
+   },
+   {
+    "where": "kanto-route-2"
+   },
+   {
+    "where": "kanto-route-12"
+   },
+   {
+    "where": "rock-tunnel"
+   }
+  ],
+  "escape-rope": [
+   {
+    "where": "sprout-tower"
+   },
+   {
+    "where": "mt-mortar"
+   },
+   {
+    "place": {
+     "ko": "방울탑",
+     "en": "Tin Tower"
+    }
+   },
+   {
+    "where": "whirl-islands"
+   },
+   {
+    "where": "mt-silver"
+   }
+  ],
+  "ether": [
+   {
+    "where": "johto-route-37"
+   },
+   {
+    "where": "union-cave",
+    "detail": "Requires Surf"
+   },
+   {
+    "where": "ilex-forest"
+   },
+   {
+    "where": "mt-mortar"
+   },
+   {
+    "where": "lake-of-rage"
+   },
+   {
+    "place": "Shining Lighthouse"
+   },
+   {
+    "place": "Goldenrod Underground"
+   },
+   {
+    "where": "kanto-route-9"
+   }
+  ],
+  "everstone": [
+   {
+    "where": "new-bark-town",
+    "detail": "Prof. Elm"
+   },
+   {
+    "where": "national-park",
+    "detail": "2nd Prize in Bug Catching"
+   },
+   {
+    "where": "kanto-route-25",
+    "detail": "Bill's Grandfather"
+   }
+  ],
+  "fast-ball": [
+   {
+    "where": "azalea-town",
+    "detail": "Kurt"
+   }
+  ],
+  "fire-stone": [
+   {
+    "where": "kanto-route-25",
+    "detail": "Bill's Grandfather"
+   }
+  ],
+  "focus-band": [
+   {
+    "where": "saffron-city",
+    "detail": "Dojo Master"
+   }
+  ],
+  "friend-ball": [
+   {
+    "where": "azalea-town",
+    "detail": "Kurt"
+   }
+  ],
+  "full-heal": [
+   {
+    "where": "azalea-town"
+   },
+   {
+    "where": "ilex-forest"
+   },
+   {
+    "where": "national-park"
+   },
+   {
+    "place": {
+     "ko": "방울탑",
+     "en": "Tin Tower"
+    }
+   },
+   {
+    "where": "dark-cave"
+   },
+   {
+    "where": "ice-path"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   },
+   {
+    "place": "Goldenrod Underground"
+   },
+   {
+    "where": "kanto-route-2"
+   },
+   {
+    "place": {
+     "ko": "갈색시티",
+     "en": "Vermillion City"
+    }
+   },
+   {
+    "where": "kanto-victory-road-1"
+   }
+  ],
+  "full-restore": [
+   {
+    "where": "mt-mortar"
+   },
+   {
+    "place": {
+     "ko": "방울탑",
+     "en": "Tin Tower"
+    }
+   },
+   {
+    "where": "whirl-islands"
+   },
+   {
+    "where": "mt-silver"
+   },
+   {
+    "where": "lake-of-rage"
+   },
+   {
+    "where": "kanto-route-2"
+   },
+   {
+    "place": "Underground Path 5-6"
+   },
+   {
+    "where": "kanto-victory-road-1"
+   }
+  ],
+  "good-rod": [
+   {
+    "where": "olivine-city",
+    "detail": "Sailor - House by the Pokemart"
+   }
+  ],
+  "great-ball": [
+   {
+    "where": "johto-route-32"
+   },
+   {
+    "where": "union-cave"
+   },
+   {
+    "place": "Shining Lighthouse"
+   }
+  ],
+  "green-apricorn": [
+   {
+    "where": "johto-route-42"
+   }
+  ],
+  "hard-stone": [
+   {
+    "where": "johto-route-36",
+    "detail": "Arthur, Thursday only"
+   }
+  ],
+  "heavy-ball": [
+   {
+    "where": "azalea-town",
+    "detail": "Kurt"
+   }
+  ],
+  "hm01": [],
+  "hm02": [],
+  "hm03": [],
+  "hm04": [],
+  "hm05": [],
+  "hm06": [],
+  "hm07": [],
+  "hp-up": [
+   {
+    "where": "johto-route-35",
+    "detail": "Southern Guardhouse"
+   },
+   {
+    "place": "Burnt Tower"
+   },
+   {
+    "where": "kanto-route-4"
+   },
+   {
+    "place": {
+     "ko": "갈색시티",
+     "en": "Vermillion City"
+    },
+    "detail": "Man by Snorelax"
+   }
+  ],
+  "hyper-potion": [
+   {
+    "place": {
+     "ko": "40번수로",
+     "en": "Route 40"
+    }
+   },
+   {
+    "where": "violet-city",
+    "detail": "Requires Cut"
+   },
+   {
+    "where": "ecruteak-city"
+   },
+   {
+    "where": "union-cave",
+    "detail": "Requires Surf"
+   },
+   {
+    "where": "mt-mortar"
+   },
+   {
+    "where": "dark-cave"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   },
+   {
+    "place": "Shining Lighthouse"
+   }
+  ],
+  "ice-heal": [
+   {
+    "where": "ice-path"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   }
+  ],
+  "iron": [
+   {
+    "where": "ice-path"
+   },
+   {
+    "place": {
+     "ko": "갈색시티",
+     "en": "Vermillion City"
+    }
+   },
+   {
+    "where": "rock-tunnel"
+   }
+  ],
+  "kings-rock": [
+   {
+    "where": "slowpoke-well",
+    "detail": "Requires Surf"
+   }
+  ],
+  "lagreat-ball": [
+   {
+    "where": "johto-route-32"
+   },
+   {
+    "where": "union-cave"
+   },
+   {
+    "place": "Shining Lighthouse"
+   }
+  ],
+  "laheavy-ball": [
+   {
+    "where": "azalea-town",
+    "detail": "Kurt"
+   }
+  ],
+  "lapoke-ball": [
+   {
+    "where": "johto-route-31"
+   }
+  ],
+  "laultra-ball": [
+   {
+    "where": "johto-route-42"
+   },
+   {
+    "where": "johto-route-44"
+   },
+   {
+    "place": {
+     "ko": "방울탑",
+     "en": "Tin Tower"
+    }
+   },
+   {
+    "place": "Burnt Tower"
+   },
+   {
+    "where": "whirl-islands"
+   },
+   {
+    "where": "mt-silver"
+   },
+   {
+    "place": "Goldenrod Underground"
+   },
+   {
+    "where": "kanto-route-4"
+   }
+  ],
+  "leaf-stone": [
+   {
+    "where": "kanto-route-25",
+    "detail": "Bill's Grandfather"
+   }
+  ],
+  "leftovers": [
+   {
+    "where": "celadon-city"
+   }
+  ],
+  "level-ball": [
+   {
+    "where": "azalea-town",
+    "detail": "Kurt"
+   }
+  ],
+  "lost-item": [
+   {
+    "place": {
+     "ko": "갈색시티",
+     "en": "Vermillion City"
+    }
+   }
+  ],
+  "love-ball": [
+   {
+    "where": "azalea-town",
+    "detail": "Kurt"
+   }
+  ],
+  "lure-ball": [
+   {
+    "where": "azalea-town",
+    "detail": "Kurt"
+   }
+  ],
+  "machine-part": [
+   {
+    "where": "cerulean-city"
+   }
+  ],
+  "magnet": [
+   {
+    "where": "johto-route-37",
+    "detail": "Sunny, Sunday only"
+   }
+  ],
+  "master-ball": [
+   {
+    "where": "new-bark-town",
+    "detail": "Prof. Elm"
+   }
+  ],
+  "max-elixir": [
+   {
+    "place": {
+     "ko": "방울탑",
+     "en": "Tin Tower"
+    }
+   },
+   {
+    "where": "mt-silver"
+   },
+   {
+    "where": "dragons-den"
+   },
+   {
+    "where": "kanto-route-17"
+   },
+   {
+    "where": "kanto-route-26"
+   }
+  ],
+  "max-ether": [
+   {
+    "place": {
+     "ko": "40번수로",
+     "en": "Route 40"
+    }
+   },
+   {
+    "where": "johto-route-43"
+   },
+   {
+    "where": "cianwood-city"
+   },
+   {
+    "where": "lake-of-rage"
+   },
+   {
+    "place": "Goldenrod Underground"
+   },
+   {
+    "where": "kanto-route-2"
+   },
+   {
+    "where": "kanto-route-17"
+   }
+  ],
+  "max-potion": [
+   {
+    "where": "johto-route-42"
+   },
+   {
+    "where": "johto-route-45"
+   },
+   {
+    "where": "mt-mortar"
+   },
+   {
+    "place": {
+     "ko": "방울탑",
+     "en": "Tin Tower"
+    }
+   },
+   {
+    "where": "mt-silver"
+   },
+   {
+    "where": "dragons-den"
+   },
+   {
+    "where": "lake-of-rage"
+   },
+   {
+    "where": "ice-path"
+   },
+   {
+    "place": "Goldenrod Underground"
+   },
+   {
+    "where": "kanto-route-2"
+   },
+   {
+    "where": "rock-tunnel"
+   },
+   {
+    "where": "kanto-victory-road-1"
+   }
+  ],
+  "max-repel": [
+   {
+    "where": "mt-mortar"
+   }
+  ],
+  "max-revive": [
+   {
+    "where": "johto-route-44"
+   },
+   {
+    "where": "mt-mortar"
+   },
+   {
+    "place": {
+     "ko": "방울탑",
+     "en": "Tin Tower"
+    }
+   },
+   {
+    "where": "mt-silver"
+   },
+   {
+    "where": "digletts-cave"
+   },
+   {
+    "where": "kanto-victory-road-1"
+   }
+  ],
+  "metal-coat": [
+   {
+    "where": "ss-aqua",
+    "detail": "Man in lower right room"
+   }
+  ],
+  "miracle-seed": [
+   {
+    "where": "johto-route-32",
+    "detail": "Trainer near the ruins"
+   }
+  ],
+  "moon-ball": [
+   {
+    "where": "azalea-town",
+    "detail": "Kurt"
+   }
+  ],
+  "moon-stone": [
+   {
+    "where": "ruins-of-alph",
+    "detail": "Monday Night"
+   },
+   {
+    "place": {
+     "ko": "동성폭포",
+     "en": "Tohjo Falls"
+    }
+   }
+  ],
+  "mystery-egg": [
+   {
+    "where": "johto-route-30"
+   }
+  ],
+  "mystic-water": [
+   {
+    "where": "cherrygrove-city",
+    "detail": "Fisherman, Requires Surf"
+   }
+  ],
+  "nugget": [
+   {
+    "where": "johto-route-39"
+   },
+   {
+    "place": {
+     "ko": "방울탑",
+     "en": "Tin Tower"
+    }
+   },
+   {
+    "where": "whirl-islands"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   },
+   {
+    "where": "kanto-route-2"
+   },
+   {
+    "where": "kanto-route-12"
+   },
+   {
+    "where": "kanto-route-25",
+    "detail": "Beat All Trainers"
+   }
+  ],
+  "old-rod": [
+   {
+    "where": "johto-route-32",
+    "detail": "Man inside Pokemon Center"
+   }
+  ],
+  "pass": [
+   {
+    "where": "saffron-city",
+    "detail": "Copycat Girl"
+   }
+  ],
+  "pink-apricorn": [
+   {
+    "where": "johto-route-42"
+   }
+  ],
+  "poison-barb": [
+   {
+    "where": "johto-route-32",
+    "detail": "Frieda, Friday Only"
+   }
+  ],
+  "poke-ball": [
+   {
+    "where": "johto-route-31"
+   }
+  ],
+  "potion": [
+   {
+    "where": "johto-route-29"
+   },
+   {
+    "where": "johto-route-30"
+   },
+   {
+    "where": "johto-route-32"
+   },
+   {
+    "where": "new-bark-town",
+    "detail": "Prof. Elm"
+   },
+   {
+    "where": "sprout-tower"
+   },
+   {
+    "where": "union-cave"
+   },
+   {
+    "where": "dark-cave"
+   },
+   {
+    "where": "kanto-route-25"
+   }
+  ],
+  "pp-up": [
+   {
+    "where": "johto-route-45"
+   },
+   {
+    "where": "ice-path"
+   },
+   {
+    "where": "kanto-route-15"
+   },
+   {
+    "where": "celadon-city"
+   },
+   {
+    "where": "rock-tunnel"
+   }
+  ],
+  "protein": [
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   }
+  ],
+  "quick-claw": [
+   {
+    "where": "national-park",
+    "detail": "Woman at Park entrance"
+   }
+  ],
+  "rainbow-wing": [
+   {
+    "where": "ecruteak-city",
+    "detail": "Wise Trio - All three Beasts caught"
+   },
+   {
+    "where": "radio-tower",
+    "detail": "Manager"
+   },
+   {
+    "where": "pewter-city",
+    "detail": "Old Man"
+   }
+  ],
+  "rare-candy": [
+   {
+    "where": "johto-route-34"
+   },
+   {
+    "where": "violet-city",
+    "detail": "Requires Surf"
+   },
+   {
+    "where": "mt-mortar"
+   },
+   {
+    "place": {
+     "ko": "방울탑",
+     "en": "Tin Tower"
+    }
+   },
+   {
+    "where": "whirl-islands"
+   },
+   {
+    "where": "lake-of-rage"
+   },
+   {
+    "place": "Shining Lighthouse"
+   },
+   {
+    "where": "kanto-route-28"
+   },
+   {
+    "where": "cinnabar-island"
+   }
+  ],
+  "red-apricorn": [
+   {
+    "where": "johto-route-37"
+   }
+  ],
+  "red-scale": [
+   {
+    "where": "lake-of-rage",
+    "detail": "Attached to Red Gyarados"
+   }
+  ],
+  "revive": [
+   {
+    "where": "johto-route-45"
+   },
+   {
+    "where": "cianwood-city"
+   },
+   {
+    "where": "dark-cave"
+   },
+   {
+    "where": "dragons-den"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   },
+   {
+    "place": "Goldenrod Underground"
+   },
+   {
+    "where": "kanto-route-2"
+   },
+   {
+    "where": "kanto-route-11"
+   },
+   {
+    "where": "rock-tunnel"
+   }
+  ],
+  "sacred-ash": [
+   {
+    "place": {
+     "ko": "방울탑",
+     "en": "Tin Tower"
+    }
+   }
+  ],
+  "secret-potion": [
+   {
+    "where": "cianwood-city"
+   }
+  ],
+  "sharp-beak": [
+   {
+    "place": {
+     "ko": "40번수로",
+     "en": "Route 40"
+    },
+    "detail": "Monica - Monday only"
+   }
+  ],
+  "silver-wing": [
+   {
+    "where": "pewter-city",
+    "detail": "Old Man"
+   }
+  ],
+  "smoke-ball": [
+   {
+    "place": "Goldenrod Underground"
+   }
+  ],
+  "spell-tag": [
+   {
+    "where": "blackthorn-city",
+    "detail": "Santos, Saturday only"
+   }
+  ],
+  "squirt-bottle": [
+   {
+    "where": "goldenrod-city",
+    "detail": "Building West of Gym - with Plain Badge"
+   }
+  ],
+  "sun-stone": [
+   {
+    "where": "national-park",
+    "detail": "1st Prize in Bug Catching"
+   }
+  ],
+  "super-potion": [
+   {
+    "where": "johto-route-32"
+   },
+   {
+    "where": "johto-route-34"
+   },
+   {
+    "where": "johto-route-42"
+   },
+   {
+    "where": "slowpoke-well"
+   },
+   {
+    "where": "ilex-forest"
+   },
+   {
+    "place": {
+     "ko": "방울탑",
+     "en": "Tin Tower"
+    }
+   },
+   {
+    "place": "Shining Lighthouse"
+   },
+   {
+    "place": "Goldenrod Underground"
+   }
+  ],
+  "super-rod": [
+   {
+    "where": "kanto-route-12",
+    "detail": "Fisherman in the house"
+   }
+  ],
+  "thunder-stone": [
+   {
+    "where": "kanto-route-25",
+    "detail": "Bill's Grandfather"
+   }
+  ],
+  "tm01": [],
+  "tm02": [],
+  "tm03": [],
+  "tm04": [],
+  "tm05": [],
+  "tm06": [],
+  "tm07": [],
+  "tm08": [],
+  "tm09": [],
+  "tm10": [],
+  "tm11": [],
+  "tm12": [],
+  "tm13": [],
+  "tm14": [],
+  "tm15": [],
+  "tm16": [],
+  "tm17": [],
+  "tm18": [],
+  "tm19": [],
+  "tm20": [],
+  "tm21": [],
+  "tm22": [],
+  "tm23": [],
+  "tm24": [],
+  "tm25": [],
+  "tm26": [],
+  "tm27": [],
+  "tm28": [],
+  "tm29": [],
+  "tm30": [],
+  "tm31": [],
+  "tm32": [],
+  "tm33": [],
+  "tm34": [],
+  "tm35": [],
+  "tm36": [],
+  "tm37": [],
+  "tm38": [],
+  "tm39": [],
+  "tm40": [],
+  "tm41": [],
+  "tm42": [],
+  "tm43": [],
+  "tm44": [],
+  "tm45": [],
+  "tm46": [],
+  "tm47": [],
+  "tm48": [],
+  "tm49": [],
+  "tm50": [],
+  "ultra-ball": [
+   {
+    "where": "johto-route-42"
+   },
+   {
+    "where": "johto-route-44"
+   },
+   {
+    "place": {
+     "ko": "방울탑",
+     "en": "Tin Tower"
+    }
+   },
+   {
+    "place": "Burnt Tower"
+   },
+   {
+    "where": "whirl-islands"
+   },
+   {
+    "where": "mt-silver"
+   },
+   {
+    "place": "Goldenrod Underground"
+   },
+   {
+    "where": "kanto-route-4"
+   }
+  ],
+  "up-grade": [
+   {
+    "place": {
+     "ko": "실프주식회사",
+     "en": "Silph Co"
+    }
+   }
+  ],
+  "water-stone": [
+   {
+    "where": "kanto-route-25",
+    "detail": "Bill's Grandfather"
+   }
+  ],
+  "white-apricorn": [
+   {
+    "where": "azalea-town"
+   }
+  ],
+  "x-accuracy": [
+   {
+    "where": "mt-silver"
+   },
+   {
+    "place": {
+     "ko": "로켓단아지트",
+     "en": "Rocket Hideout"
+    }
+   },
+   {
+    "where": "rock-tunnel"
+   }
+  ],
+  "x-attack": [
+   {
+    "where": "union-cave"
+   }
+  ],
+  "x-defense": [
+   {
+    "where": "sprout-tower"
+   },
+   {
+    "where": "union-cave"
+   },
+   {
+    "where": "rock-tunnel"
+   }
+  ],
+  "x-speed": [
+   {
+    "place": "Burnt Tower"
+   }
+  ],
+  "yellow-apricorn": [
+   {
+    "where": "johto-route-37"
+   }
+  ]
+ },
+ "tutors": {
+  "flamethrower": [],
+  "ice-beam": [],
+  "thunderbolt": []
+ }
 }

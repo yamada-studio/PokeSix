@@ -1,0 +1,8549 @@
+{
+  "_comment": [
+    "게임(버전 그룹)별 입수 사전 (ui/dex/guidebook.h가 읽는다). 형식은 docs/i18n/README.md 참고.",
+    "scripts/i18n/check_acquisition.py로 검증해 넣었다. 출처는 _sources."
+  ],
+  "_sources": [
+    "Serebii.net ItemDex (https://www.serebii.net/itemdex/) — 장소는 PokéAPI/게임 텍스트로 한국어화"
+  ],
+  "versionGroup": "legends-za",
+  "items": {
+    "absolite": [
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      }
+    ],
+    "adamant-mint": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      }
+    ],
+    "altarianite": [
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 4"
+      }
+    ],
+    "ampharosite": [
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 6"
+      }
+    ],
+    "antidote": [
+      {
+        "place": {
+          "ko": "3번 와일드 존",
+          "en": "Wild Zone 3"
+        }
+      },
+      {
+        "place": {
+          "ko": "4번 와일드 존",
+          "en": "Wild Zone 4"
+        }
+      },
+      {
+        "place": {
+          "ko": "5번 와일드 존",
+          "en": "Wild Zone 5"
+        }
+      },
+      {
+        "place": {
+          "ko": "메디오 플라자",
+          "en": "Centrico Plaza"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 3"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 6"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 1"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 6"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 9"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 1"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 3"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 8"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 3"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 4"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 5"
+      },
+      {
+        "place": {
+          "ko": "사우스사이드 스트리트",
+          "en": "South Boulevard"
+        }
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      },
+      {
+        "place": "The Sewers - Main Access"
+      },
+      {
+        "place": "The Sewers - Canal Access"
+      },
+      {
+        "place": {
+          "ko": "퀘이사 주식회사",
+          "en": "Quasartico Inc."
+        }
+      },
+      {
+        "place": {
+          "ko": "이차원 미르",
+          "en": "Hyperspace Lumiose"
+        }
+      }
+    ],
+    "aspear-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 9"
+      }
+    ],
+    "assault-vest": [
+      {
+        "place": "The Burning Gaze of Watchog"
+      }
+    ],
+    "auspicious-armor": [
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 6"
+      }
+    ],
+    "awakening": [
+      {
+        "place": {
+          "ko": "메디오 플라자",
+          "en": "Centrico Plaza"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      },
+      {
+        "place": "The Sewers - Canal Access"
+      },
+      {
+        "place": {
+          "ko": "이차원 미르",
+          "en": "Hyperspace Lumiose"
+        }
+      }
+    ],
+    "babiri-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      }
+    ],
+    "banettite": [
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 9"
+      }
+    ],
+    "beast-ball": [
+      {
+        "place": "floating Poke Ball"
+      }
+    ],
+    "beedrillite": [
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 5"
+      }
+    ],
+    "big-nugget": [
+      {
+        "place": {
+          "ko": "17번 와일드 존",
+          "en": "Wild Zone 17"
+        }
+      },
+      {
+        "place": {
+          "ko": "18번 와일드 존",
+          "en": "Wild Zone 18"
+        }
+      },
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "퀘이사 주식회사",
+          "en": "Quasartico Inc."
+        }
+      }
+    ],
+    "big-pearl": [
+      {
+        "place": {
+          "ko": "9번 와일드 존",
+          "en": "Wild Zone 9"
+        }
+      },
+      {
+        "place": {
+          "ko": "10번 와일드 존",
+          "en": "Wild Zone 10"
+        }
+      },
+      {
+        "place": {
+          "ko": "11번 와일드 존",
+          "en": "Wild Zone 11"
+        }
+      },
+      {
+        "place": {
+          "ko": "13번 와일드 존",
+          "en": "Wild Zone 13"
+        }
+      },
+      {
+        "place": {
+          "ko": "16번 와일드 존",
+          "en": "Wild Zone 16"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 3"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 4"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Street"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 5"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 8"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 11"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 12"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 9"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 2"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 8"
+      },
+      {
+        "place": {
+          "ko": "노스사이드 스트리트",
+          "en": "North Boulevard"
+        }
+      },
+      {
+        "place": {
+          "ko": "사우스사이드 스트리트",
+          "en": "South Boulevard"
+        }
+      },
+      {
+        "place": {
+          "ko": "프랭탕 애버뉴",
+          "en": "Vernal Avenue"
+        }
+      }
+    ],
+    "big-root": [
+      {
+        "place": "Hit and Heal"
+      }
+    ],
+    "black-augurite": [
+      {
+        "place": "floating Poke Ball"
+      }
+    ],
+    "black-belt": [
+      {
+        "place": "Better to Detect Than to Protect"
+      }
+    ],
+    "black-glasses": [
+      {
+        "place": "Side Mission 70: Who's the Strongest"
+      },
+      {
+        "place": "Huh"
+      }
+    ],
+    "blazikenite": [
+      {
+        "place": "Ranked Battle Rank-up reward"
+      }
+    ],
+    "blue-orb": [
+      {
+        "place": {
+          "ko": "이차원 미르 시작의 바다",
+          "en": "Hyperspace Primordial Sea"
+        }
+      }
+    ],
+    "bold-mint": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      }
+    ],
+    "bottle-cap": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "퀘이사 주식회사",
+          "en": "Quasartico Inc."
+        }
+      }
+    ],
+    "brave-mint": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      }
+    ],
+    "burn-heal": [
+      {
+        "place": {
+          "ko": "15번 와일드 존",
+          "en": "Wild Zone 15"
+        }
+      },
+      {
+        "place": {
+          "ko": "18번 와일드 존",
+          "en": "Wild Zone 18"
+        }
+      },
+      {
+        "place": {
+          "ko": "메디오 플라자",
+          "en": "Centrico Plaza"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 4"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 5"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Espace Vide"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 2"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 5"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 8"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 10"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 4"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 6"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 7"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 4"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 5"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 6"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 1"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 2"
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      },
+      {
+        "place": "The Sewers - Main Access"
+      },
+      {
+        "place": "The Sewers - Canal Access"
+      },
+      {
+        "place": {
+          "ko": "오톤 애버뉴",
+          "en": "Autumnal Avenue"
+        }
+      },
+      {
+        "place": {
+          "ko": "이차원 미르",
+          "en": "Hyperspace Lumiose"
+        }
+      }
+    ],
+    "calcium": [
+      {
+        "place": {
+          "ko": "9번 와일드 존",
+          "en": "Wild Zone 9"
+        }
+      },
+      {
+        "place": {
+          "ko": "14번 와일드 존",
+          "en": "Wild Zone 14"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 7"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 9"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 8"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 9"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 3"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 1"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 2"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 1"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 3"
+      },
+      {
+        "place": {
+          "ko": "노스사이드 스트리트",
+          "en": "North Boulevard"
+        }
+      },
+      {
+        "place": {
+          "ko": "사우스사이드 스트리트",
+          "en": "South Boulevard"
+        }
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      },
+      {
+        "place": {
+          "ko": "퀘이사 주식회사",
+          "en": "Quasartico Inc."
+        }
+      }
+    ],
+    "calm-mint": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      }
+    ],
+    "cameruptite": [
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 3"
+      }
+    ],
+    "carbos": [
+      {
+        "place": {
+          "ko": "5번 와일드 존",
+          "en": "Wild Zone 5"
+        }
+      },
+      {
+        "place": {
+          "ko": "18번 와일드 존",
+          "en": "Wild Zone 18"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 3"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 6"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 9"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 7"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 2"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 3"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 4"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 7"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 8"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 1"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 4"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Coulant Waterway"
+      },
+      {
+        "place": {
+          "ko": "노스사이드 스트리트",
+          "en": "North Boulevard"
+        }
+      },
+      {
+        "place": {
+          "ko": "퀘이사 주식회사",
+          "en": "Quasartico Inc."
+        }
+      }
+    ],
+    "careful-mint": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      }
+    ],
+    "charcoal": [
+      {
+        "place": "The Camerupt Entrepreneur"
+      }
+    ],
+    "charti-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      },
+      {
+        "place": {
+          "ko": "호텔Z",
+          "en": "Hotel Z"
+        }
+      }
+    ],
+    "cheri-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      }
+    ],
+    "chesto-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      }
+    ],
+    "chilan-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      }
+    ],
+    "chople-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      }
+    ],
+    "clever-wing": [
+      {
+        "place": {
+          "ko": "메디오 플라자",
+          "en": "Centrico Plaza"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      },
+      {
+        "place": "The Sewers - Main Access"
+      },
+      {
+        "place": "The Sewers - Canal Access"
+      }
+    ],
+    "coba-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      }
+    ],
+    "colbur-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      }
+    ],
+    "dawn-stone": [
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 5"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 6"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 1"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 2"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 4"
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      }
+    ],
+    "dive-ball": [
+      {
+        "place": {
+          "ko": "7번 와일드 존",
+          "en": "Wild Zone 7"
+        }
+      },
+      {
+        "place": {
+          "ko": "10번 와일드 존",
+          "en": "Wild Zone 10"
+        }
+      },
+      {
+        "place": {
+          "ko": "11번 와일드 존",
+          "en": "Wild Zone 11"
+        }
+      },
+      {
+        "place": {
+          "ko": "12번 와일드 존",
+          "en": "Wild Zone 12"
+        }
+      },
+      {
+        "place": {
+          "ko": "13번 와일드 존",
+          "en": "Wild Zone 13"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Aymlis Park"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 4"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 2"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Street"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 1"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 4"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 5"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 3"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 7"
+      },
+      {
+        "place": "Menace of the Deep"
+      }
+    ],
+    "dragon-fang": [
+      {
+        "place": "Dragon You into Battle"
+      }
+    ],
+    "dream-ball": [
+      {
+        "place": "floating Poke Ball"
+      }
+    ],
+    "dubious-disc": [
+      {
+        "place": {
+          "ko": "이차원 미르",
+          "en": "Hyperspace Lumiose"
+        }
+      }
+    ],
+    "dusk-ball": [
+      {
+        "place": {
+          "ko": "4번 와일드 존",
+          "en": "Wild Zone 4"
+        }
+      },
+      {
+        "place": {
+          "ko": "9번 와일드 존",
+          "en": "Wild Zone 9"
+        }
+      },
+      {
+        "place": {
+          "ko": "12번 와일드 존",
+          "en": "Wild Zone 12"
+        }
+      },
+      {
+        "place": {
+          "ko": "15번 와일드 존",
+          "en": "Wild Zone 15"
+        }
+      },
+      {
+        "place": {
+          "ko": "16번 와일드 존",
+          "en": "Wild Zone 16"
+        }
+      },
+      {
+        "place": {
+          "ko": "17번 와일드 존",
+          "en": "Wild Zone 17"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 8"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 11"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 2"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 4"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 6"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 4"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 6"
+      },
+      {
+        "place": {
+          "ko": "오톤 애버뉴",
+          "en": "Autumnal Avenue"
+        }
+      },
+      {
+        "place": "Rouge District's Utility Hole Covers"
+      }
+    ],
+    "dusk-stone": [
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 2"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 7"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 2"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 4"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 6"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      }
+    ],
+    "elevator-key": [
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      }
+    ],
+    "eviolite": [
+      {
+        "place": "Starmie on High"
+      }
+    ],
+    "expert-belt": [
+      {
+        "place": "Josée's Training"
+      }
+    ],
+    "fairy-feather": [
+      {
+        "place": "A Fan of Fairy Types"
+      }
+    ],
+    "fast-ball": [
+      {
+        "place": {
+          "ko": "퀘이사 주식회사",
+          "en": "Quasartico Inc."
+        }
+      }
+    ],
+    "fire-stone": [
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 5"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 7"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 2"
+      },
+      {
+        "place": {
+          "ko": "노스사이드 스트리트",
+          "en": "North Boulevard"
+        }
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      },
+      {
+        "how": "held",
+        "place": {
+          "ko": "야생 레오꼬",
+          "en": "Wild Litleo"
+        }
+      },
+      {
+        "place": "The Camerupt Entrepreneur"
+      }
+    ],
+    "focus-band": [
+      {
+        "place": "Side Mission 70: Who's the Strongest"
+      },
+      {
+        "place": "Huh"
+      }
+    ],
+    "focus-sash": [
+      {
+        "place": "A Rematch with Hawlucha"
+      }
+    ],
+    "fresh-water": [
+      {
+        "place": "A Big Ol' Bunnelby"
+      },
+      {
+        "place": "Kiosk Conundrum"
+      }
+    ],
+    "friend-ball": [
+      {
+        "place": {
+          "ko": "퀘이사 주식회사",
+          "en": "Quasartico Inc."
+        }
+      }
+    ],
+    "full-heal": [
+      {
+        "place": {
+          "ko": "2번 와일드 존",
+          "en": "Wild Zone 2"
+        }
+      },
+      {
+        "place": {
+          "ko": "4번 와일드 존",
+          "en": "Wild Zone 4"
+        }
+      },
+      {
+        "place": {
+          "ko": "5번 와일드 존",
+          "en": "Wild Zone 5"
+        }
+      },
+      {
+        "place": {
+          "ko": "9번 와일드 존",
+          "en": "Wild Zone 9"
+        }
+      },
+      {
+        "place": {
+          "ko": "14번 와일드 존",
+          "en": "Wild Zone 14"
+        }
+      },
+      {
+        "place": {
+          "ko": "19번 와일드 존",
+          "en": "Wild Zone 19"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 3"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 4"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 6"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 8"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 3"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 4"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 5"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 7"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 11"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 3"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 8"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 5"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 6"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 8"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 2"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 3"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Street"
+      },
+      {
+        "place": {
+          "ko": "이차원 미르",
+          "en": "Hyperspace Lumiose"
+        }
+      }
+    ],
+    "full-restore": [
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 5"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 6"
+      },
+      {
+        "place": {
+          "ko": "노스사이드 스트리트",
+          "en": "North Boulevard"
+        }
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      }
+    ],
+    "galarica-cuff": [
+      {
+        "place": "floating Poke Ball"
+      }
+    ],
+    "galarica-wreath": [
+      {
+        "place": "floating Poke Ball"
+      }
+    ],
+    "genius-wing": [
+      {
+        "place": {
+          "ko": "메디오 플라자",
+          "en": "Centrico Plaza"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      },
+      {
+        "place": "The Sewers - Main Access"
+      },
+      {
+        "place": "The Sewers - Canal Access"
+      }
+    ],
+    "gentle-mint": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      }
+    ],
+    "gimmighoul-coin": [
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 1"
+      },
+      {
+        "place": {
+          "ko": "이차원 미르",
+          "en": "Hyperspace Lumiose"
+        }
+      }
+    ],
+    "gold-bottle-cap": [
+      {
+        "place": {
+          "ko": "퀘이사 주식회사",
+          "en": "Quasartico Inc."
+        }
+      }
+    ],
+    "great-ball": [
+      {
+        "place": {
+          "ko": "2번 와일드 존",
+          "en": "Wild Zone 2"
+        }
+      },
+      {
+        "place": {
+          "ko": "3번 와일드 존",
+          "en": "Wild Zone 3"
+        }
+      },
+      {
+        "place": {
+          "ko": "4번 와일드 존",
+          "en": "Wild Zone 4"
+        }
+      },
+      {
+        "place": {
+          "ko": "5번 와일드 존",
+          "en": "Wild Zone 5"
+        }
+      },
+      {
+        "place": {
+          "ko": "6번 와일드 존",
+          "en": "Wild Zone 6"
+        }
+      },
+      {
+        "place": {
+          "ko": "7번 와일드 존",
+          "en": "Wild Zone 7"
+        }
+      },
+      {
+        "place": {
+          "ko": "8번 와일드 존",
+          "en": "Wild Zone 8"
+        }
+      },
+      {
+        "place": {
+          "ko": "9번 와일드 존",
+          "en": "Wild Zone 9"
+        }
+      },
+      {
+        "place": {
+          "ko": "10번 와일드 존",
+          "en": "Wild Zone 10"
+        }
+      },
+      {
+        "place": {
+          "ko": "13번 와일드 존",
+          "en": "Wild Zone 13"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Aymlis Park"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 4"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 6"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 8"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Espace Vide"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 2"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 3"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 4"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 9"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 11"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 2"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 3"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 4"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 6"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 7"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 8"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 9"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Street"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Académie Étoile"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 1"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 2"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 8"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Plaza"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 2"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 3"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 4"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 5"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 6"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 9"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Street"
+      },
+      {
+        "place": {
+          "ko": "노스사이드 스트리트",
+          "en": "North Boulevard"
+        }
+      },
+      {
+        "place": {
+          "ko": "사우스사이드 스트리트",
+          "en": "South Boulevard"
+        }
+      },
+      {
+        "place": "The Sewers - Main Access"
+      },
+      {
+        "place": {
+          "ko": "이차원 미르",
+          "en": "Hyperspace Lumiose"
+        }
+      }
+    ],
+    "grepa-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      }
+    ],
+    "haban-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      }
+    ],
+    "hard-stone": [
+      {
+        "place": "Restored from a Fossil"
+      }
+    ],
+    "hasty-mint": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      }
+    ],
+    "heal-ball": [
+      {
+        "place": {
+          "ko": "2번 와일드 존",
+          "en": "Wild Zone 2"
+        }
+      },
+      {
+        "place": {
+          "ko": "4번 와일드 존",
+          "en": "Wild Zone 4"
+        }
+      },
+      {
+        "place": {
+          "ko": "8번 와일드 존",
+          "en": "Wild Zone 8"
+        }
+      },
+      {
+        "place": {
+          "ko": "16번 와일드 존",
+          "en": "Wild Zone 16"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 3"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 5"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 2"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 12"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 3"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 6"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 7"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 5"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      },
+      {
+        "place": {
+          "ko": "퀘이사 주식회사",
+          "en": "Quasartico Inc."
+        }
+      }
+    ],
+    "health-wing": [
+      {
+        "place": {
+          "ko": "메디오 플라자",
+          "en": "Centrico Plaza"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      },
+      {
+        "place": "The Sewers - Main Access"
+      },
+      {
+        "place": "The Sewers - Canal Access"
+      }
+    ],
+    "heavy-ball": [
+      {
+        "place": {
+          "ko": "퀘이사 주식회사",
+          "en": "Quasartico Inc."
+        }
+      }
+    ],
+    "hondew-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      }
+    ],
+    "hp-up": [
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Aymlis Park"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 6"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 7"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 8"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 8"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 9"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 4"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 6"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 8"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 9"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 7"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 8"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 1"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 4"
+      },
+      {
+        "place": {
+          "ko": "노스사이드 스트리트",
+          "en": "North Boulevard"
+        }
+      },
+      {
+        "place": "The Sewers - Main Access"
+      },
+      {
+        "place": {
+          "ko": "퀘이사 주식회사",
+          "en": "Quasartico Inc."
+        }
+      }
+    ],
+    "hyper-potion": [
+      {
+        "place": {
+          "ko": "8번 와일드 존",
+          "en": "Wild Zone 8"
+        }
+      },
+      {
+        "place": {
+          "ko": "9번 와일드 존",
+          "en": "Wild Zone 9"
+        }
+      },
+      {
+        "place": {
+          "ko": "10번 와일드 존",
+          "en": "Wild Zone 10"
+        }
+      },
+      {
+        "place": {
+          "ko": "13번 와일드 존",
+          "en": "Wild Zone 13"
+        }
+      },
+      {
+        "place": {
+          "ko": "18번 와일드 존",
+          "en": "Wild Zone 18"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 3"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 1"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 4"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 5"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 7"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 1"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 2"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 4"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 6"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Street"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 6"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 8"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 1"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 3"
+      },
+      {
+        "place": {
+          "ko": "노스사이드 스트리트",
+          "en": "North Boulevard"
+        }
+      },
+      {
+        "place": {
+          "ko": "사우스사이드 스트리트",
+          "en": "South Boulevard"
+        }
+      },
+      {
+        "place": {
+          "ko": "이차원 미르",
+          "en": "Hyperspace Lumiose"
+        }
+      }
+    ],
+    "ice-heal": [
+      {
+        "place": {
+          "ko": "메디오 플라자",
+          "en": "Centrico Plaza"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 5"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 7"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 8"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 5"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 1"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 6"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 7"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 1"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 3"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      },
+      {
+        "place": "The Sewers - Main Access"
+      },
+      {
+        "place": "The Sewers - Canal Access"
+      },
+      {
+        "place": {
+          "ko": "이차원 미르",
+          "en": "Hyperspace Lumiose"
+        }
+      }
+    ],
+    "ice-stone": [
+      {
+        "place": {
+          "ko": "12번 와일드 존",
+          "en": "Wild Zone 12"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 4"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 9"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 4"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 8"
+      },
+      {
+        "place": {
+          "ko": "사우스사이드 스트리트",
+          "en": "South Boulevard"
+        }
+      },
+      {
+        "place": "The Sewers - Main Access"
+      }
+    ],
+    "impish-mint": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      }
+    ],
+    "iron": [
+      {
+        "place": {
+          "ko": "18번 와일드 존",
+          "en": "Wild Zone 18"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 4"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 5"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 6"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 8"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 3"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 8"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 2"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 3"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 6"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 1"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 2"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 5"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 4"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 6"
+      },
+      {
+        "place": {
+          "ko": "사우스사이드 스트리트",
+          "en": "South Boulevard"
+        }
+      },
+      {
+        "place": "The Sewers - Main Access"
+      },
+      {
+        "place": {
+          "ko": "퀘이사 주식회사",
+          "en": "Quasartico Inc."
+        }
+      }
+    ],
+    "jolly-mint": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      }
+    ],
+    "kasib-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      }
+    ],
+    "kebia-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      }
+    ],
+    "kelpsy-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      },
+      {
+        "place": "Up"
+      },
+      {
+        "place": "and Away After Emolga"
+      }
+    ],
+    "kings-rock": [
+      {
+        "place": {
+          "ko": "퀘이사 주식회사",
+          "en": "Quasartico Inc."
+        }
+      }
+    ],
+    "lagreat-ball": [
+      {
+        "place": {
+          "ko": "2번 와일드 존",
+          "en": "Wild Zone 2"
+        }
+      },
+      {
+        "place": {
+          "ko": "3번 와일드 존",
+          "en": "Wild Zone 3"
+        }
+      },
+      {
+        "place": {
+          "ko": "4번 와일드 존",
+          "en": "Wild Zone 4"
+        }
+      },
+      {
+        "place": {
+          "ko": "5번 와일드 존",
+          "en": "Wild Zone 5"
+        }
+      },
+      {
+        "place": {
+          "ko": "6번 와일드 존",
+          "en": "Wild Zone 6"
+        }
+      },
+      {
+        "place": {
+          "ko": "7번 와일드 존",
+          "en": "Wild Zone 7"
+        }
+      },
+      {
+        "place": {
+          "ko": "8번 와일드 존",
+          "en": "Wild Zone 8"
+        }
+      },
+      {
+        "place": {
+          "ko": "9번 와일드 존",
+          "en": "Wild Zone 9"
+        }
+      },
+      {
+        "place": {
+          "ko": "10번 와일드 존",
+          "en": "Wild Zone 10"
+        }
+      },
+      {
+        "place": {
+          "ko": "13번 와일드 존",
+          "en": "Wild Zone 13"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Aymlis Park"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 4"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 6"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 8"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Espace Vide"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 2"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 3"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 4"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 9"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 11"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 2"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 3"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 4"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 6"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 7"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 8"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 9"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Street"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Académie Étoile"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 1"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 2"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 8"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Plaza"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 2"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 3"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 4"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 5"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 6"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 9"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Street"
+      },
+      {
+        "place": {
+          "ko": "노스사이드 스트리트",
+          "en": "North Boulevard"
+        }
+      },
+      {
+        "place": {
+          "ko": "사우스사이드 스트리트",
+          "en": "South Boulevard"
+        }
+      },
+      {
+        "place": "The Sewers - Main Access"
+      },
+      {
+        "place": {
+          "ko": "이차원 미르",
+          "en": "Hyperspace Lumiose"
+        }
+      }
+    ],
+    "laheavy-ball": [
+      {
+        "place": {
+          "ko": "퀘이사 주식회사",
+          "en": "Quasartico Inc."
+        }
+      }
+    ],
+    "lapoke-ball": [
+      {
+        "place": {
+          "ko": "1번 와일드 존",
+          "en": "Wild Zone 1"
+        }
+      },
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "메디오 플라자",
+          "en": "Centrico Plaza"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 3"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 5"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 2"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 6"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Académie Étoile"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 1"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 2"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 4"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 5"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Plaza"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 5"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 6"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 9"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Street"
+      },
+      {
+        "place": {
+          "ko": "노스사이드 스트리트",
+          "en": "North Boulevard"
+        }
+      },
+      {
+        "place": {
+          "ko": "사우스사이드 스트리트",
+          "en": "South Boulevard"
+        }
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      },
+      {
+        "place": "The Sewers - Main Access"
+      },
+      {
+        "place": "The Sewers - Canal Access"
+      },
+      {
+        "place": {
+          "ko": "이차원 미르",
+          "en": "Hyperspace Lumiose"
+        }
+      },
+      {
+        "place": "Fungi-ble Goods"
+      }
+    ],
+    "latiasite": [
+      {
+        "place": "Siblings of the Sky"
+      }
+    ],
+    "latiosite": [
+      {
+        "place": "Siblings of the Sky"
+      }
+    ],
+    "laultra-ball": [
+      {
+        "place": {
+          "ko": "10번 와일드 존",
+          "en": "Wild Zone 10"
+        }
+      },
+      {
+        "place": {
+          "ko": "11번 와일드 존",
+          "en": "Wild Zone 11"
+        }
+      },
+      {
+        "place": {
+          "ko": "12번 와일드 존",
+          "en": "Wild Zone 12"
+        }
+      },
+      {
+        "place": {
+          "ko": "13번 와일드 존",
+          "en": "Wild Zone 13"
+        }
+      },
+      {
+        "place": {
+          "ko": "14번 와일드 존",
+          "en": "Wild Zone 14"
+        }
+      },
+      {
+        "place": {
+          "ko": "15번 와일드 존",
+          "en": "Wild Zone 15"
+        }
+      },
+      {
+        "place": {
+          "ko": "16번 와일드 존",
+          "en": "Wild Zone 16"
+        }
+      },
+      {
+        "place": {
+          "ko": "17번 와일드 존",
+          "en": "Wild Zone 17"
+        }
+      },
+      {
+        "place": {
+          "ko": "19번 와일드 존",
+          "en": "Wild Zone 19"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 3"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 5"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 6"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 7"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 8"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 9"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 4"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 5"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 7"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 11"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 1"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 2"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 3"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 4"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 6"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 7"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 9"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 1"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 3"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 6"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 7"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 1"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 4"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 5"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      },
+      {
+        "place": {
+          "ko": "사우스사이드 스트리트",
+          "en": "South Boulevard"
+        }
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      },
+      {
+        "place": "The Sewers - Main Access"
+      },
+      {
+        "place": {
+          "ko": "녹청파 사무소",
+          "en": "Rust Syndicate Office"
+        }
+      },
+      {
+        "place": {
+          "ko": "이차원 미르",
+          "en": "Hyperspace Lumiose"
+        }
+      }
+    ],
+    "lax-mint": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      }
+    ],
+    "leaf-stone": [
+      {
+        "place": {
+          "ko": "5번 와일드 존",
+          "en": "Wild Zone 5"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 9"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 8"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 11"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 5"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 1"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 4"
+      },
+      {
+        "place": {
+          "ko": "노스사이드 스트리트",
+          "en": "North Boulevard"
+        }
+      }
+    ],
+    "leftovers": [
+      {
+        "place": "The Best Use for Leftovers"
+      }
+    ],
+    "lemonade": [
+      {
+        "place": "Show Me a Mega Medicham"
+      }
+    ],
+    "level-ball": [
+      {
+        "place": {
+          "ko": "퀘이사 주식회사",
+          "en": "Quasartico Inc."
+        }
+      }
+    ],
+    "life-orb": [
+      {
+        "place": "Follow Litwick"
+      }
+    ],
+    "light-ball": [
+      {
+        "place": "The World's Greatest Pikachu"
+      }
+    ],
+    "lonely-mint": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      }
+    ],
+    "love-ball": [
+      {
+        "place": {
+          "ko": "퀘이사 주식회사",
+          "en": "Quasartico Inc."
+        }
+      }
+    ],
+    "lucky-egg": [
+      {
+        "place": "Wondrous Self-Healing Pokémon"
+      }
+    ],
+    "lum-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      }
+    ],
+    "lumiose-galette": [
+      {
+        "place": {
+          "ko": "1번 와일드 존",
+          "en": "Wild Zone 1"
+        }
+      },
+      {
+        "place": {
+          "ko": "사우스사이드 스트리트",
+          "en": "South Boulevard"
+        }
+      }
+    ],
+    "lure-ball": [
+      {
+        "place": {
+          "ko": "퀘이사 주식회사",
+          "en": "Quasartico Inc."
+        }
+      }
+    ],
+    "luxury-ball": [
+      {
+        "place": {
+          "ko": "5번 와일드 존",
+          "en": "Wild Zone 5"
+        }
+      },
+      {
+        "place": {
+          "ko": "6번 와일드 존",
+          "en": "Wild Zone 6"
+        }
+      },
+      {
+        "place": {
+          "ko": "13번 와일드 존",
+          "en": "Wild Zone 13"
+        }
+      },
+      {
+        "place": {
+          "ko": "14번 와일드 존",
+          "en": "Wild Zone 14"
+        }
+      },
+      {
+        "place": {
+          "ko": "16번 와일드 존",
+          "en": "Wild Zone 16"
+        }
+      },
+      {
+        "place": {
+          "ko": "19번 와일드 존",
+          "en": "Wild Zone 19"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 7"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 7"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 11"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 6"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 9"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 6"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 9"
+      },
+      {
+        "place": {
+          "ko": "노스사이드 스트리트",
+          "en": "North Boulevard"
+        }
+      }
+    ],
+    "magnet": [
+      {
+        "place": "Apartment Block Eeriness"
+      }
+    ],
+    "malicious-armor": [
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 6"
+      }
+    ],
+    "master-ball": [
+      {
+        "place": {
+          "ko": "퀘이사 주식회사",
+          "en": "Quasartico Inc."
+        }
+      }
+    ],
+    "mawilite": [
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 6"
+      }
+    ],
+    "max-potion": [
+      {
+        "place": {
+          "ko": "11번 와일드 존",
+          "en": "Wild Zone 11"
+        }
+      },
+      {
+        "place": {
+          "ko": "메디오 플라자",
+          "en": "Centrico Plaza"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 6"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 7"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Justice Dojo"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 6"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 9"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 6"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 9"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 3"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 4"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 1"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 6"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 9"
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B3F"
+      }
+    ],
+    "max-revive": [
+      {
+        "place": {
+          "ko": "5번 와일드 존",
+          "en": "Wild Zone 5"
+        }
+      },
+      {
+        "place": {
+          "ko": "14번 와일드 존",
+          "en": "Wild Zone 14"
+        }
+      },
+      {
+        "place": {
+          "ko": "17번 와일드 존",
+          "en": "Wild Zone 17"
+        }
+      },
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "메디오 플라자",
+          "en": "Centrico Plaza"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 3"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 7"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Justice Dojo"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 3"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 5"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 1"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 4"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 8"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 9"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Académie Étoile"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 1"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 2"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 6"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 8"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 2"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      },
+      {
+        "place": "The Sewers - Main Access"
+      }
+    ],
+    "metal-coat": [
+      {
+        "place": {
+          "ko": "퀘이사 주식회사",
+          "en": "Quasartico Inc."
+        }
+      }
+    ],
+    "mild-mint": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      }
+    ],
+    "miracle-seed": [
+      {
+        "place": "The Budew Show"
+      }
+    ],
+    "modest-mint": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      }
+    ],
+    "moomoo-milk": [
+      {
+        "place": {
+          "ko": "이차원 미르",
+          "en": "Hyperspace Lumiose"
+        }
+      },
+      {
+        "place": "Ultimate Beans of Supreme Ultimacy"
+      }
+    ],
+    "moon-ball": [
+      {
+        "place": {
+          "ko": "퀘이사 주식회사",
+          "en": "Quasartico Inc."
+        }
+      }
+    ],
+    "moon-stone": [
+      {
+        "place": {
+          "ko": "16번 와일드 존",
+          "en": "Wild Zone 16"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 6"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 9"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 3"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 6"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 7"
+      }
+    ],
+    "muscle-band": [
+      {
+        "place": "We'll Just Muscle Our Way Through"
+      }
+    ],
+    "muscle-wing": [
+      {
+        "place": {
+          "ko": "메디오 플라자",
+          "en": "Centrico Plaza"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      },
+      {
+        "place": "The Sewers - Main Access"
+      },
+      {
+        "place": "The Sewers - Canal Access"
+      }
+    ],
+    "mystic-water": [
+      {
+        "place": "Side Mission 64: Let It Rain"
+      },
+      {
+        "place": "Let It Pour"
+      }
+    ],
+    "naive-mint": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      }
+    ],
+    "naughty-mint": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      }
+    ],
+    "nest-ball": [
+      {
+        "place": {
+          "ko": "3번 와일드 존",
+          "en": "Wild Zone 3"
+        }
+      },
+      {
+        "place": {
+          "ko": "9번 와일드 존",
+          "en": "Wild Zone 9"
+        }
+      },
+      {
+        "place": {
+          "ko": "12번 와일드 존",
+          "en": "Wild Zone 12"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 4"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 10"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 11"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 6"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 8"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 4"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 5"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 6"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 9"
+      },
+      {
+        "place": {
+          "ko": "사우스사이드 스트리트",
+          "en": "South Boulevard"
+        }
+      }
+    ],
+    "net-ball": [
+      {
+        "place": {
+          "ko": "4번 와일드 존",
+          "en": "Wild Zone 4"
+        }
+      },
+      {
+        "place": {
+          "ko": "7번 와일드 존",
+          "en": "Wild Zone 7"
+        }
+      },
+      {
+        "place": {
+          "ko": "9번 와일드 존",
+          "en": "Wild Zone 9"
+        }
+      },
+      {
+        "place": {
+          "ko": "11번 와일드 존",
+          "en": "Wild Zone 11"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 4"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 6"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 11"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 3"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 3"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 7"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 9"
+      }
+    ],
+    "normal-gem": [
+      {
+        "place": "Spewpa in the Museum"
+      }
+    ],
+    "nugget": [
+      {
+        "place": {
+          "ko": "6번 와일드 존",
+          "en": "Wild Zone 6"
+        }
+      },
+      {
+        "place": {
+          "ko": "9번 와일드 존",
+          "en": "Wild Zone 9"
+        }
+      },
+      {
+        "place": {
+          "ko": "10번 와일드 존",
+          "en": "Wild Zone 10"
+        }
+      },
+      {
+        "place": {
+          "ko": "11번 와일드 존",
+          "en": "Wild Zone 11"
+        }
+      },
+      {
+        "place": {
+          "ko": "14번 와일드 존",
+          "en": "Wild Zone 14"
+        }
+      },
+      {
+        "place": {
+          "ko": "15번 와일드 존",
+          "en": "Wild Zone 15"
+        }
+      },
+      {
+        "place": {
+          "ko": "19번 와일드 존",
+          "en": "Wild Zone 19"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 7"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Street"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 8"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 9"
+      },
+      {
+        "place": {
+          "ko": "노스사이드 스트리트",
+          "en": "North Boulevard"
+        }
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      },
+      {
+        "place": "The Sewers - Main Access"
+      }
+    ],
+    "occa-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      }
+    ],
+    "oran-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      },
+      {
+        "place": {
+          "ko": "호텔Z",
+          "en": "Hotel Z"
+        }
+      }
+    ],
+    "paralyze-heal": [
+      {
+        "place": {
+          "ko": "3번 와일드 존",
+          "en": "Wild Zone 3"
+        }
+      },
+      {
+        "place": {
+          "ko": "5번 와일드 존",
+          "en": "Wild Zone 5"
+        }
+      },
+      {
+        "place": {
+          "ko": "6번 와일드 존",
+          "en": "Wild Zone 6"
+        }
+      },
+      {
+        "place": {
+          "ko": "9번 와일드 존",
+          "en": "Wild Zone 9"
+        }
+      },
+      {
+        "place": {
+          "ko": "12번 와일드 존",
+          "en": "Wild Zone 12"
+        }
+      },
+      {
+        "place": {
+          "ko": "메디오 플라자",
+          "en": "Centrico Plaza"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Aymlis Park"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 7"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 1"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 3"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 4"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 6"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Académie Étoile"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 1"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 5"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 7"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 8"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 3"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 6"
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      },
+      {
+        "place": "The Sewers - Main Access"
+      },
+      {
+        "place": "The Sewers - Canal Access"
+      },
+      {
+        "place": {
+          "ko": "이차원 미르",
+          "en": "Hyperspace Lumiose"
+        }
+      }
+    ],
+    "passho-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      }
+    ],
+    "payapa-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      }
+    ],
+    "pearl": [
+      {
+        "place": {
+          "ko": "3번 와일드 존",
+          "en": "Wild Zone 3"
+        }
+      },
+      {
+        "place": {
+          "ko": "4번 와일드 존",
+          "en": "Wild Zone 4"
+        }
+      },
+      {
+        "place": {
+          "ko": "5번 와일드 존",
+          "en": "Wild Zone 5"
+        }
+      },
+      {
+        "place": {
+          "ko": "6번 와일드 존",
+          "en": "Wild Zone 6"
+        }
+      },
+      {
+        "place": {
+          "ko": "9번 와일드 존",
+          "en": "Wild Zone 9"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 7"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 8"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Street"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 8"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 1"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 9"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Coulant Waterway"
+      },
+      {
+        "place": {
+          "ko": "노스사이드 스트리트",
+          "en": "North Boulevard"
+        }
+      }
+    ],
+    "pearl-string": [
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 7"
+      }
+    ],
+    "pecha-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      },
+      {
+        "place": {
+          "ko": "호텔Z",
+          "en": "Hotel Z"
+        }
+      }
+    ],
+    "persim-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      }
+    ],
+    "poison-barb": [
+      {
+        "place": "My Favorite Holovator"
+      }
+    ],
+    "poke-ball": [
+      {
+        "place": {
+          "ko": "1번 와일드 존",
+          "en": "Wild Zone 1"
+        }
+      },
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "메디오 플라자",
+          "en": "Centrico Plaza"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 3"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 5"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 2"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 6"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Académie Étoile"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 1"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 2"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 4"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 5"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Plaza"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 5"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 6"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 9"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Street"
+      },
+      {
+        "place": {
+          "ko": "노스사이드 스트리트",
+          "en": "North Boulevard"
+        }
+      },
+      {
+        "place": {
+          "ko": "사우스사이드 스트리트",
+          "en": "South Boulevard"
+        }
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      },
+      {
+        "place": "The Sewers - Main Access"
+      },
+      {
+        "place": "The Sewers - Canal Access"
+      },
+      {
+        "place": {
+          "ko": "이차원 미르",
+          "en": "Hyperspace Lumiose"
+        }
+      },
+      {
+        "place": "Fungi-ble Goods"
+      }
+    ],
+    "pomeg-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      },
+      {
+        "place": "Up"
+      },
+      {
+        "place": "and Away After Emolga Side Mission 108: Alola"
+      },
+      {
+        "how": "held",
+        "place": {
+          "ko": "야생 라이츄",
+          "en": "Wild Raichu"
+        }
+      }
+    ],
+    "potion": [
+      {
+        "place": {
+          "ko": "1번 와일드 존",
+          "en": "Wild Zone 1"
+        }
+      },
+      {
+        "place": {
+          "ko": "2번 와일드 존",
+          "en": "Wild Zone 2"
+        }
+      },
+      {
+        "place": {
+          "ko": "17번 와일드 존",
+          "en": "Wild Zone 17"
+        }
+      },
+      {
+        "place": {
+          "ko": "메디오 플라자",
+          "en": "Centrico Plaza"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 3"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 4"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 8"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 2"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 5"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 6"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 8"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 11"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 4"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 6"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 7"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 4"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 5"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 7"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 8"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 1"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 2"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 5"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 6"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 9"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Coulant Waterway"
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      },
+      {
+        "place": "The Sewers - Main Access"
+      },
+      {
+        "place": "The Sewers - Canal Access"
+      },
+      {
+        "place": {
+          "ko": "퀘이사 주식회사",
+          "en": "Quasartico Inc."
+        }
+      },
+      {
+        "place": {
+          "ko": "배틀 존",
+          "en": "Battle Zone"
+        }
+      },
+      {
+        "place": "Paralyzing Strategies"
+      }
+    ],
+    "power-anklet": [
+      {
+        "place": "Side Mission 69: A Sky Battle"
+      },
+      {
+        "place": "for Old Times' Sake"
+      }
+    ],
+    "power-band": [
+      {
+        "place": "Pleasing Aron's Palate"
+      }
+    ],
+    "power-belt": [
+      {
+        "place": "Slowpoke for Slowpoke"
+      }
+    ],
+    "power-bracer": [
+      {
+        "place": "Chasing Status"
+      }
+    ],
+    "power-lens": [
+      {
+        "place": "Abuzz About Bug Types"
+      }
+    ],
+    "power-weight": [
+      {
+        "place": "Find My Galarian Stunfisk"
+      }
+    ],
+    "premier-ball": [
+      {
+        "place": "floating Poke Ball"
+      }
+    ],
+    "pretty-wing": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "메디오 플라자",
+          "en": "Centrico Plaza"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      },
+      {
+        "place": "The Sewers - Main Access"
+      },
+      {
+        "place": "The Sewers - Canal Access"
+      }
+    ],
+    "prism-scale": [
+      {
+        "place": "floating Poke Ball"
+      }
+    ],
+    "prison-bottle": [
+      {
+        "place": {
+          "ko": "호텔Z",
+          "en": "Hotel Z"
+        }
+      }
+    ],
+    "protein": [
+      {
+        "place": {
+          "ko": "9번 와일드 존",
+          "en": "Wild Zone 9"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 6"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 9"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Street"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 2"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 7"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 6"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 9"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 2"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 1"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 3"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 5"
+      },
+      {
+        "place": {
+          "ko": "노스사이드 스트리트",
+          "en": "North Boulevard"
+        }
+      },
+      {
+        "place": {
+          "ko": "사우스사이드 스트리트",
+          "en": "South Boulevard"
+        }
+      },
+      {
+        "place": "The Sewers - Main Access"
+      },
+      {
+        "place": {
+          "ko": "퀘이사 주식회사",
+          "en": "Quasartico Inc."
+        }
+      }
+    ],
+    "qualot-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      }
+    ],
+    "quick-ball": [
+      {
+        "place": {
+          "ko": "10번 와일드 존",
+          "en": "Wild Zone 10"
+        }
+      },
+      {
+        "place": {
+          "ko": "12번 와일드 존",
+          "en": "Wild Zone 12"
+        }
+      },
+      {
+        "place": {
+          "ko": "16번 와일드 존",
+          "en": "Wild Zone 16"
+        }
+      },
+      {
+        "place": {
+          "ko": "18번 와일드 존",
+          "en": "Wild Zone 18"
+        }
+      },
+      {
+        "place": {
+          "ko": "19번 와일드 존",
+          "en": "Wild Zone 19"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 5"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 7"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 5"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 11"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 6"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 8"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 2"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 3"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 4"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 6"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 1"
+      }
+    ],
+    "quick-claw": [
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 2"
+      }
+    ],
+    "quiet-mint": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      }
+    ],
+    "rare-candy": [
+      {
+        "place": {
+          "ko": "9번 와일드 존",
+          "en": "Wild Zone 9"
+        }
+      },
+      {
+        "place": {
+          "ko": "16번 와일드 존",
+          "en": "Wild Zone 16"
+        }
+      },
+      {
+        "place": {
+          "ko": "17번 와일드 존",
+          "en": "Wild Zone 17"
+        }
+      },
+      {
+        "place": {
+          "ko": "18번 와일드 존",
+          "en": "Wild Zone 18"
+        }
+      },
+      {
+        "place": {
+          "ko": "19번 와일드 존",
+          "en": "Wild Zone 19"
+        }
+      },
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 3"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 5"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 7"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 5"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 6"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 7"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 8"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 10"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 3"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 6"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 9"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 1"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 2"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 5"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 6"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 7"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 8"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 1"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 3"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 5"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 6"
+      },
+      {
+        "place": {
+          "ko": "노스사이드 스트리트",
+          "en": "North Boulevard"
+        }
+      },
+      {
+        "place": {
+          "ko": "사우스사이드 스트리트",
+          "en": "South Boulevard"
+        }
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      },
+      {
+        "place": {
+          "ko": "에테 애버뉴",
+          "en": "Estival Avenue"
+        }
+      }
+    ],
+    "rash-mint": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      }
+    ],
+    "rawst-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      }
+    ],
+    "red-orb": [
+      {
+        "place": {
+          "ko": "이차원 미르 끝의 대지",
+          "en": "Hyperspace Desolate Land"
+        }
+      }
+    ],
+    "relaxed-mint": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      }
+    ],
+    "repeat-ball": [
+      {
+        "place": {
+          "ko": "12번 와일드 존",
+          "en": "Wild Zone 12"
+        }
+      },
+      {
+        "place": {
+          "ko": "19번 와일드 존",
+          "en": "Wild Zone 19"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 4"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 3"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 7"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 9"
+      }
+    ],
+    "resist-wing": [
+      {
+        "place": {
+          "ko": "메디오 플라자",
+          "en": "Centrico Plaza"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      },
+      {
+        "place": "The Sewers - Main Access"
+      },
+      {
+        "place": "The Sewers - Canal Access"
+      }
+    ],
+    "revive": [
+      {
+        "place": {
+          "ko": "1번 와일드 존",
+          "en": "Wild Zone 1"
+        }
+      },
+      {
+        "place": {
+          "ko": "3번 와일드 존",
+          "en": "Wild Zone 3"
+        }
+      },
+      {
+        "place": {
+          "ko": "4번 와일드 존",
+          "en": "Wild Zone 4"
+        }
+      },
+      {
+        "place": {
+          "ko": "5번 와일드 존",
+          "en": "Wild Zone 5"
+        }
+      },
+      {
+        "place": {
+          "ko": "9번 와일드 존",
+          "en": "Wild Zone 9"
+        }
+      },
+      {
+        "place": {
+          "ko": "10번 와일드 존",
+          "en": "Wild Zone 10"
+        }
+      },
+      {
+        "place": {
+          "ko": "12번 와일드 존",
+          "en": "Wild Zone 12"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 3"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 7"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 8"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 2"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 4"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 5"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 8"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 9"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 10"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 11"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 1"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 3"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 7"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 8"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 9"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Académie Étoile"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 1"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 2"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 3"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 7"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 8"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 3"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 5"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 7"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Coulant Waterway"
+      },
+      {
+        "place": {
+          "ko": "노스사이드 스트리트",
+          "en": "North Boulevard"
+        }
+      },
+      {
+        "place": {
+          "ko": "사우스사이드 스트리트",
+          "en": "South Boulevard"
+        }
+      },
+      {
+        "place": {
+          "ko": "퀘이사 주식회사",
+          "en": "Quasartico Inc."
+        }
+      },
+      {
+        "place": {
+          "ko": "이차원 미르",
+          "en": "Hyperspace Lumiose"
+        }
+      }
+    ],
+    "rindo-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      }
+    ],
+    "rocky-helmet": [
+      {
+        "place": "The Beldum Blockade"
+      }
+    ],
+    "roseli-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Street"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      }
+    ],
+    "rotom-catalog": [
+      {
+        "place": "Rotom Showcase"
+      }
+    ],
+    "sachet": [
+      {
+        "place": {
+          "ko": "퀘이사 주식회사",
+          "en": "Quasartico Inc."
+        }
+      }
+    ],
+    "safari-ball": [
+      {
+        "place": "floating Poke Ball"
+      }
+    ],
+    "sassy-mint": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      }
+    ],
+    "sceptilite": [
+      {
+        "place": "Ranked Battle Rank-up reward"
+      }
+    ],
+    "scope-lens": [
+      {
+        "place": "Get ENERGIZED"
+      }
+    ],
+    "serious-mint": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      }
+    ],
+    "sharp-beak": [
+      {
+        "place": "Side Mission 69: A Sky Battle"
+      },
+      {
+        "place": "for Old Times' Sake"
+      }
+    ],
+    "shell-bell": [
+      {
+        "place": "Sylveon the Soother"
+      }
+    ],
+    "shiny-charm": [
+      {
+        "place": "Lumiose PokéDex Completion Reward"
+      }
+    ],
+    "shiny-stone": [
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 7"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 3"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 8"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 6"
+      },
+      {
+        "place": "The Sewers - Main Access"
+      }
+    ],
+    "shuca-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      }
+    ],
+    "silk-scarf": [
+      {
+        "place": "Who Says Normal Is Weak"
+      }
+    ],
+    "silver-powder": [
+      {
+        "place": "The Kakuna Master"
+      }
+    ],
+    "sitrus-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      },
+      {
+        "place": {
+          "ko": "배틀 존",
+          "en": "Battle Zone"
+        }
+      }
+    ],
+    "slowbronite": [
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Aymlis Park"
+      }
+    ],
+    "soda-pop": [
+      {
+        "place": "I'd Like to See an Ekans"
+      },
+      {
+        "place": "Kiosk Conundrum"
+      }
+    ],
+    "soft-sand": [
+      {
+        "place": "Underneath the Holovator"
+      }
+    ],
+    "soothe-bell": [
+      {
+        "place": "Some Friendly Competition"
+      }
+    ],
+    "spell-tag": [
+      {
+        "place": "A Haunting Experience"
+      }
+    ],
+    "sport-ball": [
+      {
+        "place": "floating Poke Ball"
+      }
+    ],
+    "sun-stone": [
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 4"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 6"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 9"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 6"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 1"
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      }
+    ],
+    "super-potion": [
+      {
+        "place": {
+          "ko": "3번 와일드 존",
+          "en": "Wild Zone 3"
+        }
+      },
+      {
+        "place": {
+          "ko": "4번 와일드 존",
+          "en": "Wild Zone 4"
+        }
+      },
+      {
+        "place": {
+          "ko": "5번 와일드 존",
+          "en": "Wild Zone 5"
+        }
+      },
+      {
+        "place": {
+          "ko": "6번 와일드 존",
+          "en": "Wild Zone 6"
+        }
+      },
+      {
+        "place": {
+          "ko": "12번 와일드 존",
+          "en": "Wild Zone 12"
+        }
+      },
+      {
+        "place": {
+          "ko": "15번 와일드 존",
+          "en": "Wild Zone 15"
+        }
+      },
+      {
+        "place": {
+          "ko": "19번 와일드 존",
+          "en": "Wild Zone 19"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 4"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 5"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 6"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 7"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 8"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Street"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 1"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 3"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 4"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 5"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 6"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 7"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 10"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 12"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 2"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 3"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 7"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 8"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Street"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Académie Étoile"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 1"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 2"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 3"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 5"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 6"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 8"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Street"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Plaza"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 1"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 2"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 3"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 4"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 5"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 6"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 7"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 9"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Coulant Waterway"
+      },
+      {
+        "place": {
+          "ko": "사우스사이드 스트리트",
+          "en": "South Boulevard"
+        }
+      },
+      {
+        "place": {
+          "ko": "에테 애버뉴",
+          "en": "Estival Avenue"
+        }
+      },
+      {
+        "place": {
+          "ko": "퀘이사 주식회사",
+          "en": "Quasartico Inc."
+        }
+      }
+    ],
+    "swampertite": [
+      {
+        "place": "Ranked Battle Rank-up reward"
+      }
+    ],
+    "swift-wing": [
+      {
+        "place": {
+          "ko": "메디오 플라자",
+          "en": "Centrico Plaza"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Plaza"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      },
+      {
+        "place": "The Sewers - Main Access"
+      },
+      {
+        "place": "The Sewers - Canal Access"
+      }
+    ],
+    "tamato-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      },
+      {
+        "place": "Up"
+      },
+      {
+        "place": "and Away After Emolga Side Mission 108: Alola"
+      },
+      {
+        "place": "Donuts of Unworldly Deliciousness"
+      }
+    ],
+    "tanga-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      }
+    ],
+    "thick-club": [
+      {
+        "place": "Dropped by Alpha Cubone & Marowak"
+      }
+    ],
+    "thunder-stone": [
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 7"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 4"
+      },
+      {
+        "place": {
+          "ko": "사우스사이드 스트리트",
+          "en": "South Boulevard"
+        }
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      },
+      {
+        "place": {
+          "ko": "라시느건설",
+          "en": "Racine Construction"
+        }
+      }
+    ],
+    "timer-ball": [
+      {
+        "place": {
+          "ko": "5번 와일드 존",
+          "en": "Wild Zone 5"
+        }
+      },
+      {
+        "place": {
+          "ko": "9번 와일드 존",
+          "en": "Wild Zone 9"
+        }
+      },
+      {
+        "place": {
+          "ko": "10번 와일드 존",
+          "en": "Wild Zone 10"
+        }
+      },
+      {
+        "place": {
+          "ko": "11번 와일드 존",
+          "en": "Wild Zone 11"
+        }
+      },
+      {
+        "place": {
+          "ko": "15번 와일드 존",
+          "en": "Wild Zone 15"
+        }
+      },
+      {
+        "place": {
+          "ko": "18번 와일드 존",
+          "en": "Wild Zone 18"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 5"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 8"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Street"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 3"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 4"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 1"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 2"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 5"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 9"
+      }
+    ],
+    "timid-mint": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      }
+    ],
+    "tiny-mushroom": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "메디오 플라자",
+          "en": "Centrico Plaza"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        }
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      },
+      {
+        "place": "The Sewers - Main Access"
+      },
+      {
+        "place": "The Sewers - Canal Access"
+      }
+    ],
+    "tm100": [
+      {
+        "place": {
+          "ko": "녹청파 사무소",
+          "en": "Rust Syndicate Office"
+        }
+      }
+    ],
+    "tm101": [
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 7"
+      }
+    ],
+    "tm102": [
+      {
+        "place": "Lumiose PokéDex Completion Reward"
+      }
+    ],
+    "tm103": [
+      {
+        "place": {
+          "ko": "1번 와일드 존",
+          "en": "Wild Zone 1"
+        }
+      }
+    ],
+    "tm104": [
+      {
+        "place": {
+          "ko": "메디오 플라자",
+          "en": "Centrico Plaza"
+        }
+      }
+    ],
+    "tm105": [
+      {
+        "place": "Lumiose PokéDex Completion Reward"
+      }
+    ],
+    "tm106": [
+      {
+        "place": "Lumiose PokéDex Completion Reward"
+      }
+    ],
+    "tm107": [
+      {
+        "place": "Lumiose PokéDex Completion Reward"
+      }
+    ],
+    "tm109": [
+      {
+        "place": "Octolock Away the Pain!"
+      }
+    ],
+    "tm113": [
+      {
+        "place": "Sawk vs. Throh"
+      }
+    ],
+    "tm114": [
+      {
+        "place": "Cyclizoom"
+      }
+    ],
+    "tm116": [
+      {
+        "place": "Which Meowth Do You Purrfer"
+      }
+    ],
+    "tm118": [
+      {
+        "place": "Side Mission 171: Awaken"
+      },
+      {
+        "how": "held",
+        "place": {
+          "ko": "야생 데스니칸",
+          "en": "Wild Cofagrigus"
+        }
+      }
+    ],
+    "tm119": [
+      {
+        "place": "A Sorta Scary Cemetery Story"
+      }
+    ],
+    "tm121": [
+      {
+        "place": "My Neighbor Tinkatuff"
+      }
+    ],
+    "tm122": [
+      {
+        "place": "Farfetch'd Ambush!"
+      }
+    ],
+    "tm123": [
+      {
+        "place": "A Special Seviper"
+      }
+    ],
+    "tm125": [
+      {
+        "place": "The Joy of Mimicry"
+      }
+    ],
+    "tm127": [
+      {
+        "place": "Reve de Musharna"
+      }
+    ],
+    "tm129": [
+      {
+        "place": "Sawk vs. Throh"
+      }
+    ],
+    "tm130": [
+      {
+        "place": "Be a Defenseless Dodger"
+      }
+    ],
+    "tm136": [
+      {
+        "place": "Terror in the Sands"
+      }
+    ],
+    "tm139": [
+      {
+        "place": "Side Mission 134: Squawking"
+      },
+      {
+        "place": "Squabbling Squawkabilly!"
+      }
+    ],
+    "tm141": [
+      {
+        "place": "Romance avec Purrloin"
+      }
+    ],
+    "tm144": [
+      {
+        "place": "Side Mission 124: Multistrike"
+      },
+      {
+        "place": "Multistrike"
+      },
+      {
+        "place": "Multistrike Moves"
+      }
+    ],
+    "tm146": [
+      {
+        "place": "Charging Toward Victory"
+      }
+    ],
+    "tm147": [
+      {
+        "place": "Porygon's Polygon Count"
+      }
+    ],
+    "tm158": [
+      {
+        "place": {
+          "ko": "6번 와일드 존",
+          "en": "Wild Zone 6"
+        }
+      }
+    ],
+    "tm159": [
+      {
+        "place": {
+          "ko": "6번 와일드 존",
+          "en": "Wild Zone 6"
+        }
+      }
+    ],
+    "tm160": [
+      {
+        "place": {
+          "ko": "6번 와일드 존",
+          "en": "Wild Zone 6"
+        }
+      }
+    ],
+    "twisted-spoon": [
+      {
+        "place": "Guidance from a Yoga Master"
+      }
+    ],
+    "tyranitarite": [
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 4"
+      }
+    ],
+    "ultra-ball": [
+      {
+        "place": {
+          "ko": "10번 와일드 존",
+          "en": "Wild Zone 10"
+        }
+      },
+      {
+        "place": {
+          "ko": "11번 와일드 존",
+          "en": "Wild Zone 11"
+        }
+      },
+      {
+        "place": {
+          "ko": "12번 와일드 존",
+          "en": "Wild Zone 12"
+        }
+      },
+      {
+        "place": {
+          "ko": "13번 와일드 존",
+          "en": "Wild Zone 13"
+        }
+      },
+      {
+        "place": {
+          "ko": "14번 와일드 존",
+          "en": "Wild Zone 14"
+        }
+      },
+      {
+        "place": {
+          "ko": "15번 와일드 존",
+          "en": "Wild Zone 15"
+        }
+      },
+      {
+        "place": {
+          "ko": "16번 와일드 존",
+          "en": "Wild Zone 16"
+        }
+      },
+      {
+        "place": {
+          "ko": "17번 와일드 존",
+          "en": "Wild Zone 17"
+        }
+      },
+      {
+        "place": {
+          "ko": "19번 와일드 존",
+          "en": "Wild Zone 19"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 3"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 5"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 6"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 7"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 8"
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 9"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 4"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 5"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 7"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 11"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 1"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 2"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 3"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 4"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 6"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 7"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 9"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 1"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 3"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 6"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 7"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 1"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 4"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 5"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      },
+      {
+        "place": {
+          "ko": "사우스사이드 스트리트",
+          "en": "South Boulevard"
+        }
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      },
+      {
+        "place": "The Sewers - Main Access"
+      },
+      {
+        "place": {
+          "ko": "녹청파 사무소",
+          "en": "Rust Syndicate Office"
+        }
+      },
+      {
+        "place": {
+          "ko": "이차원 미르",
+          "en": "Hyperspace Lumiose"
+        }
+      }
+    ],
+    "up-grade": [
+      {
+        "place": "floating Poke Ball"
+      }
+    ],
+    "venusaurite": [
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 8"
+      }
+    ],
+    "wacan-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      }
+    ],
+    "water-stone": [
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 4"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 7"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 8"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 1"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 5"
+      },
+      {
+        "place": "The Sewers - Main Access"
+      }
+    ],
+    "weakness-policy": [
+      {
+        "place": "Who Messed Up the Garden"
+      }
+    ],
+    "whipped-dream": [
+      {
+        "place": {
+          "ko": "퀘이사 주식회사",
+          "en": "Quasartico Inc."
+        }
+      }
+    ],
+    "white-herb": [
+      {
+        "place": "A Pan-tastic Pot of Tea"
+      }
+    ],
+    "wise-glasses": [
+      {
+        "place": "Spewpa in the Museum"
+      }
+    ],
+    "yache-berry": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        }
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 8"
+      }
+    ],
+    "zinc": [
+      {
+        "place": {
+          "ko": "5번 와일드 존",
+          "en": "Wild Zone 5"
+        }
+      },
+      {
+        "place": {
+          "ko": "9번 와일드 존",
+          "en": "Wild Zone 9"
+        }
+      },
+      {
+        "place": {
+          "ko": "블르 지구",
+          "en": "Bleu District"
+        },
+        "detail": "Bleu Sector 5"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 3"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 4"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 6"
+      },
+      {
+        "place": {
+          "ko": "존느 지구",
+          "en": "Jaune District"
+        },
+        "detail": "Jaune Sector 8"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 1"
+      },
+      {
+        "place": {
+          "ko": "로즈 지구",
+          "en": "Magenta District"
+        },
+        "detail": "Magenta Sector 8"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 1"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 2"
+      },
+      {
+        "place": {
+          "ko": "루주 지구",
+          "en": "Rouge District"
+        },
+        "detail": "Rouge Sector 3"
+      },
+      {
+        "place": {
+          "ko": "베르 지구",
+          "en": "Vert District"
+        },
+        "detail": "Vert Sector 5"
+      },
+      {
+        "place": {
+          "ko": "노스사이드 스트리트",
+          "en": "North Boulevard"
+        }
+      },
+      {
+        "where": "lysandre-labs",
+        "detail": "B1F"
+      },
+      {
+        "place": {
+          "ko": "퀘이사 주식회사",
+          "en": "Quasartico Inc."
+        }
+      }
+    ],
+    "zygarde-cube": [
+      {
+        "place": {
+          "ko": "20번 와일드 존",
+          "en": "Wild Zone 20"
+        }
+      }
+    ]
+  },
+  "tutors": {}
+}

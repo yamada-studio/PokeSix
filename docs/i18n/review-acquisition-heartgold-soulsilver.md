@@ -1,4 +1,4 @@
 # Acquisition review: heartgold-soulsilver
 
-items 100, tutors 56
+items 392, tutors 56
 

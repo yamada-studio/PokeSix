@@ -1,0 +1,1245 @@
+{
+  "_comment": [
+    "게임(버전 그룹)별 입수 사전 (ui/dex/guidebook.h가 읽는다). 형식은 docs/i18n/README.md 참고.",
+    "scripts/i18n/check_acquisition.py로 검증해 넣었다. 출처는 _sources."
+  ],
+  "_sources": [
+    "Serebii.net ItemDex (https://www.serebii.net/itemdex/) — 장소는 PokéAPI/게임 텍스트로 한국어화"
+  ],
+  "versionGroup": "the-crown-tundra",
+  "items": {
+    "ability-patch": [
+      {
+        "where": "max-lair"
+      }
+    ],
+    "adamant-mint": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "aguav-berry": [
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "antidote": [
+      {
+        "where": "frostpoint-field"
+      },
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "apicot-berry": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "aspear-berry": [
+      {
+        "where": "slippery-slope"
+      }
+    ],
+    "assault-vest": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "awakening": [
+      {
+        "where": "slippery-slope"
+      }
+    ],
+    "babiri-berry": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "beast-ball": [
+      {
+        "where": "max-lair"
+      }
+    ],
+    "big-mushroom": [
+      {
+        "where": "giants-bed"
+      },
+      {
+        "where": "roaring-sea-caves"
+      }
+    ],
+    "big-nugget": [
+      {
+        "where": "roaring-sea-caves"
+      }
+    ],
+    "big-pearl": [
+      {
+        "where": "frigid-sea"
+      }
+    ],
+    "big-root": [
+      {
+        "where": "frostpoint-field"
+      },
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "binding-band": [
+      {
+        "where": "giants-foot"
+      }
+    ],
+    "black-apricorn": [
+      {
+        "where": "giants-foot"
+      },
+      {
+        "where": "dyna-tree-hill"
+      }
+    ],
+    "black-mane-hair": [
+      {
+        "where": "freezington"
+      }
+    ],
+    "blue-apricorn": [
+      {
+        "where": "giants-foot"
+      },
+      {
+        "where": "ballimere-lake"
+      },
+      {
+        "where": "dyna-tree-hill"
+      }
+    ],
+    "blunder-policy": [
+      {
+        "where": "freezington"
+      }
+    ],
+    "bold-mint": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "bottle-cap": [
+      {
+        "where": "freezington"
+      },
+      {
+        "where": "crown-shrine"
+      },
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "brave-mint": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "calm-mint": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "careful-mint": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "charcoal": [
+      {
+        "where": "freezington"
+      }
+    ],
+    "charti-berry": [
+      {
+        "where": "frostpoint-field"
+      }
+    ],
+    "chesto-berry": [
+      {
+        "where": "giants-foot"
+      }
+    ],
+    "chipped-pot": [
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "chople-berry": [
+      {
+        "where": "ballimere-lake"
+      },
+      {
+        "where": "dyna-tree-hill"
+      }
+    ],
+    "clever-wing": [
+      {
+        "where": "frigid-sea"
+      }
+    ],
+    "coba-berry": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "colbur-berry": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "cracked-pot": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "custap-berry": [
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "dawn-stone": [
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "dive-ball": [
+      {
+        "where": "frigid-sea"
+      }
+    ],
+    "dragon-fang": [
+      {
+        "where": "tunnel-to-the-top"
+      }
+    ],
+    "dusk-ball": [
+      {
+        "where": "lakeside-cave"
+      }
+    ],
+    "dusk-stone": [
+      {
+        "where": "snowslide-slope"
+      }
+    ],
+    "eject-pack": [
+      {
+        "where": "snowslide-slope"
+      }
+    ],
+    "electirizer": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "energy-root": [
+      {
+        "where": "freezington"
+      },
+      {
+        "where": "frostpoint-field"
+      },
+      {
+        "where": "giants-bed"
+      },
+      {
+        "where": "old-cemetery"
+      },
+      {
+        "where": "snowslide-slope"
+      },
+      {
+        "where": "frigid-sea"
+      },
+      {
+        "where": "three-point-pass"
+      }
+    ],
+    "enigma-berry": [
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "everstone": [
+      {
+        "where": "giants-foot"
+      },
+      {
+        "where": "roaring-sea-caves"
+      }
+    ],
+    "fancy-apple": [
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "figy-berry": [
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "float-stone": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "focus-sash": [
+      {
+        "where": "frostpoint-field"
+      }
+    ],
+    "full-heal": [
+      {
+        "where": "snowslide-slope"
+      }
+    ],
+    "full-restore": [
+      {
+        "where": "slippery-slope"
+      },
+      {
+        "where": "snowslide-slope"
+      }
+    ],
+    "galarica-twig": [
+      {
+        "where": "slippery-slope"
+      },
+      {
+        "where": "giants-bed"
+      },
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "galarica-wreath": [
+      {
+        "where": "roaring-sea-caves"
+      }
+    ],
+    "gentle-mint": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "gold-bottle-cap": [
+      {
+        "where": "slippery-slope"
+      }
+    ],
+    "great-ball": [
+      {
+        "where": "snowslide-slope"
+      },
+      {
+        "where": "frigid-sea"
+      }
+    ],
+    "green-apricorn": [
+      {
+        "where": "giants-foot"
+      }
+    ],
+    "grepa-berry": [
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "haban-berry": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "hard-stone": [
+      {
+        "where": "giants-bed"
+      },
+      {
+        "where": "tunnel-to-the-top"
+      },
+      {
+        "where": "roaring-sea-caves"
+      },
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "hasty-mint": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "health-wing": [
+      {
+        "where": "frigid-sea"
+      }
+    ],
+    "hondew-berry": [
+      {
+        "where": "ballimere-lake"
+      },
+      {
+        "where": "dyna-tree-hill"
+      }
+    ],
+    "honey": [
+      {
+        "where": "giants-bed"
+      },
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "hyper-potion": [
+      {
+        "where": "slippery-slope"
+      },
+      {
+        "where": "giants-bed"
+      },
+      {
+        "where": "tunnel-to-the-top"
+      },
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "iapapa-berry": [
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "ice-stone": [
+      {
+        "where": "path-to-the-peak"
+      }
+    ],
+    "iceroot-carrot": [
+      {
+        "where": "snowslide-slope"
+      }
+    ],
+    "impish-mint": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "iron-ball": [
+      {
+        "where": "giants-foot"
+      }
+    ],
+    "jaboca-berry": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "jolly-mint": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "kasib-berry": [
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "kebia-berry": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "kee-berry": [
+      {
+        "where": "giants-foot"
+      }
+    ],
+    "lagreat-ball": [
+      {
+        "where": "snowslide-slope"
+      },
+      {
+        "where": "frigid-sea"
+      }
+    ],
+    "lansat-berry": [
+      {
+        "where": "dyna-tree-hill"
+      }
+    ],
+    "large-leek": [
+      {
+        "where": "freezington"
+      }
+    ],
+    "laultra-ball": [
+      {
+        "where": "slippery-slope"
+      },
+      {
+        "where": "giants-bed"
+      },
+      {
+        "where": "giants-foot"
+      },
+      {
+        "where": "three-point-pass"
+      },
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "lax-mint": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "legendary-clue-1": [
+      {
+        "where": "freezington"
+      }
+    ],
+    "legendary-clue-2": [
+      {
+        "where": "freezington"
+      }
+    ],
+    "legendary-clue-3": [
+      {
+        "where": "freezington"
+      }
+    ],
+    "legendary-clue-question": [
+      {
+        "where": "freezington"
+      }
+    ],
+    "leppa-berry": [
+      {
+        "where": "slippery-slope"
+      }
+    ],
+    "liechi-berry": [
+      {
+        "where": "frostpoint-field"
+      }
+    ],
+    "life-orb": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "lonely-mint": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "lum-berry": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "magmarizer": [
+      {
+        "where": "tunnel-to-the-top"
+      }
+    ],
+    "mago-berry": [
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "maranga-berry": [
+      {
+        "where": "giants-foot"
+      }
+    ],
+    "master-ball": [
+      {
+        "where": "freezington"
+      }
+    ],
+    "max-potion": [
+      {
+        "where": "giants-bed"
+      },
+      {
+        "where": "giants-foot"
+      }
+    ],
+    "max-revive": [
+      {
+        "where": "frostpoint-field"
+      },
+      {
+        "where": "tunnel-to-the-top"
+      },
+      {
+        "where": "crown-shrine"
+      }
+    ],
+    "mental-herb": [
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "metronome": [
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "micle-berry": [
+      {
+        "where": "slippery-slope"
+      },
+      {
+        "where": "frostpoint-field"
+      },
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "mild-mint": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "miracle-seed": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "modest-mint": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "moon-stone": [
+      {
+        "where": "tunnel-to-the-top"
+      }
+    ],
+    "muscle-wing": [
+      {
+        "where": "frigid-sea"
+      }
+    ],
+    "naive-mint": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "naughty-mint": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "net-ball": [
+      {
+        "where": "old-cemetery"
+      }
+    ],
+    "normal-gem": [
+      {
+        "where": "tunnel-to-the-top"
+      }
+    ],
+    "nugget": [
+      {
+        "where": "freezington"
+      },
+      {
+        "where": "tunnel-to-the-top"
+      }
+    ],
+    "occa-berry": [
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "odd-incense": [
+      {
+        "where": "slippery-slope"
+      }
+    ],
+    "oran-berry": [
+      {
+        "where": "giants-foot"
+      },
+      {
+        "where": "dyna-tree-hill"
+      }
+    ],
+    "passho-berry": [
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "payapa-berry": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "pearl": [
+      {
+        "where": "frigid-sea"
+      }
+    ],
+    "pearl-string": [
+      {
+        "where": "giants-bed"
+      },
+      {
+        "where": "frigid-sea"
+      }
+    ],
+    "persim-berry": [
+      {
+        "where": "giants-foot"
+      }
+    ],
+    "petaya-berry": [
+      {
+        "where": "frostpoint-field"
+      },
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "pink-apricorn": [
+      {
+        "where": "giants-foot"
+      },
+      {
+        "where": "ballimere-lake"
+      },
+      {
+        "where": "dyna-tree-hill"
+      }
+    ],
+    "poison-barb": [
+      {
+        "where": "giants-foot"
+      }
+    ],
+    "poke-doll": [
+      {
+        "where": "old-cemetery"
+      }
+    ],
+    "pomeg-berry": [
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "pp-up": [
+      {
+        "where": "snowslide-slope"
+      },
+      {
+        "where": "tunnel-to-the-top"
+      },
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "pretty-wing": [
+      {
+        "where": "frigid-sea"
+      }
+    ],
+    "prism-scale": [
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "pungent-root": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "qualot-berry": [
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "quick-ball": [
+      {
+        "where": "tunnel-to-the-top"
+      }
+    ],
+    "quiet-mint": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "radiant-petal": [
+      {
+        "where": "freezington"
+      }
+    ],
+    "rare-bone": [
+      {
+        "where": "roaring-sea-caves"
+      },
+      {
+        "where": "three-point-pass"
+      }
+    ],
+    "rare-candy": [
+      {
+        "where": "slippery-slope"
+      },
+      {
+        "where": "giants-bed"
+      },
+      {
+        "where": "tunnel-to-the-top"
+      },
+      {
+        "where": "roaring-sea-caves"
+      },
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "rash-mint": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "razor-claw": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "red-apricorn": [
+      {
+        "where": "giants-foot"
+      }
+    ],
+    "reins-of-unity": [
+      {
+        "where": "freezington"
+      }
+    ],
+    "reins-of-unity--merge": [
+      {
+        "where": "freezington"
+      }
+    ],
+    "reins-of-unity--split": [
+      {
+        "where": "freezington"
+      }
+    ],
+    "relaxed-mint": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "resist-wing": [
+      {
+        "where": "frigid-sea"
+      }
+    ],
+    "revival-herb": [
+      {
+        "where": "giants-bed"
+      },
+      {
+        "where": "three-point-pass"
+      },
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "revive": [
+      {
+        "where": "slippery-slope"
+      },
+      {
+        "where": "giants-bed"
+      },
+      {
+        "where": "snowslide-slope"
+      },
+      {
+        "where": "roaring-sea-caves"
+      }
+    ],
+    "rindo-berry": [
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "room-service": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "roseli-berry": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "rowap-berry": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "safety-goggles": [
+      {
+        "where": "tunnel-to-the-top"
+      }
+    ],
+    "salac-berry": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "sassy-mint": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "serious-mint": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "shaderoot-carrot": [
+      {
+        "where": "old-cemetery"
+      }
+    ],
+    "shell-bell": [
+      {
+        "where": "frigid-sea"
+      }
+    ],
+    "shiny-stone": [
+      {
+        "where": "lakeside-cave"
+      }
+    ],
+    "shuca-berry": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "sitrus-berry": [
+      {
+        "where": "slippery-slope"
+      },
+      {
+        "where": "ballimere-lake"
+      },
+      {
+        "where": "dyna-tree-hill"
+      }
+    ],
+    "snowball": [
+      {
+        "where": "slippery-slope"
+      }
+    ],
+    "soft-sand": [
+      {
+        "where": "roaring-sea-caves"
+      }
+    ],
+    "soothe-bell": [
+      {
+        "where": "old-cemetery"
+      }
+    ],
+    "star-piece": [
+      {
+        "where": "slippery-slope"
+      },
+      {
+        "where": "frigid-sea"
+      },
+      {
+        "where": "three-point-pass"
+      },
+      {
+        "where": "lakeside-cave"
+      }
+    ],
+    "stardust": [
+      {
+        "where": "roaring-sea-caves"
+      },
+      {
+        "where": "lakeside-cave"
+      }
+    ],
+    "starf-berry": [
+      {
+        "where": "dyna-tree-hill"
+      }
+    ],
+    "sticky-barb": [
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "sun-stone": [
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "super-potion": [
+      {
+        "where": "snowslide-slope"
+      },
+      {
+        "where": "roaring-sea-caves"
+      }
+    ],
+    "swift-wing": [
+      {
+        "where": "frigid-sea"
+      }
+    ],
+    "tamato-berry": [
+      {
+        "where": "ballimere-lake"
+      },
+      {
+        "where": "dyna-tree-hill"
+      }
+    ],
+    "tanga-berry": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "throat-spray": [
+      {
+        "where": "snowslide-slope"
+      }
+    ],
+    "timer-ball": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "timid-mint": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "tiny-mushroom": [
+      {
+        "where": "giants-bed"
+      },
+      {
+        "where": "old-cemetery"
+      },
+      {
+        "where": "giants-foot"
+      }
+    ],
+    "tr03": [
+      {
+        "where": "frigid-sea"
+      }
+    ],
+    "tr05": [
+      {
+        "where": "snowslide-slope"
+      }
+    ],
+    "tr09": [
+      {
+        "where": "three-point-pass"
+      }
+    ],
+    "tr10": [
+      {
+        "where": "roaring-sea-caves"
+      }
+    ],
+    "tr11": [
+      {
+        "where": "crown-shrine"
+      }
+    ],
+    "tr15": [
+      {
+        "where": "tunnel-to-the-top"
+      }
+    ],
+    "tr17": [
+      {
+        "where": "freezington"
+      }
+    ],
+    "tr18": [
+      {
+        "where": "roaring-sea-caves"
+      }
+    ],
+    "tr20": [
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "tr24": [
+      {
+        "where": "three-point-pass"
+      }
+    ],
+    "tr30": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "tr33": [
+      {
+        "where": "old-cemetery"
+      }
+    ],
+    "tr44": [
+      {
+        "where": "slippery-slope"
+      }
+    ],
+    "tr53": [
+      {
+        "where": "snowslide-slope"
+      }
+    ],
+    "tr58": [
+      {
+        "where": "giants-foot"
+      }
+    ],
+    "tr65": [
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "tr66": [
+      {
+        "where": "dyna-tree-hill"
+      }
+    ],
+    "tr70": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "tr73": [
+      {
+        "where": "freezington"
+      }
+    ],
+    "tr75": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "tr83": [
+      {
+        "where": "snowslide-slope"
+      }
+    ],
+    "tr92": [
+      {
+        "where": "roaring-sea-caves"
+      }
+    ],
+    "ultra-ball": [
+      {
+        "where": "slippery-slope"
+      },
+      {
+        "where": "giants-bed"
+      },
+      {
+        "where": "giants-foot"
+      },
+      {
+        "where": "three-point-pass"
+      },
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "utility-umbrella": [
+      {
+        "where": "freezington"
+      }
+    ],
+    "wacan-berry": [
+      {
+        "where": "giants-bed"
+      }
+    ],
+    "white-apricorn": [
+      {
+        "where": "giants-foot"
+      },
+      {
+        "where": "ballimere-lake"
+      },
+      {
+        "where": "dyna-tree-hill"
+      }
+    ],
+    "white-mane-hair": [
+      {
+        "where": "freezington"
+      }
+    ],
+    "wiki-berry": [
+      {
+        "where": "ballimere-lake"
+      }
+    ],
+    "wise-glasses": [
+      {
+        "where": "frostpoint-field"
+      }
+    ],
+    "wishing-piece": [
+      {
+        "where": "freezington"
+      },
+      {
+        "where": "snowslide-slope"
+      }
+    ],
+    "wooden-crown": [
+      {
+        "where": "freezington"
+      }
+    ],
+    "yache-berry": [
+      {
+        "where": "frostpoint-field"
+      }
+    ],
+    "yellow-apricorn": [
+      {
+        "where": "giants-foot"
+      },
+      {
+        "where": "ballimere-lake"
+      }
+    ]
+  },
+  "tutors": {}
+}

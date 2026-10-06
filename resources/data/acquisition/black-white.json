@@ -1,0 +1,3381 @@
+{
+  "_comment": [
+    "게임(버전 그룹)별 입수 사전 (ui/dex/guidebook.h가 읽는다). 형식은 docs/i18n/README.md 참고.",
+    "scripts/i18n/check_acquisition.py로 검증해 넣었다. 출처는 _sources."
+  ],
+  "_sources": [
+    "Serebii.net ItemDex (https://www.serebii.net/itemdex/) — 장소는 PokéAPI/게임 텍스트로 한국어화"
+  ],
+  "versionGroup": "black-white",
+  "items": {
+    "adamant-orb": [
+      {
+        "where": "marvelous-bridge",
+        "detail": "Gift from Dark Trinity"
+      }
+    ],
+    "amulet-coin": [
+      {
+        "where": "castelia-city"
+      }
+    ],
+    "antidote": [
+      {
+        "where": "unova-route-3"
+      },
+      {
+        "where": "pinwheel-forest"
+      },
+      {
+        "where": "pinwheel-forest",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "icirrus-city"
+      }
+    ],
+    "armor-fossil": [
+      {
+        "where": "twist-mountain"
+      }
+    ],
+    "aspear-berry": [
+      {
+        "where": "unova-route-7",
+        "how": "gift",
+        "detail": "레인저에게 받기"
+      },
+      {
+        "where": "castelia-city"
+      }
+    ],
+    "awakening": [
+      {
+        "where": "unova-route-3"
+      },
+      {
+        "where": "dreamyard",
+        "how": "hidden",
+        "detail": "다우징머신"
+      }
+    ],
+    "balm-mushroom": [
+      {
+        "where": "striaton-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "abundant-shrine"
+      }
+    ],
+    "berry-juice": [
+      {
+        "where": "castelia-city"
+      }
+    ],
+    "bicycle": [
+      {
+        "where": "nimbasa-city",
+        "detail": "From Bike Shop Owner"
+      }
+    ],
+    "big-mushroom": [
+      {
+        "where": "unova-route-1"
+      },
+      {
+        "where": "unova-route-6",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "unova-route-12",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "icirrus-city",
+        "how": "hidden",
+        "detail": "다우징머신 · 겨울에만"
+      },
+      {
+        "where": "moor-of-icirrus",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "giant-chasm",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "abundant-shrine",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "lostlorn-forest"
+      }
+    ],
+    "big-nugget": [
+      {
+        "where": "undella-town"
+      }
+    ],
+    "big-pearl": [
+      {
+        "where": "unova-route-13"
+      },
+      {
+        "where": "unova-route-18",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "striaton-city"
+      },
+      {
+        "where": "driftveil-city"
+      }
+    ],
+    "big-root": [
+      {
+        "where": "pinwheel-forest"
+      }
+    ],
+    "black-belt": [
+      {
+        "where": "challengers-cave"
+      }
+    ],
+    "black-flute": [
+      {
+        "where": "unova-route-13"
+      }
+    ],
+    "black-glasses": [
+      {
+        "where": "desert-resort"
+      }
+    ],
+    "blue-flute": [
+      {
+        "where": "unova-route-13"
+      }
+    ],
+    "bright-powder": [
+      {
+        "where": "chargestone-cave"
+      }
+    ],
+    "bug-gem": [
+      {
+        "where": "wellspring-cave"
+      },
+      {
+        "where": "chargestone-cave"
+      },
+      {
+        "where": "mistralton-cave"
+      },
+      {
+        "where": "twist-mountain"
+      },
+      {
+        "where": "challengers-cave"
+      },
+      {
+        "where": "unova-victory-road"
+      },
+      {
+        "where": "giant-chasm"
+      }
+    ],
+    "burn-drive": [
+      {
+        "where": "p2-laboratory",
+        "detail": "Show Genesect"
+      }
+    ],
+    "burn-heal": [
+      {
+        "where": "unova-route-4"
+      },
+      {
+        "where": "unova-route-4",
+        "how": "hidden",
+        "detail": "다우징머신"
+      }
+    ],
+    "calcium": [
+      {
+        "where": "unova-route-18",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "unova-victory-road"
+      },
+      {
+        "where": "village-bridge"
+      }
+    ],
+    "carbos": [
+      {
+        "where": "mistralton-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "moor-of-icirrus"
+      },
+      {
+        "where": "unova-victory-road",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "giant-chasm"
+      }
+    ],
+    "cell-battery": [
+      {
+        "where": "opelucid-city"
+      }
+    ],
+    "charcoal": [
+      {
+        "where": "nacrene-city",
+        "detail": "If you answer Tepig"
+      },
+      {
+        "where": "unova-route-16"
+      }
+    ],
+    "cheri-berry": [
+      {
+        "where": "unova-route-6",
+        "how": "gift",
+        "detail": "레인저에게 받기"
+      },
+      {
+        "where": "castelia-city"
+      }
+    ],
+    "chesto-berry": [
+      {
+        "where": "nacrene-city",
+        "detail": "From Cheren"
+      },
+      {
+        "where": "pinwheel-forest",
+        "how": "gift",
+        "detail": "레인저에게 받기"
+      },
+      {
+        "where": "castelia-city"
+      }
+    ],
+    "chill-drive": [
+      {
+        "where": "p2-laboratory",
+        "detail": "Show Genesect"
+      }
+    ],
+    "choice-scarf": [
+      {
+        "where": "castelia-city"
+      }
+    ],
+    "claw-fossil": [
+      {
+        "where": "twist-mountain"
+      }
+    ],
+    "cleanse-tag": [
+      {
+        "where": "icirrus-city"
+      }
+    ],
+    "clever-wing": [
+      {
+        "where": "driftveil-drawbridge"
+      },
+      {
+        "where": "marvelous-bridge"
+      }
+    ],
+    "comet-shard": [
+      {
+        "where": "giant-chasm"
+      }
+    ],
+    "cover-fossil": [
+      {
+        "where": "relic-castle"
+      }
+    ],
+    "damp-rock": [
+      {
+        "where": "unova-route-8"
+      }
+    ],
+    "dark-gem": [
+      {
+        "where": "wellspring-cave"
+      },
+      {
+        "where": "chargestone-cave"
+      },
+      {
+        "where": "mistralton-cave"
+      },
+      {
+        "where": "twist-mountain"
+      },
+      {
+        "where": "challengers-cave"
+      },
+      {
+        "where": "unova-victory-road"
+      },
+      {
+        "where": "giant-chasm"
+      }
+    ],
+    "dark-stone": [
+      {
+        "where": "nacrene-city",
+        "detail": "From Lenora"
+      }
+    ],
+    "dawn-stone": [
+      {
+        "where": "unova-route-10"
+      },
+      {
+        "where": "wellspring-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "chargestone-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "mistralton-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "twist-mountain",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "challengers-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "unova-victory-road",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "giant-chasm",
+        "how": "field",
+        "detail": "먼지구름"
+      }
+    ],
+    "deep-sea-scale": [
+      {
+        "where": "unova-route-13"
+      }
+    ],
+    "deep-sea-tooth": [
+      {
+        "where": "unova-route-13"
+      },
+      {
+        "where": "unova-route-17"
+      }
+    ],
+    "destiny-knot": [
+      {
+        "where": "opelucid-city"
+      }
+    ],
+    "dive-ball": [
+      {
+        "where": "wellspring-cave"
+      },
+      {
+        "where": "cold-storage",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "village-bridge"
+      }
+    ],
+    "dome-fossil": [
+      {
+        "where": "twist-mountain"
+      }
+    ],
+    "douse-drive": [
+      {
+        "where": "p2-laboratory",
+        "detail": "Show Genesect"
+      }
+    ],
+    "draco-plate": [
+      {
+        "where": "unova-route-13"
+      }
+    ],
+    "dragon-fang": [
+      {
+        "where": "dragonspiral-tower"
+      }
+    ],
+    "dragon-gem": [
+      {
+        "where": "wellspring-cave"
+      },
+      {
+        "where": "chargestone-cave"
+      },
+      {
+        "where": "mistralton-cave"
+      },
+      {
+        "where": "twist-mountain"
+      },
+      {
+        "where": "challengers-cave"
+      },
+      {
+        "where": "unova-victory-road"
+      },
+      {
+        "where": "giant-chasm"
+      }
+    ],
+    "dragon-scale": [
+      {
+        "where": "unova-route-13"
+      },
+      {
+        "where": "unova-route-18"
+      }
+    ],
+    "dragon-skull": [
+      {
+        "where": "pinwheel-forest",
+        "detail": "Defeat Team Plasma"
+      }
+    ],
+    "dread-plate": [
+      {
+        "where": "abyssal-ruins"
+      }
+    ],
+    "dubious-disc": [
+      {
+        "where": "unova-route-13"
+      },
+      {
+        "where": "p2-laboratory"
+      }
+    ],
+    "dusk-ball": [
+      {
+        "where": "striaton-city"
+      },
+      {
+        "where": "castelia-city"
+      }
+    ],
+    "dusk-stone": [
+      {
+        "where": "unova-route-10"
+      },
+      {
+        "where": "mistralton-cave"
+      },
+      {
+        "where": "wellspring-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "chargestone-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "mistralton-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "twist-mountain",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "challengers-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "unova-victory-road",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "giant-chasm",
+        "how": "field",
+        "detail": "먼지구름"
+      }
+    ],
+    "earth-plate": [
+      {
+        "where": "abyssal-ruins"
+      }
+    ],
+    "electirizer": [
+      {
+        "where": "unova-route-13"
+      }
+    ],
+    "electric-gem": [
+      {
+        "where": "wellspring-cave"
+      },
+      {
+        "where": "chargestone-cave"
+      },
+      {
+        "where": "mistralton-cave"
+      },
+      {
+        "where": "twist-mountain"
+      },
+      {
+        "where": "challengers-cave"
+      },
+      {
+        "where": "unova-victory-road"
+      },
+      {
+        "where": "giant-chasm"
+      }
+    ],
+    "elixir": [
+      {
+        "where": "unova-route-1"
+      },
+      {
+        "where": "unova-route-6"
+      },
+      {
+        "where": "wellspring-cave"
+      },
+      {
+        "where": "relic-castle",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "mistralton-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "chargestone-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "twist-mountain",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "lacunosa-town",
+        "how": "hidden",
+        "detail": "다우징머신"
+      }
+    ],
+    "escape-rope": [
+      {
+        "where": "wellspring-cave"
+      }
+    ],
+    "ether": [
+      {
+        "where": "unova-route-4"
+      },
+      {
+        "where": "unova-route-4",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "pinwheel-forest"
+      },
+      {
+        "where": "pinwheel-forest",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "desert-resort",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "nimbasa-city"
+      },
+      {
+        "where": "cold-storage"
+      },
+      {
+        "where": "twist-mountain"
+      }
+    ],
+    "everstone": [
+      {
+        "where": "castelia-city"
+      }
+    ],
+    "eviolite": [
+      {
+        "where": "castelia-city"
+      }
+    ],
+    "expert-belt": [
+      {
+        "where": "driftveil-city",
+        "detail": "Show Lv. 30 Pokémon in Market"
+      }
+    ],
+    "fighting-gem": [
+      {
+        "where": "wellspring-cave"
+      },
+      {
+        "where": "chargestone-cave"
+      },
+      {
+        "where": "mistralton-cave"
+      },
+      {
+        "where": "twist-mountain"
+      },
+      {
+        "where": "challengers-cave"
+      },
+      {
+        "where": "unova-victory-road"
+      },
+      {
+        "where": "giant-chasm"
+      }
+    ],
+    "fire-gem": [
+      {
+        "where": "wellspring-cave"
+      },
+      {
+        "where": "chargestone-cave"
+      },
+      {
+        "where": "mistralton-cave"
+      },
+      {
+        "where": "twist-mountain"
+      },
+      {
+        "where": "challengers-cave"
+      },
+      {
+        "where": "unova-victory-road"
+      },
+      {
+        "where": "giant-chasm"
+      }
+    ],
+    "fire-stone": [
+      {
+        "where": "castelia-city",
+        "detail": "Answer Pansear"
+      },
+      {
+        "where": "desert-resort"
+      },
+      {
+        "where": "wellspring-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "chargestone-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "mistralton-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "twist-mountain",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "challengers-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "unova-victory-road",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "giant-chasm",
+        "how": "field",
+        "detail": "먼지구름"
+      }
+    ],
+    "fist-plate": [
+      {
+        "where": "abyssal-ruins"
+      }
+    ],
+    "flame-plate": [
+      {
+        "where": "abyssal-ruins"
+      }
+    ],
+    "float-stone": [
+      {
+        "where": "opelucid-city"
+      }
+    ],
+    "flying-gem": [
+      {
+        "where": "wellspring-cave"
+      },
+      {
+        "where": "chargestone-cave"
+      },
+      {
+        "where": "mistralton-cave"
+      },
+      {
+        "where": "twist-mountain"
+      },
+      {
+        "where": "challengers-cave"
+      },
+      {
+        "where": "unova-victory-road"
+      },
+      {
+        "where": "giant-chasm"
+      }
+    ],
+    "fresh-water": [
+      {
+        "where": "striaton-city",
+        "detail": "Gift in Entrance to Gym"
+      },
+      {
+        "where": "nacrene-city",
+        "detail": "In Gym Entrance"
+      },
+      {
+        "where": "castelia-city"
+      },
+      {
+        "where": "desert-resort"
+      },
+      {
+        "where": "nimbasa-city",
+        "detail": "In Gym Entrance"
+      },
+      {
+        "where": "driftveil-city",
+        "detail": "In Gym Entrance"
+      },
+      {
+        "where": "mistralton-city",
+        "detail": "In Gym Entrance"
+      },
+      {
+        "where": "icirrus-city"
+      },
+      {
+        "where": "opelucid-city",
+        "detail": "In Gym Entrance"
+      }
+    ],
+    "full-heal": [
+      {
+        "where": "unova-route-3"
+      },
+      {
+        "where": "unova-route-8"
+      },
+      {
+        "where": "unova-route-10"
+      },
+      {
+        "where": "unova-route-12"
+      },
+      {
+        "where": "striaton-city"
+      },
+      {
+        "where": "wellspring-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "twist-mountain"
+      },
+      {
+        "where": "unova-victory-road",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "unova-victory-road"
+      },
+      {
+        "where": "giant-chasm"
+      }
+    ],
+    "full-restore": [
+      {
+        "where": "unova-route-8",
+        "detail": "From Bianca"
+      },
+      {
+        "where": "unova-route-8",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "unova-route-9"
+      },
+      {
+        "where": "unova-route-10"
+      },
+      {
+        "where": "anville-town"
+      },
+      {
+        "where": "ns-castle"
+      }
+    ],
+    "genius-wing": [
+      {
+        "where": "driftveil-drawbridge"
+      },
+      {
+        "where": "marvelous-bridge"
+      }
+    ],
+    "ghost-gem": [
+      {
+        "where": "wellspring-cave"
+      },
+      {
+        "where": "chargestone-cave"
+      },
+      {
+        "where": "mistralton-cave"
+      },
+      {
+        "where": "twist-mountain"
+      },
+      {
+        "where": "challengers-cave"
+      },
+      {
+        "where": "unova-victory-road"
+      },
+      {
+        "where": "giant-chasm"
+      }
+    ],
+    "gracidea": [
+      {
+        "where": "lacunosa-town"
+      }
+    ],
+    "gram-1": [
+      {
+        "where": "unova-route-13"
+      }
+    ],
+    "gram-2": [
+      {
+        "where": "unova-route-13"
+      }
+    ],
+    "gram-3": [
+      {
+        "where": "unova-route-13"
+      }
+    ],
+    "grass-gem": [
+      {
+        "where": "wellspring-cave"
+      },
+      {
+        "where": "chargestone-cave"
+      },
+      {
+        "where": "mistralton-cave"
+      },
+      {
+        "where": "twist-mountain"
+      },
+      {
+        "where": "challengers-cave"
+      },
+      {
+        "where": "unova-victory-road"
+      },
+      {
+        "where": "giant-chasm"
+      }
+    ],
+    "great-ball": [
+      {
+        "where": "unova-route-2"
+      },
+      {
+        "where": "unova-route-3"
+      },
+      {
+        "where": "unova-route-4"
+      },
+      {
+        "where": "unova-route-5"
+      },
+      {
+        "where": "striaton-city"
+      },
+      {
+        "where": "pinwheel-forest"
+      },
+      {
+        "where": "castelia-city"
+      }
+    ],
+    "griseous-orb": [
+      {
+        "where": "marvelous-bridge",
+        "detail": "Gift from Dark Trinity"
+      }
+    ],
+    "ground-gem": [
+      {
+        "where": "wellspring-cave"
+      },
+      {
+        "where": "chargestone-cave"
+      },
+      {
+        "where": "mistralton-cave"
+      },
+      {
+        "where": "twist-mountain"
+      },
+      {
+        "where": "challengers-cave"
+      },
+      {
+        "where": "unova-victory-road"
+      },
+      {
+        "where": "giant-chasm"
+      }
+    ],
+    "hard-stone": [
+      {
+        "where": "mistralton-cave"
+      }
+    ],
+    "heal-ball": [
+      {
+        "where": "unova-route-3",
+        "detail": "From children in Nursery"
+      },
+      {
+        "where": "castelia-city"
+      },
+      {
+        "where": "chargestone-cave"
+      }
+    ],
+    "health-wing": [
+      {
+        "where": "driftveil-drawbridge"
+      },
+      {
+        "where": "marvelous-bridge"
+      }
+    ],
+    "heart-scale": [
+      {
+        "where": "unova-route-13"
+      },
+      {
+        "where": "unova-route-17",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "unova-route-18"
+      },
+      {
+        "where": "unova-route-18",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "desert-resort"
+      },
+      {
+        "where": "driftveil-city"
+      },
+      {
+        "where": "cold-storage"
+      },
+      {
+        "where": "dragonspiral-tower",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "undella-bay",
+        "how": "hidden",
+        "detail": "다우징머신"
+      }
+    ],
+    "heat-rock": [
+      {
+        "where": "unova-route-8"
+      }
+    ],
+    "helix-fossil": [
+      {
+        "where": "twist-mountain"
+      }
+    ],
+    "hm01": [
+      {
+        "where": "striaton-city",
+        "detail": "Gift from Fennel"
+      }
+    ],
+    "hm02": [
+      {
+        "where": "driftveil-city",
+        "detail": "From Bianca"
+      }
+    ],
+    "hm03": [
+      {
+        "where": "twist-mountain",
+        "detail": "From Alder"
+      }
+    ],
+    "hm04": [
+      {
+        "where": "nimbasa-city"
+      }
+    ],
+    "hm05": [
+      {
+        "where": "unova-route-18"
+      }
+    ],
+    "hm06": [
+      {
+        "where": "undella-town"
+      }
+    ],
+    "hp-up": [
+      {
+        "where": "unova-route-3"
+      },
+      {
+        "where": "unova-route-9"
+      },
+      {
+        "where": "chargestone-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      }
+    ],
+    "hyper-potion": [
+      {
+        "where": "unova-route-4"
+      },
+      {
+        "where": "unova-route-4",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "unova-route-5"
+      },
+      {
+        "where": "unova-route-6"
+      },
+      {
+        "where": "unova-route-10"
+      },
+      {
+        "where": "unova-route-11"
+      },
+      {
+        "where": "unova-route-11",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "dreamyard"
+      },
+      {
+        "where": "wellspring-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "pinwheel-forest"
+      },
+      {
+        "where": "castelia-city"
+      },
+      {
+        "where": "desert-resort",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "cold-storage"
+      },
+      {
+        "where": "cold-storage",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "mistralton-cave"
+      },
+      {
+        "where": "mistralton-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "chargestone-cave"
+      },
+      {
+        "where": "celestial-tower"
+      },
+      {
+        "where": "twist-mountain",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "dragonspiral-tower"
+      },
+      {
+        "where": "unova-victory-road",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "abundant-shrine"
+      }
+    ],
+    "ice-gem": [
+      {
+        "where": "wellspring-cave"
+      },
+      {
+        "where": "chargestone-cave"
+      },
+      {
+        "where": "mistralton-cave"
+      },
+      {
+        "where": "twist-mountain"
+      },
+      {
+        "where": "challengers-cave"
+      },
+      {
+        "where": "unova-victory-road"
+      },
+      {
+        "where": "giant-chasm"
+      }
+    ],
+    "ice-heal": [
+      {
+        "where": "cold-storage"
+      }
+    ],
+    "icicle-plate": [
+      {
+        "where": "abyssal-ruins"
+      }
+    ],
+    "icy-rock": [
+      {
+        "where": "unova-route-8"
+      }
+    ],
+    "insect-plate": [
+      {
+        "where": "abyssal-ruins"
+      }
+    ],
+    "iron": [
+      {
+        "where": "mistralton-cave"
+      },
+      {
+        "where": "chargestone-cave"
+      },
+      {
+        "where": "twist-mountain",
+        "how": "hidden",
+        "detail": "다우징머신"
+      }
+    ],
+    "iron-plate": [
+      {
+        "where": "abyssal-ruins"
+      }
+    ],
+    "kings-rock": [
+      {
+        "where": "unova-route-13"
+      }
+    ],
+    "lagreat-ball": [
+      {
+        "where": "unova-route-2"
+      },
+      {
+        "where": "unova-route-3"
+      },
+      {
+        "where": "unova-route-4"
+      },
+      {
+        "where": "unova-route-5"
+      },
+      {
+        "where": "striaton-city"
+      },
+      {
+        "where": "pinwheel-forest"
+      },
+      {
+        "where": "castelia-city"
+      }
+    ],
+    "lapoke-ball": [
+      {
+        "where": "unova-route-1",
+        "detail": "Gift from Professor Juniper"
+      },
+      {
+        "where": "unova-route-2"
+      },
+      {
+        "where": "accumula-town"
+      },
+      {
+        "where": "dreamyard"
+      }
+    ],
+    "laultra-ball": [
+      {
+        "where": "unova-route-4",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "unova-route-7"
+      },
+      {
+        "where": "unova-route-8"
+      },
+      {
+        "where": "unova-route-14"
+      },
+      {
+        "where": "unova-route-15",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "dreamyard",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "nacrene-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "nimbasa-city",
+        "detail": "From Professor Juniper"
+      },
+      {
+        "where": "driftveil-city"
+      },
+      {
+        "where": "mistralton-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "twist-mountain"
+      },
+      {
+        "where": "twist-mountain",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "icirrus-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "moor-of-icirrus"
+      },
+      {
+        "where": "opelucid-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "unova-victory-road",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "unova-victory-road"
+      },
+      {
+        "place": "Liberty Island",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "ns-castle"
+      }
+    ],
+    "lava-cookie": [
+      {
+        "where": "castelia-city"
+      }
+    ],
+    "leaf-stone": [
+      {
+        "where": "unova-route-6",
+        "detail": "Show all forms of Deerling in Season Institute"
+      },
+      {
+        "where": "castelia-city",
+        "detail": "Answer Pansage"
+      },
+      {
+        "where": "wellspring-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "chargestone-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "mistralton-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "twist-mountain",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "challengers-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "unova-victory-road",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "giant-chasm",
+        "how": "field",
+        "detail": "먼지구름"
+      }
+    ],
+    "leftovers": [
+      {
+        "where": "village-bridge",
+        "how": "hidden",
+        "detail": "다우징머신"
+      }
+    ],
+    "lemonade": [
+      {
+        "where": "unova-route-9"
+      },
+      {
+        "where": "castelia-city"
+      }
+    ],
+    "leppa-berry": [
+      {
+        "where": "unova-route-11",
+        "how": "gift",
+        "detail": "레인저에게 받기"
+      }
+    ],
+    "light-stone": [
+      {
+        "where": "nacrene-city",
+        "detail": "From Lenora"
+      }
+    ],
+    "lucky-egg": [
+      {
+        "where": "unova-route-13"
+      },
+      {
+        "where": "chargestone-cave",
+        "detail": "From Professor Juniper"
+      }
+    ],
+    "lucky-punch": [
+      {
+        "where": "unova-route-13"
+      }
+    ],
+    "lum-berry": [
+      {
+        "where": "unova-route-3"
+      },
+      {
+        "where": "village-bridge",
+        "detail": "Daily"
+      }
+    ],
+    "lustrous-orb": [
+      {
+        "where": "marvelous-bridge",
+        "detail": "Gift from Dark Trinity"
+      }
+    ],
+    "macho-brace": [
+      {
+        "where": "nimbasa-city"
+      }
+    ],
+    "magmarizer": [
+      {
+        "where": "unova-route-13"
+      }
+    ],
+    "magnet": [
+      {
+        "where": "chargestone-cave"
+      }
+    ],
+    "master-ball": [
+      {
+        "where": "castelia-city"
+      },
+      {
+        "where": "opelucid-city",
+        "detail": "From Professor Juniper"
+      }
+    ],
+    "max-elixir": [
+      {
+        "where": "unova-route-8",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "unova-route-14",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "unova-route-18"
+      },
+      {
+        "where": "wellspring-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "dragonspiral-tower"
+      },
+      {
+        "where": "moor-of-icirrus"
+      },
+      {
+        "where": "giant-chasm"
+      }
+    ],
+    "max-ether": [
+      {
+        "where": "unova-route-3"
+      },
+      {
+        "where": "unova-route-7"
+      },
+      {
+        "where": "unova-route-9"
+      },
+      {
+        "where": "unova-route-13"
+      },
+      {
+        "where": "mistralton-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "moor-of-icirrus",
+        "how": "hidden",
+        "detail": "다우징머신"
+      }
+    ],
+    "max-potion": [
+      {
+        "where": "unova-route-10",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "dreamyard",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "wellspring-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "relic-castle"
+      },
+      {
+        "where": "chargestone-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "twist-mountain"
+      },
+      {
+        "where": "icirrus-city",
+        "how": "hidden",
+        "detail": "다우징머신 · 겨울에만"
+      },
+      {
+        "where": "moor-of-icirrus"
+      },
+      {
+        "where": "unova-victory-road",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "giant-chasm"
+      },
+      {
+        "where": "ns-castle"
+      }
+    ],
+    "max-repel": [
+      {
+        "where": "nimbasa-city"
+      },
+      {
+        "where": "mistralton-cave"
+      },
+      {
+        "where": "opelucid-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "lacunosa-town",
+        "how": "hidden",
+        "detail": "다우징머신"
+      }
+    ],
+    "max-revive": [
+      {
+        "where": "unova-route-10",
+        "detail": "From Bianca"
+      },
+      {
+        "where": "unova-route-11",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "unova-route-13"
+      },
+      {
+        "where": "unova-route-15",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "relic-castle"
+      },
+      {
+        "where": "nimbasa-city"
+      },
+      {
+        "where": "moor-of-icirrus"
+      },
+      {
+        "where": "unova-victory-road"
+      },
+      {
+        "where": "giant-chasm"
+      },
+      {
+        "where": "ns-castle"
+      }
+    ],
+    "meadow-plate": [
+      {
+        "where": "abyssal-ruins"
+      }
+    ],
+    "metal-coat": [
+      {
+        "where": "unova-route-13"
+      },
+      {
+        "where": "twist-mountain"
+      }
+    ],
+    "metal-powder": [
+      {
+        "where": "unova-route-13"
+      }
+    ],
+    "mind-plate": [
+      {
+        "where": "abyssal-ruins"
+      }
+    ],
+    "miracle-seed": [
+      {
+        "where": "nacrene-city",
+        "detail": "If you answer Snivy"
+      },
+      {
+        "where": "pinwheel-forest"
+      }
+    ],
+    "moon-stone": [
+      {
+        "where": "pinwheel-forest",
+        "detail": "From Lenora"
+      },
+      {
+        "where": "twist-mountain"
+      },
+      {
+        "where": "wellspring-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "chargestone-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "mistralton-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "twist-mountain",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "challengers-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "unova-victory-road",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "giant-chasm",
+        "how": "field",
+        "detail": "먼지구름"
+      }
+    ],
+    "muscle-wing": [
+      {
+        "where": "driftveil-drawbridge"
+      },
+      {
+        "where": "marvelous-bridge"
+      }
+    ],
+    "mystic-water": [
+      {
+        "where": "wellspring-cave"
+      },
+      {
+        "where": "nacrene-city",
+        "detail": "If you answer Oshawott"
+      }
+    ],
+    "net-ball": [
+      {
+        "where": "pinwheel-forest"
+      },
+      {
+        "where": "castelia-city"
+      },
+      {
+        "where": "cold-storage"
+      }
+    ],
+    "normal-gem": [
+      {
+        "where": "wellspring-cave"
+      },
+      {
+        "where": "chargestone-cave"
+      },
+      {
+        "where": "mistralton-cave"
+      },
+      {
+        "where": "twist-mountain"
+      },
+      {
+        "where": "challengers-cave"
+      },
+      {
+        "where": "unova-victory-road"
+      },
+      {
+        "where": "giant-chasm"
+      }
+    ],
+    "nugget": [
+      {
+        "where": "nimbasa-city"
+      },
+      {
+        "where": "chargestone-cave"
+      },
+      {
+        "where": "twist-mountain"
+      },
+      {
+        "where": "dragonspiral-tower",
+        "detail": "겨울에만"
+      },
+      {
+        "where": "moor-of-icirrus",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "challengers-cave"
+      },
+      {
+        "where": "unova-victory-road"
+      }
+    ],
+    "old-amber": [
+      {
+        "where": "twist-mountain"
+      }
+    ],
+    "old-gateau": [
+      {
+        "where": "dragonspiral-tower",
+        "detail": "Gift from Professor Juniper"
+      },
+      {
+        "where": "castelia-city"
+      }
+    ],
+    "oran-berry": [
+      {
+        "where": "unova-route-3"
+      },
+      {
+        "where": "striaton-city",
+        "detail": "Gift from Cheren"
+      }
+    ],
+    "oval-stone": [
+      {
+        "where": "challengers-cave"
+      }
+    ],
+    "pal-pad": [
+      {
+        "where": "striaton-city",
+        "detail": "Gift from Fennel's Assistant"
+      }
+    ],
+    "paralyze-heal": [
+      {
+        "where": "dreamyard"
+      },
+      {
+        "where": "pinwheel-forest"
+      },
+      {
+        "where": "chargestone-cave"
+      },
+      {
+        "where": "chargestone-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "mistralton-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      }
+    ],
+    "pearl": [
+      {
+        "where": "unova-route-1"
+      },
+      {
+        "where": "unova-route-4",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "unova-route-13"
+      },
+      {
+        "where": "unova-route-18",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "undella-bay",
+        "how": "hidden",
+        "detail": "다우징머신"
+      }
+    ],
+    "pearl-string": [
+      {
+        "where": "unova-route-13",
+        "how": "hidden",
+        "detail": "다우징머신"
+      }
+    ],
+    "pecha-berry": [
+      {
+        "where": "unova-route-8",
+        "how": "gift",
+        "detail": "레인저에게 받기"
+      },
+      {
+        "where": "pinwheel-forest",
+        "how": "gift",
+        "detail": "레인저에게 받기"
+      },
+      {
+        "where": "castelia-city"
+      }
+    ],
+    "persim-berry": [
+      {
+        "where": "unova-route-1",
+        "detail": "Gift from Ranger"
+      }
+    ],
+    "plume-fossil": [
+      {
+        "where": "relic-castle"
+      }
+    ],
+    "poison-barb": [
+      {
+        "where": "unova-route-8"
+      }
+    ],
+    "poison-gem": [
+      {
+        "where": "wellspring-cave"
+      },
+      {
+        "where": "chargestone-cave"
+      },
+      {
+        "where": "mistralton-cave"
+      },
+      {
+        "where": "twist-mountain"
+      },
+      {
+        "where": "challengers-cave"
+      },
+      {
+        "where": "unova-victory-road"
+      },
+      {
+        "where": "giant-chasm"
+      }
+    ],
+    "poke-ball": [
+      {
+        "where": "unova-route-1",
+        "detail": "Gift from Professor Juniper"
+      },
+      {
+        "where": "unova-route-2"
+      },
+      {
+        "where": "accumula-town"
+      },
+      {
+        "where": "dreamyard"
+      }
+    ],
+    "potion": [
+      {
+        "where": "unova-route-1"
+      },
+      {
+        "where": "unova-route-2"
+      }
+    ],
+    "pp-max": [
+      {
+        "where": "castelia-city"
+      },
+      {
+        "where": "relic-castle",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "nimbasa-city"
+      }
+    ],
+    "pp-up": [
+      {
+        "where": "unova-route-7"
+      },
+      {
+        "where": "unova-route-9"
+      },
+      {
+        "where": "wellspring-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "relic-castle"
+      },
+      {
+        "where": "nimbasa-city"
+      },
+      {
+        "where": "cold-storage"
+      },
+      {
+        "where": "mistralton-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "twist-mountain"
+      },
+      {
+        "where": "anville-town"
+      },
+      {
+        "where": "challengers-cave"
+      }
+    ],
+    "pretty-wing": [
+      {
+        "where": "driftveil-drawbridge"
+      },
+      {
+        "where": "marvelous-bridge"
+      }
+    ],
+    "prism-scale": [
+      {
+        "where": "unova-route-13"
+      },
+      {
+        "where": "undella-town"
+      }
+    ],
+    "prop-case": [
+      {
+        "where": "nimbasa-city",
+        "detail": "From Owner of Musical"
+      }
+    ],
+    "protector": [
+      {
+        "where": "unova-route-11"
+      },
+      {
+        "where": "unova-route-13"
+      }
+    ],
+    "protein": [
+      {
+        "where": "cold-storage"
+      },
+      {
+        "where": "twist-mountain",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "challengers-cave"
+      },
+      {
+        "where": "lostlorn-forest",
+        "how": "hidden",
+        "detail": "다우징머신"
+      }
+    ],
+    "psychic-gem": [
+      {
+        "where": "wellspring-cave"
+      },
+      {
+        "where": "chargestone-cave"
+      },
+      {
+        "where": "mistralton-cave"
+      },
+      {
+        "where": "twist-mountain"
+      },
+      {
+        "where": "challengers-cave"
+      },
+      {
+        "where": "unova-victory-road"
+      },
+      {
+        "where": "giant-chasm"
+      }
+    ],
+    "quick-ball": [
+      {
+        "where": "castelia-city"
+      }
+    ],
+    "quick-claw": [
+      {
+        "where": "skyarrow-bridge"
+      }
+    ],
+    "rage-candy-bar": [
+      {
+        "where": "desert-resort",
+        "detail": "From Professor Juniper"
+      },
+      {
+        "where": "icirrus-city",
+        "detail": "Winter"
+      },
+      {
+        "where": "castelia-city"
+      }
+    ],
+    "rare-candy": [
+      {
+        "where": "unova-route-2"
+      },
+      {
+        "where": "unova-route-3",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "unova-route-13"
+      },
+      {
+        "where": "unova-route-16"
+      },
+      {
+        "where": "pinwheel-forest",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "desert-resort",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "nimbasa-city"
+      },
+      {
+        "where": "mistralton-cave"
+      },
+      {
+        "where": "chargestone-cave"
+      },
+      {
+        "where": "twist-mountain",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "icirrus-city",
+        "detail": "겨울에만"
+      },
+      {
+        "where": "anville-town"
+      },
+      {
+        "where": "unova-victory-road"
+      },
+      {
+        "where": "abundant-shrine"
+      },
+      {
+        "where": "lostlorn-forest"
+      },
+      {
+        "where": "ns-castle"
+      },
+      {
+        "where": "castelia-city"
+      }
+    ],
+    "rawst-berry": [
+      {
+        "where": "castelia-city"
+      },
+      {
+        "where": "desert-resort",
+        "how": "gift",
+        "detail": "레인저에게 받기"
+      }
+    ],
+    "razor-claw": [
+      {
+        "where": "unova-route-13"
+      }
+    ],
+    "razor-fang": [
+      {
+        "where": "unova-route-13"
+      },
+      {
+        "where": "abundant-shrine"
+      }
+    ],
+    "reaper-cloth": [
+      {
+        "where": "unova-route-13"
+      },
+      {
+        "where": "unova-route-14"
+      }
+    ],
+    "red-flute": [
+      {
+        "where": "unova-route-13"
+      }
+    ],
+    "relic-band": [
+      {
+        "where": "abyssal-ruins"
+      }
+    ],
+    "relic-copper": [
+      {
+        "where": "abyssal-ruins"
+      }
+    ],
+    "relic-crown": [
+      {
+        "where": "abyssal-ruins"
+      }
+    ],
+    "relic-gold": [
+      {
+        "where": "abyssal-ruins"
+      }
+    ],
+    "relic-silver": [
+      {
+        "where": "abyssal-ruins"
+      }
+    ],
+    "relic-statue": [
+      {
+        "where": "abyssal-ruins"
+      }
+    ],
+    "relic-vase": [
+      {
+        "where": "abyssal-ruins"
+      }
+    ],
+    "repeat-ball": [
+      {
+        "where": "driftveil-city"
+      }
+    ],
+    "repel": [
+      {
+        "where": "unova-route-3"
+      },
+      {
+        "where": "dreamyard"
+      },
+      {
+        "where": "mistralton-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      }
+    ],
+    "resist-wing": [
+      {
+        "where": "driftveil-drawbridge"
+      },
+      {
+        "where": "marvelous-bridge"
+      }
+    ],
+    "revive": [
+      {
+        "where": "unova-route-5"
+      },
+      {
+        "where": "unova-route-12"
+      },
+      {
+        "where": "dreamyard"
+      },
+      {
+        "where": "wellspring-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "nacrene-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "castelia-city"
+      },
+      {
+        "where": "relic-castle"
+      },
+      {
+        "where": "mistralton-cave"
+      },
+      {
+        "where": "chargestone-cave"
+      },
+      {
+        "where": "chargestone-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "celestial-tower"
+      },
+      {
+        "where": "twist-mountain",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "twist-mountain"
+      },
+      {
+        "where": "dragonspiral-tower"
+      },
+      {
+        "where": "moor-of-icirrus",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "anville-town"
+      },
+      {
+        "where": "unova-victory-road",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "giant-chasm"
+      }
+    ],
+    "ring-target": [
+      {
+        "where": "opelucid-city"
+      }
+    ],
+    "rock-gem": [
+      {
+        "where": "wellspring-cave"
+      },
+      {
+        "where": "chargestone-cave"
+      },
+      {
+        "where": "mistralton-cave"
+      },
+      {
+        "where": "twist-mountain"
+      },
+      {
+        "where": "challengers-cave"
+      },
+      {
+        "where": "unova-victory-road"
+      },
+      {
+        "where": "giant-chasm"
+      }
+    ],
+    "rocky-helmet": [
+      {
+        "where": "cold-storage"
+      }
+    ],
+    "root-fossil": [
+      {
+        "where": "twist-mountain"
+      }
+    ],
+    "scope-lens": [
+      {
+        "where": "castelia-city"
+      }
+    ],
+    "sharp-beak": [
+      {
+        "where": "mistralton-city"
+      }
+    ],
+    "shell-bell": [
+      {
+        "where": "driftveil-city"
+      }
+    ],
+    "shiny-stone": [
+      {
+        "where": "unova-route-6"
+      },
+      {
+        "where": "dragonspiral-tower"
+      },
+      {
+        "where": "wellspring-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "chargestone-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "mistralton-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "twist-mountain",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "challengers-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "unova-victory-road",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "giant-chasm",
+        "how": "field",
+        "detail": "먼지구름"
+      }
+    ],
+    "shoal-salt": [
+      {
+        "where": "unova-route-13"
+      }
+    ],
+    "shoal-shell": [
+      {
+        "where": "unova-route-13"
+      }
+    ],
+    "shock-drive": [
+      {
+        "where": "p2-laboratory",
+        "detail": "Show Genesect"
+      }
+    ],
+    "silk-scarf": [
+      {
+        "where": "unova-route-6"
+      }
+    ],
+    "silver-powder": [
+      {
+        "where": "pinwheel-forest"
+      }
+    ],
+    "sitrus-berry": [
+      {
+        "where": "unova-route-12",
+        "how": "gift",
+        "detail": "레인저에게 받기"
+      },
+      {
+        "where": "unova-route-15",
+        "how": "gift",
+        "detail": "레인저에게 받기"
+      },
+      {
+        "where": "moor-of-icirrus",
+        "how": "gift",
+        "detail": "레인저에게 받기"
+      }
+    ],
+    "skull-fossil": [
+      {
+        "where": "twist-mountain"
+      }
+    ],
+    "sky-plate": [
+      {
+        "where": "abyssal-ruins"
+      }
+    ],
+    "smoke-ball": [
+      {
+        "where": "castelia-city"
+      }
+    ],
+    "smooth-rock": [
+      {
+        "where": "unova-route-8"
+      }
+    ],
+    "soda-pop": [
+      {
+        "where": "nacrene-city",
+        "detail": "Wednesday Only"
+      },
+      {
+        "where": "castelia-city"
+      }
+    ],
+    "soft-sand": [
+      {
+        "where": "desert-resort"
+      }
+    ],
+    "soothe-bell": [
+      {
+        "where": "nimbasa-city"
+      }
+    ],
+    "spell-tag": [
+      {
+        "where": "celestial-tower"
+      }
+    ],
+    "splash-plate": [
+      {
+        "where": "unova-route-13"
+      }
+    ],
+    "spooky-plate": [
+      {
+        "where": "abyssal-ruins"
+      }
+    ],
+    "star-piece": [
+      {
+        "where": "pinwheel-forest",
+        "detail": "Daily"
+      },
+      {
+        "where": "chargestone-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "dragonspiral-tower"
+      },
+      {
+        "where": "giant-chasm"
+      }
+    ],
+    "stardust": [
+      {
+        "where": "unova-route-13"
+      },
+      {
+        "where": "desert-resort"
+      },
+      {
+        "where": "desert-resort",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "twist-mountain",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "dragonspiral-tower"
+      },
+      {
+        "where": "undella-bay",
+        "how": "hidden",
+        "detail": "다우징머신"
+      }
+    ],
+    "steel-gem": [
+      {
+        "where": "wellspring-cave"
+      },
+      {
+        "where": "chargestone-cave"
+      },
+      {
+        "where": "mistralton-cave"
+      },
+      {
+        "where": "twist-mountain"
+      },
+      {
+        "where": "challengers-cave"
+      },
+      {
+        "where": "unova-victory-road"
+      },
+      {
+        "where": "giant-chasm"
+      }
+    ],
+    "stick": [
+      {
+        "where": "unova-route-13"
+      }
+    ],
+    "stone-plate": [
+      {
+        "where": "abyssal-ruins"
+      }
+    ],
+    "sun-stone": [
+      {
+        "where": "relic-castle"
+      },
+      {
+        "where": "nimbasa-city"
+      }
+    ],
+    "super-potion": [
+      {
+        "where": "unova-route-2"
+      },
+      {
+        "where": "unova-route-3",
+        "detail": "From Cheren"
+      },
+      {
+        "where": "unova-route-4"
+      },
+      {
+        "where": "pinwheel-forest"
+      },
+      {
+        "where": "pinwheel-forest",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "desert-resort"
+      },
+      {
+        "where": "relic-castle",
+        "how": "hidden",
+        "detail": "다우징머신"
+      }
+    ],
+    "super-rod": [
+      {
+        "where": "nuvema-town",
+        "detail": "Gift from Looker"
+      }
+    ],
+    "swift-wing": [
+      {
+        "where": "driftveil-drawbridge"
+      },
+      {
+        "where": "marvelous-bridge"
+      }
+    ],
+    "thick-club": [
+      {
+        "where": "unova-route-13"
+      }
+    ],
+    "thunder-stone": [
+      {
+        "where": "unova-route-9"
+      },
+      {
+        "where": "chargestone-cave"
+      },
+      {
+        "where": "wellspring-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "chargestone-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "mistralton-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "twist-mountain",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "challengers-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "unova-victory-road",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "giant-chasm",
+        "how": "field",
+        "detail": "먼지구름"
+      }
+    ],
+    "timer-ball": [
+      {
+        "where": "castelia-city"
+      },
+      {
+        "where": "chargestone-cave"
+      },
+      {
+        "where": "challengers-cave"
+      }
+    ],
+    "tiny-mushroom": [
+      {
+        "where": "unova-route-6",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "unova-route-12",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "pinwheel-forest",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "icirrus-city",
+        "how": "hidden",
+        "detail": "다우징머신 · 겨울에만"
+      },
+      {
+        "where": "giant-chasm",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "abundant-shrine",
+        "how": "hidden",
+        "detail": "다우징머신"
+      }
+    ],
+    "tm01": [
+      {
+        "where": "cold-storage",
+        "detail": "From sage"
+      }
+    ],
+    "tm02": [
+      {
+        "where": "unova-victory-road"
+      }
+    ],
+    "tm03": [
+      {
+        "where": "giant-chasm"
+      }
+    ],
+    "tm04": [
+      {
+        "where": "relic-castle",
+        "detail": "From Sage"
+      }
+    ],
+    "tm05": [
+      {
+        "where": "unova-route-10"
+      }
+    ],
+    "tm06": [
+      {
+        "where": "unova-route-17"
+      }
+    ],
+    "tm08": [
+      {
+        "where": "unova-route-14",
+        "detail": "From Sage"
+      }
+    ],
+    "tm09": [
+      {
+        "where": "unova-route-15"
+      }
+    ],
+    "tm10": [
+      {
+        "where": "nuvema-town",
+        "detail": "Gift from Professor Juniper"
+      }
+    ],
+    "tm12": [
+      {
+        "where": "unova-victory-road"
+      }
+    ],
+    "tm13": [
+      {
+        "where": "giant-chasm"
+      }
+    ],
+    "tm17": [
+      {
+        "where": "nuvema-town",
+        "detail": "Gift from Professor Juniper"
+      }
+    ],
+    "tm19": [
+      {
+        "where": "unova-route-18"
+      }
+    ],
+    "tm22": [
+      {
+        "where": "pinwheel-forest"
+      }
+    ],
+    "tm24": [
+      {
+        "where": "p2-laboratory"
+      }
+    ],
+    "tm26": [
+      {
+        "where": "relic-castle"
+      }
+    ],
+    "tm28": [
+      {
+        "where": "unova-route-4"
+      }
+    ],
+    "tm29": [
+      {
+        "where": "unova-route-13"
+      }
+    ],
+    "tm30": [
+      {
+        "where": "relic-castle"
+      }
+    ],
+    "tm31": [
+      {
+        "where": "icirrus-city"
+      }
+    ],
+    "tm32": [
+      {
+        "where": "unova-route-18"
+      }
+    ],
+    "tm35": [
+      {
+        "where": "abundant-shrine"
+      }
+    ],
+    "tm36": [
+      {
+        "where": "unova-route-8"
+      }
+    ],
+    "tm39": [
+      {
+        "where": "desert-resort"
+      }
+    ],
+    "tm40": [
+      {
+        "where": "mistralton-city"
+      }
+    ],
+    "tm41": [
+      {
+        "where": "unova-route-4"
+      }
+    ],
+    "tm42": [
+      {
+        "where": "unova-route-8"
+      }
+    ],
+    "tm43": [
+      {
+        "where": "tubeline-bridge"
+      }
+    ],
+    "tm44": [
+      {
+        "where": "castelia-city"
+      }
+    ],
+    "tm45": [
+      {
+        "where": "castelia-city"
+      }
+    ],
+    "tm46": [
+      {
+        "where": "wellspring-cave"
+      }
+    ],
+    "tm47": [
+      {
+        "where": "wellspring-cave"
+      }
+    ],
+    "tm49": [
+      {
+        "where": "nimbasa-city"
+      }
+    ],
+    "tm50": [
+      {
+        "where": "unova-route-11"
+      }
+    ],
+    "tm52": [
+      {
+        "where": "wellspring-cave"
+      }
+    ],
+    "tm53": [
+      {
+        "where": "unova-route-12"
+      }
+    ],
+    "tm54": [
+      {
+        "where": "nuvema-town",
+        "detail": "Gift from Professor Juniper"
+      }
+    ],
+    "tm55": [
+      {
+        "where": "cold-storage"
+      }
+    ],
+    "tm56": [
+      {
+        "where": "unova-route-9"
+      }
+    ],
+    "tm57": [
+      {
+        "where": "unova-route-7"
+      }
+    ],
+    "tm58": [
+      {
+        "where": "mistralton-city"
+      }
+    ],
+    "tm61": [
+      {
+        "where": "celestial-tower"
+      }
+    ],
+    "tm62": [
+      {
+        "where": "mistralton-city",
+        "detail": "From Skyla"
+      }
+    ],
+    "tm63": [
+      {
+        "where": "dragonspiral-tower"
+      }
+    ],
+    "tm65": [
+      {
+        "where": "celestial-tower"
+      }
+    ],
+    "tm66": [
+      {
+        "where": "unova-route-16"
+      }
+    ],
+    "tm67": [
+      {
+        "where": "nacrene-city",
+        "detail": "From Lenora"
+      }
+    ],
+    "tm69": [
+      {
+        "where": "chargestone-cave",
+        "detail": "From Sage"
+      }
+    ],
+    "tm70": [
+      {
+        "where": "castelia-city"
+      }
+    ],
+    "tm71": [
+      {
+        "where": "challengers-cave"
+      }
+    ],
+    "tm72": [
+      {
+        "where": "nimbasa-city",
+        "detail": "From Elesa"
+      }
+    ],
+    "tm75": [
+      {
+        "where": "dreamyard",
+        "detail": "Gift from Sage"
+      }
+    ],
+    "tm76": [
+      {
+        "where": "castelia-city",
+        "detail": "From Burgh"
+      }
+    ],
+    "tm78": [
+      {
+        "where": "unova-route-6",
+        "detail": "From Clay"
+      }
+    ],
+    "tm79": [
+      {
+        "where": "icirrus-city",
+        "detail": "From Bryce"
+      }
+    ],
+    "tm80": [
+      {
+        "where": "mistralton-cave"
+      }
+    ],
+    "tm81": [
+      {
+        "where": "unova-route-7"
+      }
+    ],
+    "tm82": [
+      {
+        "where": "opelucid-city",
+        "detail": "From Drayden/Iris"
+      }
+    ],
+    "tm83": [
+      {
+        "where": "striaton-city",
+        "detail": "Defeat Cilan/Cress/Chili"
+      }
+    ],
+    "tm84": [
+      {
+        "where": "unova-route-6"
+      }
+    ],
+    "tm85": [
+      {
+        "where": "dreamyard"
+      }
+    ],
+    "tm86": [
+      {
+        "where": "pinwheel-forest"
+      }
+    ],
+    "tm89": [
+      {
+        "where": "unova-route-13"
+      }
+    ],
+    "tm90": [
+      {
+        "where": "twist-mountain",
+        "detail": "겨울에만"
+      }
+    ],
+    "tm91": [
+      {
+        "where": "twist-mountain"
+      }
+    ],
+    "tm92": [
+      {
+        "where": "abundant-shrine"
+      }
+    ],
+    "tm93": [
+      {
+        "where": "unova-victory-road"
+      }
+    ],
+    "tm94": [
+      {
+        "where": "pinwheel-forest"
+      }
+    ],
+    "tm95": [
+      {
+        "where": "castelia-city",
+        "detail": "From Mr. Lock"
+      }
+    ],
+    "town-map": [
+      {
+        "where": "nuvema-town",
+        "detail": "Gift from Mother"
+      }
+    ],
+    "toxic-plate": [
+      {
+        "where": "abyssal-ruins"
+      }
+    ],
+    "twisted-spoon": [
+      {
+        "where": "dreamyard"
+      }
+    ],
+    "ultra-ball": [
+      {
+        "where": "unova-route-4",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "unova-route-7"
+      },
+      {
+        "where": "unova-route-8"
+      },
+      {
+        "where": "unova-route-14"
+      },
+      {
+        "where": "unova-route-15",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "dreamyard",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "nacrene-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "nimbasa-city",
+        "detail": "From Professor Juniper"
+      },
+      {
+        "where": "driftveil-city"
+      },
+      {
+        "where": "mistralton-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "twist-mountain"
+      },
+      {
+        "where": "twist-mountain",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "icirrus-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "moor-of-icirrus"
+      },
+      {
+        "where": "opelucid-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "unova-victory-road",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "unova-victory-road"
+      },
+      {
+        "place": "Liberty Island",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "ns-castle"
+      }
+    ],
+    "up-grade": [
+      {
+        "where": "unova-route-13"
+      },
+      {
+        "where": "unova-route-15"
+      }
+    ],
+    "water-gem": [
+      {
+        "where": "wellspring-cave"
+      },
+      {
+        "where": "chargestone-cave"
+      },
+      {
+        "where": "mistralton-cave"
+      },
+      {
+        "where": "twist-mountain"
+      },
+      {
+        "where": "challengers-cave"
+      },
+      {
+        "where": "unova-victory-road"
+      },
+      {
+        "where": "giant-chasm"
+      }
+    ],
+    "water-stone": [
+      {
+        "where": "castelia-city",
+        "detail": "Answer Panpour"
+      },
+      {
+        "where": "driftveil-city"
+      },
+      {
+        "where": "wellspring-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "chargestone-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "mistralton-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "twist-mountain",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "challengers-cave",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "unova-victory-road",
+        "how": "field",
+        "detail": "먼지구름"
+      },
+      {
+        "where": "giant-chasm",
+        "how": "field",
+        "detail": "먼지구름"
+      }
+    ],
+    "white-flute": [
+      {
+        "where": "unova-route-13"
+      }
+    ],
+    "wide-lens": [
+      {
+        "where": "castelia-city"
+      }
+    ],
+    "x-accuracy": [
+      {
+        "where": "unova-route-4"
+      }
+    ],
+    "x-attack": [
+      {
+        "where": "nimbasa-city"
+      }
+    ],
+    "x-defense": [
+      {
+        "where": "dreamyard"
+      }
+    ],
+    "x-speed": [
+      {
+        "where": "striaton-city"
+      }
+    ],
+    "yache-berry": [
+      {
+        "where": "castelia-city",
+        "detail": "From Iris"
+      }
+    ],
+    "yellow-flute": [
+      {
+        "where": "unova-route-13"
+      }
+    ],
+    "zap-plate": [
+      {
+        "where": "abyssal-ruins"
+      }
+    ],
+    "zinc": [
+      {
+        "where": "unova-route-5"
+      },
+      {
+        "where": "striaton-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      }
+    ],
+    "zoom-lens": [
+      {
+        "where": "castelia-city"
+      }
+    ]
+  },
+  "tutors": {}
+}

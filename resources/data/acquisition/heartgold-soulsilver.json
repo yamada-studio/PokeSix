@@ -5,10 +5,4264 @@
   ],
   "_sources": [
     "네이버 블로그 '미오시티의 작은 도서관' — 포켓몬스터 하트골드/소울실버: 기술머신/비전머신 리스트[2판](2013-06-19 수정). 사용자 제공",
-    "네이버 블로그 '미오시티의 작은 도서관' — 포켓몬스터 하트골드/소울실버: NPC 기술[2판]. 사용자 제공"
+    "네이버 블로그 '미오시티의 작은 도서관' — 포켓몬스터 하트골드/소울실버: NPC 기술[2판]. 사용자 제공",
+    "Serebii.net ItemDex (https://www.serebii.net/itemdex/) — 장소는 PokéAPI/게임 텍스트로 한국어화"
   ],
   "versionGroup": "heartgold-soulsilver",
   "items": {
+    "adamant-orb": [
+      {
+        "where": "sinjoh-ruins",
+        "detail": "Held by Dialga"
+      }
+    ],
+    "aguav-berry": [
+      {
+        "where": "violet-city",
+        "detail": "Give Juggler a Green Shard"
+      }
+    ],
+    "amulet-coin": [
+      {
+        "where": "goldenrod-city"
+      }
+    ],
+    "antidote": [
+      {
+        "where": "johto-route-30"
+      },
+      {
+        "where": "goldenrod-city",
+        "how": "hidden",
+        "detail": "다우징머신 · Dept. Store Basement"
+      },
+      {
+        "where": "ilex-forest"
+      },
+      {
+        "where": "ilex-forest",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": "Burnt Tower"
+      },
+      {
+        "place": "Burnt Tower",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": "Rugged Road",
+        "how": "other",
+        "detail": "포켓워커 500걸음 이상"
+      },
+      {
+        "place": "Rally",
+        "how": "other",
+        "detail": "포켓워커 100걸음 이상"
+      }
+    ],
+    "apicot-berry": [
+      {
+        "place": "Volcano Path",
+        "how": "other",
+        "detail": "포켓워커 8000걸음 이상"
+      }
+    ],
+    "apricorn-box": [
+      {
+        "where": "johto-route-30",
+        "detail": "In a house"
+      }
+    ],
+    "aspear-berry": [
+      {
+        "where": "violet-city",
+        "detail": "Give Juggler a Yellow Shard"
+      },
+      {
+        "where": "goldenrod-city",
+        "detail": "Goldenrod Dept. Store Lottery - 3rd Prize"
+      },
+      {
+        "where": "national-park",
+        "detail": "Come 3rd in Bug Catching Contest"
+      },
+      {
+        "place": "Beautiful Beach",
+        "how": "other",
+        "detail": "포켓워커 1000걸음 이상"
+      },
+      {
+        "place": "Yellow Forest",
+        "how": "other",
+        "detail": "포켓워커 1000걸음 이상"
+      }
+    ],
+    "awakening": [
+      {
+        "where": "johto-route-36",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "union-cave"
+      },
+      {
+        "place": "Refreshing Field",
+        "how": "other",
+        "detail": "포켓워커 700걸음 이상"
+      }
+    ],
+    "babiri-berry": [
+      {
+        "where": "new-bark-town",
+        "how": "gift",
+        "detail": "엄마의 저금"
+      },
+      {
+        "place": "Beyond the Sea",
+        "how": "other",
+        "detail": "포켓워커 4500걸음 이상"
+      }
+    ],
+    "basement-key": [
+      {
+        "where": "radio-tower",
+        "detail": "Defeat Petrel"
+      }
+    ],
+    "basement-key--goldenrod": [
+      {
+        "where": "radio-tower",
+        "detail": "Defeat Petrel"
+      }
+    ],
+    "basement-key--new-mauville": [
+      {
+        "where": "radio-tower",
+        "detail": "Defeat Petrel"
+      }
+    ],
+    "belue-berry": [
+      {
+        "place": "Big Forest",
+        "how": "other",
+        "detail": "포켓워커 2500걸음 이상"
+      }
+    ],
+    "berry-pots": [
+      {
+        "where": "johto-route-36",
+        "detail": "Defeat/Capture Sudowoodo"
+      }
+    ],
+    "bicycle": [
+      {
+        "where": "goldenrod-city",
+        "detail": "In Bike Shop"
+      }
+    ],
+    "big-mushroom": [
+      {
+        "where": "ruins-of-alph",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "ilex-forest",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": {
+          "ko": "방울탑",
+          "en": "Tin Tower"
+        },
+        "how": "hidden",
+        "detail": "다우징머신 · 다우징머신"
+      },
+      {
+        "where": "kanto-route-27",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "viridian-forest"
+      },
+      {
+        "place": "Noisy Forest",
+        "how": "other",
+        "detail": "포켓워커 700걸음 이상"
+      },
+      {
+        "place": "Big Forest",
+        "how": "other",
+        "detail": "포켓워커 3000걸음 이상"
+      },
+      {
+        "place": "Yellow Forest",
+        "how": "other",
+        "detail": "포켓워커 0걸음 이상"
+      }
+    ],
+    "big-pearl": [
+      {
+        "where": "union-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "cliff-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": {
+          "ko": "갈색시티",
+          "en": "Vermillion City"
+        },
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "cerulean-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "seafoam-islands"
+      },
+      {
+        "place": "Beautiful Beach",
+        "how": "other",
+        "detail": "포켓워커 4000걸음 이상"
+      },
+      {
+        "place": "Warm Beach",
+        "how": "other",
+        "detail": "포켓워커 2500걸음 이상"
+      },
+      {
+        "place": "Quiet Cave",
+        "how": "other",
+        "detail": "포켓워커 3000걸음 이상"
+      }
+    ],
+    "big-root": [
+      {
+        "where": "kanto-route-3"
+      },
+      {
+        "place": "Yellow Forest",
+        "how": "other",
+        "detail": "포켓워커 4000걸음 이상"
+      }
+    ],
+    "black-apricorn": [
+      {
+        "where": "johto-route-31"
+      },
+      {
+        "where": "johto-route-33"
+      },
+      {
+        "where": "johto-route-37"
+      },
+      {
+        "where": "johto-route-43"
+      }
+    ],
+    "black-belt": [
+      {
+        "where": "lake-of-rage",
+        "detail": "Wesley on Wednesday"
+      }
+    ],
+    "black-flute": [
+      {
+        "where": "dark-cave"
+      }
+    ],
+    "black-glasses": [
+      {
+        "where": "dark-cave"
+      }
+    ],
+    "black-sludge": [
+      {
+        "where": "cerulean-cave"
+      }
+    ],
+    "blue-apricorn": [
+      {
+        "where": "johto-route-42"
+      },
+      {
+        "where": "johto-route-46"
+      },
+      {
+        "where": "violet-city"
+      }
+    ],
+    "blue-card": [
+      {
+        "where": "radio-tower",
+        "detail": "From Buena"
+      }
+    ],
+    "blue-flute": [
+      {
+        "where": "viridian-forest"
+      }
+    ],
+    "blue-orb": [
+      {
+        "where": "johto-route-30",
+        "detail": "Defeat Red & talk to Mr. Pokémon"
+      }
+    ],
+    "blue-shard": [
+      {
+        "where": "violet-city"
+      },
+      {
+        "where": "cianwood-city"
+      },
+      {
+        "where": "ruins-of-alph"
+      },
+      {
+        "where": "dark-cave"
+      },
+      {
+        "where": "cliff-cave"
+      },
+      {
+        "place": {
+          "ko": "갈색시티",
+          "en": "Vermillion City"
+        }
+      },
+      {
+        "where": "rock-tunnel"
+      },
+      {
+        "where": "kanto-victory-road-1"
+      },
+      {
+        "place": "Beautiful Beach",
+        "how": "other",
+        "detail": "포켓워커 3000걸음 이상"
+      },
+      {
+        "place": "Warm Beach",
+        "how": "other",
+        "detail": "포켓워커 4000걸음 이상"
+      },
+      {
+        "place": "Scary Cave",
+        "how": "other",
+        "detail": "포켓워커 3900걸음 이상"
+      },
+      {
+        "place": "Night Skys Edge",
+        "how": "other",
+        "detail": "포켓워커 1500걸음 이상"
+      }
+    ],
+    "bluk-berry": [
+      {
+        "where": "fuchsia-city",
+        "detail": "Give Juggler a Blue Shard"
+      },
+      {
+        "place": "Hoenn Field",
+        "how": "other",
+        "detail": "포켓워커 250걸음 이상"
+      },
+      {
+        "place": "Big Forest",
+        "how": "other",
+        "detail": "포켓워커 4000걸음 이상"
+      }
+    ],
+    "bright-powder": [
+      {
+        "where": "radio-tower"
+      }
+    ],
+    "burn-heal": [
+      {
+        "where": "goldenrod-city",
+        "detail": "Dept. Store Basement"
+      },
+      {
+        "place": "Refreshing Field",
+        "how": "other",
+        "detail": "포켓워커 1000걸음 이상"
+      },
+      {
+        "place": "Rugged Road",
+        "how": "other",
+        "detail": "포켓워커 800걸음 이상"
+      }
+    ],
+    "calcium": [
+      {
+        "where": "union-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "whirl-islands"
+      },
+      {
+        "where": "mt-silver"
+      },
+      {
+        "where": "dragons-den"
+      },
+      {
+        "where": "kanto-route-13",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "digletts-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": "Treehouse",
+        "how": "other",
+        "detail": "포켓워커 4500걸음 이상"
+      }
+    ],
+    "carbos": [
+      {
+        "where": "radio-tower",
+        "detail": "Earn 15 Points at Buena's Password"
+      },
+      {
+        "where": "mt-mortar"
+      },
+      {
+        "place": {
+          "ko": "방울탑",
+          "en": "Tin Tower"
+        },
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "whirl-islands"
+      },
+      {
+        "where": "ice-path",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "kanto-route-10",
+        "how": "hidden",
+        "detail": "다우징머신"
+      }
+    ],
+    "card-key": [
+      {
+        "place": "Goldenrod Underground"
+      }
+    ],
+    "card-key--letsgo": [
+      {
+        "place": "Goldenrod Underground"
+      }
+    ],
+    "charcoal": [
+      {
+        "where": "azalea-town",
+        "detail": "Rescue the Farfetch'd in Ilex Forest"
+      },
+      {
+        "where": "ruins-of-alph",
+        "detail": "Top Left"
+      }
+    ],
+    "charti-berry": [
+      {
+        "where": "new-bark-town",
+        "how": "gift",
+        "detail": "엄마의 저금"
+      },
+      {
+        "place": "Stormy Beach",
+        "how": "other",
+        "detail": "포켓워커 2500걸음 이상"
+      }
+    ],
+    "cheri-berry": [
+      {
+        "where": "violet-city",
+        "detail": "Give Juggler a Red Shard"
+      },
+      {
+        "where": "goldenrod-city",
+        "detail": "Goldenrod Dept. Store Lottery - 3rd Prize"
+      },
+      {
+        "place": "Refreshing Field",
+        "how": "other",
+        "detail": "포켓워커 600걸음 이상"
+      },
+      {
+        "place": "Noisy Forest",
+        "how": "other",
+        "detail": "포켓워커 0걸음 이상"
+      },
+      {
+        "place": "Yellow Forest",
+        "how": "other",
+        "detail": "포켓워커 600걸음 이상"
+      }
+    ],
+    "chesto-berry": [
+      {
+        "where": "violet-city",
+        "detail": "Give Juggler a Blue Shard"
+      },
+      {
+        "where": "goldenrod-city",
+        "detail": "Goldenrod Dept. Store Lottery - 3rd Prize"
+      },
+      {
+        "place": "Refreshing Field",
+        "how": "other",
+        "detail": "포켓워커 800걸음 이상"
+      },
+      {
+        "place": "Yellow Forest",
+        "how": "other",
+        "detail": "포켓워커 700걸음 이상"
+      },
+      {
+        "place": "Winner's Path",
+        "how": "other",
+        "detail": "포켓워커 0걸음 이상"
+      }
+    ],
+    "chilan-berry": [
+      {
+        "where": "new-bark-town",
+        "how": "gift",
+        "detail": "엄마의 저금"
+      },
+      {
+        "place": "Beyond the Sea",
+        "how": "other",
+        "detail": "포켓워커 5000걸음 이상"
+      }
+    ],
+    "choice-band": [
+      {
+        "place": "Winner's Path",
+        "how": "other",
+        "detail": "포켓워커 8000걸음 이상"
+      }
+    ],
+    "choice-scarf": [
+      {
+        "where": "new-bark-town",
+        "how": "gift",
+        "detail": "엄마의 저금"
+      },
+      {
+        "place": "Winner's Path",
+        "how": "other",
+        "detail": "포켓워커 9000걸음 이상"
+      }
+    ],
+    "choice-specs": [
+      {
+        "where": "lake-of-rage",
+        "detail": "High Tide"
+      },
+      {
+        "place": "Winner's Path",
+        "how": "other",
+        "detail": "포켓워커 7000걸음 이상"
+      }
+    ],
+    "chople-berry": [
+      {
+        "where": "new-bark-town",
+        "how": "gift",
+        "detail": "엄마의 저금"
+      },
+      {
+        "place": "White Lake",
+        "how": "other",
+        "detail": "포켓워커 4500걸음 이상"
+      }
+    ],
+    "claw-fossil": [
+      {
+        "where": "cliff-cave"
+      }
+    ],
+    "cleanse-tag": [
+      {
+        "where": "kanto-route-5"
+      }
+    ],
+    "clear-bell": [
+      {
+        "where": "ecruteak-city",
+        "detail": "Defeat the 5 Kimono Girls"
+      }
+    ],
+    "coba-berry": [
+      {
+        "where": "new-bark-town",
+        "how": "gift",
+        "detail": "엄마의 저금"
+      },
+      {
+        "place": "Stormy Beach",
+        "how": "other",
+        "detail": "포켓워커 4000걸음 이상"
+      }
+    ],
+    "coin-case": [
+      {
+        "place": "Goldenrod Underground"
+      }
+    ],
+    "colbur-berry": [
+      {
+        "where": "new-bark-town",
+        "how": "gift",
+        "detail": "엄마의 저금"
+      },
+      {
+        "place": "Beyond the Sea",
+        "how": "other",
+        "detail": "포켓워커 4000걸음 이상"
+      }
+    ],
+    "cornn-berry": [
+      {
+        "where": "fuchsia-city",
+        "detail": "Give Juggler a Blue Shard"
+      },
+      {
+        "place": "White Lake",
+        "how": "other",
+        "detail": "포켓워커 0걸음 이상"
+      }
+    ],
+    "damp-rock": [
+      {
+        "place": "Icy Mountain Rd.",
+        "how": "other",
+        "detail": "포켓워커 2500걸음 이상"
+      }
+    ],
+    "dawn-stone": [
+      {
+        "where": "national-park",
+        "how": "prize",
+        "detail": "벌레잡기대회 1등"
+      },
+      {
+        "where": "mt-silver",
+        "detail": "PokéGear Phonecall"
+      }
+    ],
+    "deep-sea-scale": [
+      {
+        "place": {
+          "ko": "20번수로",
+          "en": "Route 20"
+        },
+        "how": "hidden",
+        "detail": "다우징머신"
+      }
+    ],
+    "deep-sea-tooth": [
+      {
+        "place": {
+          "ko": "20번수로",
+          "en": "Route 20"
+        },
+        "how": "hidden",
+        "detail": "다우징머신"
+      }
+    ],
+    "destiny-knot": [
+      {
+        "where": "kanto-route-27"
+      }
+    ],
+    "dire-hit": [
+      {
+        "where": "dark-cave"
+      },
+      {
+        "where": "mt-silver",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": "Suburban Area",
+        "how": "other",
+        "detail": "포켓워커 1000걸음 이상"
+      },
+      {
+        "place": "Town Outskirts",
+        "how": "other",
+        "detail": "포켓워커 100걸음 이상"
+      }
+    ],
+    "dive-ball": [
+      {
+        "place": "Beautiful Beach",
+        "how": "other",
+        "detail": "포켓워커 5000걸음 이상"
+      },
+      {
+        "place": "Blue Lake",
+        "how": "other",
+        "detail": "포켓워커 3500걸음 이상"
+      }
+    ],
+    "dome-fossil": [
+      {
+        "where": "ruins-of-alph"
+      }
+    ],
+    "draco-plate": [
+      {
+        "where": "ss-aqua",
+        "detail": "From Captain"
+      }
+    ],
+    "dragon-fang": [
+      {
+        "where": "dragons-den"
+      }
+    ],
+    "dragon-scale": [
+      {
+        "where": "mt-mortar"
+      }
+    ],
+    "dread-plate": [
+      {
+        "where": "ss-aqua",
+        "detail": "From Captain"
+      }
+    ],
+    "dubious-disc": [
+      {
+        "where": "johto-route-42",
+        "detail": "Requires Rock Climb"
+      }
+    ],
+    "durin-berry": [
+      {
+        "where": "fuchsia-city",
+        "detail": "Give Juggler a Green Shard"
+      },
+      {
+        "place": "Big Forest",
+        "how": "other",
+        "detail": "포켓워커 3500걸음 이상"
+      }
+    ],
+    "dusk-ball": [
+      {
+        "where": "goldenrod-city",
+        "detail": "Goldenrod Dept. Store Lottery - 2nd Prize - Friday"
+      },
+      {
+        "place": "Scary Cave",
+        "how": "other",
+        "detail": "포켓워커 4000걸음 이상"
+      },
+      {
+        "place": "Quiet Cave",
+        "how": "other",
+        "detail": "포켓워커 2000걸음 이상"
+      }
+    ],
+    "dusk-stone": [
+      {
+        "where": "national-park",
+        "how": "prize",
+        "detail": "벌레잡기대회 1등"
+      },
+      {
+        "where": "kanto-route-17",
+        "detail": "PokéGear Phonecall"
+      }
+    ],
+    "earth-plate": [
+      {
+        "where": "ss-aqua",
+        "detail": "From Captain"
+      }
+    ],
+    "electirizer": [
+      {
+        "where": "cerulean-cave"
+      },
+      {
+        "place": "Amity Meadow",
+        "how": "other",
+        "detail": "포켓워커 2550걸음 이상"
+      }
+    ],
+    "elixir": [
+      {
+        "where": "johto-route-44",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "johto-route-45"
+      },
+      {
+        "where": "union-cave"
+      },
+      {
+        "where": "mt-mortar"
+      },
+      {
+        "where": "dark-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "kanto-route-9",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "kanto-route-12",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "rock-tunnel"
+      },
+      {
+        "place": "Dim Cave",
+        "how": "other",
+        "detail": "포켓워커 3500걸음 이상"
+      },
+      {
+        "place": "Quiet Cave",
+        "how": "other",
+        "detail": "포켓워커 0걸음 이상"
+      },
+      {
+        "place": "Rally",
+        "how": "other",
+        "detail": "포켓워커 800걸음 이상"
+      }
+    ],
+    "energy-powder": [
+      {
+        "where": "ruins-of-alph",
+        "detail": "Right Ruins"
+      },
+      {
+        "place": "Treehouse",
+        "how": "other",
+        "detail": "포켓워커 0걸음 이상"
+      },
+      {
+        "place": "Sightseeing",
+        "how": "other",
+        "detail": "포켓워커 3000걸음 이상"
+      }
+    ],
+    "energy-root": [
+      {
+        "where": "ruins-of-alph",
+        "detail": "Bottom Right Ruins"
+      },
+      {
+        "place": "Noisy Forest",
+        "how": "other",
+        "detail": "포켓워커 900걸음 이상"
+      },
+      {
+        "place": "Treehouse",
+        "how": "other",
+        "detail": "포켓워커 100걸음 이상"
+      },
+      {
+        "place": "Sightseeing",
+        "how": "other",
+        "detail": "포켓워커 3500걸음 이상"
+      }
+    ],
+    "escape-rope": [
+      {
+        "where": "sprout-tower"
+      },
+      {
+        "where": "mt-mortar"
+      },
+      {
+        "place": {
+          "ko": "방울탑",
+          "en": "Tin Tower"
+        }
+      },
+      {
+        "where": "whirl-islands"
+      },
+      {
+        "where": "mt-silver",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": "Rugged Road",
+        "how": "other",
+        "detail": "포켓워커 100걸음 이상"
+      },
+      {
+        "place": "Rally",
+        "how": "other",
+        "detail": "포켓워커 200걸음 이상"
+      }
+    ],
+    "ether": [
+      {
+        "where": "goldenrod-city",
+        "detail": "Dept. Store Basement"
+      },
+      {
+        "where": "ecruteak-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "ilex-forest"
+      },
+      {
+        "where": "ilex-forest",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "mt-mortar"
+      },
+      {
+        "place": "Burnt Tower",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": "Shining Lighthouse"
+      },
+      {
+        "place": "Noisy Forest",
+        "how": "other",
+        "detail": "포켓워커 1000걸음 이상"
+      },
+      {
+        "place": "Dim Cave",
+        "how": "other",
+        "detail": "포켓워커 700걸음 이상"
+      },
+      {
+        "place": "Treehouse",
+        "how": "other",
+        "detail": "포켓워커 2000걸음 이상"
+      }
+    ],
+    "everstone": [
+      {
+        "where": "new-bark-town",
+        "detail": "Professor Elm - Show Togepi"
+      },
+      {
+        "where": "national-park",
+        "detail": "Come 2nd in Bug Catching Contest · Show Bill's Grandfather a Jigglypuff in HG or Lickitung in SS"
+      }
+    ],
+    "expert-belt": [
+      {
+        "where": "mt-silver"
+      }
+    ],
+    "fashion-case": [
+      {
+        "place": "Goldenrod Underground",
+        "detail": "Given by Ethan/Lyra"
+      }
+    ],
+    "fast-ball": [
+      {
+        "where": "azalea-town",
+        "detail": "From Kurt"
+      },
+      {
+        "where": "azalea-town",
+        "detail": "Exchange Apricorns with Kurt"
+      }
+    ],
+    "fire-stone": [
+      {
+        "where": "national-park",
+        "how": "prize",
+        "detail": "벌레잡기대회 1등"
+      },
+      {
+        "where": "johto-route-36",
+        "detail": "PokéGear Phonecall · Show Bill's Grandfather a Growlithe in HG or Vulpix in SS"
+      },
+      {
+        "place": "Warm Beach",
+        "how": "other",
+        "detail": "포켓워커 5000걸음 이상"
+      }
+    ],
+    "fist-plate": [
+      {
+        "where": "ss-aqua",
+        "detail": "From Captain"
+      }
+    ],
+    "flame-orb": [
+      {
+        "place": "Volcano Path",
+        "how": "other",
+        "detail": "포켓워커 4000걸음 이상"
+      }
+    ],
+    "flame-plate": [
+      {
+        "where": "ss-aqua",
+        "detail": "From Captain"
+      }
+    ],
+    "fluffy-tail": [
+      {
+        "place": "Resort",
+        "how": "other",
+        "detail": "포켓워커 3000걸음 이상"
+      }
+    ],
+    "focus-sash": [
+      {
+        "where": "new-bark-town",
+        "how": "gift",
+        "detail": "엄마의 저금"
+      },
+      {
+        "place": "Winner's Path",
+        "how": "other",
+        "detail": "포켓워커 10000걸음 이상"
+      }
+    ],
+    "fresh-water": [
+      {
+        "place": "Beautiful Beach",
+        "how": "other",
+        "detail": "포켓워커 0걸음 이상"
+      },
+      {
+        "place": "Blue Lake",
+        "how": "other",
+        "detail": "포켓워커 0걸음 이상"
+      },
+      {
+        "place": "Warm Beach",
+        "how": "other",
+        "detail": "포켓워커 0걸음 이상"
+      },
+      {
+        "place": "Stormy Beach",
+        "how": "other",
+        "detail": "포켓워커 0걸음 이상"
+      },
+      {
+        "place": "Resort",
+        "how": "other",
+        "detail": "포켓워커 0걸음 이상"
+      },
+      {
+        "place": "Sightseeing",
+        "how": "other",
+        "detail": "포켓워커 2200걸음 이상"
+      },
+      {
+        "place": "Amity Meadow",
+        "how": "other",
+        "detail": "포켓워커 0걸음 이상"
+      }
+    ],
+    "friend-ball": [
+      {
+        "where": "azalea-town",
+        "detail": "Exchange Apricorns with Kurt"
+      }
+    ],
+    "full-heal": [
+      {
+        "where": "johto-route-45"
+      },
+      {
+        "where": "azalea-town"
+      },
+      {
+        "where": "olivine-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "slowpoke-well"
+      },
+      {
+        "where": "ilex-forest",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "national-park",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "mt-mortar",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": {
+          "ko": "방울탑",
+          "en": "Tin Tower"
+        }
+      },
+      {
+        "where": "dark-cave"
+      },
+      {
+        "where": "lake-of-rage",
+        "detail": "Low Tide"
+      },
+      {
+        "where": "ice-path"
+      },
+      {
+        "place": {
+          "ko": "로켓단아지트",
+          "en": "Rocket Hideout"
+        },
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": {
+          "ko": "로켓단아지트",
+          "en": "Rocket Hideout"
+        }
+      },
+      {
+        "place": "Goldenrod Underground",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "cerulean-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "kanto-victory-road-1"
+      },
+      {
+        "place": "Refreshing Field",
+        "how": "other",
+        "detail": "포켓워커 2000걸음 이상"
+      },
+      {
+        "place": "Rugged Road",
+        "how": "other",
+        "detail": "포켓워커 1500걸음 이상"
+      },
+      {
+        "place": "Beautiful Beach",
+        "how": "other",
+        "detail": "포켓워커 1500걸음 이상"
+      },
+      {
+        "place": "Sinnoh Field",
+        "how": "other",
+        "detail": "포켓워커 1000걸음 이상"
+      },
+      {
+        "place": "Icy Mountain Rd.",
+        "how": "other",
+        "detail": "포켓워커 100걸음 이상"
+      }
+    ],
+    "full-incense": [
+      {
+        "where": "mt-mortar"
+      }
+    ],
+    "full-restore": [
+      {
+        "where": "radio-tower",
+        "detail": "Earn 3 Points at Buena's Password"
+      },
+      {
+        "where": "mt-mortar",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "mt-mortar"
+      },
+      {
+        "place": {
+          "ko": "방울탑",
+          "en": "Tin Tower"
+        },
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": {
+          "ko": "방울탑",
+          "en": "Tin Tower"
+        }
+      },
+      {
+        "where": "whirl-islands"
+      },
+      {
+        "where": "whirl-islands",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "mt-silver",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "mt-silver"
+      },
+      {
+        "where": "lake-of-rage",
+        "detail": "Low Tide"
+      },
+      {
+        "where": "kanto-route-9"
+      },
+      {
+        "where": "viridian-forest",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "cerulean-cave"
+      },
+      {
+        "where": "kanto-victory-road-1"
+      },
+      {
+        "place": "Sinnoh Field",
+        "how": "other",
+        "detail": "포켓워커 4000걸음 이상"
+      }
+    ],
+    "ganlon-berry": [
+      {
+        "place": "Hoenn Field",
+        "how": "other",
+        "detail": "포켓워커 8000걸음 이상"
+      }
+    ],
+    "gb-sounds": [
+      {
+        "where": "celadon-city"
+      }
+    ],
+    "good-rod": [
+      {
+        "where": "olivine-city",
+        "detail": "Fishing Guru"
+      }
+    ],
+    "gracidea": [
+      {
+        "where": "goldenrod-city",
+        "detail": "Bring a Shaymin to Flower Shop"
+      }
+    ],
+    "great-ball": [
+      {
+        "where": "johto-route-32"
+      },
+      {
+        "where": "johto-route-32",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "slowpoke-well",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "union-cave"
+      },
+      {
+        "where": "union-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": "Town Outskirts",
+        "how": "other",
+        "detail": "포켓워커 750걸음 이상"
+      }
+    ],
+    "green-apricorn": [
+      {
+        "where": "johto-route-29"
+      },
+      {
+        "where": "johto-route-30"
+      },
+      {
+        "where": "johto-route-35"
+      },
+      {
+        "where": "johto-route-39"
+      },
+      {
+        "where": "johto-route-42"
+      },
+      {
+        "where": "johto-route-45"
+      },
+      {
+        "where": "johto-route-46"
+      }
+    ],
+    "green-shard": [
+      {
+        "where": "violet-city"
+      },
+      {
+        "where": "cianwood-city"
+      },
+      {
+        "where": "ruins-of-alph"
+      },
+      {
+        "where": "dark-cave"
+      },
+      {
+        "where": "cliff-cave"
+      },
+      {
+        "place": {
+          "ko": "갈색시티",
+          "en": "Vermillion City"
+        }
+      },
+      {
+        "where": "rock-tunnel"
+      },
+      {
+        "where": "kanto-victory-road-1"
+      },
+      {
+        "place": "Noisy Forest",
+        "how": "other",
+        "detail": "포켓워커 2000걸음 이상"
+      },
+      {
+        "place": "Scary Cave",
+        "how": "other",
+        "detail": "포켓워커 2000걸음 이상"
+      },
+      {
+        "place": "Resort",
+        "how": "other",
+        "detail": "포켓워커 200걸음 이상"
+      },
+      {
+        "place": "Night Skys Edge",
+        "how": "other",
+        "detail": "포켓워커 3000걸음 이상"
+      }
+    ],
+    "grepa-berry": [
+      {
+        "where": "fuchsia-city",
+        "detail": "Give Juggler a Yellow Shard"
+      },
+      {
+        "place": "Big Forest",
+        "how": "other",
+        "detail": "포켓워커 500걸음 이상"
+      }
+    ],
+    "grip-claw": [
+      {
+        "where": "seafoam-islands"
+      }
+    ],
+    "griseous-orb": [
+      {
+        "where": "sinjoh-ruins",
+        "detail": "Held by Giratina"
+      }
+    ],
+    "haban-berry": [
+      {
+        "where": "new-bark-town",
+        "how": "gift",
+        "detail": "엄마의 저금"
+      },
+      {
+        "place": "Beyond the Sea",
+        "how": "other",
+        "detail": "포켓워커 3500걸음 이상"
+      }
+    ],
+    "hard-stone": [
+      {
+        "where": "johto-route-36",
+        "detail": "Arthur on Thursday"
+      },
+      {
+        "place": "Rugged Road",
+        "how": "other",
+        "detail": "포켓워커 5000걸음 이상"
+      }
+    ],
+    "heal-ball": [
+      {
+        "place": "Stormy Beach",
+        "how": "other",
+        "detail": "포켓워커 2000걸음 이상"
+      }
+    ],
+    "heal-powder": [
+      {
+        "where": "ruins-of-alph",
+        "detail": "Right Ruins"
+      },
+      {
+        "where": "ruins-of-alph",
+        "detail": "Bottom Right Ruins"
+      },
+      {
+        "place": "Treehouse",
+        "how": "other",
+        "detail": "포켓워커 500걸음 이상"
+      }
+    ],
+    "heart-scale": [
+      {
+        "where": "johto-route-32",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "violet-city"
+      },
+      {
+        "where": "cianwood-city"
+      },
+      {
+        "where": "dark-cave"
+      },
+      {
+        "place": {
+          "ko": "갈색시티",
+          "en": "Vermillion City"
+        },
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": {
+          "ko": "갈색시티",
+          "en": "Vermillion City"
+        }
+      },
+      {
+        "where": "rock-tunnel"
+      },
+      {
+        "where": "kanto-victory-road-1"
+      },
+      {
+        "place": "Beautiful Beach",
+        "how": "other",
+        "detail": "포켓워커 2000걸음 이상"
+      },
+      {
+        "place": "Warm Beach",
+        "how": "other",
+        "detail": "포켓워커 3000걸음 이상"
+      },
+      {
+        "place": "Stormy Beach",
+        "how": "other",
+        "detail": "포켓워커 800걸음 이상"
+      },
+      {
+        "place": "Quiet Cave",
+        "how": "other",
+        "detail": "포켓워커 2500걸음 이상"
+      }
+    ],
+    "heat-rock": [
+      {
+        "place": "Icy Mountain Rd.",
+        "how": "other",
+        "detail": "포켓워커 3000걸음 이상"
+      }
+    ],
+    "heavy-ball": [
+      {
+        "where": "azalea-town",
+        "detail": "Exchange Apricorns with Kurt"
+      }
+    ],
+    "helix-fossil": [
+      {
+        "where": "ruins-of-alph"
+      }
+    ],
+    "hm01": [
+      {
+        "place": "너도밤나무숲에 있는 파오리 2마리를 남자에게 돌아오도록 몰아주면 받을 수 있다. [스토리 진행 시 자동 입수]"
+      }
+    ],
+    "hm02": [
+      {
+        "place": "진청시티 체육관 관장 사도를 이긴 뒤 체육관 밖으로 나오면 아주머니에게서 받을 수 있다. [스토리 진행 시 자동 입수]"
+      }
+    ],
+    "hm03": [
+      {
+        "place": "인주시티 무도장에서 로켓단원을 이기게 되면 신사에게서 받을 수 있다."
+      }
+    ],
+    "hm04": [
+      {
+        "place": "절구산 왼쪽 입구 근처에 있는 등산객에게서 받을 수 있다."
+      }
+    ],
+    "hm05": [
+      {
+        "place": "황토마을 내 로켓단 이벤트를 끝내고 나면 목호에게서 받을 수 있다. [스토리 진행 시 자동 입수]"
+      }
+    ],
+    "hm06": [
+      {
+        "place": "36번 도로에 있는 뚱뚱한 남자에게서 받을 수 있다."
+      }
+    ],
+    "hm07": [
+      {
+        "place": "얼음샛길에서 입수한다. [스토리 진행 시 반드시 입수]"
+      }
+    ],
+    "hm08": [
+      {
+        "place": "16개의 배지를 모두 획득한 후, 태초마을에 있는 오박사에게서 받을 수 있다. [스토리 진행 시 자동 입수]"
+      }
+    ],
+    "hondew-berry": [
+      {
+        "where": "fuchsia-city",
+        "detail": "Give Juggler a Green Shard"
+      },
+      {
+        "place": "Big Forest",
+        "how": "other",
+        "detail": "포켓워커 5000걸음 이상"
+      }
+    ],
+    "honey": [
+      {
+        "place": "Big Forest",
+        "how": "other",
+        "detail": "포켓워커 2000걸음 이상"
+      },
+      {
+        "place": "Resort",
+        "how": "other",
+        "detail": "포켓워커 2000걸음 이상"
+      },
+      {
+        "place": "Sightseeing",
+        "how": "other",
+        "detail": "포켓워커 0걸음 이상"
+      }
+    ],
+    "hp-up": [
+      {
+        "where": "johto-route-38",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "goldenrod-city"
+      },
+      {
+        "where": "radio-tower",
+        "detail": "Earn 30 Points at Buena's Password"
+      },
+      {
+        "where": "mt-mortar",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": {
+          "ko": "방울탑",
+          "en": "Tin Tower"
+        }
+      },
+      {
+        "place": "Burnt Tower"
+      },
+      {
+        "where": "rock-tunnel",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "kanto-victory-road-1"
+      }
+    ],
+    "hyper-potion": [
+      {
+        "where": "johto-route-36"
+      },
+      {
+        "place": {
+          "ko": "40번수로",
+          "en": "Route 40"
+        }
+      },
+      {
+        "where": "new-bark-town",
+        "how": "gift",
+        "detail": "엄마의 저금"
+      },
+      {
+        "where": "violet-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "ecruteak-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "union-cave"
+      },
+      {
+        "where": "mt-mortar",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "mt-mortar"
+      },
+      {
+        "where": "dark-cave"
+      },
+      {
+        "where": "mt-silver",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": {
+          "ko": "로켓단아지트",
+          "en": "Rocket Hideout"
+        }
+      },
+      {
+        "place": "Shining Lighthouse",
+        "how": "hidden",
+        "detail": "다우징머신 · 다우징머신"
+      },
+      {
+        "where": "cerulean-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": "Dim Cave",
+        "how": "other",
+        "detail": "포켓워커 1000걸음 이상"
+      },
+      {
+        "place": "Sinnoh Field",
+        "how": "other",
+        "detail": "포켓워커 1500걸음 이상"
+      }
+    ],
+    "iapapa-berry": [
+      {
+        "where": "violet-city",
+        "detail": "Give Juggler a Yellow Shard"
+      }
+    ],
+    "ice-heal": [
+      {
+        "where": "ice-path",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "seafoam-islands",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": "Refreshing Field",
+        "how": "other",
+        "detail": "포켓워커 900걸음 이상"
+      },
+      {
+        "place": "Volcano Path",
+        "how": "other",
+        "detail": "포켓워커 100걸음 이상"
+      }
+    ],
+    "icicle-plate": [
+      {
+        "where": "ss-aqua",
+        "detail": "From Captain"
+      }
+    ],
+    "icy-rock": [
+      {
+        "place": "Icy Mountain Rd.",
+        "how": "other",
+        "detail": "포켓워커 4000걸음 이상"
+      }
+    ],
+    "insect-plate": [
+      {
+        "where": "ss-aqua",
+        "detail": "From Captain"
+      }
+    ],
+    "iron": [
+      {
+        "where": "radio-tower",
+        "detail": "Earn 10 Points at Buena's Password"
+      },
+      {
+        "where": "mt-mortar"
+      },
+      {
+        "where": "mt-silver",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "ice-path",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "cinnabar-island",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "rock-tunnel"
+      },
+      {
+        "place": "Scary Cave",
+        "how": "other",
+        "detail": "포켓워커 4900걸음 이상"
+      }
+    ],
+    "iron-ball": [
+      {
+        "where": "mt-mortar"
+      }
+    ],
+    "iron-plate": [
+      {
+        "where": "ss-aqua",
+        "detail": "From Captain"
+      }
+    ],
+    "jade-orb": [
+      {
+        "where": "pallet-town",
+        "detail": "Show Professor Oak a Groudon & Kyogre, both obtained from the Embedded Tower"
+      }
+    ],
+    "kasib-berry": [
+      {
+        "where": "new-bark-town",
+        "how": "gift",
+        "detail": "엄마의 저금"
+      },
+      {
+        "place": "Beyond the Sea",
+        "how": "other",
+        "detail": "포켓워커 3000걸음 이상"
+      }
+    ],
+    "kebia-berry": [
+      {
+        "where": "new-bark-town",
+        "how": "gift",
+        "detail": "엄마의 저금"
+      },
+      {
+        "place": "White Lake",
+        "how": "other",
+        "detail": "포켓워커 5000걸음 이상"
+      }
+    ],
+    "kelpsy-berry": [
+      {
+        "where": "fuchsia-city",
+        "detail": "Give Juggler a Blue Shard"
+      },
+      {
+        "place": "Hoenn Field",
+        "how": "other",
+        "detail": "포켓워커 1500걸음 이상"
+      },
+      {
+        "place": "Beyond the Sea",
+        "how": "other",
+        "detail": "포켓워커 2500걸음 이상"
+      }
+    ],
+    "kings-rock": [
+      {
+        "where": "slowpoke-well"
+      }
+    ],
+    "lagging-tail": [
+      {
+        "where": "johto-route-47"
+      }
+    ],
+    "lagreat-ball": [
+      {
+        "where": "johto-route-32"
+      },
+      {
+        "where": "johto-route-32",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "slowpoke-well",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "union-cave"
+      },
+      {
+        "where": "union-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": "Town Outskirts",
+        "how": "other",
+        "detail": "포켓워커 750걸음 이상"
+      }
+    ],
+    "laheavy-ball": [
+      {
+        "where": "azalea-town",
+        "detail": "Exchange Apricorns with Kurt"
+      }
+    ],
+    "lapoke-ball": [
+      {
+        "where": "johto-route-29",
+        "detail": "Given by Ethan/Lyra (*5)"
+      },
+      {
+        "where": "johto-route-31"
+      },
+      {
+        "where": "violet-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "radio-tower",
+        "detail": "Earn 1 Point at Buena's Password"
+      }
+    ],
+    "laultra-ball": [
+      {
+        "where": "johto-route-44"
+      },
+      {
+        "where": "goldenrod-city",
+        "detail": "Dept. Store Basement"
+      },
+      {
+        "where": "ecruteak-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "union-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "radio-tower",
+        "detail": "Goldenrod Lottery Prize - 1 Number Match"
+      },
+      {
+        "where": "radio-tower"
+      },
+      {
+        "where": "mt-mortar"
+      },
+      {
+        "where": "mt-mortar",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": {
+          "ko": "방울탑",
+          "en": "Tin Tower"
+        }
+      },
+      {
+        "place": "Burnt Tower",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "whirl-islands"
+      },
+      {
+        "where": "whirl-islands",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "mt-silver",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": {
+          "ko": "로켓단아지트",
+          "en": "Rocket Hideout"
+        }
+      },
+      {
+        "place": "Goldenrod Underground"
+      },
+      {
+        "where": "cliff-cave",
+        "how": "hidden",
+        "detail": "다우징머신 · 다우징머신"
+      },
+      {
+        "where": "cerulean-cave"
+      },
+      {
+        "where": "cerulean-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "seafoam-islands"
+      },
+      {
+        "where": "kanto-victory-road-1"
+      },
+      {
+        "place": "Town Outskirts",
+        "how": "other",
+        "detail": "포켓워커 2000걸음 이상"
+      }
+    ],
+    "lava-cookie": [
+      {
+        "place": "Volcano Path",
+        "how": "other",
+        "detail": "포켓워커 3000걸음 이상"
+      },
+      {
+        "place": "Sightseeing",
+        "how": "other",
+        "detail": "포켓워커 1000걸음 이상"
+      }
+    ],
+    "lax-incense": [
+      {
+        "where": "johto-route-38"
+      }
+    ],
+    "leaf-stone": [
+      {
+        "where": "national-park",
+        "how": "prize",
+        "detail": "벌레잡기대회 1등"
+      },
+      {
+        "where": "johto-route-34",
+        "detail": "PokéGear Phonecall · Show Bill's Grandfather an Oddish"
+      },
+      {
+        "where": "viridian-forest"
+      }
+    ],
+    "lemonade": [
+      {
+        "place": "Resort",
+        "how": "other",
+        "detail": "포켓워커 500걸음 이상"
+      },
+      {
+        "place": "Sightseeing",
+        "how": "other",
+        "detail": "포켓워커 1400걸음 이상"
+      },
+      {
+        "place": "Amity Meadow",
+        "how": "other",
+        "detail": "포켓워커 600걸음 이상"
+      }
+    ],
+    "leppa-berry": [
+      {
+        "where": "violet-city",
+        "detail": "Give Juggler a Red Shard"
+      },
+      {
+        "where": "ruins-of-alph",
+        "detail": "Bottom Left"
+      },
+      {
+        "where": "ruins-of-alph",
+        "detail": "Top Left"
+      },
+      {
+        "place": "Beautiful Beach",
+        "how": "other",
+        "detail": "포켓워커 1800걸음 이상"
+      },
+      {
+        "place": "Blue Lake",
+        "how": "other",
+        "detail": "포켓워커 100걸음 이상"
+      }
+    ],
+    "level-ball": [
+      {
+        "where": "azalea-town",
+        "detail": "Exchange Apricorns with Kurt"
+      }
+    ],
+    "liechi-berry": [
+      {
+        "place": "Warm Beach",
+        "how": "other",
+        "detail": "포켓워커 8000걸음 이상"
+      }
+    ],
+    "life-orb": [
+      {
+        "where": "ruins-of-alph",
+        "detail": "Top Left"
+      }
+    ],
+    "light-ball": [
+      {
+        "place": "Yellow Forest",
+        "how": "other",
+        "detail": "포켓워커 7000걸음 이상"
+      }
+    ],
+    "light-clay": [
+      {
+        "where": "kanto-route-9"
+      }
+    ],
+    "lost-item": [
+      {
+        "place": {
+          "ko": "갈색시티",
+          "en": "Vermillion City"
+        },
+        "detail": "Fan Club President"
+      }
+    ],
+    "love-ball": [
+      {
+        "where": "azalea-town",
+        "detail": "Exchange Apricorns with Kurt"
+      }
+    ],
+    "luck-incense": [
+      {
+        "place": {
+          "ko": "갈색시티",
+          "en": "Vermillion City"
+        }
+      }
+    ],
+    "lucky-punch": [
+      {
+        "where": "kanto-route-14",
+        "detail": "Show a man Chansey"
+      }
+    ],
+    "lum-berry": [
+      {
+        "where": "violet-city",
+        "detail": "Give Juggler a Green Shard"
+      },
+      {
+        "place": "Blue Lake",
+        "how": "other",
+        "detail": "포켓워커 3000걸음 이상"
+      },
+      {
+        "place": "Town Outskirts",
+        "how": "other",
+        "detail": "포켓워커 1500걸음 이상"
+      },
+      {
+        "place": "Winner's Path",
+        "how": "other",
+        "detail": "포켓워커 1000걸음 이상"
+      }
+    ],
+    "lure-ball": [
+      {
+        "where": "johto-route-32"
+      },
+      {
+        "where": "azalea-town",
+        "detail": "Exchange Apricorns with Kurt"
+      }
+    ],
+    "lustrous-orb": [
+      {
+        "where": "sinjoh-ruins",
+        "detail": "Held by Palkia"
+      }
+    ],
+    "luxury-ball": [
+      {
+        "where": "goldenrod-city",
+        "detail": "Goldenrod Dept. Store Lottery - 2nd Prize - Sunday"
+      },
+      {
+        "place": "Resort",
+        "how": "other",
+        "detail": "포켓워커 6000걸음 이상"
+      }
+    ],
+    "machine-part": [
+      {
+        "where": "cerulean-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      }
+    ],
+    "magmarizer": [
+      {
+        "where": "cinnabar-island"
+      },
+      {
+        "place": "Amity Meadow",
+        "how": "other",
+        "detail": "포켓워커 2500걸음 이상"
+      }
+    ],
+    "magnet": [
+      {
+        "where": "johto-route-37",
+        "detail": "Sunny on Sunday"
+      }
+    ],
+    "magost-berry": [
+      {
+        "place": "White Lake",
+        "how": "other",
+        "detail": "포켓워커 1000걸음 이상"
+      }
+    ],
+    "master-ball": [
+      {
+        "where": "new-bark-town",
+        "detail": "Professor Elm - Get all 8 Badges"
+      },
+      {
+        "where": "radio-tower",
+        "detail": "Goldenrod Lottery Prize - All Numbers Match"
+      }
+    ],
+    "max-elixir": [
+      {
+        "where": "mt-silver",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "cerulean-cave"
+      },
+      {
+        "place": "Treehouse",
+        "how": "other",
+        "detail": "포켓워커 4000걸음 이상"
+      },
+      {
+        "place": "Quiet Cave",
+        "how": "other",
+        "detail": "포켓워커 4500걸음 이상"
+      }
+    ],
+    "max-ether": [
+      {
+        "place": {
+          "ko": "41번수로",
+          "en": "Route 41"
+        },
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "johto-route-43"
+      },
+      {
+        "where": "violet-city"
+      },
+      {
+        "where": "cianwood-city"
+      },
+      {
+        "where": "ruins-of-alph"
+      },
+      {
+        "where": "mt-mortar"
+      },
+      {
+        "where": "dark-cave"
+      },
+      {
+        "where": "mt-silver",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": "Goldenrod Underground"
+      },
+      {
+        "where": "cliff-cave"
+      },
+      {
+        "place": {
+          "ko": "19번수로",
+          "en": "Route 19"
+        }
+      },
+      {
+        "place": {
+          "ko": "갈색시티",
+          "en": "Vermillion City"
+        }
+      },
+      {
+        "where": "viridian-forest",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "rock-tunnel"
+      },
+      {
+        "where": "kanto-victory-road-1"
+      },
+      {
+        "place": "Dim Cave",
+        "how": "other",
+        "detail": "포켓워커 1500걸음 이상"
+      },
+      {
+        "place": "Treehouse",
+        "how": "other",
+        "detail": "포켓워커 3000걸음 이상"
+      }
+    ],
+    "max-potion": [
+      {
+        "where": "johto-route-38"
+      },
+      {
+        "where": "johto-route-45"
+      },
+      {
+        "where": "mt-mortar"
+      },
+      {
+        "place": {
+          "ko": "방울탑",
+          "en": "Tin Tower"
+        },
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": {
+          "ko": "방울탑",
+          "en": "Tin Tower"
+        }
+      },
+      {
+        "where": "mt-silver",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "dragons-den",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "ice-path",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "ice-path"
+      },
+      {
+        "place": "Goldenrod Underground",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "rock-tunnel",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": "Dim Cave",
+        "how": "other",
+        "detail": "포켓워커 2000걸음 이상"
+      },
+      {
+        "place": "Treehouse",
+        "how": "other",
+        "detail": "포켓워커 3500걸음 이상"
+      },
+      {
+        "place": "Sinnoh Field",
+        "how": "other",
+        "detail": "포켓워커 3800걸음 이상"
+      }
+    ],
+    "max-repel": [
+      {
+        "where": "johto-route-44"
+      },
+      {
+        "where": "mt-mortar"
+      },
+      {
+        "place": "Icy Mountain Rd.",
+        "how": "other",
+        "detail": "포켓워커 1000걸음 이상"
+      },
+      {
+        "place": "Resort",
+        "how": "other",
+        "detail": "포켓워커 800걸음 이상"
+      },
+      {
+        "place": "Rally",
+        "how": "other",
+        "detail": "포켓워커 900걸음 이상"
+      },
+      {
+        "place": "Rally",
+        "how": "other",
+        "detail": "포켓워커 500걸음 이상"
+      }
+    ],
+    "max-revive": [
+      {
+        "where": "johto-route-44"
+      },
+      {
+        "where": "ruins-of-alph"
+      },
+      {
+        "where": "radio-tower",
+        "detail": "Goldenrod Lottery Prize - 4 Numbers Match"
+      },
+      {
+        "where": "mt-mortar"
+      },
+      {
+        "where": "mt-mortar",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": {
+          "ko": "방울탑",
+          "en": "Tin Tower"
+        }
+      },
+      {
+        "where": "dark-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "whirl-islands"
+      },
+      {
+        "where": "mt-silver"
+      },
+      {
+        "where": "mt-silver",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "lake-of-rage",
+        "how": "hidden",
+        "detail": "Low Tide · 다우징머신"
+      },
+      {
+        "where": "digletts-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "mt-moon",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "cerulean-cave"
+      },
+      {
+        "where": "cerulean-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "seafoam-islands",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "kanto-victory-road-1"
+      },
+      {
+        "where": "kanto-victory-road-1",
+        "how": "hidden",
+        "detail": "다우징머신"
+      }
+    ],
+    "meadow-plate": [
+      {
+        "where": "ss-aqua",
+        "detail": "From Captain"
+      }
+    ],
+    "mental-herb": [
+      {
+        "where": "kanto-route-7"
+      }
+    ],
+    "metal-coat": [
+      {
+        "where": "ss-aqua"
+      }
+    ],
+    "mind-plate": [
+      {
+        "where": "ss-aqua",
+        "detail": "From Captain"
+      }
+    ],
+    "miracle-seed": [
+      {
+        "where": "johto-route-32"
+      },
+      {
+        "place": "Yellow Forest",
+        "how": "other",
+        "detail": "포켓워커 5000걸음 이상"
+      }
+    ],
+    "moomoo-milk": [
+      {
+        "where": "johto-route-39",
+        "detail": "Receive from Miltank"
+      },
+      {
+        "place": "Resort",
+        "how": "other",
+        "detail": "포켓워커 2500걸음 이상"
+      },
+      {
+        "place": "Sightseeing",
+        "how": "other",
+        "detail": "포켓워커 2600걸음 이상"
+      },
+      {
+        "place": "Amity Meadow",
+        "how": "other",
+        "detail": "포켓워커 700걸음 이상"
+      }
+    ],
+    "moon-ball": [
+      {
+        "where": "azalea-town",
+        "detail": "Exchange Apricorns with Kurt"
+      }
+    ],
+    "moon-stone": [
+      {
+        "where": "new-bark-town",
+        "how": "gift",
+        "detail": "엄마의 저금"
+      },
+      {
+        "where": "ruins-of-alph",
+        "detail": "Bottom Right Ruins · Monday Nights Only"
+      },
+      {
+        "place": {
+          "ko": "동성폭포",
+          "en": "Tohjo Falls"
+        }
+      },
+      {
+        "place": "Volcano Path",
+        "how": "other",
+        "detail": "포켓워커 5000걸음 이상"
+      },
+      {
+        "place": "Night Skys Edge",
+        "how": "other",
+        "detail": "포켓워커 5000걸음 이상"
+      },
+      {
+        "place": "Amity Meadow",
+        "how": "other",
+        "detail": "포켓워커 2000걸음 이상"
+      }
+    ],
+    "muscle-band": [
+      {
+        "where": "new-bark-town",
+        "how": "gift",
+        "detail": "엄마의 저금"
+      }
+    ],
+    "mystery-egg": [
+      {
+        "where": "johto-route-30",
+        "detail": "Mr. Pokémon"
+      }
+    ],
+    "mystic-water": [
+      {
+        "where": "cherrygrove-city",
+        "detail": "Requires Surf"
+      },
+      {
+        "where": "ruins-of-alph",
+        "detail": "Bottom Left"
+      }
+    ],
+    "nanab-berry": [
+      {
+        "place": "Hoenn Field",
+        "how": "other",
+        "detail": "포켓워커 500걸음 이상"
+      }
+    ],
+    "nest-ball": [
+      {
+        "where": "goldenrod-city",
+        "detail": "Goldenrod Dept. Store Lottery - 2nd Prize - Monday"
+      },
+      {
+        "place": "Sinnoh Field",
+        "how": "other",
+        "detail": "포켓워커 500걸음 이상"
+      }
+    ],
+    "net-ball": [
+      {
+        "where": "goldenrod-city",
+        "detail": "Goldenrod Dept. Store Lottery - 2nd Prize - Wednesday"
+      },
+      {
+        "place": "Noisy Forest",
+        "how": "other",
+        "detail": "포켓워커 5000걸음 이상"
+      },
+      {
+        "place": "Blue Lake",
+        "how": "other",
+        "detail": "포켓워커 4000걸음 이상"
+      }
+    ],
+    "nomel-berry": [
+      {
+        "where": "fuchsia-city",
+        "detail": "Give Juggler a Yellow Shard"
+      },
+      {
+        "place": "White Lake",
+        "how": "other",
+        "detail": "포켓워커 2500걸음 이상"
+      }
+    ],
+    "nugget": [
+      {
+        "where": "johto-route-34"
+      },
+      {
+        "where": "johto-route-35",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "johto-route-39",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "johto-route-45"
+      },
+      {
+        "where": "cherrygrove-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "ruins-of-alph",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "radio-tower",
+        "detail": "Earn 20 Points at Buena's Password"
+      },
+      {
+        "where": "mt-mortar"
+      },
+      {
+        "where": "mt-mortar",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": {
+          "ko": "방울탑",
+          "en": "Tin Tower"
+        }
+      },
+      {
+        "where": "whirl-islands"
+      },
+      {
+        "where": "ss-aqua",
+        "detail": "From Captain"
+      },
+      {
+        "place": {
+          "ko": "로켓단아지트",
+          "en": "Rocket Hideout"
+        }
+      },
+      {
+        "where": "johto-route-48"
+      },
+      {
+        "where": "kanto-route-25"
+      },
+      {
+        "where": "kanto-route-26",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "viridian-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "cerulean-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "fuchsia-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "cerulean-cave"
+      },
+      {
+        "where": "cerulean-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": "Quiet Cave",
+        "how": "other",
+        "detail": "포켓워커 5500걸음 이상"
+      }
+    ],
+    "occa-berry": [
+      {
+        "where": "new-bark-town",
+        "how": "gift",
+        "detail": "엄마의 저금"
+      },
+      {
+        "place": "Hoenn Field",
+        "how": "other",
+        "detail": "포켓워커 2500걸음 이상"
+      }
+    ],
+    "odd-incense": [
+      {
+        "where": "cerulean-cave"
+      }
+    ],
+    "old-amber": [
+      {
+        "where": "ruins-of-alph"
+      }
+    ],
+    "old-gateau": [
+      {
+        "place": "Scary Cave",
+        "how": "other",
+        "detail": "포켓워커 3500걸음 이상"
+      },
+      {
+        "place": "Sightseeing",
+        "how": "other",
+        "detail": "포켓워커 4500걸음 이상"
+      }
+    ],
+    "old-rod": [
+      {
+        "where": "johto-route-32",
+        "detail": "Fishing Guru"
+      }
+    ],
+    "oran-berry": [
+      {
+        "where": "johto-route-36",
+        "detail": "Defeat/Capture Sudowoodo"
+      },
+      {
+        "where": "violet-city",
+        "detail": "Give Juggler a Blue Shard"
+      },
+      {
+        "where": "goldenrod-city",
+        "detail": "Goldenrod Dept. Store Lottery - 3rd Prize"
+      },
+      {
+        "where": "ruins-of-alph",
+        "detail": "Right Ruins"
+      },
+      {
+        "place": "Refreshing Field",
+        "how": "other",
+        "detail": "포켓워커 300걸음 이상"
+      }
+    ],
+    "oval-stone": [
+      {
+        "where": "national-park",
+        "how": "prize",
+        "detail": "벌레잡기대회 1등"
+      },
+      {
+        "place": "Amity Meadow",
+        "how": "other",
+        "detail": "포켓워커 1500걸음 이상"
+      }
+    ],
+    "pamtre-berry": [
+      {
+        "place": "White Lake",
+        "how": "other",
+        "detail": "포켓워커 3500걸음 이상"
+      },
+      {
+        "place": "Beyond the Sea",
+        "how": "other",
+        "detail": "포켓워커 2000걸음 이상"
+      }
+    ],
+    "paralyze-heal": [
+      {
+        "where": "johto-route-35"
+      },
+      {
+        "where": "goldenrod-city",
+        "how": "hidden",
+        "detail": "다우징머신 · Dept. Store Basement"
+      },
+      {
+        "where": "sprout-tower"
+      },
+      {
+        "where": "union-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      }
+    ],
+    "pass": [
+      {
+        "where": "saffron-city",
+        "detail": "Return Lost Item"
+      }
+    ],
+    "passho-berry": [
+      {
+        "where": "new-bark-town",
+        "how": "gift",
+        "detail": "엄마의 저금"
+      },
+      {
+        "place": "Hoenn Field",
+        "how": "other",
+        "detail": "포켓워커 3000걸음 이상"
+      }
+    ],
+    "payapa-berry": [
+      {
+        "where": "new-bark-town",
+        "how": "gift",
+        "detail": "엄마의 저금"
+      },
+      {
+        "place": "Stormy Beach",
+        "how": "other",
+        "detail": "포켓워커 4500걸음 이상"
+      }
+    ],
+    "pearl": [
+      {
+        "where": "olivine-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "whirl-islands",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "johto-route-47",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "cliff-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": {
+          "ko": "갈색시티",
+          "en": "Vermillion City"
+        },
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "seafoam-islands"
+      },
+      {
+        "place": "Blue Lake",
+        "how": "other",
+        "detail": "포켓워커 500걸음 이상"
+      },
+      {
+        "place": "Warm Beach",
+        "how": "other",
+        "detail": "포켓워커 1000걸음 이상"
+      },
+      {
+        "place": "Quiet Cave",
+        "how": "other",
+        "detail": "포켓워커 500걸음 이상"
+      },
+      {
+        "place": "Night Skys Edge",
+        "how": "other",
+        "detail": "포켓워커 1000걸음 이상"
+      },
+      {
+        "place": "Rally",
+        "how": "other",
+        "detail": "포켓워커 700걸음 이상"
+      }
+    ],
+    "pecha-berry": [
+      {
+        "where": "johto-route-36",
+        "detail": "Defeat/Capture Sudowoodo"
+      },
+      {
+        "where": "violet-city",
+        "detail": "Give Juggler a Red Shard"
+      },
+      {
+        "where": "goldenrod-city",
+        "detail": "Goldenrod Dept. Store Lottery - 3rd Prize"
+      },
+      {
+        "where": "ruins-of-alph",
+        "detail": "Right Ruins"
+      },
+      {
+        "place": "Noisy Forest",
+        "how": "other",
+        "detail": "포켓워커 500걸음 이상"
+      },
+      {
+        "place": "Yellow Forest",
+        "how": "other",
+        "detail": "포켓워커 800걸음 이상"
+      }
+    ],
+    "persim-berry": [
+      {
+        "where": "goldenrod-city",
+        "detail": "Goldenrod Dept. Store Lottery - 3rd Prize · Give Juggler a Red Shard"
+      },
+      {
+        "place": "Dim Cave",
+        "how": "other",
+        "detail": "포켓워커 2500걸음 이상"
+      },
+      {
+        "place": "Winner's Path",
+        "how": "other",
+        "detail": "포켓워커 500걸음 이상"
+      }
+    ],
+    "petaya-berry": [
+      {
+        "place": "Scary Cave",
+        "how": "other",
+        "detail": "포켓워커 8000걸음 이상"
+      }
+    ],
+    "pinap-berry": [
+      {
+        "where": "fuchsia-city",
+        "detail": "Give Juggler a Yellow Shard"
+      },
+      {
+        "place": "Volcano Path",
+        "how": "other",
+        "detail": "포켓워커 1000걸음 이상"
+      }
+    ],
+    "pink-apricorn": [
+      {
+        "where": "johto-route-30"
+      },
+      {
+        "where": "johto-route-33"
+      },
+      {
+        "where": "johto-route-42"
+      }
+    ],
+    "poison-barb": [
+      {
+        "where": "johto-route-32",
+        "detail": "Frieda on Friday"
+      }
+    ],
+    "poke-ball": [
+      {
+        "where": "johto-route-29",
+        "detail": "Given by Ethan/Lyra (*5)"
+      },
+      {
+        "where": "johto-route-31"
+      },
+      {
+        "where": "violet-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "radio-tower",
+        "detail": "Earn 1 Point at Buena's Password"
+      }
+    ],
+    "poke-doll": [
+      {
+        "place": "Resort",
+        "how": "other",
+        "detail": "포켓워커 5000걸음 이상"
+      }
+    ],
+    "pomeg-berry": [
+      {
+        "where": "fuchsia-city",
+        "detail": "Give Juggler a Red Shard"
+      },
+      {
+        "place": "Hoenn Field",
+        "how": "other",
+        "detail": "포켓워커 1000걸음 이상"
+      },
+      {
+        "place": "Beyond the Sea",
+        "how": "other",
+        "detail": "포켓워커 1000걸음 이상"
+      }
+    ],
+    "potion": [
+      {
+        "where": "johto-route-29"
+      },
+      {
+        "where": "johto-route-30"
+      },
+      {
+        "where": "johto-route-30",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "johto-route-31"
+      },
+      {
+        "where": "new-bark-town",
+        "detail": "Elm's Assistant"
+      },
+      {
+        "where": "new-bark-town",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "sprout-tower"
+      },
+      {
+        "where": "union-cave"
+      },
+      {
+        "place": "Refreshing Field",
+        "how": "other",
+        "detail": "포켓워커 0걸음 이상"
+      },
+      {
+        "place": "Suburban Area",
+        "how": "other",
+        "detail": "포켓워커 0걸음 이상"
+      },
+      {
+        "place": "Volcano Path",
+        "how": "other",
+        "detail": "포켓워커 0걸음 이상"
+      },
+      {
+        "place": "Rally",
+        "how": "other",
+        "detail": "포켓워커 0걸음 이상"
+      }
+    ],
+    "power-herb": [
+      {
+        "where": "johto-route-34"
+      },
+      {
+        "place": "Winner's Path",
+        "how": "other",
+        "detail": "포켓워커 6000걸음 이상"
+      }
+    ],
+    "pp-max": [
+      {
+        "where": "johto-route-45",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": {
+          "ko": "방울탑",
+          "en": "Tin Tower"
+        }
+      },
+      {
+        "where": "whirl-islands"
+      },
+      {
+        "where": "dragons-den"
+      },
+      {
+        "where": "dragons-den",
+        "how": "hidden",
+        "detail": "다우징머신 · 다우징머신"
+      },
+      {
+        "where": "kanto-route-26"
+      },
+      {
+        "place": {
+          "ko": "갈색시티",
+          "en": "Vermillion City"
+        }
+      },
+      {
+        "where": "digletts-cave"
+      }
+    ],
+    "pp-up": [
+      {
+        "where": "johto-route-39",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "violet-city"
+      },
+      {
+        "where": "radio-tower",
+        "detail": "Goldenrod Lottery Prize - 2 Numbers Match"
+      },
+      {
+        "where": "mt-mortar"
+      },
+      {
+        "place": {
+          "ko": "방울탑",
+          "en": "Tin Tower"
+        }
+      },
+      {
+        "where": "ice-path"
+      },
+      {
+        "where": "pokeathlon-dome",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "pewter-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "celadon-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "cerulean-cave"
+      },
+      {
+        "where": "cerulean-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "rock-tunnel"
+      },
+      {
+        "place": "Rugged Road",
+        "how": "other",
+        "detail": "포켓워커 7000걸음 이상"
+      },
+      {
+        "place": "Suburban Area",
+        "how": "other",
+        "detail": "포켓워커 5000걸음 이상"
+      },
+      {
+        "place": "Stormy Beach",
+        "how": "other",
+        "detail": "포켓워커 5000걸음 이상"
+      }
+    ],
+    "protector": [
+      {
+        "where": "mt-mortar"
+      }
+    ],
+    "protein": [
+      {
+        "where": "olivine-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "radio-tower",
+        "detail": "Earn 5 Points at Buena's Password"
+      },
+      {
+        "where": "mt-silver"
+      },
+      {
+        "where": "ice-path"
+      },
+      {
+        "place": {
+          "ko": "로켓단아지트",
+          "en": "Rocket Hideout"
+        }
+      },
+      {
+        "where": "pokeathlon-dome",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "cerulean-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      }
+    ],
+    "pure-incense": [
+      {
+        "where": "mt-silver"
+      }
+    ],
+    "qualot-berry": [
+      {
+        "place": "Hoenn Field",
+        "how": "other",
+        "detail": "포켓워커 2000걸음 이상"
+      },
+      {
+        "place": "Big Forest",
+        "how": "other",
+        "detail": "포켓워커 4500걸음 이상"
+      }
+    ],
+    "quick-ball": [
+      {
+        "where": "goldenrod-city",
+        "detail": "Goldenrod Dept. Store Lottery - 2nd Prize - Thursday"
+      },
+      {
+        "place": "Stormy Beach",
+        "how": "other",
+        "detail": "포켓워커 1500걸음 이상"
+      }
+    ],
+    "quick-claw": [
+      {
+        "where": "national-park"
+      }
+    ],
+    "rabuta-berry": [
+      {
+        "place": "White Lake",
+        "how": "other",
+        "detail": "포켓워커 2000걸음 이상"
+      }
+    ],
+    "rage-candy-bar": [
+      {
+        "where": "mahogany-town"
+      }
+    ],
+    "rainbow-wing": [
+      {
+        "where": "radio-tower",
+        "detail": "Defeat Archer"
+      }
+    ],
+    "rare-bone": [
+      {
+        "where": "cliff-cave"
+      },
+      {
+        "place": "Night Skys Edge",
+        "how": "other",
+        "detail": "포켓워커 4000걸음 이상"
+      }
+    ],
+    "rare-candy": [
+      {
+        "where": "johto-route-34"
+      },
+      {
+        "where": "violet-city"
+      },
+      {
+        "where": "ecruteak-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "olivine-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "radio-tower",
+        "detail": "Earn 25 Points at Buena's Password"
+      },
+      {
+        "where": "mt-mortar",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "mt-mortar"
+      },
+      {
+        "place": {
+          "ko": "방울탑",
+          "en": "Tin Tower"
+        }
+      },
+      {
+        "where": "whirl-islands",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "mt-silver",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": "Shining Lighthouse"
+      },
+      {
+        "where": "kanto-route-28",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": {
+          "ko": "갈색시티",
+          "en": "Vermillion City"
+        },
+        "detail": "Fan Club President"
+      },
+      {
+        "where": "cinnabar-island",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "indigo-plateau",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "cerulean-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "kanto-victory-road-1"
+      },
+      {
+        "place": "Sinnoh Field",
+        "how": "other",
+        "detail": "포켓워커 5000걸음 이상"
+      },
+      {
+        "place": "Sightseeing",
+        "how": "other",
+        "detail": "포켓워커 5000걸음 이상"
+      }
+    ],
+    "rawst-berry": [
+      {
+        "where": "violet-city",
+        "detail": "Give Juggler a Green Shard"
+      },
+      {
+        "where": "goldenrod-city",
+        "detail": "Goldenrod Dept. Store Lottery - 3rd Prize"
+      },
+      {
+        "place": "Beautiful Beach",
+        "how": "other",
+        "detail": "포켓워커 500걸음 이상"
+      },
+      {
+        "place": "Yellow Forest",
+        "how": "other",
+        "detail": "포켓워커 900걸음 이상"
+      }
+    ],
+    "razz-berry": [
+      {
+        "where": "fuchsia-city",
+        "detail": "Give Juggler a Red Shard"
+      },
+      {
+        "place": "Hoenn Field",
+        "how": "other",
+        "detail": "포켓워커 0걸음 이상"
+      }
+    ],
+    "reaper-cloth": [
+      {
+        "where": "mt-silver"
+      }
+    ],
+    "red-apricorn": [
+      {
+        "where": "johto-route-37"
+      },
+      {
+        "where": "johto-route-44"
+      }
+    ],
+    "red-flute": [
+      {
+        "where": "lake-of-rage",
+        "detail": "High Tide"
+      }
+    ],
+    "red-orb": [
+      {
+        "where": "johto-route-30",
+        "detail": "Defeat Red & talk to Mr. Pokémon"
+      }
+    ],
+    "red-scale": [
+      {
+        "where": "lake-of-rage"
+      }
+    ],
+    "red-shard": [
+      {
+        "where": "violet-city"
+      },
+      {
+        "where": "cianwood-city"
+      },
+      {
+        "where": "ruins-of-alph"
+      },
+      {
+        "where": "dark-cave"
+      },
+      {
+        "where": "cliff-cave"
+      },
+      {
+        "place": {
+          "ko": "갈색시티",
+          "en": "Vermillion City"
+        }
+      },
+      {
+        "where": "rock-tunnel"
+      },
+      {
+        "where": "kanto-victory-road-1"
+      },
+      {
+        "place": "Rugged Road",
+        "how": "other",
+        "detail": "포켓워커 3000걸음 이상"
+      },
+      {
+        "place": "Volcano Path",
+        "how": "other",
+        "detail": "포켓워커 500걸음 이상"
+      },
+      {
+        "place": "Scary Cave",
+        "how": "other",
+        "detail": "포켓워커 1000걸음 이상"
+      },
+      {
+        "place": "Night Skys Edge",
+        "how": "other",
+        "detail": "포켓워커 2000걸음 이상"
+      }
+    ],
+    "repeat-ball": [
+      {
+        "where": "goldenrod-city",
+        "detail": "Goldenrod Dept. Store Lottery - 2nd Prize - Tuesday"
+      },
+      {
+        "place": "Sinnoh Field",
+        "how": "other",
+        "detail": "포켓워커 3000걸음 이상"
+      }
+    ],
+    "repel": [
+      {
+        "where": "johto-route-32"
+      },
+      {
+        "where": "new-bark-town",
+        "how": "gift",
+        "detail": "엄마의 저금"
+      },
+      {
+        "where": "ilex-forest",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": "Rugged Road",
+        "how": "other",
+        "detail": "포켓워커 0걸음 이상"
+      },
+      {
+        "place": "Scary Cave",
+        "how": "other",
+        "detail": "포켓워커 0걸음 이상"
+      }
+    ],
+    "revival-herb": [
+      {
+        "where": "ruins-of-alph",
+        "detail": "Top Left"
+      },
+      {
+        "place": "Treehouse",
+        "how": "other",
+        "detail": "포켓워커 1000걸음 이상"
+      }
+    ],
+    "revive": [
+      {
+        "where": "johto-route-45"
+      },
+      {
+        "where": "violet-city"
+      },
+      {
+        "where": "cianwood-city"
+      },
+      {
+        "where": "union-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "ilex-forest"
+      },
+      {
+        "where": "mt-mortar"
+      },
+      {
+        "where": "mt-mortar",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": "Burnt Tower",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "dark-cave"
+      },
+      {
+        "where": "whirl-islands",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "mt-silver",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "dragons-den",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "ice-path",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": {
+          "ko": "로켓단아지트",
+          "en": "Rocket Hideout"
+        },
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": "Goldenrod Underground",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "johto-route-47",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": {
+          "ko": "19번수로",
+          "en": "Route 19"
+        },
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": {
+          "ko": "19번수로",
+          "en": "Route 19"
+        }
+      },
+      {
+        "where": "kanto-route-25",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "kanto-route-27",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": {
+          "ko": "갈색시티",
+          "en": "Vermillion City"
+        }
+      },
+      {
+        "where": "mt-moon",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "cerulean-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "rock-tunnel"
+      },
+      {
+        "where": "seafoam-islands"
+      },
+      {
+        "where": "kanto-victory-road-1"
+      },
+      {
+        "place": "Refreshing Field",
+        "how": "other",
+        "detail": "포켓워커 2500걸음 이상"
+      },
+      {
+        "place": "Noisy Forest",
+        "how": "other",
+        "detail": "포켓워커 2500걸음 이상"
+      },
+      {
+        "place": "Warm Beach",
+        "how": "other",
+        "detail": "포켓워커 2000걸음 이상"
+      },
+      {
+        "place": "Volcano Path",
+        "how": "other",
+        "detail": "포켓워커 2000걸음 이상"
+      },
+      {
+        "place": "Sinnoh Field",
+        "how": "other",
+        "detail": "포켓워커 2000걸음 이상"
+      }
+    ],
+    "rindo-berry": [
+      {
+        "where": "new-bark-town",
+        "how": "gift",
+        "detail": "엄마의 저금"
+      },
+      {
+        "place": "Icy Mountain Rd.",
+        "how": "other",
+        "detail": "포켓워커 4500걸음 이상"
+      }
+    ],
+    "rock-incense": [
+      {
+        "where": "digletts-cave"
+      }
+    ],
+    "root-fossil": [
+      {
+        "where": "cliff-cave"
+      }
+    ],
+    "rose-incense": [
+      {
+        "where": "kanto-route-15"
+      }
+    ],
+    "sacred-ash": [
+      {
+        "where": "kanto-route-2"
+      }
+    ],
+    "salac-berry": [
+      {
+        "place": "Treehouse",
+        "how": "other",
+        "detail": "포켓워커 8000걸음 이상"
+      }
+    ],
+    "sea-incense": [
+      {
+        "where": "cerulean-cave"
+      }
+    ],
+    "seal-case": [
+      {
+        "where": "johto-route-39",
+        "detail": "Feed 5 Oran Berries to Miltank"
+      }
+    ],
+    "secret-potion": [
+      {
+        "where": "cianwood-city"
+      }
+    ],
+    "sharp-beak": [
+      {
+        "place": {
+          "ko": "40번수로",
+          "en": "Route 40"
+        },
+        "detail": "Monica on Monday"
+      }
+    ],
+    "shed-shell": [
+      {
+        "where": "national-park",
+        "detail": "Come 4th in Bug Catching Contest"
+      }
+    ],
+    "shell-bell": [
+      {
+        "where": "johto-route-32"
+      }
+    ],
+    "shiny-stone": [
+      {
+        "where": "national-park"
+      },
+      {
+        "where": "national-park",
+        "how": "prize",
+        "detail": "벌레잡기대회 1등 · PokéGear Phonecall"
+      }
+    ],
+    "shuca-berry": [
+      {
+        "where": "new-bark-town",
+        "how": "gift",
+        "detail": "엄마의 저금"
+      },
+      {
+        "place": "Stormy Beach",
+        "how": "other",
+        "detail": "포켓워커 3500걸음 이상"
+      }
+    ],
+    "silk-scarf": [
+      {
+        "where": "new-bark-town",
+        "how": "gift",
+        "detail": "엄마의 저금"
+      }
+    ],
+    "silver-powder": [
+      {
+        "place": "Dim Cave",
+        "how": "other",
+        "detail": "포켓워커 5000걸음 이상"
+      }
+    ],
+    "silver-wing": [
+      {
+        "where": "radio-tower",
+        "detail": "Defeat Archer"
+      }
+    ],
+    "sitrus-berry": [
+      {
+        "where": "violet-city",
+        "detail": "Give Juggler a Yellow Shard"
+      },
+      {
+        "where": "ruins-of-alph",
+        "detail": "Bottom Right Ruins"
+      },
+      {
+        "place": "Dim Cave",
+        "how": "other",
+        "detail": "포켓워커 0걸음 이상"
+      },
+      {
+        "place": "Blue Lake",
+        "how": "other",
+        "detail": "포켓워커 1000걸음 이상"
+      },
+      {
+        "place": "Winner's Path",
+        "how": "other",
+        "detail": "포켓워커 2000걸음 이상"
+      }
+    ],
+    "sky-plate": [
+      {
+        "where": "ss-aqua",
+        "detail": "From Captain"
+      }
+    ],
+    "smoke-ball": [
+      {
+        "place": "Goldenrod Underground"
+      }
+    ],
+    "smooth-rock": [
+      {
+        "place": "Icy Mountain Rd.",
+        "how": "other",
+        "detail": "포켓워커 3500걸음 이상"
+      }
+    ],
+    "soda-pop": [
+      {
+        "place": "Beautiful Beach",
+        "how": "other",
+        "detail": "포켓워커 800걸음 이상"
+      },
+      {
+        "place": "Resort",
+        "how": "other",
+        "detail": "포켓워커 1000걸음 이상"
+      },
+      {
+        "place": "Sightseeing",
+        "how": "other",
+        "detail": "포켓워커 1800걸음 이상"
+      },
+      {
+        "place": "Amity Meadow",
+        "how": "other",
+        "detail": "포켓워커 500걸음 이상"
+      }
+    ],
+    "soft-sand": [
+      {
+        "where": "blackthorn-city",
+        "detail": "Santos on Saturday"
+      }
+    ],
+    "soothe-bell": [
+      {
+        "where": "national-park"
+      }
+    ],
+    "soul-dew": [
+      {
+        "where": "pewter-city",
+        "detail": "Give Enigma Stone to Researcher"
+      }
+    ],
+    "spell-tag": [
+      {
+        "where": "celadon-city"
+      }
+    ],
+    "spelon-berry": [
+      {
+        "place": "White Lake",
+        "how": "other",
+        "detail": "포켓워커 3000걸음 이상"
+      },
+      {
+        "place": "Beyond the Sea",
+        "how": "other",
+        "detail": "포켓워커 1500걸음 이상"
+      }
+    ],
+    "splash-plate": [
+      {
+        "where": "ss-aqua",
+        "detail": "From Captain"
+      }
+    ],
+    "spooky-plate": [
+      {
+        "where": "ss-aqua",
+        "detail": "From Captain"
+      }
+    ],
+    "squirt-bottle": [
+      {
+        "where": "goldenrod-city",
+        "detail": "After defeating Whitney"
+      }
+    ],
+    "star-piece": [
+      {
+        "where": "violet-city"
+      },
+      {
+        "where": "cianwood-city"
+      },
+      {
+        "where": "ruins-of-alph",
+        "detail": "Bottom Left"
+      },
+      {
+        "where": "dark-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": {
+          "ko": "19번수로",
+          "en": "Route 19"
+        }
+      },
+      {
+        "place": {
+          "ko": "갈색시티",
+          "en": "Vermillion City"
+        }
+      },
+      {
+        "where": "cinnabar-island",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "rock-tunnel"
+      },
+      {
+        "where": "kanto-victory-road-1"
+      },
+      {
+        "place": "Rugged Road",
+        "how": "other",
+        "detail": "포켓워커 2000걸음 이상"
+      },
+      {
+        "place": "Blue Lake",
+        "how": "other",
+        "detail": "포켓워커 2500걸음 이상"
+      },
+      {
+        "place": "Night Skys Edge",
+        "how": "other",
+        "detail": "포켓워커 3500걸음 이상"
+      },
+      {
+        "place": "Amity Meadow",
+        "how": "other",
+        "detail": "포켓워커 1000걸음 이상"
+      }
+    ],
+    "stardust": [
+      {
+        "place": {
+          "ko": "41번수로",
+          "en": "Route 41"
+        },
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "cianwood-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "ruins-of-alph",
+        "detail": "Bottom Left"
+      },
+      {
+        "where": "johto-route-47",
+        "how": "hidden",
+        "detail": "다우징머신 · 다우징머신"
+      },
+      {
+        "place": {
+          "ko": "21번수로",
+          "en": "Route 21"
+        },
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": "Blue Lake",
+        "how": "other",
+        "detail": "포켓워커 2000걸음 이상"
+      },
+      {
+        "place": "Quiet Cave",
+        "how": "other",
+        "detail": "포켓워커 1000걸음 이상"
+      },
+      {
+        "place": "Beyond the Sea",
+        "how": "other",
+        "detail": "포켓워커 0걸음 이상"
+      },
+      {
+        "place": "Night Skys Edge",
+        "how": "other",
+        "detail": "포켓워커 0걸음 이상"
+      }
+    ],
+    "sticky-barb": [
+      {
+        "place": {
+          "ko": "갈색시티",
+          "en": "Vermillion City"
+        }
+      }
+    ],
+    "stone-plate": [
+      {
+        "where": "ss-aqua",
+        "detail": "From Captain"
+      }
+    ],
+    "sun-stone": [
+      {
+        "where": "national-park",
+        "how": "prize",
+        "detail": "벌레잡기대회 1등 · PokéGear Phonecall"
+      },
+      {
+        "place": "Volcano Path",
+        "how": "other",
+        "detail": "포켓워커 5500걸음 이상"
+      },
+      {
+        "place": "Amity Meadow",
+        "how": "other",
+        "detail": "포켓워커 2050걸음 이상"
+      }
+    ],
+    "super-potion": [
+      {
+        "where": "johto-route-32",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "johto-route-34"
+      },
+      {
+        "where": "johto-route-42"
+      },
+      {
+        "where": "new-bark-town",
+        "how": "gift",
+        "detail": "엄마의 저금"
+      },
+      {
+        "where": "goldenrod-city",
+        "how": "hidden",
+        "detail": "다우징머신 · Dept. Store Basement"
+      },
+      {
+        "where": "goldenrod-city"
+      },
+      {
+        "where": "slowpoke-well"
+      },
+      {
+        "where": "slowpoke-well",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "ilex-forest",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": "Shining Lighthouse"
+      },
+      {
+        "place": "Sinnoh Field",
+        "how": "other",
+        "detail": "포켓워커 0걸음 이상"
+      },
+      {
+        "place": "Rally",
+        "how": "other",
+        "detail": "포켓워커 300걸음 이상"
+      }
+    ],
+    "super-repel": [
+      {
+        "where": "whirl-islands",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": "Shining Lighthouse"
+      },
+      {
+        "place": "Rugged Road",
+        "how": "other",
+        "detail": "포켓워커 1000걸음 이상"
+      }
+    ],
+    "super-rod": [
+      {
+        "where": "kanto-route-12",
+        "detail": "Fishing Guru"
+      }
+    ],
+    "tamato-berry": [
+      {
+        "place": "Big Forest",
+        "how": "other",
+        "detail": "포켓워커 1000걸음 이상"
+      }
+    ],
+    "tanga-berry": [
+      {
+        "where": "new-bark-town",
+        "how": "gift",
+        "detail": "엄마의 저금"
+      },
+      {
+        "place": "Stormy Beach",
+        "how": "other",
+        "detail": "포켓워커 3000걸음 이상"
+      }
+    ],
+    "thick-club": [
+      {
+        "place": "Scary Cave",
+        "how": "other",
+        "detail": "포켓워커 4500걸음 이상"
+      }
+    ],
+    "thunder-stone": [
+      {
+        "where": "national-park",
+        "how": "prize",
+        "detail": "벌레잡기대회 1등"
+      },
+      {
+        "where": "johto-route-38",
+        "detail": "PokéGear Phonecall · Show Bill's Grandfather a Pichu"
+      },
+      {
+        "place": "Yellow Forest",
+        "how": "other",
+        "detail": "포켓워커 6000걸음 이상"
+      }
+    ],
+    "tidal-bell": [
+      {
+        "where": "ecruteak-city",
+        "detail": "Defeat the 5 Kimono Girls"
+      }
+    ],
+    "timer-ball": [
+      {
+        "where": "goldenrod-city",
+        "detail": "Goldenrod Dept. Store Lottery - 2nd Prize - Saturday"
+      },
+      {
+        "place": "Sinnoh Field",
+        "how": "other",
+        "detail": "포켓워커 2500걸음 이상"
+      }
+    ],
+    "tiny-mushroom": [
+      {
+        "where": "ilex-forest",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": {
+          "ko": "방울탑",
+          "en": "Tin Tower"
+        },
+        "how": "hidden",
+        "detail": "다우징머신 · 다우징머신"
+      },
+      {
+        "where": "viridian-forest"
+      },
+      {
+        "place": "Noisy Forest",
+        "how": "other",
+        "detail": "포켓워커 200걸음 이상"
+      },
+      {
+        "place": "Big Forest",
+        "how": "other",
+        "detail": "포켓워커 0걸음 이상"
+      }
+    ],
     "tm01": [
       {
         "place": "진청시티 체육관 관장 사도에게 이기면 배지와 함께 받을 수 있다. [스토리 진행시 자동 입수]"
@@ -571,44 +4825,386 @@
         "place": "상록시티 체육관 관장 그린에게 이기면 뱃지와 함께 받을 수 있다. [스토리 진행 중 자동 입수]"
       }
     ],
-    "hm01": [
+    "toxic-plate": [
       {
-        "place": "너도밤나무숲에 있는 파오리 2마리를 남자에게 돌아오도록 몰아주면 받을 수 있다. [스토리 진행 시 자동 입수]"
+        "where": "ss-aqua",
+        "detail": "From Captain"
       }
     ],
-    "hm02": [
+    "twisted-spoon": [
       {
-        "place": "진청시티 체육관 관장 사도를 이긴 뒤 체육관 밖으로 나오면 아주머니에게서 받을 수 있다. [스토리 진행 시 자동 입수]"
+        "where": "johto-route-29",
+        "detail": "Tuscany on Tuesday"
       }
     ],
-    "hm03": [
+    "ultra-ball": [
       {
-        "place": "인주시티 무도장에서 로켓단원을 이기게 되면 신사에게서 받을 수 있다."
+        "where": "johto-route-44"
+      },
+      {
+        "where": "goldenrod-city",
+        "detail": "Dept. Store Basement"
+      },
+      {
+        "where": "ecruteak-city",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "union-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "radio-tower",
+        "detail": "Goldenrod Lottery Prize - 1 Number Match"
+      },
+      {
+        "where": "radio-tower"
+      },
+      {
+        "where": "mt-mortar"
+      },
+      {
+        "where": "mt-mortar",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": {
+          "ko": "방울탑",
+          "en": "Tin Tower"
+        }
+      },
+      {
+        "place": "Burnt Tower",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "whirl-islands"
+      },
+      {
+        "where": "whirl-islands",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "mt-silver",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": {
+          "ko": "로켓단아지트",
+          "en": "Rocket Hideout"
+        }
+      },
+      {
+        "place": "Goldenrod Underground"
+      },
+      {
+        "where": "cliff-cave",
+        "how": "hidden",
+        "detail": "다우징머신 · 다우징머신"
+      },
+      {
+        "where": "cerulean-cave"
+      },
+      {
+        "where": "cerulean-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "seafoam-islands"
+      },
+      {
+        "where": "kanto-victory-road-1"
+      },
+      {
+        "place": "Town Outskirts",
+        "how": "other",
+        "detail": "포켓워커 2000걸음 이상"
       }
     ],
-    "hm04": [
+    "unown-report": [
       {
-        "place": "절구산 왼쪽 입구 근처에 있는 등산객에게서 받을 수 있다."
+        "where": "ruins-of-alph"
       }
     ],
-    "hm05": [
+    "up-grade": [
       {
-        "place": "황토마을 내 로켓단 이벤트를 끝내고 나면 목호에게서 받을 수 있다. [스토리 진행 시 자동 입수]"
+        "place": {
+          "ko": "실프주식회사",
+          "en": "Silph Co"
+        }
       }
     ],
-    "hm06": [
+    "wacan-berry": [
       {
-        "place": "36번 도로에 있는 뚱뚱한 남자에게서 받을 수 있다."
+        "where": "new-bark-town",
+        "how": "gift",
+        "detail": "엄마의 저금"
+      },
+      {
+        "place": "Hoenn Field",
+        "how": "other",
+        "detail": "포켓워커 3500걸음 이상"
       }
     ],
-    "hm07": [
+    "water-stone": [
       {
-        "place": "얼음샛길에서 입수한다. [스토리 진행 시 반드시 입수]"
+        "where": "national-park",
+        "how": "prize",
+        "detail": "벌레잡기대회 1등"
+      },
+      {
+        "where": "johto-route-42",
+        "detail": "PokéGear Phonecall · Show Bill's Grandfather a Marill in HG or a Staryu in SS"
+      },
+      {
+        "where": "seafoam-islands"
       }
     ],
-    "hm08": [
+    "watmel-berry": [
       {
-        "place": "16개의 배지를 모두 획득한 후, 태초마을에 있는 오박사에게서 받을 수 있다. [스토리 진행 시 자동 입수]"
+        "place": "White Lake",
+        "how": "other",
+        "detail": "포켓워커 4000걸음 이상"
+      }
+    ],
+    "wave-incense": [
+      {
+        "where": "johto-route-47"
+      }
+    ],
+    "wepear-berry": [
+      {
+        "where": "fuchsia-city",
+        "detail": "Give Juggler a Green Shard"
+      },
+      {
+        "place": "Warm Beach",
+        "how": "other",
+        "detail": "포켓워커 100걸음 이상"
+      }
+    ],
+    "white-apricorn": [
+      {
+        "where": "azalea-town"
+      },
+      {
+        "where": "johto-route-38"
+      }
+    ],
+    "white-flute": [
+      {
+        "where": "johto-route-47"
+      }
+    ],
+    "white-herb": [
+      {
+        "place": "Winner's Path",
+        "how": "other",
+        "detail": "포켓워커 5000걸음 이상"
+      }
+    ],
+    "wiki-berry": [
+      {
+        "where": "violet-city",
+        "detail": "Give Juggler a Blue Shard"
+      }
+    ],
+    "wise-glasses": [
+      {
+        "where": "pewter-city"
+      }
+    ],
+    "x-accuracy": [
+      {
+        "where": "sprout-tower",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": "Suburban Area",
+        "how": "other",
+        "detail": "포켓워커 750걸음 이상"
+      },
+      {
+        "place": "Town Outskirts",
+        "how": "other",
+        "detail": "포켓워커 500걸음 이상"
+      }
+    ],
+    "x-attack": [
+      {
+        "where": "johto-route-39",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "union-cave"
+      },
+      {
+        "where": "ilex-forest"
+      },
+      {
+        "place": "Suburban Area",
+        "how": "other",
+        "detail": "포켓워커 100걸음 이상"
+      },
+      {
+        "place": "Town Outskirts",
+        "how": "other",
+        "detail": "포켓워커 1000걸음 이상"
+      }
+    ],
+    "x-defense": [
+      {
+        "where": "union-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "rock-tunnel",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": "Suburban Area",
+        "how": "other",
+        "detail": "포켓워커 250걸음 이상"
+      },
+      {
+        "place": "Icy Mountain Rd.",
+        "how": "other",
+        "detail": "포켓워커 0걸음 이상"
+      }
+    ],
+    "x-speed": [
+      {
+        "where": "johto-route-46"
+      },
+      {
+        "where": "union-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "place": "Suburban Area",
+        "how": "other",
+        "detail": "포켓워커 500걸음 이상"
+      }
+    ],
+    "yache-berry": [
+      {
+        "where": "new-bark-town",
+        "how": "gift",
+        "detail": "엄마의 저금"
+      },
+      {
+        "place": "Icy Mountain Rd.",
+        "how": "other",
+        "detail": "포켓워커 5000걸음 이상"
+      }
+    ],
+    "yellow-apricorn": [
+      {
+        "where": "johto-route-36"
+      },
+      {
+        "where": "johto-route-37"
+      },
+      {
+        "where": "pewter-city"
+      }
+    ],
+    "yellow-flute": [
+      {
+        "where": "kanto-route-12"
+      },
+      {
+        "place": "Rally",
+        "how": "other",
+        "detail": "포켓워커 1000걸음 이상"
+      }
+    ],
+    "yellow-shard": [
+      {
+        "where": "violet-city"
+      },
+      {
+        "where": "cianwood-city"
+      },
+      {
+        "where": "ruins-of-alph"
+      },
+      {
+        "where": "dark-cave"
+      },
+      {
+        "where": "cliff-cave"
+      },
+      {
+        "place": {
+          "ko": "갈색시티",
+          "en": "Vermillion City"
+        }
+      },
+      {
+        "where": "rock-tunnel"
+      },
+      {
+        "where": "kanto-victory-road-1"
+      },
+      {
+        "place": "Dim Cave",
+        "how": "other",
+        "detail": "포켓워커 4500걸음 이상"
+      },
+      {
+        "place": "Warm Beach",
+        "how": "other",
+        "detail": "포켓워커 4900걸음 이상"
+      },
+      {
+        "place": "Scary Cave",
+        "how": "other",
+        "detail": "포켓워커 1500걸음 이상"
+      },
+      {
+        "place": "Night Skys Edge",
+        "how": "other",
+        "detail": "포켓워커 2500걸음 이상"
+      }
+    ],
+    "zap-plate": [
+      {
+        "where": "ilex-forest",
+        "detail": "Held by Spiky-eared Pichu"
+      },
+      {
+        "where": "ss-aqua",
+        "detail": "From Captain"
+      }
+    ],
+    "zinc": [
+      {
+        "where": "cerulean-cave",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "seafoam-islands",
+        "how": "hidden",
+        "detail": "다우징머신"
+      },
+      {
+        "where": "kanto-victory-road-1",
+        "how": "hidden",
+        "detail": "다우징머신"
       }
     ]
   },

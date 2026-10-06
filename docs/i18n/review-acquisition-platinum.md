@@ -1,4 +1,4 @@
 # Acquisition review: platinum
 
-items 100, tutors 42
+items 332, tutors 42
 

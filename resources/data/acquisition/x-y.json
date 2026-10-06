@@ -1,0 +1,2341 @@
+{
+  "_comment": [
+    "게임(버전 그룹)별 입수 사전 (ui/dex/guidebook.h가 읽는다). 형식은 docs/i18n/README.md 참고.",
+    "scripts/i18n/check_acquisition.py로 검증해 넣었다. 출처는 _sources."
+  ],
+  "_sources": [
+    "Serebii.net ItemDex (https://www.serebii.net/itemdex/) — 장소는 PokéAPI/게임 텍스트로 한국어화"
+  ],
+  "versionGroup": "x-y",
+  "items": {
+    "abomasite": [
+      {
+        "where": "frost-cavern"
+      }
+    ],
+    "absolite": [
+      {
+        "where": "kiloude-city"
+      }
+    ],
+    "adamant-orb": [
+      {
+        "where": "terminus-cave"
+      }
+    ],
+    "adventure-rules": [
+      {
+        "where": "kalos-route-3"
+      }
+    ],
+    "aerodactylite": [
+      {
+        "where": "ambrette-town"
+      }
+    ],
+    "aggronite": [
+      {
+        "where": "cyllage-city"
+      }
+    ],
+    "aguav-berry": [
+      {
+        "where": "kalos-route-6"
+      }
+    ],
+    "alakazite": [
+      {
+        "where": "reflection-cave"
+      }
+    ],
+    "ampharosite": [
+      {
+        "where": "azure-bay"
+      }
+    ],
+    "amulet-coin": [
+      {
+        "where": "parfum-palace"
+      }
+    ],
+    "antidote": [
+      {
+        "where": "kalos-route-4"
+      },
+      {
+        "where": "kalos-route-6"
+      },
+      {
+        "where": "kalos-route-15"
+      },
+      {
+        "where": "kalos-route-19"
+      },
+      {
+        "where": "kalos-route-20"
+      },
+      {
+        "where": "santalune-forest"
+      },
+      {
+        "where": "santalune-city"
+      },
+      {
+        "where": "parfum-palace"
+      }
+    ],
+    "armor-fossil": [
+      {
+        "where": "glittering-cave"
+      }
+    ],
+    "awakening": [
+      {
+        "where": "kalos-route-6"
+      },
+      {
+        "where": "coumarine-city"
+      }
+    ],
+    "balm-mushroom": [
+      {
+        "where": "kalos-route-20"
+      }
+    ],
+    "banettite": [
+      {
+        "where": "chamber-of-emptiness"
+      }
+    ],
+    "berry-juice": [
+      {
+        "where": "camphrier-town"
+      }
+    ],
+    "big-mushroom": [
+      {
+        "where": "kalos-route-14"
+      },
+      {
+        "where": "kalos-route-16"
+      }
+    ],
+    "big-nugget": [
+      {
+        "where": "lumiose-city"
+      },
+      {
+        "where": "poke-ball-factory"
+      },
+      {
+        "where": "terminus-cave"
+      }
+    ],
+    "big-pearl": [
+      {
+        "where": "azure-bay"
+      }
+    ],
+    "big-root": [
+      {
+        "where": "dendemille-town"
+      }
+    ],
+    "black-belt": [
+      {
+        "where": "reflection-cave"
+      }
+    ],
+    "black-glasses": [
+      {
+        "place": "Lydsandre Labs"
+      }
+    ],
+    "black-sludge": [
+      {
+        "where": "coumarine-city"
+      }
+    ],
+    "blastoisinite": [
+      {
+        "where": "lumiose-city"
+      }
+    ],
+    "boost-mulch": [
+      {
+        "where": "kalos-route-7"
+      }
+    ],
+    "burn-drive": [
+      {
+        "where": "ambrette-town"
+      }
+    ],
+    "burn-heal": [
+      {
+        "where": "kalos-route-10"
+      },
+      {
+        "where": "poke-ball-factory"
+      },
+      {
+        "where": "couriway-town"
+      }
+    ],
+    "calcium": [
+      {
+        "where": "kalos-route-17"
+      }
+    ],
+    "carbos": [
+      {
+        "where": "kalos-victory-road"
+      }
+    ],
+    "charcoal": [
+      {
+        "where": "couriway-town"
+      }
+    ],
+    "charizardite-x": [
+      {
+        "where": "lumiose-city"
+      }
+    ],
+    "charizardite-y": [
+      {
+        "where": "lumiose-city"
+      }
+    ],
+    "charti-berry": [
+      {
+        "where": "cyllage-city"
+      }
+    ],
+    "cheri-berry": [
+      {
+        "where": "coumarine-city"
+      }
+    ],
+    "chill-drive": [
+      {
+        "where": "ambrette-town"
+      }
+    ],
+    "chople-berry": [
+      {
+        "where": "pokemon-village"
+      }
+    ],
+    "claw-fossil": [
+      {
+        "where": "glittering-cave"
+      }
+    ],
+    "cleanse-tag": [
+      {
+        "where": "kalos-route-14"
+      }
+    ],
+    "clever-wing": [
+      {
+        "place": {
+          "ko": "슈퍼트레이닝",
+          "en": "Super Training"
+        }
+      }
+    ],
+    "colbur-berry": [
+      {
+        "where": "kalos-route-18"
+      }
+    ],
+    "comet-shard": [
+      {
+        "where": "anistar-city"
+      }
+    ],
+    "cover-fossil": [
+      {
+        "where": "glittering-cave"
+      }
+    ],
+    "damp-rock": [
+      {
+        "where": "kalos-route-14"
+      },
+      {
+        "where": "kalos-route-19"
+      },
+      {
+        "place": "Random Stagmalites in battle"
+      }
+    ],
+    "dawn-stone": [
+      {
+        "where": "kalos-route-3"
+      },
+      {
+        "where": "kalos-route-18"
+      }
+    ],
+    "deep-sea-scale": [
+      {
+        "where": "azure-bay"
+      }
+    ],
+    "deep-sea-tooth": [
+      {
+        "where": "azure-bay"
+      }
+    ],
+    "destiny-knot": [
+      {
+        "where": "cyllage-city"
+      },
+      {
+        "where": "lumiose-city"
+      }
+    ],
+    "dire-hit": [
+      {
+        "where": "kalos-route-15"
+      },
+      {
+        "where": "frost-cavern"
+      },
+      {
+        "where": "terminus-cave"
+      }
+    ],
+    "dive-ball": [
+      {
+        "where": "kalos-route-16"
+      },
+      {
+        "where": "ambrette-town"
+      },
+      {
+        "where": "azure-bay"
+      }
+    ],
+    "dna-splicers": [
+      {
+        "where": "kiloude-city"
+      }
+    ],
+    "dna-splicers--merge": [
+      {
+        "where": "kiloude-city"
+      }
+    ],
+    "dna-splicers--split": [
+      {
+        "where": "kiloude-city"
+      }
+    ],
+    "dome-fossil": [
+      {
+        "where": "glittering-cave"
+      }
+    ],
+    "douse-drive": [
+      {
+        "where": "ambrette-town"
+      }
+    ],
+    "dowsing-machine": [
+      {
+        "where": "kalos-route-8"
+      }
+    ],
+    "draco-plate": [
+      {
+        "where": "kalos-route-22"
+      }
+    ],
+    "dragon-fang": [
+      {
+        "where": "kalos-victory-road"
+      }
+    ],
+    "dragon-scale": [
+      {
+        "where": "terminus-cave"
+      }
+    ],
+    "dread-plate": [
+      {
+        "where": "lost-hotel"
+      }
+    ],
+    "dusk-ball": [
+      {
+        "where": "frost-cavern"
+      },
+      {
+        "where": "terminus-cave"
+      },
+      {
+        "where": "kalos-victory-road"
+      }
+    ],
+    "dusk-stone": [
+      {
+        "where": "laverre-city"
+      },
+      {
+        "where": "terminus-cave"
+      },
+      {
+        "where": "kalos-route-18"
+      }
+    ],
+    "earth-plate": [
+      {
+        "where": "reflection-cave"
+      }
+    ],
+    "elevator-key": [
+      {
+        "place": "Lydsandre Labs"
+      }
+    ],
+    "elixir": [
+      {
+        "where": "kalos-route-21"
+      },
+      {
+        "where": "kalos-route-22"
+      },
+      {
+        "where": "coumarine-city"
+      },
+      {
+        "where": "frost-cavern"
+      },
+      {
+        "where": "terminus-cave"
+      }
+    ],
+    "escape-rope": [
+      {
+        "where": "kalos-route-8"
+      },
+      {
+        "where": "kalos-route-19"
+      },
+      {
+        "where": "camphrier-town"
+      },
+      {
+        "where": "glittering-cave"
+      },
+      {
+        "where": "reflection-cave"
+      },
+      {
+        "where": "frost-cavern"
+      },
+      {
+        "where": "anistar-city"
+      },
+      {
+        "where": "terminus-cave"
+      },
+      {
+        "where": "kalos-victory-road"
+      }
+    ],
+    "ether": [
+      {
+        "where": "kalos-route-4"
+      },
+      {
+        "where": "camphrier-town"
+      },
+      {
+        "where": "cyllage-city"
+      },
+      {
+        "where": "laverre-city"
+      },
+      {
+        "where": "frost-cavern"
+      },
+      {
+        "where": "couriway-town"
+      }
+    ],
+    "everstone": [
+      {
+        "where": "geosenge-town"
+      }
+    ],
+    "eviolite": [
+      {
+        "where": "shalour-city"
+      }
+    ],
+    "expert-belt": [
+      {
+        "where": "lumiose-city"
+      }
+    ],
+    "figy-berry": [
+      {
+        "where": "kalos-route-21"
+      }
+    ],
+    "fire-stone": [
+      {
+        "where": "kalos-route-9"
+      },
+      {
+        "where": "kalos-route-18"
+      }
+    ],
+    "fist-plate": [
+      {
+        "where": "kalos-route-16"
+      }
+    ],
+    "flame-plate": [
+      {
+        "where": "kalos-route-13"
+      }
+    ],
+    "float-stone": [
+      {
+        "place": "Random boulders in battle"
+      }
+    ],
+    "fresh-water": [
+      {
+        "place": {
+          "ko": "슈퍼트레이닝",
+          "en": "Super Training"
+        }
+      }
+    ],
+    "full-heal": [
+      {
+        "where": "kalos-route-15"
+      },
+      {
+        "where": "camphrier-town"
+      },
+      {
+        "where": "terminus-cave"
+      },
+      {
+        "where": "snowbelle-city"
+      },
+      {
+        "where": "kalos-victory-road"
+      }
+    ],
+    "full-restore": [
+      {
+        "where": "kalos-route-22"
+      },
+      {
+        "where": "kalos-power-plant"
+      },
+      {
+        "where": "snowbelle-city"
+      },
+      {
+        "where": "pokemon-village"
+      },
+      {
+        "where": "kalos-victory-road"
+      }
+    ],
+    "garchompite": [
+      {
+        "where": "kalos-victory-road"
+      }
+    ],
+    "gengarite": [
+      {
+        "where": "laverre-city"
+      }
+    ],
+    "genius-wing": [
+      {
+        "place": {
+          "ko": "슈퍼트레이닝",
+          "en": "Super Training"
+        }
+      }
+    ],
+    "good-rod": [
+      {
+        "where": "coumarine-city"
+      }
+    ],
+    "gracidea": [
+      {
+        "where": "snowbelle-city"
+      }
+    ],
+    "great-ball": [
+      {
+        "where": "kalos-route-4"
+      },
+      {
+        "where": "kalos-route-5"
+      },
+      {
+        "where": "santalune-city"
+      }
+    ],
+    "griseous-orb": [
+      {
+        "where": "terminus-cave"
+      }
+    ],
+    "gyaradosite": [
+      {
+        "where": "couriway-town"
+      }
+    ],
+    "hard-stone": [
+      {
+        "where": "glittering-cave"
+      },
+      {
+        "place": {
+          "ko": "슈퍼트레이닝",
+          "en": "Super Training"
+        }
+      }
+    ],
+    "heal-ball": [
+      {
+        "where": "kalos-route-7"
+      },
+      {
+        "where": "dendemille-town"
+      }
+    ],
+    "health-wing": [
+      {
+        "where": "ambrette-town"
+      }
+    ],
+    "heart-scale": [
+      {
+        "where": "kalos-route-8"
+      },
+      {
+        "where": "coumarine-city"
+      },
+      {
+        "where": "frost-cavern"
+      },
+      {
+        "where": "azure-bay"
+      }
+    ],
+    "heat-rock": [
+      {
+        "where": "terminus-cave"
+      },
+      {
+        "place": "Random Stagmalites in battle"
+      }
+    ],
+    "helix-fossil": [
+      {
+        "where": "glittering-cave"
+      }
+    ],
+    "heracronite": [
+      {
+        "where": "santalune-forest"
+      }
+    ],
+    "hm01": [
+      {
+        "where": "parfum-palace"
+      }
+    ],
+    "hm02": [
+      {
+        "where": "coumarine-city"
+      }
+    ],
+    "hm03": [
+      {
+        "where": "shalour-city"
+      }
+    ],
+    "hm04": [
+      {
+        "where": "cyllage-city"
+      }
+    ],
+    "hm05": [
+      {
+        "where": "kalos-route-19"
+      }
+    ],
+    "holo-caster": [
+      {
+        "where": "vaniville-town"
+      }
+    ],
+    "holo-caster--green": [
+      {
+        "where": "vaniville-town"
+      }
+    ],
+    "holo-caster--red": [
+      {
+        "where": "vaniville-town"
+      }
+    ],
+    "honey": [
+      {
+        "where": "kalos-route-4"
+      },
+      {
+        "where": "kalos-route-5"
+      },
+      {
+        "where": "kalos-route-12"
+      },
+      {
+        "where": "kalos-route-18"
+      },
+      {
+        "where": "pokemon-village"
+      }
+    ],
+    "houndoominite": [
+      {
+        "where": "kalos-route-16"
+      }
+    ],
+    "hp-up": [
+      {
+        "where": "kalos-route-8"
+      },
+      {
+        "where": "kalos-route-15"
+      },
+      {
+        "where": "kalos-route-19"
+      }
+    ],
+    "hyper-potion": [
+      {
+        "where": "kalos-route-11"
+      },
+      {
+        "where": "kalos-route-13"
+      },
+      {
+        "where": "kalos-route-14"
+      },
+      {
+        "where": "kalos-route-18"
+      },
+      {
+        "where": "reflection-cave"
+      },
+      {
+        "where": "poke-ball-factory"
+      },
+      {
+        "where": "frost-cavern"
+      },
+      {
+        "where": "terminus-cave"
+      },
+      {
+        "where": "kalos-victory-road"
+      },
+      {
+        "place": "Lydsandre Labs"
+      }
+    ],
+    "iapapa-berry": [
+      {
+        "where": "kalos-route-10"
+      }
+    ],
+    "ice-heal": [
+      {
+        "where": "kalos-route-12"
+      },
+      {
+        "where": "frost-cavern"
+      }
+    ],
+    "icicle-plate": [
+      {
+        "where": "kalos-route-17"
+      }
+    ],
+    "icy-rock": [
+      {
+        "where": "frost-cavern"
+      },
+      {
+        "where": "snowbelle-city"
+      },
+      {
+        "place": "Random Stagmalites in battle"
+      }
+    ],
+    "insect-plate": [
+      {
+        "where": "kalos-route-21"
+      }
+    ],
+    "intriguing-stone": [
+      {
+        "where": "shalour-city"
+      }
+    ],
+    "iron": [
+      {
+        "where": "reflection-cave"
+      },
+      {
+        "where": "lost-hotel"
+      },
+      {
+        "where": "terminus-cave"
+      }
+    ],
+    "iron-plate": [
+      {
+        "where": "terminus-cave"
+      }
+    ],
+    "jaw-fossil": [
+      {
+        "where": "glittering-cave"
+      }
+    ],
+    "kangaskhanite": [
+      {
+        "where": "glittering-cave"
+      }
+    ],
+    "kasib-berry": [
+      {
+        "where": "kalos-route-20"
+      }
+    ],
+    "kings-rock": [
+      {
+        "where": "lumiose-city"
+      }
+    ],
+    "lagreat-ball": [
+      {
+        "where": "kalos-route-4"
+      },
+      {
+        "where": "kalos-route-5"
+      },
+      {
+        "where": "santalune-city"
+      }
+    ],
+    "lapoke-ball": [
+      {
+        "where": "kalos-route-18"
+      },
+      {
+        "where": "santalune-forest"
+      },
+      {
+        "where": "poke-ball-factory"
+      },
+      {
+        "where": "couriway-town"
+      }
+    ],
+    "laultra-ball": [
+      {
+        "where": "kalos-route-6"
+      },
+      {
+        "where": "kalos-route-8"
+      },
+      {
+        "where": "camphrier-town"
+      },
+      {
+        "where": "laverre-city"
+      },
+      {
+        "where": "kalos-victory-road"
+      }
+    ],
+    "lava-cookie": [
+      {
+        "place": "Random hotels"
+      }
+    ],
+    "leaf-stone": [
+      {
+        "where": "kalos-route-8"
+      },
+      {
+        "where": "laverre-city"
+      },
+      {
+        "where": "kalos-route-18"
+      }
+    ],
+    "leftovers": [
+      {
+        "where": "kalos-route-12"
+      }
+    ],
+    "lemonade": [
+      {
+        "place": {
+          "ko": "슈퍼트레이닝",
+          "en": "Super Training"
+        }
+      }
+    ],
+    "lens-case": [
+      {
+        "where": "lumiose-city"
+      }
+    ],
+    "leppa-berry": [
+      {
+        "where": "kalos-route-15"
+      },
+      {
+        "where": "shalour-city"
+      },
+      {
+        "where": "dendemille-town"
+      }
+    ],
+    "looker-ticket": [
+      {
+        "where": "lumiose-city"
+      }
+    ],
+    "lucky-egg": [
+      {
+        "where": "coumarine-city"
+      }
+    ],
+    "lum-berry": [
+      {
+        "where": "kalos-route-16"
+      }
+    ],
+    "luminous-moss": [
+      {
+        "where": "glittering-cave"
+      }
+    ],
+    "lustrous-orb": [
+      {
+        "where": "terminus-cave"
+      }
+    ],
+    "luxury-ball": [
+      {
+        "where": "lumiose-city"
+      }
+    ],
+    "macho-brace": [
+      {
+        "where": "kalos-route-15"
+      }
+    ],
+    "magnet": [
+      {
+        "where": "kalos-power-plant"
+      }
+    ],
+    "mago-berry": [
+      {
+        "where": "kalos-route-8"
+      }
+    ],
+    "manectite": [
+      {
+        "where": "kalos-route-16"
+      }
+    ],
+    "master-ball": [
+      {
+        "where": "poke-ball-factory"
+      }
+    ],
+    "mawilite": [
+      {
+        "where": "camphrier-town"
+      }
+    ],
+    "max-elixir": [
+      {
+        "where": "kalos-route-22"
+      },
+      {
+        "where": "kalos-victory-road"
+      }
+    ],
+    "max-ether": [
+      {
+        "where": "kalos-route-18"
+      },
+      {
+        "where": "shalour-city"
+      },
+      {
+        "where": "poke-ball-factory"
+      },
+      {
+        "where": "pokemon-village"
+      },
+      {
+        "where": "kalos-victory-road"
+      }
+    ],
+    "max-potion": [
+      {
+        "where": "kalos-route-16"
+      },
+      {
+        "where": "couriway-town"
+      },
+      {
+        "where": "terminus-cave"
+      }
+    ],
+    "max-repel": [
+      {
+        "where": "frost-cavern"
+      },
+      {
+        "where": "terminus-cave"
+      },
+      {
+        "where": "kalos-victory-road"
+      }
+    ],
+    "max-revive": [
+      {
+        "where": "kalos-route-16"
+      },
+      {
+        "where": "kalos-route-19"
+      },
+      {
+        "where": "poke-ball-factory"
+      },
+      {
+        "where": "kalos-victory-road"
+      },
+      {
+        "where": "kiloude-city"
+      }
+    ],
+    "meadow-plate": [
+      {
+        "where": "kalos-route-20"
+      }
+    ],
+    "medichamite": [
+      {
+        "where": "laverre-city"
+      }
+    ],
+    "mega-ring": [
+      {
+        "where": "tower-of-mastery"
+      }
+    ],
+    "mental-herb": [
+      {
+        "where": "kalos-route-20"
+      },
+      {
+        "place": "Random grass in battle"
+      }
+    ],
+    "metal-coat": [
+      {
+        "where": "poke-ball-factory"
+      }
+    ],
+    "metronome": [
+      {
+        "where": "coumarine-city"
+      }
+    ],
+    "mewtwonite-x": [
+      {
+        "where": "pokemon-village"
+      }
+    ],
+    "mewtwonite-y": [
+      {
+        "where": "pokemon-village"
+      }
+    ],
+    "mind-plate": [
+      {
+        "where": "kalos-route-10"
+      }
+    ],
+    "miracle-seed": [
+      {
+        "where": "kalos-route-7"
+      },
+      {
+        "where": "couriway-town"
+      }
+    ],
+    "moomoo-milk": [
+      {
+        "place": {
+          "ko": "슈퍼트레이닝",
+          "en": "Super Training"
+        }
+      }
+    ],
+    "moon-stone": [
+      {
+        "where": "reflection-cave"
+      },
+      {
+        "where": "terminus-cave"
+      },
+      {
+        "where": "kalos-route-18"
+      }
+    ],
+    "muscle-wing": [
+      {
+        "place": {
+          "ko": "슈퍼트레이닝",
+          "en": "Super Training"
+        }
+      }
+    ],
+    "mystic-water": [
+      {
+        "where": "couriway-town"
+      }
+    ],
+    "nest-ball": [
+      {
+        "where": "kalos-route-13"
+      },
+      {
+        "where": "reflection-cave"
+      }
+    ],
+    "net-ball": [
+      {
+        "where": "kalos-route-4"
+      },
+      {
+        "where": "kalos-route-12"
+      },
+      {
+        "where": "kalos-route-15"
+      },
+      {
+        "where": "kalos-route-19"
+      }
+    ],
+    "normal-gem": [
+      {
+        "where": "terminus-cave"
+      }
+    ],
+    "nugget": [
+      {
+        "where": "dendemille-town"
+      },
+      {
+        "where": "kiloude-city"
+      }
+    ],
+    "old-amber": [
+      {
+        "where": "glittering-cave"
+      }
+    ],
+    "old-rod": [
+      {
+        "where": "ambrette-town"
+      }
+    ],
+    "oran-berry": [
+      {
+        "where": "kalos-route-5"
+      },
+      {
+        "where": "kalos-route-7"
+      }
+    ],
+    "oval-charm": [
+      {
+        "where": "lumiose-city"
+      }
+    ],
+    "oval-stone": [
+      {
+        "where": "pokemon-village"
+      }
+    ],
+    "paralyze-heal": [
+      {
+        "where": "kalos-route-5"
+      },
+      {
+        "where": "kalos-route-6"
+      },
+      {
+        "where": "kalos-route-9"
+      },
+      {
+        "where": "kalos-route-10"
+      },
+      {
+        "where": "kalos-route-17"
+      },
+      {
+        "where": "kalos-route-20"
+      },
+      {
+        "where": "santalune-forest"
+      }
+    ],
+    "pearl": [
+      {
+        "where": "kalos-route-8"
+      },
+      {
+        "where": "ambrette-town"
+      },
+      {
+        "where": "frost-cavern"
+      }
+    ],
+    "pearl-string": [
+      {
+        "where": "kalos-route-21"
+      }
+    ],
+    "pecha-berry": [
+      {
+        "where": "kalos-route-7"
+      }
+    ],
+    "persim-berry": [
+      {
+        "where": "kalos-route-7"
+      },
+      {
+        "where": "cyllage-city"
+      }
+    ],
+    "pinsirite": [
+      {
+        "where": "santalune-forest"
+      }
+    ],
+    "pixie-plate": [
+      {
+        "where": "pokemon-village"
+      }
+    ],
+    "plume-fossil": [
+      {
+        "where": "glittering-cave"
+      }
+    ],
+    "poison-barb": [
+      {
+        "where": "kalos-route-4"
+      }
+    ],
+    "poke-ball": [
+      {
+        "where": "kalos-route-18"
+      },
+      {
+        "where": "santalune-forest"
+      },
+      {
+        "where": "poke-ball-factory"
+      },
+      {
+        "where": "couriway-town"
+      }
+    ],
+    "poke-doll": [
+      {
+        "where": "laverre-city"
+      }
+    ],
+    "poke-flute": [
+      {
+        "where": "parfum-palace"
+      }
+    ],
+    "poke-radar": [
+      {
+        "where": "lumiose-city"
+      }
+    ],
+    "poke-toy": [
+      {
+        "where": "coumarine-city"
+      }
+    ],
+    "potion": [
+      {
+        "where": "aquacorde-town"
+      },
+      {
+        "where": "santalune-forest"
+      },
+      {
+        "where": "camphrier-town"
+      }
+    ],
+    "power-plant-pass": [
+      {
+        "where": "kalos-route-13"
+      }
+    ],
+    "pp-max": [
+      {
+        "place": {
+          "ko": "슈퍼트레이닝",
+          "en": "Super Training"
+        }
+      }
+    ],
+    "pp-up": [
+      {
+        "where": "kalos-route-7"
+      },
+      {
+        "where": "kalos-route-13"
+      },
+      {
+        "where": "kalos-route-15"
+      },
+      {
+        "where": "kalos-route-18"
+      },
+      {
+        "where": "kalos-route-19"
+      },
+      {
+        "where": "kalos-route-21"
+      },
+      {
+        "where": "frost-cavern"
+      },
+      {
+        "where": "kalos-victory-road"
+      },
+      {
+        "where": "kiloude-city"
+      }
+    ],
+    "pretty-wing": [
+      {
+        "where": "kalos-route-15"
+      },
+      {
+        "where": "parfum-palace"
+      },
+      {
+        "where": "anistar-city"
+      },
+      {
+        "where": "couriway-town"
+      },
+      {
+        "where": "pokemon-village"
+      },
+      {
+        "where": "kalos-victory-road"
+      }
+    ],
+    "prism-scale": [
+      {
+        "where": "lumiose-city"
+      },
+      {
+        "where": "couriway-town"
+      }
+    ],
+    "profs-letter": [
+      {
+        "where": "aquacorde-town"
+      }
+    ],
+    "protector": [
+      {
+        "where": "lost-hotel"
+      }
+    ],
+    "protein": [
+      {
+        "where": "kalos-route-15"
+      },
+      {
+        "where": "kalos-route-20"
+      },
+      {
+        "where": "lumiose-city"
+      },
+      {
+        "where": "cyllage-city"
+      }
+    ],
+    "quick-ball": [
+      {
+        "where": "lumiose-city"
+      },
+      {
+        "where": "poke-ball-factory"
+      },
+      {
+        "where": "kalos-victory-road"
+      }
+    ],
+    "quick-claw": [
+      {
+        "where": "lumiose-city"
+      }
+    ],
+    "rage-candy-bar": [
+      {
+        "place": "Random hotels"
+      }
+    ],
+    "rare-bone": [
+      {
+        "where": "kalos-route-19"
+      }
+    ],
+    "rare-candy": [
+      {
+        "where": "kalos-route-13"
+      },
+      {
+        "where": "kalos-route-16"
+      },
+      {
+        "where": "kalos-route-17"
+      },
+      {
+        "where": "parfum-palace"
+      },
+      {
+        "where": "ambrette-town"
+      },
+      {
+        "where": "couriway-town"
+      },
+      {
+        "where": "kalos-victory-road"
+      },
+      {
+        "place": "Lydsandre Labs"
+      },
+      {
+        "where": "kalos-route-18"
+      }
+    ],
+    "rawst-berry": [
+      {
+        "where": "coumarine-city"
+      }
+    ],
+    "reaper-cloth": [
+      {
+        "where": "terminus-cave"
+      }
+    ],
+    "repeat-ball": [
+      {
+        "where": "kalos-route-20"
+      },
+      {
+        "where": "kalos-route-21"
+      },
+      {
+        "where": "anistar-city"
+      }
+    ],
+    "repel": [
+      {
+        "where": "kalos-route-4"
+      },
+      {
+        "where": "kalos-route-16"
+      }
+    ],
+    "resist-wing": [
+      {
+        "place": {
+          "ko": "슈퍼트레이닝",
+          "en": "Super Training"
+        }
+      }
+    ],
+    "reveal-glass": [
+      {
+        "where": "reflection-cave"
+      }
+    ],
+    "revive": [
+      {
+        "where": "kalos-route-3"
+      },
+      {
+        "where": "kalos-route-10"
+      },
+      {
+        "where": "kalos-route-14"
+      },
+      {
+        "where": "kalos-route-15"
+      },
+      {
+        "where": "reflection-cave"
+      },
+      {
+        "where": "terminus-cave"
+      },
+      {
+        "where": "kalos-victory-road"
+      },
+      {
+        "place": "Lydsandre Labs"
+      }
+    ],
+    "rich-mulch": [
+      {
+        "where": "kalos-route-7"
+      }
+    ],
+    "rocky-helmet": [
+      {
+        "where": "ambrette-town"
+      }
+    ],
+    "roller-skates": [
+      {
+        "where": "santalune-city"
+      }
+    ],
+    "root-fossil": [
+      {
+        "where": "glittering-cave"
+      }
+    ],
+    "roseli-berry": [
+      {
+        "where": "kalos-route-14"
+      }
+    ],
+    "sachet": [
+      {
+        "where": "cyllage-city"
+      },
+      {
+        "where": "kalos-route-12"
+      }
+    ],
+    "sail-fossil": [
+      {
+        "where": "glittering-cave"
+      }
+    ],
+    "scizorite": [
+      {
+        "where": "frost-cavern"
+      }
+    ],
+    "scope-lens": [
+      {
+        "where": "lumiose-city"
+      }
+    ],
+    "sharp-beak": [
+      {
+        "where": "kalos-route-5"
+      }
+    ],
+    "shell-bell": [
+      {
+        "where": "dendemille-town"
+      }
+    ],
+    "shiny-charm": [
+      {
+        "where": "lumiose-city"
+      }
+    ],
+    "shiny-stone": [
+      {
+        "where": "kalos-route-12"
+      },
+      {
+        "where": "kalos-route-18"
+      }
+    ],
+    "shock-drive": [
+      {
+        "where": "ambrette-town"
+      }
+    ],
+    "silk-scarf": [
+      {
+        "where": "coumarine-city"
+      }
+    ],
+    "silver-powder": [
+      {
+        "where": "kalos-route-7"
+      }
+    ],
+    "sitrus-berry": [
+      {
+        "where": "kalos-route-11"
+      },
+      {
+        "where": "kalos-route-18"
+      },
+      {
+        "where": "dendemille-town"
+      }
+    ],
+    "skull-fossil": [
+      {
+        "where": "glittering-cave"
+      }
+    ],
+    "sky-plate": [
+      {
+        "where": "coumarine-city"
+      }
+    ],
+    "smoke-ball": [
+      {
+        "where": "lost-hotel"
+      }
+    ],
+    "smooth-rock": [
+      {
+        "where": "kalos-route-13"
+      },
+      {
+        "where": "kalos-victory-road"
+      },
+      {
+        "place": "Random Stagmalites in battle"
+      }
+    ],
+    "snowball": [
+      {
+        "where": "kalos-route-17"
+      }
+    ],
+    "soda-pop": [
+      {
+        "place": {
+          "ko": "슈퍼트레이닝",
+          "en": "Super Training"
+        }
+      }
+    ],
+    "soft-sand": [
+      {
+        "where": "geosenge-town"
+      },
+      {
+        "where": "terminus-cave"
+      }
+    ],
+    "soothe-bell": [
+      {
+        "where": "shalour-city"
+      }
+    ],
+    "spell-tag": [
+      {
+        "where": "kalos-route-14"
+      }
+    ],
+    "splash-plate": [
+      {
+        "where": "azure-bay"
+      }
+    ],
+    "spooky-plate": [
+      {
+        "where": "chamber-of-emptiness"
+      }
+    ],
+    "sprinklotad": [
+      {
+        "where": "kalos-route-7"
+      }
+    ],
+    "star-piece": [
+      {
+        "where": "lumiose-city"
+      },
+      {
+        "where": "camphrier-town"
+      },
+      {
+        "where": "terminus-cave"
+      },
+      {
+        "where": "kalos-victory-road"
+      }
+    ],
+    "stardust": [
+      {
+        "where": "kalos-route-8"
+      },
+      {
+        "where": "kalos-route-13"
+      },
+      {
+        "where": "shalour-city"
+      }
+    ],
+    "stone-plate": [
+      {
+        "where": "kalos-route-15"
+      }
+    ],
+    "strange-souvenir": [
+      {
+        "place": "Random hotels"
+      }
+    ],
+    "sun-stone": [
+      {
+        "where": "kalos-route-13"
+      },
+      {
+        "where": "shalour-city"
+      },
+      {
+        "where": "kalos-route-18"
+      },
+      {
+        "where": "anistar-city"
+      }
+    ],
+    "super-potion": [
+      {
+        "where": "kalos-route-3"
+      },
+      {
+        "where": "kalos-route-4"
+      },
+      {
+        "where": "kalos-route-5"
+      },
+      {
+        "where": "kalos-route-8"
+      },
+      {
+        "where": "kalos-route-11"
+      },
+      {
+        "where": "kalos-route-14"
+      },
+      {
+        "where": "santalune-city"
+      },
+      {
+        "where": "parfum-palace"
+      },
+      {
+        "where": "cyllage-city"
+      },
+      {
+        "where": "frost-cavern"
+      }
+    ],
+    "super-repel": [
+      {
+        "where": "kalos-route-18"
+      },
+      {
+        "where": "anistar-city"
+      }
+    ],
+    "super-rod": [
+      {
+        "where": "kalos-route-16"
+      }
+    ],
+    "surprise-mulch": [
+      {
+        "where": "kalos-route-7"
+      }
+    ],
+    "sweet-heart": [
+      {
+        "where": "camphrier-town"
+      }
+    ],
+    "swift-wing": [
+      {
+        "place": {
+          "ko": "슈퍼트레이닝",
+          "en": "Super Training"
+        }
+      }
+    ],
+    "thunder-stone": [
+      {
+        "where": "kalos-route-10"
+      },
+      {
+        "where": "kalos-route-11"
+      },
+      {
+        "where": "kalos-route-13"
+      },
+      {
+        "where": "kalos-route-18"
+      }
+    ],
+    "timer-ball": [
+      {
+        "where": "kalos-route-17"
+      },
+      {
+        "where": "kalos-route-19"
+      },
+      {
+        "where": "lumiose-city"
+      },
+      {
+        "where": "geosenge-town"
+      },
+      {
+        "where": "poke-ball-factory"
+      }
+    ],
+    "tiny-mushroom": [
+      {
+        "where": "kalos-route-6"
+      },
+      {
+        "where": "kalos-route-7"
+      },
+      {
+        "where": "kalos-route-14"
+      },
+      {
+        "where": "laverre-city"
+      },
+      {
+        "where": "kalos-route-20"
+      }
+    ],
+    "tm01": [
+      {
+        "where": "kalos-route-5"
+      }
+    ],
+    "tm02": [
+      {
+        "where": "kalos-victory-road"
+      }
+    ],
+    "tm03": [
+      {
+        "where": "kalos-victory-road"
+      }
+    ],
+    "tm04": [
+      {
+        "where": "anistar-city"
+      }
+    ],
+    "tm06": [
+      {
+        "where": "kalos-route-14"
+      }
+    ],
+    "tm08": [
+      {
+        "where": "snowbelle-city"
+      }
+    ],
+    "tm09": [
+      {
+        "where": "kalos-route-6"
+      }
+    ],
+    "tm10": [
+      {
+        "where": "anistar-city"
+      }
+    ],
+    "tm12": [
+      {
+        "place": "Lydsandre Labs"
+      }
+    ],
+    "tm13": [
+      {
+        "where": "snowbelle-city"
+      }
+    ],
+    "tm17": [
+      {
+        "where": "parfum-palace"
+      }
+    ],
+    "tm19": [
+      {
+        "where": "kalos-route-8"
+      }
+    ],
+    "tm21": [
+      {
+        "where": "connecting-cave"
+      }
+    ],
+    "tm22": [
+      {
+        "where": "kalos-route-21"
+      }
+    ],
+    "tm24": [
+      {
+        "where": "lumiose-city"
+      }
+    ],
+    "tm26": [
+      {
+        "where": "kalos-route-22"
+      }
+    ],
+    "tm27": [
+      {
+        "where": "kalos-route-4"
+      }
+    ],
+    "tm29": [
+      {
+        "where": "pokemon-village"
+      }
+    ],
+    "tm30": [
+      {
+        "where": "terminus-cave"
+      }
+    ],
+    "tm31": [
+      {
+        "where": "terminus-cave"
+      }
+    ],
+    "tm35": [
+      {
+        "where": "anistar-city"
+      }
+    ],
+    "tm36": [
+      {
+        "where": "kalos-route-19"
+      }
+    ],
+    "tm39": [
+      {
+        "where": "cyllage-city"
+      }
+    ],
+    "tm40": [
+      {
+        "where": "connecting-cave"
+      }
+    ],
+    "tm41": [
+      {
+        "where": "laverre-city"
+      }
+    ],
+    "tm42": [
+      {
+        "where": "dendemille-town"
+      }
+    ],
+    "tm43": [
+      {
+        "where": "kalos-power-plant"
+      }
+    ],
+    "tm44": [
+      {
+        "where": "cyllage-city"
+      }
+    ],
+    "tm45": [
+      {
+        "where": "kalos-route-12"
+      }
+    ],
+    "tm46": [
+      {
+        "where": "camphrier-town"
+      }
+    ],
+    "tm47": [
+      {
+        "where": "tower-of-mastery"
+      }
+    ],
+    "tm53": [
+      {
+        "where": "kalos-route-20"
+      }
+    ],
+    "tm54": [
+      {
+        "where": "lumiose-city"
+      }
+    ],
+    "tm55": [
+      {
+        "where": "couriway-town"
+      }
+    ],
+    "tm56": [
+      {
+        "where": "lost-hotel"
+      }
+    ],
+    "tm57": [
+      {
+        "where": "kalos-route-13"
+      }
+    ],
+    "tm58": [
+      {
+        "where": "kiloude-city"
+      }
+    ],
+    "tm61": [
+      {
+        "where": "kalos-route-14"
+      }
+    ],
+    "tm62": [
+      {
+        "where": "coumarine-city"
+      }
+    ],
+    "tm63": [
+      {
+        "where": "coumarine-city"
+      }
+    ],
+    "tm65": [
+      {
+        "where": "glittering-cave"
+      }
+    ],
+    "tm66": [
+      {
+        "where": "geosenge-town"
+      }
+    ],
+    "tm69": [
+      {
+        "where": "kalos-route-11"
+      }
+    ],
+    "tm70": [
+      {
+        "where": "reflection-cave"
+      }
+    ],
+    "tm71": [
+      {
+        "where": "frost-cavern"
+      }
+    ],
+    "tm73": [
+      {
+        "where": "kalos-route-10"
+      }
+    ],
+    "tm74": [
+      {
+        "where": "reflection-cave"
+      }
+    ],
+    "tm77": [
+      {
+        "where": "anistar-city"
+      }
+    ],
+    "tm79": [
+      {
+        "where": "frost-cavern"
+      }
+    ],
+    "tm80": [
+      {
+        "where": "couriway-town"
+      }
+    ],
+    "tm83": [
+      {
+        "where": "santalune-city"
+      }
+    ],
+    "tm86": [
+      {
+        "where": "coumarine-city"
+      }
+    ],
+    "tm89": [
+      {
+        "where": "couriway-town"
+      }
+    ],
+    "tm91": [
+      {
+        "where": "kiloude-city"
+      }
+    ],
+    "tm92": [
+      {
+        "where": "coumarine-city"
+      },
+      {
+        "where": "anistar-city"
+      }
+    ],
+    "tm94": [
+      {
+        "where": "ambrette-town"
+      }
+    ],
+    "tm95": [
+      {
+        "where": "lost-hotel"
+      }
+    ],
+    "tm96": [
+      {
+        "where": "ambrette-town"
+      }
+    ],
+    "tm97": [
+      {
+        "where": "kalos-route-15"
+      }
+    ],
+    "tm98": [
+      {
+        "where": "shalour-city"
+      }
+    ],
+    "tm99": [
+      {
+        "where": "laverre-city"
+      }
+    ],
+    "tmv-pass": [
+      {
+        "where": "lumiose-city"
+      }
+    ],
+    "town-map": [
+      {
+        "where": "vaniville-town"
+      }
+    ],
+    "toxic-plate": [
+      {
+        "where": "kalos-route-19"
+      }
+    ],
+    "twisted-spoon": [
+      {
+        "where": "lost-hotel"
+      }
+    ],
+    "tyranitarite": [
+      {
+        "where": "cyllage-city"
+      }
+    ],
+    "ultra-ball": [
+      {
+        "where": "kalos-route-6"
+      },
+      {
+        "where": "kalos-route-8"
+      },
+      {
+        "where": "camphrier-town"
+      },
+      {
+        "where": "laverre-city"
+      },
+      {
+        "where": "kalos-victory-road"
+      }
+    ],
+    "venusaurite": [
+      {
+        "where": "lumiose-city"
+      }
+    ],
+    "wacan-berry": [
+      {
+        "where": "kalos-route-18"
+      }
+    ],
+    "water-stone": [
+      {
+        "where": "kalos-route-8"
+      },
+      {
+        "where": "kalos-route-12"
+      },
+      {
+        "where": "kalos-route-18"
+      }
+    ],
+    "whipped-dream": [
+      {
+        "where": "kalos-route-12"
+      },
+      {
+        "where": "cyllage-city"
+      }
+    ],
+    "white-herb": [
+      {
+        "place": "Random grass in battle"
+      }
+    ],
+    "wide-lens": [
+      {
+        "where": "lumiose-city"
+      }
+    ],
+    "x-accuracy": [
+      {
+        "where": "kalos-route-10"
+      },
+      {
+        "where": "kalos-route-13"
+      },
+      {
+        "where": "kalos-route-20"
+      }
+    ],
+    "x-attack": [
+      {
+        "where": "kalos-route-5"
+      },
+      {
+        "where": "santalune-city"
+      },
+      {
+        "where": "camphrier-town"
+      },
+      {
+        "where": "ambrette-town"
+      },
+      {
+        "where": "terminus-cave"
+      },
+      {
+        "where": "kalos-victory-road"
+      }
+    ],
+    "x-defense": [
+      {
+        "where": "kalos-route-9"
+      },
+      {
+        "where": "kalos-route-15"
+      },
+      {
+        "where": "kalos-route-18"
+      },
+      {
+        "where": "santalune-city"
+      },
+      {
+        "where": "cyllage-city"
+      },
+      {
+        "where": "kalos-victory-road"
+      }
+    ],
+    "x-speed": [
+      {
+        "where": "kalos-route-6"
+      },
+      {
+        "where": "cyllage-city"
+      },
+      {
+        "where": "dendemille-town"
+      }
+    ],
+    "yache-berry": [
+      {
+        "where": "kalos-route-19"
+      }
+    ],
+    "zap-plate": [
+      {
+        "where": "kalos-power-plant"
+      }
+    ],
+    "zinc": [
+      {
+        "where": "frost-cavern"
+      },
+      {
+        "where": "kalos-victory-road"
+      }
+    ],
+    "zoom-lens": [
+      {
+        "where": "lumiose-city"
+      }
+    ]
+  },
+  "tutors": {}
+}

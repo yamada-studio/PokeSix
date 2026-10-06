@@ -56,6 +56,9 @@ struct GameBook
 {
     QHash<QString, QList<Source>> items;  // 아이템 identifier →
     QHash<QString, QList<Source>> tutors; // 기술 identifier →
+    // 이 목록이 "그 게임에서 얻을 수 있는 아이템 전부"인가. 자동 수집 사전(Serebii)은 상점 ·
+    // BP 교환 일부가 빠져 있어 false — 입수처 표시에만 쓰고 존재 필터링에는 쓰지 않는다.
+    bool completeItems = false;
 };
 
 struct Book
@@ -97,6 +100,7 @@ Book load()
         const QString group = root.value(QStringLiteral("versionGroup"))
                                       .toString(QFileInfo(path).completeBaseName());
         GameBook &game = book.games[group];
+        game.completeItems = root.value(QStringLiteral("completeItemList")).toBool();
         const QJsonObject items = root.value(QStringLiteral("items")).toObject();
         for (auto it = items.begin(); it != items.end(); ++it)
             game.items.insert(it.key(), sourcesOf(*it));
@@ -223,17 +227,11 @@ QStringList itemSources(const QString &versionGroup, const QString &item, Langua
 
 bool hasItemBook(const QString &versionGroup)
 {
+    // 사전이 스스로 "완전 목록"이라고 선언할 때만(completeItemList) 존재 필터링에 쓴다.
+    // 자동 수집 사전은 상점 · BP 교환 일부가 빠져 있어서, 이걸로 거르면 초이스밴드처럼
+    // 실제로 얻을 수 있는 아이템이 목록에서 사라진다.
     const auto it = book().games.constFind(versionGroup);
-    // 기술머신만 적힌 사전(플라티나 등)으로 다른 아이템을 숨기면 안 된다 — 기술머신 · 비전머신이
-    // 아닌 아이템이 하나라도 있어야 "그 게임 전체 목록"으로 본다
-    if (it == book().games.constEnd())
-        return false;
-    for (auto item = it->items.cbegin(); item != it->items.cend(); ++item)
-        if (!item.key().startsWith(QLatin1String("tm"))
-            && !item.key().startsWith(QLatin1String("hm"))
-            && !item.key().startsWith(QLatin1String("tr")))
-            return true;
-    return false;
+    return it != book().games.constEnd() && it->completeItems && !it->items.isEmpty();
 }
 
 QSet<QString> itemsIn(const QString &versionGroup)

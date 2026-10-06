@@ -1,0 +1,10 @@
+{
+  "_comment": [
+    "게임(버전 그룹)별 입수 사전 (ui/dex/guidebook.h가 읽는다). 형식은 docs/i18n/README.md 참고.",
+    "scripts/i18n/check_acquisition.py로 검증해 넣었다. 출처는 _sources."
+  ],
+  "_sources": [],
+  "versionGroup": "the-indigo-disk",
+  "items": {},
+  "tutors": {}
+}
