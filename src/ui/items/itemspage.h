@@ -1,5 +1,7 @@
 #pragma once
 
+#include "data/repository/repository.h"
+
 #include <QWidget>
 
 class QButtonGroup;
@@ -9,7 +11,7 @@ class QTimer;
 
 namespace com::yamada::studio {
 class AppState;
-class GameSelector;
+class DexSelector;
 class ItemDetailPane;
 class ItemFilterProxy;
 class ItemHeaderView;
@@ -49,6 +51,7 @@ private:
     QWidget *buildListBody();
     void load();
     void onGenerationChanged();
+    void setGameChips(const QList<GameInfo> &games); // 묶음 → 도감 칩 모양 버튼
     void applyLanguage(); // AppState 언어 → 모델 · delegate · 분류 이름 · 제목
     void selectGroup(const QString &key);
     void reselect(const QString &identifier); // 목록을 다시 채운 뒤 보던 아이템을 다시 고른다
@@ -69,9 +72,9 @@ private:
     ItemRowDelegate *m_delegate = nullptr;
     QTimer *m_searchDelay = nullptr;
     ItemDetailPane *m_detail = nullptr;
-    GameSelector *m_games = nullptr; // 게임 칩 [DP][Pt][HGSS] — 같은 세대라도 게임마다 다르다
-    QString m_version;               // 지금 게임(AppState의 버전)
-    QString m_versionGroup; // 그 버전의 묶음(기술머신 · 입수 사전의 기준)
+    DexSelector *m_games = nullptr; // 게임 칩 [신오 D|P][신오 Pt][성도 HG|SS] — 게임 묶음마다
+    QList<GameInfo> m_gameList; // 칩 순서의 게임 묶음(버튼 id = 위치 + 1)
+    QString m_versionGroup; // 이 화면에서 고른 게임 묶음(기술머신 · 입수 사전의 기준)
     PanelFrame *m_detailPanel = nullptr;
     QString m_groupKey;
     bool m_loaded = false;

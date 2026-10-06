@@ -96,7 +96,8 @@ QList<ItemEvolution> Repository::evolutionsWithItem(int itemId, int generation)
     // 사용(item_id) · 지님(held_item_id) 모두. 규칙이 세대마다 여러 줄일 수 있어 DISTINCT.
     QSqlQuery query(QSqlDatabase::database(m_connection));
     query.prepare(QStringLiteral("SELECT DISTINCT f.name_ko, f.name_en, f.name_ja, "
-                                 "       t.name_ko, t.name_en, t.name_ja, e.held_item_id = :held "
+                                 "       t.name_ko, t.name_en, t.name_ja, e.held_item_id = :held, "
+                                 "       t.id "
                                  "FROM evolutions e "
                                  "JOIN species t ON t.id = e.evolved_species_id "
                                  "LEFT JOIN species f ON f.id = t.evolves_from "
@@ -114,7 +115,11 @@ QList<ItemEvolution> Repository::evolutionsWithItem(int itemId, int generation)
         return evolutions;
     }
     while (query.next())
-        evolutions.append({localized(query, 0), localized(query, 3), query.value(6).toBool()});
+        evolutions.append({localized(query, 0),
+                           localized(query, 3),
+                           query.value(6).toBool(),
+                           query.value(7).toInt(),
+                           {}});
     return evolutions;
 }
 

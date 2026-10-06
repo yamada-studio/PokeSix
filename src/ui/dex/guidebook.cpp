@@ -1,6 +1,7 @@
 #include "ui/dex/guidebook.h"
 
 #include "ui/logging/logging.h"
+#include "ui/theme/dexstyle.h"
 
 #include <QCoreApplication>
 #include <QDirIterator>
@@ -225,9 +226,21 @@ QStringList itemSources(const QString &versionGroup, const QString &item, Langua
 {
     QStringList lines;
     const QList<Source> sources = book().games.value(versionGroup).items.value(item);
-    for (const Source &source : sources)
-        if (version.isEmpty() || source.versions.isEmpty() || source.versions.contains(version))
+    for (const Source &source : sources) {
+        if (source.versions.isEmpty()) {
             lines.append(sourceText(source, language));
+        } else if (version.isEmpty()) {
+            // 묶음 전체를 볼 때(아이템 백과): 버전 한정 입수처는 그 버전 약칭을 앞에("W2 — 13번
+            // 도로")
+            QStringList names;
+            for (const QString &only : source.versions)
+                names.append(dexstyle::version(only, {}).shortName);
+            lines.append(QStringLiteral("%1 — %2").arg(names.join(QLatin1Char('/')),
+                                                       sourceText(source, language)));
+        } else if (source.versions.contains(version)) {
+            lines.append(sourceText(source, language));
+        }
+    }
     static const char *const otherVersion = QT_TRANSLATE_NOOP(
             "com::yamada::studio::guidebook", "이 버전에서는 얻을 수 없어요(다른 버전 한정)");
     if (lines.isEmpty() && !sources.isEmpty())

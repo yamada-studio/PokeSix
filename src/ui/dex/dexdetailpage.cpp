@@ -199,6 +199,7 @@ DexDetailPage::DexDetailPage(Repository *repository, AppState *state, QWidget *p
     top->addWidget(basis);
     top->addSpacing(6);
     m_games = new GameSelector;
+    m_games->setSplitVersions(true); // 버전마다 칩 하나 [D] [P] [Pt] [HG] [SS]
     top->addWidget(m_games);
     connect(m_games, &GameSelector::versionSelected, this, [this](const QString &version) {
         if (m_followsAppGame) {

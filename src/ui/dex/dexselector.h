@@ -33,6 +33,10 @@ public:
     // 그 게임의 도감을 켠다(지금 켠 도감이 이미 그 게임 것이거나 전국이면 그대로). 바뀌었으면 true
     // — dexSelected는 보내지 않는다(부른 쪽이 목록을 다시 읽는다)
     bool selectVersionGroup(const QString &versionGroup);
+    // [전국] 버튼을 둘지(기본 true). 아이템 백과의 게임 칩처럼 도감이 아니라 게임을 고를 때 false —
+    // 그때 버튼 id는 부른 쪽이 정한 DexInfo::pokedexId다. setDexes 전에 부른다
+    void setShowNational(bool show) { m_showNational = show; }
+    void setCurrent(int id); // 그 버튼을 켠다(dexSelected는 보내지 않는다)
 
 signals:
     void dexSelected(int pokedexId); // 사용자가 누를 때만. kNational = 전국
@@ -45,5 +49,6 @@ private:
     QHBoxLayout *m_layout = nullptr;
     QList<DexInfo> m_dexes; // 언어를 바꿀 때 버튼을 다시 만들려고 들고 있는다
     Language m_language = Language::Korean;
+    bool m_showNational = true;
 };
 } // namespace com::yamada::studio

@@ -7,6 +7,13 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Items picks a game group with the Pokédex's dex-chip look — [신오 D|P] [신오 Pt] [성도 HG|SS] —
+  local to the page (it starts from the app's game and follows it when the squad changes it, but
+  does not change it). Version differences inside the group are spelled out in the detail:
+  evolutions of version-exclusive Pokémon get "(P 한정)", and version-only sources are prefixed
+  with the version ("W2 — 13번 도로").
+- The Pokédex detail (and the squad member modal) and the Pokédex list use one chip per version
+  like the squad page; the modal still opens on the squad's version and its chips stay local.
 - The squad page picks its game with one chip per version — [D] [P] [Pt] [HG] [SS], [B] [W]
   [B2] [W2] — instead of the split group chips (the Pokédex, detail and Items pages keep the group
   chips). Repeated abbreviations get the group's short name only after their first use (Sw · Sh ·

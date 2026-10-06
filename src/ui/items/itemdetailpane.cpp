@@ -2,6 +2,7 @@
 
 #include "data/sprites/spritecache.h"
 #include "ui/items/itemrowdelegate.h"
+#include "ui/theme/dexstyle.h"
 #include "ui/theme/theme.h"
 #include "ui/theme/tokens.h"
 #include "ui/widgets/spritefit.h"
@@ -205,6 +206,12 @@ void ItemDetailPane::setItem(const ItemRow &item, int generation, Language langu
         QString line = from.isEmpty() ? to : tr("%1 → %2").arg(from, to);
         if (evolution.held)
             line += tr(" (지니고 교환)");
+        if (!evolution.onlyVersions.isEmpty()) { // 버전 한정 포켓몬: "(SS 한정)"
+            QStringList names;
+            for (const QString &version : evolution.onlyVersions)
+                names.append(dexstyle::version(version, {}).shortName);
+            line += tr(" (%1 한정)").arg(names.join(QLatin1Char('/')));
+        }
         lines.append(line);
     }
     m_extra->setText(QStringLiteral("· ") + lines.join(QStringLiteral("\n· ")));
