@@ -12,6 +12,8 @@ add_library(pokesix_core STATIC
     rules/movereach.cpp
     analysis/squadanalyzer.h
     analysis/squadanalyzer.cpp
+    analysis/resourceledger.h
+    analysis/resourceledger.cpp
 )
 add_library(PokeSix::core ALIAS pokesix_core)
 

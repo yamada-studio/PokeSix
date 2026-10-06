@@ -29,7 +29,7 @@ class SquadStore;
 // SixSquad 편집 화면(02 SCR-04, E2). 지금 세대의 스쿼드 하나를 편집한다.
 //
 //   [이름 ✎] [4세대 규칙] [기라티나 (Pt) ▾] ■■■■■□ 5 / 6 ········· ✓ 자동 저장됨
-//   ┌ 슬롯 카드 6 ┐ ┌ 실시간 분석 ─────────────── ⚠ 문제 3 ┐
+//   ┌ 슬롯 카드 6 ┐ ┌ 스쿼드 분석 ─────────────── ⚠ 문제 3 ┐
 //   │ 01 │ 02     │ │ 문제 목록 · 방어 상성 히트맵 · 물리/특수  │
 //   │ …          │ └──────────────────────────────────────┘
 // 넓으면(≥ kWideWidth) 카드 2열 | 분석 창, 좁으면 카드 3열 위 · 분석 창 아래(세로 스크롤).
@@ -64,6 +64,7 @@ private:
     void syncAnalysisHeight();
     void refresh(); // 세션 · 언어가 바뀌었다 → 전부 다시
     void refreshAnalysis();
+    void refreshResources(); // 분석 창의 "리소스 투자" 칸
 
     void selectSlot(int slot);
     void showMemberDetail(int slot); // 카드 머리의 [+] — 도감 상세를 모달로
@@ -128,6 +129,9 @@ private:
     HeatmapView *m_heatmap = nullptr;
     QLabel *m_moveCount = nullptr;
     SplitBar *m_split = nullptr;
+    QWidget *m_resourceBox = nullptr; // 리소스 투자 칸(제목 + 줄들) — 집계가 비면 통째로 숨긴다
+    QLabel *m_resourceTotal = nullptr; // 제목 오른쪽 합계("하트비늘 2개 · 160BP")
+    QLabel *m_resources = nullptr;     // 기술머신 · 가르침 줄들
 
     int m_selected = -1;
     QHash<QString, int> m_pickerDex;

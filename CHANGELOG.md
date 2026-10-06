@@ -7,6 +7,16 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- The squad analysis panel gains a "리소스 투자" (resource investment) section: it tallies what the
+  move layout consumes — Heart Scales (move-reminder moves), TM purchases and NPC move-tutor fees —
+  with per-currency totals (BP, coins, shards, money) beside the section title. A TM the game drops
+  only once but placed on two members raises a warning ("이 게임에 1개뿐이에요 ⚠"); a TM with a
+  repeatable source (shop, exchange, prize) adds its purchase cost instead, and TMs whose every
+  source sits in the post-game region are marked "관동 — 엔딩 후". HM moves and level-up moves cost
+  nothing and stay out of the list. Counting lives in core (`resourceledger`, unit tested); the
+  supply side comes from the acquisition books via `guidebook::itemSupply` and
+  `guidebook::tutorCostAmounts`, and the HGSS book's TM/HM sources now carry a `region` field
+  (johto/kanto, progression-based: Routes 26–27, Victory Road and Indigo Plateau count as johto).
 - README becomes an introduction and user guide: a hero screenshot, what the app does, a walkthrough
   of first launch, choosing a generation and game, the Pokédex, Squad and Items screens, keyboard
   shortcuts, language options and where the data comes from. Screenshots live in
@@ -334,6 +344,8 @@ and the project uses [Semantic Versioning](https://semver.org/).
   data grows to 28.9 MB). Moves introduced in generation 9 still lack Korean text in PokéAPI.
 
 ### Changed
+- The squad analysis panel is titled "스쿼드 분석" (was "실시간 분석"), and its sections sit a
+  little tighter (spacing 8→6, frame padding 12/14→10/12) to make room for the resource section.
 - Squad slot card headers trade the ⋯ menu for three direct buttons — swap (⇄), clear (trash) and
   details (+), with tooltips — and the member detail modal grew to 1200×800 so its right panel is
   not clipped. "도감에서 보기", the move up/down actions (drag reorder covers them) and the old

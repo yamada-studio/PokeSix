@@ -22,7 +22,9 @@ HOWS = {"field", "hidden", "gift", "shop", "exchange", "prize", "reward", "held"
 UNITS = {"money", "bp", "coins", "red-shard", "blue-shard", "yellow-shard", "green-shard",
          "heart-scale", "athlete-points", "watts", "league-points"}
 FIELDS = {"how", "where", "place", "content", "cost", "detail", "versions", "note", "confidence",
-          "source"}
+          "source", "region"}
+REGIONS = {"kanto", "johto", "hoenn", "sinnoh", "unova", "kalos", "alola", "galar", "hisui",
+           "paldea"}
 
 
 def clean_sources(key, sources, locations, problems):
@@ -41,6 +43,10 @@ def clean_sources(key, sources, locations, problems):
         if how and how not in HOWS:
             problems.append(f"{key}: unknown how '{how}' (kept as other)")
             source["how"] = "other"
+        region = source.get("region")
+        if region and region not in REGIONS:
+            problems.append(f"{key}: unknown region '{region}' (dropped)")
+            del source["region"]
         where = source.get("where")
         if where and where not in locations:
             problems.append(f"{key}: unknown location '{where}' (moved to place)")
