@@ -7,6 +7,13 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Heart Scale marks now follow how you actually get the Pokémon in the chosen game: a level-up
+  move below the earliest level you can catch, receive or evolve it at, that it does not already
+  know then (the game's last-four default moveset), needs the Move Reminder — HGSS's Lv 20 fossil
+  Aerodactyl marks its Lv 1 fangs, Wing Attack and Supersonic but not Bite, Scary Face, Roar or
+  Agility. Earlier stages' moves carry through evolution; breeding is not counted. The rule lives
+  in `core/rules/movereach` (unit-tested); same-level moves are listed in the game's order. The
+  database schema goes to 11 (learnset order column) and is rebuilt from the cached CSV.
 - The evolution chain shows where to get each required item, right under its step: "물의돌 사용"
   gets a "물의돌 — 경품 · 자연공원 (벌레잡기대회 1등) / 42번 도로" line (from the chosen game's
   acquisition book; tooltips carry the full text), for both use-items and held trade items

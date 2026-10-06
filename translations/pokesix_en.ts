@@ -784,6 +784,10 @@ to see its details here</translation>
         <source>비용</source>
         <translation>Cost</translation>
     </message>
+    <message>
+        <source>이 게임에서는 Lv %1부터 얻어요. 얻을 때 갖고 있지 않으면 기술 떠올리기(하트비늘)로 배워요.</source>
+        <translation>In this game you can get it from Lv %1. If it does not know this move then, learn it from the Move Reminder (Heart Scale).</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::NaturePicker</name>

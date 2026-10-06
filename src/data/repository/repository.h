@@ -76,9 +76,9 @@ struct MoveEntry
     int machineNumber = 0;      // 기술머신: 번호
     bool hiddenMachine = false; // 비전머신
     QString machineItem; // 기술머신 아이템 identifier("tm01") — UI의 획득처 사전 키
-    // 하트비늘(기술 떠올리기)이 있어야 배우는 기술: Lv 1로 배우지만 진화 전 단계가 레벨업으로
-    // 배우지 않는 기술(가디안의 치유소원). 기본 단계의 Lv 1 기술(태어날 때 가진 몸통박치기 등)은
-    // 아니다.
+    // 하트비늘(기술 떠올리기)이 있어야 배우는 기술. 이 게임에서 얻는 레벨보다 낮고 얻을 때 기본으로
+    // 갖고 있지도 않은 기술(HGSS 화석 프테라 Lv 20의 Lv 1 삼색엄니), 진화 전 단계가 익히지 않는
+    // 진화형의 Lv 1 기술(가디안의 치유소원). 이 게임에서 얻을 수 없으면 뒤의 것만 본다.
     bool needsReminder = false;
     // 기술 자체의 분류(세대 규칙을 적용하기 전). 3세대까지 damageClass는 타입이 정한 값이라, "4세대
     // 이후 규칙이었다면"(스쿼드 물리 · 특수 분포)을 셀 때 이 값을 쓴다
@@ -182,11 +182,14 @@ struct PokemonDetail
     QList<LocalizedText> groupGames; // 그 묶음의 버전 이름들(기라티나)
     QStringList groupVersions; // 그 묶음의 버전 identifier("platinum") — UI가 약칭(Pt)을 붙인다
     QList<EncounterEntry> encounters; // 그 세대 모든 버전(DP · Pt · HGSS)
-    QList<MoveEntry> levelMoves;      // 레벨 순
+    QList<MoveEntry> levelMoves;      // 레벨 순(같은 레벨은 게임이 익히는 순서)
     QList<MoveEntry> machineMoves;    // 기술머신 번호 순, 비전머신은 뒤에
     QList<MoveEntry> tutorMoves; // 기술 가르침(이름은 fillMoves가 채운다. 순서 = move id)
     QList<MoveEntry> eggMoves; // 알 기술(진화 전 단계에만 있는 경우가 많다)
     QList<EvolutionStep> evolution; // 그 세대에 있는 종만. 진화하지 않는 포켓몬은 비어 있다
+    // 이 게임에서 이 포켓몬을 가장 일찍 가질 수 있는 레벨(잡기 · 받기 · 진화). 0 = 이 게임의 출현
+    // 자료로는 얻을 수 없다
+    int earliestLevel = 0;
     QList<AbilityEntry> abilities; // 그 세대의 특성(칸 순). 1–2세대는 비어 있다(특성이 없었다)
 
     bool isValid() const { return pokemonId > 0; }

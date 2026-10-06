@@ -784,6 +784,10 @@
         <source>비용</source>
         <translation>コスト</translation>
     </message>
+    <message>
+        <source>이 게임에서는 Lv %1부터 얻어요. 얻을 때 갖고 있지 않으면 기술 떠올리기(하트비늘)로 배워요.</source>
+        <translation>このゲームではLv %1から手に入ります。そのとき覚えていなければ、わざ思い出し(ハートのウロコ)で覚えます。</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::NaturePicker</name>

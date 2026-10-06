@@ -406,6 +406,7 @@ void DexDetailPage::applyLanguage()
     m_matchups->setMatchups(m_detail.types, m_chart, language);
     m_abilities->setAbilities(m_detail.abilities, m_detail.generation, language);
     applyNature();
+    m_levelMoves->setEarliestLevel(m_detail.earliestLevel);
     m_levelMoves->setMoves(m_detail.levelMoves, m_detail.versionGroup, m_detail.generation,
                            m_detail.types, language);
     m_machineMoves->setMoves(m_detail.machineMoves, m_detail.versionGroup, m_detail.generation,

@@ -2,6 +2,7 @@
 add_executable(pokesix_core_tests
     typechart_test.cpp
     squadanalyzer_test.cpp
+    movereach_test.cpp
 )
 pokesix_target_defaults(pokesix_core_tests)
 
