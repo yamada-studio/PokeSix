@@ -23,3 +23,5 @@ PokéAPI 저장소([PokeAPI/pokeapi](https://github.com/PokeAPI/pokeapi), BSD-3-
   - 한카리아스(445): 디자인 목업의 기준 포켓몬(4세대)
 
 줄을 고치지 않는다. 실제 파일에 있는 줄을 그대로 옮긴다.
+
+PokéAPI 데이터의 재배포 조건(BSD-3-Clause 전문)은 [LICENSE-PokeAPI.md](LICENSE-PokeAPI.md)에 있다. 이 폴더를 옮기거나 나눌 때 함께 둔다.

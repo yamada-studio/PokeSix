@@ -259,6 +259,11 @@ and the project uses [Semantic Versioning](https://semver.org/).
   arrow from shifting the label.
 
 ### Fixed
+- Copyright clean-up for the public repository: the README screenshots are re-captured without any
+  game pictures; the HeartGold/SoulSilver TM/HM sources that quoted a walkthrough blog sentence by
+  sentence are rewritten as facts in PokeSix's structured format (method · place · content · cost ·
+  condition); `THIRD_PARTY_NOTICES.md` states what the MIT License covers and credits PokéAPI (with
+  its BSD-3-Clause text, also next to the test fixtures), the guide sources, Qt and the fonts.
 - Home cards with several series no longer float the later series in mid-air: each later series
   stands on a stepped riser (a bleacher tier in the card's accent tint) behind the first, the front
   centre is a little smaller, and every row stands on its own ground with a foot shadow.
