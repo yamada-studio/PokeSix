@@ -15,6 +15,9 @@
 #include <QPixmap>
 #include <QToolTip>
 
+#include <algorithm>
+#include <cmath>
+
 namespace {
 using namespace com::yamada::studio;
 
@@ -25,8 +28,9 @@ constexpr int kNameWidth = 120;
 constexpr int kTypeWidth = 74;
 constexpr int kClassWidth = 46;
 constexpr int kNumberWidth = 44; // 위력 · 명중 · PP
-constexpr int kCostWidth = 150;  // NPC 가르침 비용("배틀프런티어 48BP")
-constexpr int kFirstWidth = 56;  // Lv · 번호
+constexpr int kCostMinWidth = 90; // NPC 가르침 비용("배틀프런티어 48BP") — 글자 길이에 맞춘다
+constexpr int kCostMaxWidth = 380; // 더 길면 말줄임 + 툴팁(효과 칸 자리를 남긴다)
+constexpr int kFirstWidth = 56;    // Lv · 번호
 constexpr char kHeartScale[] = "heart-scale";
 constexpr int kVariablePower = 1;
 constexpr int kPlacesGap = 14; // PP ↔ 효과 · 효과 ↔ 획득처
@@ -72,6 +76,19 @@ void MoveList::setMoves(const QList<MoveEntry> &moves, const QString &versionGro
     m_versionGroup = versionGroup;
     m_generation = generation;
     m_language = language;
+    // 비용 칸: 가장 긴 비용 글자만큼(상한까지). 줄마다 미리 만들어 둔다(그릴 때마다 사전을 찾지
+    // 않게)
+    m_costs.clear();
+    m_costWidth = kCostMinWidth;
+    if (m_mode == Mode::Plain) {
+        const QFontMetricsF metrics(theme::font(theme::kFamilyBody, 12));
+        for (const MoveEntry &move : std::as_const(m_moves)) {
+            m_costs.append(guidebook::tutorCost(m_versionGroup, move.identifier, m_language));
+            m_costWidth = std::max(m_costWidth,
+                                   int(std::ceil(metrics.horizontalAdvance(m_costs.last()))) + 4);
+        }
+        m_costWidth = std::min(m_costWidth, kCostMaxWidth);
+    }
     QWidget::updateGeometry();
     QWidget::update();
 }
@@ -109,7 +126,7 @@ QList<MoveList::Column> MoveList::columns() const
     } else if (m_mode == Mode::Plain) {
         // 비용(NPC 가르침 — 컨텐츠 + 재화)은 PP 바로 뒤에 — 맨 오른쪽에 떨어뜨리면 줄 따라
         // 읽기 어렵다. 남는 폭은 효과가 갖는다.
-        add(kCostWidth);
+        add(m_costWidth);
         add(std::max(kEffectMinWidth, width() - x - kPadding));
     } else {
         add(rest);
@@ -232,11 +249,14 @@ void MoveList::paintEvent(QPaintEvent *)
                               placeFont);
         // 비용(NPC 가르침): 사전(tutor-costs.json)에 있을 때만. 없으면 흐린 "—"
         if (m_mode == Mode::Plain) {
-            const QString cost = guidebook::tutorCost(m_versionGroup, move.identifier, m_language);
+            const QString cost = m_costs.value(i);
+            const QRectF where = cell(costColumn(), top, kRowHeight);
             painter.setFont(placeFont);
             painter.setPen(QColor(cost.isEmpty() ? tok::kTextDisabled : tok::kText2));
-            painter.drawText(cell(costColumn(), top, kRowHeight), Qt::AlignLeft | Qt::AlignVCenter,
-                             cost.isEmpty() ? QStringLiteral("—") : cost);
+            painter.drawText(where, Qt::AlignLeft | Qt::AlignVCenter,
+                             cost.isEmpty() ? QStringLiteral("—")
+                                            : QFontMetricsF(placeFont).elidedText(
+                                                      cost, Qt::ElideRight, where.width()));
         }
         // 획득처(기술머신)
         if (m_mode == Mode::Machine) {
@@ -274,7 +294,11 @@ bool MoveList::event(QEvent *event)
                     tip += QStringLiteral("\n") + flavor;
             } else if (m_mode == Mode::Machine)
                 tip = placesOf(move).replace(QStringLiteral(" · "), QStringLiteral("\n"));
-            else if (move.needsReminder && help->pos().x() < columns().at(0).x + kFirstWidth)
+            else if (m_mode == Mode::Plain) {
+                const Column cost = columns().at(costColumn());
+                if (help->pos().x() >= cost.x && help->pos().x() < cost.x + cost.width)
+                    tip = m_costs.value(row).replace(QStringLiteral(" / "), QStringLiteral("\n"));
+            } else if (move.needsReminder && help->pos().x() < columns().at(0).x + kFirstWidth)
                 tip = m_earliestLevel > 0
                               ? tr("이 게임에서는 Lv %1부터 얻어요. 얻을 때 갖고 있지 않으면 기술 "
                                    "떠올리기(하트비늘)로 배워요.")

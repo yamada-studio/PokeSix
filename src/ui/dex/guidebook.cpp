@@ -192,10 +192,10 @@ QString sourceText(const Source &source, Language language)
     QString where = source.place.text(language);
     if (where.isEmpty() && !source.where.isEmpty())
         where = com::yamada::studio::guidebook::placeName(source.where, {}, language);
-    if (!where.isEmpty())
+    const QString content = source.content.text(language);
+    if (!where.isEmpty() && where != content) // "배틀프런티어 · 배틀프런티어 32BP" → 한 번만
         parts.append(where);
     QStringList price;
-    const QString content = source.content.text(language);
     if (!content.isEmpty())
         price.append(content);
     QStringList costs;
