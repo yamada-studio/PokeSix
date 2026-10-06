@@ -7,6 +7,11 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Korean descriptions for 88 moves, 45 abilities and 6 items that PokéAPI lacks (mostly Legends:
+  Arceus and Scarlet/Violet additions), taken line-for-line from Scarlet/Violet 3.0.1, Legends:
+  Arceus and Legends: Z-A text dumps and cross-checked against a second dump or wiki. The name
+  dictionary can now also correct PokéAPI typos (`"fix": true`): 베껴그리기 (Doodle) and
+  액셀브레이크 (Collision Course).
 - Korean names for 600 places and 58 items/moves/abilities/versions that PokéAPI lacks (the
   Pokédex encounter list now reads 회색시티 rather than "Pewter City"). Values were cross-checked
   between PKHeX's game-extracted location strings, the WikiDex all-language lists and the Korean

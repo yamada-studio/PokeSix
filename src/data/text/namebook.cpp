@@ -19,7 +19,15 @@ constexpr std::array<const char *, 7> kSections
         = {"items",        "moves",        "abilities",      "versions",
            "item-effects", "move-effects", "ability-effects"};
 
-using Book = std::array<QHash<QString, LocalizedText>, kSections.size()>;
+// 사전 한 칸: 값 + "PokéAPI 값을 바로잡는다"(fix: true — PokéAPI 쪽 오탈자. 빈 칸이 아니어도
+// 덮는다)
+struct Entry
+{
+    LocalizedText text;
+    bool fix = false;
+};
+
+using Book = std::array<QHash<QString, Entry>, kSections.size()>;
 
 // 글자 하나(한국어) 또는 {ko, en, ja}
 LocalizedText textOf(const QJsonValue &value)
@@ -47,7 +55,8 @@ Book load()
     for (std::size_t i = 0; i < kSections.size(); ++i) {
         const QJsonObject section = root.value(QLatin1String(kSections[i])).toObject();
         for (auto it = section.begin(); it != section.end(); ++it)
-            book[i].insert(it.key(), textOf(*it));
+            book[i].insert(it.key(),
+                           {textOf(*it), it->toObject().value(QStringLiteral("fix")).toBool()});
     }
     return book;
 }
@@ -62,17 +71,17 @@ const Book &book()
 namespace com::yamada::studio::namebook {
 void fill(Kind kind, const QString &identifier, LocalizedText &text)
 {
-    if (!text.ko.isEmpty() && !text.ja.isEmpty() && !text.en.isEmpty())
-        return; // 다 있으면 사전을 볼 필요가 없다(대부분이 여기서 끝난다)
     const auto &section = book()[static_cast<std::size_t>(kind)];
     const auto it = section.constFind(identifier);
     if (it == section.constEnd())
         return;
-    if (text.ko.isEmpty())
-        text.ko = it->ko;
-    if (text.en.isEmpty())
-        text.en = it->en;
-    if (text.ja.isEmpty())
-        text.ja = it->ja;
+    const LocalizedText &entry = it->text;
+    // 보통은 빈 칸만 채운다. fix 항목은 PokéAPI 값이 틀린 것이라 사전 값으로 덮는다.
+    if (!entry.ko.isEmpty() && (text.ko.isEmpty() || it->fix))
+        text.ko = entry.ko;
+    if (!entry.en.isEmpty() && (text.en.isEmpty() || it->fix))
+        text.en = entry.en;
+    if (!entry.ja.isEmpty() && (text.ja.isEmpty() || it->fix))
+        text.ja = entry.ja;
 }
 } // namespace com::yamada::studio::namebook
