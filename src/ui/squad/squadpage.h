@@ -126,7 +126,6 @@ private:
     QList<ProblemList::Row> m_problemRows;
     QString m_problemEmptyText;
     HeatmapView *m_heatmap = nullptr;
-    QLabel *m_splitRule = nullptr;
     QLabel *m_moveCount = nullptr;
     SplitBar *m_split = nullptr;
 

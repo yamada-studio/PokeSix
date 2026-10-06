@@ -19,12 +19,9 @@ SplitBar::SplitBar(QWidget *parent)
     QWidget::setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
 }
 
-void SplitBar::setSplit(const MoveSplit &split, const MoveSplit &other,
-                        const QString &otherRuleText)
+void SplitBar::setSplit(const MoveSplit &split)
 {
     m_split = split;
-    m_other = other;
-    m_otherRuleText = otherRuleText;
     QWidget::update();
 }
 
@@ -70,7 +67,7 @@ void SplitBar::paintEvent(QPaintEvent *)
     painter.setBrush(Qt::NoBrush);
     painter.drawRoundedRect(bar, 4, 4);
 
-    // 범례(왼쪽) · 반대 규칙(오른쪽)
+    // 범례
     const int top = kBarHeight + 10;
     const QFont font = theme::font(theme::kFamilyBody, 12, QFont::Bold);
     const QFont number = theme::font(theme::kFamilyData, 12, QFont::Bold);
@@ -105,21 +102,6 @@ void SplitBar::paintEvent(QPaintEvent *)
         const int nw = int(QFontMetricsF(number).horizontalAdvance(n));
         painter.drawText(QRect(lx + 21 + tw, top, nw + 2, 20), Qt::AlignLeft | Qt::AlignVCenter, n);
         lx += 21 + tw + nw + 16;
-    }
-    if (!m_otherRuleText.isEmpty()) {
-        const QString value = tr("물리 %1 · 특수 %2").arg(m_other.physical).arg(m_other.special);
-        painter.setFont(number);
-        painter.setPen(QColor(tok::kText1));
-        const int vw = int(QFontMetricsF(number).horizontalAdvance(value));
-        painter.drawText(QRect(width() - vw - 2, top, vw + 2, 20),
-                         Qt::AlignRight | Qt::AlignVCenter, value);
-        painter.setFont(theme::font(theme::kFamilyBody, 12));
-        painter.setPen(QColor(tok::kText3));
-        const int room = width() - vw - 8 - lx;
-        if (room > 60)
-            painter.drawText(
-                    QRect(lx, top, room, 20), Qt::AlignRight | Qt::AlignVCenter,
-                    QFontMetricsF(painter.font()).elidedText(m_otherRuleText, Qt::ElideLeft, room));
     }
 }
 } // namespace com::yamada::studio

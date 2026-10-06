@@ -1,6 +1,5 @@
 #include "data/analysis/squadinput.h"
 
-#include "core/rules/generationfeatures.h"
 #include "core/types/typekey.h"
 
 namespace com::yamada::studio {
@@ -23,7 +22,7 @@ DamageClass toClass(int damageClass)
 }
 } // namespace
 
-SquadInput makeSquadInput(const TypeChart &chart, int generation,
+SquadInput makeSquadInput(const TypeChart &chart,
                           const std::array<std::optional<ResolvedMember>, kSquadSize> &members)
 {
     SquadInput input;
@@ -39,7 +38,6 @@ SquadInput makeSquadInput(const TypeChart &chart, int generation,
                 input.chart[std::size_t(*a)][std::size_t(*d)] = chart.at(attack, defense);
     }
 
-    const bool splitByMove = featuresOf(generation).splitByMove;
     for (std::size_t slot = 0; slot < kSquadSize; ++slot) {
         if (!members[slot])
             continue;
@@ -50,13 +48,7 @@ SquadInput makeSquadInput(const TypeChart &chart, int generation,
         for (const MoveEntry &move : members[slot]->moves) {
             MoveInput m;
             m.type = toType(move.type);
-            m.damageClass = toClass(move.damageClass);
-            // 반대 규칙: 4세대 이후라면 "타입 기준이었다면", 3세대까지라면 "기술마다였다면"
-            if (m.damageClass == DamageClass::Status || !m.type)
-                m.otherRuleClass = m.damageClass;
-            else
-                m.otherRuleClass
-                        = splitByMove ? typeBasedClass(*m.type) : toClass(move.ownDamageClass);
+            m.damageClass = toClass(move.damageClass); // 그 세대 규칙은 Repository가 적용해 둔다
             member.moves.push_back(m);
         }
         input.members[slot] = std::move(member);

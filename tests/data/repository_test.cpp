@@ -789,8 +789,6 @@ TEST_F(RepositoryTest, DamageClassFollowsTheTypeUntilGeneration3)
     EXPECT_EQ(classes(3), (QList<int> {3, 3, 3}));
     // 4세대(DP)부터 기술마다
     EXPECT_EQ(classes(4), (QList<int> {2, 2, 3}));
-    // 기술 자체의 분류는 세대와 상관없이 남아 있다("4세대 이후 규칙이었다면"에 쓴다)
-    EXPECT_EQ(repository.moves({7}, 3).first().ownDamageClass, 2);
 }
 
 TEST_F(RepositoryTest, MovesCarryTheirEffectSkeleton)

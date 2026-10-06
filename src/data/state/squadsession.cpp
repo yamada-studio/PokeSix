@@ -146,7 +146,7 @@ void SquadSession::analyze()
                 member.moves.append(move->move);
         members[slot] = std::move(member);
     }
-    m_analysis = analyzeSquad(makeSquadInput(m_chart, m_generation, members));
+    m_analysis = analyzeSquad(makeSquadInput(m_chart, members));
 }
 
 void SquadSession::commit()

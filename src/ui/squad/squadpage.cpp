@@ -321,9 +321,6 @@ QWidget *SquadPage::buildAnalysis()
     QLabel *splitLabel = new QLabel(tr("물리 · 특수 분포"));
     splitLabel->setObjectName(QStringLiteral("dexSectionLabel"));
     splitTitle->addWidget(splitLabel);
-    m_splitRule = new QLabel;
-    m_splitRule->setObjectName(QStringLiteral("squadSplitPill"));
-    splitTitle->addWidget(m_splitRule);
     splitTitle->addStretch();
     m_moveCount = new QLabel;
     m_moveCount->setObjectName(QStringLiteral("squadCount"));
@@ -492,7 +489,6 @@ void SquadPage::refreshAnalysis()
 {
     const Language language = m_state->language();
     const int generation = m_session->generation();
-    const GenerationFeatures features = featuresOf(generation);
     const SquadAnalysis &analysis = m_session->analysis();
     const TypeChart &chart = m_session->chart();
 
@@ -571,15 +567,11 @@ void SquadPage::refreshAnalysis()
     m_heatmap->setProblemTypes(problemTypes);
     m_heatmap->setHotType(QString());
 
-    // 물리 · 특수
-    m_splitRule->setText(features.splitByMove ? tr("4세대~ 기술마다 판정")
-                                              : tr("1–3세대 타입마다 판정"));
+    // 물리 · 특수(그 세대 규칙으로 판정된 값 — 규칙 설명은 "N세대 규칙" 알약 툴팁에)
     const MoveSplit &s = analysis.split;
     const int total = s.physical + s.special + s.status + s.empty;
     m_moveCount->setText(tr("기술 %1 / %2").arg(total - s.empty).arg(total));
-    m_split->setSplit(s, analysis.otherRuleSplit,
-                      features.splitByMove ? tr("1–3세대 규칙(타입 기준)이었다면")
-                                           : tr("4세대 이후 규칙(기술 기준)이었다면"));
+    m_split->setSplit(s);
     syncAnalysisHeight(); // 내용(문제 수)이 바뀌었다 — 좁은 배치의 최소 높이 갱신
 }
 

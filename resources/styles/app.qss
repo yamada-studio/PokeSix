@@ -147,10 +147,6 @@ QLabel#squadRulePill {
   background: @yellow.soft; border: 2px solid @ink; border-radius: 12px; padding: 1px 10px;
   font-family: "Do Hyeon"; font-size: 15px; color: @text.1;
 }
-QLabel#squadSplitPill {
-  background: @yellow.tint; border: 1.5px solid @ink; border-radius: 4px; padding: 1px 6px;
-  font-size: 11px; font-weight: 800; color: @text.1;
-}
 QLabel#squadCount { font-family: "NanumGothicCoding"; font-size: 13px; font-weight: 700; color: @text.2; }
 QLabel#squadSaveStatus { font-size: 13px; font-weight: 700; color: @green; }
 QLabel#squadSaveStatus[state="pending"] { color: @text.3; }

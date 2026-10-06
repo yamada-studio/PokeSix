@@ -47,13 +47,10 @@ SquadAnalysis analyzeSquad(const SquadInput &input)
         }
 
         // 2) 기술 분류(빈 칸 포함 4칸)
-        for (const MoveInput &move : member->moves) {
+        for (const MoveInput &move : member->moves)
             count(result.split, move.damageClass);
-            count(result.otherRuleSplit, move.otherRuleClass);
-        }
         const int empty = int(kMoveSlots) - int(member->moves.size());
         result.split.empty += empty > 0 ? empty : 0;
-        result.otherRuleSplit.empty += empty > 0 ? empty : 0;
 
         // 3) 공격 커버: 공격 기술의 타입이 그 (단일) 방어 타입에 효과가 굉장한가
         for (const MoveInput &move : member->moves) {
