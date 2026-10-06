@@ -35,12 +35,14 @@ EvolutionView::EvolutionView(SpriteCache *icons, QWidget *parent)
 }
 
 void EvolutionView::setEvolution(const QList<EvolutionStep> &steps, int currentSpeciesId,
-                                 Language language, const QString &versionGroup)
+                                 Language language, const QString &versionGroup,
+                                 const QString &version)
 {
     m_steps = steps;
     m_current = currentSpeciesId;
     m_language = language;
     m_versionGroup = versionGroup;
+    m_version = version;
     QWidget::updateGeometry();
     QWidget::update();
 }
@@ -58,7 +60,7 @@ QString EvolutionView::itemSourcesOf(const EvolutionStep &step) const
                 continue;
             seen.append(identifier);
             const QStringList sources
-                    = guidebook::itemSources(m_versionGroup, identifier, m_language);
+                    = guidebook::itemSources(m_versionGroup, identifier, m_language, m_version);
             lines.append(QStringLiteral("%1 — %2").arg(
                     name.text(m_language), sources.isEmpty()
                                                    ? tr("입수 정보가 아직 없어요")

@@ -896,6 +896,68 @@ QList<GameInfo> Repository::gamesForGeneration(int generation)
     return games;
 }
 
+QString Repository::resolveVersion(int generation, const QString &version)
+{
+    const QList<GameInfo> games = gamesForGeneration(generation);
+    if (games.isEmpty())
+        return {};
+    for (const GameInfo &game : games) {
+        if (game.versions.contains(version))
+            return version;
+        if (game.versionGroup == version)
+            return game.versions.value(0);
+    }
+    const QString representative = representativeVersionGroup(generation);
+    for (const GameInfo &game : games)
+        if (game.versionGroup == representative)
+            return game.versions.value(0);
+    return games.first().versions.value(0);
+}
+
+QSet<int> Repository::otherVersionSpecies(const QString &version)
+{
+    const auto cached = m_otherVersionSpecies.constFind(version);
+    if (cached != m_otherVersionSpecies.constEnd())
+        return *cached;
+    QSet<int> species;
+    if (!open())
+        return species;
+    QSqlQuery query(QSqlDatabase::database(m_connection));
+    // 버전마다 출현 자료가 있는 진화 사슬
+    auto chainsOf = [&](const QString &where) {
+        QSet<int> chains;
+        query.prepare(QStringLiteral("SELECT DISTINCT s.evolution_chain FROM encounters e "
+                                     "JOIN versions v ON v.id = e.version_id "
+                                     "JOIN pokemon p ON p.id = e.pokemon_id "
+                                     "JOIN species s ON s.id = p.species_id WHERE %1")
+                              .arg(where));
+        query.bindValue(QStringLiteral(":v"), version);
+        if (where.contains(QLatin1String(":v2")))
+            query.bindValue(QStringLiteral(":v2"), version);
+        if (query.exec())
+            while (query.next())
+                chains.insert(query.value(0).toInt());
+        return chains;
+    };
+    const QSet<int> mine = chainsOf(QStringLiteral("v.identifier = :v"));
+    const QSet<int> siblings = chainsOf(
+            QStringLiteral("v.identifier <> :v AND v.version_group_id = "
+                           "(SELECT version_group_id FROM versions WHERE identifier = :v2)"));
+    const QSet<int> elsewhere = QSet<int>(siblings).subtract(mine);
+    if (!elsewhere.isEmpty()) {
+        QStringList ids;
+        for (const int chain : elsewhere)
+            ids.append(QString::number(chain));
+        // 사슬 id는 DB에서 읽은 정수라 SQL에 이어 붙여도 안전하다
+        if (query.exec(QStringLiteral("SELECT id FROM species WHERE evolution_chain IN (%1)")
+                               .arg(ids.join(QLatin1Char(',')))))
+            while (query.next())
+                species.insert(query.value(0).toInt());
+    }
+    m_otherVersionSpecies.insert(version, species);
+    return species;
+}
+
 QList<MoveEntry> Repository::moves(const QList<int> &ids, int generation)
 {
     QList<MoveEntry> moves;

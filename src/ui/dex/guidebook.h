@@ -14,8 +14,10 @@
 // 글자를 돌려준다 — 화면이 비지 않는다.
 namespace com::yamada::studio::guidebook {
 // 아이템(기술머신 포함) 입수 방법 한 줄씩: "필드 · 무쇠게이트 (지하 1층)", "교환 · 배틀프런티어
-// 48BP". 그 게임의 사전에 없으면 빈 목록. versionGroup = "platinum", item = "tm01" · "fire-stone"
-QStringList itemSources(const QString &versionGroup, const QString &item, Language language);
+// 48BP". 그 게임의 사전에 없으면 빈 목록. versionGroup = "platinum", item = "tm01" · "fire-stone".
+// version("white-2")을 주면 다른 버전 한정 입수처는 뺀다(모두 빠지면 "다른 버전 한정" 한 줄)
+QStringList itemSources(const QString &versionGroup, const QString &item, Language language,
+                        const QString &version = {});
 
 // 이 게임의 입수 사전에 아이템 목록이 있는가 — 있으면 아이템 백과가 그 목록으로 게임별 존재를
 // 거른다(없으면 세대 기준 그대로). itemsIn = 그 목록(아이템 identifier)

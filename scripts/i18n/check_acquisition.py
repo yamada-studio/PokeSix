@@ -21,7 +21,8 @@ HOWS = {"field", "hidden", "gift", "shop", "exchange", "prize", "reward", "held"
         "tutor", "other"}
 UNITS = {"money", "bp", "coins", "red-shard", "blue-shard", "yellow-shard", "green-shard",
          "heart-scale", "athlete-points", "watts", "league-points"}
-FIELDS = {"how", "where", "place", "content", "cost", "detail", "note", "confidence", "source"}
+FIELDS = {"how", "where", "place", "content", "cost", "detail", "versions", "note", "confidence",
+          "source"}
 
 
 def clean_sources(key, sources, locations, problems):
@@ -45,6 +46,9 @@ def clean_sources(key, sources, locations, problems):
             problems.append(f"{key}: unknown location '{where}' (moved to place)")
             source.setdefault("place", where)
             del source["where"]
+        for version in source.get("versions", []) or []:
+            if not isinstance(version, str) or not version.islower():
+                problems.append(f"{key}: bad version '{version}' (want a PokéAPI version id)")
         for cost in source.get("cost", []) or []:
             if cost.get("unit") not in UNITS:
                 problems.append(f"{key}: unknown cost unit '{cost.get('unit')}'")

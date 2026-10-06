@@ -16,9 +16,42 @@ GameSelector::GameSelector(QWidget *parent)
     m_layout->setSpacing(5);
     m_group->setExclusive(true);
     connect(m_group, &QButtonGroup::idClicked, this, [this](int index) {
-        if (index >= 0 && index < m_games.size())
-            emit gameSelected(m_games.at(index).versionGroup);
+        auto *chip = static_cast<VersionChip *>(m_group->button(index)); // 칩만 넣는다
+        if (chip == nullptr || chip->partCount() == 0)
+            return;
+        int part = chip->pressedPart();
+        if (part < 0) // 키보드: 이미 켠 칩이면 다음 버전, 아니면 첫 버전
+            part = chip->selectedPart() >= 0
+                                   && chip->part(chip->selectedPart()).version == m_current
+                           ? (chip->selectedPart() + 1) % chip->partCount()
+                           : 0;
+        const QString version = chip->part(part).version;
+        if (version == m_current) {
+            markCurrent(); // 같은 버전 — 켜진 상태만 되돌린다
+            return;
+        }
+        m_current = version;
+        markCurrent();
+        emit versionSelected(version);
     });
+}
+
+void GameSelector::markCurrent()
+{
+    for (QAbstractButton *button : m_group->buttons()) {
+        auto *chip = static_cast<VersionChip *>(button);
+        int selected = -1;
+        for (int i = 0; i < chip->partCount(); ++i)
+            if (chip->part(i).version == m_current)
+                selected = i;
+        // 약칭이 같아 합쳐진 조각(관동 일본판 R · G)의 다른 버전도 그 칩으로 찾는다
+        const int index = m_group->id(button);
+        if (selected < 0 && index >= 0 && index < m_games.size()
+            && m_games.at(index).versions.contains(m_current))
+            selected = 0;
+        chip->setChecked(selected >= 0);
+        chip->setSelectedPart(selected);
+    }
 }
 
 void GameSelector::setGames(const QList<GameInfo> &games, Language language, const QString &current)
@@ -28,6 +61,7 @@ void GameSelector::setGames(const QList<GameInfo> &games, Language language, con
     bool same = games.size() == m_games.size() && !m_group->buttons().isEmpty();
     for (qsizetype i = 0; same && i < games.size(); ++i)
         same = games.at(i).versionGroup == m_games.at(i).versionGroup;
+    m_current = current;
     if (same) {
         m_games = games;
         for (qsizetype i = 0; i < games.size(); ++i) {
@@ -36,8 +70,8 @@ void GameSelector::setGames(const QList<GameInfo> &games, Language language, con
             for (const LocalizedText &name : games.at(i).versionNames)
                 names.append(name.text(language));
             chip->setToolTip(names.join(QStringLiteral(" · ")));
-            chip->setChecked(games.at(i).versionGroup == current);
         }
+        markCurrent();
         return;
     }
     for (QAbstractButton *button : m_group->buttons()) {
@@ -68,8 +102,8 @@ void GameSelector::setGames(const QList<GameInfo> &games, Language language, con
         chip->setToolTip(names.join(QStringLiteral(" · ")));
         m_group->addButton(chip, int(i));
         m_layout->addWidget(chip);
-        chip->setChecked(game.versionGroup == current);
     }
+    markCurrent();
     QWidget::updateGeometry();
 }
 } // namespace com::yamada::studio

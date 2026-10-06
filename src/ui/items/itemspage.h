@@ -51,7 +51,6 @@ private:
     void onGenerationChanged();
     void applyLanguage(); // AppState 언어 → 모델 · delegate · 분류 이름 · 제목
     void selectGroup(const QString &key);
-    void selectGame(const QString &versionGroup); // 게임 칩 → 그 게임의 기술머신 · 아이템으로
     void reselect(const QString &identifier); // 목록을 다시 채운 뒤 보던 아이템을 다시 고른다
     void showDetail(const QModelIndex &proxyIndex);
     void updateTitle();
@@ -71,7 +70,8 @@ private:
     QTimer *m_searchDelay = nullptr;
     ItemDetailPane *m_detail = nullptr;
     GameSelector *m_games = nullptr; // 게임 칩 [DP][Pt][HGSS] — 같은 세대라도 게임마다 다르다
-    QString m_versionGroup; // 지금 게임(세대가 바뀌면 그 세대의 대표 게임으로)
+    QString m_version;               // 지금 게임(AppState의 버전)
+    QString m_versionGroup; // 그 버전의 묶음(기술머신 · 입수 사전의 기준)
     PanelFrame *m_detailPanel = nullptr;
     QString m_groupKey;
     bool m_loaded = false;

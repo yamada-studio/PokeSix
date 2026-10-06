@@ -6,6 +6,8 @@
 #include "ui/theme/tokens.h"
 
 #include <QFontMetricsF>
+#include <QKeyEvent>
+#include <QMouseEvent>
 #include <QPainter>
 #include <QPainterPath>
 
@@ -36,6 +38,7 @@ VersionChip::VersionChip(const QList<Part> &parts, const QString &suffix, QWidge
     QAbstractButton::setCheckable(true);
     QAbstractButton::setCursor(cursors::pointer());
     QAbstractButton::setFocusPolicy(Qt::TabFocus);
+    QAbstractButton::setMouseTracking(true);
 }
 
 QList<VersionChip::Part> VersionChip::partsFor(const QStringList &versions,
@@ -49,7 +52,7 @@ QList<VersionChip::Part> VersionChip::partsFor(const QStringList &versions,
         if (seen.contains(style.shortName))
             continue;
         seen.append(style.shortName);
-        parts.append({style.shortName, style.background, style.text});
+        parts.append({style.shortName, style.background, style.text, versions.at(i)});
     }
     return parts;
 }
@@ -73,6 +76,71 @@ QSize VersionChip::sizeHint() const
     return {int(width) + 2 * kPadding + 2, kChipHeight + 3}; // 3 = 그림자
 }
 
+void VersionChip::setSelectedPart(int part)
+{
+    if (part == m_selectedPart)
+        return;
+    m_selectedPart = part;
+    QWidget::update();
+}
+
+QList<qreal> VersionChip::boundaries() const
+{
+    // paintEvent와 같은 셈: 조각 경계 = 글자 경계(H G|S S), 첫 조각은 왼쪽 여백까지, 마지막 조각은
+    // 색칠한 자리 끝까지
+    const QFontMetricsF metrics(chipFont());
+    qreal total = 0;
+    for (const Part &part : m_parts)
+        total += metrics.horizontalAdvance(part.text);
+    const qreal left = 1;
+    const qreal colored = m_suffix.isEmpty() ? width() - 2 : kPadding + total + 3;
+    QList<qreal> ends;
+    qreal boundary = kPadding + 1;
+    for (qsizetype i = 0; i < m_parts.size(); ++i) {
+        boundary += metrics.horizontalAdvance(m_parts.at(i).text);
+        ends.append(i == m_parts.size() - 1 ? left + colored : boundary);
+    }
+    return ends;
+}
+
+int VersionChip::partAt(const QPointF &pos) const
+{
+    const QList<qreal> ends = boundaries();
+    for (qsizetype i = 0; i < ends.size(); ++i)
+        if (pos.x() < ends.at(i))
+            return int(i);
+    return m_parts.isEmpty() ? -1 : int(m_parts.size()) - 1; // 뒷말 자리 = 마지막 조각
+}
+
+void VersionChip::mousePressEvent(QMouseEvent *event)
+{
+    m_pressedPart = partAt(event->position());
+    QAbstractButton::mousePressEvent(event);
+}
+
+void VersionChip::mouseMoveEvent(QMouseEvent *event)
+{
+    const int part = partAt(event->position());
+    if (part != m_hoverPart) {
+        m_hoverPart = part;
+        QWidget::update();
+    }
+    QAbstractButton::mouseMoveEvent(event);
+}
+
+void VersionChip::leaveEvent(QEvent *event)
+{
+    m_hoverPart = -1;
+    QWidget::update();
+    QAbstractButton::leaveEvent(event);
+}
+
+void VersionChip::keyPressEvent(QKeyEvent *event)
+{
+    m_pressedPart = -1; // 키보드로 누름 — 고를 조각은 GameSelector가 정한다
+    QAbstractButton::keyPressEvent(event);
+}
+
 void VersionChip::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
@@ -92,17 +160,18 @@ void VersionChip::paintEvent(QPaintEvent *)
     painter.setClipPath(clip);
     painter.fillRect(box, QColor(tok::kWhite));
     const QFontMetricsF metrics(chipFont());
-    qreal total = 0;
-    for (const Part &part : m_parts)
-        total += metrics.horizontalAdvance(part.text);
-    const qreal colored = m_suffix.isEmpty() ? box.width() : kPadding + total + 3;
-    // 조각 경계 = 글자 경계(D|P의 사이). 첫 조각은 왼쪽 여백까지, 마지막 조각은 끝까지
+    const QList<qreal> ends = boundaries();
     qreal x = box.left();
-    qreal boundary = kPadding + 1;
     for (qsizetype i = 0; i < m_parts.size(); ++i) {
-        boundary += metrics.horizontalAdvance(m_parts.at(i).text);
-        const qreal end = i == m_parts.size() - 1 ? box.left() + colored : boundary;
-        painter.fillRect(QRectF(x, box.top(), end - x, box.height()), m_parts.at(i).background);
+        const qreal end = ends.at(i);
+        QColor fill = m_parts.at(i).background;
+        if (dimmedPart(i)) // 고르지 않은 버전: 흰 바탕(마우스가 오르면 버전 색을 옅게)
+            fill = i == m_hoverPart
+                           ? QColor::fromRgbF(fill.redF(), fill.greenF(), fill.blueF(), 0.55)
+                           : QColor(tok::kWhite);
+        painter.fillRect(QRectF(x, box.top(), end - x, box.height()), fill);
+        if (i > 0 && m_selectedPart >= 0 && on) // 버전 조각 사이 금
+            painter.fillRect(QRectF(x - 0.5, box.top(), 1, box.height()), QColor(tok::kLine));
         x = end;
     }
     if (!m_suffix.isEmpty()) {
@@ -117,9 +186,13 @@ void VersionChip::paintEvent(QPaintEvent *)
     // 글자: 조각마다 그 버전 색으로 이어 쓴다
     qreal textX = kPadding + 1;
     painter.setFont(chipFont());
-    for (const Part &part : m_parts) {
+    for (qsizetype i = 0; i < m_parts.size(); ++i) {
+        const Part &part = m_parts.at(i);
         const qreal w = metrics.horizontalAdvance(part.text);
-        painter.setPen(part.color);
+        QColor color = part.color;
+        if (dimmedPart(i))
+            color.setAlphaF(i == m_hoverPart ? 0.75 : 0.35);
+        painter.setPen(color);
         painter.drawText(QRectF(textX, box.top(), w + 1, box.height()), Qt::AlignCenter, part.text);
         textX += w;
     }

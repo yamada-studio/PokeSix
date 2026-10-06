@@ -1444,7 +1444,9 @@
   "flame-orb": [
    {
     "where": "reversal-mountain",
-    "detail": "White 2 Only"
+    "versions": [
+     "white-2"
+    ]
    }
   ],
   "flame-plate": [
@@ -3283,11 +3285,15 @@
   "plasma-card": [
    {
     "where": "plasma-frigate",
-    "detail": "Black 2 Only"
+    "versions": [
+     "black-2"
+    ]
    },
    {
     "where": "plasma-frigate",
-    "detail": "White 2 Only"
+    "versions": [
+     "white-2"
+    ]
    }
   ],
   "plume-fossil": [
@@ -3448,23 +3454,31 @@
   "power-band": [
    {
     "where": "unova-route-13",
-    "detail": "White 2 Only"
+    "versions": [
+     "white-2"
+    ]
    },
    {
     "where": "plasma-frigate",
-    "detail": "Black 2 Only"
+    "versions": [
+     "black-2"
+    ]
    }
   ],
   "power-belt": [
    {
     "where": "plasma-frigate",
-    "detail": "White 2 Only"
+    "versions": [
+     "white-2"
+    ]
    }
   ],
   "power-lens": [
    {
     "where": "unova-route-13",
-    "detail": "Black 2 Only"
+    "versions": [
+     "black-2"
+    ]
    }
   ],
   "pp-max": [

@@ -7,6 +7,7 @@
 namespace {
 constexpr char kGenerationKey[] = "generation";
 constexpr char kLanguageKey[] = "language"; // "ko" · "en" · "ja"
+constexpr char kGamesGroup[] = "games";     // games/4 = "soulsilver"
 } // namespace
 
 namespace com::yamada::studio {
@@ -39,6 +40,24 @@ void AppState::setLanguage(Language language)
     saveLanguage(language);
     qCInfo(lcData) << "language" << languageCode(language);
     emit languageChanged(language);
+}
+
+QString AppState::game(int generation) const
+{
+    QSettings settings;
+    settings.beginGroup(QLatin1String(kGamesGroup));
+    return settings.value(QString::number(generation)).toString();
+}
+
+void AppState::setGame(const QString &version)
+{
+    if (version.isEmpty() || version == game())
+        return;
+    QSettings settings;
+    settings.beginGroup(QLatin1String(kGamesGroup));
+    settings.setValue(QString::number(m_generation), version);
+    qCInfo(lcData) << "game" << version;
+    emit gameChanged(version);
 }
 
 void AppState::setGeneration(int generation)

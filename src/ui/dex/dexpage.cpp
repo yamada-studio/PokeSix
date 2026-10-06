@@ -11,6 +11,7 @@
 #include "ui/dex/dexpreview.h"
 #include "ui/dex/dexrowdelegate.h"
 #include "ui/dex/dexselector.h"
+#include "ui/dex/gameselector.h"
 #include "ui/logging/logging.h"
 #include "ui/theme/tokens.h"
 #include "ui/widgets/panelframe.h"
@@ -121,6 +122,12 @@ DexPage::DexPage(Repository *repository, AppState *state, QWidget *parent)
     connect(m_selector, &DexSelector::dexSelected, this, &DexPage::showDex);
     // 세대가 바뀌면(인트로 · 앱 막대의 세대 메뉴) 도감 버튼과 목록을 그 세대로 다시 만든다.
     connect(m_state, &AppState::generationChanged, this, &DexPage::onGenerationChanged);
+    connect(m_state, &AppState::gameChanged, this, [this] {
+        // 도감 칩 · 필터는 그대로 두고 목록만 그 버전으로. 숨어 있으면 다음에 보일 때
+        m_gameDirty = true;
+        if (m_loaded && isVisible())
+            showDex(m_selector->currentDex());
+    });
     // 언어가 바뀌면 이름 · 타입 칩 · 지방 이름을 그 언어로(다시 읽을 필요 없다 — 행에 세 언어가 다
     // 있다)
     connect(m_state, &AppState::languageChanged, this, &DexPage::applyLanguage);
@@ -177,6 +184,10 @@ DexPage::DexPage(Repository *repository, AppState *state, QWidget *parent)
     m_search = new SearchField(tr("이름 · 번호로 찾기"));
     toolbar->addWidget(m_search);
     toolbar->addStretch();
+    // 게임 칩(앱 전체의 게임): 고른 버전에서 얻을 수 없는 다른 버전 한정 포켓몬은 목록에서 빠진다
+    m_games = new GameSelector;
+    toolbar->addWidget(m_games);
+    connect(m_games, &GameSelector::versionSelected, m_state, &AppState::setGame);
     bodyLayout->addLayout(toolbar);
 
     m_table = new QTableView;
@@ -294,6 +305,8 @@ void DexPage::showEvent(QShowEvent *event)
     QWidget::showEvent(event);
     if (!m_loaded)
         load();
+    else if (m_gameDirty)
+        showDex(m_selector->currentDex());
 }
 
 void DexPage::openDetail(const QModelIndex &proxyIndex)
@@ -302,19 +315,8 @@ void DexPage::openDetail(const QModelIndex &proxyIndex)
         return;
     // 뷰의 줄(프록시: 정렬 · 검색 뒤 순서) → 원본 모델의 줄
     const QModelIndex source = m_proxy->mapToSource(proxyIndex);
-    // 기술 기준 = 지금 고른 도감의 게임(성도 HG·SS → 하트골드·소울실버). 전국이면 세대의 대표 게임
-    m_detail->showPokemon(m_model->rowAt(source.row()).pokemonId,
-                          m_selector->currentVersionGroup());
-    m_views->setCurrentWidget(m_detail);
-}
-
-void DexPage::openPokemon(int pokemonId, const QString &versionGroup)
-{
-    if (!m_loaded)
-        load(); // 목록을 아직 안 읽었으면(처음 여는 화면) 도감 버튼부터 만든다
-    if (m_selector->selectVersionGroup(versionGroup))
-        showDex(m_selector->currentDex());
-    m_detail->showPokemon(pokemonId, versionGroup);
+    // 기술 기준 = 앱이 고른 게임(버전)
+    m_detail->showPokemon(m_model->rowAt(source.row()).pokemonId);
     m_views->setCurrentWidget(m_detail);
 }
 
@@ -385,9 +387,18 @@ void DexPage::showDex(int pokedexId)
     const QModelIndex before = m_table->currentIndex();
     const int selected
             = before.isValid() ? m_model->rowAt(m_proxy->mapToSource(before).row()).speciesId : 0;
-    m_model->setRows(pokedexId == DexSelector::kNational
-                             ? m_repository->speciesForGeneration(m_state->generation())
-                             : m_repository->speciesForDex(pokedexId, m_state->generation()));
+    const int generation = m_state->generation();
+    QList<SpeciesRow> rows = pokedexId == DexSelector::kNational
+                                     ? m_repository->speciesForGeneration(generation)
+                                     : m_repository->speciesForDex(pokedexId, generation);
+    // 고른 버전(HG)에서 얻을 수 없는 같은 묶음의 다른 버전 한정 포켓몬(SS의 나옹)은 뺀다
+    const QString version = m_repository->resolveVersion(generation, m_state->game());
+    const QSet<int> elsewhere = m_repository->otherVersionSpecies(version);
+    rows.removeIf(
+            [&elsewhere](const SpeciesRow &row) { return elsewhere.contains(row.speciesId); });
+    m_model->setRows(rows);
+    m_games->setGames(m_repository->gamesForGeneration(generation), m_state->language(), version);
+    m_gameDirty = false;
     // 도감을 고른다 = 그 도감 순서로 본다 → 합계 순 등으로 보고 있었어도 번호 순으로 되돌린다.
     m_table->sortByColumn(SpeciesTableModel::NumberColumn, Qt::AscendingOrder);
     bool kept = false;

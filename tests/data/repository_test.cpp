@@ -657,11 +657,18 @@ TEST_F(RepositoryTest, SquadSessionResolvesAndAnalyzesTheGeneration)
     session.clearSlot(1);
     session.clearSlot(2);
 
-    // 게임을 바꾸면 그 게임의 스쿼드(비어 있음), 돌아오면 다시
-    session.setVersionGroup(QStringLiteral("heartgold-soulsilver"));
+    // 게임(버전)을 바꾸면 그 버전의 스쿼드(비어 있음), 돌아오면 다시. 앱 상태도 같이 바뀐다
+    session.setVersion(QStringLiteral("heartgold"));
+    EXPECT_EQ(session.version(), QStringLiteral("heartgold"));
     EXPECT_EQ(session.versionGroup(), QStringLiteral("heartgold-soulsilver"));
+    EXPECT_EQ(state.game(), QStringLiteral("heartgold"));
     EXPECT_EQ(session.squad().filled(), 0);
-    session.setVersionGroup(QStringLiteral("platinum"));
+    session.setPokemon(0, 37); // HG 스쿼드에 식스테일 — SS 스쿼드와는 따로다
+    session.setVersion(QStringLiteral("soulsilver"));
+    EXPECT_EQ(session.squad().filled(), 0);
+    state.setGame(QStringLiteral("heartgold")); // 다른 화면이 앱 상태를 바꿔도 따라간다
+    EXPECT_EQ(session.squad().members[0].pokemonId, 37);
+    session.setVersion(QStringLiteral("platinum"));
     EXPECT_EQ(session.squad().members[0].pokemonId, 445);
     EXPECT_EQ(store.currentGame(4), QStringLiteral("platinum"));
 
@@ -670,6 +677,47 @@ TEST_F(RepositoryTest, SquadSessionResolvesAndAnalyzesTheGeneration)
     EXPECT_EQ(session.squad().filled(), 0);
     state.setGeneration(4);
     EXPECT_EQ(session.squad().members[0].pokemonId, 445);
+}
+
+TEST_F(RepositoryTest, SquadsSplitFromAGroupSquadPerVersion)
+{
+    QTemporaryDir settings;
+    QSettings::setPath(QSettings::NativeFormat, QSettings::UserScope, settings.path());
+    QTemporaryDir dir;
+    Repository repository(s_dbPath);
+    SquadStore store(dir.filePath(QStringLiteral("squads.json")));
+    // 버전으로 나누기 전: HGSS 묶음 하나에 저장한 스쿼드와 마지막 게임
+    Squad old;
+    old.members[0].pokemonId = 35;
+    store.setSquad(4, QStringLiteral("heartgold-soulsilver"), old);
+    store.setCurrentGame(4, QStringLiteral("heartgold-soulsilver"));
+    AppState state;
+    state.setGeneration(4);
+    SquadSession session(&repository, &store, &state);
+    // 앱이 게임을 고른 적이 없으면 저장소의 마지막 게임(묶음) → 그 첫 버전. 앱 상태에도 써 둔다
+    EXPECT_EQ(session.version(), QStringLiteral("heartgold"));
+    EXPECT_EQ(state.game(), QStringLiteral("heartgold"));
+    EXPECT_EQ(session.squad().members[0].pokemonId, 35); // 묶음 스쿼드에서 시작
+    session.setPokemon(1, 36);                           // 고치면 HG 스쿼드로 갈라진다
+    EXPECT_TRUE(store.hasSquad(4, QStringLiteral("heartgold")));
+    session.setVersion(QStringLiteral("soulsilver"));
+    EXPECT_EQ(session.squad().members[0].pokemonId, 35); // SS도 묶음 스쿼드에서 시작
+    EXPECT_EQ(session.squad().members[1].pokemonId, 0);
+}
+
+TEST_F(RepositoryTest, VersionsResolveAndKnowTheirExclusives)
+{
+    Repository repository(s_dbPath);
+    EXPECT_EQ(repository.resolveVersion(4, QStringLiteral("soulsilver")),
+              QStringLiteral("soulsilver"));
+    EXPECT_EQ(repository.resolveVersion(4, QStringLiteral("heartgold-soulsilver")),
+              QStringLiteral("heartgold")); // 옛 저장값(묶음)
+    EXPECT_EQ(repository.resolveVersion(4, {}), QStringLiteral("platinum")); // 대표 게임
+    EXPECT_EQ(repository.resolveVersion(4, QStringLiteral("black")), QStringLiteral("platinum"));
+    // 시드의 식스테일(37)은 SS에만 나온다 → HG에서 본 다른 버전 한정
+    EXPECT_EQ(repository.otherVersionSpecies(QStringLiteral("heartgold")), (QSet<int> {37}));
+    EXPECT_TRUE(repository.otherVersionSpecies(QStringLiteral("soulsilver")).isEmpty());
+    EXPECT_TRUE(repository.otherVersionSpecies(QStringLiteral("platinum")).isEmpty());
 }
 
 TEST_F(RepositoryTest, TypeChartChangesAcrossGenerations)

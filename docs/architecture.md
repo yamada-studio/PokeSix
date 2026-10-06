@@ -119,6 +119,10 @@ composition root. 명령행 인자(`--gallery`, `--screenshot`), 로깅 초기�
   개발 · 테스트는 `tests/fixtures/`의 작은 시드 CSV를 같은 `CsvImporter`로 변환해 쓴다
 
 - **세대 전환**: `AppState::generationChanged` → 모든 화면이 다시 계산한다. 세대는 앱 전역 상태의 중심이다.
+- **게임(버전) 전환**: 세대마다 정주행 중인 버전 하나(`AppState::game`, "soulsilver")를 함께 둔다. 같은 묶음(HGSS)이라도 버전마다
+  따로 깨는 롬이라 스쿼드가 버전마다 따로 저장되고, 도감 · 포켓몬 고르기는 다른 버전 한정 포켓몬(`Repository::otherVersionSpecies`)을,
+  출현 · 아이템 입수처는 다른 버전 것을 뺀다. 기술 · 기술머신은 묶음 단위 그대로다(PokéAPI가 묶음으로 준다).
+  `AppState::gameChanged` → 화면들이 다시 읽는다. 스쿼드 멤버 모달의 칩만 모달 안에서 바뀐다.
 - **스쿼드 편집**: `SquadSession::changed` → `SquadAnalyzer::analyze()`(core, 동기) → 분석 패널 갱신,
   `SquadStore`에 디바운스(800ms) 저장.
 - **이름 표기**: UI 문구는 `tr()`(한국어 소스)로, 포켓몬·기술·아이템 이름은 PokéAPI CSV의

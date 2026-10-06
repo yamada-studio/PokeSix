@@ -291,6 +291,10 @@
         <source>이 세대에는 야생에서 만날 수 없어요. 교배 · 교환 · 이벤트로 얻어요.</source>
         <translation>この世代では野生で出会えません。タマゴ・交換・イベントで手に入れます。</translation>
     </message>
+    <message>
+        <source>이 버전에서는 만날 수 없어요. %1에서 만나요(버전 한정).</source>
+        <translation>このバージョンでは出会えません。%1で出会えます(バージョン限定)。</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::EvolutionView</name>
@@ -1253,6 +1257,10 @@
         <source>%1세대 스쿼드</source>
         <translation>第%1世代スクワッド</translation>
     </message>
+    <message>
+        <source>%1 스쿼드</source>
+        <translation>%1のスクワッド</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::StatRadar</name>
@@ -1366,6 +1374,10 @@
     <message>
         <source>%1LP</source>
         <translation>%1LP</translation>
+    </message>
+    <message>
+        <source>이 버전에서는 얻을 수 없어요(다른 버전 한정)</source>
+        <translation>このバージョンでは手に入りません(他バージョン限定)</translation>
     </message>
 </context>
 <context>

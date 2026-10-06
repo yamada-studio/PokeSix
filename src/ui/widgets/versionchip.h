@@ -19,6 +19,7 @@ public:
         QString text;
         QColor background;
         QColor color;
+        QString version; // 이 조각의 버전 identifier(같은 약칭이 여럿이면 첫 버전)
     };
 
     // suffix: 약칭이 겹치는 칩을 가르는 뒷말(흰 바탕 · 작은 글자). 비어 있으면 없음
@@ -30,11 +31,32 @@ public:
 
     QSize sizeHint() const override;
 
+    // 버전 고르기(게임 칩): 켠 칩 안에서 이 조각만 버전 색, 나머지 조각은 흐리게. −1 = 모두 같게
+    void setSelectedPart(int part);
+    int selectedPart() const { return m_selectedPart; }
+    int partAt(const QPointF &pos) const; // 그 자리의 조각(약칭 바깥 = −1)
+    int pressedPart() const { return m_pressedPart; } // 마지막으로 마우스로 누른 조각(키보드 = −1)
+    int partCount() const { return int(m_parts.size()); }
+    const Part &part(int index) const { return m_parts.at(index); }
+
 protected:
     void paintEvent(QPaintEvent *event) override;
+    void mousePressEvent(QMouseEvent *event) override;
+    void mouseMoveEvent(QMouseEvent *event) override; // 흐린 조각 위 → 살짝 칠해 누를 수 있음을
+    void leaveEvent(QEvent *event) override;
+    void keyPressEvent(QKeyEvent *event) override;
 
 private:
+    QList<qreal> boundaries() const; // 조각마다 오른쪽 끝 x(마지막은 색칠한 자리 끝)
+    bool dimmedPart(qsizetype index) const // 켠 칩에서 고르지 않은 버전 조각
+    {
+        return isChecked() && m_selectedPart >= 0 && m_parts.size() > 1 && index != m_selectedPart;
+    }
+
     QList<Part> m_parts;
     QString m_suffix;
+    int m_selectedPart = -1;
+    int m_pressedPart = -1;
+    int m_hoverPart = -1;
 };
 } // namespace com::yamada::studio

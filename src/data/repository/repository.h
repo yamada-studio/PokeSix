@@ -4,6 +4,7 @@
 
 #include <QHash>
 #include <QList>
+#include <QSet>
 #include <QString>
 #include <QStringList>
 
@@ -213,6 +214,15 @@ struct GameInfo
     QList<LocalizedText> versionNames; // versions와 같은 순서
 };
 
+// 버전("soulsilver")이 든 게임 묶음 identifier. 없으면 빈 칸
+inline QString versionGroupOf(const QList<GameInfo> &games, const QString &version)
+{
+    for (const GameInfo &game : games)
+        if (game.versions.contains(version))
+            return game.versionGroup;
+    return {};
+}
+
 struct TypeChart
 {
     QStringList types;                  // 그 세대에 있는 타입(id 순)
@@ -274,6 +284,13 @@ public:
     QHash<int, int> evolvesFrom();
     // 그 세대의 본편 게임 묶음(도감이 연결된 것만 — 콜로세움 · XD 같은 외전은 뺀다). 출시 순
     QList<GameInfo> gamesForGeneration(int generation);
+    // 그 세대에서 쓸 버전: version이 그 세대의 버전이면 그대로, 게임 묶음 identifier면(옛 저장값)
+    // 그 묶음의 첫 버전, 아니면 대표 게임 묶음(representativeVersionGroup)의 첫 버전
+    QString resolveVersion(int generation, const QString &version);
+    // 같은 묶음의 다른 버전에서만 얻을 수 있는 종(HG에서 본 SS 한정 나옹 · 식스테일 …). 진화 사슬
+    // 단위로 센다 — 사슬의 한 종이라도 이 버전에서 잡히면(진화 · 교배로) 사슬 전체를 얻을 수 있다.
+    // 두 버전 모두 출현 자료가 없는 종(선물 · 이벤트)은 넣지 않는다.
+    QSet<int> otherVersionSpecies(const QString &version);
     // 기술 id들 → 그 세대 값(타입 · 위력 · 분류 …). 없는 id는 빠진다. 순서는 ids 그대로
     QList<MoveEntry> moves(const QList<int> &ids, int generation);
 
@@ -287,6 +304,7 @@ private:
     QString m_path;
     QString m_connection;
     QString m_error;
+    QHash<QString, QSet<int>> m_otherVersionSpecies; // 버전 → otherVersionSpecies 결과
 
     // 실행 전인 query(열: 종 · pokemon · 이름 ko/en/ja · 도감 번호)를 실행해 rows에 담는다.
     bool readSpecies(QSqlQuery &query, QList<SpeciesRow> &rows);
