@@ -7,6 +7,11 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- The squad page picks its game with one chip per version — [D] [P] [Pt] [HG] [SS], [B] [W]
+  [B2] [W2] — instead of the split group chips (the Pokédex, detail and Items pages keep the group
+  chips). Repeated abbreviations get the group's short name only after their first use (Sw · Sh ·
+  Sw 외딴섬 …). Switching squads while the name field has focus no longer carries the old name
+  into the new squad.
 - Games are now played per version, not per version group: the game chips keep one chip per group
   but split into version parts (HG | SS, D | P, B2 | W2) — click a part to pick that version
   (hovering a faded part tints it; the keyboard cycles through parts). The choice is app-wide

@@ -234,6 +234,7 @@ QWidget *SquadPage::buildTopBar()
     layout->addWidget(m_rule);
     // 게임 칩: 게임마다 스쿼드가 따로 저장된다(도감 · 나오는 포켓몬 · 기술이 게임마다 다르다)
     m_game = new GameSelector;
+    m_game->setSplitVersions(true); // 스쿼드는 버전마다 따로 — [D] [P] [Pt] [HG] [SS]
     connect(m_game, &GameSelector::versionSelected, m_session, &SquadSession::setVersion);
     layout->addWidget(m_game);
     m_pips = new SquadPips(m_session);
@@ -457,8 +458,15 @@ void SquadPage::refresh()
     const Language language = m_state->language();
     const int generation = m_session->generation();
     const Squad &squad = m_session->squad();
-    if (!m_name->hasFocus())
+    // 이름 칸: 고치는 중이면 그대로 둔다. 단 다른 스쿼드(세대 · 버전)로 바뀌었으면 새 이름을 먼저
+    // 넣고 포커스를 뺀다 — 칩은 누를 때 포커스를 가져가지 않아서, 그대로 두면 옛 이름이 포커스가
+    // 빠질 때(editingFinished) 새 스쿼드에 저장된다
+    const QString squadKey = QStringLiteral("%1/%2").arg(generation).arg(m_session->version());
+    if (!m_name->hasFocus() || squadKey != m_nameSquad) {
         m_name->setText(squad.name.isEmpty() ? m_session->defaultName() : squad.name);
+        m_name->clearFocus();
+    }
+    m_nameSquad = squadKey;
     m_rule->setText(tr("%1세대 규칙").arg(generation));
     m_game->setGames(m_session->games(), language, m_session->version());
     m_game->setVisible(m_session->games().size() > 1); // 게임이 하나뿐인 세대는 고를 것이 없다

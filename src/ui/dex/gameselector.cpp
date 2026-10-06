@@ -54,13 +54,26 @@ void GameSelector::markCurrent()
     }
 }
 
-void GameSelector::setGames(const QList<GameInfo> &games, Language language, const QString &current)
+void GameSelector::setGames(const QList<GameInfo> &groups, Language language,
+                            const QString &current)
 {
+    // 버전마다 칩 하나: 묶음을 버전 하나짜리 게임들로 편다(HGSS → HG · SS)
+    QList<GameInfo> games;
+    for (const GameInfo &group : groups) {
+        if (!m_splitVersions) {
+            games.append(group);
+            continue;
+        }
+        for (qsizetype i = 0; i < group.versions.size(); ++i)
+            games.append(GameInfo {
+                    group.versionGroup, {group.versions.at(i)}, {group.versionNames.value(i)}});
+    }
     // 같은 게임 목록이면 버튼은 그대로 두고 켤 칩 · 툴팁(언어)만 바꾼다. 칩을 눌러 이 함수가 불리는
     // 경우(→ 다시 읽기 → 다시 그리기) 지금 눌린 버튼을 그 클릭 처리 도중에 지우면 안 된다
     bool same = games.size() == m_games.size() && !m_group->buttons().isEmpty();
     for (qsizetype i = 0; same && i < games.size(); ++i)
-        same = games.at(i).versionGroup == m_games.at(i).versionGroup;
+        same = games.at(i).versionGroup == m_games.at(i).versionGroup
+               && games.at(i).versions == m_games.at(i).versions;
     m_current = current;
     if (same) {
         m_games = games;
@@ -96,7 +109,7 @@ void GameSelector::setGames(const QList<GameInfo> &games, Language language, con
             names.append(name.text(language));
         const LocalizedText label = dexstyle::groupLabel(game.versionGroup);
         QString suffix;
-        if (keys.count(keys.at(i)) > 1 && i > 0)
+        if (keys.mid(0, i).contains(keys.at(i))) // 같은 약칭이 앞에 이미 있을 때만
             suffix = !label.isEmpty() ? label.text(language) : names.value(0);
         VersionChip *chip = new VersionChip(parts.at(i), suffix);
         chip->setToolTip(names.join(QStringLiteral(" · ")));

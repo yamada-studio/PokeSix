@@ -99,6 +99,8 @@ private:
     SpriteCache *m_itemIcons = nullptr;
 
     QLineEdit *m_name = nullptr;
+
+    QString m_nameSquad; // 이름 칸이 보여 주는 스쿼드("4/soulsilver")
     QLabel *m_rule = nullptr;
     GameSelector *m_game = nullptr; // 게임 칩 [DP][Pt][HGSS] — 게임마다 스쿼드가 따로
     SquadPips *m_pips = nullptr;
