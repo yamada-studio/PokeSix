@@ -7,6 +7,12 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Acquisition books for HeartGold/SoulSilver and Platinum tutors, from the same Korean guide blog
+  as the Platinum TM list (user-provided): all 100 HGSS TMs/HMs with how to get them (the Goldenrod
+  Game Corner's 10,000-coin 냉동빔 included), 56 HGSS tutor moves (Battle Frontier BP costs plus
+  the free Headbutt / Draco Meteor / ultimate-move tutors) and 42 Platinum tutor moves with their
+  shard combinations and house locations. TM numbering was verified against PokéAPI's machine
+  table before install.
 - Korean descriptions for 88 moves, 45 abilities and 6 items that PokéAPI lacks (mostly Legends:
   Arceus and Scarlet/Violet additions), taken line-for-line from Scarlet/Violet 3.0.1, Legends:
   Arceus and Legends: Z-A text dumps and cross-checked against a second dump or wiki. The name
