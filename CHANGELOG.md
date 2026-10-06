@@ -7,6 +7,10 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Squad slot cards gain a [+] button in the header that opens the member's full Pokédex detail as
+  a modal — picture, stats, abilities, matchups, evolution chain with conditions, and every move
+  table (level-up with the Heart Scale mark, TMs with locations, NPC tutors with costs), based on
+  the squad's game; [← 목록] closes the modal.
 - Acquisition books for every main game (30 version groups), built from a full crawl of Serebii's
   ItemDex (2,088 item pages, fetched politely) by `scripts/i18n/serebii_items.py` and
   `serebii_books.py`: 22,556 location rows resolved to PokéAPI locations (→ Korean place names),

@@ -50,6 +50,7 @@ signals:
     void selectRequested(int slot);
     void addRequested(int slot);
     void menuRequested(int slot, const QPoint &globalPos);
+    void detailRequested(int slot); // 머리의 [+] — 도감 상세 모달
     void moveRequested(int slot, int index);
     void abilityRequested(int slot, const QPoint &globalPos);
     void natureRequested(int slot, const QPoint &globalPos);
@@ -69,12 +70,26 @@ protected:
     bool event(QEvent *event) override; // 기술 칸 툴팁
 
 private:
-    enum class Hit { None, Header, Menu, Add, Ability, Nature, Item, Move0, Move1, Move2, Move3 };
+    enum class Hit {
+        None,
+        Header,
+        Menu,
+        Detail, // 머리의 [+] — 이 포켓몬의 상세 모달
+        Add,
+        Ability,
+        Nature,
+        Item,
+        Move0,
+        Move1,
+        Move2,
+        Move3
+    };
     struct Geometry
     {
         QRect card;   // 링(선택 · 경고) 자리를 뺀 카드
         QRect header; // 머리 띠
         QRect menu;   // ⋯
+        QRect detail; // + (상세 모달 — 빈 자리에는 없다)
         QRect warn;   // ! (경고가 있을 때)
         QRect types;
         QRect memo;
