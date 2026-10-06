@@ -231,6 +231,11 @@ and the project uses [Semantic Versioning](https://semver.org/).
   data grows to 28.9 MB). Moves introduced in generation 9 still lack Korean text in PokéAPI.
 
 ### Changed
+- The home generation cards became little dioramas instead of one blown-up sprite: each card shows
+  its generation's three starters (the middle one front and larger) standing on shadow ellipses,
+  over an accent-tinted stage with diagonal stripes and a ghosted generation numeral, with the
+  region name and the national dex range (No.387–493) below. Card contents stay in
+  `resources/theme/homecards.json` (now a Pokémon list plus a dex range per card).
 - The chosen generation card reads at a glance: besides the yellow ring it now rises higher out of
   the fan's silhouette (lift 0.75), grows slightly with the lift (up to 1.1×, hover included) and
   carries the menu's ▶ cursor before the band title ("▶ 3세대").

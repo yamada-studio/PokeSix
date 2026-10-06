@@ -55,8 +55,8 @@ private:
     int cardAt(const QPointF &pos) const;
     void paintCard(QPainter &painter, const Layout &barrel, int index) const;
 
-    QPixmap mascotSprite(int index) const; // 여백을 잘라 Scale2x로 키운 그림(처음 쓸 때 캐시)
-    int frontIndex() const;                // 지금 각도에서 정면에 가장 가까운 카드
+    QPixmap pokemonSprite(int pokemonId) const; // 여백을 잘라 Scale2x로 키운 그림(처음 쓸 때 캐시)
+    int frontIndex() const;   // 지금 각도에서 정면에 가장 가까운 카드
     void rotateTo(int index); // 그 카드가 정면에 오게 돌리고(최단 방향) 선택한다
     void snapToNearest();     // 끌다 놓았다 → 가장 가까운 카드로
 
