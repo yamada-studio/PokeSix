@@ -8,6 +8,9 @@ and how your six-member party holds up against every attacking type.
 
 ![PokeSix home screen — pick a generation from the card barrel, then open Squad, Pokédex or Items](docs/screenshots/home.png)
 
+<sub>Screenshots are taken without game pictures — the app downloads Pokémon and item icons on first
+use, so they appear blank here.</sub>
+
 > **Status:** early development (v0.0.x). The Pokédex, Squad and Items screens work end to end;
 > Settings and the global search box in the top bar are not wired up yet. The UI is written in
 > Korean first, with English and Japanese translations.
@@ -139,8 +142,9 @@ follow the same language.
 - **Game data** — [PokéAPI](https://pokeapi.co)'s published CSV files, pinned to one commit. Stats, types,
   learnsets, evolutions, encounters, TM tables and item data come from here.
 - **Korean names and item/tutor locations** that PokéAPI does not have are kept in local dictionaries
-  under `resources/data/`, compiled from game text and community guides (Serebii's ItemDex, Korean
-  walkthrough blogs) and checked against each other. Coverage is best for the 4th generation
+  under `resources/data/`. Locations are facts researched from community guides (Serebii's ItemDex,
+  a Korean walkthrough blog) and rewritten in PokeSix's own structured format — no guide text is
+  copied — with names cross-checked against the game text. Coverage is best for the 4th generation
   (Platinum, HeartGold/SoulSilver); some places in other games are still in English. See
   [docs/i18n/README.md](docs/i18n/README.md).
 
@@ -192,7 +196,10 @@ See [docs/architecture.md](docs/architecture.md) for the layering rules.
 
 ## License
 
-PokeSix is released under the [MIT License](LICENSE).
+PokeSix's source code, documentation and original artwork are released under the
+[MIT License](LICENSE). Third-party material — Pokémon names and game text, PokéAPI data, the
+sources behind the item-location dictionaries, Qt and the bundled fonts — keeps its own terms; see
+**[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)**.
 
 ### Third-party software
 
@@ -217,8 +224,8 @@ This repository contains **no game assets**. Sprites, artwork, sounds and other
 material from the Pokémon games are copyrighted by their owners and are never
 committed here. Any such content is downloaded at runtime to your local cache for
 personal use. Icons and styles under `resources/` are original to this project.
-The screenshots in `docs/screenshots/` show the running app, including sprites it
-downloaded at runtime, for illustration only.
+The screenshots in `docs/screenshots/` are captured without any game pictures (the app
+downloads them at runtime, so the Pokémon and item icons are blank there).
 
 ## Disclaimer
 
