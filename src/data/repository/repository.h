@@ -111,9 +111,11 @@ struct EvolutionCondition
     static constexpr int kNoRelativeStats = 99;
     int trigger = 0; // 1 레벨업 · 2 통신교환 · 3 도구 사용 · 4 빈자리 · 그 밖 = 특별
     int minLevel = 0;
-    LocalizedText item;     // 쓰는 도구(진화의 돌 등)
-    LocalizedText heldItem; // 지닌 도구(통신교환 · 레벨업)
-    int gender = 0;         // 1 암컷 · 2 수컷
+    LocalizedText item;         // 쓰는 도구(진화의 돌 등)
+    QString itemIdentifier;     // "water-stone" — 입수 사전(guidebook) 키
+    LocalizedText heldItem;     // 지닌 도구(통신교환 · 레벨업)
+    QString heldItemIdentifier; // "kings-rock"
+    int gender = 0;             // 1 암컷 · 2 수컷
     QString location; // 그곳에서 레벨업(이끼바위 · 얼음바위 · 천관산) — UI 장소 사전 키
     LocalizedText locationName;
     QString timeOfDay;       // "day" · "night" · "dusk"

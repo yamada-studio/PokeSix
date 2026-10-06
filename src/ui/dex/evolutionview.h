@@ -19,7 +19,9 @@ class EvolutionView : public QWidget
 public:
     explicit EvolutionView(SpriteCache *icons, QWidget *parent = nullptr);
 
-    void setEvolution(const QList<EvolutionStep> &steps, int currentSpeciesId, Language language);
+    // versionGroup: 진화 도구의 입수처(입수 사전)를 찾는 기준 게임
+    void setEvolution(const QList<EvolutionStep> &steps, int currentSpeciesId, Language language,
+                      const QString &versionGroup);
     QSize sizeHint() const override;
 
     // 조건 한 줄(화면 문구): "Lv 30" · "각성의돌 사용 · 수컷" · "친밀도 · 낮" …
@@ -37,10 +39,14 @@ protected:
 private:
     int rowAt(int y) const;
     QString conditionsOf(const EvolutionStep &step) const;
+    // 진화 도구(사용 · 지님)의 입수처 줄: "물의돌 — 필드 · 무쇠게이트". 도구가 없으면 빈 문자열.
+    QString itemSourcesOf(const EvolutionStep &step) const;
+    QList<int> rowTops() const; // 줄마다 위 y(도구 줄이 있으면 더 높다) + 끝 sentinel
 
     SpriteCache *m_icons = nullptr;
     QList<EvolutionStep> m_steps;
     int m_current = 0;
     Language m_language = Language::Korean;
+    QString m_versionGroup;
 };
 } // namespace com::yamada::studio

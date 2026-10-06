@@ -679,11 +679,13 @@ void Repository::fillEvolution(PokemonDetail &detail, int versionGroupId)
         EvolutionCondition c;
         c.trigger = row[2].toInt();
         c.item = nameOf("items", row[3]);
+        c.itemIdentifier = identifierOf("items", row[3]);
         c.minLevel = row[4].toInt();
         c.gender = row[5].toInt();
         c.location = identifierOf("locations", row[6]);
         c.locationName = nameOf("locations", row[6]);
         c.heldItem = nameOf("items", row[7]);
+        c.heldItemIdentifier = identifierOf("items", row[7]);
         c.timeOfDay = row[8].toString();
         c.knownMove = nameOf("moves", row[9]);
         c.knownMoveType = identifierOf("types", row[10]);
