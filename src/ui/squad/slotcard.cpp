@@ -134,9 +134,11 @@ SlotCard::Geometry SlotCard::areas() const
     Geometry g;
     g.card = rect().adjusted(kRing, kRing, -kRing, -kRing);
     g.header = QRect(g.card.left() + 2, g.card.top() + 2, g.card.width() - 4, kHeader);
-    g.menu = QRect(g.header.right() - 34, g.header.top(), 34, kHeader);
-    g.detail = QRect(g.menu.left() - 24, g.header.top(), 24, kHeader);
-    g.warn = QRect(g.detail.left() - 20, g.header.top() + (kHeader - 20) / 2, 20, 20);
+    // 머리 오른쪽 버튼 셋: [⇄ 바꾸기][휴지통][+ 상세]
+    g.detail = QRect(g.header.right() - 30, g.header.top(), 26, kHeader);
+    g.remove = QRect(g.detail.left() - 24, g.header.top(), 24, kHeader);
+    g.swap = QRect(g.remove.left() - 24, g.header.top(), 24, kHeader);
+    g.warn = QRect(g.swap.left() - 20, g.header.top() + (kHeader - 20) / 2, 20, 20);
     const int left = g.card.left() + kPadding;
     const int inner = g.card.width() - 2 * kPadding - 3; // 3 = 그림자
     // 기준(kHeight)보다 낮으면 그만큼을 줄 사이 간격 다섯(10 · 8 · 8 · 8 · 10 = 44)에서
@@ -176,13 +178,54 @@ SlotCard::Geometry SlotCard::areas() const
     return g;
 }
 
+// 머리 오른쪽 버튼 셋: [⇄ 바꾸기][휴지통 비우기][+ 상세]. 전부 선으로 그린다(머리 띠 색 위에 흰색).
+void SlotCard::paintHeaderButtons(QPainter &painter, const Geometry &g, const QColor &color) const
+{
+    painter.save();
+    painter.setRenderHint(QPainter::Antialiasing, true);
+    QPen pen(color, 1.7, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin);
+    painter.setPen(pen);
+    painter.setBrush(Qt::NoBrush);
+
+    // [⇄] 바꾸기: 위아래 두 화살표
+    {
+        const QPointF c = QRectF(g.swap).center();
+        const qreal w = 6;
+        painter.drawLine(QPointF(c.x() - w, c.y() - 3), QPointF(c.x() + w, c.y() - 3));
+        painter.drawLine(QPointF(c.x() + w - 3.5, c.y() - 6), QPointF(c.x() + w, c.y() - 3));
+        painter.drawLine(QPointF(c.x() + w - 3.5, c.y()), QPointF(c.x() + w, c.y() - 3));
+        painter.drawLine(QPointF(c.x() + w, c.y() + 3), QPointF(c.x() - w, c.y() + 3));
+        painter.drawLine(QPointF(c.x() - w + 3.5, c.y()), QPointF(c.x() - w, c.y() + 3));
+        painter.drawLine(QPointF(c.x() - w + 3.5, c.y() + 6), QPointF(c.x() - w, c.y() + 3));
+    }
+    // [휴지통] 비우기: 뚜껑 + 몸통
+    {
+        const QPointF c = QRectF(g.remove).center();
+        painter.drawLine(QPointF(c.x() - 6, c.y() - 5), QPointF(c.x() + 6, c.y() - 5)); // 뚜껑
+        painter.drawLine(QPointF(c.x() - 2, c.y() - 7), QPointF(c.x() + 2, c.y() - 7)); // 손잡이
+        painter.drawRoundedRect(QRectF(c.x() - 4.5, c.y() - 3, 9, 10), 1.5, 1.5);       // 몸통
+        painter.drawLine(QPointF(c.x(), c.y() - 1), QPointF(c.x(), c.y() + 5));         // 골
+    }
+    // [+] 상세
+    {
+        const QPointF c = QRectF(g.detail).center();
+        pen.setWidthF(2.0);
+        painter.setPen(pen);
+        painter.drawLine(QPointF(c.x() - 5.5, c.y()), QPointF(c.x() + 5.5, c.y()));
+        painter.drawLine(QPointF(c.x(), c.y() - 5.5), QPointF(c.x(), c.y() + 5.5));
+    }
+    painter.restore();
+}
+
 SlotCard::Hit SlotCard::hitAt(const QPoint &pos) const
 {
     const Geometry g = areas();
     if (isEmptySlot())
         return g.card.contains(pos) ? Hit::Add : Hit::None;
-    if (g.menu.contains(pos))
-        return Hit::Menu;
+    if (g.swap.contains(pos))
+        return Hit::Swap;
+    if (g.remove.contains(pos))
+        return Hit::Remove;
     if (g.detail.contains(pos))
         return Hit::Detail;
     if (g.header.contains(pos))
@@ -258,8 +301,11 @@ void SlotCard::mousePressEvent(QMouseEvent *event)
         m_headerPressed = true;
         m_pressPos = pos;
         break;
-    case Hit::Menu:
-        emit menuRequested(m_slot, below(g.menu));
+    case Hit::Swap:
+        emit replaceRequested(m_slot);
+        break;
+    case Hit::Remove:
+        emit removeRequested(m_slot);
         break;
     case Hit::Detail:
         emit detailRequested(m_slot);
@@ -307,8 +353,20 @@ bool SlotCard::event(QEvent *event)
     if (event->type() == QEvent::ToolTip && !isEmptySlot()) {
         const QPoint pos = static_cast<QHelpEvent *>(event)->pos();
         const Geometry g = areas();
-        if (g.header.contains(pos) && !g.menu.contains(pos)
-            && (m_warning.isEmpty() || !g.warn.contains(pos))) {
+        const struct
+        {
+            const QRect &rect;
+            QString text;
+        } buttons[] = {{g.swap, tr("포켓몬 바꾸기")},
+                       {g.remove, tr("자리 비우기")},
+                       {g.detail, tr("자세히 보기")}};
+        for (const auto &button : buttons)
+            if (button.rect.contains(pos)) {
+                QToolTip::showText(static_cast<QHelpEvent *>(event)->globalPos(), button.text,
+                                   this);
+                return true;
+            }
+        if (g.header.contains(pos) && (m_warning.isEmpty() || !g.warn.contains(pos))) {
             QToolTip::showText(static_cast<QHelpEvent *>(event)->globalPos(),
                                tr("누르면 선택, 끌면 순서를 바꿔요"), this);
             return true;
@@ -413,25 +471,19 @@ void SlotCard::paintFilled(QPainter &painter, const Geometry &g)
     x = iconBox.right() + 6;
     painter.setFont(theme::font(theme::kFamilyTitle, 19));
     painter.setPen(QColor(headerText));
-    const int nameWidth = (m_warning.isEmpty() ? g.detail.left() : g.warn.left()) - x - 4;
+    const int nameWidth = (m_warning.isEmpty() ? g.swap.left() : g.warn.left()) - x - 4;
     painter.drawText(QRect(x, g.header.top(), nameWidth, kHeader), Qt::AlignLeft | Qt::AlignVCenter,
                      QFontMetricsF(painter.font())
                              .elidedText(detail.name.text(m_language), Qt::ElideRight, nameWidth));
-    if (m_hot == Hit::Menu || m_hot == Hit::Detail) {
+    if (m_hot == Hit::Swap || m_hot == Hit::Remove || m_hot == Hit::Detail) {
         painter.setPen(Qt::NoPen);
         QColor glow(tok::kWhite);
         glow.setAlpha(60);
         painter.setBrush(glow);
-        const QRect &hot = m_hot == Hit::Menu ? g.menu : g.detail;
-        painter.drawRoundedRect(QRectF(hot).adjusted(4, 6, -4, -6), 4, 4);
+        const QRect &hot = m_hot == Hit::Swap ? g.swap : m_hot == Hit::Remove ? g.remove : g.detail;
+        painter.drawRoundedRect(QRectF(hot).adjusted(2, 6, -2, -6), 4, 4);
     }
-    // [+]: 이 포켓몬의 상세 모달(도감 상세와 같은 내용)
-    painter.setFont(theme::font(theme::kFamilyBody, 15, QFont::ExtraBold));
-    painter.setPen(QColor(headerText));
-    painter.drawText(g.detail, Qt::AlignCenter, QStringLiteral("+"));
-    painter.setPen(QColor(headerText));
-    painter.setFont(theme::font(theme::kFamilyBody, 16, QFont::ExtraBold));
-    painter.drawText(g.menu, Qt::AlignCenter, QStringLiteral("⋯"));
+    paintHeaderButtons(painter, g, QColor(headerText));
     if (!m_warning.isEmpty()) { // 경고: 빨강 원 "!"(흰 테 — 어떤 타입 색 머리 위에서도 보이게)
         painter.setPen(QPen(QColor(tok::kWhite), 2));
         painter.setBrush(QColor(tok::kRed));

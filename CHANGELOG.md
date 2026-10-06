@@ -253,6 +253,10 @@ and the project uses [Semantic Versioning](https://semver.org/).
   data grows to 28.9 MB). Moves introduced in generation 9 still lack Korean text in PokéAPI.
 
 ### Changed
+- Squad slot card headers trade the ⋯ menu for three direct buttons — swap (⇄), clear (trash) and
+  details (+), with tooltips — and the member detail modal grew to 1200×800 so its right panel is
+  not clipped. "도감에서 보기", the move up/down actions (drag reorder covers them) and the old
+  menu go away.
 - The home generation cards became little dioramas instead of one blown-up sprite: each card shows
   its generation's three starters (the middle one front and larger) standing on shadow ellipses,
   over an accent-tinted stage with diagonal stripes and a ghosted generation numeral, with the

@@ -67,13 +67,6 @@ MainWindow::MainWindow(QWidget *parent)
         m_repository->close();
         squad->reloadData();
     });
-    // 슬롯 메뉴 "도감에서 보기" → 도감 탭으로 옮겨 그 포켓몬의 상세를 연다(스쿼드의 게임 기준 —
-    // 도감에서 다른 게임을 보고 있었어도)
-    connect(squad, &SquadPage::dexRequested, this,
-            [this](int pokemonId, const QString &versionGroup) {
-                open(Page::Dex);
-                m_dexPage->openPokemon(pokemonId, versionGroup);
-            });
     QLabel *placeholder = new QLabel(tr("%1 — 준비 중이에요").arg(tr("설정")));
     placeholder->setObjectName(QStringLiteral("pagePlaceholder"));
     placeholder->setAlignment(Qt::AlignCenter);
