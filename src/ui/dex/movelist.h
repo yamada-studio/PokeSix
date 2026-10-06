@@ -59,6 +59,8 @@ private:
     QStringList m_userTypes;
     int m_generation = 1;
     int m_earliestLevel = 0;
+    QStringList m_costs; // NPC 가르침 비용(줄마다) — Plain 모드
+    int m_costWidth = 0; // 비용 칸 폭(가장 긴 비용 글자에 맞춘다)
     Language m_language = Language::Korean;
 };
 } // namespace com::yamada::studio

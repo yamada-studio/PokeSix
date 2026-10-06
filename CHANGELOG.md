@@ -238,6 +238,10 @@ and the project uses [Semantic Versioning](https://semver.org/).
   arrow from shifting the label.
 
 ### Fixed
+- NPC tutor costs are no longer cut off: the cost column takes the width of its longest text (up
+  to 380 px, beyond that it elides with a tooltip) and pushes the effect column right. Sources whose
+  place and content are the same name print it once ("배틀프런티어 · 배틀프런티어 32BP" →
+  "배틀프런티어 32BP"), in tutor costs and item sources alike.
 - Switching the squad's game no longer stutters (about 150 ms → 5–25 ms in a debug build). Each
   Pokémon detail used to scan the whole move, move-history, stat-change and move-effect tables
   four times and the whole type/stat tables once; those queries now read only the moves and
