@@ -2,36 +2,2029 @@
   "_comment": [
     "장소 이름 사전 (도감 상세의 획득법, ui/dex/guidebook.h가 읽는다).",
     "PokéAPI에는 신오 · 성도 · 관동 장소의 한국어 이름이 없다. 도로 · 수로 번호는 코드가 바꾼다(201번 도로 · 220번 수로).",
-    "여기에는 확인된 한국어 이름만 넣는다(출처: 기술머신 획득처 블로그 · 포딕 본문). 없는 장소는 영어로 대신 보인다.",
-    "형식: PokéAPI locations.identifier → 한국어 이름(글자) 또는 {ko, en, ja}."
+    "형식: PokéAPI locations.identifier → 한국어 이름(글자) 또는 {ko, en, ja}.",
+    "출처: PKHeX가 게임에서 뽑은 장소 문자열(4–9세대, github.com/kwsch/PKHeX), WikiDex 전 언어 장소 목록, 한국어 포켓몬 위키 · 나무위키를 교차 검증했다(scripts/i18n/merge_places.py).",
+    "정발되지 않은 곳(오레 지방 · 세비 제도 등)은 팬 위키 표기다. 검토 목록: docs/i18n/review-places.md"
   ],
   "places": {
-    "oreburgh-gate": "무쇠게이트",
-    "mt-coronet": "천관산",
-    "ravaged-path": "거친샛길",
-    "veilstone-city": "장막시티",
+    "abandoned-ship": {
+      "ko": "버려진배",
+      "ja": "すてられぶね"
+    },
+    "abundant-shrine": "풍요의 사당",
+    "abyssal-ruins": "해저유적",
+    "accumula-gate": "넝쿨게이트",
+    "accumula-town": "넝쿨마을",
+    "acuity-cavern": {
+      "ko": "예지호수의 공동",
+      "ja": "エイチこのくうどう"
+    },
+    "acuity-lakefront": {
+      "ko": "예지호수근처",
+      "ja": "エイチこのほとり"
+    },
+    "agate-village": {
+      "ko": "아게토 빌리지",
+      "ja": "アゲトビレッジ"
+    },
+    "alfornada": {
+      "ko": "베이크마을",
+      "ja": "ベイクタウン"
+    },
+    "alfornada-cavern": {
+      "ko": "베이크 공동",
+      "ja": "ベイク空洞"
+    },
+    "amity-square": {
+      "ko": "상호교류광장",
+      "ja": "ふれあいひろば"
+    },
+    "anville-town": "가륜마을",
+    "apple-hills": {
+      "ko": "애플 힐스",
+      "ja": "アップルヒルズ"
+    },
+    "area-zero": {
+      "ko": "에리어 제로",
+      "ja": "エリアゼロ"
+    },
+    "artazon": {
+      "ko": "보울마을",
+      "ja": "ボウルタウン"
+    },
+    "artisan-cave": {
+      "ko": "아틀리에의 동굴",
+      "ja": "アトリエのあな"
+    },
+    "asado-desert": {
+      "ko": "로스트 사막",
+      "ja": "ロースト砂漠"
+    },
+    "aspertia-city": "부채시티",
+    "aspertia-gate": "부채게이트",
+    "axews-eye": {
+      "ko": "터검니호의 눈동자",
+      "ja": "キバこのひとみ"
+    },
+    "azalea-town": {
+      "ko": "고동마을",
+      "ja": "ヒワダタウン"
+    },
+    "ballimere-lake": {
+      "ko": "볼레이크 호반",
+      "ja": "ボールレイクのこはん"
+    },
+    "ballonlea": {
+      "ko": "아라베스크마을",
+      "ja": "アラベスクタウン"
+    },
+    "battle-arcade": {
+      "ko": "배틀룰렛",
+      "ja": "バトルルーレット"
+    },
+    "battle-castle": {
+      "ko": "배틀캐슬",
+      "ja": "バトルキャッスル"
+    },
+    "battle-factory": {
+      "ko": "배틀팩토리",
+      "ja": "バトルファクトリー"
+    },
+    "battle-frontier": {
+      "ko": "배틀프런티어",
+      "ja": "バトルフロンティア"
+    },
+    "battle-hall": {
+      "ko": "배틀스테이지",
+      "ja": "バトルステージ"
+    },
+    "battle-park": {
+      "ko": "배틀파크",
+      "ja": "バトルパーク"
+    },
+    "battle-subway": "배틀서브웨이",
+    "battleground": {
+      "ko": "승부장소",
+      "ja": "しょうぶどころ"
+    },
+    "bell-tower": {
+      "ko": "방울탑",
+      "ja": "スズのとう"
+    },
+    "bellchime-trail": {
+      "ko": "방울소리좁은길",
+      "ja": "スズねのこみち"
+    },
+    "berry-forest": {
+      "ko": "열매숲",
+      "ja": "きのみのもり"
+    },
+    "birth-island": {
+      "ko": "탄생의 섬",
+      "ja": "たんじょうのしま"
+    },
+    "black-city": "블랙시티",
+    "black-gate": "블랙게이트",
+    "black-tower": "흑의 마천루",
+    "blackthorn-city": {
+      "ko": "검은먹시티",
+      "ja": "フスベシティ"
+    },
+    "bond-bridge": {
+      "ko": "유대의 다리",
+      "ja": "きずなばし"
+    },
+    "brawlers-cave": {
+      "ko": "파이트케이브",
+      "ja": "ファイトケイブ"
+    },
+    "bridge-field": {
+      "ko": "다리아래 벌판",
+      "ja": "ハシノマはらっぱ"
+    },
+    "bridge-gate": "브리지게이트",
+    "burned-tower": {
+      "ko": "불탄탑",
+      "ja": "やけたとう"
+    },
+    "cabo-poco": {
+      "ko": "티스푼마을",
+      "ja": "コサジタウン"
+    },
+    "canalave-city": "운하시티",
+    "canalave-library": {
+      "ko": "운하도서관",
+      "ja": "ミオとしょかん"
+    },
+    "canyon-biome": {
+      "ko": "캐니언 에리어",
+      "ja": "キャニオンエリア"
+    },
+    "canyon-entrance": {
+      "ko": "계곡 입구",
+      "ja": "けいこくいりぐち"
+    },
+    "canyon-plaza": {
+      "ko": "캐니언 스퀘어",
+      "ja": "キャニオンスクエア"
+    },
+    "cape-brink": {
+      "ko": "곶 언저리",
+      "ja": "きわのみさき"
+    },
+    "caph-squads-base": {
+      "ko": "팀 카프 아지트",
+      "ja": "チーム・カーフのアジト"
+    },
+    "cascarrafa": {
+      "ko": "카라프시티",
+      "ja": "カラフシティ"
+    },
+    "casseroya-lake": {
+      "ko": "오야 호수",
+      "ja": "オージャの湖"
+    },
+    "castelia-city": "구름시티",
+    "castelia-gate": "구름게이트",
+    "castelia-sewers": "구름하수도",
+    "cave-of-being": "마음의 공동",
+    "celadon-city": {
+      "ko": "무지개시티",
+      "ja": "タマムシシティ"
+    },
+    "celestial-tower": "타워오브해븐",
+    "celestic-town": "봉신마을",
+    "central-plaza": {
+      "ko": "센터 스퀘어",
+      "ja": "センタースクエア"
+    },
+    "cerulean-cave": {
+      "ko": "블루시티동굴",
+      "ja": "ハナダのどうくつ"
+    },
+    "cerulean-city": {
+      "ko": "블루시티",
+      "ja": "ハナダシティ"
+    },
+    "challenge-beach": {
+      "ko": "챌린지비치",
+      "ja": "チャレンジビーチ"
+    },
+    "challenge-road": {
+      "ko": "챌린지로드",
+      "ja": "チャレンジロード"
+    },
+    "challengers-cave": "수행의 바위동굴",
+    "chargestone-cave": "전기돌동굴",
+    "chargestone-cavern": {
+      "ko": "전기돌의 암굴",
+      "ja": "電気石の岩窟"
+    },
+    "cherrygrove-city": {
+      "ko": "무궁시티",
+      "ja": "ヨシノシティ"
+    },
+    "chilling-waterhead": {
+      "ko": "찬물 동굴",
+      "ja": "ひやみず洞"
+    },
+    "cianwood-city": {
+      "ko": "진청시티",
+      "ja": "タンバシティ"
+    },
+    "cinnabar-island": {
+      "ko": "홍련마을",
+      "ja": "グレンタウン"
+    },
+    "cipher-key-lair": {
+      "ko": "섀도 비밀공장",
+      "ja": "シャドーのひみつこうじょう"
+    },
+    "cipher-lab": {
+      "ko": "섀도 랩",
+      "ja": "シャドーのラボ"
+    },
+    "circhester": {
+      "ko": "키르쿠스마을",
+      "ja": "キルクスタウン"
+    },
+    "citadark-isle": {
+      "ko": "니켈다크 섬",
+      "ja": "ニケルダークとう"
+    },
+    "clay-tunnel": "야콘로드",
+    "cliff-cave": {
+      "ko": "낭떠러지동굴",
+      "ja": "だんがいのどうくつ"
+    },
+    "cliff-edge-gate": {
+      "ko": "벼랑끝 게이트",
+      "ja": "がけっぷちゲート"
+    },
+    "coastal-biome": {
+      "ko": "코스트 에리어",
+      "ja": "コーストエリア"
+    },
+    "coastal-plaza": {
+      "ko": "코스트 스퀘어",
+      "ja": "コーストスクエア"
+    },
+    "cold-storage": "냉동컨테이너",
+    "concert-event": {
+      "ko": "콘서트회장",
+      "ja": "コンサートかいじょう"
+    },
+    "contest-hall": {
+      "ko": "콘테스트회장",
+      "ja": "コンテストかいじょう"
+    },
+    "cortondo": {
+      "ko": "세르클마을",
+      "ja": "セルクルタウン"
+    },
+    "courageous-cavern": {
+      "ko": "투지의 동굴",
+      "ja": "とうしんのどうくつ"
+    },
+    "crown-shrine": {
+      "ko": "왕관신전",
+      "ja": "カンムリしんでん"
+    },
+    "crystal-pool": {
+      "ko": "태라수호",
+      "ja": "てらす池"
+    },
+    "cynthia": {
+      "ko": "난천",
+      "ja": "シロナ"
+    },
+    "dalizapa-passage": {
+      "ko": "푸르피케 산길",
+      "ja": "プルピケ山道"
+    },
+    "dappled-grove": {
+      "ko": "햇살비추는숲",
+      "ja": "こもれびばやし"
+    },
+    "dark-cave": {
+      "ko": "어둠의 동굴",
+      "ja": "くらやみのほらあな"
+    },
+    "day-care-couple": {
+      "ko": "키우미집부부",
+      "ja": "そだてやふうふ"
+    },
+    "desert-resort": "리조트데저트",
+    "desert-underpass": {
+      "ko": "사막의 지하도",
+      "ja": "さばくのちかどう"
+    },
+    "digletts-cave": {
+      "ko": "디그다의 굴",
+      "ja": "ディグダのあな"
+    },
+    "dilford-chamber": {
+      "ko": "톡크로에 석실",
+      "ja": "アレボカのせきしつ"
+    },
+    "distant-land": {
+      "ko": "아주 먼 토지",
+      "ja": "とおくはなれたとち"
+    },
+    "distortion-world": {
+      "ko": "깨어진 세계",
+      "ja": "やぶれたせかい"
+    },
+    "dividing-peak-tunnel": {
+      "ko": "경계터널",
+      "ja": "ワカツダケトンネル"
+    },
+    "dragons-den": {
+      "ko": "용의 굴",
+      "ja": "りゅうのあな"
+    },
+    "dragonspiral-tower": "용나선탑",
+    "dreaded-den": {
+      "ko": "공포의 굴",
+      "ja": "恐れ穴"
+    },
+    "dreamyard": "꿈터",
+    "driftveil-city": "물풍경시티",
+    "driftveil-drawbridge": "물풍경도개교",
+    "dusty-bowl": {
+      "ko": "모래먼지구덩이",
+      "ja": "さじんのくぼち"
+    },
+    "dyna-tree-hill": {
+      "ko": "다이맥스나무 언덕",
+      "ja": "ダイぼくのおか"
+    },
+    "east-lake-axewell": {
+      "ko": "터검니호 동쪽",
+      "ja": "キバこ・ひがし"
+    },
+    "east-paldean-sea": {
+      "ko": "동팔데아해",
+      "ja": "東パルデア海"
+    },
+    "ecruteak-city": {
+      "ko": "인주시티",
+      "ja": "エンジュシティ"
+    },
+    "embedded-tower": {
+      "ko": "매몰탑",
+      "ja": "うずもれのとう"
+    },
+    "energy-plant": {
+      "ko": "에너지플랜트",
+      "ja": "エネルギープラント"
+    },
+    "entralink": "하일링크",
+    "entree-forest": "하일링크의 숲",
+    "eterna-city": "영원시티",
+    "eterna-forest": "영원의 숲",
+    "event-site": {
+      "ko": "이벤트회장",
+      "ja": "イベントかいじょう"
+    },
+    "faraway-island": {
+      "ko": "마지막고도",
+      "ja": "さいはてのことう"
+    },
+    "faraway-place": {
+      "ko": "먼 곳",
+      "ja": "とおいばしょ"
+    },
+    "fellhorn-gorge": {
+      "ko": "도깨비뿔 협곡",
+      "ja": "鬼角峡谷"
+    },
+    "fields-of-honor": {
+      "ko": "인사의 들판",
+      "ja": "いちれいのはら"
+    },
+    "fight-area": {
+      "ko": "파이트에리어",
+      "ja": "ファイトエリア"
+    },
+    "firescourge-shrine": {
+      "ko": "화마의 사당",
+      "ja": "火難の祠"
+    },
+    "five-island": {
+      "ko": "5섬",
+      "ja": "5のしま"
+    },
+    "five-isle-meadow": {
+      "ko": "5섬 공터",
+      "ja": "5のしま　あきち"
+    },
+    "floaroma-meadow": {
+      "ko": "꽃향기의 꽃밭",
+      "ja": "ソノオのはなばたけ"
+    },
+    "floaroma-town": {
+      "ko": "꽃향기마을",
+      "ja": "ソノオタウン"
+    },
+    "floccesy-ranch": "산가지목장",
+    "floccesy-town": "산가지마을",
+    "flower-paradise": {
+      "ko": "꽃의 낙원",
+      "ja": "はなのらくえん"
+    },
+    "footstep-house": {
+      "ko": "발자국박사의 집",
+      "ja": "あしあとはかせのいえ"
+    },
+    "forest-of-focus": {
+      "ko": "집중의 숲",
+      "ja": "しゅうちゅうのもり"
+    },
+    "four-island": {
+      "ko": "4섬",
+      "ja": "4のしま"
+    },
+    "freezington": {
+      "ko": "프리즈마을",
+      "ja": "フリーズむら"
+    },
+    "frigid-sea": {
+      "ko": "얼어붙은 바다",
+      "ja": "いてつきのうみ"
+    },
+    "frontier-access": {
+      "ko": "프런티어프런트",
+      "ja": "フロンティアフロント"
+    },
+    "frostpoint-field": {
+      "ko": "빙점 설원",
+      "ja": "ひょうてんせつげん"
+    },
+    "fuchsia-city": {
+      "ko": "연분홍시티",
+      "ja": "セキチクシティ"
+    },
+    "fuego-ironworks": "골풀무제철소",
+    "fullmoon-island": {
+      "ko": "만월섬",
+      "ja": "まんげつじま"
+    },
+    "galactic-hq": {
+      "ko": "갤럭시단아지트",
+      "ja": "ギンガだんアジト"
+    },
+    "galar-battle-tower": {
+      "ko": "배틀타워",
+      "ja": "バトルタワー"
+    },
+    "galar-iceberg-ruins": {
+      "ko": "빙산의 유적",
+      "ja": "ひょうざんのいせき"
+    },
+    "galar-iron-ruins": {
+      "ko": "쇠철의 유적",
+      "ja": "くろがねのいせき"
+    },
+    "galar-mine": {
+      "ko": "가라르광산",
+      "ja": "ガラルこうざん"
+    },
+    "galar-mine-no-2": {
+      "ko": "제2광산",
+      "ja": "だいにこうざん"
+    },
+    "galar-rock-peak-ruins": {
+      "ko": "바위산의 유적",
+      "ja": "いわやまのいせき"
+    },
+    "gateon-port": {
+      "ko": "아이오 포트",
+      "ja": "アイオポート"
+    },
+    "gear-station": "기어 스테이션",
+    "giant-chasm": "자이언트홀",
+    "giants-bed": {
+      "ko": "거인의 침소",
+      "ja": "きょじんのねどこ"
+    },
+    "giants-cap": {
+      "ko": "거인의 모자",
+      "ja": "きょじんのぼうし"
+    },
+    "giants-foot": {
+      "ko": "거인의 밑창",
+      "ja": "きょじんのくつぞこ"
+    },
+    "giants-mirror": {
+      "ko": "거인의 거울 연못",
+      "ja": "きょじんのかがみいけ"
+    },
+    "giants-seat": {
+      "ko": "거인의 의자",
+      "ja": "きょじんのこしかけ"
+    },
+    "glacier-room": "빙산의 방",
+    "glaseado-mountain": {
+      "ko": "나페산",
+      "ja": "ナッペ山"
+    },
+    "glimwood-tangle": {
+      "ko": "루미너스메이즈숲",
+      "ja": "ルミナスメイズのもり"
+    },
+    "goldenrod-city": {
+      "ko": "금빛시티",
+      "ja": "コガネシティ"
+    },
+    "goldenrod-tunnel": {
+      "ko": "금빛지하통로",
+      "ja": "コガネちかつうろ"
+    },
+    "grand-lake": {
+      "ko": "그랜드레이크",
+      "ja": "グランドレイク"
+    },
+    "grasswither-shrine": {
+      "ko": "후목의 사당",
+      "ja": "朽木の祠"
+    },
+    "great-marsh": {
+      "ko": "대습초원",
+      "ja": "だいしつげん"
+    },
+    "green-path": {
+      "ko": "녹색 산책길",
+      "ja": "みどりのさんぽみち"
+    },
+    "groundblight-shrine": {
+      "ko": "진토의 사당",
+      "ja": "塵土の祠"
+    },
+    "gts": {
+      "ko": "GTS",
+      "ja": "GTS"
+    },
+    "guidance-chamber": "길잡이의 공간",
+    "hammerlocke": {
+      "ko": "너클시티",
+      "ja": "ナックルシティ"
+    },
+    "hammerlocke-hills": {
+      "ko": "너클 구릉",
+      "ja": "ナックルきゅうりょう"
+    },
+    "hauoli-city": {
+      "ko": "하우올리시티",
+      "ja": "ハウオリシティ"
+    },
+    "heahea-beach": {
+      "ko": "환대비치",
+      "ja": "カンタイビーチ"
+    },
+    "hearthome-city": "연고시티",
+    "hidden-grotto": "은혈",
+    "hoenn": {
+      "ko": "호연지방",
+      "ja": "ホウエンちほう"
+    },
+    "hoenn-altering-cave": {
+      "ko": "요괴의 굴",
+      "ja": "へんげのどうくつ"
+    },
+    "hoenn-battle-frontier": {
+      "ko": "호연 배틀프런티어",
+      "ja": "バトルフロンティア"
+    },
+    "hoenn-battle-tower": {
+      "ko": "배틀타워",
+      "ja": "バトルタワー"
+    },
+    "hoenn-pokecenter": {
+      "ko": "포켓몬센터",
+      "ja": "ポケモンセンター"
+    },
+    "hoenn-pokemart": {
+      "ko": "프렌들리숍",
+      "ja": "フレンドリィショップ"
+    },
+    "honeycalm-island": {
+      "ko": "허니컴섬",
+      "ja": "ハニカームじま"
+    },
+    "honeycalm-sea": {
+      "ko": "허니컴 바다",
+      "ja": "ハニカームのうみ"
+    },
+    "hulbury": {
+      "ko": "바우마을",
+      "ja": "バウタウン"
+    },
+    "humilau-city": "기하시티",
+    "ice-path": {
+      "ko": "얼음샛길",
+      "ja": "こおりのぬけみち"
+    },
+    "iceberg-ruins": {
+      "ko": "빙산의 유적",
+      "ja": "ひょうざんのいせき"
+    },
+    "icefall-cave": {
+      "ko": "얼음폭포 동굴",
+      "ja": "いてだきのどうくつ"
+    },
+    "icerend-shrine": {
+      "ko": "동파의 사당",
+      "ja": "凍裂の祠"
+    },
+    "icirrus-city": "설화시티",
+    "ilex-forest": {
+      "ko": "너도밤나무숲",
+      "ja": "ウバメのもり"
+    },
+    "indigo-plateau": {
+      "ko": "석영고원",
+      "ja": "セキエイこうげん"
+    },
+    "infernal-pass": {
+      "ko": "지옥골",
+      "ja": "地獄谷"
+    },
+    "inlet-grotto": {
+      "ko": "후미진 동굴",
+      "ja": "入り江のほら穴"
+    },
+    "insular-sea": {
+      "ko": "외딴섬 해역",
+      "ja": "はなれじまかいいき"
+    },
+    "iron-island": "강철섬",
+    "iron-room": "쇠철의 방",
+    "iron-ruins": {
+      "ko": "무쇠의 유적",
+      "ja": "くろがねのいせき"
+    },
+    "johto": {
+      "ko": "성도지방",
+      "ja": "ジョウトちほう"
+    },
+    "johto-lighthouse": {
+      "ko": "담청등대",
+      "ja": "アサギのとうだい"
+    },
+    "johto-pokemart": {
+      "ko": "프렌들리숍",
+      "ja": "フレンドリィショップ"
+    },
+    "johto-safari-zone": {
+      "ko": "성도 사파리존",
+      "ja": "サファリゾーン"
+    },
+    "join-avenue": "조인애버뉴",
+    "jubilife-city": {
+      "ko": "축복시티",
+      "ja": "コトブキシティ"
+    },
+    "jubilife-tv": {
+      "ko": "축복TV방송국",
+      "ja": "テレビコトブキ"
+    },
+    "kalos-berry-fields": {
+      "ko": "나무열매 밭",
+      "ja": "きのみばたけ"
+    },
+    "kanto": {
+      "ko": "관동지방",
+      "ja": "カントーちほう"
+    },
+    "kanto-pokecenter": {
+      "ko": "포켓몬센터",
+      "ja": "ポケモンセンター"
+    },
+    "kanto-pokemart": {
+      "ko": "프렌들리숍",
+      "ja": "フレンドリィショップ"
+    },
+    "kanto-power-plant": {
+      "ko": "무인발전소",
+      "ja": "むじんはつでんしょ"
+    },
+    "kanto-safari-zone": {
+      "ko": "사파리존",
+      "ja": "サファリゾーン"
+    },
+    "kanto-underground-path": {
+      "ko": "지하통로",
+      "ja": "ちかつうろ"
+    },
+    "kanto-victory-road-1": {
+      "ko": "챔피언로드",
+      "ja": "チャンピオンロード"
+    },
+    "kanto-victory-road-2": {
+      "ko": "챔피언로드",
+      "ja": "チャンピオンロード"
+    },
+    "kindle-road": {
+      "ko": "저녁노을길",
+      "ja": "ほてりのみち"
+    },
+    "kitakami-hall": {
+      "ko": "북신센터",
+      "ja": "キタカミセンター"
+    },
+    "kitakami-road": {
+      "ko": "북신 가도",
+      "ja": "キタカミ街道"
+    },
+    "kitakami-wilds": {
+      "ko": "북신 원생지",
+      "ja": "キタカミ原生地域"
+    },
+    "lacunosa-town": "보배마을",
     "lake-acuity": "예지호수",
+    "lake-of-outrage": {
+      "ko": "역린호수",
+      "ja": "げきりんのみずうみ"
+    },
+    "lake-of-rage": {
+      "ko": "분노의 호수",
+      "ja": "いかりのみずうみ"
+    },
     "lake-valor": "입지호수",
     "lake-verity": "진실호수",
-    "iron-island": "강철섬",
-    "valley-windworks": "골짜기발전소",
-    "wayward-cave": "미혹의동굴",
+    "lakeside-cave": {
+      "ko": "호반 동굴",
+      "ja": "こはんのどうくつ"
+    },
+    "lavender-town": {
+      "ko": "보라타운",
+      "ja": "シオンタウン"
+    },
+    "league-club-room": {
+      "ko": "리그부",
+      "ja": "リーグ部"
+    },
+    "lentimas-town": "산로마을",
+    "levincia": {
+      "ko": "누룩스시티",
+      "ja": "ハッコウシティ"
+    },
+    "liberty-garden": "리버티가든섬",
+    "link-trade-arrive": {
+      "ko": "통신교환",
+      "ja": "つうしんこうかん"
+    },
+    "link-trade-met": {
+      "ko": "통신교환",
+      "ja": "つうしんこうかん"
+    },
+    "liptoo-chamber": {
+      "ko": "이그레안 석실",
+      "ja": "ナザンのせきしつ"
+    },
+    "loop-lagoon": {
+      "ko": "원환의 만",
+      "ja": "えんかんのいりえ"
+    },
+    "los-platos": {
+      "ko": "플라토마을",
+      "ja": "プラトタウン"
+    },
+    "lost-cave": {
+      "ko": "돌아올 수 없는 동굴",
+      "ja": "かえらずのあな"
+    },
     "lost-tower": "로스트타워",
-    "eterna-city": "영원시티",
-    "eterna-forest": "영원의숲",
-    "old-chateau": "숲의양관",
-    "fuego-ironworks": "골풀무제철소",
-    "sinnoh-victory-road": "챔피언로드",
-    "hearthome-city": "연고시티",
-    "canalave-city": "운하시티",
-    "stark-mountain": "하드마운틴",
-    "pastoria-city": "들판시티",
-    "sunyshore-city": "물가시티",
-    "snowpoint-city": "선단시티",
+    "lostlorn-forest": "미혹의 숲",
+    "lovely-place": {
+      "ko": "근사한 장소",
+      "ja": "すてきなばしょ"
+    },
+    "loyalty-plaza": {
+      "ko": "세벗 플라자",
+      "ja": "ともっこプラザ"
+    },
+    "magma-hideout": {
+      "ko": "마그마단 아지트",
+      "ja": "マグマだんアジト"
+    },
+    "mahogany-town": {
+      "ko": "황토마을",
+      "ja": "チョウジタウン"
+    },
+    "malie-city": {
+      "ko": "말리에시티",
+      "ja": "マリエシティ"
+    },
+    "maniac-tunnel": {
+      "ko": "마니아터널",
+      "ja": "マニアトンネル"
+    },
+    "marine-cave": {
+      "ko": "바다 동굴",
+      "ja": "うみのどうくつ"
+    },
+    "marine-tube": "마린튜브",
+    "marvelous-bridge": "원더 브리지",
+    "master-dojo": {
+      "ko": "마스터 도장",
+      "ja": "マスターどうじょう"
+    },
+    "max-lair": {
+      "ko": "맥스다이맥스굴",
+      "ja": "マックスダイすあな"
+    },
+    "medal-secretariat": "메달사무국",
+    "medali": {
+      "ko": "참푸르마을",
+      "ja": "チャンプルタウン"
+    },
+    "meetup-spot": {
+      "ko": "모임의 공터",
+      "ja": "つどいのあきち"
+    },
+    "memorial-pillar": {
+      "ko": "추억의 탑",
+      "ja": "おもいでのとう"
+    },
+    "mesagoza": {
+      "ko": "테이블시티",
+      "ja": "テーブルシティ"
+    },
+    "mining-museum": {
+      "ko": "탄갱박물관",
+      "ja": "たんこうはくぶつかん"
+    },
+    "mirage-island": {
+      "ko": "환상섬",
+      "ja": "マボロシじま"
+    },
+    "mirage-tower": {
+      "ko": "신기루탑",
+      "ja": "げんえいのとう"
+    },
+    "mistralton-cave": "궐수의 동굴",
+    "mistralton-city": "궐수시티",
+    "monean-chamber": {
+      "ko": "이라님 석실",
+      "ja": "イレスのせきしつ"
+    },
+    "montenevera": {
+      "ko": "프리지마을",
+      "ja": "フリッジタウン"
+    },
+    "moor-of-icirrus": "설화의 습지초원",
+    "mossdeep-space-center": {
+      "ko": "이끼 우주센터",
+      "ja": "トクサネうちゅうセンター"
+    },
+    "mossfell-confluence": {
+      "ko": "북신 합류지",
+      "ja": "落合川原"
+    },
+    "mossui-town": {
+      "ko": "스이록마을",
+      "ja": "スイリョクタウン"
+    },
+    "motostoke": {
+      "ko": "엔진시티",
+      "ja": "エンジンシティ"
+    },
+    "motostoke-outskirts": {
+      "ko": "엔진시티 변두리",
+      "ja": "エンジンシティはずれ"
+    },
+    "motostoke-riverbank": {
+      "ko": "엔진 리버사이드",
+      "ja": "エンジンリバーサイド"
+    },
+    "mr-pokemon": {
+      "ko": "포켓몬 할아버지",
+      "ja": "ポケモンじいさん"
+    },
+    "mt-battle": {
+      "ko": "배틀산",
+      "ja": "バトルやま"
+    },
+    "mt-coronet": "천관산",
+    "mt-ember": {
+      "ko": "횃불산",
+      "ja": "ともしびやま"
+    },
+    "mt-moon": {
+      "ko": "달맞이산",
+      "ja": "おつきみやま"
+    },
+    "mt-mortar": {
+      "ko": "절구산",
+      "ja": "スリバチやま"
+    },
+    "mt-silver": "은빛산",
+    "mt-silver-cave": {
+      "ko": "은빛산동굴",
+      "ja": "シロガネやまどうくつ"
+    },
+    "musical-theater": "뮤지컬홀",
+    "mystery-zone": {
+      "ko": "수수께끼의 장소",
+      "ja": "なぞのばしょ"
+    },
+    "nacrene-city": "칠보시티",
+    "nacrene-gate": "칠보게이트",
+    "naranja-academy": {
+      "ko": "오렌지 아카데미",
+      "ja": "オレンジアカデミー"
+    },
+    "national-park": {
+      "ko": "자연공원",
+      "ja": "しぜんこうえん"
+    },
+    "nature-sanctuary": "자연보호구역",
+    "navel-rock": {
+      "ko": "배꼽 바위",
+      "ja": "へそのいわ"
+    },
+    "navi-squads-base": {
+      "ko": "팀 시 아지트",
+      "ja": "チーム・シーのアジト"
+    },
+    "new-bark-town": {
+      "ko": "연두마을",
+      "ja": "ワカバタウン"
+    },
+    "newmoon-island": {
+      "ko": "신월섬",
+      "ja": "しんげつじま"
+    },
+    "nimbasa-city": "뇌문시티",
+    "nimbasa-gate": "뇌문게이트",
+    "nintendo-world": {
+      "ko": "PC뉴욕",
+      "ja": "ＰＣニューヨーク"
+    },
+    "north-lake-miloch": {
+      "ko": "밀로틱호 북쪽",
+      "ja": "ミロカロこ・きた"
+    },
+    "north-paldean-sea": {
+      "ko": "북팔데아해",
+      "ja": "北パルデア海"
+    },
+    "ns-castle": "N의 성",
+    "nuvema-town": "마름꽃마을",
+    "old-cemetery": {
+      "ko": "옛 무덤",
+      "ja": "いにしえのぼち"
+    },
+    "old-chateau": "숲의 양옥집",
+    "olivine-city": {
+      "ko": "담청시티",
+      "ja": "アサギシティ"
+    },
+    "onbs": "ONBS",
+    "one-island": {
+      "ko": "1섬",
+      "ja": "1のしま"
+    },
+    "oni-mountain": {
+      "ko": "도깨비산",
+      "ja": "鬼が山"
+    },
+    "onis-maw": {
+      "ko": "도깨비이빨 공동",
+      "ja": "鬼歯空洞"
+    },
+    "opelucid-city": "쌍용시티",
+    "opelucid-gate": "쌍용게이트",
     "oreburgh-city": "무쇠시티",
-    "celestic-town": "신수마을",
-    "ruin-maniac-cave": "유적매니아의 동굴",
+    "oreburgh-gate": "무쇠게이트",
+    "oreburgh-mine": {
+      "ko": "무쇠탄갱",
+      "ja": "クロガネたんこう"
+    },
+    "outcast-island": {
+      "ko": "떨어진 섬",
+      "ja": "はずれのしま"
+    },
+    "outskirt-stand": {
+      "ko": "변두리 스탠드",
+      "ja": "まちはずれのスタンド"
+    },
+    "p2-laboratory": "P2랩",
+    "pal-park": {
+      "ko": "팔파크",
+      "ja": "パルパーク"
+    },
+    "paldea-east-province-area-one": {
+      "ko": "동부 에리어 1",
+      "ja": "東１番エリア"
+    },
+    "paldea-east-province-area-three": {
+      "ko": "동부 에리어 3",
+      "ja": "東３番エリア"
+    },
+    "paldea-east-province-area-two": {
+      "ko": "동부 에리어 2",
+      "ja": "東２番エリア"
+    },
+    "paldea-north-province-area-one": {
+      "ko": "북부 에리어 1",
+      "ja": "北１番エリア"
+    },
+    "paldea-north-province-area-three": {
+      "ko": "북부 에리어 3",
+      "ja": "北３番エリア"
+    },
+    "paldea-north-province-area-two": {
+      "ko": "북부 에리어 2",
+      "ja": "北２番エリア"
+    },
+    "paldea-south-province-area-five": {
+      "ko": "남부 에리어 5",
+      "ja": "南５番エリア"
+    },
+    "paldea-south-province-area-four": {
+      "ko": "남부 에리어 4",
+      "ja": "南４番エリア"
+    },
+    "paldea-south-province-area-one": {
+      "ko": "남부 에리어 1",
+      "ja": "南１番エリア"
+    },
+    "paldea-south-province-area-six": {
+      "ko": "남부 에리어 6",
+      "ja": "南６番エリア"
+    },
+    "paldea-south-province-area-three": {
+      "ko": "남부 에리어 3",
+      "ja": "南３番エリア"
+    },
+    "paldea-south-province-area-two": {
+      "ko": "남부 에리어 2",
+      "ja": "南２番エリア"
+    },
+    "paldea-west-province-area-one": {
+      "ko": "서부 에리어 1",
+      "ja": "西１番エリア"
+    },
+    "paldea-west-province-area-three": {
+      "ko": "서부 에리어 3",
+      "ja": "西３番エリア"
+    },
+    "paldea-west-province-area-two": {
+      "ko": "서부 에리어 2",
+      "ja": "西２番エリア"
+    },
     "pallet-town": "태초마을",
-    "mt-silver": "은빛산"
+    "paradise-barrens": {
+      "ko": "낙원의 황무지",
+      "ja": "楽土の荒地"
+    },
+    "pastoria-city": "들판시티",
+    "path-to-the-peak": {
+      "ko": "정상으로 가는 눈길",
+      "ja": "いただきへのゆきみち"
+    },
+    "pc-fukuoka": {
+      "ko": "PC후쿠오카",
+      "ja": "ＰＣフクオカ"
+    },
+    "pc-nagoya": {
+      "ko": "PC나고야",
+      "ja": "ＰＣナゴヤ"
+    },
+    "pc-osaka": {
+      "ko": "PC오사카",
+      "ja": "ＰＣオーサカ"
+    },
+    "pc-sapporo": {
+      "ko": "PC삿포로",
+      "ja": "ＰＣサッポロ"
+    },
+    "pc-tokyo": {
+      "ko": "PC도쿄",
+      "ja": "ＰＣトウキョー"
+    },
+    "pc-yokohama": {
+      "ko": "PC요코하마",
+      "ja": "ＰＣヨコハマ"
+    },
+    "pewter-city": {
+      "ko": "회색시티",
+      "ja": "ニビシティ"
+    },
+    "phenac-city": {
+      "ko": "페나스 시티",
+      "ja": "フェナスシティ"
+    },
+    "pinwheel-forest": "바람개비숲",
+    "plasma-frigate": "플라스마 프리깃",
+    "pledge-grove": "맹세의 숲",
+    "poco-path": {
+      "ko": "티스푼 오솔길",
+      "ja": "コサジの小道"
+    },
+    "poffin-house": {
+      "ko": "포핀하우스",
+      "ja": "ポフィンハウス"
+    },
+    "poke-pelago": {
+      "ko": "포켓리조트",
+      "ja": "ポケリゾート"
+    },
+    "poke-transfer-lab": "시프트팩토리",
+    "pokeathlon-dome": {
+      "ko": "포켓슬론돔",
+      "ja": "ポケスロンドーム"
+    },
+    "pokemon-cartoon": {
+      "ko": "포켓몬만화영화",
+      "ja": "ポケモンアニメ"
+    },
+    "pokemon-center": {
+      "ko": "포켓몬센터",
+      "ja": "ポケモンセンター"
+    },
+    "pokemon-day-care": {
+      "ko": "포켓몬맡기미집",
+      "ja": "ポケモンあずかりや"
+    },
+    "pokemon-event": {
+      "ko": "포켓몬이벤트",
+      "ja": "ポケモンイベント"
+    },
+    "pokemon-event-06": {
+      "ko": "포켓몬이벤트06",
+      "ja": "ポケモンイベント０６"
+    },
+    "pokemon-event-07": {
+      "ko": "포켓몬이벤트07",
+      "ja": "ポケモンイベント０７"
+    },
+    "pokemon-event-08": {
+      "ko": "포켓몬이벤트08",
+      "ja": "ポケモンイベント０８"
+    },
+    "pokemon-event-09": {
+      "ko": "포켓몬이벤트09",
+      "ja": "ポケモンイベント０９"
+    },
+    "pokemon-event-10": {
+      "ko": "포켓몬이벤트10",
+      "ja": "ポケモンイベント１０"
+    },
+    "pokemon-event-11": {
+      "ko": "포켓몬이벤트11",
+      "ja": "ポケモンイベント１１"
+    },
+    "pokemon-event-12": {
+      "ko": "포켓몬이벤트12",
+      "ja": "ポケモンイベント１２"
+    },
+    "pokemon-event-13": {
+      "ko": "포켓몬이벤트13",
+      "ja": "ポケモンイベント１３"
+    },
+    "pokemon-event-14": {
+      "ko": "포켓몬이벤트14",
+      "ja": "ポケモンイベント１４"
+    },
+    "pokemon-event-15": {
+      "ko": "포켓몬이벤트15",
+      "ja": "ポケモンイベント１５"
+    },
+    "pokemon-event-16": {
+      "ko": "포켓몬이벤트16",
+      "ja": "ポケモンイベント１６"
+    },
+    "pokemon-fan-club": {
+      "ko": "애호가클럽",
+      "ja": "だいすきクラブ"
+    },
+    "pokemon-festa": {
+      "ko": "포켓몬페스타",
+      "ja": "ポケモンフェスタ"
+    },
+    "pokemon-festa-06": {
+      "ko": "포켓몬페스타06",
+      "ja": "ポケモンフェスタ０６"
+    },
+    "pokemon-festa-07": {
+      "ko": "포켓몬페스타07",
+      "ja": "ポケモンフェスタ０７"
+    },
+    "pokemon-festa-08": {
+      "ko": "포켓몬페스타08",
+      "ja": "ポケモンフェスタ０８"
+    },
+    "pokemon-festa-09": {
+      "ko": "포켓몬페스타09",
+      "ja": "ポケモンフェスタ０９"
+    },
+    "pokemon-festa-10": {
+      "ko": "포켓몬페스타10",
+      "ja": "ポケモンフェスタ１０"
+    },
+    "pokemon-festa-11": {
+      "ko": "포켓몬페스타11",
+      "ja": "ポケモンフェスタ１１"
+    },
+    "pokemon-festa-12": {
+      "ko": "포켓몬페스타12",
+      "ja": "ポケモンフェスタ１２"
+    },
+    "pokemon-festa-13": {
+      "ko": "포켓몬페스타13",
+      "ja": "ポケモンフェスタ１３"
+    },
+    "pokemon-festa-14": {
+      "ko": "포켓몬페스타14",
+      "ja": "ポケモンフェスタ１４"
+    },
+    "pokemon-festa-15": {
+      "ko": "포켓몬페스타15",
+      "ja": "ポケモンフェスタ１５"
+    },
+    "pokemon-festa-16": {
+      "ko": "포켓몬페스타16",
+      "ja": "ポケモンフェスタ１６"
+    },
+    "pokemon-hq-lab": {
+      "ko": "포켓몬 총합 연구소",
+      "ja": "ポケモンそうごうけんきゅうじょ"
+    },
+    "pokemon-league": {
+      "ko": "포켓몬리그",
+      "ja": "ポケモンリーグ"
+    },
+    "pokemon-mansion": {
+      "ko": "포켓몬저택",
+      "ja": "ポケモンやしき"
+    },
+    "pokemon-movie": {
+      "ko": "포켓몬영화",
+      "ja": "ポケモンえいが"
+    },
+    "pokemon-movie-06": {
+      "ko": "포켓몬영화06",
+      "ja": "ポケモンえいが０６"
+    },
+    "pokemon-movie-07": {
+      "ko": "포켓몬영화07",
+      "ja": "ポケモンえいが０７"
+    },
+    "pokemon-movie-08": {
+      "ko": "포켓몬영화08",
+      "ja": "ポケモンえいが０８"
+    },
+    "pokemon-movie-09": {
+      "ko": "포켓몬영화09",
+      "ja": "ポケモンえいが０９"
+    },
+    "pokemon-movie-10": {
+      "ko": "포켓몬영화10",
+      "ja": "ポケモンえいが１０"
+    },
+    "pokemon-movie-11": {
+      "ko": "포켓몬영화11",
+      "ja": "ポケモンえいが１１"
+    },
+    "pokemon-movie-12": {
+      "ko": "포켓몬영화12",
+      "ja": "ポケモンえいが１２"
+    },
+    "pokemon-movie-13": {
+      "ko": "포켓몬영화13",
+      "ja": "ポケモンえいが１３"
+    },
+    "pokemon-movie-14": {
+      "ko": "포켓몬영화14",
+      "ja": "ポケモンえいが１４"
+    },
+    "pokemon-movie-15": {
+      "ko": "포켓몬영화15",
+      "ja": "ポケモンえいが１５"
+    },
+    "pokemon-movie-16": {
+      "ko": "포켓몬영화16",
+      "ja": "ポケモンえいが１６"
+    },
+    "pokemon-ranger": {
+      "ko": "다른 지방",
+      "ja": "ポケモンレンジャー"
+    },
+    "pokemon-tower": {
+      "ko": "포켓몬타워",
+      "ja": "ポケモンタワー"
+    },
+    "pokepark": {
+      "ko": "포켓파크",
+      "ja": "ポケパーク"
+    },
+    "pokepark-06": {
+      "ko": "포켓파크06",
+      "ja": "ポケパーク０６"
+    },
+    "pokepark-07": {
+      "ko": "포켓파크07",
+      "ja": "ポケパーク０７"
+    },
+    "pokepark-08": {
+      "ko": "포켓파크08",
+      "ja": "ポケパーク０８"
+    },
+    "pokepark-09": {
+      "ko": "포켓파크09",
+      "ja": "ポケパーク０９"
+    },
+    "pokepark-10": {
+      "ko": "포켓파크10",
+      "ja": "ポケパーク１０"
+    },
+    "pokepark-11": {
+      "ko": "포켓파크11",
+      "ja": "ポケパーク１１"
+    },
+    "pokepark-12": {
+      "ko": "포켓파크12",
+      "ja": "ポケパーク１２"
+    },
+    "pokepark-13": {
+      "ko": "포켓파크13",
+      "ja": "ポケパーク１３"
+    },
+    "pokepark-14": {
+      "ko": "포켓파크14",
+      "ja": "ポケパーク１４"
+    },
+    "pokepark-15": {
+      "ko": "포켓파크15",
+      "ja": "ポケパーク１５"
+    },
+    "pokepark-16": {
+      "ko": "포켓파크16",
+      "ja": "ポケパーク１６"
+    },
+    "pokespot": {
+      "ko": "포켓스폿",
+      "ja": "ポケスポット"
+    },
+    "pokestar-studios": "포켓우드",
+    "poketch-co": {
+      "ko": "포켓치주식회사",
+      "ja": "ポケッチカンパニー"
+    },
+    "pokewalker": {
+      "ko": "포켓워커",
+      "ja": "ポケウォーカー"
+    },
+    "polar-biome": {
+      "ko": "폴라 에리어",
+      "ja": "ポーラエリア"
+    },
+    "polar-plaza": {
+      "ko": "폴라 스퀘어",
+      "ja": "ポーラスクエア"
+    },
+    "porto-marinada": {
+      "ko": "마리네이드마을",
+      "ja": "マリナードタウン"
+    },
+    "postwick": {
+      "ko": "펄롱마을",
+      "ja": "ハロンタウン"
+    },
+    "potbottom-desert": {
+      "ko": "냄비바닥사막",
+      "ja": "なべぞこさばく"
+    },
+    "primo": {
+      "ko": "형님",
+      "ja": "おにいさん"
+    },
+    "pyrite-bldg": {
+      "ko": "파이라 빌딩",
+      "ja": "パイラのビル"
+    },
+    "pyrite-cave": {
+      "ko": "파이라 동굴",
+      "ja": "パイラのどうくつ"
+    },
+    "pyrite-town": {
+      "ko": "파이라 타운",
+      "ja": "パイラタウン"
+    },
+    "radio-tower": {
+      "ko": "라디오타워",
+      "ja": "ラジオとう"
+    },
+    "ravaged-path": "험한 샛길",
+    "realgam-tower": {
+      "ko": "랄가 타워",
+      "ja": "ラルガタワー"
+    },
+    "relic-castle": "고대의 성",
+    "relic-passage": "고대샛길",
+    "resort-area": {
+      "ko": "리조트에리어",
+      "ja": "リゾートエリア"
+    },
+    "resort-gorgeous": {
+      "ko": "럭셔리 리조트",
+      "ja": "ゴージャスリゾート"
+    },
+    "revelers-road": {
+      "ko": "신명 산길",
+      "ja": "舞出山道"
+    },
+    "reversal-mountain": "리버스마운틴",
+    "riley": {
+      "ko": "현이",
+      "ja": "ゲン"
+    },
+    "roaring-sea-caves": {
+      "ko": "해명 동굴",
+      "ja": "うみなりのどうくつ"
+    },
+    "rock-peak-ruins": {
+      "ko": "바위산의 유적",
+      "ja": "いわやまのいせき"
+    },
+    "rock-tunnel": {
+      "ko": "돌산터널",
+      "ja": "イワヤマトンネル"
+    },
+    "rocky-mountain-room": "바위산의 방",
+    "rolling-fields": {
+      "ko": "화창한 초원",
+      "ja": "うららかそうげん"
+    },
+    "rotoms-room": {
+      "ko": "로토무의 방",
+      "ja": "ロトムのへや"
+    },
+    "route-gate": "로드게이트",
+    "royal-unova": "로열하나호",
+    "ruchbah-squads-base": {
+      "ko": "팀 루크바 아지트",
+      "ja": "チーム・ルクバーのアジト"
+    },
+    "ruin-maniac-cave": "유적마니아굴",
+    "ruin-valley": {
+      "ko": "유적의 골짜기",
+      "ja": "いせきのたに"
+    },
+    "ruins-of-alph": {
+      "ko": "알프의 유적",
+      "ja": "アルフのいせき"
+    },
+    "rumination-field": "사색의 들판",
+    "safari-zone-gate": {
+      "ko": "사파리존 게이트",
+      "ja": "サファリゾーンゲート"
+    },
+    "saffron-city": {
+      "ko": "노랑시티",
+      "ja": "ヤマブキシティ"
+    },
+    "sandgem-town": {
+      "ko": "잔모래마을",
+      "ja": "マサゴタウン"
+    },
+    "sandy-cave": {
+      "ko": "해변 동굴",
+      "ja": "はまべのほらあな"
+    },
+    "savanna-biome": {
+      "ko": "사바나 에리어",
+      "ja": "サバンナエリア"
+    },
+    "savanna-plaza": {
+      "ko": "사바나 스퀘어",
+      "ja": "サバンナスクエア"
+    },
+    "schedar-squads-base": {
+      "ko": "팀 쉐다르 아지트",
+      "ja": "チーム・シェダルのアジト"
+    },
+    "scufib-chamber": {
+      "ko": "루마네즈 석실",
+      "ja": "コトーのせきしつ"
+    },
+    "seabreak-path": {
+      "ko": "갈라진 바닷길",
+      "ja": "うみわれのみち"
+    },
+    "seafoam-islands": {
+      "ko": "쌍둥이섬",
+      "ja": "ふたごじま"
+    },
+    "seaside-cave": "해변동혈",
+    "segin-squads-base": {
+      "ko": "팀 세긴 아지트",
+      "ja": "チーム・セギンのアジト"
+    },
+    "sendoff-spring": {
+      "ko": "송별의 샘",
+      "ja": "おくりのいずみ"
+    },
+    "sevault-canyon": {
+      "ko": "칠보 계곡",
+      "ja": "しっぽうけいこく"
+    },
+    "seven-island": {
+      "ko": "7섬",
+      "ja": "7のしま"
+    },
+    "shadow-pokemon-lab": "다크 포켓몬 연구소",
+    "sinjoh-ruins": {
+      "ko": "신도유적",
+      "ja": "シントいせき"
+    },
+    "sinnoh": {
+      "ko": "신오지방",
+      "ja": "シンオウちほう"
+    },
+    "sinnoh-battle-tower": {
+      "ko": "배틀타워",
+      "ja": "バトルタワー"
+    },
+    "sinnoh-cafe": {
+      "ko": "찻집",
+      "ja": "きっさてん"
+    },
+    "sinnoh-cycle-shop": {
+      "ko": "사이클숍",
+      "ja": "サイクルショップ"
+    },
+    "sinnoh-flower-shop": {
+      "ko": "플라워숍",
+      "ja": "フラワーショップ"
+    },
+    "sinnoh-foreign-building": {
+      "ko": "이문화건물",
+      "ja": "いぶんかのたてもの"
+    },
+    "sinnoh-game-corner": {
+      "ko": "게임코너",
+      "ja": "ゲームコーナー"
+    },
+    "sinnoh-global-terminal": {
+      "ko": "글로벌 터미널",
+      "ja": "グローバルターミナル"
+    },
+    "sinnoh-hall-of-origin-1": {
+      "ko": "시작의 방",
+      "ja": "はじまりのま"
+    },
+    "sinnoh-hall-of-origin-2": {
+      "ko": "시작의 방",
+      "ja": "はじまりのま"
+    },
+    "sinnoh-pokemart": {
+      "ko": "프렌들리숍",
+      "ja": "フレンドリィショップ"
+    },
+    "sinnoh-pokemon-league": {
+      "ko": "포켓몬리그",
+      "ja": "ポケモンリーグ"
+    },
+    "sinnoh-restaurant": {
+      "ko": "레스토랑",
+      "ja": "レストラン"
+    },
+    "sinnoh-victory-road": "챔피언로드",
+    "sinnoh-villa": {
+      "ko": "별장",
+      "ja": "べっそう"
+    },
+    "six-island": {
+      "ko": "6섬",
+      "ja": "6のしま"
+    },
+    "skyarrow-bridge": "스카이애로 브리지",
+    "slippery-slope": {
+      "ko": "출발의 설원",
+      "ja": "すべりだしせつげん"
+    },
+    "slowpoke-well": {
+      "ko": "야돈우물",
+      "ja": "ヤドンのいど"
+    },
+    "slumbering-weald": {
+      "ko": "꾸벅졸음숲",
+      "ja": "まどろみのもり"
+    },
+    "snagem-hideout": {
+      "ko": "스내치단 아지트",
+      "ja": "スナッチだんアジト"
+    },
+    "snowpoint-city": "선단시티",
+    "snowpoint-temple": {
+      "ko": "선단신전",
+      "ja": "キッサキしんでん"
+    },
+    "snowslide-slope": {
+      "ko": "설중 계곡",
+      "ja": "せっちゅうけいこく"
+    },
+    "socarrat-trail": {
+      "ko": "누룽지 숲길",
+      "ja": "オコゲ林道"
+    },
+    "solaceon-ruins": {
+      "ko": "신수유적",
+      "ja": "ズイのいせき"
+    },
+    "solaceon-town": {
+      "ko": "신수마을",
+      "ja": "ズイタウン"
+    },
+    "soothing-wetlands": {
+      "ko": "청량한 습지초원",
+      "ja": "せいりょうしつげん"
+    },
+    "south-lake-miloch": {
+      "ko": "밀로틱호 남쪽",
+      "ja": "ミロカロこ・みなみ"
+    },
+    "south-paldean-sea": {
+      "ko": "남팔데아해",
+      "ja": "南パルデア海"
+    },
+    "space-world": {
+      "ko": "스페이스월드",
+      "ja": "スペースワールド"
+    },
+    "space-world-06": {
+      "ko": "스페이스월드06",
+      "ja": "スペースワールド０６"
+    },
+    "space-world-07": {
+      "ko": "스페이스월드07",
+      "ja": "スペースワールド０７"
+    },
+    "space-world-08": {
+      "ko": "스페이스월드08",
+      "ja": "スペースワールド０８"
+    },
+    "space-world-09": {
+      "ko": "스페이스월드09",
+      "ja": "スペースワールド０９"
+    },
+    "space-world-10": {
+      "ko": "스페이스월드10",
+      "ja": "スペースワールド１０"
+    },
+    "space-world-11": {
+      "ko": "스페이스월드11",
+      "ja": "スペースワールド１１"
+    },
+    "space-world-12": {
+      "ko": "스페이스월드12",
+      "ja": "スペースワールド１２"
+    },
+    "space-world-13": {
+      "ko": "스페이스월드13",
+      "ja": "スペースワールド１３"
+    },
+    "space-world-14": {
+      "ko": "스페이스월드14",
+      "ja": "スペースワールド１４"
+    },
+    "space-world-15": {
+      "ko": "스페이스월드15",
+      "ja": "スペースワールド１５"
+    },
+    "space-world-16": {
+      "ko": "스페이스월드16",
+      "ja": "スペースワールド１６"
+    },
+    "spear-pillar": {
+      "ko": "창기둥",
+      "ja": "やりのはしら"
+    },
+    "spikemuth": {
+      "ko": "스파이크마을",
+      "ja": "スパイクタウン"
+    },
+    "split-decision-ruins": {
+      "ko": "결정의 유적",
+      "ja": "さだめのいせき"
+    },
+    "spring-path": {
+      "ko": "숨겨진 샘의 길",
+      "ja": "かくれいずみへのみち"
+    },
+    "sprout-tower": {
+      "ko": "모다피의 탑",
+      "ja": "マダツボミのとう"
+    },
+    "ss-anne": {
+      "ko": "상트앙느호",
+      "ja": "サント・アンヌごう"
+    },
+    "ss-aqua": {
+      "ko": "아쿠아호",
+      "ja": "アクアごう"
+    },
+    "stark-mountain": "하드마운틴",
+    "steamdrift-way": {
+      "ko": "8번도로",
+      "ja": "8ばんどうろ"
+    },
+    "stepping-stone-sea": {
+      "ko": "열도 바다",
+      "ja": "ならぶじまのうみ"
+    },
+    "stony-wilderness": {
+      "ko": "스톤즈들판",
+      "ja": "ストーンズげんや"
+    },
+    "stow-on-side": {
+      "ko": "래터럴마을",
+      "ja": "ラテラルタウン"
+    },
+    "strange-house": "스트레인저 하우스",
+    "striaton-city": "성신시티",
+    "sunyshore-city": "물가시티",
+    "sunyshore-market": {
+      "ko": "물가시장",
+      "ja": "ナギサいちば"
+    },
+    "survival-area": {
+      "ko": "서바이벌에리어",
+      "ja": "サバイバルエリア"
+    },
+    "tagtree-thicket": {
+      "ko": "표식의 나무숲",
+      "ja": "しるしの木立ち"
+    },
+    "tanoby-ruins": {
+      "ko": "옥포그리 유적",
+      "ja": "アスカナいせき"
+    },
+    "team-rocket-hq": {
+      "ko": "로켓단 아지트",
+      "ja": "ロケットだんアジト"
+    },
+    "team-rockets-castle": {
+      "ko": "로켓단의 성",
+      "ja": "ロケット団の城"
+    },
+    "terra-cave": {
+      "ko": "육지 동굴",
+      "ja": "りくのどうくつ"
+    },
+    "tg-eterna-bldg": {
+      "ko": "갤럭시단 영원 빌딩",
+      "ja": "ギンガハクタイビル"
+    },
+    "the-under": {
+      "ko": "언더",
+      "ja": "アンダー"
+    },
+    "three-island": {
+      "ko": "3섬",
+      "ja": "3のしま"
+    },
+    "three-isle-path": {
+      "ko": "3섬 터널",
+      "ja": "3のしま　よこあな"
+    },
+    "three-isle-port": {
+      "ko": "3섬 항구",
+      "ja": "3のしま　みなと"
+    },
+    "three-point-pass": {
+      "ko": "세갈래 들판",
+      "ja": "みつまたがはら"
+    },
+    "thrifty-megamart": {
+      "ko": "로열 애버뉴",
+      "ja": "ロイヤルアベニュー"
+    },
+    "timeless-woods": {
+      "ko": "영겁의 숲",
+      "ja": "とこしえの森"
+    },
+    "tohjo-falls": {
+      "ko": "동성폭포",
+      "ja": "トージョウのたき"
+    },
+    "torchlit-labyrinth": {
+      "ko": "등불의 미로",
+      "ja": "ともしびの迷路"
+    },
+    "tower-of-darkness": {
+      "ko": "악의 탑",
+      "ja": "あくのとう"
+    },
+    "tower-of-waters": {
+      "ko": "물의 탑",
+      "ja": "みずのとう"
+    },
+    "trainer-tower": {
+      "ko": "트레이너타워",
+      "ja": "トレーナータワー"
+    },
+    "trainers-school": {
+      "ko": "트레이너스쿨",
+      "ja": "トレーナーズスクール"
+    },
+    "training-lowlands": {
+      "ko": "단련 평원",
+      "ja": "たんれんへいげん"
+    },
+    "traveling-man": {
+      "ko": "나그네아저씨",
+      "ja": "たびのおじさん"
+    },
+    "treasure-beach": {
+      "ko": "보물만",
+      "ja": "たからのはま"
+    },
+    "trial-chamber": "시련의 석굴",
+    "trophy-garden": {
+      "ko": "자랑의 뒷마당",
+      "ja": "じまんのうらにわ"
+    },
+    "tubeline-bridge": "실린더 브리지",
+    "tunnel-to-the-top": {
+      "ko": "등정터널",
+      "ja": "とうちょうトンネル"
+    },
+    "turffield": {
+      "ko": "터프마을",
+      "ja": "ターフタウン"
+    },
+    "turnback-cave": {
+      "ko": "귀혼동굴",
+      "ja": "もどりのどうくつ"
+    },
+    "twinleaf-town": {
+      "ko": "떡잎마을",
+      "ja": "フタバタウン"
+    },
+    "twist-mountain": "태엽산",
+    "two-island": {
+      "ko": "2섬",
+      "ja": "2のしま"
+    },
+    "ulaula-beach": {
+      "ko": "울라울라비치",
+      "ja": "ウラウラビーチ"
+    },
+    "ultra-megalopolis": {
+      "ko": "울트라메가로폴리스",
+      "ja": "ウルトラメガロポリス"
+    },
+    "ultra-space-wilds": {
+      "ko": "울트라스페이스제로",
+      "ja": "ウルトラスペースゼロ"
+    },
+    "undella-bay": "물결만",
+    "undella-gate": "물결게이트",
+    "undella-town": "물결마을",
+    "underground-ruins": "땅밑유적",
+    "union-cave": {
+      "ko": "연결동굴",
+      "ja": "つながりのどうくつ"
+    },
+    "unity-tower": "유나이티드타워",
+    "unova-faraway-place": "먼 곳",
+    "unova-mystery-zone": "수수께끼의 장소",
+    "unova-pokemon-league": "포켓몬리그",
+    "unova-shopping-mall": "쇼핑몰",
+    "unova-victory-road": "챔피언로드",
+    "unova-victory-road-2": "챔피언로드",
+    "uva-academy": {
+      "ko": "그레이프 아카데미",
+      "ja": "グレープアカデミー"
+    },
+    "valley-windworks": "골짜기발전소",
+    "valor-cavern": {
+      "ko": "입지호수의 공동",
+      "ja": "リッシこのくうどう"
+    },
+    "valor-lakefront": {
+      "ko": "입지호수근처",
+      "ja": "リッシこのほとり"
+    },
+    "veilstone-city": "장막시티",
+    "veilstone-store": {
+      "ko": "장막백화점",
+      "ja": "トバリデパート"
+    },
+    "verdant-cavern": {
+      "ko": "우거진 동굴",
+      "ja": "しげみのどうくつ"
+    },
+    "verity-cavern": {
+      "ko": "진실호수의 공동",
+      "ja": "シンジこのくうどう"
+    },
+    "verity-lakefront": {
+      "ko": "진실호수근처",
+      "ja": "シンジこのほとり"
+    },
+    "vermilion-city": {
+      "ko": "갈색시티",
+      "ja": "クチバシティ"
+    },
+    "viapos-chamber": {
+      "ko": "움노브리 석실",
+      "ja": "オリフのせきしつ"
+    },
+    "village-bridge": "빌리지 브리지",
+    "violet-city": {
+      "ko": "도라지시티",
+      "ja": "キキョウシティ"
+    },
+    "virbank-city": "모란만시티",
+    "virbank-complex": "모란만콤비나트",
+    "virbank-gate": "모란만게이트",
+    "viridian-city": {
+      "ko": "상록시티",
+      "ja": "トキワシティ"
+    },
+    "viridian-forest": {
+      "ko": "상록숲",
+      "ja": "トキワのもり"
+    },
+    "vista-lighthouse": {
+      "ko": "길잡이등대",
+      "ja": "シルベのとうだい"
+    },
+    "warm-up-tunnel": {
+      "ko": "연습의 동굴",
+      "ja": "ならしのほらあな"
+    },
+    "watchtower-ruins": {
+      "ko": "감시탑 유적지",
+      "ja": "みはりとうあとち"
+    },
+    "water-labyrinth": {
+      "ko": "물의 미로",
+      "ja": "みずのめいろ"
+    },
+    "water-path": {
+      "ko": "물의 산책길",
+      "ja": "みずのさんぽみち"
+    },
+    "wayward-cave": "미혹의 동굴",
+    "wedgehurst": {
+      "ko": "브래시마을",
+      "ja": "ブラッシータウン"
+    },
+    "weepth-chamber": {
+      "ko": "모스루프 석실",
+      "ja": "ユゴのせきしつ"
+    },
+    "wellspring-cave": "지하수맥굴",
+    "west-lake-axewell": {
+      "ko": "터검니호 서쪽",
+      "ja": "キバこ・にし"
+    },
+    "west-paldean-sea": {
+      "ko": "서팔데아해",
+      "ja": "西パルデア海"
+    },
+    "whirl-islands": {
+      "ko": "소용돌이섬",
+      "ja": "うずまきじま"
+    },
+    "white-forest": "화이트포리스트",
+    "white-gate": "화이트게이트",
+    "white-treehollow": "백의 수동",
+    "wi-fi-event": {
+      "ko": "Wi-Fi이벤트",
+      "ja": "Ｗｉ－Ｆｉイベント"
+    },
+    "wi-fi-gift": {
+      "ko": "Wi-Fi선물",
+      "ja": "Ｗｉ－Ｆｉプレゼント"
+    },
+    "wistful-fields": {
+      "ko": "등꽃 들판",
+      "ja": "フジが原"
+    },
+    "workout-sea": {
+      "ko": "워크아웃 바다",
+      "ja": "ワークアウトのうみ"
+    },
+    "wyndon": {
+      "ko": "슛시티",
+      "ja": "シュートシティ"
+    },
+    "zapapico": {
+      "ko": "피케마을",
+      "ja": "ピケタウン"
+    },
+    "zero-lab": {
+      "ko": "제로랩",
+      "ja": "ゼロラボ"
+    }
   }
 }
