@@ -82,6 +82,8 @@ bool Repository::open()
 
 void Repository::close()
 {
+    m_details.clear(); // 다시 열면 DB가 새로 만들어졌을 수 있다
+    m_otherVersionSpecies.clear();
     if (QSqlDatabase::contains(m_connection))
         QSqlDatabase::database(m_connection, false).close();
 }
@@ -408,6 +410,23 @@ TypeChart Repository::typeChart(int generation)
 }
 
 PokemonDetail Repository::pokemonDetail(int pokemonId, int generation, const QString &versionGroup)
+{
+    // 게임 데이터는 읽기 전용이라 한 번 읽은 상세는 그대로 쓴다(스쿼드 HG ↔ SS · 도감 상세 오가기)
+    const QString key = QStringLiteral("%1/%2/%3").arg(pokemonId).arg(generation).arg(versionGroup);
+    const auto cached = m_details.constFind(key);
+    if (cached != m_details.constEnd())
+        return *cached;
+    PokemonDetail detail = readPokemonDetail(pokemonId, generation, versionGroup);
+    if (detail.isValid()) {
+        if (m_details.size() >= kDetailCacheSize)
+            m_details.clear(); // 드물다 — 오래된 것만 골라 버릴 만큼 크지 않다
+        m_details.insert(key, detail);
+    }
+    return detail;
+}
+
+PokemonDetail Repository::readPokemonDetail(int pokemonId, int generation,
+                                            const QString &versionGroup)
 {
     PokemonDetail detail;
     if (!open())
@@ -980,6 +999,16 @@ void Repository::fillMoves(QList<MoveEntry> &moves, int generation)
         return;
     QSqlQuery query(QSqlDatabase::database(m_connection));
 
+    // 필요한 기술만 읽는다(표 전체를 훑으면 상세 한 번에 수천 줄 — 스쿼드 게임을 바꿀 때 버벅였다).
+    // id는 MoveEntry의 정수라 SQL에 이어 붙여도 안전하다
+    QSet<int> wanted;
+    for (const MoveEntry &move : moves)
+        wanted.insert(move.moveId);
+    QStringList idList;
+    for (const int id : std::as_const(wanted))
+        idList.append(QString::number(id));
+    const QString ids = idList.join(QLatin1Char(','));
+
     // 지금 값 + 그 세대 타입(구간)
     QHash<int, MoveEntry> info;
     query.prepare(
@@ -989,11 +1018,9 @@ void Repository::fillMoves(QList<MoveEntry> &moves, int generation)
                            "FROM moves m LEFT JOIN move_meta mm ON mm.move_id = m.id "
                            "LEFT JOIN move_types mt ON mt.move_id = m.id AND mt.gen_from <= :g "
                            "  AND (mt.gen_to IS NULL OR mt.gen_to >= :g) "
-                           "LEFT JOIN types t ON t.id = mt.type_id"));
+                           "LEFT JOIN types t ON t.id = mt.type_id WHERE m.id IN (%1)")
+                    .arg(ids));
     query.bindValue(QStringLiteral(":g"), generation);
-    QSet<int> wanted;
-    for (const MoveEntry &move : moves)
-        wanted.insert(move.moveId);
     if (query.exec()) {
         while (query.next()) {
             const int id = query.value(0).toInt();
@@ -1022,7 +1049,8 @@ void Repository::fillMoves(QList<MoveEntry> &moves, int generation)
     };
     QHash<int, QList<Past>> past;
     if (query.exec(QStringLiteral("SELECT move_id, until_gen, power, pp, accuracy FROM "
-                                  "move_changelog ORDER BY until_gen"))) {
+                                  "move_changelog WHERE move_id IN (%1) ORDER BY until_gen")
+                           .arg(ids))) {
         while (query.next())
             past[query.value(0).toInt()].append(
                     {query.value(1).toInt(), query.value(2), query.value(3), query.value(4)});
@@ -1031,7 +1059,8 @@ void Repository::fillMoves(QList<MoveEntry> &moves, int generation)
     // 능력치 변화 · 그 세대 설명문(언어마다: generation 이하 중 가장 최근, 없으면 이후 중 가장 이른
     // 것)
     if (query.exec(QStringLiteral("SELECT move_id, stat_id, change FROM move_stat_changes "
-                                  "ORDER BY move_id, stat_id"))) {
+                                  "WHERE move_id IN (%1) ORDER BY move_id, stat_id")
+                           .arg(ids))) {
         while (query.next()) {
             const auto it = info.find(query.value(0).toInt());
             if (it != info.end())
@@ -1040,7 +1069,8 @@ void Repository::fillMoves(QList<MoveEntry> &moves, int generation)
     }
     QHash<int, std::array<int, 3>> effectFrom; // move id → 언어별로 문구를 가져온 세대(0 = 없음)
     if (query.exec(QStringLiteral("SELECT move_id, generation, text_ko, text_en, text_ja FROM "
-                                  "move_effects ORDER BY generation"))) {
+                                  "move_effects WHERE move_id IN (%1) ORDER BY generation")
+                           .arg(ids))) {
         while (query.next()) {
             const auto it = info.find(query.value(0).toInt());
             if (it == info.end())
@@ -1123,14 +1153,23 @@ void Repository::fillTypesAndStats(QList<SpeciesRow> &rows, int generation)
     for (qsizetype i = 0; i < rows.size(); ++i)
         rowOfPokemon.insert(rows[i].pokemonId, i);
     QSqlQuery query(QSqlDatabase::database(m_connection));
+    // 몇 마리뿐이면(상세 · 스쿼드) 그 포켓몬만 읽는다(인덱스). 목록이면 표 전체를 한 번에
+    QString only;
+    if (rows.size() <= 64) {
+        QStringList ids;
+        for (const SpeciesRow &row : std::as_const(rows))
+            ids.append(QString::number(row.pokemonId));
+        only = QStringLiteral(" AND pokemon_id IN (%1)").arg(ids.join(QLatin1Char(',')));
+    }
 
     // 1) 그 세대의 타입(슬롯 순). 표 전체를 한 번에 읽고 나눠 담는다 — 종마다 질의하면 수백 번이
     // 된다.
     query.prepare(
             QStringLiteral("SELECT pt.pokemon_id, t.identifier FROM pokemon_types pt "
                            "JOIN types t ON t.id = pt.type_id "
-                           "WHERE pt.gen_from <= :g AND (pt.gen_to IS NULL OR pt.gen_to >= :g) "
-                           "ORDER BY pt.pokemon_id, pt.slot"));
+                           "WHERE pt.gen_from <= :g AND (pt.gen_to IS NULL OR pt.gen_to >= :g)%1 "
+                           "ORDER BY pt.pokemon_id, pt.slot")
+                    .arg(only));
     query.bindValue(QStringLiteral(":g"), generation);
     if (query.exec()) {
         while (query.next()) {
@@ -1142,7 +1181,8 @@ void Repository::fillTypesAndStats(QList<SpeciesRow> &rows, int generation)
 
     // 2) 그 세대의 종족값
     query.prepare(QStringLiteral("SELECT pokemon_id, stat_id, value FROM pokemon_stats "
-                                 "WHERE gen_from <= :g AND (gen_to IS NULL OR gen_to >= :g)"));
+                                 "WHERE gen_from <= :g AND (gen_to IS NULL OR gen_to >= :g)%1")
+                          .arg(only));
     query.bindValue(QStringLiteral(":g"), generation);
     if (query.exec()) {
         while (query.next()) {
