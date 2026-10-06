@@ -381,12 +381,29 @@ void DexPage::showDex(int pokedexId)
 {
     // 전국 = 그 세대까지 나온 종(번호 = 전국 번호), 지방 = 그 도감의 종(번호 = 지방 번호).
     // 타입 · 종족값은 둘 다 지금 세대 기준.
+    // 보고 있던 종을 기억해 둔다 — 도감 칩을 바꿔도 미리 보기가 풀리지 않게
+    const QModelIndex before = m_table->currentIndex();
+    const int selected
+            = before.isValid() ? m_model->rowAt(m_proxy->mapToSource(before).row()).speciesId : 0;
     m_model->setRows(pokedexId == DexSelector::kNational
                              ? m_repository->speciesForGeneration(m_state->generation())
                              : m_repository->speciesForDex(pokedexId, m_state->generation()));
     // 도감을 고른다 = 그 도감 순서로 본다 → 합계 순 등으로 보고 있었어도 번호 순으로 되돌린다.
     m_table->sortByColumn(SpeciesTableModel::NumberColumn, Qt::AscendingOrder);
-    m_table->scrollToTop();
+    bool kept = false;
+    for (int row = 0; selected > 0 && row < m_proxy->rowCount(); ++row) {
+        const QModelIndex index = m_proxy->index(row, 0);
+        if (m_model->rowAt(m_proxy->mapToSource(index).row()).speciesId == selected) {
+            m_table->selectRow(row);
+            m_table->scrollTo(index); // 새 도감에서 그 종이 있는 곳으로
+            kept = true;
+            break;
+        }
+    }
+    if (!kept) {
+        m_table->scrollToTop();
+        m_preview->clear(); // 새 도감에 없는 종(칼로스 센트럴 ↔ 코스트 등)
+    }
     updateTitle();
     qCInfo(lcUi) << "dex" << pokedexId << "shows" << m_model->rowCount() << "species (generation"
                  << m_state->generation() << ")";

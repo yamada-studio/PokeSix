@@ -52,6 +52,7 @@ private:
     void applyLanguage(); // AppState 언어 → 모델 · delegate · 분류 이름 · 제목
     void selectGroup(const QString &key);
     void selectGame(const QString &versionGroup); // 게임 칩 → 그 게임의 기술머신 · 아이템으로
+    void reselect(const QString &identifier); // 목록을 다시 채운 뒤 보던 아이템을 다시 고른다
     void showDetail(const QModelIndex &proxyIndex);
     void updateTitle();
 
