@@ -221,6 +221,9 @@ and the project uses [Semantic Versioning](https://semver.org/).
   arrow from shifting the label.
 
 ### Fixed
+- The squad member modal gets the same page margins as the Pokédex screen, so [← 목록], the game
+  chips and the scrollbar no longer touch the window edges; it opens at 1360×876, shrunk to fit
+  smaller screens.
 - Switching the game chips (Items) or the dex chips (Pokédex list) no longer drops the selection:
   the item or species you were reading is re-selected in the refreshed list, scrolled into view,
   and the detail/preview pane stays on it. It only clears when the entry does not exist in the
