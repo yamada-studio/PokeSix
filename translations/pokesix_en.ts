@@ -1028,7 +1028,7 @@ to see its details here</translation>
     </message>
     <message>
         <source>실시간 분석</source>
-        <translation>Live analysis</translation>
+        <translation type="vanished">Live analysis</translation>
     </message>
     <message>
         <source>%1 — 효과가 굉장한 기술 없음</source>
@@ -1269,6 +1269,38 @@ abilities &amp; natures (gen 3+) and held items (gen 2+)</translation>
     <message>
         <source>NPC 가르침(%1)</source>
         <translation>Move tutor (%1)</translation>
+    </message>
+    <message>
+        <source>리소스 투자</source>
+        <translation>Resource investment</translation>
+    </message>
+    <message>
+        <source>스쿼드 분석</source>
+        <translation>Squad analysis</translation>
+    </message>
+    <message>
+        <source>%1 ×%2</source>
+        <translation>%1 ×%2</translation>
+    </message>
+    <message>
+        <source>이 게임에 %1개뿐이에요</source>
+        <translation>only %1 in this game</translation>
+    </message>
+    <message>
+        <source>%1개는 더 구해요</source>
+        <translation>buy %1 more</translation>
+    </message>
+    <message>
+        <source>%1개는 더 구해요 (%2)</source>
+        <translation>buy %1 more (%2)</translation>
+    </message>
+    <message>
+        <source>관동 — 엔딩 후</source>
+        <translation>Kanto — post-game</translation>
+    </message>
+    <message>
+        <source>%1 — 가르침 %2</source>
+        <translation>%1 — tutor %2</translation>
     </message>
 </context>
 <context>

@@ -1028,7 +1028,7 @@
     </message>
     <message>
         <source>실시간 분석</source>
-        <translation>リアルタイム分析</translation>
+        <translation type="vanished">リアルタイム分析</translation>
     </message>
     <message>
         <source>%1 — 효과가 굉장한 기술 없음</source>
@@ -1269,6 +1269,38 @@
     <message>
         <source>NPC 가르침(%1)</source>
         <translation>教え技（%1）</translation>
+    </message>
+    <message>
+        <source>리소스 투자</source>
+        <translation>リソース投資</translation>
+    </message>
+    <message>
+        <source>스쿼드 분석</source>
+        <translation>スクワッド分析</translation>
+    </message>
+    <message>
+        <source>%1 ×%2</source>
+        <translation>%1 ×%2</translation>
+    </message>
+    <message>
+        <source>이 게임에 %1개뿐이에요</source>
+        <translation>このゲームでは%1個だけです</translation>
+    </message>
+    <message>
+        <source>%1개는 더 구해요</source>
+        <translation>あと%1個そろえます</translation>
+    </message>
+    <message>
+        <source>%1개는 더 구해요 (%2)</source>
+        <translation>あと%1個そろえます（%2）</translation>
+    </message>
+    <message>
+        <source>관동 — 엔딩 후</source>
+        <translation>カントー — 殿堂入り後</translation>
+    </message>
+    <message>
+        <source>%1 — 가르침 %2</source>
+        <translation>%1 — 教え技 %2</translation>
     </message>
 </context>
 <context>

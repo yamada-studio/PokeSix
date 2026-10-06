@@ -52,6 +52,7 @@ struct Source
     QList<std::pair<int, QString>> cost; // (양, 단위): (48, "bp") · (10000, "money")
     LocalizedText detail;                // 조건 · 메모(서핑 필요 · 엔딩 후 …)
     QStringList versions; // 이 버전에서만(["white-2"]). 비면 묶음의 모든 버전
+    QString region; // 진행 기준 지방("johto" · "kanto") — 두 지방을 오가는 게임만 적는다
 };
 
 struct GameBook
@@ -81,6 +82,7 @@ QList<Source> sourcesOf(const QJsonValue &value)
         source.place = localizedOf(o.value(QStringLiteral("place")));
         source.content = localizedOf(o.value(QStringLiteral("content")));
         source.detail = localizedOf(o.value(QStringLiteral("detail")));
+        source.region = o.value(QStringLiteral("region")).toString();
         for (const QJsonValue &version : o.value(QStringLiteral("versions")).toArray())
             source.versions.append(version.toString());
         for (const QJsonValue &cost : o.value(QStringLiteral("cost")).toArray()) {
@@ -261,6 +263,61 @@ QSet<QString> itemsIn(const QString &versionGroup)
 {
     const QList<QString> keys = book().games.value(versionGroup).items.keys();
     return {keys.cbegin(), keys.cend()};
+}
+
+ItemSupply itemSupply(const QString &versionGroup, const QString &item, const QString &version)
+{
+    // 한 번만 얻는 방법 / 반복해서 얻는 방법 — roadmap "다음 세션 할 일" 2의 판정 기준
+    static const QSet<QString> once
+            = {QStringLiteral("field"), QStringLiteral("hidden"), QStringLiteral("gift"),
+               QStringLiteral("reward"), QStringLiteral("trade")};
+    static const QSet<QString> repeat
+            = {QStringLiteral("shop"), QStringLiteral("exchange"), QStringLiteral("prize")};
+    // 엔딩 후에야 가는 지방(1차 근사) — 배지별 진행표 자료가 오면 그걸로 교체한다
+    static const QHash<QString, QString> postGameRegion = {
+            {QStringLiteral("gold-silver"), QStringLiteral("kanto")},
+            {QStringLiteral("crystal"), QStringLiteral("kanto")},
+            {QStringLiteral("heartgold-soulsilver"), QStringLiteral("kanto")},
+    };
+    const QString postGame = postGameRegion.value(versionGroup);
+    ItemSupply supply;
+    bool beforeEnding = false; // 엔딩 전에 가는 입수처가 하나라도 있다
+    for (const Source &source : book().games.value(versionGroup).items.value(item)) {
+        if (!source.versions.isEmpty() && !version.isEmpty() && !source.versions.contains(version))
+            continue;
+        const bool isOnce = once.contains(source.how);
+        if (!isOnce && !repeat.contains(source.how))
+            continue; // 픽업 같은 랜덤 입수(other)는 셀 수 없다
+        supply.known = true;
+        if (isOnce) {
+            ++supply.copies;
+        } else {
+            supply.repeatable = true;
+            if (supply.repeatCost.isEmpty())
+                supply.repeatCost = source.cost;
+        }
+        if (postGame.isEmpty() || source.region != postGame)
+            beforeEnding = true;
+    }
+    supply.postGameOnly = supply.known && !postGame.isEmpty() && !beforeEnding;
+    return supply;
+}
+
+QList<std::pair<int, QString>> tutorCostAmounts(const QString &versionGroup, const QString &move,
+                                                const QString &version)
+{
+    for (const Source &source : book().games.value(versionGroup).tutors.value(move)) {
+        if (!source.versions.isEmpty() && !version.isEmpty() && !source.versions.contains(version))
+            continue;
+        if (!source.cost.isEmpty())
+            return source.cost;
+    }
+    return {};
+}
+
+QString costLabel(int amount, const QString &unit)
+{
+    return costText(amount, unit);
 }
 
 QString tutorCost(const QString &versionGroup, const QString &move, Language language)

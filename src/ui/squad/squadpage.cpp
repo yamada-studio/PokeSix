@@ -1,5 +1,6 @@
 #include "ui/squad/squadpage.h"
 
+#include "core/analysis/resourceledger.h"
 #include "core/rules/generationfeatures.h"
 #include "core/types/typekey.h"
 #include "data/repository/repository.h"
@@ -268,9 +269,9 @@ QWidget *SquadPage::buildAnalysis()
     m_analysisBody = body;
     QVBoxLayout *layout = new QVBoxLayout(body);
     layout->setContentsMargins(0, 0, 0, 0);
-    layout->setSpacing(8);
-    // 순서: 히트맵(항상 맨 위에 고정) → 문제 목록(자기 칸 안에서만 스크롤) → 물리 · 특수.
-    // 세 덩이가 한눈에 들어오게 — 문제가 13개여도 히트맵과 분포가 밀려나지 않는다
+    layout->setSpacing(6);
+    // 순서: 히트맵(항상 맨 위에 고정) → 문제 목록(자기 칸 안에서만 스크롤) → 물리 · 특수 →
+    // 리소스 투자. 덩이들이 한눈에 들어오게 — 문제가 13개여도 히트맵과 분포가 밀려나지 않는다
     QHBoxLayout *heatTitle = new QHBoxLayout;
     QLabel *heatLabel = new QLabel(tr("방어 상성 히트맵"));
     heatLabel->setObjectName(QStringLiteral("dexSectionLabel"));
@@ -283,7 +284,7 @@ QWidget *SquadPage::buildAnalysis()
     m_heatmap = new HeatmapView(m_session);
     connect(m_heatmap, &HeatmapView::slotClicked, this, &SquadPage::selectSlot);
     layout->addWidget(m_heatmap);
-    layout->addSpacing(10);
+    layout->addSpacing(6);
 
     QHBoxLayout *problemTitle = new QHBoxLayout;
     problemTitle->setSpacing(10);
@@ -314,7 +315,7 @@ QWidget *SquadPage::buildAnalysis()
     m_problemScroll->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     m_problemScroll->setWidget(m_problems);
     layout->addWidget(m_problemScroll, 1); // 넓은 배치에서 남는 세로를 이 칸이 가져간다
-    layout->addSpacing(10);
+    layout->addSpacing(6);
 
     QHBoxLayout *splitTitle = new QHBoxLayout;
     splitTitle->setSpacing(10);
@@ -329,9 +330,32 @@ QWidget *SquadPage::buildAnalysis()
     m_split = new SplitBar;
     layout->addWidget(m_split);
 
+    // 리소스 투자: 기술 배치가 쓰는 소모 자원(하트비늘 · 기술머신 · 가르침 비용). 들어가는
+    // 자원이 없으면 칸을 통째로 숨긴다
+    m_resourceBox = new QWidget;
+    QVBoxLayout *resourceLayout = new QVBoxLayout(m_resourceBox);
+    resourceLayout->setContentsMargins(0, 6, 0, 0);
+    resourceLayout->setSpacing(6);
+    QHBoxLayout *resourceTitle = new QHBoxLayout;
+    resourceTitle->setSpacing(10);
+    QLabel *resourceLabel = new QLabel(tr("리소스 투자"));
+    resourceLabel->setObjectName(QStringLiteral("dexSectionLabel"));
+    resourceTitle->addWidget(resourceLabel);
+    resourceTitle->addStretch();
+    m_resourceTotal = new QLabel;
+    m_resourceTotal->setObjectName(QStringLiteral("squadCount"));
+    resourceTitle->addWidget(m_resourceTotal);
+    resourceLayout->addLayout(resourceTitle);
+    m_resources = new QLabel;
+    m_resources->setObjectName(QStringLiteral("squadResources"));
+    m_resources->setWordWrap(true);
+    m_resources->setTextFormat(Qt::RichText);
+    resourceLayout->addWidget(m_resources);
+    layout->addWidget(m_resourceBox);
+
     QWidget *frameBody = new QWidget;
     QVBoxLayout *frameLayout = new QVBoxLayout(frameBody);
-    frameLayout->setContentsMargins(14, 12, 14, 14);
+    frameLayout->setContentsMargins(14, 10, 14, 12);
     frameLayout->addWidget(m_emptyAnalysis);
     frameLayout->addWidget(body, 1); // 남는 세로는 몸통(→ 문제 칸)이 먼저 가져간다
     frameLayout->addStretch(); // 문제 칸이 내용 높이에 닿으면 그 뒤 남는 공간은 아래로
@@ -494,7 +518,7 @@ void SquadPage::refreshAnalysis()
 
     // 머리: "4세대 상성표 · 17타입" — 그 세대에 없는 것(페어리 등)을 굳이 적지 않는다. 표 자체가
     // 세대별이고(Repository::typeChart), 없는 타입은 히트맵에서 사선 열로 보인다
-    m_analysis->setTitle(tr("실시간 분석"),
+    m_analysis->setTitle(tr("스쿼드 분석"),
                          tr("%1세대 상성표 · %2타입").arg(generation).arg(chart.types.size()));
     m_emptyAnalysis->setVisible(analysis.filled == 0);
     m_analysisBody->setVisible(analysis.filled > 0);
@@ -572,7 +596,151 @@ void SquadPage::refreshAnalysis()
     const int total = s.physical + s.special + s.status + s.empty;
     m_moveCount->setText(tr("기술 %1 / %2").arg(total - s.empty).arg(total));
     m_split->setSplit(s);
+    refreshResources();
     syncAnalysisHeight(); // 내용(문제 수)이 바뀌었다 — 좁은 배치의 최소 높이 갱신
+}
+
+void SquadPage::refreshResources()
+{
+    // 채운 기술 칸마다 배우는 방법을 정해 core(resourceledger)에 센다. 자력 · 하트비늘은 멤버의
+    // 기술 목록(movereach가 매긴 떠올리기 표시)에서, 기술머신 공급 · 가르침 비용은 입수 사전에서
+    const Language language = m_state->language();
+    const QString version = m_session->version();
+    const QString group = m_session->versionGroup();
+    std::vector<resourceledger::TeachPlan> plans;
+    std::map<std::string, resourceledger::MachineSupply> supplies;
+    QHash<QString, QString> machineNames; // "tm26" → "TM26 지진"
+    struct TutorUse
+    {
+        QString name;
+        int count = 0;
+        QList<std::pair<int, QString>> cost; // 한 번 배우는 비용
+    };
+    QMap<int, TutorUse> tutors; // move id 순
+
+    auto costsOf = [](const QList<std::pair<int, QString>> &costs) {
+        std::vector<resourceledger::Cost> out;
+        for (const auto &[amount, unit] : costs)
+            out.push_back({amount, unit.toStdString()});
+        return out;
+    };
+
+    for (int slot = 0; slot < 6; ++slot) {
+        const PokemonDetail &detail = m_session->detail(slot);
+        if (!detail.isValid())
+            continue;
+        for (const auto &slotMove : m_session->slotMoves(slot)) {
+            if (!slotMove || !slotMove->learnable)
+                continue;
+            const MoveEntry &move = slotMove->move;
+            resourceledger::TeachPlan plan;
+            plan.slot = slot;
+            // 자력(레벨업)이 먼저다 — 떠올리기 표시가 없는 줄이 하나라도 있으면 공짜
+            const MoveEntry *level = nullptr;
+            for (const MoveEntry &entry : detail.levelMoves)
+                if (entry.moveId == move.moveId && (!level || !entry.needsReminder))
+                    level = &entry;
+            const MoveEntry *machine = nullptr;
+            for (const MoveEntry &entry : detail.machineMoves)
+                if (entry.moveId == move.moveId)
+                    machine = &entry;
+            bool tutor = false;
+            for (const MoveEntry &entry : detail.tutorMoves)
+                tutor = tutor || entry.moveId == move.moveId;
+            if (level) {
+                plan.means = level->needsReminder ? resourceledger::Means::Reminder
+                                                  : resourceledger::Means::LevelUp;
+            } else if (machine && !machine->hiddenMachine) { // 비전머신은 몇 번이든 가르친다
+                plan.means = resourceledger::Means::Machine;
+                plan.machine = machine->machineItem.toStdString();
+                if (!supplies.count(plan.machine)) {
+                    const guidebook::ItemSupply supply
+                            = guidebook::itemSupply(group, machine->machineItem, version);
+                    supplies[plan.machine] = {supply.known, supply.copies, supply.repeatable,
+                                              costsOf(supply.repeatCost), supply.postGameOnly};
+                }
+                machineNames.insert(machine->machineItem,
+                                    QStringLiteral("TM%1 %2")
+                                            .arg(machine->machineNumber, 2, 10, QLatin1Char('0'))
+                                            .arg(move.name.text(language)));
+            } else if (tutor) {
+                plan.means = resourceledger::Means::Tutor;
+                const auto cost = guidebook::tutorCostAmounts(group, move.identifier, version);
+                plan.cost = costsOf(cost);
+                TutorUse &use = tutors[move.moveId];
+                use.name = move.name.text(language);
+                ++use.count;
+                use.cost = cost;
+            } // 그 밖(알 기술 · 못 배우는 기술)은 집계 밖
+            plans.push_back(plan);
+        }
+    }
+    const resourceledger::Ledger ledger = resourceledger::tally(plans, supplies);
+
+    // 합계(제목 오른쪽): 하트비늘 → BP · 코인 · 조각 · 돈 순
+    QStringList totals;
+    if (ledger.heartScales > 0)
+        totals.append(guidebook::costLabel(ledger.heartScales, QStringLiteral("heart-scale")));
+    static const QStringList unitOrder = {
+            QStringLiteral("bp"),           QStringLiteral("coins"),
+            QStringLiteral("red-shard"),    QStringLiteral("blue-shard"),
+            QStringLiteral("yellow-shard"), QStringLiteral("green-shard"),
+            QStringLiteral("money"),
+    };
+    std::vector<resourceledger::Cost> costs = ledger.totals;
+    std::stable_sort(costs.begin(), costs.end(), [](const auto &a, const auto &b) {
+        const auto rank = [](const std::string &unit) {
+            const qsizetype i = unitOrder.indexOf(QString::fromStdString(unit));
+            return i < 0 ? unitOrder.size() : i; // 목록 밖 단위는 뒤에(이미 이름 순)
+        };
+        return rank(a.unit) < rank(b.unit);
+    });
+    for (const resourceledger::Cost &cost : costs)
+        totals.append(guidebook::costLabel(cost.amount, QString::fromStdString(cost.unit)));
+
+    // 줄: 기술머신(모자람 경고 · 구매 · 엔딩 후) → 가르침. 공짜 1개로 해결되는 기술머신은 줄도
+    // 쓰지 않는다
+    QStringList lines;
+    const QString warn = QStringLiteral("<span style=\"color:%1\">⚠</span> ")
+                                 .arg(QColor(tok::kRedText).name());
+    for (const resourceledger::MachineUse &use : ledger.machines) {
+        const QString name = machineNames.value(QString::fromStdString(use.machine));
+        const int uses = int(use.members.size());
+        const QString head = uses > 1 ? tr("%1 ×%2").arg(name).arg(uses) : name;
+        QStringList notes;
+        if (use.shortfall)
+            notes.append(tr("이 게임에 %1개뿐이에요").arg(use.supply.copies));
+        if (use.bought > 0) {
+            QStringList price;
+            for (const resourceledger::Cost &cost : use.supply.repeatCost)
+                price.append(guidebook::costLabel(cost.amount * use.bought,
+                                                  QString::fromStdString(cost.unit)));
+            notes.append(price.isEmpty() ? tr("%1개는 더 구해요").arg(use.bought)
+                                         : tr("%1개는 더 구해요 (%2)")
+                                                   .arg(use.bought)
+                                                   .arg(price.join(QStringLiteral(" + "))));
+        }
+        if (use.supply.postGameOnly)
+            notes.append(tr("관동 — 엔딩 후"));
+        if (notes.isEmpty())
+            continue;
+        lines.append((use.shortfall ? warn : QString()) + head + QStringLiteral(" — ")
+                     + notes.join(QStringLiteral(" · ")));
+    }
+    for (const TutorUse &use : tutors) {
+        QStringList price;
+        for (const auto &[amount, unit] : use.cost)
+            price.append(guidebook::costLabel(amount * use.count, unit));
+        if (price.isEmpty())
+            continue; // 공짜 가르침은 셀 것이 없다
+        const QString head = use.count > 1 ? tr("%1 ×%2").arg(use.name).arg(use.count) : use.name;
+        lines.append(tr("%1 — 가르침 %2").arg(head, price.join(QStringLiteral(" + "))));
+    }
+
+    m_resourceBox->setVisible(!totals.isEmpty() || !lines.isEmpty());
+    m_resourceTotal->setText(totals.join(QStringLiteral(" · ")));
+    m_resources->setText(lines.join(QStringLiteral("<br>")));
+    m_resources->setVisible(!lines.isEmpty());
 }
 
 QString SquadPage::suggestion() const

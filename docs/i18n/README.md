@@ -71,6 +71,7 @@ DLC(갑옷의 외딴섬, 왕관의 설원)와 Champions는 기술머신 표가 �
 | `cost` | 비용 | `[{amount, unit}]`. 여러 개면 합쳐서 낸다. unit: `money`(원) · `bp` · `coins` · `red-shard`·`blue-shard`·`yellow-shard`·`green-shard` · `heart-scale` · `athlete-points`(포케슬론) · `watts` · `league-points`. 목록에 없는 단위는 영어 소문자-하이픈으로 |
 | `detail` | 조건·메모 | "파도타기 필요", "엔딩 후", "관장 승리 보상", "목요일만" 등(한국어) |
 | `versions` | 버전 한정 | 같은 묶음의 한 버전에서만 얻으면 그 버전 identifier 배열(`["white-2"]`). 없으면 묶음의 모든 버전 |
+| `region` | 지방 | 진행 기준 지방 identifier(`johto` · `kanto` …). 두 지방을 오가는 게임(GSC · HGSS)에서 엔딩 후 지역(관동)을 구분할 때 적는다 — 26·27번 도로 · 챔피언로드 · 석영고원은 엔딩 전 동선이라 `johto`로 둔다. 스쿼드 분석이 "관동(엔딩 후)" 표시에 쓴다 |
 
 ```text
 첨부한 JSON은 포켓몬 게임 하나(versionGroup)의 아이템 입수 사전 양식입니다.

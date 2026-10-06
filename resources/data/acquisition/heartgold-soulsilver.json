@@ -1555,55 +1555,63 @@
       {
         "how": "gift",
         "place": "너도밤나무숲",
-        "detail": "파오리 2마리를 주인에게 몰아다 준 보답 · 스토리 진행 중"
+        "detail": "파오리 2마리를 주인에게 몰아다 준 보답 · 스토리 진행 중",
+        "region": "johto"
       }
     ],
     "hm02": [
       {
         "how": "gift",
         "place": "진청시티",
-        "detail": "체육관 승리 후 체육관 앞 · 스토리 진행 중"
+        "detail": "체육관 승리 후 체육관 앞 · 스토리 진행 중",
+        "region": "johto"
       }
     ],
     "hm03": [
       {
         "how": "gift",
         "place": "인주시티 무도장",
-        "detail": "로켓단원 승리 후"
+        "detail": "로켓단원 승리 후",
+        "region": "johto"
       }
     ],
     "hm04": [
       {
         "how": "gift",
         "place": "절구산",
-        "detail": "왼쪽 입구 근처 등산객"
+        "detail": "왼쪽 입구 근처 등산객",
+        "region": "johto"
       }
     ],
     "hm05": [
       {
         "how": "gift",
         "place": "황토마을",
-        "detail": "로켓단 이벤트 후 목호 · 스토리 진행 중"
+        "detail": "로켓단 이벤트 후 목호 · 스토리 진행 중",
+        "region": "johto"
       }
     ],
     "hm06": [
       {
         "how": "gift",
-        "where": "johto-route-36"
+        "where": "johto-route-36",
+        "region": "johto"
       }
     ],
     "hm07": [
       {
         "how": "field",
         "place": "얼음샛길",
-        "detail": "스토리 진행 중"
+        "detail": "스토리 진행 중",
+        "region": "johto"
       }
     ],
     "hm08": [
       {
         "how": "gift",
         "place": "태초마을",
-        "detail": "배지 16개 후 오박사 · 스토리 진행 중"
+        "detail": "배지 16개 후 오박사 · 스토리 진행 중",
+        "region": "kanto"
       }
     ],
     "hondew-berry": [
@@ -4282,14 +4290,16 @@
       {
         "how": "reward",
         "place": "진청시티 체육관",
-        "detail": "관장 사도 승리 · 스토리 진행 중"
+        "detail": "관장 사도 승리 · 스토리 진행 중",
+        "region": "johto"
       }
     ],
     "tm02": [
       {
         "how": "field",
         "place": "27번 도로",
-        "detail": "바다회오리 필요"
+        "detail": "바다회오리 필요",
+        "region": "johto"
       },
       {
         "how": "prize",
@@ -4305,14 +4315,16 @@
             "unit": "money"
           }
         ],
-        "detail": "일요일"
+        "detail": "일요일",
+        "region": "johto"
       }
     ],
     "tm03": [
       {
         "how": "reward",
         "place": "블루시티 체육관",
-        "detail": "관장 이슬 승리 · 스토리 진행 중"
+        "detail": "관장 이슬 승리 · 스토리 진행 중",
+        "region": "kanto"
       }
     ],
     "tm04": [
@@ -4330,14 +4342,16 @@
             "unit": "bp"
           }
         ],
-        "detail": "BP 교환 · 변화 기술"
+        "detail": "BP 교환 · 변화 기술",
+        "region": "johto"
       }
     ],
     "tm05": [
       {
         "how": "gift",
         "where": "johto-route-32",
-        "detail": "풀베기 필요"
+        "detail": "풀베기 필요",
+        "region": "johto"
       }
     ],
     "tm06": [
@@ -4355,14 +4369,16 @@
             "unit": "bp"
           }
         ],
-        "detail": "BP 교환 · 변화 기술"
+        "detail": "BP 교환 · 변화 기술",
+        "region": "johto"
       }
     ],
     "tm07": [
       {
         "how": "reward",
         "place": "황토마을 체육관",
-        "detail": "관장 류옹 승리 · 스토리 진행 중"
+        "detail": "관장 류옹 승리 · 스토리 진행 중",
+        "region": "johto"
       }
     ],
     "tm08": [
@@ -4380,13 +4396,15 @@
             "unit": "bp"
           }
         ],
-        "detail": "BP 교환 · 변화 기술"
+        "detail": "BP 교환 · 변화 기술",
+        "region": "johto"
       }
     ],
     "tm09": [
       {
         "how": "field",
-        "place": "32번 도로"
+        "place": "32번 도로",
+        "region": "johto"
       }
     ],
     "tm10": [
@@ -4403,19 +4421,22 @@
             "amount": 6000,
             "unit": "coins"
           }
-        ]
+        ],
+        "region": "kanto"
       },
       {
         "how": "gift",
         "place": "분노의호수 북쪽 민가",
-        "detail": "풀숲 미로 통과"
+        "detail": "풀숲 미로 통과",
+        "region": "johto"
       }
     ],
     "tm11": [
       {
         "how": "gift",
         "place": "금빛시티 라디오타워 3층",
-        "detail": "로켓단 이벤트 후 · 카드키 문 안"
+        "detail": "로켓단 이벤트 후 · 카드키 문 안",
+        "region": "johto"
       }
     ],
     "tm12": [
@@ -4427,11 +4448,13 @@
             "amount": 1500,
             "unit": "money"
           }
-        ]
+        ],
+        "region": "kanto"
       },
       {
         "how": "gift",
-        "place": "너도밤나무숲 북쪽 게이트"
+        "place": "너도밤나무숲 북쪽 게이트",
+        "region": "johto"
       }
     ],
     "tm13": [
@@ -4448,11 +4471,13 @@
             "amount": 10000,
             "unit": "coins"
           }
-        ]
+        ],
+        "region": "johto"
       },
       {
         "how": "field",
-        "place": "쌍둥이섬 지하 4층"
+        "place": "쌍둥이섬 지하 4층",
+        "region": "kanto"
       }
     ],
     "tm14": [
@@ -4464,7 +4489,8 @@
             "amount": 5500,
             "unit": "money"
           }
-        ]
+        ],
+        "region": "johto"
       }
     ],
     "tm15": [
@@ -4476,7 +4502,8 @@
             "amount": 7500,
             "unit": "money"
           }
-        ]
+        ],
+        "region": "johto"
       }
     ],
     "tm16": [
@@ -4488,7 +4515,8 @@
             "amount": 2000,
             "unit": "money"
           }
-        ]
+        ],
+        "region": "johto"
       }
     ],
     "tm17": [
@@ -4500,21 +4528,24 @@
             "amount": 2000,
             "unit": "money"
           }
-        ]
+        ],
+        "region": "johto"
       }
     ],
     "tm18": [
       {
         "how": "field",
         "place": "야돈의우물 지하 2층",
-        "detail": "파도타기 필요"
+        "detail": "파도타기 필요",
+        "region": "johto"
       }
     ],
     "tm19": [
       {
         "how": "reward",
         "place": "무지개시티 체육관",
-        "detail": "관장 민화 승리 · 스토리 진행 중"
+        "detail": "관장 민화 승리 · 스토리 진행 중",
+        "region": "kanto"
       }
     ],
     "tm20": [
@@ -4526,7 +4557,8 @@
             "amount": 2000,
             "unit": "money"
           }
-        ]
+        ],
+        "region": "kanto"
       }
     ],
     "tm21": [
@@ -4538,12 +4570,14 @@
             "amount": 1000,
             "unit": "money"
           }
-        ]
+        ],
+        "region": "kanto"
       },
       {
         "how": "gift",
         "place": "무지개시티 백화점 5층",
-        "detail": "일요일 · 선두 포켓몬 친밀도가 낮을 때"
+        "detail": "일요일 · 선두 포켓몬 친밀도가 낮을 때",
+        "region": "kanto"
       }
     ],
     "tm22": [
@@ -4555,14 +4589,16 @@
             "amount": 3000,
             "unit": "money"
           }
-        ]
+        ],
+        "region": "johto"
       }
     ],
     "tm23": [
       {
         "how": "reward",
         "place": "담청시티 체육관",
-        "detail": "관장 규리 승리"
+        "detail": "관장 규리 승리",
+        "region": "johto"
       }
     ],
     "tm24": [
@@ -4579,11 +4615,13 @@
             "amount": 10000,
             "unit": "coins"
           }
-        ]
+        ],
+        "region": "johto"
       },
       {
         "how": "field",
-        "place": "블루시티동굴 2층"
+        "place": "블루시티동굴 2층",
+        "region": "kanto"
       }
     ],
     "tm25": [
@@ -4595,7 +4633,8 @@
             "amount": 5500,
             "unit": "money"
           }
-        ]
+        ],
+        "region": "johto"
       }
     ],
     "tm26": [
@@ -4613,11 +4652,13 @@
             "unit": "bp"
           }
         ],
-        "detail": "BP 교환 · 물리 기술"
+        "detail": "BP 교환 · 물리 기술",
+        "region": "johto"
       },
       {
         "how": "field",
-        "place": "챔피언로드"
+        "place": "챔피언로드",
+        "region": "johto"
       },
       {
         "how": "other",
@@ -4638,12 +4679,14 @@
             "amount": 1000,
             "unit": "money"
           }
-        ]
+        ],
+        "region": "kanto"
       },
       {
         "how": "gift",
         "place": "무지개시티 백화점 5층",
-        "detail": "일요일 · 선두 포켓몬 친밀도가 높을 때"
+        "detail": "일요일 · 선두 포켓몬 친밀도가 높을 때",
+        "region": "kanto"
       }
     ],
     "tm28": [
@@ -4655,12 +4698,14 @@
             "amount": 2000,
             "unit": "money"
           }
-        ]
+        ],
+        "region": "kanto"
       },
       {
         "how": "field",
         "place": "자연공원",
-        "detail": "화단 뒤쪽"
+        "detail": "화단 뒤쪽",
+        "region": "johto"
       }
     ],
     "tm29": [
@@ -4677,18 +4722,21 @@
             "amount": 10000,
             "unit": "coins"
           }
-        ]
+        ],
+        "region": "kanto"
       },
       {
         "how": "gift",
-        "place": "노랑시티 민가"
+        "place": "노랑시티 민가",
+        "region": "kanto"
       }
     ],
     "tm30": [
       {
         "how": "reward",
         "place": "인주시티 체육관",
-        "detail": "관장 유빈 승리 · 스토리 진행 중"
+        "detail": "관장 유빈 승리 · 스토리 진행 중",
+        "region": "johto"
       },
       {
         "how": "exchange",
@@ -4704,7 +4752,8 @@
             "unit": "bp"
           }
         ],
-        "detail": "BP 교환 · 특수 기술"
+        "detail": "BP 교환 · 특수 기술",
+        "region": "johto"
       }
     ],
     "tm31": [
@@ -4722,7 +4771,8 @@
             "unit": "bp"
           }
         ],
-        "detail": "BP 교환 · 물리 기술"
+        "detail": "BP 교환 · 물리 기술",
+        "region": "johto"
       }
     ],
     "tm32": [
@@ -4739,7 +4789,8 @@
             "amount": 4000,
             "unit": "coins"
           }
-        ]
+        ],
+        "region": "kanto"
       }
     ],
     "tm33": [
@@ -4751,14 +4802,16 @@
             "amount": 2000,
             "unit": "money"
           }
-        ]
+        ],
+        "region": "johto"
       }
     ],
     "tm34": [
       {
         "how": "reward",
         "place": "갈색시티 체육관",
-        "detail": "관장 마티스 승리 · 스토리 진행 중"
+        "detail": "관장 마티스 승리 · 스토리 진행 중",
+        "region": "kanto"
       }
     ],
     "tm35": [
@@ -4775,11 +4828,13 @@
             "amount": 10000,
             "unit": "coins"
           }
-        ]
+        ],
+        "region": "johto"
       },
       {
         "how": "field",
-        "place": "28번 도로"
+        "place": "28번 도로",
+        "region": "kanto"
       }
     ],
     "tm36": [
@@ -4797,19 +4852,22 @@
             "unit": "bp"
           }
         ],
-        "detail": "BP 교환 · 특수 기술"
+        "detail": "BP 교환 · 특수 기술",
+        "region": "johto"
       },
       {
         "how": "gift",
         "place": "43번 도로 게이트",
-        "detail": "황토마을 로켓단 이벤트 후"
+        "detail": "황토마을 로켓단 이벤트 후",
+        "region": "johto"
       }
     ],
     "tm37": [
       {
         "how": "gift",
         "place": "27번 도로 민가",
-        "detail": "동성폭포 근처"
+        "detail": "동성폭포 근처",
+        "region": "johto"
       }
     ],
     "tm38": [
@@ -4821,13 +4879,15 @@
             "amount": 5500,
             "unit": "money"
           }
-        ]
+        ],
+        "region": "johto"
       }
     ],
     "tm39": [
       {
         "how": "field",
-        "place": "연결동굴 지하 1층"
+        "place": "연결동굴 지하 1층",
+        "region": "johto"
       }
     ],
     "tm40": [
@@ -4845,12 +4905,14 @@
             "unit": "bp"
           }
         ],
-        "detail": "BP 교환 · 물리 기술"
+        "detail": "BP 교환 · 물리 기술",
+        "region": "johto"
       },
       {
         "how": "field",
         "place": "절구산",
-        "detail": "폭포오르기 필요"
+        "detail": "폭포오르기 필요",
+        "region": "johto"
       }
     ],
     "tm41": [
@@ -4862,11 +4924,13 @@
             "amount": 1500,
             "unit": "money"
           }
-        ]
+        ],
+        "region": "kanto"
       },
       {
         "how": "field",
-        "place": "8번 도로 서쪽"
+        "place": "8번 도로 서쪽",
+        "region": "kanto"
       }
     ],
     "tm42": [
@@ -4884,14 +4948,16 @@
             "unit": "money"
           }
         ],
-        "detail": "금요일"
+        "detail": "금요일",
+        "region": "johto"
       }
     ],
     "tm43": [
       {
         "how": "field",
         "place": "분노의호수",
-        "detail": "풀숲 미로 통과"
+        "detail": "풀숲 미로 통과",
+        "region": "johto"
       }
     ],
     "tm44": [
@@ -4908,14 +4974,16 @@
             "amount": 6000,
             "unit": "coins"
           }
-        ]
+        ],
+        "region": "johto"
       }
     ],
     "tm45": [
       {
         "how": "reward",
         "place": "금빛시티 체육관",
-        "detail": "관장 꼭두 승리 · 스토리 진행 중"
+        "detail": "관장 꼭두 승리 · 스토리 진행 중",
+        "region": "johto"
       },
       {
         "how": "exchange",
@@ -4931,47 +4999,54 @@
             "unit": "bp"
           }
         ],
-        "detail": "BP 교환 · 변화 기술"
+        "detail": "BP 교환 · 변화 기술",
+        "region": "johto"
       }
     ],
     "tm46": [
       {
         "how": "field",
-        "place": "황토마을 로켓단 아지트"
+        "place": "황토마을 로켓단 아지트",
+        "region": "johto"
       }
     ],
     "tm47": [
       {
         "how": "gift",
         "place": "28번 도로 민가",
-        "detail": "은빛산 경유"
+        "detail": "은빛산 경유",
+        "region": "kanto"
       }
     ],
     "tm48": [
       {
         "how": "reward",
         "place": "노랑시티 체육관",
-        "detail": "관장 초련 승리 · 스토리 진행 중"
+        "detail": "관장 초련 승리 · 스토리 진행 중",
+        "region": "kanto"
       }
     ],
     "tm49": [
       {
         "how": "field",
-        "place": "황토마을 로켓단 아지트"
+        "place": "황토마을 로켓단 아지트",
+        "region": "johto"
       }
     ],
     "tm50": [
       {
         "how": "reward",
         "place": "홍련섬 체육관",
-        "detail": "관장 강연 승리 · 스토리 진행 중"
+        "detail": "관장 강연 승리 · 스토리 진행 중",
+        "region": "kanto"
       }
     ],
     "tm51": [
       {
         "how": "reward",
         "place": "도라지시티 체육관",
-        "detail": "관장 비상 승리 · 스토리 진행 중"
+        "detail": "관장 비상 승리 · 스토리 진행 중",
+        "region": "johto"
       }
     ],
     "tm52": [
@@ -4983,7 +5058,8 @@
             "amount": 5500,
             "unit": "money"
           }
-        ]
+        ],
+        "region": "johto"
       }
     ],
     "tm53": [
@@ -5001,7 +5077,8 @@
             "unit": "bp"
           }
         ],
-        "detail": "BP 교환 · 특수 기술"
+        "detail": "BP 교환 · 특수 기술",
+        "region": "johto"
       }
     ],
     "tm54": [
@@ -5013,11 +5090,13 @@
             "amount": 2000,
             "unit": "money"
           }
-        ]
+        ],
+        "region": "johto"
       },
       {
         "how": "field",
-        "place": "어둠동굴"
+        "place": "어둠동굴",
+        "region": "johto"
       }
     ],
     "tm55": [
@@ -5029,13 +5108,15 @@
             "amount": 3000,
             "unit": "money"
           }
-        ]
+        ],
+        "region": "kanto"
       }
     ],
     "tm56": [
       {
         "how": "field",
-        "place": "돌산터널"
+        "place": "돌산터널",
+        "region": "kanto"
       },
       {
         "how": "other",
@@ -5051,12 +5132,14 @@
       {
         "how": "gift",
         "place": "관동발전소",
-        "detail": "기계부품을 돌려준 보답 · 스토리 진행 중"
+        "detail": "기계부품을 돌려준 보답 · 스토리 진행 중",
+        "region": "kanto"
       },
       {
         "how": "field",
         "place": "담청시티",
-        "detail": "파도타기 필요"
+        "detail": "파도타기 필요",
+        "region": "johto"
       },
       {
         "how": "prize",
@@ -5072,7 +5155,8 @@
             "unit": "money"
           }
         ],
-        "detail": "수요일"
+        "detail": "수요일",
+        "region": "johto"
       }
     ],
     "tm58": [
@@ -5089,14 +5173,16 @@
             "amount": 2000,
             "unit": "coins"
           }
-        ]
+        ],
+        "region": "kanto"
       }
     ],
     "tm59": [
       {
         "how": "reward",
         "place": "검은먹시티",
-        "detail": "체육관 관장 이향 · 용의굴 시험 후 · 스토리 진행 중"
+        "detail": "체육관 관장 이향 · 용의굴 시험 후 · 스토리 진행 중",
+        "region": "johto"
       },
       {
         "how": "exchange",
@@ -5112,13 +5198,15 @@
             "unit": "bp"
           }
         ],
-        "detail": "BP 교환 · 특수 기술"
+        "detail": "BP 교환 · 특수 기술",
+        "region": "johto"
       }
     ],
     "tm60": [
       {
         "how": "field",
-        "place": "39번 도로"
+        "place": "39번 도로",
+        "region": "johto"
       },
       {
         "how": "prize",
@@ -5134,7 +5222,8 @@
             "unit": "money"
           }
         ],
-        "detail": "목요일"
+        "detail": "목요일",
+        "region": "johto"
       }
     ],
     "tm61": [
@@ -5152,13 +5241,15 @@
             "unit": "bp"
           }
         ],
-        "detail": "BP 교환 · 변화 기술"
+        "detail": "BP 교환 · 변화 기술",
+        "region": "johto"
       }
     ],
     "tm62": [
       {
         "how": "field",
-        "place": "6번 도로"
+        "place": "6번 도로",
+        "region": "kanto"
       },
       {
         "how": "prize",
@@ -5174,26 +5265,30 @@
             "unit": "money"
           }
         ],
-        "detail": "토요일"
+        "detail": "토요일",
+        "region": "johto"
       }
     ],
     "tm63": [
       {
         "how": "field",
-        "place": "34번 도로"
+        "place": "34번 도로",
+        "region": "johto"
       }
     ],
     "tm64": [
       {
         "how": "trade",
         "place": "5번·6번 도로 지하통로",
-        "detail": "분노의호두과자(황토마을, 300원)와 맞바꿈 · 발전소 사건 후"
+        "detail": "분노의호두과자(황토마을, 300원)와 맞바꿈 · 발전소 사건 후",
+        "region": "kanto"
       }
     ],
     "tm65": [
       {
         "how": "field",
-        "place": "42번 도로"
+        "place": "42번 도로",
+        "region": "johto"
       },
       {
         "how": "prize",
@@ -5209,19 +5304,22 @@
             "unit": "money"
           }
         ],
-        "detail": "월요일"
+        "detail": "월요일",
+        "region": "johto"
       }
     ],
     "tm66": [
       {
         "how": "field",
-        "place": "35번 도로"
+        "place": "35번 도로",
+        "region": "johto"
       }
     ],
     "tm67": [
       {
         "how": "field",
-        "place": "무지개시티"
+        "place": "무지개시티",
+        "region": "kanto"
       }
     ],
     "tm68": [
@@ -5238,20 +5336,23 @@
             "amount": 15000,
             "unit": "coins"
           }
-        ]
+        ],
+        "region": "kanto"
       }
     ],
     "tm69": [
       {
         "how": "field",
-        "place": "10번 도로 남쪽"
+        "place": "10번 도로 남쪽",
+        "region": "kanto"
       }
     ],
     "tm70": [
       {
         "how": "reward",
         "place": "모다피의탑",
-        "detail": "장로 승리"
+        "detail": "장로 승리",
+        "region": "johto"
       },
       {
         "how": "shop",
@@ -5261,7 +5362,8 @@
             "amount": 1000,
             "unit": "money"
           }
-        ]
+        ],
+        "region": "johto"
       }
     ],
     "tm71": [
@@ -5279,13 +5381,15 @@
             "unit": "bp"
           }
         ],
-        "detail": "BP 교환 · 물리 기술"
+        "detail": "BP 교환 · 물리 기술",
+        "region": "johto"
       }
     ],
     "tm72": [
       {
         "how": "field",
-        "place": "얼음샛길 지하 2층"
+        "place": "얼음샛길 지하 2층",
+        "region": "johto"
       },
       {
         "how": "shop",
@@ -5295,7 +5399,8 @@
             "amount": 3000,
             "unit": "money"
           }
-        ]
+        ],
+        "region": "kanto"
       }
     ],
     "tm73": [
@@ -5313,7 +5418,8 @@
             "unit": "bp"
           }
         ],
-        "detail": "BP 교환 · 변화 기술"
+        "detail": "BP 교환 · 변화 기술",
+        "region": "johto"
       }
     ],
     "tm74": [
@@ -5330,7 +5436,8 @@
             "amount": 10000,
             "unit": "coins"
           }
-        ]
+        ],
+        "region": "kanto"
       }
     ],
     "tm75": [
@@ -5347,7 +5454,8 @@
             "amount": 4000,
             "unit": "coins"
           }
-        ]
+        ],
+        "region": "johto"
       }
     ],
     "tm76": [
@@ -5359,19 +5467,22 @@
             "amount": 2000,
             "unit": "money"
           }
-        ]
+        ],
+        "region": "kanto"
       }
     ],
     "tm77": [
       {
         "how": "field",
-        "place": "상록숲"
+        "place": "상록숲",
+        "region": "kanto"
       }
     ],
     "tm78": [
       {
         "how": "field",
-        "place": "금빛시티 게임코너"
+        "place": "금빛시티 게임코너",
+        "region": "johto"
       },
       {
         "how": "shop",
@@ -5381,13 +5492,15 @@
             "amount": 3000,
             "unit": "money"
           }
-        ]
+        ],
+        "region": "kanto"
       }
     ],
     "tm79": [
       {
         "how": "field",
-        "place": "챔피언로드"
+        "place": "챔피언로드",
+        "region": "johto"
       },
       {
         "how": "shop",
@@ -5397,14 +5510,16 @@
             "amount": 3000,
             "unit": "money"
           }
-        ]
+        ],
+        "region": "kanto"
       }
     ],
     "tm80": [
       {
         "how": "reward",
         "place": "회색시티 체육관",
-        "detail": "관장 웅 승리 · 스토리 진행 중"
+        "detail": "관장 웅 승리 · 스토리 진행 중",
+        "region": "kanto"
       }
     ],
     "tm81": [
@@ -5422,20 +5537,23 @@
             "unit": "bp"
           }
         ],
-        "detail": "BP 교환 · 물리 기술"
+        "detail": "BP 교환 · 물리 기술",
+        "region": "johto"
       }
     ],
     "tm82": [
       {
         "how": "field",
-        "place": "금빛시티 백화점 지하"
+        "place": "금빛시티 백화점 지하",
+        "region": "johto"
       }
     ],
     "tm83": [
       {
         "how": "gift",
         "place": "39번 도로 모모목장",
-        "detail": "밀탱크에게 오랭열매 7개"
+        "detail": "밀탱크에게 오랭열매 7개",
+        "region": "johto"
       },
       {
         "how": "shop",
@@ -5445,27 +5563,31 @@
             "amount": 2000,
             "unit": "money"
           }
-        ]
+        ],
+        "region": "johto"
       }
     ],
     "tm84": [
       {
         "how": "reward",
         "place": "연분홍시티 체육관",
-        "detail": "관장 도희 승리 · 스토리 진행 중"
+        "detail": "관장 도희 승리 · 스토리 진행 중",
+        "region": "kanto"
       }
     ],
     "tm85": [
       {
         "how": "gift",
         "place": "상록시티",
-        "detail": "풀베기 필요"
+        "detail": "풀베기 필요",
+        "region": "kanto"
       }
     ],
     "tm86": [
       {
         "how": "field",
-        "place": "11번 도로"
+        "place": "11번 도로",
+        "region": "kanto"
       },
       {
         "how": "other",
@@ -5480,7 +5602,8 @@
     "tm87": [
       {
         "how": "field",
-        "place": "담청등대 4층"
+        "place": "담청등대 4층",
+        "region": "johto"
       },
       {
         "how": "shop",
@@ -5490,20 +5613,23 @@
             "amount": 1500,
             "unit": "money"
           }
-        ]
+        ],
+        "region": "kanto"
       }
     ],
     "tm88": [
       {
         "how": "field",
-        "place": "40번 수로"
+        "place": "40번 수로",
+        "region": "johto"
       }
     ],
     "tm89": [
       {
         "how": "reward",
         "place": "고동마을 체육관",
-        "detail": "관장 호일 승리"
+        "detail": "관장 호일 승리",
+        "region": "johto"
       },
       {
         "how": "exchange",
@@ -5519,7 +5645,8 @@
             "unit": "bp"
           }
         ],
-        "detail": "BP 교환 · 물리 기술"
+        "detail": "BP 교환 · 물리 기술",
+        "region": "johto"
       }
     ],
     "tm90": [
@@ -5536,13 +5663,15 @@
             "amount": 2000,
             "unit": "coins"
           }
-        ]
+        ],
+        "region": "johto"
       }
     ],
     "tm91": [
       {
         "how": "field",
-        "place": "9번 도로"
+        "place": "9번 도로",
+        "region": "kanto"
       },
       {
         "how": "prize",
@@ -5558,14 +5687,16 @@
             "unit": "money"
           }
         ],
-        "detail": "화요일"
+        "detail": "화요일",
+        "region": "johto"
       }
     ],
     "tm92": [
       {
         "how": "reward",
         "place": "상록시티 체육관",
-        "detail": "관장 그린 승리 · 스토리 진행 중"
+        "detail": "관장 그린 승리 · 스토리 진행 중",
+        "region": "kanto"
       }
     ],
     "toxic-plate": [
