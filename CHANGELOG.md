@@ -255,6 +255,9 @@ and the project uses [Semantic Versioning](https://semver.org/).
   arrow from shifting the label.
 
 ### Fixed
+- Home cards with several series no longer float the later series in mid-air: each later series
+  stands on a stepped riser (a bleacher tier in the card's accent tint) behind the first, the front
+  centre is a little smaller, and every row stands on its own ground with a foot shadow.
 - Items detail lists only Pokémon met in the chosen game: TM learners and evolution targets are
   limited to the game's regional dex plus species caught in the wild there (whole evolution chains),
   so HGSS no longer shows Giratina, Rayquaza or Arceus (event/static specials outside the Johto dex)
