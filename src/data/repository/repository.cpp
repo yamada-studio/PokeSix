@@ -95,15 +95,18 @@ QList<ItemEvolution> Repository::evolutionsWithItem(int itemId, int generation)
         return evolutions;
     // 사용(item_id) · 지님(held_item_id) 모두. 규칙이 세대마다 여러 줄일 수 있어 DISTINCT.
     QSqlQuery query(QSqlDatabase::database(m_connection));
-    query.prepare(QStringLiteral("SELECT DISTINCT f.name_ko, f.name_en, f.name_ja, "
-                                 "       t.name_ko, t.name_en, t.name_ja, e.held_item_id = :held, "
-                                 "       t.id "
-                                 "FROM evolutions e "
-                                 "JOIN species t ON t.id = e.evolved_species_id "
-                                 "LEFT JOIN species f ON f.id = t.evolves_from "
-                                 "WHERE (e.item_id = :item OR e.held_item_id = :held2) "
-                                 "  AND e.generation <= :g AND t.intro_gen <= :g2 "
-                                 "ORDER BY t.id"));
+    query.prepare(
+            QStringLiteral("SELECT DISTINCT f.name_ko, f.name_en, f.name_ja, "
+                           "       t.name_ko, t.name_en, t.name_ja, e.held_item_id = :held, "
+                           "       t.id, pf.id, pt.id "
+                           "FROM evolutions e "
+                           "JOIN species t ON t.id = e.evolved_species_id "
+                           "LEFT JOIN species f ON f.id = t.evolves_from "
+                           "LEFT JOIN pokemon pt ON pt.species_id = t.id AND pt.is_default = 1 "
+                           "LEFT JOIN pokemon pf ON pf.species_id = f.id AND pf.is_default = 1 "
+                           "WHERE (e.item_id = :item OR e.held_item_id = :held2) "
+                           "  AND e.generation <= :g AND t.intro_gen <= :g2 "
+                           "ORDER BY t.id"));
     query.bindValue(QStringLiteral(":item"), itemId);
     query.bindValue(QStringLiteral(":held"), itemId);
     query.bindValue(QStringLiteral(":held2"), itemId);
@@ -119,8 +122,45 @@ QList<ItemEvolution> Repository::evolutionsWithItem(int itemId, int generation)
                            localized(query, 3),
                            query.value(6).toBool(),
                            query.value(7).toInt(),
+                           query.value(8).toInt(),
+                           query.value(9).toInt(),
                            {}});
     return evolutions;
+}
+
+QList<SpeciesRow> Repository::machineLearners(const QString &item, const QString &versionGroup)
+{
+    QList<SpeciesRow> rows;
+    if (!open())
+        return rows;
+    // 기술머신 → 그 게임의 담긴 기술 → 그 게임에서 기술머신(method 4)으로 배우는 포켓몬. 폼마다
+    // 줄이 있어서 종의 기본 모습만 남긴다
+    QSqlQuery query(QSqlDatabase::database(m_connection));
+    query.prepare(QStringLiteral(
+            "SELECT DISTINCT s.id, p.id, s.name_ko, s.name_en, s.name_ja FROM machines m "
+            "JOIN items i ON i.id = m.item_id "
+            "JOIN version_groups vg ON vg.id = m.version_group_id "
+            "JOIN pokemon_moves pm ON pm.version_group_id = vg.id AND pm.move_id = m.move_id "
+            "  AND pm.method = 4 "
+            "JOIN pokemon p ON p.id = pm.pokemon_id AND p.is_default = 1 "
+            "JOIN species s ON s.id = p.species_id "
+            "WHERE i.identifier = :item AND vg.identifier = :vg ORDER BY s.id"));
+    query.bindValue(QStringLiteral(":item"), item);
+    query.bindValue(QStringLiteral(":vg"), versionGroup);
+    if (!query.exec()) {
+        m_error = query.lastError().text();
+        qCWarning(lcData) << "machine learners query failed:" << m_error;
+        return rows;
+    }
+    while (query.next()) {
+        SpeciesRow row;
+        row.speciesId = query.value(0).toInt();
+        row.pokemonId = query.value(1).toInt();
+        row.name = localized(query, 2);
+        row.dexNumber = row.speciesId;
+        rows.append(row);
+    }
+    return rows;
 }
 
 QList<SpeciesRow> Repository::speciesForGeneration(int generation)

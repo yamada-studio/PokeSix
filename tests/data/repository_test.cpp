@@ -705,6 +705,29 @@ TEST_F(RepositoryTest, SquadsSplitFromAGroupSquadPerVersion)
     EXPECT_EQ(session.squad().members[1].pokemonId, 0);
 }
 
+TEST_F(RepositoryTest, MachineLearnersFollowTheGame)
+{
+    Repository repository(s_dbPath);
+    auto speciesOf = [&](const char *item, const char *group) {
+        QList<int> ids;
+        for (const SpeciesRow &row :
+             repository.machineLearners(QLatin1String(item), QLatin1String(group)))
+            ids.append(row.speciesId);
+        return ids;
+    };
+    // 시드의 Pt 기술머신26(지진)은 한카리아스만, 기술머신06(맹독)은 다섯 종 모두(종 번호 순)
+    EXPECT_EQ(speciesOf("tm26", "platinum"), (QList<int> {445}));
+    EXPECT_EQ(speciesOf("tm06", "platinum"), (QList<int> {1, 35, 36, 37, 445}));
+    EXPECT_TRUE(speciesOf("tm26", "black-white").isEmpty());    // 시드에 없는 게임
+    EXPECT_TRUE(speciesOf("fire-stone", "platinum").isEmpty()); // 기술머신이 아니다
+    // 진화 아이템: 진화 전 · 후의 아이콘(기본 모습)
+    const QList<ItemEvolution> moon = repository.evolutionsWithItem(81, 4); // 달의돌
+    ASSERT_FALSE(moon.isEmpty());
+    EXPECT_EQ(moon.first().speciesId, 36);
+    EXPECT_EQ(moon.first().fromPokemonId, 35);
+    EXPECT_EQ(moon.first().toPokemonId, 36);
+}
+
 TEST_F(RepositoryTest, VersionsResolveAndKnowTheirExclusives)
 {
     Repository repository(s_dbPath);
