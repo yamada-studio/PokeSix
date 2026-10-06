@@ -720,6 +720,13 @@ TEST_F(RepositoryTest, MachineLearnersFollowTheGame)
     EXPECT_EQ(speciesOf("tm06", "platinum"), (QList<int> {1, 35, 36, 37, 445}));
     EXPECT_TRUE(speciesOf("tm26", "black-white").isEmpty());    // 시드에 없는 게임
     EXPECT_TRUE(speciesOf("fire-stone", "platinum").isEmpty()); // 기술머신이 아니다
+    // 그 게임에서 만나는 종: 시드의 성도(HGSS) 도감에는 이상해씨 · 삐삐 · 픽시 · 식스테일만 있고
+    // 한카리아스는 없다(4세대 전국 기준이 아니다)
+    const QSet<int> johto = repository.gameSpecies(QStringLiteral("heartgold-soulsilver"));
+    EXPECT_TRUE(johto.contains(1));
+    EXPECT_TRUE(johto.contains(37));
+    EXPECT_FALSE(johto.contains(445));
+    EXPECT_TRUE(repository.gameSpecies(QStringLiteral("platinum")).contains(445));
     // 진화 아이템: 진화 전 · 후의 아이콘(기본 모습)
     const QList<ItemEvolution> moon = repository.evolutionsWithItem(81, 4); // 달의돌
     ASSERT_FALSE(moon.isEmpty());

@@ -346,6 +346,14 @@ void ItemsPage::showDetail(const QModelIndex &proxyIndex)
             obtainable.clear();
         return obtainable;
     };
+    // 고른 게임에서 만나는 포켓몬만(HGSS를 골랐는데 기라티나가 나오지 않게 — 세대 전국 기준이
+    // 아니다)
+    const QSet<int> inGame = m_repository->gameSpecies(m_versionGroup);
+    auto meets = [&inGame](int speciesId) {
+        return inGame.isEmpty() || inGame.contains(speciesId);
+    };
+    evolutions.removeIf(
+            [&](const ItemEvolution &evolution) { return !meets(evolution.speciesId); });
     for (ItemEvolution &evolution : evolutions)
         evolution.onlyVersions = onlyIn(evolution.speciesId);
     // 기술머신이면 그 게임 묶음에서 배울 수 있는 포켓몬. 버전 한정은 흐리게 + 툴팁
@@ -353,6 +361,8 @@ void ItemsPage::showDetail(const QModelIndex &proxyIndex)
     if (item.pocket == QLatin1String("machines")) {
         for (const SpeciesRow &row :
              m_repository->machineLearners(item.identifier, m_versionGroup)) {
+            if (!meets(row.speciesId))
+                continue;
             QStringList names;
             for (const QString &version : onlyIn(row.speciesId))
                 names.append(dexstyle::version(version, {}).shortName);

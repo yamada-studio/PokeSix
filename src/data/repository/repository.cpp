@@ -84,6 +84,7 @@ void Repository::close()
 {
     m_details.clear(); // 다시 열면 DB가 새로 만들어졌을 수 있다
     m_otherVersionSpecies.clear();
+    m_gameSpecies.clear();
     if (QSqlDatabase::contains(m_connection))
         QSqlDatabase::database(m_connection, false).close();
 }
@@ -161,6 +162,38 @@ QList<SpeciesRow> Repository::machineLearners(const QString &item, const QString
         rows.append(row);
     }
     return rows;
+}
+
+QSet<int> Repository::gameSpecies(const QString &versionGroup)
+{
+    const auto cached = m_gameSpecies.constFind(versionGroup);
+    if (cached != m_gameSpecies.constEnd())
+        return *cached;
+    QSet<int> species;
+    if (!open())
+        return species;
+    QSqlQuery query(QSqlDatabase::database(m_connection));
+    query.prepare(QStringLiteral(
+            "SELECT s2.id FROM dex_numbers d "
+            "JOIN pokedex_version_groups pvg ON pvg.pokedex_id = d.pokedex_id "
+            "JOIN version_groups vg ON vg.id = pvg.version_group_id "
+            "JOIN species s ON s.id = d.species_id "
+            "JOIN species s2 ON s2.evolution_chain = s.evolution_chain WHERE vg.identifier = :vg "
+            "UNION "
+            "SELECT s2.id FROM encounters e JOIN versions v ON v.id = e.version_id "
+            "JOIN version_groups vg ON vg.id = v.version_group_id "
+            "JOIN pokemon p ON p.id = e.pokemon_id JOIN species s ON s.id = p.species_id "
+            "JOIN species s2 ON s2.evolution_chain = s.evolution_chain "
+            "JOIN encounter_methods em ON em.id = e.method_id "
+            "WHERE vg.identifier = :vg2 AND em.identifier NOT IN ('static', 'gift', 'gift-egg', "
+            "'roaming-grass', 'roaming-water', 'npc-trade')"));
+    query.bindValue(QStringLiteral(":vg"), versionGroup);
+    query.bindValue(QStringLiteral(":vg2"), versionGroup);
+    if (query.exec())
+        while (query.next())
+            species.insert(query.value(0).toInt());
+    m_gameSpecies.insert(versionGroup, species);
+    return species;
 }
 
 QList<SpeciesRow> Repository::speciesForGeneration(int generation)
