@@ -17,7 +17,8 @@
 
 namespace {
 constexpr int kRowHeight = 30;
-constexpr int kIndent = 18; // 깊이 하나
+constexpr int kSourceHeight = 16; // 진화 도구의 입수처 줄
+constexpr int kIndent = 18;       // 깊이 하나
 constexpr int kIconWidth = 36;
 constexpr int kNameGap = 4;
 constexpr int kConditionGap = 8;
@@ -34,18 +35,54 @@ EvolutionView::EvolutionView(SpriteCache *icons, QWidget *parent)
 }
 
 void EvolutionView::setEvolution(const QList<EvolutionStep> &steps, int currentSpeciesId,
-                                 Language language)
+                                 Language language, const QString &versionGroup)
 {
     m_steps = steps;
     m_current = currentSpeciesId;
     m_language = language;
+    m_versionGroup = versionGroup;
     QWidget::updateGeometry();
     QWidget::update();
 }
 
+QString EvolutionView::itemSourcesOf(const EvolutionStep &step) const
+{
+    // 조건에 나오는 도구(사용 · 지님)마다 입수처 한 줄 — "그 도구를 어디서 얻는가"까지 한눈에
+    QStringList lines;
+    QStringList seen;
+    for (const EvolutionCondition &c : step.conditions) {
+        const std::pair<QString, LocalizedText> items[]
+                = {{c.itemIdentifier, c.item}, {c.heldItemIdentifier, c.heldItem}};
+        for (const auto &[identifier, name] : items) {
+            if (identifier.isEmpty() || seen.contains(identifier))
+                continue;
+            seen.append(identifier);
+            const QStringList sources
+                    = guidebook::itemSources(m_versionGroup, identifier, m_language);
+            lines.append(QStringLiteral("%1 — %2").arg(
+                    name.text(m_language), sources.isEmpty()
+                                                   ? tr("입수 정보가 아직 없어요")
+                                                   : sources.join(QStringLiteral(" / "))));
+        }
+    }
+    return lines.join(QStringLiteral("  ·  "));
+}
+
+QList<int> EvolutionView::rowTops() const
+{
+    QList<int> tops;
+    int y = 0;
+    for (const EvolutionStep &step : m_steps) {
+        tops.append(y);
+        y += kRowHeight + (itemSourcesOf(step).isEmpty() ? 0 : kSourceHeight);
+    }
+    tops.append(y);
+    return tops;
+}
+
 QSize EvolutionView::sizeHint() const
 {
-    return {260, int(m_steps.size()) * kRowHeight};
+    return {260, rowTops().last()};
 }
 
 QString EvolutionView::conditionText(const EvolutionCondition &c, Language language)
@@ -125,8 +162,11 @@ QString EvolutionView::conditionsOf(const EvolutionStep &step) const
 
 int EvolutionView::rowAt(int y) const
 {
-    const int row = y / kRowHeight;
-    return row >= 0 && row < m_steps.size() ? row : -1;
+    const QList<int> tops = rowTops();
+    for (qsizetype i = 0; i < m_steps.size(); ++i)
+        if (y >= tops.at(i) && y < tops.at(i + 1))
+            return int(i);
+    return -1;
 }
 
 void EvolutionView::paintEvent(QPaintEvent *)
@@ -136,14 +176,16 @@ void EvolutionView::paintEvent(QPaintEvent *)
     painter.fillRect(rect(), QColor(tok::kWhite));
     const QFont nameFont = theme::font(theme::kFamilyBody, 13, QFont::ExtraBold);
     const QFont conditionFont = theme::font(theme::kFamilyBody, 12);
+    const QList<int> tops = rowTops();
+    const QFont sourceFont = theme::font(theme::kFamilyBody, 11);
     for (qsizetype i = 0; i < m_steps.size(); ++i) {
         const EvolutionStep &step = m_steps.at(i);
-        const int top = int(i) * kRowHeight;
+        const int top = tops.at(i);
         const bool current = step.speciesId == m_current;
         if (current) {
             painter.setPen(Qt::NoPen);
             painter.setBrush(QColor(tok::kYellowTint));
-            painter.drawRoundedRect(QRectF(0, top + 1, width(), kRowHeight - 2), 4, 4);
+            painter.drawRoundedRect(QRectF(0, top + 1, width(), tops.at(i + 1) - top - 2), 4, 4);
         }
         qreal x = step.depth * kIndent;
         if (step.depth > 0) { // ↳ 꺾은 선
@@ -172,6 +214,17 @@ void EvolutionView::paintEvent(QPaintEvent *)
                              QFontMetricsF(conditionFont)
                                      .elidedText(conditions, Qt::ElideRight, width() - x - 4));
         }
+        // 진화 도구의 입수처: 바로 아래 작은 줄(물의돌 — 필드 · …). 잘리면 툴팁이 전체를 보여 준다
+        const QString sources = itemSourcesOf(step);
+        if (!sources.isEmpty()) {
+            const qreal sx = step.depth * kIndent + kIconWidth + kNameGap;
+            painter.setFont(sourceFont);
+            painter.setPen(QColor(tok::kText3));
+            painter.drawText(QRectF(sx, top + kRowHeight - 4, width() - sx - 4, kSourceHeight),
+                             Qt::AlignLeft | Qt::AlignVCenter,
+                             QFontMetricsF(sourceFont)
+                                     .elidedText(sources, Qt::ElideRight, width() - sx - 4));
+        }
     }
 }
 
@@ -195,6 +248,12 @@ bool EvolutionView::event(QEvent *event)
         const auto *help = static_cast<QHelpEvent *>(event);
         const int row = rowAt(help->pos().y());
         QString tip = row >= 0 ? conditionsOf(m_steps.at(row)) : QString();
+        if (row >= 0) { // 도구 입수처는 줄에서 잘리기 쉽다 — 툴팁에 전체를
+            const QString sources = itemSourcesOf(m_steps.at(row));
+            if (!sources.isEmpty())
+                tip += (tip.isEmpty() ? QString() : QStringLiteral("\n"))
+                       + QString(sources).replace(QStringLiteral("  ·  "), QStringLiteral("\n"));
+        }
         if (tip.isEmpty())
             QToolTip::hideText();
         else

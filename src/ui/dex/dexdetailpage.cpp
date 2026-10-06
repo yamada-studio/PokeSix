@@ -392,7 +392,8 @@ void DexDetailPage::applyLanguage()
     const bool evolves = !m_detail.evolution.isEmpty();
     m_evolutionLabel->setVisible(evolves);
     m_evolution->setVisible(evolves);
-    m_evolution->setEvolution(m_detail.evolution, m_detail.speciesId, language);
+    m_evolution->setEvolution(m_detail.evolution, m_detail.speciesId, language,
+                              m_detail.versionGroup);
     bool evolvedForm = false; // 진화 전 단계가 있다(야생에 없으면 그 단계에서 진화시킨다)
     for (const EvolutionStep &step : std::as_const(m_detail.evolution))
         evolvedForm = evolvedForm || (step.speciesId == m_detail.speciesId && step.depth > 0);

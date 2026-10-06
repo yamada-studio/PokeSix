@@ -7,6 +7,10 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- The evolution chain shows where to get each required item, right under its step: "물의돌 사용"
+  gets a "물의돌 — 경품 · 자연공원 (벌레잡기대회 1등) / 42번 도로" line (from the chosen game's
+  acquisition book; tooltips carry the full text), for both use-items and held trade items
+  (왕의징표석 — 야돈우물). The squad member modal also grows to 1320×840.
 - Squad slot cards gain a [+] button in the header that opens the member's full Pokédex detail as
   a modal — picture, stats, abilities, matchups, evolution chain with conditions, and every move
   table (level-up with the Heart Scale mark, TMs with locations, NPC tutors with costs), based on

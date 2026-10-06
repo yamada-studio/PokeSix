@@ -398,6 +398,10 @@
         <source>기기 뒤집기</source>
         <translation>本体を逆さに</translation>
     </message>
+    <message>
+        <source>입수 정보가 아직 없어요</source>
+        <translation>入手情報はまだありません</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::FirstRunPanel</name>

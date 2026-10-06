@@ -877,7 +877,7 @@ void SquadPage::showMemberDetail(int slot)
     detail->showPokemon(pokemonId, m_session->versionGroup());
     layout->addWidget(detail);
     connect(detail, &DexDetailPage::backRequested, &dialog, &QDialog::accept); // [← 목록] = 닫기
-    dialog.resize(1200, 800);
+    dialog.resize(1320, 840);
     dialog.exec();
 }
 

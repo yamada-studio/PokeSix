@@ -398,6 +398,10 @@ to see a summary here</translation>
         <source>기기 뒤집기</source>
         <translation>upside down</translation>
     </message>
+    <message>
+        <source>입수 정보가 아직 없어요</source>
+        <translation>no acquisition data yet</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::FirstRunPanel</name>
