@@ -23,6 +23,7 @@
 #include <QHBoxLayout>
 #include <QHeaderView>
 #include <QLineEdit>
+#include <QScrollArea>
 #include <QTableView>
 #include <QTimer>
 #include <QVBoxLayout>
@@ -119,8 +120,20 @@ ItemsPage::ItemsPage(Repository *repository, AppState *state, QWidget *parent)
     m_detail = new ItemDetailPane(m_sprites);
     QWidget *detailBody = new QWidget;
     QVBoxLayout *detailLayout = new QVBoxLayout(detailBody);
-    detailLayout->setContentsMargins(12, 10, 12, 12);
-    detailLayout->addWidget(m_detail);
+    detailLayout->setContentsMargins(0, 0, 0, 0);
+    // 상세는 세로로 넘칠 수 있다(기술머신의 배울 수 있는 포켓몬) → 상세 칸 안에서 스크롤
+    QScrollArea *detailScroll = new QScrollArea;
+    detailScroll->setObjectName(QStringLiteral("itemDetailScroll"));
+    detailScroll->setWidgetResizable(true);
+    detailScroll->setFrameShape(QFrame::NoFrame);
+    detailScroll->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    QWidget *detailContent = new QWidget;
+    detailContent->setObjectName(QStringLiteral("itemDetailContent"));
+    QVBoxLayout *contentLayout = new QVBoxLayout(detailContent);
+    contentLayout->setContentsMargins(12, 10, 12, 12);
+    contentLayout->addWidget(m_detail);
+    detailScroll->setWidget(detailContent);
+    detailLayout->addWidget(detailScroll);
     m_detailPanel->setBody(detailBody);
     layout->addWidget(m_detailPanel);
 
@@ -321,19 +334,36 @@ void ItemsPage::showDetail(const QModelIndex &proxyIndex)
     const auto game
             = std::find_if(m_gameList.cbegin(), m_gameList.cend(),
                            [this](const GameInfo &g) { return g.versionGroup == m_versionGroup; });
-    if (game != m_gameList.cend() && game->versions.size() > 1) {
-        for (ItemEvolution &evolution : evolutions) {
-            QStringList obtainable;
-            for (const QString &version : game->versions)
-                if (!m_repository->otherVersionSpecies(version).contains(evolution.speciesId))
-                    obtainable.append(version);
-            if (obtainable.size() < game->versions.size())
-                evolution.onlyVersions = obtainable;
+    // 그 종을 얻을 수 있는 버전(모든 버전이면 빈 목록)
+    auto onlyIn = [&](int speciesId) {
+        QStringList obtainable;
+        if (game == m_gameList.cend() || game->versions.size() < 2)
+            return obtainable;
+        for (const QString &version : game->versions)
+            if (!m_repository->otherVersionSpecies(version).contains(speciesId))
+                obtainable.append(version);
+        if (obtainable.size() == game->versions.size())
+            obtainable.clear();
+        return obtainable;
+    };
+    for (ItemEvolution &evolution : evolutions)
+        evolution.onlyVersions = onlyIn(evolution.speciesId);
+    // 기술머신이면 그 게임 묶음에서 배울 수 있는 포켓몬. 버전 한정은 흐리게 + 툴팁
+    QList<PokemonIconGrid::Entry> learners;
+    if (item.pocket == QLatin1String("machines")) {
+        for (const SpeciesRow &row :
+             m_repository->machineLearners(item.identifier, m_versionGroup)) {
+            QStringList names;
+            for (const QString &version : onlyIn(row.speciesId))
+                names.append(dexstyle::version(version, {}).shortName);
+            learners.append({row.pokemonId, row.name.text(m_state->language()),
+                             names.isEmpty() ? QString()
+                                             : tr("%1 한정").arg(names.join(QLatin1Char('/')))});
         }
     }
     const QStringList places
             = guidebook::itemSources(m_versionGroup, item.identifier, m_state->language());
-    m_detail->setItem(item, generation, m_state->language(), evolutions, places);
+    m_detail->setItem(item, generation, m_state->language(), evolutions, places, learners);
 }
 
 void ItemsPage::setGameChips(const QList<GameInfo> &games)

@@ -610,11 +610,11 @@
     </message>
     <message>
         <source>%1 → %2</source>
-        <translation>%1 → %2</translation>
+        <translation type="vanished">%1 → %2</translation>
     </message>
     <message>
         <source> (지니고 교환)</source>
-        <translation>（持たせて通信交換）</translation>
+        <translation type="vanished">（持たせて通信交換）</translation>
     </message>
     <message>
         <source>획득처</source>
@@ -630,7 +630,19 @@
     </message>
     <message>
         <source> (%1 한정)</source>
-        <translation>(%1限定)</translation>
+        <translation type="vanished">(%1限定)</translation>
+    </message>
+    <message>
+        <source>지니고 교환</source>
+        <translation>持たせて通信交換</translation>
+    </message>
+    <message>
+        <source>%1 한정</source>
+        <translation>%1限定</translation>
+    </message>
+    <message>
+        <source>배울 수 있는 포켓몬 · %1마리</source>
+        <translation>覚えられるポケモン · %1匹</translation>
     </message>
 </context>
 <context>
@@ -676,6 +688,10 @@
     <message>
         <source>상세</source>
         <translation>詳細</translation>
+    </message>
+    <message>
+        <source>%1 한정</source>
+        <translation>%1限定</translation>
     </message>
 </context>
 <context>

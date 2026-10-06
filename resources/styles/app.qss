@@ -127,6 +127,7 @@ QTableView#itemsTable { border: none; background: @white; }
 
 /* ── 도감 상세 (DexDetailPage). 섹션은 PanelFrame · 직접 그리는 위젯이 그린다 ── */
 QScrollArea#dexDetailScroll, QScrollArea#dexDetailScroll > QWidget > QWidget#dexDetailContent { background: transparent; border: none; }
+QScrollArea#itemDetailScroll, QScrollArea#itemDetailScroll > QWidget > QWidget#itemDetailContent { background: transparent; border: none; }
 QScrollArea#dexDetailScroll > QWidget { background: transparent; }
 QLabel#dexDetailBasis { font-size: 13px; font-weight: 700; color: @text.2; }
 QScrollArea#dexEncounterScroll, QScrollArea#dexEncounterScroll > QWidget { background: transparent; border: none; }

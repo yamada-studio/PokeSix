@@ -610,11 +610,11 @@ to see its details here</translation>
     </message>
     <message>
         <source>%1 → %2</source>
-        <translation>%1 → %2</translation>
+        <translation type="vanished">%1 → %2</translation>
     </message>
     <message>
         <source> (지니고 교환)</source>
-        <translation> (trade holding it)</translation>
+        <translation type="vanished"> (trade holding it)</translation>
     </message>
     <message>
         <source>획득처</source>
@@ -630,7 +630,19 @@ to see its details here</translation>
     </message>
     <message>
         <source> (%1 한정)</source>
-        <translation> (%1 only)</translation>
+        <translation type="vanished"> (%1 only)</translation>
+    </message>
+    <message>
+        <source>지니고 교환</source>
+        <translation>trade holding it</translation>
+    </message>
+    <message>
+        <source>%1 한정</source>
+        <translation>%1 only</translation>
+    </message>
+    <message>
+        <source>배울 수 있는 포켓몬 · %1마리</source>
+        <translation>Pokémon that can learn it · %1</translation>
     </message>
 </context>
 <context>
@@ -676,6 +688,10 @@ to see its details here</translation>
     <message>
         <source>상세</source>
         <translation>Details</translation>
+    </message>
+    <message>
+        <source>%1 한정</source>
+        <translation>%1 only</translation>
     </message>
 </context>
 <context>

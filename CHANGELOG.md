@@ -7,6 +7,11 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- The Items detail shows Pokémon: a TM/HM lists every Pokémon that can learn it in the chosen game
+  group as a box-icon grid ("배울 수 있는 포켓몬 · 169마리", names in tooltips, version exclusives
+  faded with "SS 한정"), and evolution items draw their targets as icon rows ("[무우마] → [무우마직]
+  P 한정", "지니고 교환"). The detail scrolls inside its panel when it grows long
+  (`Repository::machineLearners`, `ItemEvolution` gains the species' default Pokémon ids).
 - Items picks a game group with the Pokédex's dex-chip look — [신오 D|P] [신오 Pt] [성도 HG|SS] —
   local to the page (it starts from the app's game and follows it when the squad changes it, but
   does not change it). Version differences inside the group are spelled out in the detail:
