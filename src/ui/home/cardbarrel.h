@@ -20,6 +20,9 @@ class SpriteCache;
 //            옆 카드를 누르면 그 카드가 정면으로 돌아온다. 휠 · ← → 도 한 칸씩 돌린다.
 //   등장   — 보일 때마다 배럴이 반 바퀴쯤 돌면서 자리를 잡는다.
 //   정면   — 노란 테 + 띠의 ▶ (앱의 선택 문법). 다른 곳(앱 막대)에서 세대를 바꾸면 따라 돈다.
+//   선택   — 테두리는 누른 카드로 바로 옮기지만 AppState의 세대는 회전이 끝난 뒤에 바꾼다.
+//            세대가 바뀌면 스쿼드 세션이 DB를 다시 읽어(디버그 빌드 ~120ms) 그동안 애니메이션이
+//            멈췄다가 튀었다. 화면을 떠나면(hide) 기다리지 않고 바로 바꾼다.
 //
 // 카드는 자식 위젯이 아니라 paintEvent에서 QTransform으로 직접 그린다. 내용(마스코트 · 띠 색 ·
 // 지방 이름)은 homecards.json, 그림은 기본 정면 스프라이트(여백을 잘라 Scale2x로 키워 캐시).
@@ -34,6 +37,7 @@ public:
 protected:
     void paintEvent(QPaintEvent *event) override;
     void showEvent(QShowEvent *event) override;
+    void hideEvent(QHideEvent *event) override;
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
@@ -59,6 +63,8 @@ private:
     int frontIndex() const;   // 지금 각도에서 정면에 가장 가까운 카드
     void rotateTo(int index); // 그 카드가 정면에 오게 돌리고(최단 방향) 선택한다
     void snapToNearest();     // 끌다 놓았다 → 가장 가까운 카드로
+    int selectedGeneration() const; // 테두리를 그릴 세대(회전 중이면 갈 곳)
+    void commitGeneration();        // 미뤄 둔 세대를 AppState에 넘긴다
 
     AppState *m_state = nullptr; // 소유하지 않는다
     QList<homecards::Card> m_cards;
@@ -67,6 +73,7 @@ private:
 
     qreal m_angle = 0; // 배럴의 회전(라디안). 카드 i의 각 = i × step + m_angle
     QVariantAnimation *m_turnAnimation = nullptr;
+    int m_pendingGeneration = 0; // 회전이 끝나면 고를 세대(0 = 없음)
 
     bool m_pressed = false;
     bool m_dragging = false;

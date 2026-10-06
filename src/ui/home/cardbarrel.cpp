@@ -16,6 +16,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <utility>
 
 namespace {
 using namespace com::yamada::studio;
@@ -102,6 +103,7 @@ CardBarrel::CardBarrel(AppState *state, QWidget *parent)
         QWidget::update();
     });
 
+    connect(m_turnAnimation, &QAbstractAnimation::finished, this, &CardBarrel::commitGeneration);
     connect(m_fronts, &SpriteCache::ready, this, qOverload<>(&QWidget::update));
     // 다른 곳(앱 막대)에서 세대가 바뀌어도 그 카드가 정면으로 돌아오게
     connect(m_state, &AppState::generationChanged, this, [this](int generation) {
@@ -198,7 +200,22 @@ void CardBarrel::rotateTo(int index)
     m_turnAnimation->setStartValue(m_angle);
     m_turnAnimation->setEndValue(target);
     m_turnAnimation->start();
-    m_state->setGeneration(m_cards.at(index).generation);
+    const int generation = m_cards.at(index).generation;
+    m_pendingGeneration = generation == m_state->generation() ? 0 : generation;
+    QWidget::update();
+}
+
+int CardBarrel::selectedGeneration() const
+{
+    return m_pendingGeneration != 0 ? m_pendingGeneration : m_state->generation();
+}
+
+void CardBarrel::commitGeneration()
+{
+    if (m_pendingGeneration == 0)
+        return;
+    const int generation = std::exchange(m_pendingGeneration, 0);
+    m_state->setGeneration(generation);
 }
 
 void CardBarrel::snapToNearest()
@@ -231,6 +248,12 @@ void CardBarrel::showEvent(QShowEvent *event)
     m_turnAnimation->setStartValue(target + kEnterOffset);
     m_turnAnimation->setEndValue(target);
     m_turnAnimation->start();
+}
+
+void CardBarrel::hideEvent(QHideEvent *event)
+{
+    QWidget::hideEvent(event);
+    commitGeneration(); // 메뉴를 눌러 떠나면 다음 화면이 고른 세대로 열리게
 }
 
 void CardBarrel::mousePressEvent(QMouseEvent *event)
@@ -336,7 +359,7 @@ void CardBarrel::paintCard(QPainter &painter, const Layout &barrel, int index) c
     const QString title = tr("%1세대").arg(card.generation);
     painter.drawText(band, Qt::AlignCenter, title);
     // 고른 카드(= 정면): 띠 글자 앞에 ▶ (메뉴의 선택 커서와 같은 문법)
-    if (card.generation == m_state->generation()) {
+    if (card.generation == selectedGeneration()) {
         const qreal textLeft
                 = band.center().x() - QFontMetricsF(painter.font()).horizontalAdvance(title) / 2;
         QPainterPath cursor;
@@ -422,7 +445,7 @@ void CardBarrel::paintCard(QPainter &painter, const Layout &barrel, int index) c
     painter.drawRoundedRect(QRectF(stage).adjusted(0.75, 0.75, -0.75, -0.75), 8, 8);
 
     // 고른 카드: 노란 테 (선택 칸의 문법, 디자인 시트 §3)
-    if (card.generation == m_state->generation()) {
+    if (card.generation == selectedGeneration()) {
         painter.setClipping(false);
         painter.setBrush(Qt::NoBrush);
         painter.setPen(QPen(QColor(tok::kYellow), 3));
