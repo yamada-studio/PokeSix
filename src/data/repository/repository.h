@@ -305,6 +305,8 @@ private:
     QString m_connection;
     QString m_error;
     QHash<QString, QSet<int>> m_otherVersionSpecies; // 버전 → otherVersionSpecies 결과
+    static constexpr qsizetype kDetailCacheSize = 256;
+    QHash<QString, PokemonDetail> m_details; // "포켓몬/세대/게임 묶음" → pokemonDetail 결과
 
     // 실행 전인 query(열: 종 · pokemon · 이름 ko/en/ja · 도감 번호)를 실행해 rows에 담는다.
     bool readSpecies(QSqlQuery &query, QList<SpeciesRow> &rows);
@@ -314,6 +316,7 @@ private:
     void fillMoves(QList<MoveEntry> &moves, int generation);
     // 진화 트리(그 세대 기준)와 레벨업 기술의 하트비늘 표시(진화 전 단계의 레벨업 기술과 견준다)
     void fillEvolution(PokemonDetail &detail, int versionGroupId);
+    PokemonDetail readPokemonDetail(int pokemonId, int generation, const QString &versionGroup);
     // 그 세대의 특성(칸 · 숨겨진 특성)과 효과 문구
     void fillAbilities(PokemonDetail &detail);
 };

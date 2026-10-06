@@ -238,6 +238,11 @@ and the project uses [Semantic Versioning](https://semver.org/).
   arrow from shifting the label.
 
 ### Fixed
+- Switching the squad's game no longer stutters (about 150 ms → 5–25 ms in a debug build). Each
+  Pokémon detail used to scan the whole move, move-history, stat-change and move-effect tables
+  four times and the whole type/stat tables once; those queries now read only the moves and
+  Pokémon they need (28 ms → 3.6 ms per detail), and `Repository` keeps the details it has read
+  (HG ↔ SS share them), cleared when the database is reopened.
 - Clicking another generation card on Home no longer stutters: the barrel used to switch the app's
   generation the moment the turn began, and the squad session's reload (about 120 ms in a debug
   build) froze the first frames so the card jumped. The yellow frame now moves at once and the
