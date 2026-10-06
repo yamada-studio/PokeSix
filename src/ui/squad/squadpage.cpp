@@ -7,6 +7,7 @@
 #include "data/state/appstate.h"
 #include "data/state/squadsession.h"
 #include "data/store/squadstore.h"
+#include "ui/dex/dexdetailpage.h"
 #include "ui/dex/dexrowdelegate.h"
 #include "ui/dex/gameselector.h"
 #include "ui/dex/guidebook.h"
@@ -159,6 +160,7 @@ SquadPage::SquadPage(Repository *repository, AppState *state, QWidget *parent)
         connect(card, &SlotCard::selectRequested, this, &SquadPage::selectSlot);
         connect(card, &SlotCard::addRequested, this, &SquadPage::pickPokemon);
         connect(card, &SlotCard::menuRequested, this, &SquadPage::showSlotMenu);
+        connect(card, &SlotCard::detailRequested, this, &SquadPage::showMemberDetail);
         connect(card, &SlotCard::moveRequested, this, &SquadPage::pickMove);
         connect(card, &SlotCard::abilityRequested, this, &SquadPage::pickAbility);
         connect(card, &SlotCard::natureRequested, this, &SquadPage::pickNature);
@@ -332,7 +334,7 @@ QWidget *SquadPage::buildAnalysis()
     frameLayout->setContentsMargins(14, 12, 14, 14);
     frameLayout->addWidget(m_emptyAnalysis);
     frameLayout->addWidget(body, 1); // 남는 세로는 몸통(→ 문제 칸)이 먼저 가져간다
-    frameLayout->addStretch();       // 문제 칸이 내용 높이에 닿으면 그 뒤 남는 공간은 아래로
+    frameLayout->addStretch(); // 문제 칸이 내용 높이에 닿으면 그 뒤 남는 공간은 아래로
 
     // 분석이 창보다 길면 분석 "안"에서만 스크롤한다(넓은 배치). 페이지 전체가 밀리지 않게.
     m_analysisScroll = new QScrollArea;
@@ -857,6 +859,25 @@ void SquadPage::showProblemDialog()
     dialog.exec();
     m_dialogProblems = nullptr;
     onProblemHovered(-1); // 창을 닫으면 카드 경고 · 열 강조를 푼다
+}
+
+void SquadPage::showMemberDetail(int slot)
+{
+    const int pokemonId = m_session->member(slot).pokemonId;
+    if (pokemonId <= 0)
+        return;
+    // 도감 상세를 그대로 모달로 띄운다 — 그림 · 종족값 · 특성 · 상성 · 진화(조건) · 기술(하트비늘
+    // · 획득처 · NPC 가르침 비용) 전부. 기준 게임은 스쿼드의 게임.
+    QDialog dialog(this);
+    dialog.setWindowTitle(m_session->detail(slot).name.text(m_state->language()));
+    QVBoxLayout *layout = new QVBoxLayout(&dialog);
+    layout->setContentsMargins(0, 0, 0, 0);
+    DexDetailPage *detail = new DexDetailPage(m_repository, m_state);
+    detail->showPokemon(pokemonId, m_session->versionGroup());
+    layout->addWidget(detail);
+    connect(detail, &DexDetailPage::backRequested, &dialog, &QDialog::accept); // [← 목록] = 닫기
+    dialog.resize(1080, 760);
+    dialog.exec();
 }
 
 void SquadPage::showSlotMenu(int slot, const QPoint &globalPos)

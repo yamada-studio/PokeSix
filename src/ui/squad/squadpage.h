@@ -68,6 +68,7 @@ private:
 
     void selectSlot(int slot);
     void showSlotMenu(int slot, const QPoint &globalPos);
+    void showMemberDetail(int slot); // 카드 머리의 [+] — 도감 상세를 모달로
     void pickPokemon(int slot);
     void pickMove(int slot, int index);
     void pickAbility(int slot, const QPoint &globalPos);
@@ -119,8 +120,8 @@ private:
     QLabel *m_emptyAnalysis = nullptr;
     QWidget *m_analysisBody = nullptr;
     ProblemList *m_problems = nullptr;
-    QScrollArea *m_problemScroll = nullptr;  // 문제 목록만의 스크롤
-    QLabel *m_problemCount = nullptr;        // 문제 칸 제목 옆 "13개"
+    QScrollArea *m_problemScroll = nullptr; // 문제 목록만의 스크롤
+    QLabel *m_problemCount = nullptr;       // 문제 칸 제목 옆 "13개"
     ProblemList *m_dialogProblems = nullptr; // 크게 보기 창이 열려 있으면 그 목록(같이 갱신)
     QList<ProblemList::Row> m_problemRows;
     QString m_problemEmptyText;
@@ -135,8 +136,8 @@ private:
 
     bool m_dragging = false;
     QList<QRect> m_cells; // 자리(위치 번호)마다 카드 칸 — 끌기를 시작할 때 레이아웃에서 잰다
-    QList<int> m_order;   // 위치 → 카드(= 원래 슬롯 번호). 끄는 동안 바뀐다
-    QPoint m_dragOffset;  // 카드 왼쪽 위 ↔ 마우스
+    QList<int> m_order;  // 위치 → 카드(= 원래 슬롯 번호). 끄는 동안 바뀐다
+    QPoint m_dragOffset; // 카드 왼쪽 위 ↔ 마우스
     QHash<QWidget *, class QPropertyAnimation *>
             m_slides; // 게임(버전 그룹) → 포켓몬 선택 창에서 마지막에 고른 도감
 };

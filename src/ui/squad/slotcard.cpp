@@ -135,7 +135,8 @@ SlotCard::Geometry SlotCard::areas() const
     g.card = rect().adjusted(kRing, kRing, -kRing, -kRing);
     g.header = QRect(g.card.left() + 2, g.card.top() + 2, g.card.width() - 4, kHeader);
     g.menu = QRect(g.header.right() - 34, g.header.top(), 34, kHeader);
-    g.warn = QRect(g.menu.left() - 20, g.header.top() + (kHeader - 20) / 2, 20, 20);
+    g.detail = QRect(g.menu.left() - 24, g.header.top(), 24, kHeader);
+    g.warn = QRect(g.detail.left() - 20, g.header.top() + (kHeader - 20) / 2, 20, 20);
     const int left = g.card.left() + kPadding;
     const int inner = g.card.width() - 2 * kPadding - 3; // 3 = 그림자
     // 기준(kHeight)보다 낮으면 그만큼을 줄 사이 간격 다섯(10 · 8 · 8 · 8 · 10 = 44)에서
@@ -182,6 +183,8 @@ SlotCard::Hit SlotCard::hitAt(const QPoint &pos) const
         return g.card.contains(pos) ? Hit::Add : Hit::None;
     if (g.menu.contains(pos))
         return Hit::Menu;
+    if (g.detail.contains(pos))
+        return Hit::Detail;
     if (g.header.contains(pos))
         return Hit::Header;
     const Hit traits[3] = {Hit::Ability, Hit::Nature, Hit::Item};
@@ -257,6 +260,9 @@ void SlotCard::mousePressEvent(QMouseEvent *event)
         break;
     case Hit::Menu:
         emit menuRequested(m_slot, below(g.menu));
+        break;
+    case Hit::Detail:
+        emit detailRequested(m_slot);
         break;
     case Hit::Ability:
         emit abilityRequested(m_slot, below(g.traits[0]));
@@ -407,17 +413,22 @@ void SlotCard::paintFilled(QPainter &painter, const Geometry &g)
     x = iconBox.right() + 6;
     painter.setFont(theme::font(theme::kFamilyTitle, 19));
     painter.setPen(QColor(headerText));
-    const int nameWidth = (m_warning.isEmpty() ? g.menu.left() : g.warn.left()) - x - 4;
+    const int nameWidth = (m_warning.isEmpty() ? g.detail.left() : g.warn.left()) - x - 4;
     painter.drawText(QRect(x, g.header.top(), nameWidth, kHeader), Qt::AlignLeft | Qt::AlignVCenter,
                      QFontMetricsF(painter.font())
                              .elidedText(detail.name.text(m_language), Qt::ElideRight, nameWidth));
-    if (m_hot == Hit::Menu) {
+    if (m_hot == Hit::Menu || m_hot == Hit::Detail) {
         painter.setPen(Qt::NoPen);
         QColor glow(tok::kWhite);
         glow.setAlpha(60);
         painter.setBrush(glow);
-        painter.drawRoundedRect(QRectF(g.menu).adjusted(4, 6, -4, -6), 4, 4);
+        const QRect &hot = m_hot == Hit::Menu ? g.menu : g.detail;
+        painter.drawRoundedRect(QRectF(hot).adjusted(4, 6, -4, -6), 4, 4);
     }
+    // [+]: 이 포켓몬의 상세 모달(도감 상세와 같은 내용)
+    painter.setFont(theme::font(theme::kFamilyBody, 15, QFont::ExtraBold));
+    painter.setPen(QColor(headerText));
+    painter.drawText(g.detail, Qt::AlignCenter, QStringLiteral("+"));
     painter.setPen(QColor(headerText));
     painter.setFont(theme::font(theme::kFamilyBody, 16, QFont::ExtraBold));
     painter.drawText(g.menu, Qt::AlignCenter, QStringLiteral("⋯"));
