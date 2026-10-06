@@ -50,6 +50,7 @@ struct Source
     LocalizedText content; // 컨텐츠(배틀프런티어 · 포케슬론 · 게임코너 …)
     QList<std::pair<int, QString>> cost; // (양, 단위): (48, "bp") · (10000, "money")
     LocalizedText detail;                // 조건 · 메모(서핑 필요 · 엔딩 후 …)
+    QStringList versions; // 이 버전에서만(["white-2"]). 비면 묶음의 모든 버전
 };
 
 struct GameBook
@@ -79,6 +80,8 @@ QList<Source> sourcesOf(const QJsonValue &value)
         source.place = localizedOf(o.value(QStringLiteral("place")));
         source.content = localizedOf(o.value(QStringLiteral("content")));
         source.detail = localizedOf(o.value(QStringLiteral("detail")));
+        for (const QJsonValue &version : o.value(QStringLiteral("versions")).toArray())
+            source.versions.append(version.toString());
         for (const QJsonValue &cost : o.value(QStringLiteral("cost")).toArray()) {
             const QJsonObject c = cost.toObject();
             source.cost.append({c.value(QStringLiteral("amount")).toInt(),
@@ -217,11 +220,18 @@ const Book &book()
 } // namespace
 
 namespace com::yamada::studio::guidebook {
-QStringList itemSources(const QString &versionGroup, const QString &item, Language language)
+QStringList itemSources(const QString &versionGroup, const QString &item, Language language,
+                        const QString &version)
 {
     QStringList lines;
-    for (const Source &source : book().games.value(versionGroup).items.value(item))
-        lines.append(sourceText(source, language));
+    const QList<Source> sources = book().games.value(versionGroup).items.value(item);
+    for (const Source &source : sources)
+        if (version.isEmpty() || source.versions.isEmpty() || source.versions.contains(version))
+            lines.append(sourceText(source, language));
+    static const char *const otherVersion = QT_TRANSLATE_NOOP(
+            "com::yamada::studio::guidebook", "이 버전에서는 얻을 수 없어요(다른 버전 한정)");
+    if (lines.isEmpty() && !sources.isEmpty())
+        lines.append(tr(otherVersion));
     return lines;
 }
 

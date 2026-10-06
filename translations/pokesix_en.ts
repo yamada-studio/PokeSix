@@ -291,6 +291,10 @@ to see a summary here</translation>
         <source>이 세대에는 야생에서 만날 수 없어요. 교배 · 교환 · 이벤트로 얻어요.</source>
         <translation>Not found in the wild in this generation. Get it by breeding, trading or events.</translation>
     </message>
+    <message>
+        <source>이 버전에서는 만날 수 없어요. %1에서 만나요(버전 한정).</source>
+        <translation>Not found in this version. Meet it in %1 (version exclusive).</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::EvolutionView</name>
@@ -1253,6 +1257,10 @@ abilities &amp; natures (gen 3+) and held items (gen 2+)</translation>
         <source>%1세대 스쿼드</source>
         <translation>Gen %1 squad</translation>
     </message>
+    <message>
+        <source>%1 스쿼드</source>
+        <translation>%1 Squad</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::StatRadar</name>
@@ -1366,6 +1374,10 @@ abilities &amp; natures (gen 3+) and held items (gen 2+)</translation>
     <message>
         <source>%1LP</source>
         <translation>%1 LP</translation>
+    </message>
+    <message>
+        <source>이 버전에서는 얻을 수 없어요(다른 버전 한정)</source>
+        <translation>Not obtainable in this version (other version only)</translation>
     </message>
 </context>
 <context>

@@ -29,11 +29,12 @@ EncounterList::EncounterList(QWidget *parent)
 }
 
 void EncounterList::setEncounters(const QList<EncounterEntry> &encounters, Language language,
-                                  bool evolvedForm)
+                                  bool evolvedForm, const QStringList &elsewhere)
 {
     m_encounters = encounters;
     m_language = language;
     m_evolvedForm = evolvedForm;
+    m_elsewhere = elsewhere;
     QWidget::updateGeometry();
     QWidget::update();
 }
@@ -57,7 +58,10 @@ void EncounterList::paintEvent(QPaintEvent *)
         painter.setPen(QColor(tok::kText3));
         painter.drawText(
                 rect(), Qt::AlignLeft | Qt::AlignTop | Qt::TextWordWrap,
-                m_evolvedForm
+                !m_elsewhere.isEmpty()
+                        ? tr("이 버전에서는 만날 수 없어요. %1에서 만나요(버전 한정).")
+                                  .arg(m_elsewhere.join(QStringLiteral(" · ")))
+                : m_evolvedForm
                         ? tr("야생에서는 만날 수 없어요. 위의 진화 전 단계를 잡아 진화시켜요.")
                         : tr("이 세대에는 야생에서 만날 수 없어요. 교배 · 교환 · 이벤트로 "
                              "얻어요."));

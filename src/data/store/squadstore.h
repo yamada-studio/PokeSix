@@ -13,7 +13,9 @@ namespace com::yamada::studio {
 // 파일을 쓰지 않는다. 저장은 QSaveFile(임시 파일에 다 쓴 뒤 바꿔치기)이라 쓰다가 꺼져도 옛 파일이
 // 남는다. 창을 닫을 때는 flush()로 기다리지 않고 바로 쓴다.
 //
-// 파일 꼴(version 2): 세대 → 게임 묶음 → 스쿼드, 그리고 세대마다 마지막에 본 게임
+// 파일 꼴(version 2): 세대 → 게임 → 스쿼드, 그리고 세대마다 마지막에 본 게임. 게임 키는 버전
+// ("soulsilver")이다. 버전으로 나누기 전에는 게임 묶음("heartgold-soulsilver")이 키였다 — 그
+// 스쿼드는 SquadSession이 처음 읽을 때 두 버전 모두의 출발점으로 쓴다
 //   { "version": 2, "squads": { "4": { "current": "platinum", "games": {
 //       "platinum": { "name": "…", "members": [ { "pokemon": 445, "memo": "…",
 //                     "moves": [89, 200, 444, 14], "ability": 8, "nature": 0, "item": 0 }, … 6개 ]
@@ -30,8 +32,13 @@ public:
 
     static constexpr int kSaveDelayMs = 600;
 
-    // 그 게임의 스쿼드(없으면 빈 스쿼드 — 이름은 비어 있다)
-    Squad squad(int generation, const QString &versionGroup) const;
+    // 그 게임의 스쿼드(없으면 빈 스쿼드 — 이름은 비어 있다). 키는 버전("soulsilver")이다. 버전으로
+    // 나누기 전(게임 묶음 "heartgold-soulsilver")에 저장한 스쿼드도 그 키 그대로 남아 있다
+    Squad squad(int generation, const QString &game) const;
+    bool hasSquad(int generation, const QString &game) const
+    {
+        return m_squads.value(generation).contains(game);
+    }
     // 같은 값이면 아무것도 하지 않는다
     void setSquad(int generation, const QString &versionGroup, const Squad &squad);
     // 세대마다 마지막에 본 게임(없으면 빈 칸 → 세션이 대표 게임을 고른다)

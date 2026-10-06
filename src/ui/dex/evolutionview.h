@@ -19,9 +19,10 @@ class EvolutionView : public QWidget
 public:
     explicit EvolutionView(SpriteCache *icons, QWidget *parent = nullptr);
 
-    // versionGroup: 진화 도구의 입수처(입수 사전)를 찾는 기준 게임
+    // versionGroup: 진화 도구의 입수처(입수 사전)를 찾는 기준 게임. version을 주면 다른 버전 한정
+    // 입수처는 뺀다
     void setEvolution(const QList<EvolutionStep> &steps, int currentSpeciesId, Language language,
-                      const QString &versionGroup);
+                      const QString &versionGroup, const QString &version = {});
     QSize sizeHint() const override;
 
     // 조건 한 줄(화면 문구): "Lv 30" · "각성의돌 사용 · 수컷" · "친밀도 · 낮" …
@@ -48,5 +49,6 @@ private:
     int m_current = 0;
     Language m_language = Language::Korean;
     QString m_versionGroup;
+    QString m_version;
 };
 } // namespace com::yamada::studio

@@ -20,6 +20,7 @@ class DexFilterPanel;
 class DexPreview;
 class DexRowDelegate;
 class DexSelector;
+class GameSelector;
 class SpeciesFilterProxy;
 class SpeciesTableModel;
 
@@ -39,9 +40,6 @@ public:
     explicit DexPage(Repository *repository, AppState *state, QWidget *parent = nullptr);
 
     void showList(); // 상세 → 목록
-    // 다른 화면(스쿼드)에서 바로 그 포켓몬의 상세로. versionGroup = 그 화면이 고른 게임 — 상세의
-    // 기준 게임이 되고, 목록도 그 게임의 도감으로 바꿔 둔다(← 목록으로 돌아와도 같은 게임)
-    void openPokemon(int pokemonId, const QString &versionGroup);
 
 protected:
     void showEvent(QShowEvent *event) override;
@@ -66,7 +64,7 @@ private:
     SpeciesTableModel *m_model = nullptr;
     SpeciesFilterProxy *m_proxy = nullptr;
     PanelFrame *m_panel = nullptr;
-    QWidget *m_listRow = nullptr;      // [필터 | 목록 | 미리 보기] 묶음 — m_views의 [0]
+    QWidget *m_listRow = nullptr; // [필터 | 목록 | 미리 보기] 묶음 — m_views의 [0]
     QStackedWidget *m_views = nullptr; // [목록 줄 │ 상세]
     DexDetailPage *m_detail = nullptr;
     SearchField *m_search = nullptr;
@@ -76,6 +74,8 @@ private:
     QTableView *m_table = nullptr;
     SpriteCache *m_sprites = nullptr;  // 이름 옆 아이콘 파일 캐시
     DexSelector *m_selector = nullptr; // 머리 띠 오른쪽 도감 선택
+    GameSelector *m_games = nullptr;   // 검색 줄 오른쪽 게임 칩(앱 전체의 게임)
+    bool m_gameDirty = false; // 숨어 있는 동안 게임이 바뀌었다 → 보일 때 목록을 다시
     DexRowDelegate *m_delegate = nullptr;
     QTimer *m_searchDelay = nullptr;
     bool m_loaded = false;

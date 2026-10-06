@@ -7,6 +7,18 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Games are now played per version, not per version group: the game chips keep one chip per group
+  but split into version parts (HG | SS, D | P, B2 | W2) — click a part to pick that version
+  (hovering a faded part tints it; the keyboard cycles through parts). The choice is app-wide
+  (`AppState::game`, saved per generation) and shared by the squad, Pokédex, Pokédex detail and
+  Items pages. Squads are stored per version ("소울실버 스쿼드"); a squad saved for a whole group
+  before this change is the starting point for both of its versions and splits on the first edit.
+- Version differences are filtered: the Pokédex list and the squad's Pokémon picker drop species
+  that only the paired version can obtain (computed per evolution chain from encounter data — HG
+  hides Vulpix, Meowth, Teddiursa…; D hides Slowpoke, Misdreavus…), the detail's 획득법 lists only
+  the chosen version's encounters ("이 버전에서는 만날 수 없어요. 하트골드에서 만나요"), and item
+  sources marked with the new `versions` field (B2W2's Plasma Frigate / Route 13 entries) are
+  hidden in the other version. The squad member modal's chips stay local to the modal.
 - Heart Scale marks now follow how you actually get the Pokémon in the chosen game: a level-up
   move below the earliest level you can catch, receive or evolve it at, that it does not already
   know then (the game's last-four default moveset), needs the Move Reminder — HGSS's Lv 20 fossil

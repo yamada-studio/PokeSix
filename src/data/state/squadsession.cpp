@@ -16,21 +16,38 @@ SquadSession::SquadSession(Repository *repository, SquadStore *store, AppState *
     , m_state(state)
 {
     connect(m_state, &AppState::generationChanged, this, &SquadSession::reload);
+    connect(m_state, &AppState::gameChanged, this, &SquadSession::reload);
     reload();
 }
 
 void SquadSession::reload()
 {
+    if (m_seeding)
+        return; // 아래에서 앱 상태에 처음 버전을 써 넣는 중(gameChanged가 다시 부른다)
     m_generation = m_state->generation();
     m_chart = m_repository->typeChart(m_generation);
     m_games = m_repository->gamesForGeneration(m_generation);
-    // 게임: 그 세대에서 마지막에 본 게임, 없거나 그 세대 게임이 아니면 대표 게임
-    m_versionGroup = Repository::representativeVersionGroup(m_generation);
-    const QString last = m_store->currentGame(m_generation);
-    for (const GameInfo &game : m_games)
-        if (game.versionGroup == last)
-            m_versionGroup = last;
-    m_squad = m_store->squad(m_generation, m_versionGroup);
+    // 게임(버전): 앱이 고른 버전. 아직 안 골랐으면 스쿼드 저장소에 남은 마지막 게임(옛 파일은
+    // 게임 묶음 identifier), 그것도 없으면 대표 게임
+    QString wanted = m_state->game();
+    if (wanted.isEmpty())
+        wanted = m_store->currentGame(m_generation);
+    m_version = m_repository->resolveVersion(m_generation, wanted);
+    m_versionGroup = versionGroupOf(m_games, m_version);
+    if (m_versionGroup.isEmpty())
+        m_versionGroup = Repository::representativeVersionGroup(m_generation);
+    if (m_state->game().isEmpty() && !m_version.isEmpty()) {
+        // 앱이 아직 이 세대의 게임을 모른다 → 스쿼드가 이어받은 게임을 앱 전체의 게임으로(도감 ·
+        // 아이템도 같은 버전으로 열리게)
+        m_seeding = true;
+        m_state->setGame(m_version);
+        m_seeding = false;
+    }
+    // 스쿼드는 버전마다 따로. 버전으로 저장한 적이 없으면 게임 묶음 단위로 저장하던 때의 스쿼드를
+    // 이어받는다(HG · SS 둘 다 같은 스쿼드에서 시작해 처음 고칠 때 갈라진다)
+    m_squad = m_store->hasSquad(m_generation, m_version)
+                      ? m_store->squad(m_generation, m_version)
+                      : m_store->squad(m_generation, m_versionGroup);
     m_items.clear();
     m_itemsLoaded = false;
     for (int slot = 0; slot < int(kSquadSize); ++slot)
@@ -42,13 +59,22 @@ void SquadSession::reload()
             items();
     }
     analyze();
-    qCInfo(lcData) << "squad of" << m_versionGroup << "(generation" << m_generation << ") has"
+    qCInfo(lcData) << "squad of" << m_version << "(generation" << m_generation << ") has"
                    << m_squad.filled() << "members";
     emit changed();
 }
 
 QString SquadSession::defaultName() const
 {
+    // 버전마다 스쿼드가 따로라 버전 이름으로("소울실버 스쿼드"). 이름을 모르면 세대로
+    for (const GameInfo &game : m_games) {
+        const qsizetype index = game.versions.indexOf(m_version);
+        if (index >= 0 && index < game.versionNames.size()) {
+            const QString name = game.versionNames.at(index).text(m_state->language());
+            if (!name.isEmpty())
+                return tr("%1 스쿼드").arg(name);
+        }
+    }
     return tr("%1세대 스쿼드").arg(m_generation);
 }
 
@@ -125,7 +151,7 @@ void SquadSession::analyze()
 
 void SquadSession::commit()
 {
-    m_store->setSquad(m_generation, m_versionGroup, m_squad);
+    m_store->setSquad(m_generation, m_version, m_squad);
     analyze();
     emit changed();
 }
@@ -198,12 +224,15 @@ void SquadSession::setName(const QString &name)
     commit();
 }
 
-void SquadSession::setVersionGroup(const QString &versionGroup)
+void SquadSession::setVersion(const QString &version)
 {
-    if (m_versionGroup == versionGroup)
+    if (m_version == version)
         return;
-    m_store->setCurrentGame(m_generation, versionGroup);
-    reload(); // 그 게임의 스쿼드를 읽고 풀어 분석한다
+    m_store->setCurrentGame(m_generation, version);
+    if (m_state->game() == version)
+        reload(); // 앱 상태는 이미 그 버전(저장소만 달랐다)
+    else
+        m_state->setGame(version); // → gameChanged → reload: 그 버전의 스쿼드를 읽고 분석한다
 }
 
 void SquadSession::setPokemon(int slot, int pokemonId)
@@ -271,7 +300,7 @@ void SquadSession::setMemo(int slot, const QString &memo)
     if (member.memo == trimmed)
         return;
     member.memo = trimmed;
-    m_store->setSquad(m_generation, m_versionGroup,
+    m_store->setSquad(m_generation, m_version,
                       m_squad); // 분석과 상관없다 → 다시 그리지 않는다
 }
 

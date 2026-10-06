@@ -38,8 +38,11 @@ class DexDetailPage : public QWidget
 public:
     DexDetailPage(Repository *repository, AppState *state, QWidget *parent = nullptr);
 
-    // 그 포켓몬을 읽어 채운다. versionGroup = 기술 기준 게임 묶음(비면 세대의 대표 게임)
-    void showPokemon(int pokemonId, const QString &versionGroup);
+    // 그 포켓몬을 읽어 채운다. version = 기준 게임(버전 "soulsilver". 비면 앱이 고른 게임)
+    void showPokemon(int pokemonId, const QString &version = {});
+    // 기준 게임 칩이 앱 전체의 게임(AppState)을 바꾸는가(도감 화면 — 기본). false면 이 화면
+    // 안에서만 바꾼다(스쿼드 멤버 모달: 뒤의 스쿼드가 다른 버전으로 바뀌지 않게)
+    void setFollowsAppGame(bool follows) { m_followsAppGame = follows; }
 
 signals:
     void backRequested(); // [← 목록] · Esc · 지금 세대에 없는 포켓몬이 되었을 때
@@ -57,7 +60,8 @@ private:
     SpriteCache *m_icons = nullptr;        // 아이템 아이콘(하트비늘)
     SpriteCache *m_pokemonIcons = nullptr; // 포켓몬 박스 아이콘(진화 트리)
     PokemonDetail m_detail;
-    QString m_versionGroup; // 보여 달라고 받은 기준 게임(진화 트리로 옮겨 가도 그대로)
+    QString m_version; // 기준 게임(버전 — 진화 트리로 옮겨 가도 그대로). 비면 앱이 고른 게임
+    bool m_followsAppGame = true;
     TypeChart m_chart;
 
     QScrollArea *m_scroll = nullptr;

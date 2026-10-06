@@ -234,7 +234,7 @@ QWidget *SquadPage::buildTopBar()
     layout->addWidget(m_rule);
     // 게임 칩: 게임마다 스쿼드가 따로 저장된다(도감 · 나오는 포켓몬 · 기술이 게임마다 다르다)
     m_game = new GameSelector;
-    connect(m_game, &GameSelector::gameSelected, m_session, &SquadSession::setVersionGroup);
+    connect(m_game, &GameSelector::versionSelected, m_session, &SquadSession::setVersion);
     layout->addWidget(m_game);
     m_pips = new SquadPips(m_session);
     layout->addWidget(m_pips);
@@ -460,7 +460,7 @@ void SquadPage::refresh()
     if (!m_name->hasFocus())
         m_name->setText(squad.name.isEmpty() ? m_session->defaultName() : squad.name);
     m_rule->setText(tr("%1세대 규칙").arg(generation));
-    m_game->setGames(m_session->games(), language, m_session->versionGroup());
+    m_game->setGames(m_session->games(), language, m_session->version());
     m_game->setVisible(m_session->games().size() > 1); // 게임이 하나뿐인 세대는 고를 것이 없다
     m_pips->update();
     m_count->setText(QStringLiteral("%1 / 6").arg(squad.filled()));
@@ -876,7 +876,8 @@ void SquadPage::showMemberDetail(int slot)
     layout->setContentsMargins(
             kPageMargins); // 도감 화면과 같은 여백(버튼 · 스크롤바가 창에 붙지 않게)
     DexDetailPage *detail = new DexDetailPage(m_repository, m_state);
-    detail->showPokemon(pokemonId, m_session->versionGroup());
+    detail->setFollowsAppGame(false); // 모달의 칩은 모달 안에서만(뒤의 스쿼드는 그대로)
+    detail->showPokemon(pokemonId, m_session->version());
     layout->addWidget(detail);
     connect(detail, &DexDetailPage::backRequested, &dialog, &QDialog::accept); // [← 목록] = 닫기
     // 내용 폭 1320(도감 상세가 넉넉한 폭) + 여백. 작은 화면에서는 화면 안에 들어오게 줄인다
@@ -903,6 +904,7 @@ void SquadPage::pickPokemon(int slot)
                 break;
             }
     }
+    const QSet<int> elsewhere = m_repository->otherVersionSpecies(m_session->version());
     QList<SpeciesRow> rows; // painter가 참조로 본다 → 도감을 바꾸면 이 목록을 먼저 바꾼다
     QStringList search;
     QStringList warnings; // 줄마다 경고(같은 포켓몬 · 스타팅 둘). 없으면 빈 칸
@@ -910,6 +912,9 @@ void SquadPage::pickPokemon(int slot)
     auto load = [&](int id) {
         rows = id == DexFilterBar::kNational ? m_repository->speciesForGeneration(generation)
                                              : m_repository->speciesForDex(id, generation);
+        // 이 버전에서 얻을 수 없는 같은 묶음의 다른 버전 한정 포켓몬은 뺀다
+        rows.removeIf(
+                [&elsewhere](const SpeciesRow &row) { return elsewhere.contains(row.speciesId); });
         search.clear();
         warnings.clear();
         current = -1;

@@ -18,7 +18,7 @@ class SquadStore;
 // changed()를 받아 다시 그린다 — ROS 2로 치면 상태를 들고 있는 노드가 바뀔 때마다 토픽을 내는 것.
 //
 // - 저장: 바꿀 때마다 SquadStore에 넘긴다(저장소가 디바운스해서 파일에 쓴다)
-// - 세대: AppState의 세대를 따라간다. 세대마다 스쿼드가 따로 있다
+// - 세대 · 게임: AppState의 세대 · 게임(버전)을 따라간다. 버전마다 스쿼드가 따로 있다
 // - 풀어 둔 값: 포켓몬 · 기술 · 특성 · 물건을 그 세대(게임) 값으로 DB에서 읽어 둔다
 // - 분석: 바뀔 때마다 core SquadAnalyzer로 처음부터 다시 계산한다(6 × 18, 동기)
 class SquadSession : public QObject
@@ -58,14 +58,16 @@ public:
     const ItemRow *item(int slot) const;
     const SquadAnalysis &analysis() const { return m_analysis; }
     const TypeChart &chart() const { return m_chart; }
-    QString versionGroup() const { return m_versionGroup; } // 지금 게임(비어 있지 않다)
+    QString version() const { return m_version; } // 지금 게임(버전 "soulsilver" — 비어 있지 않다)
+    QString versionGroup() const { return m_versionGroup; } // 그 버전의 묶음(기술 · 사전의 기준)
     const QList<GameInfo> &games() const { return m_games; }
     const QList<Nature> &natures();
     const QList<ItemRow> &items(); // 그 세대의 아이템(지닌 물건 선택지)
 
     void setName(const QString &name);
-    // 게임을 바꾼다 = 그 게임의 스쿼드로 바꾼다(게임마다 스쿼드가 따로 저장된다)
-    void setVersionGroup(const QString &versionGroup);
+    // 게임(버전)을 바꾼다 = 그 버전의 스쿼드로 바꾼다(버전마다 스쿼드가 따로 저장된다). 앱 전체의
+    // 게임(AppState)도 같이 바뀐다
+    void setVersion(const QString &version);
     void setPokemon(int slot, int pokemonId); // 기술 · 메모 · 특성 · 물건은 비운다
     void clearSlot(int slot);
     void swapSlots(int a, int b);
@@ -77,7 +79,7 @@ public:
     void setNature(int slot, int natureId);
     void setItem(int slot, int itemId);
 
-    QString defaultName() const; // 이름을 비워 두면 보이는 이름("4세대 스쿼드")
+    QString defaultName() const; // 이름을 비워 두면 보이는 이름("소울실버 스쿼드")
 
 signals:
     void changed();
@@ -94,7 +96,9 @@ private:
     SquadStore *m_store = nullptr;
     AppState *m_state = nullptr;
     int m_generation = 0;
+    QString m_version;
     QString m_versionGroup;
+    bool m_seeding = false; // reload가 AppState에 처음 게임을 넣는 중
     Squad m_squad;
     std::array<PokemonDetail, kSquadSize> m_details;
     std::array<std::array<std::optional<SlotMove>, 4>, kSquadSize> m_moves;

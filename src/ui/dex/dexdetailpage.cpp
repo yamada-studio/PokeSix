@@ -200,8 +200,12 @@ DexDetailPage::DexDetailPage(Repository *repository, AppState *state, QWidget *p
     top->addSpacing(6);
     m_games = new GameSelector;
     top->addWidget(m_games);
-    connect(m_games, &GameSelector::gameSelected, this, [this](const QString &versionGroup) {
-        m_versionGroup = versionGroup;
+    connect(m_games, &GameSelector::versionSelected, this, [this](const QString &version) {
+        if (m_followsAppGame) {
+            m_state->setGame(version); // → gameChanged → reload
+            return;
+        }
+        m_version = version;
         reload();
     });
     layout->addLayout(top);
@@ -220,6 +224,12 @@ DexDetailPage::DexDetailPage(Repository *repository, AppState *state, QWidget *p
     escape->setContext(Qt::WidgetWithChildrenShortcut);
     connect(escape, &QShortcut::activated, this, &DexDetailPage::backRequested);
     connect(m_state, &AppState::generationChanged, this, &DexDetailPage::reload);
+    connect(m_state, &AppState::gameChanged, this, [this](const QString &version) {
+        if (!m_followsAppGame)
+            return;
+        m_version = version;
+        reload();
+    });
     connect(m_state, &AppState::languageChanged, this, &DexDetailPage::applyLanguage);
 }
 
@@ -273,7 +283,7 @@ QWidget *DexDetailPage::buildContent()
     encounters->setTitle(tr("획득법"));
     // 진화 트리의 다른 포켓몬을 누르면 그 상세로
     connect(m_evolution, &EvolutionView::pokemonClicked, this,
-            [this](int pokemonId) { showPokemon(pokemonId, m_versionGroup); });
+            [this](int pokemonId) { showPokemon(pokemonId, m_version); });
     encounters->setFixedHeight(kTopRowHeight);
     encounters->setMinimumWidth(kCardMinWidth);
     row->addWidget(encounters, 1);
@@ -312,10 +322,10 @@ QWidget *DexDetailPage::buildContent()
     return content;
 }
 
-void DexDetailPage::showPokemon(int pokemonId, const QString &versionGroup)
+void DexDetailPage::showPokemon(int pokemonId, const QString &version)
 {
     m_detail.pokemonId = pokemonId;
-    m_versionGroup = versionGroup;
+    m_version = version.isEmpty() ? m_state->game() : version;
     reload();
     m_scroll->verticalScrollBar()->setValue(0);
 }
@@ -325,9 +335,16 @@ void DexDetailPage::reload()
     if (m_detail.pokemonId <= 0)
         return;
     const int generation = m_state->generation();
-    // 받은 기준 게임이 이 세대 것이 아니면(세대를 바꿨다) Repository가 대표 게임으로 대신한다
-    PokemonDetail detail
-            = m_repository->pokemonDetail(m_detail.pokemonId, generation, m_versionGroup);
+    if (m_gameGeneration != generation) {
+        m_gameList = m_repository->gamesForGeneration(generation);
+        m_gameGeneration = generation;
+    }
+    // 기준 게임이 이 세대 것이 아니면(세대를 바꿨다) 앱이 그 세대에서 고른 게임 · 대표 게임으로
+    if (versionGroupOf(m_gameList, m_version).isEmpty())
+        m_version = m_followsAppGame ? m_state->game() : QString();
+    m_version = m_repository->resolveVersion(generation, m_version);
+    PokemonDetail detail = m_repository->pokemonDetail(m_detail.pokemonId, generation,
+                                                       versionGroupOf(m_gameList, m_version));
     if (detail.types.isEmpty()) { // 이 세대에는 없는 포켓몬(세대를 앞으로 돌렸다)
         emit backRequested();
         return;
@@ -380,12 +397,8 @@ void DexDetailPage::applyLanguage()
     if (!m_detail.isValid())
         return;
     const Language language = m_state->language();
-    // 기준 게임 칩: 세대가 바뀌었을 때만 게임 목록을 다시 읽는다(언어가 바뀌면 툴팁만 다시)
-    if (m_gameGeneration != m_detail.generation) {
-        m_gameList = m_repository->gamesForGeneration(m_detail.generation);
-        m_gameGeneration = m_detail.generation;
-    }
-    m_games->setGames(m_gameList, language, m_detail.versionGroup);
+    // 기준 게임 칩(게임 목록은 reload가 세대마다 한 번 읽는다. 언어가 바뀌면 툴팁만 다시)
+    m_games->setGames(m_gameList, language, m_version);
     m_profile->setDetail(m_detail, language);
     m_stats->setStats(m_detail.stats);
     m_statsPanel->setTitle(tr("종족값"), tr("합계 %1").arg(m_detail.total));
@@ -393,16 +406,23 @@ void DexDetailPage::applyLanguage()
     m_evolutionLabel->setVisible(evolves);
     m_evolution->setVisible(evolves);
     m_evolution->setEvolution(m_detail.evolution, m_detail.speciesId, language,
-                              m_detail.versionGroup);
+                              m_detail.versionGroup, m_version);
     bool evolvedForm = false; // 진화 전 단계가 있다(야생에 없으면 그 단계에서 진화시킨다)
     for (const EvolutionStep &step : std::as_const(m_detail.evolution))
         evolvedForm = evolvedForm || (step.speciesId == m_detail.speciesId && step.depth > 0);
-    // 야생 출현: 고른 게임의 버전만(성도 HGSS를 고르면 신오 DP · Pt 출현은 빠진다)
+    // 야생 출현: 고른 버전만(SS를 고르면 HG · DP · Pt 출현은 빠진다). 이 버전에는 없고 같은 묶음의
+    // 다른 버전에만 있으면 그 버전 이름을 안내한다(HG 한정 망키를 SS에서 볼 때)
     QList<EncounterEntry> encounters;
-    for (const EncounterEntry &e : std::as_const(m_detail.encounters))
-        if (m_detail.groupVersions.contains(e.version))
+    QStringList elsewhere;
+    for (const EncounterEntry &e : std::as_const(m_detail.encounters)) {
+        if (e.version == m_version)
             encounters.append(e);
-    m_encounters->setEncounters(encounters, language, evolvedForm);
+        else if (m_detail.groupVersions.contains(e.version)
+                 && !elsewhere.contains(e.versionName.text(language)))
+            elsewhere.append(e.versionName.text(language));
+    }
+    m_encounters->setEncounters(encounters, language, evolvedForm,
+                                encounters.isEmpty() ? elsewhere : QStringList());
     m_matchups->setMatchups(m_detail.types, m_chart, language);
     m_abilities->setAbilities(m_detail.abilities, m_detail.generation, language);
     applyNature();

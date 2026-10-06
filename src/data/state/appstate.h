@@ -5,7 +5,7 @@
 #include <QObject>
 
 namespace com::yamada::studio {
-// 앱 전체가 함께 보는 상태: 정주행 중인 세대(로드맵 A8)와 표기 언어.
+// 앱 전체가 함께 보는 상태: 정주행 중인 세대(로드맵 A8) · 게임(버전)과 표기 언어.
 //
 // 화면들은 세대를 전역에서 몰래 읽지 않는다(architecture §9). 대신 이 객체의 generationChanged
 // 시그널을 받아 자기 화면을 다시 그린다. ROS 2로 치면 latched 토픽 하나 — 누가 바꾸든
@@ -15,7 +15,12 @@ namespace com::yamada::studio {
 // 등록해 두면 나중에 QML이 `appState.generation`으로 읽고 바인딩할 수 있다(data 계층을 QtCore로만
 // 두는 이유와 같다).
 //
-// 값은 QSettings("generation", "language")에 저장된다 → 다음 실행에도 같은 세대 · 언어로 시작한다.
+// 값은 QSettings("generation", "games/<세대>", "language")에 저장된다 → 다음 실행에도 같은 세대 ·
+// 게임 · 언어로 시작한다.
+//
+// 게임: 세대마다 정주행 중인 버전 하나("soulsilver"). 같은 묶음(HGSS)이라도 버전마다 따로 깨는
+// 롬이라 스쿼드가 따로 있고, 버전 한정 포켓몬 · 아이템이 다르다. 세대를 바꾸면 그 세대에서 마지막에
+// 고른 버전으로 돌아간다. 빈 칸 = 아직 안 골랐다(Repository::resolveVersion이 대표 게임을 고른다).
 //
 // 언어: 게임 데이터 이름(포켓몬 · 아이템 · 기술 · 지방 · 효과 문구)은 languageChanged를 받은 화면이
 // 바로 바꿔 그린다. 화면 문구(tr() — 버튼 · 제목)는 앱을 시작할 때 번역 파일을 한 번 불러 정한다
@@ -36,6 +41,12 @@ public:
     // 범위 밖이면 무시한다. 같은 값이면 시그널을 보내지 않는다(되먹임 고리 방지).
     void setGeneration(int generation);
 
+    // 지금 세대의 게임(버전 identifier) · 다른 세대의 게임
+    QString game() const { return game(m_generation); }
+    QString game(int generation) const;
+    // 지금 세대의 게임을 바꾼다. 같은 값이면 시그널 없음
+    void setGame(const QString &version);
+
     Language language() const { return m_language; }
     void setLanguage(Language language); // 같은 값이면 시그널 없음
     // 저장된 언어(앱 시작 때 번역 파일을 고르려고 AppState를 만들기 전에 읽는다) · 저장하기
@@ -43,7 +54,8 @@ public:
     static void saveLanguage(Language language);
 
 signals:
-    void generationChanged(int generation);
+    void generationChanged(int generation); // 게임도 그 세대의 것으로 바뀐다(gameChanged는 없다)
+    void gameChanged(const QString &version); // 같은 세대 안에서 버전만 바꿨다
     void languageChanged(com::yamada::studio::Language language);
 
 private:
