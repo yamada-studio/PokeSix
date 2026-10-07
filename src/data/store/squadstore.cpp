@@ -17,21 +17,39 @@ using namespace com::yamada::studio;
 
 constexpr int kFormatVersion = 2;
 
+QJsonObject memberToJson(const SquadMember &m)
+{
+    QJsonArray moves;
+    for (const int move : m.moves)
+        moves.append(move);
+    return {{QStringLiteral("pokemon"), m.pokemonId}, {QStringLiteral("memo"), m.memo},
+            {QStringLiteral("moves"), moves},         {QStringLiteral("ability"), m.abilityId},
+            {QStringLiteral("nature"), m.natureId},   {QStringLiteral("item"), m.itemId}};
+}
+
+SquadMember memberFromJson(const QJsonObject &object)
+{
+    SquadMember member;
+    member.pokemonId = object.value(QStringLiteral("pokemon")).toInt();
+    member.memo = object.value(QStringLiteral("memo")).toString().left(SquadMember::kMemoLength);
+    const QJsonArray moves = object.value(QStringLiteral("moves")).toArray();
+    for (qsizetype j = 0; j < moves.size() && j < qsizetype(member.moves.size()); ++j)
+        member.moves[std::size_t(j)] = moves.at(j).toInt();
+    member.abilityId = object.value(QStringLiteral("ability")).toInt();
+    member.natureId = object.value(QStringLiteral("nature")).toInt();
+    member.itemId = object.value(QStringLiteral("item")).toInt();
+    return member;
+}
+
 QJsonObject toJson(const Squad &squad)
 {
     QJsonArray members;
-    for (const SquadMember &m : squad.members) {
-        QJsonArray moves;
-        for (const int move : m.moves)
-            moves.append(move);
-        members.append(QJsonObject {{QStringLiteral("pokemon"), m.pokemonId},
-                                    {QStringLiteral("memo"), m.memo},
-                                    {QStringLiteral("moves"), moves},
-                                    {QStringLiteral("ability"), m.abilityId},
-                                    {QStringLiteral("nature"), m.natureId},
-                                    {QStringLiteral("item"), m.itemId}});
-    }
-    return {{QStringLiteral("name"), squad.name}, {QStringLiteral("members"), members}};
+    for (const SquadMember &m : squad.members)
+        members.append(memberToJson(m));
+    QJsonObject json {{QStringLiteral("name"), squad.name}, {QStringLiteral("members"), members}};
+    if (!squad.shuttle.isEmpty()) // 비전셔틀(7번째 멤버)은 따로 — 옛 버전은 이 키를 모른 채 읽는다
+        json.insert(QStringLiteral("shuttle"), memberToJson(squad.shuttle));
+    return json;
 }
 
 Squad fromJson(const QJsonObject &object)
@@ -39,18 +57,9 @@ Squad fromJson(const QJsonObject &object)
     Squad squad;
     squad.name = object.value(QStringLiteral("name")).toString();
     const QJsonArray members = object.value(QStringLiteral("members")).toArray();
-    for (qsizetype i = 0; i < members.size() && i < qsizetype(squad.members.size()); ++i) {
-        const QJsonObject m = members.at(i).toObject();
-        SquadMember &member = squad.members[std::size_t(i)];
-        member.pokemonId = m.value(QStringLiteral("pokemon")).toInt();
-        member.memo = m.value(QStringLiteral("memo")).toString().left(SquadMember::kMemoLength);
-        const QJsonArray moves = m.value(QStringLiteral("moves")).toArray();
-        for (qsizetype j = 0; j < moves.size() && j < qsizetype(member.moves.size()); ++j)
-            member.moves[std::size_t(j)] = moves.at(j).toInt();
-        member.abilityId = m.value(QStringLiteral("ability")).toInt();
-        member.natureId = m.value(QStringLiteral("nature")).toInt();
-        member.itemId = m.value(QStringLiteral("item")).toInt();
-    }
+    for (qsizetype i = 0; i < members.size() && i < qsizetype(squad.members.size()); ++i)
+        squad.members[std::size_t(i)] = memberFromJson(members.at(i).toObject());
+    squad.shuttle = memberFromJson(object.value(QStringLiteral("shuttle")).toObject());
     return squad;
 }
 } // namespace

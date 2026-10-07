@@ -28,6 +28,9 @@ struct Squad
 {
     QString name;
     std::array<SquadMember, 6> members;
+    // 비전셔틀(7번째 멤버): 파도타기 · 괴력 같은 비전머신을 대신 드는 요원. 본편 6자리
+    // 분석(히트맵 · 문제)에는 넣지 않는다 — filled()에도 세지 않는다
+    SquadMember shuttle;
 
     int filled() const
     {

@@ -705,6 +705,21 @@ TEST_F(RepositoryTest, SquadsSplitFromAGroupSquadPerVersion)
     EXPECT_EQ(session.squad().members[1].pokemonId, 0);
 }
 
+TEST_F(RepositoryTest, ListsTheHiddenMachinesOfAGame)
+{
+    Repository repository(s_dbPath);
+    const QList<MoveEntry> machines = repository.hiddenMachineMoves(QStringLiteral("platinum"), 4);
+    ASSERT_EQ(machines.size(), 8); // Pt HM01–08
+    for (qsizetype i = 0; i < machines.size(); ++i) {
+        EXPECT_TRUE(machines[i].hiddenMachine);
+        EXPECT_EQ(machines[i].machineNumber, int(i) + 1); // 101–108 → 1–8, 번호 순
+    }
+    EXPECT_EQ(machines[2].machineItem, QStringLiteral("hm03"));
+    EXPECT_EQ(machines[2].moveId, 57); // 파도타기
+    EXPECT_FALSE(machines[2].name.ko.isEmpty());
+    EXPECT_TRUE(repository.hiddenMachineMoves(QStringLiteral("black-white"), 5).isEmpty());
+}
+
 TEST_F(RepositoryTest, MachineLearnersFollowTheGame)
 {
     Repository repository(s_dbPath);

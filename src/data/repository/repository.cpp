@@ -164,6 +164,37 @@ QList<SpeciesRow> Repository::machineLearners(const QString &item, const QString
     return rows;
 }
 
+QList<MoveEntry> Repository::hiddenMachineMoves(const QString &versionGroup, int generation)
+{
+    QList<MoveEntry> moves;
+    if (!open())
+        return moves;
+    QSqlQuery query(QSqlDatabase::database(m_connection));
+    query.prepare(QStringLiteral(
+            "SELECT m.move_id, m.machine_number, i.identifier FROM machines m "
+            "JOIN items i ON i.id = m.item_id "
+            "JOIN version_groups vg ON vg.id = m.version_group_id "
+            "WHERE vg.identifier = :vg AND i.identifier LIKE 'hm%' ORDER BY m.machine_number"));
+    query.bindValue(QStringLiteral(":vg"), versionGroup);
+    if (!query.exec()) {
+        m_error = query.lastError().text();
+        qCWarning(lcData) << "hidden machine query failed:" << m_error;
+        return moves;
+    }
+    while (query.next()) {
+        MoveEntry move;
+        move.moveId = query.value(0).toInt();
+        move.machineNumber = query.value(1).toInt();
+        move.machineItem = query.value(2).toString();
+        move.hiddenMachine = true;
+        if (move.machineNumber > kHiddenMachineOffset)
+            move.machineNumber -= kHiddenMachineOffset; // PokéAPI는 비전머신을 101–108로 센다
+        moves.append(move);
+    }
+    fillMoves(moves, generation);
+    return moves;
+}
+
 QSet<int> Repository::gameSpecies(const QString &versionGroup)
 {
     const auto cached = m_gameSpecies.constFind(versionGroup);

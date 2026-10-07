@@ -64,6 +64,12 @@ public:
     const QList<Nature> &natures();
     const QList<ItemRow> &items(); // 그 세대의 아이템(지닌 물건 선택지)
 
+    // 비전셔틀(7번째 멤버) — 본편 6자리 분석에는 들어가지 않는다. 기술 칸은 비전머신 기술만 담는다
+    static constexpr int kShuttleSlot = 6; // 포켓몬 선택 창이 본편 슬롯과 구분하는 번호
+    const SquadMember &shuttle() const { return m_squad.shuttle; }
+    const PokemonDetail &shuttleDetail() const { return m_shuttleDetail; }
+    const std::array<std::optional<SlotMove>, 4> &shuttleMoves() const { return m_shuttleMoves; }
+
     void setName(const QString &name);
     // 게임(버전)을 바꾼다 = 그 버전의 스쿼드로 바꾼다(버전마다 스쿼드가 따로 저장된다). 앱 전체의
     // 게임(AppState)도 같이 바뀐다
@@ -75,6 +81,9 @@ public:
     void moveSlot(int from, int to);
     void setMove(int slot, int index, int moveId); // 0 = 비우기
     void setMemo(int slot, const QString &memo);
+    void setShuttlePokemon(int pokemonId);      // 기술은 비운다
+    void setShuttleMove(int index, int moveId); // 0 = 비우기
+    void clearShuttle();
     void setAbility(int slot, int abilityId);
     void setNature(int slot, int natureId);
     void setItem(int slot, int itemId);
@@ -89,7 +98,11 @@ public slots:
 
 private:
     void resolve(int slot); // 포켓몬 · 기술을 그 세대 값으로
-    void commit();          // 저장소에 넘기고 분석을 다시 한다 → changed()
+    void resolveShuttle();
+    // resolve의 몸통: member의 포켓몬 · 기술을 그 세대 값으로 detail · moves에 풀어 둔다
+    void resolveMember(const SquadMember &member, PokemonDetail &detail,
+                       std::array<std::optional<SlotMove>, 4> &moves);
+    void commit(); // 저장소에 넘기고 분석을 다시 한다 → changed()
     void analyze();
 
     Repository *m_repository = nullptr;
@@ -102,6 +115,8 @@ private:
     Squad m_squad;
     std::array<PokemonDetail, kSquadSize> m_details;
     std::array<std::array<std::optional<SlotMove>, 4>, kSquadSize> m_moves;
+    PokemonDetail m_shuttleDetail;
+    std::array<std::optional<SlotMove>, 4> m_shuttleMoves;
     TypeChart m_chart;
     QList<GameInfo> m_games;
     QList<Nature> m_natures;

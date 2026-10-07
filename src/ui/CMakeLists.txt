@@ -102,6 +102,8 @@ qt_add_library(pokesix_ui STATIC
     dex/dexselector.cpp
     dex/dexrowdelegate.h
     dex/dexrowdelegate.cpp
+    squad/shuttledialog.h
+    squad/shuttledialog.cpp
     squad/squadpage.h
     squad/squadpage.cpp
     squad/squadpaint.h

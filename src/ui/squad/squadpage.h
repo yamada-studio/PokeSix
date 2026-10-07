@@ -11,6 +11,7 @@ class QGridLayout;
 class QLabel;
 class QLineEdit;
 class QPropertyAnimation;
+class QPushButton;
 class QScrollArea;
 
 namespace com::yamada::studio {
@@ -85,6 +86,7 @@ private:
     // 세로를 채우되 내용보다 커지지 않고, 좁은 배치에서는 kProblemVisibleRows 줄까지만 편다
     void syncProblemHeight();
     void showProblemDialog(); // "크게 보기" — 문제 전체를 큰 창에서
+    void showShuttleDialog(); // 상단 막대의 [비전셔틀] — 7번째 멤버 창
 
     QString typeName(const QString &key) const;
     QString suggestion() const; // 빈 자리 제안 문구
@@ -106,6 +108,7 @@ private:
     GameSelector *m_game = nullptr; // 게임 칩 [DP][Pt][HGSS] — 게임마다 스쿼드가 따로
     SquadPips *m_pips = nullptr;
     QLabel *m_count = nullptr;
+    QPushButton *m_shuttleButton = nullptr; // [비전셔틀 · 잠만보] — 누르면 셔틀 창
     QLabel *m_saveStatus = nullptr;
 
     QScrollArea *m_scroll = nullptr;
