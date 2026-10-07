@@ -44,6 +44,11 @@ and the project uses [Semantic Versioning](https://semver.org/).
   tests, and the app runs.
 
 ### Added
+- Keyboard users get a focus ring on the intro menu (A7): when focus reaches the menu with Tab or
+  Shift+Tab, a pale blue ring (3 px, 2 px outside the card) surrounds the selected card and follows
+  ↑/↓; clicking or the automatic focus on showing the intro draws no ring. The ring is painted by
+  the menu (the parent) in the margin it reserves around the cards — ADR 0016 settles the open
+  question of who draws decorations outside a widget's box.
 - The app layer exists (A3): `src/app/Application` is the composition root — it owns the
   QApplication, parses the command line, sets the log line format
   (`hh:mm:ss.zzz L category: message`), applies language and theme, creates AppState,
