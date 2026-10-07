@@ -18,6 +18,8 @@ jobs:
     runs-on: ubuntu-22.04 # 오래된 glibc로 빌드해야 AppImage가 더 많은 배포판에서 돈다
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # git describe가 태그를 봐야 빌드 식별 문자열이 나온다
       - id: qt-version
         run: echo "version=$(tr -d '[:space:]' < scripts/QT_VERSION)" >> "$GITHUB_OUTPUT"
       - uses: jurplel/install-qt-action@v4
@@ -44,6 +46,8 @@ jobs:
     runs-on: windows-2022 # windows-latest(= windows-2025-vs2026)에는 VS 2022가 없다. 프리셋 generator가 "Visual Studio 17 2022"
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # git describe가 태그를 봐야 빌드 식별 문자열이 나온다
       - id: qt-version
         shell: bash
         run: echo "version=$(tr -d '[:space:]' < scripts/QT_VERSION)" >> "$GITHUB_OUTPUT"
@@ -61,16 +65,22 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: PokeSix-windows
-          path: build/windows-msvc/package/PokeSix-*-win64.zip
+          path: |
+            build/windows-msvc/package/PokeSix-*-win64.zip
+            build/windows-msvc/package/PokeSix-*-win64.msi
       - uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: build/windows-msvc/package/PokeSix-*-win64.zip
+          files: |
+            build/windows-msvc/package/PokeSix-*-win64.zip
+            build/windows-msvc/package/PokeSix-*-win64.msi
 
   macos:
     runs-on: macos-14 # Apple Silicon
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # git describe가 태그를 봐야 빌드 식별 문자열이 나온다
       - id: qt-version
         run: echo "version=$(tr -d '[:space:]' < scripts/QT_VERSION)" >> "$GITHUB_OUTPUT"
       - uses: jurplel/install-qt-action@v4

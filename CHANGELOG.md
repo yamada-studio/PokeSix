@@ -6,6 +6,17 @@ and the project uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- Windows gets a real installer: `PokeSix-<version>-win64.msi` (CPack's WIX generator over the
+  same windeployqt install tree — start-menu shortcut, license page, in-place upgrades via a
+  fixed upgrade GUID). `package.bat` builds it after the portable zip when the free WiX Toolset
+  is present (preinstalled on GitHub runners), and the release workflow attaches both.
+- Build identity string (ADR 0017): the window title and `--version` now show exactly which
+  build is running — `0.1.0` only on a clean release tag, otherwise
+  `0.1.0+12.g3f4a5b6[.dirty]`, plus ` Debug` for debug builds. Generated on every build from
+  `git describe` without causing rebuilds; CI checkouts fetch tags (`fetch-depth: 0`) so
+  packaged builds carry the real identity.
+
 ### Fixed
 - macOS: a downloaded dmg hit Gatekeeper's "PokeSix is damaged and can't be opened" block (the
   app is not notarized, and for non-notarized apps right-click → Open does not bypass it — our

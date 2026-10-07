@@ -1,5 +1,6 @@
 #include "app/application.h"
 
+#include "app/buildinfo.h"
 #include "data/db/gamedatabase.h"
 #include "data/repository/repository.h"
 #include "data/state/appstate.h"
@@ -50,7 +51,14 @@ Application::Application(int &argc, char **argv)
     //   Linux: ~/.config/YamadaStudio/ (설정), ~/.local/share/YamadaStudio/PokeSix/ (데이터)
     QApplication::setOrganizationName(QStringLiteral("YamadaStudio"));
     QApplication::setApplicationName(QStringLiteral("PokeSix"));
-    QApplication::setApplicationVersion(QStringLiteral(POKESIX_VERSION));
+    // 빌드 식별 문자열(docs/versioning-and-git.md §1): 릴리스 태그 위 클린 Release 빌드만
+    // "0.1.0", 그 외에는 "0.1.0+12.g3f4a5b6[.dirty]". Debug 구성은 " Debug"를 덧붙여 창 제목 ·
+    // --version 에서 한눈에 구분된다.
+    QString version = QStringLiteral(POKESIX_BUILD_VERSION);
+#ifndef QT_NO_DEBUG
+    version += QStringLiteral(" Debug");
+#endif
+    QApplication::setApplicationVersion(version);
     // 설정은 모든 OS에서 .ini 파일(conventions.md §8). Windows의 기본값은 레지스트리라 따로 정한다.
     //   Windows %APPDATA%\YamadaStudio\PokeSix.ini · Linux ~/.config/YamadaStudio/PokeSix.ini
     QSettings::setDefaultFormat(QSettings::IniFormat);

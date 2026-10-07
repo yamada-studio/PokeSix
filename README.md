@@ -170,7 +170,8 @@ setup needed. SHA-256 checksums are in each release's notes.
 
 | OS | File | How to run |
 |---|---|---|
-| Windows | `PokeSix-<version>-win64.zip` | Extract anywhere, run `bin\PokeSix.exe`. SmartScreen warns about an unknown publisher the first time: **More info → Run anyway**. |
+| Windows (installer) | `PokeSix-<version>-win64.msi` | Run it — Start-menu shortcut included; a newer msi upgrades in place. SmartScreen warns about an unknown publisher the first time: **More info → Run anyway**. |
+| Windows (portable) | `PokeSix-<version>-win64.zip` | Extract anywhere, run `bin\PokeSix.exe`. Same SmartScreen note. |
 | Linux | `PokeSix-<version>-x86_64.AppImage` | `chmod +x`, then run it. |
 | macOS | `PokeSix-<version>-macos.dmg` | Clear the quarantine flag first (below), then open the dmg and drag the app to Applications. |
 

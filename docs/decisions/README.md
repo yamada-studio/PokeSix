@@ -24,3 +24,4 @@
 | [0014](0014-guidebook-dictionaries.md) | 도감 상세의 기준 게임(세대 대표)과 공략 사전(기술머신 획득처 · 장소 이름) | Accepted |
 | [0015](0015-home-card-fan.md) | 홈(인트로)의 세대 선택은 카드 부채꼴로 | Accepted |
 | [0016](0016-outside-decorations-drawn-by-parent.md) | 상자 바깥 장식(포커스 링 · 선택 테)은 부모 위젯이 자기 여백에 그린다 | Accepted |
+| [0017](0017-build-identity-string.md) | 빌드 식별 문자열: git describe를 빌드마다 헤더로 생성, Debug는 C++에서 표시 | Accepted |
