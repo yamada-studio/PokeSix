@@ -159,13 +159,15 @@ release build with tests, a package, and launches it.
 ```bash
 git clone https://github.com/yamada-studio/PokeSix.git
 cd PokeSix
-scripts/linux/quickstart.sh         # Linux: setup → build → AppImage → run
+scripts/linux/quickstart.sh         # Linux: setup → build → AppImage (+ app menu) → run
 ```
 ```bat
 scripts\windows\quickstart.bat      # Windows: setup → build → portable ZIP → run
 ```
 
-Add `--no-run` to stop after packaging. The result is a real distributable:
+Add `--no-run` to stop after packaging. On Linux the AppImage is also registered in the
+desktop's application menu (`~/.local/bin/PokeSix.AppImage` + a `.desktop` entry — rerun
+`scripts/linux/package.sh --install` to refresh it). The result is a real distributable:
 `build/package/PokeSix-<version>-x86_64.AppImage` on Linux,
 `build\windows-msvc\package\PokeSix-<version>-win64.zip` on Windows (the extracted folder's
 `bin\PokeSix.exe` runs on a PC without Qt).
