@@ -100,24 +100,25 @@ protected:
         for (int i = 0; i < m_rows; ++i) {
             const QRectF row(kBorderWidth, kBorderWidth + i * kRowHeight,
                              width() - 2 * kBorderWidth, kRowHeight);
-            // 줄 배경 = 그 세대의 단색 띠(버튼과 같은 배열).
-            // 지금 세대는 체크 대신 흑백 띠 + hover와 같은 덮개로 눌린 느낌을 준다
-            const bool current = m_first + i == m_current;
-            QList<QColor> colors = dexstyle::generationColors(m_first + i);
-            if (current)
-                for (QColor &color : colors) {
-                    const int gray = qGray(color.rgb());
-                    color = QColor(gray, gray, gray);
-                }
+            // 줄 배경 = 그 세대의 단색 띠(버튼과 같은 배열)
+            const QList<QColor> colors = dexstyle::generationColors(m_first + i);
             if (colors.isEmpty())
                 painter.fillRect(row, QColor(tok::kWhite));
             else
                 painter.fillRect(row, stripesOf(colors, row.topLeft(), row.topRight()));
-            if (current || i == m_hover) // 올린 줄 · 지금 세대: 먹색을 옅게 덮는다
+            if (i == m_hover) // 올린 줄: 먹색을 옅게 덮는다
                 painter.fillRect(row, QColor(0, 0, 0, 26));
             painter.setPen(QColor(tok::kText1));
             painter.setFont(m_font);
-            painter.drawText(row, Qt::AlignCenter, GenerationButton::tr("%1세대").arg(m_first + i));
+            const QString label = GenerationButton::tr("%1세대").arg(m_first + i);
+            painter.drawText(row, Qt::AlignCenter, label);
+            if (m_first + i == m_current) { // 지금 세대: 가운데 글자 바로 왼쪽 옆에 체크
+                const qreal textLeft
+                        = row.center().x() - QFontMetricsF(m_font).horizontalAdvance(label) / 2;
+                painter.drawText(
+                        QRectF(row.left(), row.top(), textLeft - row.left() - 6, row.height()),
+                        Qt::AlignRight | Qt::AlignVCenter, QStringLiteral("✓"));
+            }
             if (i < m_rows - 1) // 줄 구분: 마지막만 빼고 아래 먹선 1px
                 painter.fillRect(QRectF(row.left(), row.bottom() - 1, row.width(), 1),
                                  QColor(tok::kInk));
