@@ -1,0 +1,773 @@
+{
+  "_comment": [
+    "타운맵 노드: 장소(location identifier)마다 지도(캔버스) 픽셀 영역 [x, y, w, h].",
+    "이미지는 커밋하지 않는다 — 첫 사용 때 layers의 url에서 받아 사용자 캐시에 둔다.",
+    "좌표 출처: Serebii Pokéarth imagemap(사실 정보). 지도는 B2W2 시대 하나지방 — BW도 같은 지도를 쓴다",
+    "(BW에 없는 장소는 그 게임에서 출현 자료가 비어 있을 뿐이다). 폭우드 · PWT는 PokéAPI 장소가 없어 뺐다."
+  ],
+  "region": "unova",
+  "canvas": [
+    256,
+    168
+  ],
+  "layers": [
+    {
+      "source": "unova",
+      "url": "https://www.serebii.net/pokearth/unova.png",
+      "size": [
+        256,
+        168
+      ],
+      "crop": [
+        0,
+        0,
+        256,
+        168
+      ],
+      "offset": [
+        0,
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "location": "abundant-shrine",
+      "rect": [
+        194,
+        74,
+        7,
+        7
+      ]
+    },
+    {
+      "location": "accumula-town",
+      "rect": [
+        226,
+        132,
+        13,
+        13
+      ]
+    },
+    {
+      "location": "anville-town",
+      "rect": [
+        4,
+        27,
+        7,
+        7
+      ]
+    },
+    {
+      "location": "aspertia-city",
+      "rect": [
+        8,
+        147,
+        13,
+        15
+      ]
+    },
+    {
+      "location": "black-city",
+      "rect": [
+        184,
+        85,
+        7,
+        13
+      ]
+    },
+    {
+      "location": "castelia-city",
+      "rect": [
+        126,
+        124,
+        13,
+        13
+      ]
+    },
+    {
+      "location": "castelia-sewers",
+      "rect": [
+        153,
+        140,
+        7,
+        9
+      ]
+    },
+    {
+      "location": "cave-of-being",
+      "rect": [
+        38,
+        135,
+        7,
+        9
+      ]
+    },
+    {
+      "location": "celestial-tower",
+      "rect": [
+        51,
+        47,
+        7,
+        7
+      ]
+    },
+    {
+      "location": "challengers-cave",
+      "rect": [
+        114,
+        46,
+        7,
+        7
+      ]
+    },
+    {
+      "location": "chargestone-cave",
+      "rect": [
+        39,
+        77,
+        7,
+        7
+      ]
+    },
+    {
+      "location": "clay-tunnel",
+      "rect": [
+        69,
+        74,
+        13,
+        36
+      ]
+    },
+    {
+      "location": "desert-resort",
+      "rect": [
+        118,
+        102,
+        14,
+        6
+      ]
+    },
+    {
+      "location": "dragonspiral-tower",
+      "rect": [
+        63,
+        28,
+        7,
+        7
+      ]
+    },
+    {
+      "location": "dreamyard",
+      "rect": [
+        236,
+        115,
+        7,
+        7
+      ]
+    },
+    {
+      "location": "driftveil-city",
+      "rect": [
+        68,
+        85,
+        13,
+        13
+      ]
+    },
+    {
+      "location": "driftveil-drawbridge",
+      "rect": [
+        80,
+        88,
+        35,
+        7
+      ]
+    },
+    {
+      "location": "entralink",
+      "rect": [
+        129,
+        64,
+        7,
+        7
+      ]
+    },
+    {
+      "location": "floccesy-ranch",
+      "rect": [
+        38,
+        115,
+        7,
+        7
+      ]
+    },
+    {
+      "location": "floccesy-town",
+      "rect": [
+        26,
+        121,
+        14,
+        15
+      ]
+    },
+    {
+      "location": "giant-chasm",
+      "rect": [
+        205,
+        33,
+        7,
+        9
+      ]
+    },
+    {
+      "location": "humilau-city",
+      "rect": [
+        229,
+        30,
+        13,
+        12
+      ]
+    },
+    {
+      "location": "icirrus-city",
+      "rect": [
+        68,
+        37,
+        13,
+        13
+      ]
+    },
+    {
+      "location": "lacunosa-town",
+      "rect": [
+        184,
+        37,
+        13,
+        13
+      ]
+    },
+    {
+      "location": "lentimas-town",
+      "rect": [
+        181,
+        61,
+        13,
+        15
+      ]
+    },
+    {
+      "location": "liberty-garden",
+      "rect": [
+        71,
+        142,
+        7,
+        7
+      ]
+    },
+    {
+      "location": "lostlorn-forest",
+      "rect": [
+        143,
+        81,
+        7,
+        7
+      ]
+    },
+    {
+      "location": "marine-tube",
+      "rect": [
+        229,
+        66,
+        25,
+        6
+      ]
+    },
+    {
+      "location": "marine-tube",
+      "rect": [
+        251,
+        31,
+        3,
+        41
+      ]
+    },
+    {
+      "location": "marine-tube",
+      "rect": [
+        241,
+        35,
+        13,
+        6
+      ]
+    },
+    {
+      "location": "marvelous-bridge",
+      "rect": [
+        149,
+        88,
+        22,
+        7
+      ]
+    },
+    {
+      "location": "mistralton-cave",
+      "rect": [
+        66,
+        71,
+        7,
+        7
+      ]
+    },
+    {
+      "location": "mistralton-city",
+      "rect": [
+        34,
+        61,
+        13,
+        13
+      ]
+    },
+    {
+      "location": "moor-of-icirrus",
+      "rect": [
+        85,
+        33,
+        7,
+        7
+      ]
+    },
+    {
+      "location": "nacrene-city",
+      "rect": [
+        197,
+        112,
+        13,
+        13
+      ]
+    },
+    {
+      "location": "nimbasa-city",
+      "rect": [
+        126,
+        85,
+        13,
+        13
+      ]
+    },
+    {
+      "location": "ns-castle",
+      "rect": [
+        179,
+        3,
+        7,
+        9
+      ]
+    },
+    {
+      "location": "nuvema-town",
+      "rect": [
+        226,
+        152,
+        13,
+        13
+      ]
+    },
+    {
+      "location": "opelucid-city",
+      "rect": [
+        126,
+        37,
+        13,
+        13
+      ]
+    },
+    {
+      "location": "p2-laboratory",
+      "rect": [
+        211,
+        148,
+        7,
+        9
+      ]
+    },
+    {
+      "location": "pinwheel-forest",
+      "rect": [
+        191,
+        122,
+        7,
+        7
+      ]
+    },
+    {
+      "location": "plasma-frigate",
+      "rect": [
+        219,
+        148,
+        7,
+        7
+      ]
+    },
+    {
+      "location": "relic-castle",
+      "rect": [
+        112,
+        101,
+        7,
+        7
+      ]
+    },
+    {
+      "location": "relic-passage",
+      "rect": [
+        102,
+        115,
+        7,
+        9
+      ]
+    },
+    {
+      "location": "reversal-mountain",
+      "rect": [
+        203,
+        64,
+        7,
+        9
+      ]
+    },
+    {
+      "location": "seaside-cave",
+      "rect": [
+        232,
+        50,
+        7,
+        7
+      ]
+    },
+    {
+      "location": "strange-house",
+      "rect": [
+        195,
+        56,
+        7,
+        9
+      ]
+    },
+    {
+      "location": "striaton-city",
+      "rect": [
+        222,
+        112,
+        13,
+        13
+      ]
+    },
+    {
+      "location": "tubeline-bridge",
+      "rect": [
+        93,
+        40,
+        22,
+        7
+      ]
+    },
+    {
+      "location": "twist-mountain",
+      "rect": [
+        69,
+        52,
+        7,
+        7
+      ]
+    },
+    {
+      "location": "undella-bay",
+      "rect": [
+        239,
+        60,
+        7,
+        9
+      ]
+    },
+    {
+      "location": "undella-town",
+      "rect": [
+        218,
+        61,
+        13,
+        13
+      ]
+    },
+    {
+      "location": "unity-tower",
+      "rect": [
+        95,
+        153,
+        9,
+        9
+      ]
+    },
+    {
+      "location": "unova-pokemon-league",
+      "rect": [
+        164,
+        9,
+        13,
+        13
+      ]
+    },
+    {
+      "location": "unova-route-1",
+      "rect": [
+        231,
+        144,
+        3,
+        9
+      ]
+    },
+    {
+      "location": "unova-route-10",
+      "rect": [
+        134,
+        29,
+        25,
+        6
+      ]
+    },
+    {
+      "location": "unova-route-11",
+      "rect": [
+        138,
+        41,
+        14,
+        7
+      ]
+    },
+    {
+      "location": "unova-route-12",
+      "rect": [
+        170,
+        41,
+        15,
+        7
+      ]
+    },
+    {
+      "location": "unova-route-15",
+      "rect": [
+        169,
+        89,
+        16,
+        6
+      ]
+    },
+    {
+      "location": "unova-route-16",
+      "rect": [
+        138,
+        89,
+        13,
+        6
+      ]
+    },
+    {
+      "location": "unova-route-17",
+      "rect": [
+        213,
+        156,
+        14,
+        6
+      ]
+    },
+    {
+      "location": "unova-route-18",
+      "rect": [
+        202,
+        156,
+        12,
+        6
+      ]
+    },
+    {
+      "location": "unova-route-19",
+      "rect": [
+        13,
+        131,
+        3,
+        17
+      ]
+    },
+    {
+      "location": "unova-route-2",
+      "rect": [
+        229,
+        124,
+        4,
+        9
+      ]
+    },
+    {
+      "location": "unova-route-20",
+      "rect": [
+        39,
+        126,
+        25,
+        5
+      ]
+    },
+    {
+      "location": "unova-route-21",
+      "rect": [
+        233,
+        41,
+        5,
+        10
+      ]
+    },
+    {
+      "location": "unova-route-22",
+      "rect": [
+        211,
+        35,
+        19,
+        5
+      ]
+    },
+    {
+      "location": "unova-route-23",
+      "rect": [
+        195,
+        35,
+        11,
+        5
+      ]
+    },
+    {
+      "location": "unova-route-23",
+      "rect": [
+        195,
+        15,
+        3,
+        25
+      ]
+    },
+    {
+      "location": "unova-route-23",
+      "rect": [
+        188,
+        15,
+        10,
+        5
+      ]
+    },
+    {
+      "location": "unova-route-3",
+      "rect": [
+        209,
+        117,
+        14,
+        5
+      ]
+    },
+    {
+      "location": "unova-route-4",
+      "rect": [
+        130,
+        96,
+        5,
+        29
+      ]
+    },
+    {
+      "location": "unova-route-5",
+      "rect": [
+        115,
+        89,
+        12,
+        6
+      ]
+    },
+    {
+      "location": "unova-route-8",
+      "rect": [
+        80,
+        41,
+        15,
+        7
+      ]
+    },
+    {
+      "location": "unova-route-9",
+      "rect": [
+        113,
+        41,
+        15,
+        7
+      ]
+    },
+    {
+      "location": "unova-victory-road",
+      "rect": [
+        180,
+        12,
+        9,
+        10
+      ]
+    },
+    {
+      "location": "unova-victory-road",
+      "rect": [
+        159,
+        20,
+        9,
+        9
+      ]
+    },
+    {
+      "location": "village-bridge",
+      "rect": [
+        150,
+        40,
+        22,
+        7
+      ]
+    },
+    {
+      "location": "virbank-city",
+      "rect": [
+        63,
+        121,
+        14,
+        15
+      ]
+    },
+    {
+      "location": "virbank-complex",
+      "rect": [
+        61,
+        135,
+        7,
+        9
+      ]
+    },
+    {
+      "location": "wellspring-cave",
+      "rect": [
+        212,
+        107,
+        7,
+        7
+      ]
+    },
+    {
+      "location": "white-forest",
+      "rect": [
+        190,
+        85,
+        7,
+        13
+      ]
+    }
+  ]
+}
