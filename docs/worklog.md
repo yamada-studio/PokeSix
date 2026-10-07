@@ -9,9 +9,9 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 
 ## 지금 상태 — 2026-10-07
 
-- `main` 최신: `fix(windows): make quickstart.bat pass end to end on MSVC` merge까지. 작업 트리 깨끗.
-- 원격 `origin` = github.com/yamada-studio/PokeSix. 태그 없음, 릴리스 없음. 릴리스 CI(`.github/workflows/release.yml`)는 **실제 러너에서 아직 한 번도 돌지 않았다** → 아래 "진행 중".
-- 버전 `0.0.1`(Phase 0). Phase A~E가 섞여 진행 중이고 Phase G는 "lite"(패키징 스크립트 · CI 파일)만 들어왔다. 단계별 상태는 roadmap.md.
+- **Phase A 완료 → `v0.1.0`** 태그(이 세션). 릴리스 CI가 태그로 3 OS 패키지를 GitHub Release에 붙인다 — 결과는 세션 기록에.
+- 원격 `origin` = github.com/yamada-studio/PokeSix. `main`과 동기화.
+- 버전 `0.1.0`. Phase B · C · D · E · T가 섞여 진행 중이고 Phase G는 "lite"(패키징 스크립트 · CI)만. 단계별 상태는 roadmap.md.
 
 ### 검증 매트릭스
 
@@ -24,7 +24,7 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 
 ### 진행 중
 
-- **첫 태그 릴리스**: CI는 검증됐다(위). 남은 것은 **어느 버전으로 태그를 칠지**의 결정 — 규칙은 "Phase 완료 = MINOR"인데 완료된 Phase가 없다. 선택지: (a) 지금 CMake 버전 그대로 `v0.0.1` 태그 → 패키지 이름 `PokeSix-0.0.1-*`(CHANGELOG의 0.0.1 절은 Phase 0만 적혀 있어 어긋남), (b) Phase A를 끝내고 `v0.1.0`, (c) 중간 빌드는 태그 없이 `workflow_dispatch` 아티팩트(90일 보관)로만 공유. 사용자 결정 대기.
+- 없음. 다음 후보: Phase B(컴포넌트 갤러리 `--gallery`) 또는 E4(설정 화면). 사용자가 다음 단계를 고른다.
 
 ### 열린 일 (작은 것부터)
 
@@ -59,6 +59,8 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 - 사용자가 "진행해봐"로 추천안(태그는 Phase A 완료 뒤 `v0.1.0`)을 승인 → Phase A 남은 단계를 Claude가 구현하기 시작했다(ADR 0010의 연장)
 - **A3 완료**: `src/app/`에 `Application`(composition root) — `main.cpp`는 이것만 만든다. AppState · Repository · DataUpdater를 여기서 만들어 `MainWindow`에 주입(생성자 시그니처 변경). 로그 형식 `hh:mm:ss.zzz L category: message`. `--screenshot <intro|dex|items|map|squad|settings> <WxH> <out.png> [--screenshot-delay ms]`(기본 1200ms = 부채꼴 등장 애니메이션 뒤). Windows offscreen에서 intro · dex · squad 캡처 확인. 디자인 03b의 `intro-gen-open`(세대 메뉴는 이제 카드 부채꼴이라 대상 없음) · `intro-first-run`(상태 강제 API 없음)은 만들지 않았다
 - **A7 완료**: 인트로 메뉴 포커스 링 — Tab · Shift+Tab으로 들어온 포커스에만 선택 카드 바깥 파란 링(3px · 간격 2px). 부모(`IntroMenu`)가 여백(`kFocusMargin` 5)에 그린다 → 열린 질문 7을 [ADR 0016](decisions/0016-outside-decorations-drawn-by-parent.md)으로 확정. 메뉴 폭 = 520 + 10. 캡처 모드로는 Tab을 누를 수 없어 링 자체는 눈으로 확인하지 못했다(코드 리뷰 · 컴파일만) → 실기에서 Tab 한 번 눌러 확인할 것
+- **A8 · A10 완료 → Phase A 종료**: A8의 "폭 300 팝업"은 ADR 0015 · 사용자 결정으로 다른 모양이 되어 있어 코드 변경 없이 차이를 [design/README.md "의도한 차이"](../design/README.md)에 적는 것으로 마무리. A10: 캡처(`--screenshot intro`) vs `30` · `31` 차이 목록 = 같은 표. 키보드 왕복을 위해 **Ctrl+0 → 인트로** 단축키를 더했다(마크 버튼은 Tab으로 멀다). 실기 키보드 확인은 사용자 몫
+- **릴리스 `v0.1.0`**: CHANGELOG `Unreleased` → `[0.1.0] - 2026-10-07`, `CMakeLists.txt` VERSION 0.1.0, README 상태 줄. `chore(release): v0.1.0` 커밋 + 태그 → 릴리스 워크플로가 3 OS 패키지를 Release에 붙인다(결과 아래에 추가)
 
 - Linux 쪽 142개 커밋을 받은 뒤 `quickstart.bat`이 Windows에서 세 군데 깨졌다 → 전부 고쳐 통과:
   `cardbarrel.cpp` most vexing parse(MSVC만 거부) · `package.bat`이 VS 번들 cmake를 안 찾음 · `QSettings` 기본 형식(Windows 레지스트리 + 테스트에 조직 이름 없음 → 쓰기 무시)으로 테스트 2개 실패.

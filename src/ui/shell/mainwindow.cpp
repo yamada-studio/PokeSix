@@ -104,6 +104,11 @@ MainWindow::MainWindow(Repository *repository, AppState *state, DataUpdater *dat
         const Page page = pages[i];
         connect(shortcut, &QShortcut::activated, this, [this, page] { open(page); });
     }
+    // Ctrl+0 = 인트로로(마크 버튼과 같다). 키보드만으로 인트로 ↔ 본 화면을 오갈 수 있게(A10).
+    // 마크 버튼은 Tab으로도 닿지만, 탭 · 페이지의 포커스 칸을 다 지나야 해서 단축키를 둔다.
+    QShortcut *toIntro = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_0), shell);
+    toIntro->setContext(Qt::WidgetWithChildrenShortcut);
+    connect(toIntro, &QShortcut::activated, this, &MainWindow::showIntro);
     qCInfo(lcUi) << "MainWindow initialized";
 }
 
