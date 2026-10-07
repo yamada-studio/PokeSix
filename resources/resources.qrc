@@ -11,7 +11,9 @@
     <file>theme/itemstyle.json</file>
     <file>theme/homecards.json</file> <!-- 홈 세대 카드: 마스코트 · 색 · 지방 -->
     <file>data/townmap/johto.json</file>
-    <file>data/townmap/kanto.json</file> <!-- 타운맵 노드(장소 → 지도 픽셀 영역) · 이미지는 실행 시 다운로드 -->
+    <file>data/townmap/kanto.json</file>
+    <file>data/townmap/johto-kanto.json</file>
+    <file>data/townmap/sinnoh.json</file> <!-- 타운맵 노드(장소 → 지도 픽셀 영역) · 이미지는 실행 시 다운로드 -->
     <file>data/acquisition/platinum.json</file> <!-- 게임별 입수 사전(기술머신 · 도구 · NPC 가르침) -->
     <file>data/acquisition/emerald.json</file>
     <file>data/acquisition/heartgold-soulsilver.json</file>

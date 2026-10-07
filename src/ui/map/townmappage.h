@@ -29,6 +29,7 @@ public:
 private:
     void refresh(); // 세대 · 게임 · 언어가 바뀌었다
     void selectRegion(const QString &region);
+    QString regionTitle(const QString &key, Language language); // "johto-kanto" → "성도 · 관동"
     void showLocation(const QString &location); // 빈 문자열 = 선택 해제(안내 문구)
 
     Repository *m_repository = nullptr;

@@ -1,0 +1,655 @@
+{
+  "_comment": [
+    "타운맵 노드: 장소(location identifier)마다 지도(캔버스) 픽셀 영역 [x, y, w, h].",
+    "이미지는 커밋하지 않는다 — 첫 사용 때 layers의 url에서 받아 사용자 캐시에 둔다.",
+    "좌표 출처: Serebii Pokéarth의 imagemap(지도 위 배치는 사실 정보)."
+  ],
+  "region": "sinnoh",
+  "canvas": [
+    216,
+    168
+  ],
+  "layers": [
+    {
+      "source": "sinnoh",
+      "url": "https://www.serebii.net/pokearth/sinnoh.png",
+      "size": [
+        216,
+        168
+      ],
+      "crop": [
+        0,
+        0,
+        216,
+        168
+      ],
+      "offset": [
+        0,
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "location": "acuity-lakefront",
+      "rect": [
+        64,
+        3,
+        14,
+        16
+      ]
+    },
+    {
+      "location": "battle-frontier",
+      "rect": [
+        145,
+        45,
+        5,
+        8
+      ]
+    },
+    {
+      "location": "canalave-city",
+      "rect": [
+        8,
+        115,
+        9,
+        16
+      ]
+    },
+    {
+      "location": "celestic-town",
+      "rect": [
+        100,
+        73,
+        9,
+        9
+      ]
+    },
+    {
+      "location": "eterna-city",
+      "rect": [
+        64,
+        73,
+        16,
+        16
+      ]
+    },
+    {
+      "location": "eterna-forest",
+      "rect": [
+        43,
+        73,
+        16,
+        16
+      ]
+    },
+    {
+      "location": "fight-area",
+      "rect": [
+        134,
+        52,
+        16,
+        9
+      ]
+    },
+    {
+      "location": "floaroma-town",
+      "rect": [
+        36,
+        94,
+        9,
+        16
+      ]
+    },
+    {
+      "location": "flower-paradise",
+      "rect": [
+        197,
+        2,
+        9,
+        9
+      ]
+    },
+    {
+      "location": "fuego-ironworks",
+      "rect": [
+        36,
+        87,
+        9,
+        9
+      ]
+    },
+    {
+      "location": "fullmoon-island",
+      "rect": [
+        16,
+        17,
+        9,
+        9
+      ]
+    },
+    {
+      "location": "hearthome-city",
+      "rect": [
+        99,
+        108,
+        16,
+        16
+      ]
+    },
+    {
+      "location": "iron-island",
+      "rect": [
+        22,
+        66,
+        9,
+        9
+      ]
+    },
+    {
+      "location": "jubilife-city",
+      "rect": [
+        29,
+        122,
+        16,
+        16
+      ]
+    },
+    {
+      "location": "lake-acuity",
+      "rect": [
+        64,
+        6,
+        13,
+        13
+      ]
+    },
+    {
+      "location": "lake-valor",
+      "rect": [
+        148,
+        122,
+        12,
+        15
+      ]
+    },
+    {
+      "location": "lake-verity",
+      "rect": [
+        8,
+        136,
+        16,
+        16
+      ]
+    },
+    {
+      "location": "mt-coronet",
+      "rect": [
+        78,
+        45,
+        16,
+        79
+      ]
+    },
+    {
+      "location": "newmoon-island",
+      "rect": [
+        29,
+        17,
+        9,
+        9
+      ]
+    },
+    {
+      "location": "oreburgh-city",
+      "rect": [
+        57,
+        122,
+        16,
+        15
+      ]
+    },
+    {
+      "location": "pal-park",
+      "rect": [
+        64,
+        158,
+        9,
+        7
+      ]
+    },
+    {
+      "location": "resort-area",
+      "rect": [
+        22,
+        150,
+        9,
+        9
+      ]
+    },
+    {
+      "location": "sandgem-town",
+      "rect": [
+        36,
+        143,
+        9,
+        9
+      ]
+    },
+    {
+      "location": "seabreak-path",
+      "rect": [
+        197,
+        10,
+        9,
+        59
+      ]
+    },
+    {
+      "location": "sendoff-spring",
+      "rect": [
+        162,
+        108,
+        16,
+        11
+      ]
+    },
+    {
+      "location": "sinnoh-battle-tower",
+      "rect": [
+        141,
+        45,
+        5,
+        8
+      ]
+    },
+    {
+      "location": "sinnoh-pokemon-league",
+      "rect": [
+        183,
+        80,
+        9,
+        9
+      ]
+    },
+    {
+      "location": "sinnoh-route-201",
+      "rect": [
+        23,
+        143,
+        14,
+        9
+      ]
+    },
+    {
+      "location": "sinnoh-route-202",
+      "rect": [
+        36,
+        137,
+        9,
+        7
+      ]
+    },
+    {
+      "location": "sinnoh-route-203",
+      "rect": [
+        44,
+        122,
+        14,
+        9
+      ]
+    },
+    {
+      "location": "sinnoh-route-204",
+      "rect": [
+        36,
+        109,
+        9,
+        14
+      ]
+    },
+    {
+      "location": "sinnoh-route-205",
+      "rect": [
+        44,
+        87,
+        9,
+        23
+      ]
+    },
+    {
+      "location": "sinnoh-route-205",
+      "rect": [
+        57,
+        73,
+        8,
+        9
+      ]
+    },
+    {
+      "location": "sinnoh-route-206",
+      "rect": [
+        64,
+        88,
+        9,
+        28
+      ]
+    },
+    {
+      "location": "sinnoh-route-207",
+      "rect": [
+        64,
+        115,
+        16,
+        9
+      ]
+    },
+    {
+      "location": "sinnoh-route-208",
+      "rect": [
+        85,
+        115,
+        15,
+        9
+      ]
+    },
+    {
+      "location": "sinnoh-route-209",
+      "rect": [
+        114,
+        109,
+        15,
+        15
+      ]
+    },
+    {
+      "location": "sinnoh-route-210",
+      "rect": [
+        108,
+        73,
+        21,
+        29
+      ]
+    },
+    {
+      "location": "sinnoh-route-211",
+      "rect": [
+        79,
+        73,
+        23,
+        9
+      ]
+    },
+    {
+      "location": "sinnoh-route-212",
+      "rect": [
+        99,
+        123,
+        29,
+        29
+      ]
+    },
+    {
+      "location": "sinnoh-route-213",
+      "rect": [
+        142,
+        136,
+        22,
+        16
+      ]
+    },
+    {
+      "location": "sinnoh-route-214",
+      "rect": [
+        155,
+        102,
+        9,
+        22
+      ]
+    },
+    {
+      "location": "sinnoh-route-215",
+      "rect": [
+        127,
+        87,
+        22,
+        9
+      ]
+    },
+    {
+      "location": "sinnoh-route-216",
+      "rect": [
+        64,
+        45,
+        23,
+        9
+      ]
+    },
+    {
+      "location": "sinnoh-route-217",
+      "rect": [
+        64,
+        17,
+        9,
+        29
+      ]
+    },
+    {
+      "location": "sinnoh-route-218",
+      "rect": [
+        16,
+        122,
+        14,
+        9
+      ]
+    },
+    {
+      "location": "sinnoh-route-219",
+      "rect": [
+        36,
+        151,
+        9,
+        8
+      ]
+    },
+    {
+      "location": "sinnoh-route-221",
+      "rect": [
+        52,
+        157,
+        21,
+        9
+      ]
+    },
+    {
+      "location": "sinnoh-route-222",
+      "rect": [
+        162,
+        129,
+        22,
+        9
+      ]
+    },
+    {
+      "location": "sinnoh-route-224",
+      "rect": [
+        190,
+        68,
+        16,
+        21
+      ]
+    },
+    {
+      "location": "sinnoh-route-225",
+      "rect": [
+        134,
+        31,
+        9,
+        22
+      ]
+    },
+    {
+      "location": "sinnoh-route-227",
+      "rect": [
+        162,
+        16,
+        9,
+        17
+      ]
+    },
+    {
+      "location": "sinnoh-route-228",
+      "rect": [
+        169,
+        31,
+        9,
+        23
+      ]
+    },
+    {
+      "location": "sinnoh-route-229",
+      "rect": [
+        169,
+        52,
+        16,
+        9
+      ]
+    },
+    {
+      "location": "sinnoh-sea-route-220",
+      "rect": [
+        36,
+        157,
+        17,
+        9
+      ]
+    },
+    {
+      "location": "sinnoh-sea-route-223",
+      "rect": [
+        183,
+        94,
+        9,
+        29
+      ]
+    },
+    {
+      "location": "sinnoh-sea-route-226",
+      "rect": [
+        149,
+        31,
+        22,
+        9
+      ]
+    },
+    {
+      "location": "sinnoh-sea-route-230",
+      "rect": [
+        149,
+        52,
+        21,
+        9
+      ]
+    },
+    {
+      "location": "sinnoh-victory-road",
+      "rect": [
+        183,
+        88,
+        9,
+        7
+      ]
+    },
+    {
+      "location": "snowpoint-city",
+      "rect": [
+        78,
+        3,
+        9,
+        16
+      ]
+    },
+    {
+      "location": "solaceon-town",
+      "rect": [
+        120,
+        101,
+        16,
+        9
+      ]
+    },
+    {
+      "location": "spring-path",
+      "rect": [
+        162,
+        118,
+        16,
+        6
+      ]
+    },
+    {
+      "location": "stark-mountain",
+      "rect": [
+        162,
+        10,
+        9,
+        7
+      ]
+    },
+    {
+      "location": "sunyshore-city",
+      "rect": [
+        183,
+        122,
+        16,
+        16
+      ]
+    },
+    {
+      "location": "survival-area",
+      "rect": [
+        141,
+        31,
+        9,
+        9
+      ]
+    },
+    {
+      "location": "twinleaf-town",
+      "rect": [
+        22,
+        150,
+        9,
+        9
+      ]
+    },
+    {
+      "location": "valley-windworks",
+      "rect": [
+        50,
+        101,
+        9,
+        9
+      ]
+    },
+    {
+      "location": "valor-lakefront",
+      "rect": [
+        159,
+        122,
+        5,
+        15
+      ]
+    },
+    {
+      "location": "veilstone-city",
+      "rect": [
+        148,
+        87,
+        16,
+        16
+      ]
+    }
+  ]
+}

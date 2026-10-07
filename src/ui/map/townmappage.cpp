@@ -59,8 +59,7 @@ TownMapPage::TownMapPage(Repository *repository, AppState *state, QWidget *paren
     QLabel *title = new QLabel(tr("타운맵 백과"));
     title->setObjectName(QStringLiteral("pageTitle"));
     top->addWidget(title);
-    m_game = new GameSelector;
-    m_game->setSplitVersions(true); // 출현이 버전마다 다르다 — [HG] [SS]
+    m_game = new GameSelector; // 묶음 칩([성도 HG|SS]) — 조각으로 버전을 고른다(사용자 결정)
     connect(m_game, &GameSelector::versionSelected, this, [this](const QString &version) {
         m_state->setGame(version); // 앱 전체의 게임을 바꾼다(gameChanged → refresh)
         if (m_state->game() == version)
@@ -135,19 +134,27 @@ void TownMapPage::refresh()
     m_game->setGames(games, language, m_version);
     m_game->setVisible(games.size() > 1);
 
-    // 지방 칩: 이 버전의 야생 출현이 걸친 지방(성도 · 관동), 지도가 준비된 것만. 하나뿐이면 숨긴다
-    while (QLayoutItem *item = m_regionChips->takeAt(0))
-        delete item->widget(), delete item;
+    // 지방: 이 버전의 야생 출현이 걸친 지방들. 합본 지도(성도 · 관동을 이어 붙인
+    // "johto-kanto")가 있으면 그걸 하나로 쓰고 지방 칩 없이 끌어서 본다(사용자 결정)
+    while (QLayoutItem *item = m_regionChips->takeAt(0)) {
+        delete item->widget();
+        delete item;
+    }
+    const QStringList covered = m_repository->encounterRegions(m_version);
+    QStringList sorted = covered;
+    sorted.sort();
     QStringList regions;
-    for (const QString &region : m_repository->encounterRegions(m_version))
-        if (townmapbook::regionMap(region).isValid())
-            regions.append(region);
-    if (regions.isEmpty()) // 지도가 아직 없는 세대 — 안내만
-        regions = {};
+    if (covered.size() > 1 && townmapbook::regionMap(sorted.join(QLatin1Char('-'))).isValid()) {
+        regions = {sorted.join(QLatin1Char('-'))};
+    } else {
+        for (const QString &region : covered)
+            if (townmapbook::regionMap(region).isValid())
+                regions.append(region);
+    }
     if (!regions.contains(m_region))
         m_region = regions.value(0);
     for (const QString &region : regions) {
-        QPushButton *chip = new QPushButton(m_repository->regionDisplayName(region).text(language));
+        QPushButton *chip = new QPushButton(regionTitle(region, language));
         chip->setObjectName(QStringLiteral("mapRegionChip"));
         chip->setCheckable(true);
         chip->setCursor(Qt::PointingHandCursor);
@@ -158,6 +165,15 @@ void TownMapPage::refresh()
         chip->setVisible(regions.size() > 1);
     }
     selectRegion(m_region);
+}
+
+QString TownMapPage::regionTitle(const QString &key, Language language)
+{
+    // 합본 key("johto-kanto")는 지방 이름을 이어서("성도 · 관동")
+    QStringList parts;
+    for (const QString &one : key.split(QLatin1Char('-'), Qt::SkipEmptyParts))
+        parts.append(m_repository->regionDisplayName(one).text(language));
+    return parts.join(QStringLiteral(" · "));
 }
 
 void TownMapPage::selectRegion(const QString &region)
@@ -185,20 +201,13 @@ void TownMapPage::selectRegion(const QString &region)
     }
     const Language language = m_state->language();
     m_view->setRegion(region, m_names, language);
-    const LocalizedText name = m_repository->regionDisplayName(region);
     m_detail->setTitle(tr("장소"), QString());
     showLocation(QString());
 
-    // 지도 창 머리: "성도 타운맵 · 소울실버 · 45곳"
-    QString versionName;
-    for (const GameInfo &game : m_repository->gamesForGeneration(m_state->generation())) {
-        const qsizetype index = game.versions.indexOf(m_version);
-        if (index >= 0 && index < game.versionNames.size())
-            versionName = game.versionNames.at(index).text(language);
-    }
-    m_mapPanel->setTitle(region.isEmpty() ? tr("타운맵") : tr("%1 타운맵").arg(name.text(language)),
-                         map.isValid() ? tr("%1 · %2곳").arg(versionName).arg(map.nodes.size())
-                                       : QString());
+    // 지도 창 머리: "성도 · 관동 타운맵 — 92곳". 버전은 위의 게임 칩이 말해 준다
+    m_mapPanel->setTitle(region.isEmpty() ? tr("타운맵")
+                                          : tr("%1 타운맵").arg(regionTitle(region, language)),
+                         map.isValid() ? tr("%1곳").arg(map.nodes.size()) : QString());
 }
 
 void TownMapPage::showLocation(const QString &location)

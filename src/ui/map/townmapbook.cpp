@@ -33,23 +33,53 @@ QHash<QString, townmapbook::RegionMap> load()
         townmapbook::RegionMap map;
         map.region
                 = root.value(QStringLiteral("region")).toString(QFileInfo(path).completeBaseName());
-        const QJsonObject image = root.value(QStringLiteral("image")).toObject();
-        map.imageUrl = image.value(QStringLiteral("url")).toString();
-        map.imageSize = QSize(image.value(QStringLiteral("width")).toInt(),
-                              image.value(QStringLiteral("height")).toInt());
-        const QJsonArray crop = image.value(QStringLiteral("crop")).toArray();
-        if (crop.size() == 4)
-            map.crop = QRect(crop[0].toInt(), crop[1].toInt(), crop[2].toInt(), crop[3].toInt());
+        const auto rectOf = [](const QJsonArray &r) {
+            return r.size() == 4 ? QRect(r[0].toInt(), r[1].toInt(), r[2].toInt(), r[3].toInt())
+                                 : QRect();
+        };
+        QPoint translate; // 옛 형식: 노드가 원본 좌표 → 크롭만큼 캔버스로 당긴다
+        if (root.contains(QStringLiteral("layers"))) { // 새 형식(합본): 레이어 + 캔버스 좌표
+            const QJsonArray canvas = root.value(QStringLiteral("canvas")).toArray();
+            if (canvas.size() == 2)
+                map.canvas = QSize(canvas[0].toInt(), canvas[1].toInt());
+            for (const QJsonValue &value : root.value(QStringLiteral("layers")).toArray()) {
+                const QJsonObject l = value.toObject();
+                townmapbook::Layer layer;
+                layer.source = l.value(QStringLiteral("source")).toString();
+                layer.url = l.value(QStringLiteral("url")).toString();
+                const QJsonArray size = l.value(QStringLiteral("size")).toArray();
+                if (size.size() == 2)
+                    layer.size = QSize(size[0].toInt(), size[1].toInt());
+                layer.crop = rectOf(l.value(QStringLiteral("crop")).toArray());
+                const QJsonArray offset = l.value(QStringLiteral("offset")).toArray();
+                if (offset.size() == 2)
+                    layer.offset = QPoint(offset[0].toInt(), offset[1].toInt());
+                map.layers.append(layer);
+            }
+        } else { // 옛 형식: 그림 한 장 + 원본 좌표 노드
+            const QJsonObject image = root.value(QStringLiteral("image")).toObject();
+            townmapbook::Layer layer;
+            layer.source = map.region;
+            layer.url = image.value(QStringLiteral("url")).toString();
+            layer.size = QSize(image.value(QStringLiteral("width")).toInt(),
+                               image.value(QStringLiteral("height")).toInt());
+            layer.crop = rectOf(image.value(QStringLiteral("crop")).toArray());
+            if (layer.crop.isNull())
+                layer.crop = QRect(QPoint(0, 0), layer.size);
+            map.canvas = layer.crop.size();
+            translate = -layer.crop.topLeft();
+            map.layers.append(layer);
+        }
         for (const QJsonValue &value : root.value(QStringLiteral("nodes")).toArray()) {
             const QJsonObject n = value.toObject();
-            const QJsonArray r = n.value(QStringLiteral("rect")).toArray();
-            if (r.size() != 4)
+            const QRect rect = rectOf(n.value(QStringLiteral("rect")).toArray());
+            if (rect.isNull())
                 continue;
             townmapbook::Node node;
             node.location = n.value(QStringLiteral("location")).toString();
             node.region = n.value(QStringLiteral("region")).toString(map.region);
-            node.rect = QRect(r[0].toInt(), r[1].toInt(), r[2].toInt(), r[3].toInt());
-            if (map.view().intersects(node.rect)) // 크롭 밖 노드는 버린다
+            node.rect = rect.translated(translate);
+            if (QRect(QPoint(0, 0), map.canvas).intersects(node.rect)) // 캔버스 밖은 버린다
                 map.nodes.append(node);
         }
         maps.insert(map.region, map);

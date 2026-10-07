@@ -42,12 +42,11 @@ void MapView::setRegion(const QString &region, const QHash<QString, LocalizedTex
 
 int MapView::fitScale() const
 {
+    // 세로를 꽉 채우는 배율이 기본이다 — 성도 · 관동 합본처럼 긴 지도는 가로가 넘치고,
+    // 넘친 만큼 끌어서(드래그) 본다. 세로가 맞으면 빈 공간이 크게 남지 않는다
     if (!m_map)
         return 1;
-    const QRect view = m_map->view();
-    const int sx = (width() - 24) / view.width();
-    const int sy = (height() - 24) / view.height();
-    return std::max(1, std::min(sx, sy));
+    return std::max(1, (height() - 24) / m_map->canvas.height());
 }
 
 int MapView::scale() const
@@ -59,7 +58,7 @@ QPoint MapView::origin() const
 {
     if (!m_map)
         return {};
-    const QSize content = m_map->view().size() * scale();
+    const QSize content = m_map->canvas * scale();
     // 내용이 창보다 작으면 가운데, 크면 팬(클램프)
     const int x
             = content.width() <= width() ? (width() - content.width()) / 2 : clampPan(m_pan).x();
@@ -70,7 +69,7 @@ QPoint MapView::origin() const
 
 QPoint MapView::clampPan(QPoint pan) const
 {
-    const QSize content = m_map->view().size() * scale();
+    const QSize content = m_map->canvas * scale();
     pan.setX(std::clamp(pan.x(), std::min(0, width() - content.width()), 0));
     pan.setY(std::clamp(pan.y(), std::min(0, height() - content.height()), 0));
     return pan;
@@ -79,10 +78,7 @@ QPoint MapView::clampPan(QPoint pan) const
 QRect MapView::nodeRect(const townmapbook::Node &node) const
 {
     const int s = scale();
-    const QRect view = m_map->view();
-    const QPoint topLeft
-            = origin() + QPoint((node.rect.x() - view.x()) * s, (node.rect.y() - view.y()) * s);
-    return QRect(topLeft, node.rect.size() * s);
+    return QRect(origin() + QPoint(node.rect.x() * s, node.rect.y() * s), node.rect.size() * s);
 }
 
 const townmapbook::Node *MapView::nodeAt(const QPoint &widgetPos) const
@@ -105,17 +101,28 @@ void MapView::ensurePixmap()
     const int s = scale();
     if (!m_map || m_scaledFor == s)
         return;
-    const QString file = m_cache->path(m_map->region);
-    if (file.isEmpty()) {
-        m_cache->request(m_map->region);
-        m_scaled = QPixmap();
-        m_scaledFor = 0;
-        return;
+    // 레이어 그림이 다 받아졌을 때만 합성한다(합본은 성도 + 관동 두 장)
+    QList<QPixmap> sources;
+    for (const townmapbook::Layer &layer : m_map->layers) {
+        const QString file = m_cache->path(layer.source);
+        if (file.isEmpty()) {
+            m_cache->request(layer.source);
+            m_scaled = QPixmap();
+            m_scaledFor = 0;
+            return;
+        }
+        sources.append(QPixmap(file));
     }
-    const QPixmap source(file);
-    const QPixmap cropped = m_map->crop.isNull() ? source : source.copy(m_map->crop);
-    m_scaled = cropped.scaled(cropped.size() * s, Qt::IgnoreAspectRatio,
-                              Qt::FastTransformation); // 도트 유지(니어리스트)
+    QPixmap canvas(m_map->canvas);
+    canvas.fill(Qt::transparent);
+    {
+        QPainter painter(&canvas);
+        for (qsizetype i = 0; i < m_map->layers.size(); ++i)
+            painter.drawPixmap(m_map->layers.at(i).offset,
+                               sources.at(i).copy(m_map->layers.at(i).crop));
+    }
+    m_scaled = canvas.scaled(canvas.size() * s, Qt::IgnoreAspectRatio,
+                             Qt::FastTransformation); // 도트 유지(니어리스트)
     m_scaledFor = s;
 }
 
@@ -137,8 +144,8 @@ void MapView::paintEvent(QPaintEvent *event)
     } else {
         // 아직 그림이 없다(받는 중 · 오프라인) — 노드만으로 그리는 스키매틱 폴백
         const int s = scale();
-        const QRect view = m_map->view();
-        painter.fillRect(QRect(topLeft, view.size() * s), QColor(tok::kPaper));
+        const QSize view = m_map->canvas;
+        painter.fillRect(QRect(topLeft, view * s), QColor(tok::kPaper));
         painter.setPen(QPen(QColor(tok::kPaperStripe), 1));
         for (int x = 0; x <= view.width(); x += 10)
             painter.drawLine(topLeft.x() + x * s, topLeft.y(), topLeft.x() + x * s,
@@ -160,14 +167,16 @@ void MapView::paintEvent(QPaintEvent *event)
     painter.setRenderHint(QPainter::Antialiasing);
     // 선택: 노랑 테(스쿼드 카드의 선택 테와 같은 말)
     auto outline = [&](const QString &location, QRgb color, qreal width) {
+        QRect first;
         for (const townmapbook::Node &node : m_map->nodes)
-            if (node.location == location) {
+            if (node.location == location) { // 같은 장소의 조각(합본 경계)을 전부 두른다
                 painter.setPen(QPen(QColor(color), width));
                 painter.setBrush(Qt::NoBrush);
                 painter.drawRoundedRect(QRectF(nodeRect(node)).adjusted(-2, -2, 2, 2), 3, 3);
-                return QRect(nodeRect(node));
+                if (first.isNull())
+                    first = nodeRect(node);
             }
-        return QRect();
+        return first;
     };
     if (!m_selected.isEmpty())
         outline(m_selected, tok::kYellow, 3);

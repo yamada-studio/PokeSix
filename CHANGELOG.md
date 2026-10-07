@@ -19,6 +19,13 @@ and the project uses [Semantic Versioning](https://semver.org/).
   without it simply falls back to the Qt dialog.
 
 ### Added
+- The town map atlas joins two-region games into one continuous map: Johto and Kanto are
+  stitched on a single canvas (Kanto at x+158 — Mt. Silver and Tohjo Falls sit at the same
+  latitude in both source images, so the seam is invisible) and explored by dragging, with no
+  region buttons; border places keep both map fragments outlined. The default scale now fills
+  the panel's height, so wide maps overflow sideways into the drag instead of leaving empty
+  space. Sinnoh (DP·Pt, 69 places) is mapped too, and the page's game chips go back to the
+  grouped style ([신오 D|P] [성도 HG|SS] — pieces still pick the version).
 - A new "타운맵 백과" page (fifth tab, between Items and Squad, also on the intro menu): the
   in-game town map as original pixel art with modern controls. The map image is downloaded at
   first use to the user cache (never committed — same policy as sprites, from Serebii Pokéarth's
