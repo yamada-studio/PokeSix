@@ -6,14 +6,17 @@
 #include "ui/theme/tokens.h"
 
 #include <QFontMetricsF>
-#include <QIcon>
-#include <QMenu>
+#include <QKeyEvent>
+#include <QMouseEvent>
 #include <QPainter>
 #include <QPainterPath>
-#include <QPixmap>
 #include <QtMath>
 
+#include <functional>
+
 namespace {
+using namespace com::yamada::studio;
+
 // 크기별 수치. Large = Intro.dc.html의 세대 버튼, Compact = Dex.dc.html 등 앱 막대의 세대 버튼.
 struct Metrics
 {
@@ -56,6 +59,133 @@ QLinearGradient stripesOf(const QList<QColor> &colors, const QPointF &from, cons
     }
     return stripes;
 }
+
+// 세대 드롭다운: QMenu 대신 직접 그린다 — 줄마다 그 세대의 색 띠를 배경으로 깔고(아이콘 견본
+// 대신), 폭을 버튼과 똑같이 맞추기 위해서다. Qt::Popup이라 바깥을 누르면 저절로 닫힌다.
+// 시그널이 필요 없도록 고르면 부를 콜백을 받는다(Q_OBJECT 없이).
+class GenerationMenu : public QWidget
+{
+public:
+    GenerationMenu(int first, int last, int current, int width, std::function<void(int)> onPick,
+                   QWidget *parent)
+        : QWidget(parent, Qt::Popup | Qt::FramelessWindowHint)
+        , m_first(first)
+        , m_current(current)
+        , m_onPick(std::move(onPick))
+        , m_font(theme::font(theme::kFamilyTitle, 16))
+    {
+        QWidget::setAttribute(Qt::WA_DeleteOnClose);
+        QWidget::setMouseTracking(true);
+        m_rows = last - first + 1;
+        m_hover = current - first;
+        QWidget::setFixedSize(width, kBorderWidth * 2 + m_rows * kRowHeight);
+    }
+
+protected:
+    void paintEvent(QPaintEvent *) override
+    {
+        QPainter painter(this);
+        painter.setRenderHint(QPainter::Antialiasing);
+        // 틀: 흰 바탕 + 먹선 2 (app.qss의 QMenu와 같은 말투)
+        const qreal half = kBorderWidth / 2.0;
+        painter.setPen(QPen(QColor(tok::kInk), kBorderWidth));
+        painter.setBrush(QColor(tok::kWhite));
+        painter.drawRoundedRect(QRectF(rect()).adjusted(half, half, -half, -half), kRadius - half,
+                                kRadius - half);
+        QPainterPath inner;
+        inner.addRoundedRect(
+                QRectF(rect()).adjusted(kBorderWidth, kBorderWidth, -kBorderWidth, -kBorderWidth),
+                kRadius - kBorderWidth, kRadius - kBorderWidth);
+        painter.setClipPath(inner);
+        for (int i = 0; i < m_rows; ++i) {
+            const QRectF row(kBorderWidth, kBorderWidth + i * kRowHeight,
+                             width() - 2 * kBorderWidth, kRowHeight);
+            // 줄 배경 = 그 세대의 단색 띠(버튼과 같은 배열)
+            const QList<QColor> colors = dexstyle::generationColors(m_first + i);
+            if (colors.isEmpty())
+                painter.fillRect(row, QColor(tok::kWhite));
+            else
+                painter.fillRect(row, stripesOf(colors, row.topLeft(), row.topRight()));
+            if (i == m_hover) // 올린 줄: 먹색을 옅게 덮는다
+                painter.fillRect(row, QColor(0, 0, 0, 26));
+            painter.setPen(QColor(tok::kText1));
+            painter.setFont(m_font);
+            painter.drawText(row.adjusted(12, 0, -10, 0), Qt::AlignLeft | Qt::AlignVCenter,
+                             GenerationButton::tr("%1세대").arg(m_first + i));
+            if (m_first + i == m_current) // 지금 세대 표시
+                painter.drawText(row.adjusted(12, 0, -10, 0), Qt::AlignRight | Qt::AlignVCenter,
+                                 QStringLiteral("✓"));
+            if (i < m_rows - 1) // 줄 구분: 마지막만 빼고 아래 먹선 1px
+                painter.fillRect(QRectF(row.left(), row.bottom() - 1, row.width(), 1),
+                                 QColor(tok::kInk));
+        }
+    }
+
+    void mouseMoveEvent(QMouseEvent *event) override
+    {
+        const int row = rowAt(event->position().y());
+        if (row != m_hover) {
+            m_hover = row;
+            QWidget::update();
+        }
+    }
+
+    void mouseReleaseEvent(QMouseEvent *event) override
+    {
+        const int row = rowAt(event->position().y());
+        if (row >= 0 && rect().contains(event->position().toPoint()))
+            pick(row);
+    }
+
+    void keyPressEvent(QKeyEvent *event) override
+    {
+        switch (event->key()) {
+        case Qt::Key_Up:
+            m_hover = (m_hover + m_rows - 1) % m_rows;
+            QWidget::update();
+            break;
+        case Qt::Key_Down:
+            m_hover = (m_hover + 1) % m_rows;
+            QWidget::update();
+            break;
+        case Qt::Key_Return:
+        case Qt::Key_Enter:
+            if (m_hover >= 0)
+                pick(m_hover);
+            break;
+        case Qt::Key_Escape:
+            QWidget::close();
+            break;
+        default:
+            QWidget::keyPressEvent(event);
+        }
+    }
+
+private:
+    static constexpr int kBorderWidth = 2;
+    static constexpr int kRadius = 6;
+    static constexpr int kRowHeight = 34;
+
+    int rowAt(qreal y) const
+    {
+        const int row = int((y - kBorderWidth) / kRowHeight);
+        return row < 0 || row >= m_rows ? -1 : row;
+    }
+
+    void pick(int row)
+    {
+        const int number = m_first + row;
+        QWidget::close();
+        m_onPick(number);
+    }
+
+    int m_first = 1;
+    int m_rows = 0;
+    int m_current = 1;
+    int m_hover = -1;
+    std::function<void(int)> m_onPick;
+    QFont m_font;
+};
 } // namespace
 
 namespace com::yamada::studio {
@@ -91,36 +221,13 @@ QString GenerationButton::label() const
 
 void GenerationButton::showMenu()
 {
-    // QMenu: 팝업 창(Qt::Popup). exec()는 고를 때까지 기다리는 동안 자기 이벤트 루프를 돌린다 —
-    // 앱은 멈추지 않는다(다른 창의 그리기 · 타이머도 돈다). 메뉴 밖을 누르거나 Esc면 nullptr.
-    // 모양은 app.qss의 QMenu 규칙(흰 바탕 · 먹선 2 · 도현 16).
-    QMenu menu(this);
-    menu.setMinimumWidth(width()); // 버튼보다 좁지 않게
-    for (int n = m_first; n <= m_last; ++n) {
-        QAction *action = menu.addAction(tr("%1세대").arg(n));
-        action->setData(n);
-        action->setCheckable(true);
-        action->setChecked(n == m_number); // 지금 세대에 체크 표시
-        // 줄 앞에 그 세대의 색 띠 견본(버튼과 같은 배열)
-        const QList<QColor> colors = dexstyle::generationColors(n);
-        if (colors.isEmpty())
-            continue;
-        const qreal ratio = devicePixelRatioF();
-        QPixmap swatch(qRound(26 * ratio), qRound(14 * ratio));
-        swatch.setDevicePixelRatio(ratio);
-        swatch.fill(Qt::transparent);
-        QPainter painter(&swatch);
-        painter.setRenderHint(QPainter::Antialiasing);
-        painter.setPen(QPen(QColor(tok::kInk), 1.5));
-        painter.setBrush(stripesOf(colors, QPointF(0, 0), QPointF(26, 0)));
-        painter.drawRoundedRect(QRectF(1, 1, 24, 12), 4, 4);
-        action->setIcon(QIcon(swatch));
-    }
-    // 버튼 바로 아래(그림자 아래)에, 버튼 왼쪽 끝에 맞춰 연다.
-    const QPoint below
-            = mapToGlobal(QPoint(0, metricsOf(m_size).height + metricsOf(m_size).shadow + 2));
-    if (const QAction *chosen = menu.exec(below))
-        emit generationSelected(chosen->data().toInt());
+    // 버튼과 같은 폭의 색 띠 메뉴(위 GenerationMenu). 버튼 바로 아래(그림자 아래), 왼쪽 맞춤.
+    GenerationMenu *menu = new GenerationMenu(
+            m_first, m_last, m_number, width(),
+            [this](int number) { emit generationSelected(number); }, this);
+    menu->move(mapToGlobal(QPoint(0, metricsOf(m_size).height + metricsOf(m_size).shadow + 2)));
+    menu->show();
+    menu->setFocus();
 }
 
 QSize GenerationButton::sizeHint() const
@@ -163,17 +270,9 @@ void GenerationButton::paintEvent(QPaintEvent *event)
     painter.setBrush(body);
     painter.drawRoundedRect(box.adjusted(half, half, -half, -half), radius - half, radius - half);
 
-    // 3) "4세대" (도현)
+    // 3) ▾ — 글자 앞에(사용자 결정: [▾ 4세대]). SVG path "M6 9 l6 6 6 -6"(viewBox 24)를 줄여
+    // 그린다.
     qreal x = kBorder + m.paddingX;
-    const QString text = label();
-    const qreal textW = QFontMetricsF(m_font).horizontalAdvance(text);
-    painter.setFont(m_font);
-    painter.setPen(QColor(tok::kText1));
-    painter.drawText(QRectF(x, box.top(), textW, box.height()), Qt::AlignVCenter | Qt::AlignLeft,
-                     text);
-
-    // 4) ▾ — SVG path "M6 9 l6 6 6 -6"(viewBox 24)를 줄여 그린다.
-    x += textW + m.gap;
     const qreal scale = m.chevron / 24.0;
     const QPointF topLeft(x, box.center().y() - m.chevron / 2.0);
     QPainterPath chevron;
@@ -186,5 +285,14 @@ void GenerationButton::paintEvent(QPaintEvent *event)
     painter.setPen(chevronPen);
     painter.setBrush(Qt::NoBrush);
     painter.drawPath(chevron);
+
+    // 4) "4세대" (도현)
+    x += m.chevron + m.gap;
+    const QString text = label();
+    const qreal textW = QFontMetricsF(m_font).horizontalAdvance(text);
+    painter.setFont(m_font);
+    painter.setPen(QColor(tok::kText1));
+    painter.drawText(QRectF(x, box.top(), textW, box.height()), Qt::AlignVCenter | Qt::AlignLeft,
+                     text);
 }
 } // namespace com::yamada::studio
