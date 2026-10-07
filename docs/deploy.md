@@ -185,7 +185,11 @@ Linux(AppImage) · macOS(dmg)도 같은 워크플로의 매트릭스로. 로드�
 
 ### 2-8. 다른 OS 한 줄씩
 
-- **macOS**: `qt_generate_deploy_app_script`가 `macdeployqt`를 불러 `.app` 번들 안에 프레임워크를 넣는다. 배포는 `hdiutil`로 `.dmg`. Gatekeeper 때문에 공증(notarization, Apple Developer 연 99달러)이 없으면 우클릭 → 열기 안내가 필요하다
+- **macOS** (**적용됨**, 2026-10-07): `scripts/macos/package.sh` — release 빌드(테스트 포함) →
+  `cmake --install`(macdeployqt가 `.app`에 프레임워크를 넣는다) → LICENSE · 고지문 · /Applications
+  링크를 담아 `hdiutil`로 `build/package/PokeSix-<버전>-macos.dmg` + SHA-256.
+  `scripts/macos/quickstart.sh` = setup → package → 실행. 서명 · 공증(Apple Developer 연 99달러)이
+  없어 Gatekeeper가 경고한다 — 처음 한 번 우클릭 → 열기
 - **Linux** (**적용됨**, 2026-10-07): `scripts/linux/package.sh` — release 빌드(테스트 포함) →
   `build/package/AppDir`에 install → `linuxdeploy` + `linuxdeploy-plugin-qt`(처음 한 번
   `build/package/tools`에 받아 둔다)로 `build/package/PokeSix-<버전>-x86_64.AppImage` + SHA-256.

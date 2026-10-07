@@ -19,6 +19,11 @@ and the project uses [Semantic Versioning](https://semver.org/).
   without it simply falls back to the Qt dialog.
 
 ### Added
+- macOS packaging and quickstart: `scripts/macos/package.sh` installs the release build (which
+  runs macdeployqt, so the .app carries the Qt frameworks), adds the licenses and an
+  /Applications link, and builds `PokeSix-<version>-macos.dmg` with hdiutil + SHA-256;
+  `scripts/macos/quickstart.sh` chains setup → package → open. Unsigned: Gatekeeper warns on
+  first launch (right-click → Open). Untested in this environment — no Mac at hand.
 - Unova joins the town map atlas (82 places): the B2W2-era map serves both BW and B2W2 —
   places that don't exist yet in BW simply show no encounter data there. Pokéwood and the PWT
   have no PokéAPI location and wait for the landmark dictionary.
