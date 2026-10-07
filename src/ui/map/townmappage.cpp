@@ -5,6 +5,7 @@
 #include "data/state/appstate.h"
 #include "ui/dex/gameselector.h"
 #include "ui/dex/guidebook.h"
+#include "ui/items/itemrowdelegate.h"
 #include "ui/map/mapview.h"
 #include "ui/map/townmapbook.h"
 #include "ui/squad/squadpaint.h"
@@ -15,6 +16,7 @@
 #include <QButtonGroup>
 #include <QHBoxLayout>
 #include <QLabel>
+#include <QMap>
 #include <QPushButton>
 #include <QScrollArea>
 #include <QSet>
@@ -48,6 +50,7 @@ TownMapPage::TownMapPage(Repository *repository, AppState *state, QWidget *paren
     , m_repository(repository)
     , m_state(state)
     , m_pokemonIcons(new SpriteCache(SpriteCache::Kind::PokemonIcon, this))
+    , m_itemIcons(new SpriteCache(SpriteCache::Kind::Item, this))
 {
     QVBoxLayout *layout = new QVBoxLayout(this);
     layout->setContentsMargins(kPageMargins);
@@ -91,6 +94,30 @@ TownMapPage::TownMapPage(Repository *repository, AppState *state, QWidget *paren
     m_detail = new PanelFrame;
     m_detail->setPanelStyle(kDetailPanel);
     m_detail->setFixedWidth(kDetailWidth);
+    // 머리 오른쪽: [야생] [아이템] [랜드마크] — 장소 정보의 갈래
+    QWidget *tabs = new QWidget;
+    QHBoxLayout *tabLayout = new QHBoxLayout(tabs);
+    tabLayout->setContentsMargins(0, 0, 0, 0);
+    tabLayout->setSpacing(4);
+    QButtonGroup *tabGroup = new QButtonGroup(this);
+    tabGroup->setExclusive(true);
+    const std::pair<InfoTab, QString> kInfoTabs[] = {{InfoTab::Wild, tr("야생")},
+                                                     {InfoTab::Items, tr("아이템")},
+                                                     {InfoTab::Landmarks, tr("랜드마크")}};
+    for (const auto &[tab, label] : kInfoTabs) {
+        QPushButton *button = new QPushButton(label);
+        button->setObjectName(QStringLiteral("mapInfoTab"));
+        button->setCheckable(true);
+        button->setCursor(Qt::PointingHandCursor);
+        button->setChecked(tab == m_infoTab);
+        tabGroup->addButton(button);
+        tabLayout->addWidget(button);
+        connect(button, &QPushButton::clicked, this, [this, tab = tab] {
+            m_infoTab = tab;
+            showLocation(m_view->selected());
+        });
+    }
+    m_detail->setHeaderWidget(tabs);
     QWidget *detailBody = new QWidget;
     QVBoxLayout *detailOuter = new QVBoxLayout(detailBody);
     detailOuter->setContentsMargins(14, 10, 14, 12);
@@ -131,6 +158,7 @@ void TownMapPage::refresh()
     const int generation = m_state->generation();
     const QList<GameInfo> games = m_repository->gamesForGeneration(generation);
     m_version = m_repository->resolveVersion(generation, m_state->game());
+    m_versionGroup = versionGroupOf(games, m_version);
     m_game->setGames(games, language, m_version);
     m_game->setVisible(games.size() > 1);
 
@@ -213,6 +241,96 @@ void TownMapPage::selectRegion(const QString &region)
                          map.isValid() ? tr("%1곳").arg(map.nodes.size()) : QString());
 }
 
+void TownMapPage::showItems(const QString &location)
+{
+    const Language language = m_state->language();
+    const QList<guidebook::ItemAt> items
+            = guidebook::itemsAt(m_versionGroup, location, language, m_version);
+    if (items.isEmpty()) {
+        QLabel *none = new QLabel(tr("이곳의 아이템 자료가 없어요(사전 준비 중)"));
+        none->setObjectName(QStringLiteral("squadNote"));
+        none->setWordWrap(true);
+        m_detailLayout->addWidget(none);
+        return;
+    }
+    // 아이템 이름: 세대 목록에서 identifier → 줄(이름 · 기술머신 기술). 세대마다 한 번 읽는다
+    if (m_itemRowsGeneration != m_state->generation()) {
+        m_itemRows = m_repository->itemsForGeneration(m_state->generation());
+        m_itemRowsGeneration = m_state->generation();
+    }
+    QHash<QString, const ItemRow *> rows;
+    for (const ItemRow &row : m_itemRows)
+        rows.insert(row.identifier, &row);
+
+    // 같은 아이템의 입수처 여러 줄(상점 + 복권 …)을 한 묶음으로 — 이름 줄 + 들여 쓴 방법 줄들
+    QMap<QString, QPair<QString, QStringList>> grouped; // 정렬 키(이름) → (identifier, 방법들)
+    for (const guidebook::ItemAt &entry : items) {
+        const ItemRow *row = rows.value(entry.item);
+        QString title = row ? row->name.text(language) : entry.item;
+        if (row && !row->machineMove.text(language).isEmpty())
+            title += QStringLiteral(" — %1").arg(row->machineMove.text(language));
+        auto &bucket = grouped[title];
+        bucket.first = entry.item;
+        if (!entry.text.isEmpty())
+            bucket.second.append(entry.text);
+    }
+    for (auto it = grouped.cbegin(); it != grouped.cend(); ++it) {
+        const ItemRow *row = rows.value(it.value().first);
+        QWidget *line = new QWidget;
+        QHBoxLayout *h = new QHBoxLayout(line);
+        h->setContentsMargins(0, 0, 0, 0);
+        h->setSpacing(8);
+        const QString key = ItemRowDelegate::iconKey(
+                it.value().first, row ? row->machineType : QString(), m_state->generation());
+        const QString file = m_itemIcons->path(key);
+        if (file.isEmpty()) {
+            m_itemIcons->request(key);
+        } else {
+            QLabel *icon = new QLabel;
+            icon->setPixmap(squadpaint::trimmedIcon(file, 18));
+            h->addWidget(icon);
+        }
+        QLabel *name = new QLabel(it.key());
+        name->setFont(theme::font(theme::kFamilyBody, 13, QFont::ExtraBold));
+        h->addWidget(name);
+        h->addStretch();
+        m_detailLayout->addWidget(line);
+        for (const QString &text : it.value().second) {
+            QLabel *how = new QLabel(text);
+            how->setObjectName(QStringLiteral("squadResources"));
+            how->setWordWrap(true);
+            how->setContentsMargins(26, 0, 0, 2);
+            m_detailLayout->addWidget(how);
+        }
+    }
+}
+
+void TownMapPage::showLandmarks(const QString &location)
+{
+    const Language language = m_state->language();
+    const QList<townmapbook::Landmark> landmarks = townmapbook::landmarks(m_versionGroup, location);
+    if (landmarks.isEmpty()) {
+        QLabel *none = new QLabel(tr("기록해 둔 랜드마크가 없어요"));
+        none->setObjectName(QStringLiteral("squadNote"));
+        none->setWordWrap(true);
+        m_detailLayout->addWidget(none);
+        return;
+    }
+    for (const townmapbook::Landmark &landmark : landmarks) {
+        QLabel *name = new QLabel(landmark.name.text(language));
+        name->setFont(theme::font(theme::kFamilyBody, 13, QFont::ExtraBold));
+        m_detailLayout->addWidget(name);
+        const QString detail = landmark.detail.text(language);
+        if (!detail.isEmpty()) {
+            QLabel *note = new QLabel(detail);
+            note->setObjectName(QStringLiteral("squadResources"));
+            note->setWordWrap(true);
+            note->setContentsMargins(10, 0, 0, 4);
+            m_detailLayout->addWidget(note);
+        }
+    }
+}
+
 void TownMapPage::showLocation(const QString &location)
 {
     // 목록을 처음부터 다시 만든다(장소 하나의 줄 수는 적다)
@@ -234,6 +352,16 @@ void TownMapPage::showLocation(const QString &location)
         scroll->show();
     m_detail->setTitle(m_names.value(location).text(language), QString());
 
+    if (m_infoTab == InfoTab::Items) {
+        showItems(location);
+        m_detailLayout->addStretch();
+        return;
+    }
+    if (m_infoTab == InfoTab::Landmarks) {
+        showLandmarks(location);
+        m_detailLayout->addStretch();
+        return;
+    }
     const QList<Repository::EncounterSpot> spots = m_repository->encountersAt(location, m_version);
     if (spots.isEmpty()) {
         QLabel *none = new QLabel(tr("이 게임에는 이곳의 야생 출현 자료가 없어요"));

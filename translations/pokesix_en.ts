@@ -1639,6 +1639,26 @@ that game&apos;s wild encounters</translation>
         <source>%1곳</source>
         <translation>%1 places</translation>
     </message>
+    <message>
+        <source>야생</source>
+        <translation>Wild</translation>
+    </message>
+    <message>
+        <source>아이템</source>
+        <translation>Items</translation>
+    </message>
+    <message>
+        <source>랜드마크</source>
+        <translation>Landmarks</translation>
+    </message>
+    <message>
+        <source>이곳의 아이템 자료가 없어요(사전 준비 중)</source>
+        <translation>No item data here yet (book in progress)</translation>
+    </message>
+    <message>
+        <source>기록해 둔 랜드마크가 없어요</source>
+        <translation>No landmarks recorded here</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::guidebook</name>

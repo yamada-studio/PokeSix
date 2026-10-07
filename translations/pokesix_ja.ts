@@ -1639,6 +1639,26 @@
         <source>%1곳</source>
         <translation>%1か所</translation>
     </message>
+    <message>
+        <source>야생</source>
+        <translation>野生</translation>
+    </message>
+    <message>
+        <source>아이템</source>
+        <translation>どうぐ</translation>
+    </message>
+    <message>
+        <source>랜드마크</source>
+        <translation>ランドマーク</translation>
+    </message>
+    <message>
+        <source>이곳의 아이템 자료가 없어요(사전 준비 중)</source>
+        <translation>ここのどうぐデータはまだありません（辞書準備中）</translation>
+    </message>
+    <message>
+        <source>기록해 둔 랜드마크가 없어요</source>
+        <translation>記録されたランドマークがありません</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::guidebook</name>
