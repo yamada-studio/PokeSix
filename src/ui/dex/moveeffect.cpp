@@ -198,11 +198,14 @@ Parts describe(const MoveEntry &move, int generation, const QStringList &userTyp
     QList<std::pair<QString, int>> named; // 1세대: 특공 · 특방 → "특수" 하나로 합친다
     for (const auto &[stat, change] : stats) {
         const QString name = statName(stat, features.specialSplit);
+        // 람다가 구조적 바인딩(change)을 잡는 것은 C++20(P1091)이지만 AppleClang 15(macOS 러너)는
+        // 아직 거부한다 → 보통 변수로 옮겨서 잡는다
+        const int delta = change;
         if (name.isEmpty() || std::any_of(named.begin(), named.end(), [&](const auto &n) {
-                return n.first == name && n.second == change;
+                return n.first == name && n.second == delta;
             }))
             continue;
-        named.append({name, change});
+        named.append({name, delta});
     }
     for (qsizetype i = 0; i < named.size(); ++i) {
         separator();

@@ -36,7 +36,7 @@ jobs:
           files: build/package/PokeSix-*.AppImage
 
   windows:
-    runs-on: windows-latest # VS 2022 포함
+    runs-on: windows-2022 # windows-latest(= windows-2025-vs2026)에는 VS 2022가 없다. 프리셋 generator가 "Visual Studio 17 2022"
     steps:
       - uses: actions/checkout@v4
       - id: qt-version
