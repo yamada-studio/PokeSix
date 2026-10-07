@@ -11,7 +11,7 @@ TEST(SquadFile, RoundTripsASquad)
 {
     QTemporaryDir dir;
     ASSERT_TRUE(dir.isValid());
-    const QString path = dir.filePath(QStringLiteral("squad.json"));
+    const QString path = dir.filePath(QStringLiteral("squad.pks"));
     Portable portable;
     portable.generation = 4;
     portable.game = QStringLiteral("heartgold");
@@ -28,7 +28,7 @@ TEST(SquadFile, RoundTripsASquad)
     EXPECT_EQ(loaded->generation, 4);
     EXPECT_EQ(loaded->game, QStringLiteral("heartgold"));
     EXPECT_EQ(loaded->squad, portable.squad); // 멤버 · 메모 · 기술 · 셔틀까지 그대로
-    EXPECT_EQ(fileName(*loaded), QStringLiteral("pokesix-squad-4-heartgold.json"));
+    EXPECT_EQ(fileName(*loaded), QStringLiteral("pokesix-squad-4-heartgold.pks"));
 }
 
 TEST(SquadFile, RejectsAForeignOrBrokenFile)

@@ -13,6 +13,9 @@ and the project uses [Semantic Versioning](https://semver.org/).
   export/import/image sharing. The note about the removed search box is gone.
 
 ### Added
+- Squad export files wear their own extension: `.pks` (the content stays the same JSON). The
+  save dialog suggests `pokesix-squad-4-heartgold.pks` and appends `.pks` when no suffix is
+  typed; import still accepts the early `.json` exports.
 - Slot cards say how each assigned move is learned, right before the 물/특 badge: a Heart Scale
   item icon when the move needs the Move Reminder, "Lv.55" for level-up moves, "TM26"/"HM03"
   for machines, and NPC/알 for tutor and egg moves. To give the wider labels room, the wide

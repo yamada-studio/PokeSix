@@ -69,7 +69,7 @@ std::optional<Portable> load(const QString &path, QString *error)
 QString fileName(const Portable &portable)
 {
     // 어느 OS에서나 안전하게 ASCII로 — 스쿼드 이름은 파일 안에 있다
-    return QStringLiteral("pokesix-squad-%1-%2.json")
+    return QStringLiteral("pokesix-squad-%1-%2.pks")
             .arg(portable.generation)
             .arg(portable.game.isEmpty() ? QStringLiteral("squad") : portable.game);
 }
