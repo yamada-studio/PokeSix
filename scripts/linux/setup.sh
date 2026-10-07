@@ -71,7 +71,11 @@ if ((do_qt)); then
         echo "     hundreds of MB, so it can stay silent for 10+ minutes while they download and"
         echo "     extract — it is not stuck.)"
         # aqt leaves aqtinstall.log in the working directory, so run it from a temp directory
+        # --archives: only what PokeSix uses — qtbase (Core/Gui/Widgets/Sql/Network),
+        # qtsvg, qttools (lupdate/lrelease) and icu (separate archive on Linux).
+        # Skips qtdeclarative & friends: hundreds of MB and minutes of extraction.
         (cd "${TMPDIR:-/tmp}" && "${aqt[@]}" install-qt linux desktop "$QT_VERSION" "$QT_AQT_ARCH" \
+            --archives qtbase qtsvg qttools icu \
             --outputdir "$QT_INSTALL_DIR")
         is_qt_dir "$QT_DEFAULT_DIR" || die "Qt still not found at $QT_DEFAULT_DIR after installation."
     fi

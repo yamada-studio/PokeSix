@@ -85,7 +85,8 @@ echo      hundreds of MB, so it can stay silent for 10+ minutes while they downl
 echo      extract - it is not stuck.)
 rem aqt leaves aqtinstall.log in the working directory, so run it from a temp directory
 pushd "%TEMP%"
-uvx --from aqtinstall aqt install-qt windows desktop %QT_VERSION% %QT_AQT_ARCH% --outputdir "%QT_INSTALL_DIR%"
+rem --archives: only what PokeSix uses (qtbase/qtsvg/qttools) - skips qtdeclarative & friends
+uvx --from aqtinstall aqt install-qt windows desktop %QT_VERSION% %QT_AQT_ARCH% --archives qtbase qtsvg qttools --outputdir "%QT_INSTALL_DIR%"
 set "AQT_RC=%errorlevel%"
 popd
 if not "%AQT_RC%"=="0" goto :fail

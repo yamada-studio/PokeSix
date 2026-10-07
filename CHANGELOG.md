@@ -18,6 +18,13 @@ and the project uses [Semantic Versioning](https://semver.org/).
   bundled — copied without their dependency walk, so the host's GTK3 is used and a host
   without it simply falls back to the Qt dialog.
 
+### Changed
+- Qt setup downloads a quarter of what it used to: aqtinstall now fetches only the archives
+  PokeSix uses (`qtbase`, `qtsvg`, `qttools`, plus `icu` on Linux) instead of the full desktop
+  set — qtdeclarative and friends were hundreds of MB and minutes of extraction for nothing.
+  Verified on Linux: a fresh minimal install (339MB) configures, builds and passes all 96
+  tests, and the app runs.
+
 ### Added
 - macOS packaging and quickstart: `scripts/macos/package.sh` installs the release build (which
   runs macdeployqt, so the .app carries the Qt frameworks), adds the licenses and an
