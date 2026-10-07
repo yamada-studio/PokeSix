@@ -7,7 +7,10 @@
 # Output: build/package/PokeSix-<version>-macos.dmg
 # The install step runs macdeployqt (qt_generate_deploy_app_script in src/CMakeLists.txt),
 # so the .app carries the Qt frameworks and runs on a Mac without Qt.
-# The app is not signed or notarized: Gatekeeper will warn — right-click → Open the first time.
+# The app is ad-hoc signed, not notarized (no Apple Developer account). macOS quarantines a
+# downloaded dmg and blocks the app as "damaged" — right-click → Open does NOT bypass this for
+# unsigned/ad-hoc apps. The receiver clears the flag once (documented in README "Download"):
+#   xattr -d com.apple.quarantine ~/Downloads/PokeSix-<version>-macos.dmg
 set -euo pipefail
 # shellcheck source=env.sh
 source "$(dirname "${BASH_SOURCE[0]}")/env.sh"
@@ -40,6 +43,14 @@ cmake --install "$POKESIX_ROOT/build/macos-release" --prefix "$staging"
 cp "$POKESIX_ROOT/LICENSE" "$POKESIX_ROOT/THIRD_PARTY_NOTICES.md" "$staging/"
 # Finder convention: drag the app onto this link to install
 ln -sfn /Applications "$staging/Applications"
+
+# macdeployqt rewrites install names inside the bundle, which can leave stale ad-hoc
+# signatures behind (arm64 refuses to start those at all). Re-sign the whole bundle with a
+# fresh ad-hoc signature. This does not silence Gatekeeper (see the header note) — it only
+# guarantees the app launches once the quarantine flag is cleared.
+step "ad-hoc codesign"
+codesign --force --deep --sign - "$staging/PokeSix.app"
+codesign --verify --deep --strict "$staging/PokeSix.app"
 
 output="$package_dir/PokeSix-$version-macos.dmg"
 step "dmg → $output"

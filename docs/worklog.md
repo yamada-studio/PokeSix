@@ -34,6 +34,7 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 3. 스쿼드 분석 패널의 문제 칸 높이(넓은 배치 최소 2줄 · 좁은 배치 최대 4줄, `squadpage.cpp`의 `kProblemVisibleRows`) — 사용자 피드백 대기
 4. 에뮬레이터 오버레이: [overlay-design.md](overlay-design.md)는 검토 문서. 시작하려면 ADR로 결정을 확정하고 roadmap에 Phase H를 올린다(H1 = core 세이브 파서)
 5. Windows 설정이 레지스트리 → `%APPDATA%\YamadaStudio\PokeSix.ini`로 바뀌었다(2026-10-07). 이전에 레지스트리에 저장된 세대 · 게임은 이어지지 않는다(한 번 다시 고르면 끝). 레지스트리 잔여물은 `HKCU\Software\YamadaStudio`에 남아 있어도 무해하다
+6. macOS 공증(notarization): Apple Developer(연 99달러) + CI secrets(`notarytool`)를 붙이면 내려받은 dmg의 Gatekeeper "손상됨" 차단이 사라진다. 그 전까지는 README Download 절의 `xattr` 안내로 운용(2026-10-08). `scripts/macos/package.sh`의 ad-hoc 재서명은 실기 Mac에서 아직 안 돌려 봤다
 
 ---
 
@@ -53,6 +54,20 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 ---
 
 ## 최근 세션 (역순)
+
+### 2026-10-08 — macOS Gatekeeper "손상됨" (Linux 세션)
+
+- 친구 Mac에서 v0.1.0 dmg가 **"PokeSix은(는) 손상되었기 때문에 열 수 없습니다"** — 파일 손상이
+  아니라 Gatekeeper: 공증(notarization) 없는 앱을 브라우저로 받으면 quarantine이 붙고, 서명이
+  Developer ID가 아니면 이 문구로 막는다(이 경우 **우클릭 → 열기 우회도 안 된다** — 기존 문서
+  3곳의 안내가 틀렸었다)
+- 조치: README에 **Download 절** 신설(3 OS 받는 법 + macOS `xattr -d com.apple.quarantine` 안내,
+  Windows SmartScreen 안내), deploy.md · package.sh 주석 교정, `scripts/macos/package.sh`에
+  macdeployqt 뒤 **ad-hoc 재서명**(`codesign --force --deep --sign -` + verify) 추가 — 서명이
+  깨진 arm64 바이너리는 격리를 풀어도 안 떠서, 풀면 반드시 뜨게 하는 보험
+- **v0.1.0 릴리스 노트에 macOS 안내를 덧붙이는 건 사용자 몫**(이 머신엔 GitHub 자격 증명 없음) —
+  본문은 이 세션이 준비해 전달함. ad-hoc 재서명은 다음 태그 패키지부터 효력
+- 공증(Apple Developer 연 99달러 + CI secrets)은 백로그 — 붙이면 경고 자체가 사라진다
 
 ### 2026-10-07 — Windows · quickstart 통과 · 릴리스 CI · Phase A 마무리 시작
 

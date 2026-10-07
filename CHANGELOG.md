@@ -7,6 +7,11 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Fixed
+- macOS: a downloaded dmg hit Gatekeeper's "PokeSix is damaged and can't be opened" block (the
+  app is not notarized, and for non-notarized apps right-click → Open does not bypass it — our
+  docs wrongly said it would). The README now has a Download section with the one-time
+  `xattr -d com.apple.quarantine` step, and `scripts/macos/package.sh` re-signs the bundle
+  ad-hoc after macdeployqt so the app is guaranteed to launch once the flag is cleared.
 - The release workflow asks for `contents: write` on GITHUB_TOKEN. The organization pins the default
   token to read-only, so the v0.1.0 tag run built all three packages but every release step got
   403 "Resource not accessible by integration"; the 0.1.0 release was therefore published by hand

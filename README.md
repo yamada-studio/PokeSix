@@ -27,6 +27,7 @@ use, so they appear blank here.</sub>
   - [Keyboard shortcuts](#keyboard-shortcuts)
   - [Language](#language)
 - [Where the data comes from](#where-the-data-comes-from)
+- [Download](#download)
 - [Building](#building)
 
 ## What it does
@@ -161,6 +162,30 @@ follow the same language.
   (Platinum, HeartGold/SoulSilver); some places in other games are still in English. See
   [docs/i18n/README.md](docs/i18n/README.md).
 
+## Download
+
+Prebuilt packages for every OS are on the
+[**Releases** page](https://github.com/yamada-studio/PokeSix/releases) — no Qt, compiler or
+setup needed. SHA-256 checksums are in each release's notes.
+
+| OS | File | How to run |
+|---|---|---|
+| Windows | `PokeSix-<version>-win64.zip` | Extract anywhere, run `bin\PokeSix.exe`. SmartScreen warns about an unknown publisher the first time: **More info → Run anyway**. |
+| Linux | `PokeSix-<version>-x86_64.AppImage` | `chmod +x`, then run it. |
+| macOS | `PokeSix-<version>-macos.dmg` | Clear the quarantine flag first (below), then open the dmg and drag the app to Applications. |
+
+**macOS says the app "is damaged and can't be opened"?** It is not damaged. The app is not
+notarized with Apple (that requires a paid developer account), so macOS quarantines anything a
+browser downloads and shows this message — and for non-notarized apps the usual
+right-click → Open trick does not work either. Clear the flag once:
+
+```bash
+xattr -d com.apple.quarantine ~/Downloads/PokeSix-<version>-macos.dmg
+```
+
+then open the dmg again. If the app is already in Applications, clear it there instead:
+`xattr -cr /Applications/PokeSix.app`.
+
 ## Building
 
 Requirements: a C++20 compiler, CMake 3.21+, Ninja (Linux/macOS), and **Qt 6.8 or newer**
@@ -187,7 +212,8 @@ desktop's application menu (`~/.local/bin/PokeSix.AppImage` + a `.desktop` entry
 `build/package/PokeSix-<version>-x86_64.AppImage` on Linux,
 `build\windows-msvc\package\PokeSix-<version>-win64.zip` on Windows (the extracted folder's
 `bin\PokeSix.exe` runs on a PC without Qt), and `build/package/PokeSix-<version>-macos.dmg` on
-macOS (unsigned — right-click → Open the first time).
+macOS (a copy you built yourself opens normally; a *downloaded* copy needs the Gatekeeper step
+in [Download](#download)).
 
 Each step also exists on its own, one folder per OS:
 
