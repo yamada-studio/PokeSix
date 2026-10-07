@@ -1,13 +1,20 @@
 #include "ui/home/intromenu.h"
 
 #include "ui/home/intromenuitem.h"
+#include "ui/theme/tokens.h"
 
+#include <QFocusEvent>
 #include <QKeyEvent>
+#include <QPainter>
 #include <QVBoxLayout>
 
 namespace {
 constexpr int kItemSpacing = 10; // 카드 버튼 사이
 constexpr int kItemHeight = 62;  // 카드 버튼(그림자 포함)
+// 포커스 링: 카드 상자에서 kFocusGap 떨어진 곳에 tok::kSizeFocusRing(3) 두께. 카드 모서리(10)를
+// 바깥으로 따라가므로 반지름도 그만큼 커진다
+constexpr int kFocusGap = 2;
+constexpr qreal kCardRadius = 10; // IntroMenuItem의 kEntryCard.radius와 같다
 // 데이터가 있어야 쓸 수 있는 메뉴 줄(스쿼드 · 도감 백과 · 아이템 백과). 규칙을 if 대신 표로 둔다.
 constexpr int kNeedsData[] = {0, 1, 2};
 
@@ -30,7 +37,9 @@ IntroMenu::IntroMenu(QWidget *parent)
     QWidget::setFocusPolicy(Qt::StrongFocus);
 
     QVBoxLayout *layout = new QVBoxLayout(this);
-    layout->setContentsMargins(0, 0, 0, 0);
+    // 카드 둘레에 포커스 링 자리를 비워 둔다 — 카드 밖을 부모가 그리려면 그 자리가 부모 안에 있어야
+    // 한다
+    layout->setContentsMargins(kFocusMargin, kFocusMargin, kFocusMargin, kFocusMargin);
     layout->setSpacing(kItemSpacing);
 
     struct Entry
@@ -87,6 +96,41 @@ void IntroMenu::setCurrentIndex(int index)
     m_current = index;
     for (int i = 0; i < static_cast<int>(m_items.size()); ++i)
         m_items[i]->setSelected(i == m_current);
+    QWidget::update(); // 포커스 링이 새 선택을 따라가게
+}
+
+void IntroMenu::focusInEvent(QFocusEvent *event)
+{
+    QWidget::focusInEvent(event);
+    // 포커스 이유(reason): Tab · Shift+Tab일 때만 링. 마우스 · 프로그램(OtherFocusReason)은 아니다.
+    m_keyboardFocus
+            = event->reason() == Qt::TabFocusReason || event->reason() == Qt::BacktabFocusReason;
+    QWidget::update();
+}
+
+void IntroMenu::focusOutEvent(QFocusEvent *event)
+{
+    QWidget::focusOutEvent(event);
+    m_keyboardFocus = false;
+    QWidget::update();
+}
+
+void IntroMenu::paintEvent(QPaintEvent *event)
+{
+    QWidget::paintEvent(event);
+    if (!m_keyboardFocus || m_current < 0 || m_current >= static_cast<int>(m_items.size()))
+        return;
+    // 자식(카드)은 부모 위에 그려지므로, 카드 밖으로 kFocusGap 떨어진 링은 가려지지 않는다.
+    // 펜은 선의 가운데를 따라 그리므로 두께의 반만큼 더 바깥에 상자를 잡는다.
+    QPainter painter(this);
+    painter.setRenderHint(QPainter::Antialiasing, true);
+    const qreal half = tok::kSizeFocusRing / 2.0;
+    const qreal outset = kFocusGap + half;
+    const QRectF ring
+            = QRectF(m_items[m_current]->geometry()).adjusted(-outset, -outset, outset, outset);
+    painter.setPen(QPen(QColor(tok::kBlueFocusRing), tok::kSizeFocusRing));
+    painter.setBrush(Qt::NoBrush);
+    painter.drawRoundedRect(ring, kCardRadius + outset, kCardRadius + outset);
 }
 
 void IntroMenu::setDataLocked(bool locked)

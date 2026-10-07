@@ -22,3 +22,5 @@
 | [0012](0012-dex-presentation-in-json.md) | 도감 선택 버튼의 표시 규칙(버전 색 · 약칭 · 도감 숨김)은 JSON 설정 파일로 둔다 | Accepted |
 | [0013](0013-localization.md) | 표기 언어 — 게임 데이터는 DB 3열 + 대체 순서, 화면 문구는 Qt Linguist | Accepted |
 | [0014](0014-guidebook-dictionaries.md) | 도감 상세의 기준 게임(세대 대표)과 공략 사전(기술머신 획득처 · 장소 이름) | Accepted |
+| [0015](0015-home-card-fan.md) | 홈(인트로)의 세대 선택은 카드 부채꼴로 | Accepted |
+| [0016](0016-outside-decorations-drawn-by-parent.md) | 상자 바깥 장식(포커스 링 · 선택 테)은 부모 위젯이 자기 여백에 그린다 | Accepted |

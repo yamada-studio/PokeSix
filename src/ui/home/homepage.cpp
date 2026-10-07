@@ -22,11 +22,11 @@ using namespace com::yamada::studio;
 // 세로는 위 여백 44에서 시작해 차례로 쌓고, 정보 줄만 바닥(아래 26)에 붙는다.
 // 오프셋 그림자는 위젯 rect 안에 들어 있으므로(ADR 0007) 그 아래 간격에서 그림자만큼 뺀다.
 constexpr QMargins kPageMargins
-        = {32, 44, 32, 26};        // 좌 · 위 · 우 · 아래 (푸터 left/right 32, bottom 26)
-constexpr int kMarkToWordmark = 6; // h1 margin-top: 6
+        = {32, 44, 32, 26};                 // 좌 · 위 · 우 · 아래 (푸터 left/right 32, bottom 26)
+constexpr int kMarkToWordmark = 6;          // h1 margin-top: 6
 constexpr int kWordmarkToSubtitle = 16 - 5; // p margin-top: 16 − 워드마크 글자 그림자 5
 constexpr int kSubtitleToFan = 8;           // 부제 ↔ 세대 카드 배럴
-constexpr int kFanToMenu = 2; // 부채꼴 ↔ 메뉴 창 (부채꼴 아래 여백이 이미 넉넉하다)
+constexpr int kFanToMenu = 2;               // 부채꼴 ↔ 메뉴 창 (부채꼴 아래 여백이 이미 넉넉하다)
 constexpr int kMenuWidth = tok::kSizeIntroMenuWidth; // 520
 constexpr int kFirstRunToMenu = 12;                  // 첫 실행 패널과 메뉴 창 사이
 // 첫 실행 패널이 들어가면 세로가 모자란다. 화면 정의서(02b SCR-01): "높이가 부족하면 마크 → 부제
@@ -137,10 +137,11 @@ HomePage::HomePage(DataUpdater *updater, AppState *state, QWidget *parent)
     // 메뉴 = 카드 버튼 3개 + 종료 줄(IntroMenu가 직접 그린다 — 바깥 창 없음, ADR 0015)
     m_menu = new IntroMenu;
     m_menu->setDataLocked(firstRun); // 데이터가 필요한 버튼(스쿼드 · 도감 · 아이템)을 잠근다
-    m_menu->setFixedWidth(kMenuWidth);
+    m_menu->setFixedWidth(kMenuWidth
+                          + 2 * IntroMenu::kFocusMargin); // 카드 폭은 그대로, 링 자리만 더한다
     layout->addWidget(m_menu, 0, Qt::AlignHCenter);
 
-    layout->addStretch(); // 남는 세로 공간은 메뉴 창과 정보 줄 사이로 간다
+    layout->addStretch();               // 남는 세로 공간은 메뉴 창과 정보 줄 사이로 간다
     layout->addWidget(new IntroFooter); // 정렬 없음 → 가로로 꽉 찬다
 
     // 메뉴의 "몇 번째 줄 실행"을 화면 의미(페이지 열기)로 바꿔서 밖에 알린다.
