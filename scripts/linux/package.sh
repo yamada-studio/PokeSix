@@ -68,6 +68,10 @@ step "AppImage → build/package/$output"
 # dependencies but still copies the driver .so — the rm below drops those dead files.
 # libqoffscreen.so (depends only on QtGui, already bundled) lets the AppImage run headless
 # (CI · screenshots); EXTRA_PLUGINS cannot add single files, so it is copied by hand.
+# platformthemes are also copied by hand, WITHOUT walking their dependencies: libqgtk3.so
+# links the host's GTK3 (bundling GTK into an AppImage is asking for theme breakage), and on
+# a host without it Qt just falls back to its own file dialog. With it, file dialogs are the
+# desktop's native ones instead of Qt's built-in fallback.
 (cd "$package_dir" \
  && export QMAKE="$QT_ROOT_DIR/bin/qmake" APPIMAGE_EXTRACT_AND_RUN=1 \
            EXTRA_PLUGINS="tls;networkinformation" OUTPUT="$output.part" VERSION="$version" \
@@ -76,6 +80,8 @@ step "AppImage → build/package/$output"
         --exclude-library "*qsqlmimer*" --exclude-library "*qsqlodbc*" \
         --exclude-library "*qsqlpsql*" \
  && cp "$QT_ROOT_DIR/plugins/platforms/libqoffscreen.so" AppDir/usr/plugins/platforms/ \
+ && mkdir -p AppDir/usr/plugins/platformthemes \
+ && cp "$QT_ROOT_DIR"/plugins/platformthemes/*.so AppDir/usr/plugins/platformthemes/ \
  && rm -f AppDir/usr/plugins/sqldrivers/libqsqlmimer.so \
           AppDir/usr/plugins/sqldrivers/libqsqlodbc.so \
           AppDir/usr/plugins/sqldrivers/libqsqlpsql.so \

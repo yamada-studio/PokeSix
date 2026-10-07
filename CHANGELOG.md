@@ -12,6 +12,12 @@ and the project uses [Semantic Versioning](https://semver.org/).
   Squad section now covers the HM shuttle, resource investment, undo/redo/clear and
   export/import/image sharing. The note about the removed search box is gone.
 
+### Fixed
+- The AppImage shows the desktop's native file dialogs (Nautilus-style on GNOME) instead of
+  Qt's built-in fallback: the platform theme plugins (libqgtk3, libqxdgdesktopportal) are now
+  bundled — copied without their dependency walk, so the host's GTK3 is used and a host
+  without it simply falls back to the Qt dialog.
+
 ### Added
 - Squad export files wear their own extension: `.pks` (the content stays the same JSON). The
   save dialog suggests `pokesix-squad-4-heartgold.pks` and appends `.pks` when no suffix is
