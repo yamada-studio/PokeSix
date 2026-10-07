@@ -3,6 +3,11 @@
 # Qt는 scripts/QT_VERSION 한 곳을 읽고, setup 스크립트와 같은 최소 아카이브만 받는다.
 name: release
 
+# GITHUB_TOKEN 권한: Release를 만들고 파일을 붙이려면 contents: write가 필요하다. 리포 기본값(read)만으로는
+# softprops/action-gh-release가 403으로 실패한다(v0.1.0 첫 태그에서 겪음).
+permissions:
+  contents: write
+
 on:
   push:
     tags: ['v*']
