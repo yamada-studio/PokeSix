@@ -1,13 +1,16 @@
 #include "ui/widgets/generationbutton.h"
 
 #include "ui/theme/cursors.h"
+#include "ui/theme/dexstyle.h"
 #include "ui/theme/theme.h"
 #include "ui/theme/tokens.h"
 
 #include <QFontMetricsF>
+#include <QIcon>
 #include <QMenu>
 #include <QPainter>
 #include <QPainterPath>
+#include <QPixmap>
 #include <QtMath>
 
 namespace {
@@ -31,6 +34,22 @@ constexpr int kPressedOffset = 2; // 눌림: 2px 내려앉고 그림자가 사�
 const Metrics &metricsOf(com::yamada::studio::GenerationButton::Size size)
 {
     return size == com::yamada::studio::GenerationButton::Size::Large ? kLarge : kCompact;
+}
+
+// 배지 바탕색(아주 옅은 틴트)은 섞어 놓으면 서로 비슷해 보인다 — 무지개가 읽히게 채도만 올린다
+QColor vivid(const QColor &tint)
+{
+    const float saturation = qMin(1.0f, tint.hsvSaturationF() * 2.2f);
+    return QColor::fromHsvF(qMax(0.0f, tint.hsvHueF()), saturation, tint.valueF());
+}
+
+QLinearGradient rainbowOf(const QList<QColor> &colors, const QPointF &from, const QPointF &to)
+{
+    QLinearGradient rainbow(from, to);
+    for (qsizetype i = 0; i < colors.size(); ++i)
+        rainbow.setColorAt(colors.size() == 1 ? 0 : qreal(i) / (colors.size() - 1),
+                           vivid(colors.at(i)));
+    return rainbow;
 }
 } // namespace
 
@@ -77,6 +96,20 @@ void GenerationButton::showMenu()
         action->setData(n);
         action->setCheckable(true);
         action->setChecked(n == m_number); // 지금 세대에 체크 표시
+        // 줄 앞에 그 세대의 무지개 견본(버튼과 같은 색 띠)
+        const QList<QColor> colors = dexstyle::generationColors(n);
+        if (colors.isEmpty())
+            continue;
+        const qreal ratio = devicePixelRatioF();
+        QPixmap swatch(qRound(26 * ratio), qRound(14 * ratio));
+        swatch.setDevicePixelRatio(ratio);
+        swatch.fill(Qt::transparent);
+        QPainter painter(&swatch);
+        painter.setRenderHint(QPainter::Antialiasing);
+        painter.setPen(QPen(QColor(tok::kInk), 1.5));
+        painter.setBrush(rainbowOf(colors, QPointF(0, 0), QPointF(26, 0)));
+        painter.drawRoundedRect(QRectF(1, 1, 24, 12), 4, 4);
+        action->setIcon(QIcon(swatch));
     }
     // 버튼 바로 아래(그림자 아래)에, 버튼 왼쪽 끝에 맞춰 연다.
     const QPoint below
@@ -113,11 +146,16 @@ void GenerationButton::paintEvent(QPaintEvent *event)
         painter.fillPath(shadow, QColor(tok::kInk));
     }
 
-    // 2) 본체: 흰 바탕(눌림은 노란 옅은 바탕) + 먹선 2. 펜은 선의 가운데를 따라 그리므로 반 폭
-    // 안쪽으로.
+    // 2) 본체: 그 세대 시리즈 색의 무지개 바탕(1세대 = 레드 → 그린 → 블루 → 옐로) + 먹선 2.
+    // 색 목록이 없는 세대는 전처럼 흰 바탕(눌림은 노란 옅은 바탕). 펜은 선의 가운데를 따라
+    // 그리므로 반 폭 안쪽으로.
     const qreal half = kBorder / 2.0;
+    const QList<QColor> colors = dexstyle::generationColors(m_number);
+    QBrush body(QColor(down ? tok::kYellowTint : tok::kWhite));
+    if (!colors.isEmpty())
+        body = rainbowOf(colors, box.topLeft(), box.topRight());
     painter.setPen(QPen(QColor(tok::kInk), kBorder));
-    painter.setBrush(QColor(down ? tok::kYellowTint : tok::kWhite));
+    painter.setBrush(body);
     painter.drawRoundedRect(box.adjusted(half, half, -half, -half), radius - half, radius - half);
 
     // 3) "4세대" (도현)

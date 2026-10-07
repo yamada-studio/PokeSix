@@ -5,6 +5,7 @@
 
 #include <QFile>
 #include <QHash>
+#include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
 
@@ -18,6 +19,7 @@ struct Table
     QHash<QString, dexstyle::VersionStyle> versions;
     QHash<QString, dexstyle::DexStyle> dexes;
     QHash<QString, LocalizedText> groups;
+    QHash<int, QList<QColor>> generations; // 세대 → 시리즈 배지 바탕색(발매 순)
 };
 
 // label: {"ko": …, "en": …, "ja": …} 또는 한국어 글자 하나
@@ -74,6 +76,21 @@ Table load()
     for (auto it = groups.begin(); it != groups.end(); ++it)
         table.groups.insert(it.key(),
                             labelOf(it.value().toObject().value(QStringLiteral("label"))));
+
+    const QJsonObject generations = root.value(QStringLiteral("generations")).toObject();
+    for (auto it = generations.begin(); it != generations.end(); ++it) {
+        bool isNumber = false;
+        const int generation = it.key().toInt(&isNumber);
+        if (!isNumber) // "_comment"
+            continue;
+        QList<QColor> colors;
+        for (const QJsonValue &version : it.value().toArray()) {
+            const QColor color = table.versions.value(version.toString()).background;
+            if (color.isValid())
+                colors.append(color);
+        }
+        table.generations.insert(generation, colors);
+    }
     return table;
 }
 
@@ -107,5 +124,10 @@ DexStyle dex(const QString &identifier)
 LocalizedText groupLabel(const QString &versionGroup)
 {
     return table().groups.value(versionGroup);
+}
+
+QList<QColor> generationColors(int generation)
+{
+    return table().generations.value(generation);
 }
 } // namespace com::yamada::studio::dexstyle
