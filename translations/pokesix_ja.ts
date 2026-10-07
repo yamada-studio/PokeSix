@@ -1419,7 +1419,7 @@
     </message>
     <message>
         <source>내보냈던 스쿼드 파일(.json)을 읽어 와요</source>
-        <translation>書き出したスクワッドファイル（.json）を読み込みます</translation>
+        <translation type="vanished">書き出したスクワッドファイル（.json）を読み込みます</translation>
     </message>
     <message>
         <source>내보내기</source>
@@ -1427,7 +1427,7 @@
     </message>
     <message>
         <source>이 스쿼드를 파일(.json)로 저장해요 — 다른 PC의 PokeSix에서 불러올 수 있어요</source>
-        <translation>このスクワッドをファイル（.json）に保存します — 別のPCのPokeSixで読み込めます</translation>
+        <translation type="vanished">このスクワッドをファイル（.json）に保存します — 別のPCのPokeSixで読み込めます</translation>
     </message>
     <message>
         <source>이미지 ▾</source>
@@ -1451,7 +1451,7 @@
     </message>
     <message>
         <source>PokeSix 스쿼드 (*.json)</source>
-        <translation>PokeSixスクワッド (*.json)</translation>
+        <translation type="vanished">PokeSixスクワッド (*.json)</translation>
     </message>
     <message>
         <source>✓ 스쿼드를 내보냈어요</source>
@@ -1512,6 +1512,22 @@
     <message>
         <source>일괄 비우기 — 멤버와 비전셔틀을 모두 비워요(되돌릴 수 있어요)</source>
         <translation>一括クリア — メンバーとひでんシャトルをすべて空にします（元に戻せます）</translation>
+    </message>
+    <message>
+        <source>내보냈던 스쿼드 파일(.pks)을 읽어 와요</source>
+        <translation>書き出したスクワッドファイル（.pks）を読み込みます</translation>
+    </message>
+    <message>
+        <source>이 스쿼드를 파일(.pks)로 저장해요 — 다른 PC의 PokeSix에서 불러올 수 있어요</source>
+        <translation>このスクワッドを.pksファイルに保存します — 別のPCのPokeSixで読み込めます</translation>
+    </message>
+    <message>
+        <source>PokeSix 스쿼드 (*.pks)</source>
+        <translation>PokeSixスクワッド (*.pks)</translation>
+    </message>
+    <message>
+        <source>PokeSix 스쿼드 (*.pks *.json)</source>
+        <translation>PokeSixスクワッド (*.pks *.json)</translation>
     </message>
 </context>
 <context>

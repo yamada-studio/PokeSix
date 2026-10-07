@@ -39,6 +39,7 @@
 #include <QClipboard>
 #include <QDialog>
 #include <QFileDialog>
+#include <QFileInfo>
 #include <QFontMetricsF>
 #include <QGraphicsDropShadowEffect>
 #include <QGridLayout>
@@ -321,9 +322,9 @@ QWidget *SquadPage::buildTopBar()
         layout->addWidget(button);
         return button;
     };
-    connect(tool(tr("불러오기"), tr("내보냈던 스쿼드 파일(.json)을 읽어 와요")),
+    connect(tool(tr("불러오기"), tr("내보냈던 스쿼드 파일(.pks)을 읽어 와요")),
             &QPushButton::clicked, this, &SquadPage::importSquad);
-    connect(tool(tr("내보내기"), tr("이 스쿼드를 파일(.json)로 저장해요 — 다른 PC의 PokeSix에서 "
+    connect(tool(tr("내보내기"), tr("이 스쿼드를 파일(.pks)로 저장해요 — 다른 PC의 PokeSix에서 "
                                     "불러올 수 있어요")),
             &QPushButton::clicked, this, &SquadPage::exportSquad);
     QPushButton *image = tool(tr("이미지 ▾"), tr("카드 6장과 분석 창을 한 장의 그림으로"));
@@ -1173,11 +1174,13 @@ void SquadPage::exportSquad()
     if (portable.squad.name.isEmpty()) // 파일만 봐도 어느 스쿼드인지 알게
         portable.squad.name = m_session->defaultName();
     const QString dir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
-    const QString path = QFileDialog::getSaveFileName(
+    QString path = QFileDialog::getSaveFileName(
             this, tr("스쿼드 내보내기"), dir + QLatin1Char('/') + squadfile::fileName(portable),
-            tr("PokeSix 스쿼드 (*.json)"));
+            tr("PokeSix 스쿼드 (*.pks)"));
     if (path.isEmpty())
         return;
+    if (!QFileInfo(path).fileName().contains(QLatin1Char('.'))) // 접미사 없이 적으면 .pks로
+        path += QLatin1String(squadfile::kExtension);
     QString error;
     if (squadfile::save(path, portable, &error))
         flashStatus(tr("✓ 스쿼드를 내보냈어요"));
@@ -1188,8 +1191,9 @@ void SquadPage::exportSquad()
 void SquadPage::importSquad()
 {
     const QString dir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
+    // 초기 내보내기가 .json이었다 — 그 파일들도 계속 읽는다
     const QString path = QFileDialog::getOpenFileName(this, tr("스쿼드 불러오기"), dir,
-                                                      tr("PokeSix 스쿼드 (*.json)"));
+                                                      tr("PokeSix 스쿼드 (*.pks *.json)"));
     if (path.isEmpty())
         return;
     QString error;

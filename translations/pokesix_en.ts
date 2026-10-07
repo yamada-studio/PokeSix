@@ -1419,7 +1419,7 @@ abilities &amp; natures (gen 3+) and held items (gen 2+)</translation>
     </message>
     <message>
         <source>내보냈던 스쿼드 파일(.json)을 읽어 와요</source>
-        <translation>Read a squad file (.json) you exported</translation>
+        <translation type="vanished">Read a squad file (.json) you exported</translation>
     </message>
     <message>
         <source>내보내기</source>
@@ -1427,7 +1427,7 @@ abilities &amp; natures (gen 3+) and held items (gen 2+)</translation>
     </message>
     <message>
         <source>이 스쿼드를 파일(.json)로 저장해요 — 다른 PC의 PokeSix에서 불러올 수 있어요</source>
-        <translation>Save this squad as a file (.json) — PokeSix on another PC can import it</translation>
+        <translation type="vanished">Save this squad as a file (.json) — PokeSix on another PC can import it</translation>
     </message>
     <message>
         <source>이미지 ▾</source>
@@ -1451,7 +1451,7 @@ abilities &amp; natures (gen 3+) and held items (gen 2+)</translation>
     </message>
     <message>
         <source>PokeSix 스쿼드 (*.json)</source>
-        <translation>PokeSix squad (*.json)</translation>
+        <translation type="vanished">PokeSix squad (*.json)</translation>
     </message>
     <message>
         <source>✓ 스쿼드를 내보냈어요</source>
@@ -1512,6 +1512,22 @@ abilities &amp; natures (gen 3+) and held items (gen 2+)</translation>
     <message>
         <source>일괄 비우기 — 멤버와 비전셔틀을 모두 비워요(되돌릴 수 있어요)</source>
         <translation>Clear all — empties every member and the HM shuttle (undoable)</translation>
+    </message>
+    <message>
+        <source>내보냈던 스쿼드 파일(.pks)을 읽어 와요</source>
+        <translation>Read a squad file (.pks) you exported</translation>
+    </message>
+    <message>
+        <source>이 스쿼드를 파일(.pks)로 저장해요 — 다른 PC의 PokeSix에서 불러올 수 있어요</source>
+        <translation>Save this squad as a .pks file — PokeSix on another PC can import it</translation>
+    </message>
+    <message>
+        <source>PokeSix 스쿼드 (*.pks)</source>
+        <translation>PokeSix squad (*.pks)</translation>
+    </message>
+    <message>
+        <source>PokeSix 스쿼드 (*.pks *.json)</source>
+        <translation>PokeSix squad (*.pks *.json)</translation>
     </message>
 </context>
 <context>

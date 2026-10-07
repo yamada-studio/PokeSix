@@ -118,7 +118,7 @@ open on SoulSilver.
   - **Resource investment**: Heart Scales, TM purchases and tutor fees your move layout costs, with
     warnings when a one-per-game TM is placed on two members and "관동 — 엔딩 후" notes for post-game
     TMs (judged from the acquisition book; fully covered for HGSS so far).
-- **Share it.** "내보내기 / 불러오기" move a squad through a portable `.json` file (another PC's
+- **Share it.** "내보내기 / 불러오기" move a squad through a portable `.pks` file (another PC's
   PokeSix can import it), and "이미지 ▾" copies or saves the six cards plus the analysis panel as
   one picture.
 
