@@ -34,7 +34,8 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 3. 스쿼드 분석 패널의 문제 칸 높이(넓은 배치 최소 2줄 · 좁은 배치 최대 4줄, `squadpage.cpp`의 `kProblemVisibleRows`) — 사용자 피드백 대기
 4. 에뮬레이터 오버레이: [overlay-design.md](overlay-design.md)는 검토 문서. 시작하려면 ADR로 결정을 확정하고 roadmap에 Phase H를 올린다(H1 = core 세이브 파서)
 5. Windows 설정이 레지스트리 → `%APPDATA%\YamadaStudio\PokeSix.ini`로 바뀌었다(2026-10-07). 이전에 레지스트리에 저장된 세대 · 게임은 이어지지 않는다(한 번 다시 고르면 끝). 레지스트리 잔여물은 `HKCU\Software\YamadaStudio`에 남아 있어도 무해하다
-6. macOS 공증(notarization): Apple Developer(연 99달러) + CI secrets(`notarytool`)를 붙이면 내려받은 dmg의 Gatekeeper "손상됨" 차단이 사라진다. 그 전까지는 README Download 절의 `xattr` 안내로 운용(2026-10-08). `scripts/macos/package.sh`의 ad-hoc 재서명은 실기 Mac에서 아직 안 돌려 봤다
+6. **Windows .msi 검증**: `package.bat`의 cpack -G WIX 경로를 실기(집 PC, WiX 필요: `winget install --id WiXToolset.WiXToolset`) 또는 CI workflow_dispatch로 한 번 통과시킬 것(2026-10-08 작성, 미실행). 설치 → 시작 메뉴 실행 → 제거까지
+7. macOS 공증(notarization): Apple Developer(연 99달러) + CI secrets(`notarytool`)를 붙이면 내려받은 dmg의 Gatekeeper "손상됨" 차단이 사라진다. 그 전까지는 README Download 절의 `xattr` 안내로 운용(2026-10-08). `scripts/macos/package.sh`의 ad-hoc 재서명은 실기 Mac에서 아직 안 돌려 봤다
 
 ---
 
@@ -54,6 +55,24 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 ---
 
 ## 최근 세션 (역순)
+
+### 2026-10-08 — 빌드 식별 문자열 · Windows .msi (Linux 세션)
+
+- **버전 형상화(ADR 0017)**: 창 제목 · `--version`이 정확한 빌드를 말한다 — 태그 위 클린
+  Release만 `0.1.0`, 그 외 `0.1.0+12.g3f4a5b6[.dirty]`, Debug는 ` Debug` 추가.
+  `cmake/PokeSixBuildInfo.cmake`(빌드마다 실행, 내용 같으면 안 씀 — 재컴파일 0 실측) →
+  `buildinfo.h` → `applicationVersion()`. 규칙 전문은 versioning-and-git.md §1
+- **Windows 설치본**: CPack **WIX**로 `PokeSix-<버전>-win64.msi` — 시작 메뉴 바로가기,
+  고정 UPGRADE_GUID(`D70F9D30-…`, 바꾸면 업그레이드가 깨진다), 라이선스 화면(MIT txt 자동
+  변환). WiX 3.14는 windows-2022 러너에 프리인스톨(InnoSetup · NSIS도 있음 — WIX 채택 근거는
+  deploy.md §2-4). `package.bat`이 zip 뒤에 cpack 실행, WiX 없으면 안내 후 건너뜀.
+  릴리스 워크플로가 zip + msi 둘 다 첨부, checkout 3곳에 `fetch-depth: 0`(태그 없으면
+  식별 문자열이 `+unknown`)
+- **미검증**: msi 생성은 Windows에서만 돌므로 실기/CI 확인 전. CPack이
+  `install(SCRIPT)`(windeployqt)를 스테이징에 돌리는 경로가 첫 관문 — workflow_dispatch
+  한 번으로 확인 가능(이 머신엔 트리거 자격 증명이 없어 사용자가 눌러야 하고, 결과는
+  public API로 여기서 읽을 수 있다)
+- v0.1.0 Release에는 msi가 없다 — 다음 태그부터 포함. README Download 표에 msi 행 추가
 
 ### 2026-10-08 — macOS Gatekeeper "손상됨" (Linux 세션)
 

@@ -4,9 +4,12 @@ rem
 rem   scripts\windows\package.bat             release build (with tests) -> ZIP
 rem   scripts\windows\package.bat --no-build  reuse the existing release build
 rem
-rem Output: build\windows-msvc\package\PokeSix-<version>-win64.zip
+rem Output: build\windows-msvc\package\PokeSix-<version>-win64.zip   (portable)
+rem         build\windows-msvc\package\PokeSix-<version>-win64.msi   (installer, needs WiX 3.14)
 rem The install step runs windeployqt (qt_generate_deploy_app_script in src/CMakeLists.txt),
-rem so the folder carries the Qt DLLs and plugins and runs on a PC without Qt.
+rem so the folder carries the Qt DLLs and plugins and runs on a PC without Qt. The .msi is the
+rem same tree wrapped by CPack's WIX generator (start-menu shortcut, upgrade in place); when the
+rem WiX Toolset is missing the step is skipped with a hint - GitHub runners have it preinstalled.
 setlocal
 call "%~dp0env.bat" || exit /b 1
 rem cmake --install below runs in this script, not in build.bat (whose PATH change is local to it)
@@ -66,6 +69,33 @@ if errorlevel 1 exit /b 1
 
 echo done: %ZIP%
 powershell -NoProfile -Command "(Get-FileHash '%ZIP%' -Algorithm SHA256).Hash"
+
+rem --- MSI installer (CPack WIX generator; cpack.exe sits next to cmake.exe) ---------------
+rem CPack finds WiX through the WIX environment variable or candle.exe on PATH.
+set "HAVE_WIX="
+if defined WIX set "HAVE_WIX=1"
+if not defined HAVE_WIX (
+    where candle.exe >nul 2>&1
+    if not errorlevel 1 set "HAVE_WIX=1"
+)
+if not defined HAVE_WIX (
+    echo note: WiX Toolset not found - skipping the .msi installer. Install it with:
+    echo   winget install --id WiXToolset.WiXToolset
+    exit /b 0
+)
+set "MSI=%PKG%\PokeSix-%VERSION%-win64.msi"
+if exist "%MSI%" del "%MSI%"
+echo ==^> msi -^> %MSI%
+pushd "%POKESIX_ROOT%\build\windows-msvc"
+cpack -G WIX -C Release -B "%PKG%"
+if errorlevel 1 (popd & exit /b 1)
+popd
+if not exist "%MSI%" (
+    echo error: cpack finished but %MSI% is missing 1>&2
+    exit /b 1
+)
+echo done: %MSI%
+powershell -NoProfile -Command "(Get-FileHash '%MSI%' -Algorithm SHA256).Hash"
 exit /b 0
 
 :usage

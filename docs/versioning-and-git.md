@@ -48,8 +48,29 @@ B와 C처럼 순서가 바뀌어 끝나면 **먼저 끝난 Phase가 다음 MINOR
 
 - 기준은 루트 `CMakeLists.txt`의 `project(PokeSix VERSION x.y.z)` 하나다
 - 이 값은 **마지막으로 릴리스한 버전**이다. 릴리스 커밋에서만 바꾼다
-- 앱은 `QApplication::applicationVersion()`으로 읽는다(`main.cpp`에서 `POKESIX_VERSION`으로 설정)
+- 앱은 `QApplication::applicationVersion()`으로 읽는다(아래 빌드 식별 문자열을 `Application`이 설정)
 - 태그는 `v` 접두사를 붙인 annotated tag: `v0.1.0`
+
+### 빌드 식별 문자열 — 어떤 빌드인지 형상 식별
+
+`project(VERSION)`은 "마지막 릴리스"만 말해 준다. 지금 실행 중인 빌드가 정확히 어떤 커밋 ·
+어떤 구성(Debug/Release)인지는 **빌드 때마다** `git describe`로 만드는 문자열이 구분한다
+(`cmake/PokeSixBuildInfo.cmake` → 생성 헤더 `buildinfo.h` → 창 제목 · `--version` ·
+`applicationVersion()`). 근거는 [ADR 0017](decisions/0017-build-identity-string.md).
+
+| 빌드 | 문자열 | 뜻 |
+|---|---|---|
+| `v0.1.0` 태그 커밋 · 클린 · Release | `0.1.0` | 배포 가능한 정식 릴리스 빌드 |
+| 태그 뒤 12커밋 | `0.1.0+12.g3f4a5b6` | 개발 빌드. `+` 뒤는 SemVer build metadata — 버전 비교에 안 쓴다 |
+| 커밋 안 한 변경 포함 | `0.1.0+12.g3f4a5b6.dirty` | 작업 트리가 더럽다 |
+| git 기록 · 태그 없음(소스 zip) | `0.1.0+unknown` | 커밋을 알 수 없다 |
+| Debug 구성 | 위 문자열 + ` Debug` | 배포하지 않는다 |
+
+- **배포 패키지(msi · zip · AppImage · dmg)는 태그 커밋의 Release 빌드에서만 만든다.**
+  릴리스 CI는 태그 push로만 Release에 첨부하므로 자동으로 지켜진다(CI checkout은
+  `fetch-depth: 0` — 태그가 없으면 `+unknown`이 박힌다)
+- 패키지 파일 이름에는 기준 버전만 쓴다(`PokeSix-0.1.0-win64.msi`). 태그 아닌 빌드의
+  산출물은 배포하지 않으므로 이름이 겹칠 일이 없다
 
 ## 2. 브랜치 — main 하나 + 짧은 작업 브랜치
 
