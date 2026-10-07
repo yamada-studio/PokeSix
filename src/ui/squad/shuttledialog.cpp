@@ -117,7 +117,9 @@ void ShuttleDialog::rebuild()
     pick->setObjectName(QStringLiteral("shuttlePickButton"));
     pick->setCursor(Qt::PointingHandCursor);
     if (detail.isValid()) {
-        const QPixmap icon = shuttleIcon(m_icons, detail.pokemonId, 48);
+        // 36px: 버튼 안에 꼭 맞게(48은 넘쳐 보였다). 앞 공백 = 아이콘과 글자 사이 숨
+        pick->setText(QLatin1Char(' ') + shuttleName);
+        const QPixmap icon = shuttleIcon(m_icons, detail.pokemonId, 36);
         if (!icon.isNull()) {
             pick->setIcon(icon);
             pick->setIconSize(icon.size());
@@ -164,7 +166,7 @@ void ShuttleDialog::rebuild()
         QLabel *moveHead = new QLabel(tr("비전머신"));
         moveHead->setObjectName(QStringLiteral("dexSectionLabel"));
         grid->addWidget(moveHead, 0, 0, 1, 3);
-        QLabel *coverHead = new QLabel(tr("누가 드나"));
+        QLabel *coverHead = new QLabel(tr("채용"));
         coverHead->setObjectName(QStringLiteral("dexSectionLabel"));
         grid->addWidget(coverHead, 0, 3, 1, 2);
     }
@@ -185,22 +187,47 @@ void ShuttleDialog::rebuild()
         grid->addWidget(name, row, 1);
         grid->addWidget(new Chips({machine.type}, language), row, 2);
 
-        // 본편 멤버 중 이 비전기술을 기술 칸에 둔 포켓몬
-        QStringList carriers;
+        // 본편 멤버 중 이 비전기술을 기술 칸에 둔 포켓몬 — 아이콘 + 이름 칩으로 보여 준다
+        QList<std::pair<int, QString>> carriers; // (pokemonId, 이름)
         for (int slot = 0; slot < 6; ++slot) {
-            if (!m_session->detail(slot).isValid())
+            const PokemonDetail &member = m_session->detail(slot);
+            if (!member.isValid())
                 continue;
             for (const auto &slotMove : m_session->slotMoves(slot))
                 if (slotMove && slotMove->learnable && slotMove->move.moveId == machine.moveId)
-                    carriers.append(m_session->detail(slot).name.text(language));
+                    carriers.append({member.pokemonId, member.name.text(language)});
         }
-        const QString main = carriers.join(QStringLiteral(" · "));
+        // 채용 칸: [상태 글자] [아이콘 이름]… 을 한 줄로
+        const auto statusCell = [&](QLabel *state, const QString &suffix = QString()) {
+            QWidget *cell = new QWidget;
+            QHBoxLayout *h = new QHBoxLayout(cell);
+            h->setContentsMargins(0, 0, 0, 0);
+            h->setSpacing(6);
+            if (state)
+                h->addWidget(state);
+            for (const auto &[pokemonId, name] : carriers) {
+                const QString path = m_icons->path(QString::number(pokemonId));
+                if (path.isEmpty()) {
+                    m_icons->request(QString::number(pokemonId)); // ready → rebuild
+                } else {
+                    QLabel *icon = new QLabel;
+                    icon->setPixmap(squadpaint::trimmedIcon(path, 18));
+                    h->addWidget(icon);
+                }
+                h->addWidget(statusLabel(name, "plain"));
+            }
+            if (!suffix.isEmpty())
+                h->addWidget(statusLabel(suffix, "plain"));
+            h->addStretch();
+            return cell;
+        };
 
         // 셔틀이 못 배우는 비전머신: 체크박스 대신 경고 글자
         if (detail.isValid() && !learnable.contains(machine.moveId)) {
             grid->addWidget(statusLabel(tr("배울 수 없어요"), "warn"), row, 3);
-            grid->addWidget(carriers.isEmpty() ? statusLabel(tr("아무도 안 들어요"), "none")
-                                               : statusLabel(tr("본편: %1").arg(main), "plain"),
+            grid->addWidget(carriers.isEmpty() ? static_cast<QWidget *>(statusLabel(
+                                                         tr("아무도 안 들어요"), "none"))
+                                               : statusCell(nullptr),
                             row, 4);
             ++row;
             continue;
@@ -233,13 +260,13 @@ void ShuttleDialog::rebuild()
         grid->addWidget(check, row, 3);
 
         if (carried && !carriers.isEmpty())
-            grid->addWidget(
-                    statusLabel(tr("셔틀이 들어요 — %1의 기술 칸을 비워도 돼요").arg(main), "ok"),
-                    row, 4);
+            grid->addWidget(statusCell(statusLabel(tr("셔틀이 들어요 ·"), "ok"),
+                                       tr("— 기술 칸을 비워도 돼요")),
+                            row, 4);
         else if (carried)
             grid->addWidget(statusLabel(tr("셔틀이 들어요"), "ok"), row, 4);
         else if (!carriers.isEmpty())
-            grid->addWidget(statusLabel(tr("본편: %1").arg(main), "plain"), row, 4);
+            grid->addWidget(statusCell(nullptr), row, 4);
         else
             grid->addWidget(statusLabel(tr("아무도 안 들어요"), "none"), row, 4);
         ++row;

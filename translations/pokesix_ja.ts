@@ -895,7 +895,7 @@
     </message>
     <message>
         <source>셔틀이 들어요 — %1의 기술 칸을 비워도 돼요</source>
-        <translation>シャトルが持ちます — %1のわざ枠を空けられます</translation>
+        <translation type="vanished">シャトルが持ちます — %1のわざ枠を空けられます</translation>
     </message>
     <message>
         <source>셔틀이 들어요</source>
@@ -903,7 +903,7 @@
     </message>
     <message>
         <source>본편: %1</source>
-        <translation>本編: %1</translation>
+        <translation type="vanished">本編: %1</translation>
     </message>
     <message>
         <source>아무도 안 들어요</source>
@@ -919,11 +919,23 @@
     </message>
     <message>
         <source>누가 드나</source>
-        <translation>だれが持つか</translation>
+        <translation type="vanished">だれが持つか</translation>
     </message>
     <message>
         <source>배울 수 없어요</source>
         <translation>覚えられません</translation>
+    </message>
+    <message>
+        <source>채용</source>
+        <translation>採用</translation>
+    </message>
+    <message>
+        <source>셔틀이 들어요 ·</source>
+        <translation>シャトルが持ちます ·</translation>
+    </message>
+    <message>
+        <source>— 기술 칸을 비워도 돼요</source>
+        <translation>— わざ枠を空けられます</translation>
     </message>
 </context>
 <context>
