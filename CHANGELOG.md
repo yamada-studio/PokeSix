@@ -17,6 +17,12 @@ and the project uses [Semantic Versioning](https://semver.org/).
   The TLS plugins ride along (`EXTRA_PLUGINS`) so the first-run data download works on a
   machine without Qt, the offscreen platform plugin is bundled for headless runs, and the
   unused SQL drivers (mimer/odbc/psql/mysql) are dropped from the AppImage.
+- `scripts/linux/package.sh --install` registers the AppImage in the desktop's application
+  menu: a stable copy at `~/.local/bin/PokeSix.AppImage`, the `.desktop` entry rewritten to
+  its absolute path (this replaces the entry a dev-time `--install ~/.local` left behind,
+  which kept launching a stale binary) and the hicolor icons. The AppImage is now built
+  under a temporary name and moved into place, so repackaging works while the app is
+  running. quickstart passes `--install` by default.
 - One script from a fresh clone to a running app: `scripts/linux/quickstart.sh` and
   `scripts\windows\quickstart.bat` chain setup → release build with tests → package →
   launch (`--no-run` stops after packaging). The README's Building section now leads with

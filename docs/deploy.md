@@ -190,6 +190,8 @@ Linux(AppImage) · macOS(dmg)도 같은 워크플로의 매트릭스로. 로드�
   `build/package/AppDir`에 install → `linuxdeploy` + `linuxdeploy-plugin-qt`(처음 한 번
   `build/package/tools`에 받아 둔다)로 `build/package/PokeSix-<버전>-x86_64.AppImage` + SHA-256.
   TLS 백엔드는 자동 감지에 안 걸려서 `EXTRA_PLUGINS="tls;networkinformation"`으로 넣는다(첫 실행
-  HTTPS 데이터 받기). 기존 빌드 재사용은 `--no-build`. AppImage는 `chmod +x` 뒤 더블클릭(또는
+  HTTPS 데이터 받기). 기존 빌드 재사용은 `--no-build`, `--install`을 주면 앱 메뉴에도 등록한다
+  (`~/.local/bin/PokeSix.AppImage` + `.desktop`의 Exec 절대 경로 + hicolor 아이콘 — 옛
+  `--install ~/.local` 설치가 남긴 메뉴 항목을 덮어쓴다). AppImage는 `chmod +x` 뒤 더블클릭(또는
   `./PokeSix-….AppImage`)으로 실행되고, 빌드한 배포판보다 오래된 glibc에서는 안 돈다.
   Flatpak은 KDE 런타임에 Qt 6.8이 있어 대안이 된다
