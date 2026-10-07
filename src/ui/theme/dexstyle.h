@@ -3,6 +3,7 @@
 #include "data/text/localizedtext.h"
 
 #include <QColor>
+#include <QList>
 #include <QString>
 
 // 도감 선택 버튼의 표시 규칙: 버전 배지(약칭 · 색)와 도감 이름 바꾸기 · 숨김.
@@ -34,4 +35,7 @@ DexStyle dex(const QString &identifier);
 
 // 게임 묶음(version_groups)의 짧은 이름(DLC: 외딴섬 · 설원 …). 없으면 빈 칸
 LocalizedText groupLabel(const QString &versionGroup);
+
+// 세대 버튼의 무지개 바탕: 그 세대 시리즈의 배지 바탕색(발매 순). 모르는 세대면 빈 목록
+QList<QColor> generationColors(int generation);
 } // namespace com::yamada::studio::dexstyle

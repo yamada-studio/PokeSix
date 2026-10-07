@@ -11,93 +11,432 @@
     "versionGroups: PokéAPI version_groups.identifier → label(기준 게임 칩의 약칭이 겹칠 때 뒤에 붙는 짧은 이름, {ko, en, ja}).",
     "세대를 늘릴 때는 이 파일에 버전을 더하고 AppState::kMaxGeneration을 올린다."
   ],
-
   "versions": {
-    "red":            { "short": "R",  "background": "#F9D9D6", "text": "#C0271F" },
-    "green-japan":    { "short": "G",  "background": "#DDEFD6", "text": "#2E7A2C" },
-    "blue":           { "short": "B",  "background": "#D9E4F8", "text": "#1E4DB0" },
-    "red-japan":      { "short": "R",  "background": "#F9D9D6", "text": "#C0271F" },
-    "blue-japan":     { "short": "B",  "background": "#D9E4F8", "text": "#1E4DB0" },
-    "yellow":         { "short": "Y",  "background": "#FFF1BF", "text": "#9A7400" },
-
-    "gold":           { "short": "G",  "background": "#F2E4BC", "text": "#9C7410" },
-    "silver":         { "short": "S",  "background": "#E4E6EB", "text": "#5F6773" },
-    "crystal":        { "short": "C",  "background": "#D8F0F5", "text": "#177F93" },
-
-    "ruby":           { "short": "R",  "background": "#F8D5D8", "text": "#AE1330" },
-    "sapphire":       { "short": "S",  "background": "#D7E0F7", "text": "#1C3C98" },
-    "emerald":        { "short": "E",  "background": "#D4EFDF", "text": "#12703E" },
-    "firered":        { "short": "FR", "background": "#FBDACB", "text": "#BF4413" },
-    "leafgreen":      { "short": "LG", "background": "#E0F1CE", "text": "#447F1A" },
-
-    "diamond":        { "short": "D",  "background": "#D8E7FA", "text": "#7B8593" },
-    "pearl":          { "short": "P",  "background": "#FADCE8", "text": "#AE2270" },
-    "platinum":       { "short": "Pt", "background": "#E3E4E8", "text": "#1B1B22" },
-    "heartgold":      { "short": "HG", "background": "#EEDDB0", "text": "#9A730C" },
-    "soulsilver":     { "short": "SS", "background": "#E4E6EB", "text": "#1C2B5A" },
-
-    "black":          { "short": "B",  "background": "#D9DADF", "text": "#1B1B22" },
-    "white":          { "short": "W",  "background": "#F5F5F5", "text": "#6A6A74" },
-    "black-2":        { "short": "B2", "background": "#D6D9E0", "text": "#1B2A4A" },
-    "white-2":        { "short": "W2", "background": "#F4EFEF", "text": "#A3303A" },
-
-    "x":              { "short": "X",  "background": "#DAE3F4", "text": "#1E4A98" },
-    "y":              { "short": "Y",  "background": "#F6D8DC", "text": "#AD1E35" },
-    "omega-ruby":     { "short": "OR", "background": "#F6D2D2", "text": "#9E1C1C" },
-    "alpha-sapphire": { "short": "AS", "background": "#D5DEF6", "text": "#1D3A8B" },
-
-    "sun":            { "short": "S",  "background": "#FDE5CB", "text": "#B8520A" },
-    "moon":           { "short": "M",  "background": "#E2DCF3", "text": "#48388A" },
-    "ultra-sun":      { "short": "US", "background": "#FCDAC3", "text": "#B2400C" },
-    "ultra-moon":     { "short": "UM", "background": "#DAD5EF", "text": "#392C79" },
-    "lets-go-pikachu":{ "short": "P",  "background": "#FFEFB5", "text": "#977100" },
-    "lets-go-eevee":  { "short": "E",  "background": "#F1E1CB", "text": "#835421" },
-
-    "sword":                    { "short": "Sw",  "background": "#D8ECF8", "text": "#1A6AA3" },
-    "shield":                   { "short": "Sh",  "background": "#F8DAE4", "text": "#AB2150" },
-    "the-isle-of-armor-sword":  { "short": "Sw",  "background": "#D8ECF8", "text": "#1A6AA3" },
-    "the-isle-of-armor-shield": { "short": "Sh",  "background": "#F8DAE4", "text": "#AB2150" },
-    "the-crown-tundra-sword":   { "short": "Sw",  "background": "#D8ECF8", "text": "#1A6AA3" },
-    "the-crown-tundra-shield":  { "short": "Sh",  "background": "#F8DAE4", "text": "#AB2150" },
-    "brilliant-diamond":        { "short": "BD",  "background": "#DCE5FA", "text": "#2F4EA3" },
-    "shining-pearl":            { "short": "SP",  "background": "#F9DCEA", "text": "#A83674" },
-    "legends-arceus":           { "short": "LA",  "background": "#ECE4D2", "text": "#665230" },
-
-    "scarlet":                  { "short": "S",   "background": "#FAD8D0", "text": "#B92F1B" },
-    "violet":                   { "short": "V",   "background": "#E5D9F5", "text": "#662CA2" },
-    "the-teal-mask-scarlet":    { "short": "S",   "background": "#FAD8D0", "text": "#B92F1B" },
-    "the-teal-mask-violet":     { "short": "V",   "background": "#E5D9F5", "text": "#662CA2" },
-    "the-indigo-disk-scarlet":  { "short": "S",   "background": "#FAD8D0", "text": "#B92F1B" },
-    "the-indigo-disk-violet":   { "short": "V",   "background": "#E5D9F5", "text": "#662CA2" },
-    "legends-za":               { "short": "Z-A", "background": "#DFF1D6", "text": "#2C7337" },
-    "mega-dimension":           { "short": "MD",  "background": "#E6DEF3", "text": "#57388F" }
+    "red": {
+      "short": "R",
+      "background": "#F9D9D6",
+      "text": "#C0271F"
+    },
+    "green-japan": {
+      "short": "G",
+      "background": "#DDEFD6",
+      "text": "#2E7A2C"
+    },
+    "blue": {
+      "short": "B",
+      "background": "#D9E4F8",
+      "text": "#1E4DB0"
+    },
+    "red-japan": {
+      "short": "R",
+      "background": "#F9D9D6",
+      "text": "#C0271F"
+    },
+    "blue-japan": {
+      "short": "B",
+      "background": "#D9E4F8",
+      "text": "#1E4DB0"
+    },
+    "yellow": {
+      "short": "Y",
+      "background": "#FFF1BF",
+      "text": "#9A7400"
+    },
+    "gold": {
+      "short": "G",
+      "background": "#F2E4BC",
+      "text": "#9C7410"
+    },
+    "silver": {
+      "short": "S",
+      "background": "#E4E6EB",
+      "text": "#5F6773"
+    },
+    "crystal": {
+      "short": "C",
+      "background": "#D8F0F5",
+      "text": "#177F93"
+    },
+    "ruby": {
+      "short": "R",
+      "background": "#F8D5D8",
+      "text": "#AE1330"
+    },
+    "sapphire": {
+      "short": "S",
+      "background": "#D7E0F7",
+      "text": "#1C3C98"
+    },
+    "emerald": {
+      "short": "E",
+      "background": "#D4EFDF",
+      "text": "#12703E"
+    },
+    "firered": {
+      "short": "FR",
+      "background": "#FBDACB",
+      "text": "#BF4413"
+    },
+    "leafgreen": {
+      "short": "LG",
+      "background": "#E0F1CE",
+      "text": "#447F1A"
+    },
+    "diamond": {
+      "short": "D",
+      "background": "#D8E7FA",
+      "text": "#7B8593"
+    },
+    "pearl": {
+      "short": "P",
+      "background": "#FADCE8",
+      "text": "#AE2270"
+    },
+    "platinum": {
+      "short": "Pt",
+      "background": "#E3E4E8",
+      "text": "#1B1B22"
+    },
+    "heartgold": {
+      "short": "HG",
+      "background": "#EEDDB0",
+      "text": "#9A730C"
+    },
+    "soulsilver": {
+      "short": "SS",
+      "background": "#E4E6EB",
+      "text": "#1C2B5A"
+    },
+    "black": {
+      "short": "B",
+      "background": "#D9DADF",
+      "text": "#1B1B22"
+    },
+    "white": {
+      "short": "W",
+      "background": "#F5F5F5",
+      "text": "#6A6A74"
+    },
+    "black-2": {
+      "short": "B2",
+      "background": "#D6D9E0",
+      "text": "#1B2A4A"
+    },
+    "white-2": {
+      "short": "W2",
+      "background": "#F4EFEF",
+      "text": "#A3303A"
+    },
+    "x": {
+      "short": "X",
+      "background": "#DAE3F4",
+      "text": "#1E4A98"
+    },
+    "y": {
+      "short": "Y",
+      "background": "#F6D8DC",
+      "text": "#AD1E35"
+    },
+    "omega-ruby": {
+      "short": "OR",
+      "background": "#F6D2D2",
+      "text": "#9E1C1C"
+    },
+    "alpha-sapphire": {
+      "short": "AS",
+      "background": "#D5DEF6",
+      "text": "#1D3A8B"
+    },
+    "sun": {
+      "short": "S",
+      "background": "#FDE5CB",
+      "text": "#B8520A"
+    },
+    "moon": {
+      "short": "M",
+      "background": "#E2DCF3",
+      "text": "#48388A"
+    },
+    "ultra-sun": {
+      "short": "US",
+      "background": "#FCDAC3",
+      "text": "#B2400C"
+    },
+    "ultra-moon": {
+      "short": "UM",
+      "background": "#DAD5EF",
+      "text": "#392C79"
+    },
+    "lets-go-pikachu": {
+      "short": "P",
+      "background": "#FFEFB5",
+      "text": "#977100"
+    },
+    "lets-go-eevee": {
+      "short": "E",
+      "background": "#F1E1CB",
+      "text": "#835421"
+    },
+    "sword": {
+      "short": "Sw",
+      "background": "#D8ECF8",
+      "text": "#1A6AA3"
+    },
+    "shield": {
+      "short": "Sh",
+      "background": "#F8DAE4",
+      "text": "#AB2150"
+    },
+    "the-isle-of-armor-sword": {
+      "short": "Sw",
+      "background": "#D8ECF8",
+      "text": "#1A6AA3"
+    },
+    "the-isle-of-armor-shield": {
+      "short": "Sh",
+      "background": "#F8DAE4",
+      "text": "#AB2150"
+    },
+    "the-crown-tundra-sword": {
+      "short": "Sw",
+      "background": "#D8ECF8",
+      "text": "#1A6AA3"
+    },
+    "the-crown-tundra-shield": {
+      "short": "Sh",
+      "background": "#F8DAE4",
+      "text": "#AB2150"
+    },
+    "brilliant-diamond": {
+      "short": "BD",
+      "background": "#DCE5FA",
+      "text": "#2F4EA3"
+    },
+    "shining-pearl": {
+      "short": "SP",
+      "background": "#F9DCEA",
+      "text": "#A83674"
+    },
+    "legends-arceus": {
+      "short": "LA",
+      "background": "#ECE4D2",
+      "text": "#665230"
+    },
+    "scarlet": {
+      "short": "S",
+      "background": "#FAD8D0",
+      "text": "#B92F1B"
+    },
+    "violet": {
+      "short": "V",
+      "background": "#E5D9F5",
+      "text": "#662CA2"
+    },
+    "the-teal-mask-scarlet": {
+      "short": "S",
+      "background": "#FAD8D0",
+      "text": "#B92F1B"
+    },
+    "the-teal-mask-violet": {
+      "short": "V",
+      "background": "#E5D9F5",
+      "text": "#662CA2"
+    },
+    "the-indigo-disk-scarlet": {
+      "short": "S",
+      "background": "#FAD8D0",
+      "text": "#B92F1B"
+    },
+    "the-indigo-disk-violet": {
+      "short": "V",
+      "background": "#E5D9F5",
+      "text": "#662CA2"
+    },
+    "legends-za": {
+      "short": "Z-A",
+      "background": "#DFF1D6",
+      "text": "#2C7337"
+    },
+    "mega-dimension": {
+      "short": "MD",
+      "background": "#E6DEF3",
+      "text": "#57388F"
+    }
   },
-
   "pokedexes": {
-    "kalos-central":     { "label": { "ko": "센트럴", "en": "Central", "ja": "セントラル" } },
-    "kalos-coastal":     { "label": { "ko": "코스트", "en": "Coastal", "ja": "コースト" } },
-    "kalos-mountain":    { "label": { "ko": "마운틴", "en": "Mountain", "ja": "マウンテン" } },
-    "original-melemele": { "hidden": true },
-    "original-akala":    { "hidden": true },
-    "original-ulaula":   { "hidden": true },
-    "original-poni":     { "hidden": true },
-    "updated-melemele":  { "hidden": true },
-    "updated-akala":     { "hidden": true },
-    "updated-ulaula":    { "hidden": true },
-    "updated-poni":      { "hidden": true },
-
-    "isle-of-armor":     { "label": { "ko": "외딴섬", "en": "Isle of Armor", "ja": "鎧の孤島" } },
-    "crown-tundra":      { "label": { "ko": "설원", "en": "Crown Tundra", "ja": "冠の雪原" } },
-    "kitakami":          { "label": { "ko": "북신", "en": "Kitakami", "ja": "キタカミ" } },
-    "blueberry":         { "label": { "ko": "블루베리", "en": "Blueberry", "ja": "ブルーベリー" } },
-    "lumiose-city":      { "label": { "ko": "미르시티", "en": "Lumiose City", "ja": "ミアレシティ" } },
-    "hyperspace":        { "label": { "ko": "이차원", "en": "Hyperspace", "ja": "異次元" } }
+    "kalos-central": {
+      "label": {
+        "ko": "센트럴",
+        "en": "Central",
+        "ja": "セントラル"
+      }
+    },
+    "kalos-coastal": {
+      "label": {
+        "ko": "코스트",
+        "en": "Coastal",
+        "ja": "コースト"
+      }
+    },
+    "kalos-mountain": {
+      "label": {
+        "ko": "마운틴",
+        "en": "Mountain",
+        "ja": "マウンテン"
+      }
+    },
+    "original-melemele": {
+      "hidden": true
+    },
+    "original-akala": {
+      "hidden": true
+    },
+    "original-ulaula": {
+      "hidden": true
+    },
+    "original-poni": {
+      "hidden": true
+    },
+    "updated-melemele": {
+      "hidden": true
+    },
+    "updated-akala": {
+      "hidden": true
+    },
+    "updated-ulaula": {
+      "hidden": true
+    },
+    "updated-poni": {
+      "hidden": true
+    },
+    "isle-of-armor": {
+      "label": {
+        "ko": "외딴섬",
+        "en": "Isle of Armor",
+        "ja": "鎧の孤島"
+      }
+    },
+    "crown-tundra": {
+      "label": {
+        "ko": "설원",
+        "en": "Crown Tundra",
+        "ja": "冠の雪原"
+      }
+    },
+    "kitakami": {
+      "label": {
+        "ko": "북신",
+        "en": "Kitakami",
+        "ja": "キタカミ"
+      }
+    },
+    "blueberry": {
+      "label": {
+        "ko": "블루베리",
+        "en": "Blueberry",
+        "ja": "ブルーベリー"
+      }
+    },
+    "lumiose-city": {
+      "label": {
+        "ko": "미르시티",
+        "en": "Lumiose City",
+        "ja": "ミアレシティ"
+      }
+    },
+    "hyperspace": {
+      "label": {
+        "ko": "이차원",
+        "en": "Hyperspace",
+        "ja": "異次元"
+      }
+    }
   },
-
   "versionGroups": {
-    "the-isle-of-armor": { "label": {"ko": "외딴섬", "en": "Isle of Armor", "ja": "鎧の孤島"} },
-    "the-crown-tundra": { "label": {"ko": "설원", "en": "Crown Tundra", "ja": "冠の雪原"} },
-    "the-teal-mask": { "label": {"ko": "벽록의 가면", "en": "Teal Mask", "ja": "碧の仮面"} },
-    "the-indigo-disk": { "label": {"ko": "남청의 원반", "en": "Indigo Disk", "ja": "藍の円盤"} }
+    "the-isle-of-armor": {
+      "label": {
+        "ko": "외딴섬",
+        "en": "Isle of Armor",
+        "ja": "鎧の孤島"
+      }
+    },
+    "the-crown-tundra": {
+      "label": {
+        "ko": "설원",
+        "en": "Crown Tundra",
+        "ja": "冠の雪原"
+      }
+    },
+    "the-teal-mask": {
+      "label": {
+        "ko": "벽록의 가면",
+        "en": "Teal Mask",
+        "ja": "碧の仮面"
+      }
+    },
+    "the-indigo-disk": {
+      "label": {
+        "ko": "남청의 원반",
+        "en": "Indigo Disk",
+        "ja": "藍の円盤"
+      }
+    }
+  },
+  "generations": {
+    "_comment": "세대 버튼의 무지개 바탕 — 그 세대 시리즈의 배지 바탕색(versions.background)을 발매 순으로 섞는다",
+    "1": [
+      "red",
+      "green-japan",
+      "blue",
+      "yellow"
+    ],
+    "2": [
+      "gold",
+      "silver",
+      "crystal"
+    ],
+    "3": [
+      "ruby",
+      "sapphire",
+      "emerald",
+      "firered",
+      "leafgreen"
+    ],
+    "4": [
+      "diamond",
+      "pearl",
+      "platinum",
+      "heartgold",
+      "soulsilver"
+    ],
+    "5": [
+      "black",
+      "white",
+      "black-2",
+      "white-2"
+    ],
+    "6": [
+      "x",
+      "y"
+    ],
+    "7": [
+      "sun",
+      "moon",
+      "ultra-sun",
+      "ultra-moon",
+      "lets-go-pikachu",
+      "lets-go-eevee"
+    ],
+    "8": [
+      "sword",
+      "shield",
+      "brilliant-diamond",
+      "shining-pearl",
+      "legends-arceus"
+    ],
+    "9": [
+      "scarlet",
+      "violet"
+    ]
   }
 }
