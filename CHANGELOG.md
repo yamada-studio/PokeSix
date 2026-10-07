@@ -405,8 +405,9 @@ and the project uses [Semantic Versioning](https://semver.org/).
   rounded corners keep the paper background.
 - The generation button reads [▾ 4세대] (chevron first), and its dropdown is a custom popup the
   same width as the button: each row's background is that generation's color stripes (replacing
-  the small swatch icons), rows are separated by a 1px ink line except after the last, the
-  current generation shows a ✓, and arrow keys/Enter still work.
+  the small swatch icons), rows are separated by a 1px ink line except after the last, labels
+  are centered, the current generation shows as a grayscale row with a pressed overlay instead
+  of a ✓, and arrow keys/Enter still work.
 - The app bar drops the search box — it was a non-functional placeholder (only Ctrl+K focus was
   wired). The generation button moves to the bar's right end, with the bar's right padding set so
   the button's edge lines up with the page content below (the squad's "자동 저장됨" and the
