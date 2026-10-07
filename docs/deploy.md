@@ -108,18 +108,19 @@ imageformats\ iconengines\ styles\ generic\ networkinformation\
 확인: Qt를 설치하지 않은 PC(또는 Windows Sandbox)에 `dist\PokeSix` 폴더를 복사해 실행 → 첫 실행 데이터 받기까지 되는지 본다.
 플러그인을 더 빼고 싶으면 하나씩 빼고 다시 실행해 본다(`QT_DEBUG_PLUGINS=1`로 무엇을 찾는지 보인다).
 
-### 2-3. 방안 B — CMake `install`에 넣기 (권장 · Phase G 초입)
+### 2-3. 방안 B — CMake `install`에 넣기 (**적용됨**, 2026-10-07)
 
-A를 손으로 반복하지 않도록 Qt의 배포 스크립트를 `install()`에 붙인다. `src/CMakeLists.txt`의 `install(TARGETS PokeSix …)` 다음에 패턴만 적으면:
+`src/CMakeLists.txt`의 `install(TARGETS PokeSix …)` 다음에 Qt의 배포 스크립트가 붙어 있다:
 
 ```cmake
 qt_generate_deploy_app_script(
     TARGET PokeSix
-    OUTPUT_SCRIPT deploy_script
+    OUTPUT_SCRIPT pokesix_deploy_script
     NO_UNSUPPORTED_PLATFORM_ERROR   # Linux는 deploy를 지원하지 않는다 → 거기서는 조용히 건너뛴다
     NO_TRANSLATIONS
+    ${POKESIX_DEPLOY_OPTIONS}       # Windows에서만: --compiler-runtime · 플러그인 제외(§2-2의 표)
 )
-install(SCRIPT ${deploy_script})
+install(SCRIPT ${pokesix_deploy_script})
 ```
 
 그러면 기존 스크립트 옵션이 그대로 배포 폴더를 만든다:
@@ -130,6 +131,13 @@ scripts\windows\build.bat release --install C:\dist\PokeSix
 
 내부적으로 `cmake --install build\windows-msvc --config Release --prefix C:\dist\PokeSix`가 돌고, Windows에서는 `bin\PokeSix.exe` 옆에 windeployqt 결과가 들어간다(macOS는 `macdeployqt`로 `.app` 안에).
 플러그인 제외 · `--compiler-runtime` 같은 세부 옵션은 `DEPLOY_TOOL_OPTIONS`로 넘긴다. `cmake --install … --prefix` 폴더 전체가 곧 배포본이다.
+
+**clone부터 실행까지 한 번에**: `scripts\windows\quickstart.bat` = setup → package.bat → 실행
+(Linux는 `scripts/linux/quickstart.sh` → AppImage 실행). 패키징까지만 하려면 `--no-run`.
+
+**ZIP 한 번에**: `scripts\windows\package.bat` — release 빌드(테스트 포함) → install + windeployqt →
+LICENSE · THIRD_PARTY_NOTICES.md 동봉 → `build\windows-msvc\package\PokeSix-<버전>-win64.zip` + SHA-256.
+기존 빌드를 재사용하려면 `--no-build`.
 
 여기까지 하면 **ZIP 압축 = 포터블 배포본**이다. CPack을 켜면 압축도 CMake가 한다:
 
@@ -178,4 +186,10 @@ Linux(AppImage) · macOS(dmg)도 같은 워크플로의 매트릭스로. 로드�
 ### 2-8. 다른 OS 한 줄씩
 
 - **macOS**: `qt_generate_deploy_app_script`가 `macdeployqt`를 불러 `.app` 번들 안에 프레임워크를 넣는다. 배포는 `hdiutil`로 `.dmg`. Gatekeeper 때문에 공증(notarization, Apple Developer 연 99달러)이 없으면 우클릭 → 열기 안내가 필요하다
-- **Linux**: Qt의 deploy 스크립트가 Linux를 지원하지 않으므로 `linuxdeploy` + `linuxdeploy-plugin-qt`로 AppImage를 만든다. 지금 `install()`은 `bin/` · `.desktop` · hicolor 아이콘을 넣고 RUNPATH에 Qt 경로를 남긴다(개발 PC용). Flatpak은 KDE 런타임에 Qt 6.8이 있어 대안이 된다
+- **Linux** (**적용됨**, 2026-10-07): `scripts/linux/package.sh` — release 빌드(테스트 포함) →
+  `build/package/AppDir`에 install → `linuxdeploy` + `linuxdeploy-plugin-qt`(처음 한 번
+  `build/package/tools`에 받아 둔다)로 `build/package/PokeSix-<버전>-x86_64.AppImage` + SHA-256.
+  TLS 백엔드는 자동 감지에 안 걸려서 `EXTRA_PLUGINS="tls;networkinformation"`으로 넣는다(첫 실행
+  HTTPS 데이터 받기). 기존 빌드 재사용은 `--no-build`. AppImage는 `chmod +x` 뒤 더블클릭(또는
+  `./PokeSix-….AppImage`)으로 실행되고, 빌드한 배포판보다 오래된 glibc에서는 안 돈다.
+  Flatpak은 KDE 런타임에 Qt 6.8이 있어 대안이 된다
