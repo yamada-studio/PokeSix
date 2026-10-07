@@ -314,6 +314,26 @@ public:
     // 비면 모른다 (거르지 않는다)
     QSet<int> gameSpecies(const QString &versionGroup);
 
+    // ── 타운맵(T1) ──────────────────────────────────────────────
+    // 그 장소 · 버전의 야생 출현 한 줄(종 · 방법 단위로 합친다). 시간대(아침 · 낮 · 밤)가 줄로
+    // 나뉘어 있어 확률은 가장 높은 값으로 남긴다
+    struct EncounterSpot
+    {
+        int speciesId = 0;
+        int pokemonId = 0;
+        LocalizedText name;
+        QString method; // encounter_methods identifier("walk" · "surf" · "old-rod" …)
+        int minLevel = 0;
+        int maxLevel = 0;
+        int rarity = 0; // %
+    };
+    QList<EncounterSpot> encountersAt(const QString &location, const QString &version);
+    // 지방의 장소 이름(identifier → 이름) — 타운맵 노드 라벨. region = 소문자 영어("johto")
+    QHash<QString, LocalizedText> locationNames(const QString &region);
+    // 이 버전의 야생 출현이 걸쳐 있는 지방(소문자 영어, 장소 수 많은 순) — 타운맵 지방 버튼
+    QStringList encounterRegions(const QString &version);
+    LocalizedText regionDisplayName(const QString &region); // "johto" → 성도
+
 private:
     QString m_path;
     QString m_connection;

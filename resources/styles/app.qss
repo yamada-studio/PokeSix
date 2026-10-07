@@ -159,6 +159,13 @@ QPushButton#squadToolButton {
 }
 QPushButton#squadToolButton:hover { background: @blue.tint; }
 QPushButton#squadToolButton::menu-indicator { image: none; width: 0; }
+QLabel#pageTitle { font-family: "Do Hyeon"; font-size: 28px; color: @text.1; }
+QPushButton#mapRegionChip {
+  background: @paper.alt; border: 2px solid @ink; border-radius: 12px; padding: 1px 12px;
+  font-family: "Do Hyeon"; font-size: 15px; color: @text.1;
+}
+QPushButton#mapRegionChip:hover { background: @blue.tint; }
+QPushButton#mapRegionChip:checked { background: @yellow.soft; }
 QToolButton#squadIconButton { background: transparent; border: none; border-radius: 6px; padding: 3px; }
 QToolButton#squadIconButton:hover:enabled { background: @blue.tint; }
 QToolButton#squadIconButton:pressed { background: @blue.cell; }

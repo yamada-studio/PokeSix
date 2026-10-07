@@ -33,6 +33,8 @@ public:
         Item,        // 아이템 아이콘(30×30). 기술머신은 타입별 CD("tm-fire")
         PokemonFront, // 게임 정면 그림. key = "generation-iv/platinum/1"(세대 그림), 없으면
                       // 기본(96×96)
+        TownMap, // 지방 타운맵 그림(Serebii Pokéarth). key = 지방("johto") — 커밋하지 않고
+                 // 첫 사용 때 받아 캐시에 둔다(resources/data/townmap/<지방>.json의 url과 같다)
     };
 
     explicit SpriteCache(Kind kind, QObject *parent = nullptr);

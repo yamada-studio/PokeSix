@@ -195,6 +195,96 @@ QList<MoveEntry> Repository::hiddenMachineMoves(const QString &versionGroup, int
     return moves;
 }
 
+QList<Repository::EncounterSpot> Repository::encountersAt(const QString &location,
+                                                          const QString &version)
+{
+    QList<EncounterSpot> spots;
+    if (!open())
+        return spots;
+    // 시간대(아침 · 낮 · 밤) · 슬롯이 줄로 나뉘어 있어 종 · 방법 단위로 합친다 — 확률은 가장
+    // 높은 값(합치면 100%를 넘는다), 레벨은 전체 범위
+    QSqlQuery query(QSqlDatabase::database(m_connection));
+    query.prepare(
+            QStringLiteral("SELECT s.id, p.id, s.name_ko, s.name_en, s.name_ja, em.identifier, "
+                           "  MIN(e.min_level), MAX(e.max_level), MAX(e.rarity) "
+                           "FROM encounters e "
+                           "JOIN versions v ON v.id = e.version_id "
+                           "JOIN locations l ON l.id = e.location_id "
+                           "JOIN encounter_methods em ON em.id = e.method_id "
+                           "JOIN pokemon p ON p.id = e.pokemon_id "
+                           "JOIN species s ON s.id = p.species_id "
+                           "WHERE l.identifier = :location AND v.identifier = :version "
+                           "GROUP BY s.id, em.id "
+                           "ORDER BY em.id, MAX(e.rarity) DESC, s.id"));
+    query.bindValue(QStringLiteral(":location"), location);
+    query.bindValue(QStringLiteral(":version"), version);
+    if (!query.exec()) {
+        m_error = query.lastError().text();
+        qCWarning(lcData) << "encountersAt query failed:" << m_error;
+        return spots;
+    }
+    while (query.next()) {
+        EncounterSpot spot;
+        spot.speciesId = query.value(0).toInt();
+        spot.pokemonId = query.value(1).toInt();
+        spot.name = localized(query, 2);
+        spot.method = query.value(5).toString();
+        spot.minLevel = query.value(6).toInt();
+        spot.maxLevel = query.value(7).toInt();
+        spot.rarity = query.value(8).toInt();
+        spots.append(spot);
+    }
+    return spots;
+}
+
+QHash<QString, LocalizedText> Repository::locationNames(const QString &region)
+{
+    QHash<QString, LocalizedText> names;
+    if (!open())
+        return names;
+    QSqlQuery query(QSqlDatabase::database(m_connection));
+    query.prepare(QStringLiteral(
+            "SELECT l.identifier, l.name_ko, l.name_en, l.name_ja FROM locations l "
+            "JOIN regions r ON r.id = l.region_id WHERE LOWER(r.name_en) = :region"));
+    query.bindValue(QStringLiteral(":region"), region.toLower());
+    if (query.exec())
+        while (query.next())
+            names.insert(query.value(0).toString(), localized(query, 1));
+    return names;
+}
+
+QStringList Repository::encounterRegions(const QString &version)
+{
+    QStringList regions;
+    if (!open())
+        return regions;
+    QSqlQuery query(QSqlDatabase::database(m_connection));
+    query.prepare(QStringLiteral("SELECT LOWER(r.name_en) FROM encounters e "
+                                 "JOIN versions v ON v.id = e.version_id "
+                                 "JOIN locations l ON l.id = e.location_id "
+                                 "JOIN regions r ON r.id = l.region_id "
+                                 "WHERE v.identifier = :version AND r.name_en IS NOT NULL "
+                                 "GROUP BY r.id ORDER BY COUNT(DISTINCT l.id) DESC"));
+    query.bindValue(QStringLiteral(":version"), version);
+    if (query.exec())
+        while (query.next())
+            regions.append(query.value(0).toString());
+    return regions;
+}
+
+LocalizedText Repository::regionDisplayName(const QString &region)
+{
+    if (!open() || region.isEmpty())
+        return {};
+    QSqlQuery query(QSqlDatabase::database(m_connection));
+    query.prepare(QStringLiteral(
+            "SELECT name_ko, name_en, name_ja FROM regions WHERE LOWER(name_en) = :region"));
+    query.bindValue(QStringLiteral(":region"), region.toLower());
+    if (query.exec() && query.next())
+        return localized(query, 0);
+    return {region, region, region};
+}
+
 QSet<int> Repository::gameSpecies(const QString &versionGroup)
 {
     const auto cached = m_gameSpecies.constFind(versionGroup);

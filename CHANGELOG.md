@@ -19,6 +19,17 @@ and the project uses [Semantic Versioning](https://semver.org/).
   without it simply falls back to the Qt dialog.
 
 ### Added
+- A new "타운맵 백과" page (fifth tab, between Items and Squad, also on the intro menu): the
+  in-game town map as original pixel art with modern controls. The map image is downloaded at
+  first use to the user cache (never committed — same policy as sprites, from Serebii Pokéarth's
+  marker-free per-region renders), drawn at a crisp integer nearest-neighbor scale with wheel
+  zoom and drag pan; while it downloads (or offline) a schematic of the nodes stands in. Hovering
+  a place shows its name bubble, clicking lists that game's wild encounters (grouped by method,
+  with level ranges and best rates — gifts and in-game trades included) on the right. The page
+  follows the app's generation and game with per-version chips, and two-region games (GSC, HGSS)
+  get 성도/관동 region chips. 45 Johto and 49 Kanto places are mapped
+  (`resources/data/townmap/*.json`, coordinates from Serebii's imagemap as factual data);
+  location names go through the place-name dictionary, so 성도/관동 towns read in Korean.
 - Squad export files wear their own extension: `.pks` (the content stays the same JSON). The
   save dialog suggests `pokesix-squad-4-heartgold.pks` and appends `.pks` when no suffix is
   typed; import still accepts the early `.json` exports.

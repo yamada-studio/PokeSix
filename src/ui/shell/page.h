@@ -6,6 +6,7 @@ namespace com::yamada::studio {
 enum class Page {
     Dex,
     Items,
+    Map, // 타운맵 백과(T1)
     Squad,
     Settings,
 };

@@ -146,7 +146,7 @@ HomePage::HomePage(DataUpdater *updater, AppState *state, QWidget *parent)
     // 메뉴의 "몇 번째 줄 실행"을 화면 의미(페이지 열기)로 바꿔서 밖에 알린다.
     // 메뉴 순서(스쿼드 · 도감 · 아이템)는 Page 순서와 다르므로 표로 바꾼다.
     connect(m_menu, &IntroMenu::activated, this, [this](int index) {
-        constexpr Page kPages[] = {Page::Squad, Page::Dex, Page::Items};
+        constexpr Page kPages[] = {Page::Squad, Page::Dex, Page::Items, Page::Map};
         emit openRequested(kPages[index]);
     });
 

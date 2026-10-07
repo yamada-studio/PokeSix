@@ -8,6 +8,7 @@
 #include "ui/home/homepage.h"
 #include "ui/items/itemspage.h"
 #include "ui/logging/logging.h"
+#include "ui/map/townmappage.h"
 #include "ui/shell/appbar.h"
 #include "ui/squad/squadpage.h"
 #include "ui/widgets/generationbutton.h"
@@ -57,10 +58,11 @@ MainWindow::MainWindow(QWidget *parent)
     // Repository는 게임 데이터 DB 조회 창구다. 화면들은 포인터만 받아 쓴다(생성자 주입).
     m_repository = std::make_unique<Repository>(gamedatabase::defaultPath());
     m_dexPage = new DexPage(m_repository.get(), m_state);
-    m_pages->addWidget(m_dexPage);                                  // [0] 도감
-    m_pages->addWidget(new ItemsPage(m_repository.get(), m_state)); // [1] 아이템
+    m_pages->addWidget(m_dexPage);                                    // [0] 도감
+    m_pages->addWidget(new ItemsPage(m_repository.get(), m_state));   // [1] 아이템
+    m_pages->addWidget(new TownMapPage(m_repository.get(), m_state)); // [2] 타운맵
     SquadPage *squad = new SquadPage(m_repository.get(), m_state);
-    m_pages->addWidget(squad); // [2] 스쿼드
+    m_pages->addWidget(squad); // [3] 스쿼드
     // 데이터 받기가 끝나 DB 파일이 바뀌었다 → 옛 연결을 닫고(다음 조회가 새 파일을 연다) 앱 시작
     // 때부터 살아 있던 스쿼드를 새 데이터로 다시 읽는다
     connect(dataUpdater, &DataUpdater::finished, this, [this, squad] {
@@ -70,7 +72,7 @@ MainWindow::MainWindow(QWidget *parent)
     QLabel *placeholder = new QLabel(tr("%1 — 준비 중이에요").arg(tr("설정")));
     placeholder->setObjectName(QStringLiteral("pagePlaceholder"));
     placeholder->setAlignment(Qt::AlignCenter);
-    m_pages->addWidget(placeholder); // [3] 설정
+    m_pages->addWidget(placeholder); // [4] 설정
 
     layout->addWidget(m_appBar);
     layout->addWidget(m_pages);
@@ -100,8 +102,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     // 본 화면의 단축키. shell에 달고 WidgetWithChildrenShortcut으로 두면 본 화면이 보일 때만
     // 동작한다 (인트로에서는 1–4 키가 메뉴에 있고, 잠긴 메뉴를 단축키로 우회하지 못한다).
-    const Page pages[] = {Page::Dex, Page::Items, Page::Squad, Page::Settings};
-    for (int i = 0; i < 4; ++i) {
+    const Page pages[] = {Page::Dex, Page::Items, Page::Map, Page::Squad, Page::Settings};
+    for (int i = 0; i < 5; ++i) {
         QShortcut *shortcut = new QShortcut(QKeySequence(Qt::CTRL | (Qt::Key_1 + i)), shell);
         shortcut->setContext(Qt::WidgetWithChildrenShortcut);
         const Page page = pages[i];
