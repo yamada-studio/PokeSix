@@ -24,7 +24,7 @@
 빌드 시스템, 프리셋, OS별 스크립트, 코드 품질 도구, core 골격, 테스트 파이프라인, 문서,
 디자인 핸드오프 반영, 글꼴 · 앱 아이콘 가져오기.
 
-## Phase A — 인트로 화면으로 배우는 Qt 기초 → v0.1.0
+## Phase A — 인트로 화면으로 배우는 Qt 기초 ✅ → v0.1.0 (2026-10-07)
 
 **전체 화면 인트로(마크 · 워드마크 · 현재 세대 버튼 · ▶ 메뉴)와, 메뉴로 들어가는 본 화면의 틀(4탭 앱 막대 + 페이지)을 완성하면서**
 Qt의 기초(창, 레이아웃, 리소스, 테마, 커스텀 페인트, 시그널/슬롯)를 순서대로 익힌다.
@@ -41,16 +41,18 @@ Qt의 기초(창, 레이아웃, 리소스, 테마, 커스텀 페인트, 시그�
 | ✅ | **A5** 첫 `paintEvent` — 바탕 · 창 · 글자 그림자 | `QPainter`, `QPainterPath`, 안티에일리어싱, `QPixmap` 타일, 블러 없는 오프셋 그림자, 그리기 함수(`paintPanel`)와 위젯의 분리 | 사선 무늬 + 위아래 빨강 띠(`IntroBackground`), 먹선 3 · 이중 테 · 그림자 6의 메뉴 창, 노란 그림자의 워드마크 |
 | ✅ | **A6** 캡슐 마크를 코드로 | `QTransform`(회전 −35°), 경로 합성 · 클리핑, 크기별 규칙(01b §6-3), `sizeHint()` | `MarkWidget` 136이 `41_mark_final.png`의 128+ 규칙대로 그려진다(광택 · 눈빛 · 입 · 볼) |
 | ✅ | **A7** 메뉴 동작 — 시그널/슬롯 | `QAbstractButton`, hover가 선택을 옮김, 키보드(↑↓ 순환 없음 · Enter · 1–4 · Esc), 포커스 이유(`Qt::TabFocusReason`), ▶ 커서와 노란 선택 칸, 눌림 2px, **시그널/슬롯**, 상자 바깥 포커스 링 | 메뉴로 본 화면에 들어가고(임시 되돌아가기 버튼으로) 인트로로 돌아온다. 종료 줄 · Esc 두 번 → 종료 |
-| 🟨 | **A8** 세대 버튼 · 세대 메뉴와 AppState | `Qt::Popup` 창, `Q_PROPERTY`, 첫 `pokesix_data` 타깃, core의 세대 표, `QSettings`(`gen`) | "GEN 4 신오 ▾" → 폭 300 · 9줄 팝업(▶ · ✓), 고른 세대가 `AppState`에 들어가고 다음 실행에도 남는다 |
+| ✅ | **A8** 세대 버튼 · 세대 메뉴와 AppState | `Qt::Popup` 창, `Q_PROPERTY`, 첫 `pokesix_data` 타깃, core의 세대 표, `QSettings`(`gen`) | "GEN 4 신오 ▾" → 폭 300 · 9줄 팝업(▶ · ✓), 고른 세대가 `AppState`에 들어가고 다음 실행에도 남는다 |
 | ✅ | **A9** 앱 막대와 탭 | 폴더 탭 커스텀 페인트, 마크 버튼(스티커 변형 36, hover 점선 테), `QShortcut`(Ctrl+1…4), `enum class Page` + `MainWindow::open(Page)` | 빨강 앱 막대: 캡슐 마크 + POKESIX + 탭 4 + 세대 버튼(같은 `AppState`) · 검색 자리. 메뉴 선택 → 그 탭이 활성인 본 화면, 마크 → 인트로 |
 | ✅ | **A9b** 창 크기를 도감 표에 맞추기 ([가이드](guides/a9b-window-size.md)) | `sizeHint` / `minimumSizeHint` / `QSizePolicy`, 레이아웃의 크기 협상, `resizeEvent`, `QMainWindow` 최소 크기 | 920×840으로 열리고, 좁히면 검색창만 280 → 160으로 줄어든다 |
-| ⬜ | **A10** 마무리 | 캡처 차이 목록, 키보드만으로 왕복 확인 | `30` · `31`과의 차이 목록이 비어 있거나 설명 가능 → **v0.1.0** |
+| ✅ | **A10** 마무리 | 캡처 차이 목록, 키보드만으로 왕복 확인 | `30` · `31`과의 차이 목록이 비어 있거나 설명 가능 → **v0.1.0** |
 
 - **A2 후반 · A4 · A5 · A6과 A3 · A7의 일부는 사용자 요청으로 Claude가 구현했다**([ADR 0010](decisions/0010-intro-implemented-by-claude.md)).
   학습 루프상으로는 해당 코드(`src/ui/theme`, `src/ui/widgets`, `src/ui/home`)를 읽고 설명할 수 있으면 그 단계를 이해한 것으로 본다
   - A3: 2026-10-07 사용자 요청("진행해봐")으로 Claude가 마무리했다 — `src/app/Application`(composition root: AppState · Repository · DataUpdater를 만들어 `MainWindow`에 주입), 로그 형식, `--screenshot <intro|dex|items|map|squad|settings> <WxH> <out.png>`([deploy.md §1-2](deploy.md#1-2-앱-인자)). 디자인 03b의 `intro-gen-open`(세대 메뉴가 카드 부채꼴로 바뀌어 대상이 없다) · `intro-first-run`(상태 강제)은 만들지 않았다
   - A6: 마크는 SVG(`QSvgRenderer`)로 그렸다. `QTransform`으로 직접 그려 보는 것은 선택 과제
   - A7: 포커스 링은 2026-10-07 Claude가 마무리했다(열린 질문 7 → [ADR 0016](decisions/0016-outside-decorations-drawn-by-parent.md), `IntroMenu::paintEvent`). 종료 줄 · 키 안내는 ADR 0015 이후 사용자 결정으로 뺐다(종료는 창 닫기 · Esc 없음) — 표의 "종료 줄 · Esc 두 번"은 더 이상 목표가 아니다
+  - A8: 2026-10-07 마무리. 세대 표는 core의 `generationfeatures.h`(`featuresOf` 표)와 `AppState`(`QSettings` `generation` · `games/<세대>`)로 이미 있었고, 디자인의 폭 300 팝업(▶ · `GEN n` · 지방 · ✓)은 사용자 결정으로 다른 모양이 되었다 — 인트로는 카드 부채꼴(ADR 0015), 앱 막대는 세대 색 줄무늬 드롭다운(✓ 표시). 차이는 [design/README.md "의도한 차이"](../design/README.md#의도한-차이-디자인과-다르게-구현한-것)에 적었다
+  - A10: 2026-10-07 마무리. `--screenshot intro 1440x900`을 `30` · `31`과 비교한 차이는 모두 "의도한 차이" 표에 있다(ADR 0015 · 사용자 결정). 키보드 왕복: 인트로 메뉴(↑↓ · Enter · 1–3) → 본 화면, 본 화면에서 **Ctrl+0**(새로 추가) 또는 Tab으로 마크 버튼 → 인트로. 캡처 모드로는 키 입력을 못 넣어 실기 확인은 사용자 몫
   - A9는 사용자 요청으로 Claude가 구현했다: 마크 버튼(→ 인트로), 폴더 탭 4, 앱 막대용 세대 버튼, 검색 칸, `MainWindow::open(Page)`, Ctrl+1…4 · Ctrl+K
 - 캡슐 앱 아이콘 리소스는 v2로 교체했다([ADR 0009](decisions/0009-design-handoff-v2.md))
 - `FirstRunPanel`(데이터 없음 · 받는 중 · 실패, `34` ③)은 D4에서 만든다. Phase A의 인트로는 데이터가 있는 상태만 다룬다
