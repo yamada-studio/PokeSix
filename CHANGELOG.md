@@ -7,6 +7,11 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- The HM-shuttle button only appears through generation 6: from generation 7 the games replaced
+  party-taught HMs with built-in systems (Poké Ride in SM/USUM, the Rotom Bike in SwSh, the
+  Pokétch hidden-move app in BDSP — even though its data still lists HM items — and ride Pokémon
+  in LA/SV), so a shuttle has nothing to carry. The rule lives in the generation-features table
+  (`GenerationFeatures::hiddenMachines`), not in scattered `if (gen >= 7)` checks.
 - The generation button (intro and app bar) wears its generation's colors: the body is split into
   equal solid stripes of that generation's series badge colors in release order (gen 1
   [red|green|blue|yellow], gen 4 [diamond|pearl|platinum|gold|silver] …), saturated a step above

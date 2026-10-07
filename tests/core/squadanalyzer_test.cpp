@@ -171,6 +171,11 @@ TEST(GenerationFeatures, FollowTheGenerationTable)
     EXPECT_TRUE(featuresOf(4).splitByMove);
     EXPECT_FALSE(featuresOf(4).hiddenAbilities);
     EXPECT_TRUE(featuresOf(9).fairy);
+    EXPECT_TRUE(featuresOf(1).hiddenMachines);
+    EXPECT_TRUE(featuresOf(6).hiddenMachines); // XY · ORAS까지는 비전머신
+    EXPECT_FALSE(featuresOf(7).hiddenMachines); // 7세대부터 내장 시스템(포켓라이드 …)
+    EXPECT_FALSE(featuresOf(8).hiddenMachines); // BDSP 포함 — 포켓치가 대신한다
+    EXPECT_FALSE(featuresOf(9).hiddenMachines);
     EXPECT_FALSE(typeExistsIn(Steel, 1));
     EXPECT_FALSE(typeExistsIn(Fairy, 5));
     EXPECT_TRUE(typeExistsIn(Fairy, 6));

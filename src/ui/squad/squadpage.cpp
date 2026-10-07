@@ -1078,6 +1078,8 @@ void SquadPage::showProblemDialog()
 
 void SquadPage::refreshShuttleButton()
 {
+    // 7세대부터는 비전머신이 내장 시스템(포켓라이드 · 포켓치 …)으로 대체돼 셔틀이 필요 없다
+    m_shuttleButton->setVisible(featuresOf(m_session->generation()).hiddenMachines);
     const PokemonDetail &shuttle = m_session->shuttleDetail();
     if (!shuttle.isValid()) {
         m_shuttleButton->setText(tr("+ 비전셔틀"));
