@@ -57,6 +57,9 @@ if ((do_qt)); then
     else
         command -v uvx >/dev/null || die "uv not found. Run again without --no-system, or 'brew install uv'"
         step "installing Qt $QT_VERSION → $QT_INSTALL_DIR"
+        echo "    (aqt prints a line only when an archive finishes. qtbase and qtdeclarative are"
+        echo "     hundreds of MB, so it can stay silent for 10+ minutes while they download and"
+        echo "     extract — it is not stuck.)"
         # aqt leaves aqtinstall.log in the working directory, so run it from a temp directory
         (cd "${TMPDIR:-/tmp}" && uvx --from aqtinstall aqt install-qt mac desktop "$QT_VERSION" "$QT_AQT_ARCH" \
             --outputdir "$QT_INSTALL_DIR")
