@@ -18,6 +18,8 @@ constexpr const char *kDexSvg
         = R"(<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9h16M9 9v11"/></svg>)";
 constexpr const char *kItemsSvg
         = R"(<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>)";
+constexpr const char *kMapSvg
+        = R"(<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M9 4 4 6v14l5-2 6 2 5-2V4l-5 2z"/><path d="M9 4v14M15 6v14"/></svg>)";
 } // namespace
 
 namespace com::yamada::studio {
@@ -46,6 +48,8 @@ IntroMenu::IntroMenu(QWidget *parent)
              kDexSvg},
             {IntroMenuItem::Kind::Entry, tr("아이템 백과"),
              tr("회복 · 기술머신 · 진화 · 배틀 · 기타"), kItemsSvg},
+            {IntroMenuItem::Kind::Entry, tr("타운맵 백과"), tr("지방 지도 · 장소별 야생 출현"),
+             kMapSvg},
     };
 
     for (const Entry &entry : entries) {

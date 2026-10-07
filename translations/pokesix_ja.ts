@@ -48,6 +48,10 @@
         <source>설정</source>
         <translation>設定</translation>
     </message>
+    <message>
+        <source>타운맵</source>
+        <translation>タウンマップ</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::CardBarrel</name>
@@ -568,6 +572,14 @@
         <source>스쿼드</source>
         <translation>スクワッド</translation>
     </message>
+    <message>
+        <source>타운맵 백과</source>
+        <translation>タウンマップ図鑑</translation>
+    </message>
+    <message>
+        <source>지방 지도 · 장소별 야생 출현</source>
+        <translation>地方マップ · 場所ごとの野生出現</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::IntroMenuItem</name>
@@ -714,6 +726,17 @@
     <message>
         <source>%1 — 준비 중이에요</source>
         <translation>%1 — 準備中です</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::MapView</name>
+    <message>
+        <source>이 지방의 지도는 아직 준비 중이에요</source>
+        <translation>この地方のマップは準備中です</translation>
+    </message>
+    <message>
+        <source>지도 그림을 받는 중이에요…</source>
+        <translation>マップ画像を受信中…</translation>
     </message>
 </context>
 <context>
@@ -1566,6 +1589,51 @@
     <message>
         <source>스피드</source>
         <translation>すばやさ</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::TownMapPage</name>
+    <message>
+        <source>타운맵 백과</source>
+        <translation>タウンマップ図鑑</translation>
+    </message>
+    <message>
+        <source>지도에서 장소를 고르면
+그 게임의 야생 출현이 보여요</source>
+        <translation>マップで場所を選ぶと
+そのゲームの野生出現が見られます</translation>
+    </message>
+    <message>
+        <source>장소</source>
+        <translation>場所</translation>
+    </message>
+    <message>
+        <source>타운맵</source>
+        <translation>タウンマップ</translation>
+    </message>
+    <message>
+        <source>%1 타운맵</source>
+        <translation>%1タウンマップ</translation>
+    </message>
+    <message>
+        <source>%1 · %2곳</source>
+        <translation>%1 · %2か所</translation>
+    </message>
+    <message>
+        <source>이 게임에는 이곳의 야생 출현 자료가 없어요</source>
+        <translation>このゲームにはここの野生出現データがありません</translation>
+    </message>
+    <message>
+        <source>Lv.%1</source>
+        <translation>Lv.%1</translation>
+    </message>
+    <message>
+        <source>Lv.%1–%2</source>
+        <translation>Lv.%1–%2</translation>
+    </message>
+    <message>
+        <source>%1 · %2%</source>
+        <translation>%1 · %2%</translation>
     </message>
 </context>
 <context>

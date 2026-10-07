@@ -41,6 +41,8 @@ const TabSpec kTabs[] = {
          R"(<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9h16M9 9v11"/></svg>)"},
         {Page::Items,
          R"(<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>)"},
+        {Page::Map,
+         R"(<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M9 4 4 6v14l5-2 6 2 5-2V4l-5 2z"/><path d="M9 4v14M15 6v14"/></svg>)"},
         {Page::Squad,
          R"(<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.8 4.5v9L12 21l-7.8-4.5v-9z"/><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9"/></svg>)"},
         {Page::Settings,
@@ -157,8 +159,8 @@ AppTabBar::AppTabBar(QWidget *parent)
     m_group->setExclusive(true); // 하나를 켜면 나머지는 저절로 꺼진다
 
     // 탭 이름은 tr()로 직접 감싼다 — 번역 도구(lupdate)가 이 클래스의 문구로 찾을 수 있게
-    const QString labels[]
-            = {tr("도감"), tr("아이템"), tr("스쿼드"), tr("설정")}; // kTabs와 같은 순서
+    const QString labels[] = {tr("도감"), tr("아이템"), tr("타운맵"), tr("스쿼드"),
+                              tr("설정")}; // kTabs와 같은 순서
     for (int i = 0; i < static_cast<int>(std::size(kTabs)); ++i) {
         const TabSpec &tab = kTabs[i];
         TabButton *button = new TabButton(labels[i], tab.svg, devicePixelRatioF());

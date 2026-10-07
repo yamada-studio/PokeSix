@@ -1,0 +1,465 @@
+{
+  "_comment": [
+    "타운맵 노드: 장소(location identifier)마다 지도 이미지 위 픽셀 영역 [x, y, w, h].",
+    "이미지는 커밋하지 않는다 — 첫 사용 때 image.url에서 받아 사용자 캐시에 둔다(스프라이트와 같은 방식).",
+    "좌표 출처: Serebii Pokéarth의 imagemap(지도 위 배치는 사실 정보). region이 없으면 파일의 지방.",
+    "crop: 원본에서 보여 줄 영역(관동 본토만 — 아래쪽 세비 제도는 FRLG 전용이라 뺀다)."
+  ],
+  "region": "kanto",
+  "image": {
+    "url": "https://www.serebii.net/pokearth/kanto.png",
+    "width": 200,
+    "height": 618,
+    "crop": [
+      0,
+      0,
+      200,
+      160
+    ]
+  },
+  "nodes": [
+    {
+      "location": "celadon-city",
+      "rect": [
+        104,
+        64,
+        8,
+        9
+      ]
+    },
+    {
+      "location": "cerulean-city",
+      "rect": [
+        127,
+        39,
+        11,
+        10
+      ]
+    },
+    {
+      "location": "cinnabar-island",
+      "rect": [
+        47,
+        128,
+        9,
+        9
+      ]
+    },
+    {
+      "location": "digletts-cave",
+      "rect": [
+        136,
+        88,
+        9,
+        9
+      ]
+    },
+    {
+      "location": "fuchsia-city",
+      "rect": [
+        112,
+        112,
+        9,
+        9
+      ]
+    },
+    {
+      "location": "indigo-plateau",
+      "rect": [
+        23,
+        39,
+        9,
+        9
+      ]
+    },
+    {
+      "location": "kanto-power-plant",
+      "rect": [
+        160,
+        50,
+        9,
+        8
+      ]
+    },
+    {
+      "location": "kanto-route-1",
+      "rect": [
+        47,
+        92,
+        10,
+        12
+      ]
+    },
+    {
+      "location": "kanto-route-10",
+      "rect": [
+        159,
+        39,
+        10,
+        26
+      ]
+    },
+    {
+      "location": "kanto-route-11",
+      "rect": [
+        144,
+        87,
+        16,
+        10
+      ]
+    },
+    {
+      "location": "kanto-route-12",
+      "rect": [
+        159,
+        72,
+        10,
+        33
+      ]
+    },
+    {
+      "location": "kanto-route-13",
+      "rect": [
+        143,
+        103,
+        26,
+        10
+      ]
+    },
+    {
+      "location": "kanto-route-14",
+      "rect": [
+        135,
+        103,
+        11,
+        18
+      ]
+    },
+    {
+      "location": "kanto-route-15",
+      "rect": [
+        120,
+        111,
+        16,
+        10
+      ]
+    },
+    {
+      "location": "kanto-route-16",
+      "rect": [
+        71,
+        63,
+        33,
+        10
+      ]
+    },
+    {
+      "location": "kanto-route-17",
+      "rect": [
+        71,
+        72,
+        10,
+        41
+      ]
+    },
+    {
+      "location": "kanto-route-18",
+      "rect": [
+        71,
+        111,
+        42,
+        10
+      ]
+    },
+    {
+      "location": "kanto-route-2",
+      "rect": [
+        47,
+        71,
+        10,
+        6
+      ]
+    },
+    {
+      "location": "kanto-route-22",
+      "rect": [
+        31,
+        79,
+        18,
+        10
+      ]
+    },
+    {
+      "location": "kanto-route-23",
+      "rect": [
+        22,
+        55,
+        11,
+        25
+      ]
+    },
+    {
+      "location": "kanto-route-24",
+      "rect": [
+        127,
+        23,
+        10,
+        18
+      ]
+    },
+    {
+      "location": "kanto-route-25",
+      "rect": [
+        136,
+        23,
+        17,
+        11
+      ]
+    },
+    {
+      "location": "kanto-route-26",
+      "rect": [
+        22,
+        88,
+        11,
+        21
+      ]
+    },
+    {
+      "location": "kanto-route-27",
+      "rect": [
+        0,
+        103,
+        33,
+        16
+      ]
+    },
+    {
+      "location": "kanto-route-28",
+      "rect": [
+        8,
+        79,
+        16,
+        10
+      ]
+    },
+    {
+      "location": "kanto-route-3",
+      "rect": [
+        63,
+        47,
+        26,
+        10
+      ]
+    },
+    {
+      "location": "kanto-route-4",
+      "rect": [
+        79,
+        39,
+        10,
+        10
+      ]
+    },
+    {
+      "location": "kanto-route-5",
+      "rect": [
+        127,
+        48,
+        11,
+        14
+      ]
+    },
+    {
+      "location": "kanto-route-6",
+      "rect": [
+        127,
+        77,
+        11,
+        12
+      ]
+    },
+    {
+      "location": "kanto-route-7",
+      "rect": [
+        139,
+        63,
+        21,
+        10
+      ]
+    },
+    {
+      "location": "kanto-route-8",
+      "rect": [
+        112,
+        63,
+        12,
+        10
+      ]
+    },
+    {
+      "location": "kanto-route-9",
+      "rect": [
+        136,
+        39,
+        24,
+        10
+      ]
+    },
+    {
+      "location": "kanto-sea-route-19",
+      "rect": [
+        111,
+        120,
+        11,
+        17
+      ]
+    },
+    {
+      "location": "kanto-sea-route-20",
+      "rect": [
+        55,
+        127,
+        57,
+        11
+      ]
+    },
+    {
+      "location": "kanto-sea-route-21",
+      "rect": [
+        47,
+        112,
+        10,
+        16
+      ]
+    },
+    {
+      "location": "kanto-victory-road-1",
+      "rect": [
+        23,
+        48,
+        9,
+        8
+      ]
+    },
+    {
+      "location": "lavender-town",
+      "rect": [
+        160,
+        64,
+        9,
+        8
+      ]
+    },
+    {
+      "location": "mt-moon",
+      "rect": [
+        88,
+        39,
+        9,
+        10
+      ]
+    },
+    {
+      "location": "pallet-town",
+      "rect": [
+        47,
+        103,
+        10,
+        10
+      ]
+    },
+    {
+      "location": "pewter-city",
+      "rect": [
+        47,
+        46,
+        10,
+        17
+      ]
+    },
+    {
+      "location": "pokemon-tower",
+      "rect": [
+        168,
+        74,
+        9,
+        9
+      ]
+    },
+    {
+      "location": "rock-tunnel",
+      "rect": [
+        160,
+        40,
+        9,
+        8
+      ]
+    },
+    {
+      "location": "saffron-city",
+      "rect": [
+        124,
+        62,
+        15,
+        15
+      ]
+    },
+    {
+      "location": "seafoam-islands",
+      "rect": [
+        75,
+        128,
+        14,
+        8
+      ]
+    },
+    {
+      "location": "vermilion-city",
+      "rect": [
+        128,
+        88,
+        9,
+        9
+      ]
+    },
+    {
+      "location": "viridian-city",
+      "rect": [
+        47,
+        76,
+        10,
+        17
+      ]
+    },
+    {
+      "location": "viridian-forest",
+      "rect": [
+        47,
+        64,
+        10,
+        8
+      ]
+    },
+    {
+      "location": "mt-silver",
+      "rect": [
+        0,
+        80,
+        9,
+        9
+      ],
+      "region": "johto"
+    },
+    {
+      "location": "tohjo-falls",
+      "rect": [
+        2,
+        109,
+        9,
+        8
+      ],
+      "region": "johto"
+    }
+  ]
+}

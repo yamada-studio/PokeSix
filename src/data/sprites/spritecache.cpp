@@ -36,6 +36,10 @@ SpriteCache::SpriteCache(Kind kind, QObject *parent)
                      base + QStringLiteral("pokemon/%2.png")};
         folder = QStringLiteral("front");
         break;
+    case Kind::TownMap:
+        m_sources = {QStringLiteral("https://www.serebii.net/pokearth/%1.png")};
+        folder = QStringLiteral("townmap");
+        break;
     case Kind::Item:
         // key는 "gen5/fire-stone"처럼 그림 모양(폴더)을 앞에 붙일 수 있다(%1 = key 전체, %2 =
         // 이름만). 그 폴더에 없으면 기본 그림 → 새 세대 폴더 순으로 찾는다(9세대 · 8세대 신규

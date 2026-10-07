@@ -102,6 +102,12 @@ qt_add_library(pokesix_ui STATIC
     dex/dexselector.cpp
     dex/dexrowdelegate.h
     dex/dexrowdelegate.cpp
+    map/townmapbook.h
+    map/townmapbook.cpp
+    map/mapview.h
+    map/mapview.cpp
+    map/townmappage.h
+    map/townmappage.cpp
     squad/shuttledialog.h
     squad/shuttledialog.cpp
     squad/squadpage.h

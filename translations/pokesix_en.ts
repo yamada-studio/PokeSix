@@ -48,6 +48,10 @@
         <source>설정</source>
         <translation>Settings</translation>
     </message>
+    <message>
+        <source>타운맵</source>
+        <translation>Town Map</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::CardBarrel</name>
@@ -568,6 +572,14 @@ to see a summary here</translation>
         <source>스쿼드</source>
         <translation>Squad</translation>
     </message>
+    <message>
+        <source>타운맵 백과</source>
+        <translation>Town Map atlas</translation>
+    </message>
+    <message>
+        <source>지방 지도 · 장소별 야생 출현</source>
+        <translation>Region maps · wild encounters by location</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::IntroMenuItem</name>
@@ -714,6 +726,17 @@ to see its details here</translation>
     <message>
         <source>%1 — 준비 중이에요</source>
         <translation>%1 — coming soon</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::MapView</name>
+    <message>
+        <source>이 지방의 지도는 아직 준비 중이에요</source>
+        <translation>The map for this region is not ready yet</translation>
+    </message>
+    <message>
+        <source>지도 그림을 받는 중이에요…</source>
+        <translation>Downloading the map picture…</translation>
     </message>
 </context>
 <context>
@@ -1566,6 +1589,51 @@ abilities &amp; natures (gen 3+) and held items (gen 2+)</translation>
     <message>
         <source>스피드</source>
         <translation>Spe</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::TownMapPage</name>
+    <message>
+        <source>타운맵 백과</source>
+        <translation>Town Map atlas</translation>
+    </message>
+    <message>
+        <source>지도에서 장소를 고르면
+그 게임의 야생 출현이 보여요</source>
+        <translation>Pick a place on the map to see
+that game's wild encounters</translation>
+    </message>
+    <message>
+        <source>장소</source>
+        <translation>Location</translation>
+    </message>
+    <message>
+        <source>타운맵</source>
+        <translation>Town Map</translation>
+    </message>
+    <message>
+        <source>%1 타운맵</source>
+        <translation>%1 Town Map</translation>
+    </message>
+    <message>
+        <source>%1 · %2곳</source>
+        <translation>%1 · %2 places</translation>
+    </message>
+    <message>
+        <source>이 게임에는 이곳의 야생 출현 자료가 없어요</source>
+        <translation>No wild encounter data here in this game</translation>
+    </message>
+    <message>
+        <source>Lv.%1</source>
+        <translation>Lv.%1</translation>
+    </message>
+    <message>
+        <source>Lv.%1–%2</source>
+        <translation>Lv.%1–%2</translation>
+    </message>
+    <message>
+        <source>%1 · %2%</source>
+        <translation>%1 · %2%</translation>
     </message>
 </context>
 <context>
