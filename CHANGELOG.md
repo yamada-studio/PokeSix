@@ -350,6 +350,9 @@ and the project uses [Semantic Versioning](https://semver.org/).
   data grows to 28.9 MB). Moves introduced in generation 9 still lack Korean text in PokéAPI.
 
 ### Changed
+- The setup scripts say so when the Qt download goes quiet: aqtinstall only prints a line per
+  finished archive, and qtbase/qtdeclarative are large enough that the install can look stuck for
+  10+ minutes while it is actually downloading.
 - The squad analysis panel is titled "스쿼드 분석" (was "실시간 분석"), and its sections sit a
   little tighter (spacing 8→6, frame padding 12/14→10/12) to make room for the resource section.
 - Squad slot card headers trade the ⋯ menu for three direct buttons — swap (⇄), clear (trash) and

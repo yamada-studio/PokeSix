@@ -80,6 +80,9 @@ if exist "%QT_DEFAULT_DIR%\lib\cmake\Qt6\Qt6Config.cmake" goto :qt_already
 where uvx >nul 2>&1
 if errorlevel 1 goto :no_uv
 echo [setup] installing Qt %QT_VERSION% to %QT_INSTALL_DIR% ...
+echo     (aqt prints a line only when an archive finishes. qtbase and qtdeclarative are
+echo      hundreds of MB, so it can stay silent for 10+ minutes while they download and
+echo      extract - it is not stuck.)
 rem aqt leaves aqtinstall.log in the working directory, so run it from a temp directory
 pushd "%TEMP%"
 uvx --from aqtinstall aqt install-qt windows desktop %QT_VERSION% %QT_AQT_ARCH% --outputdir "%QT_INSTALL_DIR%"

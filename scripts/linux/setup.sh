@@ -67,6 +67,9 @@ if ((do_qt)); then
             aqt=("$venv/bin/aqt")
         fi
         step "installing Qt $QT_VERSION → $QT_INSTALL_DIR"
+        echo "    (aqt prints a line only when an archive finishes. qtbase and qtdeclarative are"
+        echo "     hundreds of MB, so it can stay silent for 10+ minutes while they download and"
+        echo "     extract — it is not stuck.)"
         # aqt leaves aqtinstall.log in the working directory, so run it from a temp directory
         (cd "${TMPDIR:-/tmp}" && "${aqt[@]}" install-qt linux desktop "$QT_VERSION" "$QT_AQT_ARCH" \
             --outputdir "$QT_INSTALL_DIR")
