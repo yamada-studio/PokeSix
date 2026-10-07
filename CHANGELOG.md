@@ -7,6 +7,12 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Squads travel: the squad top bar grows a share group — "불러오기" / "내보내기" move a squad
+  through a portable .json file (generation, game and the squad itself; importing switches to the
+  file's generation/game and asks before overwriting a non-empty squad), and "이미지 ▾" renders the
+  six cards plus the analysis panel into one titled picture, copied to the clipboard or saved as
+  PNG. The status label flashes the outcome ("✓ 스쿼드를 내보냈어요") and the top bar's right edge
+  now lines up with the analysis panel (it used to stick out past it by the scrollbar's width).
 - The HM-shuttle dialog got a design pass: the shuttle Pokémon shows as a large margin-trimmed box
   icon with its type chips, the HM table sits in a bordered panel with column headers and a type
   chip per move, coverage texts are colored by state, HMs the chosen shuttle cannot learn show a

@@ -10,6 +10,7 @@ class QBoxLayout;
 class QGridLayout;
 class QLabel;
 class QLineEdit;
+class QPixmap;
 class QPropertyAnimation;
 class QPushButton;
 class QScrollArea;
@@ -88,6 +89,13 @@ private:
     void showProblemDialog();    // "크게 보기" — 문제 전체를 큰 창에서
     void showShuttleDialog();    // 상단 막대의 [비전셔틀] — 7번째 멤버 창
     void refreshShuttleButton(); // [비전셔틀 · 잠만보] 글자 + 박스 아이콘
+    // 상단 막대 오른쪽의 공유 묶음: 파일 내보내기 · 불러오기, 이미지 복사 · 저장
+    void exportSquad();
+    void importSquad();
+    QPixmap squadImage(); // 카드 6장 + 분석 창을 제목 띠와 함께 한 장으로
+    void copyImage();
+    void saveImage();
+    void flashStatus(const QString &text); // "✓ 이미지 복사됨" 같은 잠깐 알림(2.5초 뒤 복원)
 
     QString typeName(const QString &key) const;
     QString suggestion() const; // 빈 자리 제안 문구
@@ -111,6 +119,7 @@ private:
     QLabel *m_count = nullptr;
     QPushButton *m_shuttleButton = nullptr; // [비전셔틀 · 잠만보] — 누르면 셔틀 창
     QLabel *m_saveStatus = nullptr;
+    QWidget *m_topBar = nullptr; // 오른쪽 끝을 분석 창과 맞추려고 스크롤바 폭만큼 들여 쓴다
 
     QScrollArea *m_scroll = nullptr;
     QBoxLayout *m_columns = nullptr;

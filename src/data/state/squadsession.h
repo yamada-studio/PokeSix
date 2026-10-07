@@ -81,6 +81,8 @@ public:
     void moveSlot(int from, int to);
     void setMove(int slot, int index, int moveId); // 0 = 비우기
     void setMemo(int slot, const QString &memo);
+    // 스쿼드를 통째로 바꾼다(불러오기) — 지금 세대 · 버전의 스쿼드로 저장된다
+    void replaceSquad(const Squad &squad);
     void setShuttlePokemon(int pokemonId);      // 기술은 비운다
     void setShuttleMove(int index, int moveId); // 0 = 비우기
     void clearShuttle();

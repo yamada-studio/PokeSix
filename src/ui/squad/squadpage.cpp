@@ -7,6 +7,7 @@
 #include "data/sprites/spritecache.h"
 #include "data/state/appstate.h"
 #include "data/state/squadsession.h"
+#include "data/store/squadfile.h"
 #include "data/store/squadstore.h"
 #include "ui/dex/dexdetailpage.h"
 #include "ui/dex/dexrowdelegate.h"
@@ -34,14 +35,18 @@
 #include "ui/widgets/typechip.h"
 
 #include <QBoxLayout>
+#include <QClipboard>
 #include <QDialog>
+#include <QFileDialog>
 #include <QFontMetricsF>
 #include <QGraphicsDropShadowEffect>
 #include <QGridLayout>
+#include <QGuiApplication>
 #include <QLabel>
 #include <QLineEdit>
 #include <QListView>
 #include <QMenu>
+#include <QMessageBox>
 #include <QPainter>
 #include <QPixmapCache>
 #include <QPropertyAnimation>
@@ -50,6 +55,7 @@
 #include <QScreen>
 #include <QScrollArea>
 #include <QScrollBar>
+#include <QStandardPaths>
 #include <QStyle>
 
 namespace {
@@ -208,6 +214,7 @@ SquadPage::SquadPage(Repository *repository, AppState *state, QWidget *parent)
 QWidget *SquadPage::buildTopBar()
 {
     QWidget *bar = new QWidget;
+    m_topBar = bar;
     QHBoxLayout *layout = new QHBoxLayout(bar);
     layout->setContentsMargins(0, 0, 0, 0);
     layout->setSpacing(12);
@@ -257,6 +264,26 @@ QWidget *SquadPage::buildTopBar()
     connect(m_pokemonIcons, &SpriteCache::ready, this, &SquadPage::refreshShuttleButton);
     layout->addWidget(m_shuttleButton);
     layout->addStretch();
+    // 공유 묶음: 스쿼드를 파일로 주고받거나(불러오기 · 내보내기) 이미지로 공유한다
+    auto tool = [&](const QString &text, const QString &tip) {
+        QPushButton *button = new QPushButton(text);
+        button->setObjectName(QStringLiteral("squadToolButton"));
+        button->setCursor(Qt::PointingHandCursor);
+        button->setToolTip(tip);
+        layout->addWidget(button);
+        return button;
+    };
+    connect(tool(tr("불러오기"), tr("내보냈던 스쿼드 파일(.json)을 읽어 와요")),
+            &QPushButton::clicked, this, &SquadPage::importSquad);
+    connect(tool(tr("내보내기"), tr("이 스쿼드를 파일(.json)로 저장해요 — 다른 PC의 PokeSix에서 "
+                                    "불러올 수 있어요")),
+            &QPushButton::clicked, this, &SquadPage::exportSquad);
+    QPushButton *image = tool(tr("이미지 ▾"), tr("카드 6장과 분석 창을 한 장의 그림으로"));
+    QMenu *imageMenu = new QMenu(image);
+    imageMenu->addAction(tr("클립보드로 복사"), this, &SquadPage::copyImage);
+    imageMenu->addAction(tr("PNG로 저장"), this, &SquadPage::saveImage);
+    image->setMenu(imageMenu);
+    layout->addSpacing(4);
     m_saveStatus = new QLabel(tr("✓ 자동 저장"));
     m_saveStatus->setObjectName(QStringLiteral("squadSaveStatus"));
     layout->addWidget(m_saveStatus);
@@ -476,8 +503,12 @@ void SquadPage::resizeEvent(QResizeEvent *event)
 
 bool SquadPage::eventFilter(QObject *watched, QEvent *event)
 {
-    if (watched == m_scroll->viewport() && event->type() == QEvent::Resize)
+    if (watched == m_scroll->viewport() && event->type() == QEvent::Resize) {
         fitCardHeights();
+        // 상단 막대의 오른쪽 끝을 분석 창과 맞춘다 — 스크롤바 폭 + 열의 오른쪽 여백(4)만큼
+        const int gutter = m_scroll->width() - m_scroll->viewport()->width() + 4;
+        m_topBar->layout()->setContentsMargins(0, 0, gutter, 0);
+    }
     return QWidget::eventFilter(watched, event); // 엿보기만 하고 이벤트는 그대로 흘려보낸다
 }
 
@@ -1073,6 +1104,130 @@ void SquadPage::showShuttleDialog()
     connect(&dialog, &ShuttleDialog::pickRequested, this,
             [this] { pickPokemon(SquadSession::kShuttleSlot); });
     dialog.exec();
+}
+
+void SquadPage::exportSquad()
+{
+    squadfile::Portable portable {m_session->generation(), m_session->version(),
+                                  m_session->squad()};
+    if (portable.squad.name.isEmpty()) // 파일만 봐도 어느 스쿼드인지 알게
+        portable.squad.name = m_session->defaultName();
+    const QString dir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
+    const QString path = QFileDialog::getSaveFileName(
+            this, tr("스쿼드 내보내기"), dir + QLatin1Char('/') + squadfile::fileName(portable),
+            tr("PokeSix 스쿼드 (*.json)"));
+    if (path.isEmpty())
+        return;
+    QString error;
+    if (squadfile::save(path, portable, &error))
+        flashStatus(tr("✓ 스쿼드를 내보냈어요"));
+    else
+        QMessageBox::warning(this, tr("스쿼드 내보내기"), error);
+}
+
+void SquadPage::importSquad()
+{
+    const QString dir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
+    const QString path = QFileDialog::getOpenFileName(this, tr("스쿼드 불러오기"), dir,
+                                                      tr("PokeSix 스쿼드 (*.json)"));
+    if (path.isEmpty())
+        return;
+    QString error;
+    const std::optional<squadfile::Portable> loaded = squadfile::load(path, &error);
+    if (!loaded) {
+        QMessageBox::warning(this, tr("스쿼드 불러오기"), error);
+        return;
+    }
+    // 파일의 세대 · 게임으로 옮겨 가서 그 스쿼드를 바꾼다
+    const QString version = m_repository->resolveVersion(loaded->generation, loaded->game);
+    if (version.isEmpty()) {
+        QMessageBox::warning(this, tr("스쿼드 불러오기"),
+                             tr("%1세대는 아직 몰라요").arg(loaded->generation));
+        return;
+    }
+    const Squad existing = m_store->squad(loaded->generation, version);
+    if (existing.filled() > 0 || !existing.shuttle.isEmpty()) {
+        const QString name
+                = loaded->squad.name.isEmpty() ? tr("불러온 스쿼드") : loaded->squad.name;
+        if (QMessageBox::question(
+                    this, tr("스쿼드 불러오기"),
+                    tr("지금 저장된 스쿼드를 '%1'(으)로 바꿔요. 계속할까요?").arg(name))
+            != QMessageBox::Yes)
+            return;
+    }
+    if (m_state->generation() != loaded->generation)
+        m_state->setGeneration(loaded->generation);
+    if (m_state->game() != version)
+        m_state->setGame(version);
+    m_session->replaceSquad(loaded->squad);
+    flashStatus(tr("✓ 스쿼드를 불러왔어요"));
+}
+
+QPixmap SquadPage::squadImage()
+{
+    // 화면에 그려진 카드 영역 · 분석 창을 그대로 떠서 제목 띠와 함께 한 장으로 엮는다
+    const QPixmap cards = m_cardArea->grab();
+    const QPixmap analysis = m_analysis->grab();
+    const qreal dpr = devicePixelRatioF();
+    const QSizeF cardSize = cards.deviceIndependentSize();
+    const QSizeF analysisSize = analysis.deviceIndependentSize();
+    const int pad = 20;
+    const int titleHeight = 56;
+    const int width = int(cardSize.width() + analysisSize.width()) + pad * 3;
+    const int height = int(qMax(cardSize.height(), analysisSize.height())) + titleHeight + pad;
+
+    QPixmap image(int(width * dpr), int(height * dpr));
+    image.setDevicePixelRatio(dpr);
+    image.fill(QColor(tok::kPaper));
+    QPainter painter(&image);
+    painter.setRenderHint(QPainter::Antialiasing);
+    // 제목 띠: 스쿼드 이름 — 오른쪽에 세대 규칙과 앱 이름
+    painter.setFont(theme::font(theme::kFamilyTitle, 26));
+    painter.setPen(QColor(tok::kText1));
+    painter.drawText(QRect(pad, 0, width - pad * 2, titleHeight), Qt::AlignLeft | Qt::AlignVCenter,
+                     m_name->text());
+    painter.setFont(theme::font(theme::kFamilyBody, 13, QFont::ExtraBold));
+    painter.setPen(QColor(tok::kText3));
+    painter.drawText(QRect(pad, 0, width - pad * 2, titleHeight), Qt::AlignRight | Qt::AlignVCenter,
+                     tr("PokeSix · %1세대 규칙").arg(m_session->generation()));
+    painter.drawPixmap(QPointF(pad, titleHeight), cards);
+    painter.drawPixmap(QPointF(pad * 2 + cardSize.width(), titleHeight), analysis);
+    return image;
+}
+
+void SquadPage::copyImage()
+{
+    QGuiApplication::clipboard()->setPixmap(squadImage());
+    flashStatus(tr("✓ 이미지를 복사했어요"));
+}
+
+void SquadPage::saveImage()
+{
+    const QString dir = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
+    const QString path
+            = QFileDialog::getSaveFileName(this, tr("이미지 저장"),
+                                           dir
+                                                   + QStringLiteral("/pokesix-squad-%1-%2.png")
+                                                             .arg(m_session->generation())
+                                                             .arg(m_session->version()),
+                                           tr("PNG 이미지 (*.png)"));
+    if (path.isEmpty())
+        return;
+    if (squadImage().save(path))
+        flashStatus(tr("✓ 이미지를 저장했어요"));
+    else
+        QMessageBox::warning(this, tr("이미지 저장"), tr("파일에 쓰지 못했어요"));
+}
+
+void SquadPage::flashStatus(const QString &text)
+{
+    m_saveStatus->setProperty("state", QString());
+    m_saveStatus->setText(text);
+    style()->polish(m_saveStatus);
+    QTimer::singleShot(2500, m_saveStatus, [this, text] {
+        if (m_saveStatus->text() == text) // 그 사이 저장 상태가 바뀌었으면 그대로 둔다
+            m_saveStatus->setText(tr("✓ 자동 저장됨"));
+    });
 }
 
 void SquadPage::showMemberDetail(int slot)

@@ -1393,6 +1393,94 @@ abilities &amp; natures (gen 3+) and held items (gen 2+)</translation>
         <source>비전셔틀 고르기</source>
         <translation>Pick the HM shuttle</translation>
     </message>
+    <message>
+        <source>불러오기</source>
+        <translation>Import</translation>
+    </message>
+    <message>
+        <source>내보냈던 스쿼드 파일(.json)을 읽어 와요</source>
+        <translation>Read a squad file (.json) you exported</translation>
+    </message>
+    <message>
+        <source>내보내기</source>
+        <translation>Export</translation>
+    </message>
+    <message>
+        <source>이 스쿼드를 파일(.json)로 저장해요 — 다른 PC의 PokeSix에서 불러올 수 있어요</source>
+        <translation>Save this squad as a file (.json) — PokeSix on another PC can import it</translation>
+    </message>
+    <message>
+        <source>이미지 ▾</source>
+        <translation>Image ▾</translation>
+    </message>
+    <message>
+        <source>카드 6장과 분석 창을 한 장의 그림으로</source>
+        <translation>The six cards and the analysis panel as one picture</translation>
+    </message>
+    <message>
+        <source>클립보드로 복사</source>
+        <translation>Copy to clipboard</translation>
+    </message>
+    <message>
+        <source>PNG로 저장</source>
+        <translation>Save as PNG</translation>
+    </message>
+    <message>
+        <source>스쿼드 내보내기</source>
+        <translation>Export squad</translation>
+    </message>
+    <message>
+        <source>PokeSix 스쿼드 (*.json)</source>
+        <translation>PokeSix squad (*.json)</translation>
+    </message>
+    <message>
+        <source>✓ 스쿼드를 내보냈어요</source>
+        <translation>✓ Squad exported</translation>
+    </message>
+    <message>
+        <source>스쿼드 불러오기</source>
+        <translation>Import squad</translation>
+    </message>
+    <message>
+        <source>%1세대는 아직 몰라요</source>
+        <translation>Generation %1 is not supported yet</translation>
+    </message>
+    <message>
+        <source>불러온 스쿼드</source>
+        <translation>Imported squad</translation>
+    </message>
+    <message>
+        <source>지금 저장된 스쿼드를 &apos;%1&apos;(으)로 바꿔요. 계속할까요?</source>
+        <translation>This replaces the saved squad with &apos;%1&apos;. Continue?</translation>
+    </message>
+    <message>
+        <source>✓ 스쿼드를 불러왔어요</source>
+        <translation>✓ Squad imported</translation>
+    </message>
+    <message>
+        <source>PokeSix · %1세대 규칙</source>
+        <translation>PokeSix · Gen %1 rules</translation>
+    </message>
+    <message>
+        <source>✓ 이미지를 복사했어요</source>
+        <translation>✓ Image copied</translation>
+    </message>
+    <message>
+        <source>이미지 저장</source>
+        <translation>Save image</translation>
+    </message>
+    <message>
+        <source>PNG 이미지 (*.png)</source>
+        <translation>PNG image (*.png)</translation>
+    </message>
+    <message>
+        <source>✓ 이미지를 저장했어요</source>
+        <translation>✓ Image saved</translation>
+    </message>
+    <message>
+        <source>파일에 쓰지 못했어요</source>
+        <translation>Could not write the file</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::SquadSession</name>
@@ -1521,6 +1609,29 @@ abilities &amp; natures (gen 3+) and held items (gen 2+)</translation>
     <message>
         <source>이 버전에서는 얻을 수 없어요(다른 버전 한정)</source>
         <translation>Not obtainable in this version (other version only)</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::squadfile</name>
+    <message>
+        <source>파일에 쓰지 못했어요: %1</source>
+        <translation>Could not write the file: %1</translation>
+    </message>
+    <message>
+        <source>파일을 열지 못했어요: %1</source>
+        <translation>Could not open the file: %1</translation>
+    </message>
+    <message>
+        <source>JSON이 아니에요: %1</source>
+        <translation>Not JSON: %1</translation>
+    </message>
+    <message>
+        <source>PokeSix 스쿼드 파일이 아니에요</source>
+        <translation>Not a PokeSix squad file</translation>
+    </message>
+    <message>
+        <source>세대 값이 이상해요: %1</source>
+        <translation>Bad generation value: %1</translation>
     </message>
 </context>
 <context>

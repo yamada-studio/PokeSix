@@ -1393,6 +1393,94 @@
         <source>비전셔틀 고르기</source>
         <translation>ひでんシャトルを選ぶ</translation>
     </message>
+    <message>
+        <source>불러오기</source>
+        <translation>読み込み</translation>
+    </message>
+    <message>
+        <source>내보냈던 스쿼드 파일(.json)을 읽어 와요</source>
+        <translation>書き出したスクワッドファイル（.json）を読み込みます</translation>
+    </message>
+    <message>
+        <source>내보내기</source>
+        <translation>書き出し</translation>
+    </message>
+    <message>
+        <source>이 스쿼드를 파일(.json)로 저장해요 — 다른 PC의 PokeSix에서 불러올 수 있어요</source>
+        <translation>このスクワッドをファイル（.json）に保存します — 別のPCのPokeSixで読み込めます</translation>
+    </message>
+    <message>
+        <source>이미지 ▾</source>
+        <translation>画像 ▾</translation>
+    </message>
+    <message>
+        <source>카드 6장과 분석 창을 한 장의 그림으로</source>
+        <translation>カード6枚と分析パネルを1枚の画像に</translation>
+    </message>
+    <message>
+        <source>클립보드로 복사</source>
+        <translation>クリップボードにコピー</translation>
+    </message>
+    <message>
+        <source>PNG로 저장</source>
+        <translation>PNGで保存</translation>
+    </message>
+    <message>
+        <source>스쿼드 내보내기</source>
+        <translation>スクワッドの書き出し</translation>
+    </message>
+    <message>
+        <source>PokeSix 스쿼드 (*.json)</source>
+        <translation>PokeSixスクワッド (*.json)</translation>
+    </message>
+    <message>
+        <source>✓ 스쿼드를 내보냈어요</source>
+        <translation>✓ スクワッドを書き出しました</translation>
+    </message>
+    <message>
+        <source>스쿼드 불러오기</source>
+        <translation>スクワッドの読み込み</translation>
+    </message>
+    <message>
+        <source>%1세대는 아직 몰라요</source>
+        <translation>第%1世代にはまだ対応していません</translation>
+    </message>
+    <message>
+        <source>불러온 스쿼드</source>
+        <translation>読み込んだスクワッド</translation>
+    </message>
+    <message>
+        <source>지금 저장된 스쿼드를 &apos;%1&apos;(으)로 바꿔요. 계속할까요?</source>
+        <translation>保存中のスクワッドを「%1」に置き換えます。続けますか？</translation>
+    </message>
+    <message>
+        <source>✓ 스쿼드를 불러왔어요</source>
+        <translation>✓ スクワッドを読み込みました</translation>
+    </message>
+    <message>
+        <source>PokeSix · %1세대 규칙</source>
+        <translation>PokeSix · 第%1世代ルール</translation>
+    </message>
+    <message>
+        <source>✓ 이미지를 복사했어요</source>
+        <translation>✓ 画像をコピーしました</translation>
+    </message>
+    <message>
+        <source>이미지 저장</source>
+        <translation>画像の保存</translation>
+    </message>
+    <message>
+        <source>PNG 이미지 (*.png)</source>
+        <translation>PNG画像 (*.png)</translation>
+    </message>
+    <message>
+        <source>✓ 이미지를 저장했어요</source>
+        <translation>✓ 画像を保存しました</translation>
+    </message>
+    <message>
+        <source>파일에 쓰지 못했어요</source>
+        <translation>ファイルに書き込めませんでした</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::SquadSession</name>
@@ -1521,6 +1609,29 @@
     <message>
         <source>이 버전에서는 얻을 수 없어요(다른 버전 한정)</source>
         <translation>このバージョンでは手に入りません(他バージョン限定)</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::squadfile</name>
+    <message>
+        <source>파일에 쓰지 못했어요: %1</source>
+        <translation>ファイルに書き込めませんでした: %1</translation>
+    </message>
+    <message>
+        <source>파일을 열지 못했어요: %1</source>
+        <translation>ファイルを開けませんでした: %1</translation>
+    </message>
+    <message>
+        <source>JSON이 아니에요: %1</source>
+        <translation>JSONではありません: %1</translation>
+    </message>
+    <message>
+        <source>PokeSix 스쿼드 파일이 아니에요</source>
+        <translation>PokeSixのスクワッドファイルではありません</translation>
+    </message>
+    <message>
+        <source>세대 값이 이상해요: %1</source>
+        <translation>世代の値が不正です: %1</translation>
     </message>
 </context>
 <context>

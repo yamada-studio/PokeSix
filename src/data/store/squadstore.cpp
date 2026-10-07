@@ -41,7 +41,10 @@ SquadMember memberFromJson(const QJsonObject &object)
     return member;
 }
 
-QJsonObject toJson(const Squad &squad)
+} // namespace
+
+namespace com::yamada::studio {
+QJsonObject squadToJson(const Squad &squad)
 {
     QJsonArray members;
     for (const SquadMember &m : squad.members)
@@ -52,7 +55,7 @@ QJsonObject toJson(const Squad &squad)
     return json;
 }
 
-Squad fromJson(const QJsonObject &object)
+Squad squadFromJson(const QJsonObject &object)
 {
     Squad squad;
     squad.name = object.value(QStringLiteral("name")).toString();
@@ -62,7 +65,7 @@ Squad fromJson(const QJsonObject &object)
     squad.shuttle = memberFromJson(object.value(QStringLiteral("shuttle")).toObject());
     return squad;
 }
-} // namespace
+} // namespace com::yamada::studio
 
 namespace com::yamada::studio {
 SquadStore::SquadStore(const QString &path, QObject *parent)
@@ -144,13 +147,13 @@ void SquadStore::load()
             QString game = entry.value(QStringLiteral("versionGroup")).toString();
             if (game.isEmpty())
                 game = Repository::representativeVersionGroup(generation);
-            m_squads[generation].insert(game, fromJson(entry));
+            m_squads[generation].insert(game, squadFromJson(entry));
             m_current.insert(generation, game);
             continue;
         }
         const QJsonObject games = entry.value(QStringLiteral("games")).toObject();
         for (auto game = games.begin(); game != games.end(); ++game)
-            m_squads[generation].insert(game.key(), fromJson(game.value().toObject()));
+            m_squads[generation].insert(game.key(), squadFromJson(game.value().toObject()));
         m_current.insert(generation, entry.value(QStringLiteral("current")).toString());
     }
     qCInfo(lcData) << "loaded" << m_squads.size() << "squads from" << m_path;
@@ -167,7 +170,7 @@ bool SquadStore::write()
         QJsonObject games;
         const QHash<QString, Squad> &bySeries = m_squads[generation];
         for (auto it = bySeries.cbegin(); it != bySeries.cend(); ++it)
-            games.insert(it.key(), toJson(it.value()));
+            games.insert(it.key(), squadToJson(it.value()));
         squads.insert(QString::number(generation),
                       QJsonObject {{QStringLiteral("current"), m_current.value(generation)},
                                    {QStringLiteral("games"), games}});
