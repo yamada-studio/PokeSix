@@ -5,6 +5,7 @@
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QIcon>
+#include <QSettings>
 #include <QTranslator>
 
 int main(int argc, char *argv[])
@@ -16,6 +17,9 @@ int main(int argc, char *argv[])
     QApplication::setOrganizationName(QStringLiteral("YamadaStudio"));
     QApplication::setApplicationName(QStringLiteral("PokeSix"));
     QApplication::setApplicationVersion(QStringLiteral(POKESIX_VERSION));
+    // 설정은 모든 OS에서 .ini 파일(conventions.md §8). Windows의 기본값은 레지스트리라 따로 정한다.
+    //   Windows %APPDATA%\YamadaStudio\PokeSix.ini · Linux ~/.config/YamadaStudio/PokeSix.ini
+    QSettings::setDefaultFormat(QSettings::IniFormat);
 
     // ── 앱 아이콘 ─────────────────────────────────────────────────────────────
     // OS마다 아이콘을 정하는 곳이 다르다. 코드에서 설정하는 것은 Linux뿐이다.

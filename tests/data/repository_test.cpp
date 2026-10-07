@@ -65,7 +65,7 @@ TEST_F(RepositoryTest, TypesAndStatsFollowTheGeneration)
     const auto gen5 = repository.speciesForGeneration(5);
     const auto gen6 = repository.speciesForGeneration(6);
     EXPECT_EQ(find(gen5, 35)->types,
-              QStringList {QStringLiteral("normal")}); // 삐삐: 5세대까지 노말
+              QStringList {QStringLiteral("normal")});                       // 삐삐: 5세대까지 노말
     EXPECT_EQ(find(gen6, 35)->types, QStringList {QStringLiteral("fairy")}); // 6세대부터 페어리
     EXPECT_EQ(find(gen6, 445)->types,
               (QStringList {QStringLiteral("dragon"), QStringLiteral("ground")}));
@@ -595,7 +595,7 @@ TEST_F(RepositoryTest, SquadSessionResolvesAndAnalyzesTheGeneration)
 {
     // AppState는 QSettings에 세대를 쓴다 → 사용자 설정을 건드리지 않게 임시 폴더로
     QTemporaryDir settings;
-    QSettings::setPath(QSettings::NativeFormat, QSettings::UserScope, settings.path());
+    QSettings::setPath(QSettings::IniFormat, QSettings::UserScope, settings.path());
     QTemporaryDir dir;
     Repository repository(s_dbPath);
     SquadStore store(dir.filePath(QStringLiteral("squads.json")));
@@ -682,7 +682,7 @@ TEST_F(RepositoryTest, SquadSessionResolvesAndAnalyzesTheGeneration)
 TEST_F(RepositoryTest, SquadsSplitFromAGroupSquadPerVersion)
 {
     QTemporaryDir settings;
-    QSettings::setPath(QSettings::NativeFormat, QSettings::UserScope, settings.path());
+    QSettings::setPath(QSettings::IniFormat, QSettings::UserScope, settings.path());
     QTemporaryDir dir;
     Repository repository(s_dbPath);
     SquadStore store(dir.filePath(QStringLiteral("squads.json")));
@@ -723,7 +723,7 @@ TEST_F(RepositoryTest, ListsTheHiddenMachinesOfAGame)
 TEST_F(RepositoryTest, SquadSessionUndoRedoAndClearAll)
 {
     QTemporaryDir settings;
-    QSettings::setPath(QSettings::NativeFormat, QSettings::UserScope, settings.path());
+    QSettings::setPath(QSettings::IniFormat, QSettings::UserScope, settings.path());
     QTemporaryDir dir;
     Repository repository(s_dbPath);
     SquadStore store(dir.filePath(QStringLiteral("squads.json")));
@@ -798,7 +798,7 @@ TEST_F(RepositoryTest, VersionsResolveAndKnowTheirExclusives)
     EXPECT_EQ(repository.resolveVersion(4, QStringLiteral("soulsilver")),
               QStringLiteral("soulsilver"));
     EXPECT_EQ(repository.resolveVersion(4, QStringLiteral("heartgold-soulsilver")),
-              QStringLiteral("heartgold")); // 옛 저장값(묶음)
+              QStringLiteral("heartgold"));                                  // 옛 저장값(묶음)
     EXPECT_EQ(repository.resolveVersion(4, {}), QStringLiteral("platinum")); // 대표 게임
     EXPECT_EQ(repository.resolveVersion(4, QStringLiteral("black")), QStringLiteral("platinum"));
     // 시드의 식스테일(37)은 SS에만 나온다 → HG에서 본 다른 버전 한정

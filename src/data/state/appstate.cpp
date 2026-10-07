@@ -14,8 +14,12 @@ namespace com::yamada::studio {
 AppState::AppState(QObject *parent)
     : QObject(parent)
 {
-    // QSettings(): 조직 · 앱 이름(main.cpp)으로 저장 위치가 정해진다.
-    //   Linux ~/.config/YamadaStudio/PokeSix.conf · macOS plist · Windows 레지스트리
+    // QSettings(): 조직 · 앱 이름(main.cpp)으로 저장 위치가 정해진다. 형식은 모든 OS에서
+    // IniFormat(main.cpp의 setDefaultFormat, conventions.md §8):
+    //   Linux ~/.config/YamadaStudio/PokeSix.ini · macOS ~/.config/… · Windows
+    //   %APPDATA%\YamadaStudio\PokeSix.ini
+    // Windows 레지스트리(NativeFormat)는 쓰지 않는다 — 조직 이름이 없으면 쓰기가 조용히 버려져
+    // 테스트가 깨지고, 파일이면 열어 보고 지우기 쉽다.
     const int saved = QSettings().value(kGenerationKey, kDefaultGeneration).toInt();
     m_generation
             = (saved >= kMinGeneration && saved <= kMaxGeneration) ? saved : kDefaultGeneration;

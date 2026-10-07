@@ -9,6 +9,12 @@ rem The install step runs windeployqt (qt_generate_deploy_app_script in src/CMak
 rem so the folder carries the Qt DLLs and plugins and runs on a PC without Qt.
 setlocal
 call "%~dp0env.bat" || exit /b 1
+rem cmake --install below runs in this script, not in build.bat (whose PATH change is local to it)
+call "%~dp0env.bat" :find_cmake
+if errorlevel 1 (
+    echo error: cmake not found. Run scripts\windows\setup.bat 1>&2
+    exit /b 1
+)
 
 set "DO_BUILD=1"
 :parse

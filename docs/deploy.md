@@ -139,6 +139,10 @@ scripts\windows\build.bat release --install C:\dist\PokeSix
 LICENSE · THIRD_PARTY_NOTICES.md 동봉 → `build\windows-msvc\package\PokeSix-<버전>-win64.zip` + SHA-256.
 기존 빌드를 재사용하려면 `--no-build`.
 
+**Windows 실기 검증(2026-10-07)**: `quickstart.bat --no-run`이 끝까지 통과했다 — ctest 96개, `PokeSix-0.0.1-win64.zip` **17.6MB**.
+패키지 구조는 `bin\`(exe · Qt DLL 6 · `qt.conf`의 `Prefix = ..`) + `plugins\`(platforms · sqldrivers · tls · imageformats …) + 라이선스 2개이고,
+`bin\PokeSix.exe`는 PATH에서 Qt를 뺀 상태로도 떴다. 서명은 없으므로 §2-4의 SmartScreen 안내가 그대로 적용된다.
+
 여기까지 하면 **ZIP 압축 = 포터블 배포본**이다. CPack을 켜면 압축도 CMake가 한다:
 
 ```cmake
