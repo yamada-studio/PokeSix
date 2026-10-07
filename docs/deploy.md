@@ -205,7 +205,10 @@ include(CPack)
 setup과 같은 최소 아카이브만 받고, Linux는 ubuntu-22.04에서 빌드해 AppImage의 glibc 호환을 넓힌다.
 
 **첫 실행 검증(2026-10-07, `workflow_dispatch`)**: 3 OS 모두 통과 — AppImage 38.9MB · dmg 31.4MB · ZIP 17.5MB, 소요 Linux 3.5분 · macOS 2.5분 · Windows 7.5분(Qt 캐시 후). 첫 시도에서 고친 것 둘:
-macOS 러너(AppleClang 15)는 람다의 구조적 바인딩 캡처를 거부하고, `windows-latest`는 이제 VS 2026 이미지라 **`windows-2022`로 고정**했다(프리셋이 "Visual Studio 17 2022"). 태그 → Release 첨부 경로는 아직 돌려 보지 않았다.
+macOS 러너(AppleClang 15)는 람다의 구조적 바인딩 캡처를 거부하고, `windows-latest`는 이제 VS 2026 이미지라 **`windows-2022`로 고정**했다(프리셋이 "Visual Studio 17 2022").
+
+**태그 경로(`v0.1.0`, 2026-10-07)**: 패키지는 다 만들었지만 Release 첨부가 403으로 실패했다 — 조직이 `GITHUB_TOKEN` 기본 권한을 read로 고정해서다.
+워크플로에 `permissions: contents: write`를 선언했다(다음 태그부터 적용). v0.1.0 Release는 그 실행의 아티팩트를 받아 손으로 올렸다. 그래도 403이면 조직 설정 "Actions → Workflow permissions"를 read/write로 바꾸거나, PAT를 secret으로 넣어 `token:`에 넘긴다.
 **사용자는 Releases에서 파일 하나만 받으면 된다 — Qt · 컴파일러 · setup 불필요.**
 아직 실제 러너에서 돌려 보지 않았다: 첫 태그 때 로그를 보고 다듬는다.
 
