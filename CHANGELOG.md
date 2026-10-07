@@ -7,12 +7,12 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
-- The generation button (intro and app bar) wears its generation's colors: the body is a smooth
-  left-to-right blend of that generation's series badge colors in release order (gen 1 red → green
-  → blue → yellow, gen 4 diamond → pearl → platinum → gold → silver …), saturated a step above the
-  pale badge tints so the rainbow reads. The generation menu shows the same blend as a small
-  swatch per row. The lists live in `dexstyle.json` (`generations`), reusing the version badge
-  palette.
+- The generation button (intro and app bar) wears its generation's colors: the body is split into
+  equal solid stripes of that generation's series badge colors in release order (gen 1
+  [red|green|blue|yellow], gen 4 [diamond|pearl|platinum|gold|silver] …), saturated a step above
+  the pale badge tints. A smooth gradient was tried first and rejected — blended, the colors stop
+  being recognizable. The generation menu shows the same stripes as a small swatch per row. The
+  lists live in `dexstyle.json` (`generations`), reusing the version badge palette.
 - Squads travel: the squad top bar grows a share group — "불러오기" / "내보내기" move a squad
   through a portable .json file (generation, game and the squad itself; importing switches to the
   file's generation/game and asks before overwriting a non-empty squad), and "이미지 ▾" renders the
