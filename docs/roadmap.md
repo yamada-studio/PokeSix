@@ -36,7 +36,7 @@ Qt의 기초(창, 레이아웃, 리소스, 테마, 커스텀 페인트, 시그�
 |---|---|---|---|
 | ✅ | **A1** MainWindow와 디버깅 | VS Code 프리셋 빌드·디버그, `Q_OBJECT`와 moc, `QMainWindow`, object tree, `QLoggingCategory` | 1440×900 창, 최소 960×640, 로그, 생성자 breakpoint |
 | ✅ | **A2** 레이아웃 — 두 단계 화면과 인트로 뼈대 | `QVBoxLayout` / `QHBoxLayout`, margin · spacing · stretch, `addSpacing`, 가운데 정렬과 `sizeHint`, `QStackedWidget` 두 단계, CSS 수치 → Qt 환산 | `m_screens`[인트로 │ 본 화면(AppBar + `m_pages`)]. 인트로의 마크 · 워드마크 · 부제 · 세대 블록 · 메뉴 창(5줄) · 아래 정보 줄이 **최종 클래스 이름 그대로의 빈 상자로** `30`과 같은 x 좌표에 선다 |
-| 🟨 | **A3** 캡처 도구와 앱 초기화 | `QCommandLineParser`, `QWidget::grab()`, offscreen 렌더링, 첫 `pokesix_app` 타깃, 로그 형식, `setWindowIcon` | `PokeSix --screenshot intro 1440x900 out.png` → 이후 단계를 `30`과 나란히 비교. 창 제목 표시줄에 캡슐 아이콘 |
+| ✅ | **A3** 캡처 도구와 앱 초기화 | `QCommandLineParser`, `QWidget::grab()`, offscreen 렌더링, 첫 `pokesix_app` 타깃, 로그 형식, `setWindowIcon` | `PokeSix --screenshot intro 1440x900 out.png` → 이후 단계를 `30`과 나란히 비교. 창 제목 표시줄에 캡슐 아이콘 |
 | ✅ | **A4** 글꼴 · 토큰 · QSS | qrc, `QFontDatabase`, `Tokens.h`(v2) 이식(`ui/theme`) + 의미 역할 층, QSS `@token` 치환, `QPalette`, 폰트 메트릭으로 `sizeHint()` | 종이색 바탕, Silkscreen 워드마크 · 도현 부제와 메뉴 이름 · 나눔고딕 설명과 정보 줄 |
 | ✅ | **A5** 첫 `paintEvent` — 바탕 · 창 · 글자 그림자 | `QPainter`, `QPainterPath`, 안티에일리어싱, `QPixmap` 타일, 블러 없는 오프셋 그림자, 그리기 함수(`paintPanel`)와 위젯의 분리 | 사선 무늬 + 위아래 빨강 띠(`IntroBackground`), 먹선 3 · 이중 테 · 그림자 6의 메뉴 창, 노란 그림자의 워드마크 |
 | ✅ | **A6** 캡슐 마크를 코드로 | `QTransform`(회전 −35°), 경로 합성 · 클리핑, 크기별 규칙(01b §6-3), `sizeHint()` | `MarkWidget` 136이 `41_mark_final.png`의 128+ 규칙대로 그려진다(광택 · 눈빛 · 입 · 볼) |
@@ -48,7 +48,7 @@ Qt의 기초(창, 레이아웃, 리소스, 테마, 커스텀 페인트, 시그�
 
 - **A2 후반 · A4 · A5 · A6과 A3 · A7의 일부는 사용자 요청으로 Claude가 구현했다**([ADR 0010](decisions/0010-intro-implemented-by-claude.md)).
   학습 루프상으로는 해당 코드(`src/ui/theme`, `src/ui/widgets`, `src/ui/home`)를 읽고 설명할 수 있으면 그 단계를 이해한 것으로 본다
-  - A3 남은 것: `--screenshot`, `pokesix_app` 타깃, 로그 형식. 끝난 것: 창 아이콘, 설치 시 Qt RPATH
+  - A3: 2026-10-07 사용자 요청("진행해봐")으로 Claude가 마무리했다 — `src/app/Application`(composition root: AppState · Repository · DataUpdater를 만들어 `MainWindow`에 주입), 로그 형식, `--screenshot <intro|dex|items|map|squad|settings> <WxH> <out.png>`([deploy.md §1-2](deploy.md#1-2-앱-인자)). 디자인 03b의 `intro-gen-open`(세대 메뉴가 카드 부채꼴로 바뀌어 대상이 없다) · `intro-first-run`(상태 강제)은 만들지 않았다
   - A6: 마크는 SVG(`QSvgRenderer`)로 그렸다. `QTransform`으로 직접 그려 보는 것은 선택 과제
   - A7 남은 것: 포커스 링(열린 질문 7). 끝난 것: 선택 · 키보드 · hover · 눌림 · 종료 · 메뉴 → 본 화면 전환(A9와 함께)
   - A9는 사용자 요청으로 Claude가 구현했다: 마크 버튼(→ 인트로), 폴더 탭 4, 앱 막대용 세대 버튼, 검색 칸, `MainWindow::open(Page)`, Ctrl+1…4 · Ctrl+K

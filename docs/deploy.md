@@ -29,15 +29,31 @@ Windows만 다른 점: PokeSix는 GUI(WIN32) 서브시스템이라 **콘솔이 �
 
 ```
 PokeSix [--language ko|en|ja] [-h|--help] [-v|--version]
+PokeSix --screenshot <screen> <WxH> <out.png> [--screenshot-delay <ms>]
 ```
 
 | 인자 | 뜻 |
 |---|---|
 | `--language <code>` | 화면 문구와 게임 데이터 이름의 언어. 없으면 `ko`. 고른 값은 저장되어 다음 실행에도 남는다([ADR 0013](decisions/0013-localization.md)) |
+| `--screenshot <screen> <WxH> <out.png>` | 창을 그 크기로 띄워 그 화면을 연 뒤 PNG로 찍고 종료한다(0 성공 · 1 저장 실패 · 2 인자 오류). `screen` = `intro` · `dex` · `items` · `map` · `squad` · `settings`. 디자인 기준 이미지(`design/handoff-v2/images/screens/`)와 나란히 비교하는 진단 도구(A3 · A10). 디스플레이가 없으면 `--offscreen`(run 스크립트) 또는 `QT_QPA_PLATFORM=offscreen` |
+| `--screenshot-delay <ms>` | 찍기 전 대기(기본 1200). 인트로의 카드 부채꼴 등장 애니메이션(760ms)이 끝난 뒤 찍기 위한 값 |
 | `--help` / `--version` | Qt의 `QCommandLineParser`가 처리한다. **Windows GUI 빌드에서는 콘솔이 없어 메시지 상자로 뜬다** |
 
-예정된 인자(로드맵): `--screenshot <화면> <WxH> <out.png>`(A3), `--gallery`(Phase B), `--overlay [sav]`([overlay-design.md](overlay-design.md)).
-인자를 더할 때는 `src/main.cpp`의 parser에 `QCommandLineOption`을 추가하고 이 표를 갱신한다.
+```bat
+scripts\windows\run.bat release --offscreen -- --screenshot intro 1440x900 %TEMP%\intro.png
+```
+```bash
+scripts/linux/run.sh release --offscreen -- --screenshot squad 1440x900 /tmp/squad.png
+```
+캡처에는 스프라이트가 찍히므로 **리포에 커밋하지 않는다**(CLAUDE.md §7). 첫 실행(DB 없음) 상태면 인트로에 FirstRunPanel이 보이고 다른 화면은 비어 있다.
+
+예정된 인자(로드맵): `--gallery`(Phase B), `--overlay [sav]`([overlay-design.md](overlay-design.md)).
+인자를 더할 때는 `src/app/application.cpp`의 `parseArguments()`에 `QCommandLineOption`을 추가하고 이 표를 갱신한다.
+
+로그 한 줄의 형식(`Application::setupLogging`): `hh:mm:ss.zzz L category: message` — `L`은 수준 한 글자(D · I · W · E · F). 예:
+```
+18:46:51.839 I pokesix.ui: MainWindow initialized
+```
 
 Qt 공통 인자 · 환경 변수도 그대로 먹는다. 자주 쓰는 것:
 

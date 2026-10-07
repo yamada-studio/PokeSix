@@ -72,9 +72,10 @@ ui는 rviz 플러그인, app은 launch 파일이 하는 일(구성하고 연결�
 
 ### app — `src/app/`
 
-composition root. 명령행 인자(`--gallery`, `--screenshot`), 로깅 초기화, 글꼴 로드와 테마 적용,
-`AppState`·`Repository` 생성, `MainWindow` 생성과 주입을 맡는다.
+composition root. 명령행 인자(`--language`, `--screenshot`; 예정 `--gallery`), 로그 형식, 글꼴 로드와 테마 적용,
+`AppState`·`Repository`·`DataUpdater` 생성, `MainWindow` 생성과 주입을 맡는다(`Application`, [deploy.md §1-2](deploy.md#1-2-앱-인자)).
 **객체를 생성하고 연결하는 코드는 여기에만 둔다.** 다른 레이어는 필요한 의존성을 생성자로 받는다(주입).
+`main.cpp`는 `Application`을 만들고 `run()`을 부르는 두 줄이다.
 
 ## 3. 디자인 설계서와의 대응
 
