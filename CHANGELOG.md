@@ -19,6 +19,8 @@ and the project uses [Semantic Versioning](https://semver.org/).
   without it simply falls back to the Qt dialog.
 
 ### Added
+- The combined map wears region name tags: "성도" at the Johto layer's top-left and "관동" at
+  the Kanto layer's top-right, anchored to the map so they travel with the drag.
 - The town map atlas joins two-region games into one continuous map: Johto and Kanto are
   stitched on a single canvas (Kanto at x+158 — Mt. Silver and Tohjo Falls sit at the same
   latitude in both source images, so the seam is invisible) and explored by dragging, with no
