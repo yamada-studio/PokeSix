@@ -26,6 +26,11 @@ and the project uses [Semantic Versioning](https://semver.org/).
   tests, and the app runs.
 
 ### Added
+- A release workflow (`.github/workflows/release.yml`): pushing a `v*` tag builds the AppImage,
+  the Windows ZIP and the macOS dmg on three GitHub runners (minimal Qt archives, Linux on
+  ubuntu-22.04 for wider glibc compatibility) and attaches them to the GitHub Release — end
+  users download one file and never need Qt, a compiler or the setup scripts. Not yet exercised
+  on a real runner.
 - macOS packaging and quickstart: `scripts/macos/package.sh` installs the release build (which
   runs macdeployqt, so the .app carries the Qt frameworks), adds the licenses and an
   /Applications link, and builds `PokeSix-<version>-macos.dmg` with hdiutil + SHA-256;
