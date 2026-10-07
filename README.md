@@ -12,7 +12,7 @@ and how your six-member party holds up against every attacking type.
 use, so they appear blank here.</sub>
 
 > **Status:** early development (v0.0.x). The Pokédex, Squad and Items screens work end to end;
-> Settings and the global search box in the top bar are not wired up yet. The UI is written in
+> Settings is not wired up yet. The UI is written in
 > Korean first, with English and Japanese translations.
 
 ## Contents
@@ -94,20 +94,33 @@ open on SoulSilver.
 ![Squad — six slot cards on the left, the live type analysis on the right](docs/screenshots/squad.png)
 
 - **One squad per game.** The chips next to the title pick the version; each has its own squad
-  ("소울실버 스쿼드"). Click the title to rename it. Changes are saved automatically.
+  ("소울실버 스쿼드"). Click the title to rename it. Changes are saved automatically, and the
+  **↶ / ↷ / ⟳** buttons undo, redo or clear the whole squad (clearing is undoable too).
 - **Slot cards.** Click an empty card to choose a Pokémon (the list follows the chosen game and warns
-  about duplicates). On a filled card set the ability, nature, held item, a role memo and four moves —
-  the move picker shows how each move is learned (level, TM number, tutor, egg).
-  The header buttons are **⇄** (pick another Pokémon), **🗑** (clear the slot) and **+** (open the full
-  Pokédex detail in a window, on the squad's game). Drag a card to reorder the party.
-- **Live analysis.**
+  about duplicates). On a filled card set the ability, nature, held item, a role memo and four moves.
+  Each assigned move says how that Pokémon learns it, right before the 물/특 badge: `Lv.21` for
+  level-up, a Heart Scale icon when it needs the Move Reminder, `TM26`/`HM03` for machines, NPC/알
+  for tutor and egg moves. The header buttons are **⇄** (pick another Pokémon), **🗑** (clear the
+  slot) and **+** (open the full Pokédex detail in a window, on the squad's game). Drag a card to
+  reorder the party.
+- **HM shuttle.** The "비전셔틀" button keeps a seventh member that carries field moves (Surf,
+  Strength …) so the main six don't waste move slots — the dialog shows, per HM of the game, whether
+  the shuttle carries it, a main member burns a slot on it, or nobody has it. It stays out of the
+  analysis (and disappears from generation 7 on, where the games replaced HMs with built-in rides).
+- **Squad analysis.**
   - **Defensive heatmap**: one row per Pokémon, one column per attacking type, cells show the damage
     taken (×4, ×2, ×½, ×¼, immune).
   - **Totals** per type: weaknesses, resistances and whether your moves hit it super-effectively.
   - **Problems**: types three or more members are weak to, weaknesses nobody resists, ×4 weaknesses
     and coverage holes.
   - **Physical / special split** of your moves, by the generation's rule: by type in generations 1–3,
-    by move from the 4th on. The count under the other rule is shown next to the bar.
+    by move from the 4th on.
+  - **Resource investment**: Heart Scales, TM purchases and tutor fees your move layout costs, with
+    warnings when a one-per-game TM is placed on two members and "관동 — 엔딩 후" notes for post-game
+    TMs (judged from the acquisition book; fully covered for HGSS so far).
+- **Share it.** "내보내기 / 불러오기" move a squad through a portable `.json` file (another PC's
+  PokeSix can import it), and "이미지 ▾" copies or saves the six cards plus the analysis panel as
+  one picture.
 
 ### 5. Items (아이템 백과)
 

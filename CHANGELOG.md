@@ -6,6 +6,12 @@ and the project uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Documentation
+- README refreshed: the four screenshots are recaptured (sprite-free, as always) showing the new
+  squad top bar, move-source badges, 1:1 column split and the item/dex preview panes, and the
+  Squad section now covers the HM shuttle, resource investment, undo/redo/clear and
+  export/import/image sharing. The note about the removed search box is gone.
+
 ### Added
 - Slot cards say how each assigned move is learned, right before the 물/특 badge: a Heart Scale
   item icon when the move needs the Move Reminder, "Lv.55" for level-up moves, "TM26"/"HM03"
