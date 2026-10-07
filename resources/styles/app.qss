@@ -166,6 +166,11 @@ QPushButton#mapRegionChip {
 }
 QPushButton#mapRegionChip:hover { background: @blue.tint; }
 QPushButton#mapRegionChip:checked { background: @yellow.soft; }
+QPushButton#mapInfoTab {
+  background: transparent; border: 1.5px solid @white; border-radius: 10px; padding: 0px 9px;
+  font-family: "Do Hyeon"; font-size: 13px; color: @white;
+}
+QPushButton#mapInfoTab:checked { background: @white; color: @text.1; }
 QToolButton#squadIconButton { background: transparent; border: none; border-radius: 6px; padding: 3px; }
 QToolButton#squadIconButton:hover:enabled { background: @blue.tint; }
 QToolButton#squadIconButton:pressed { background: @blue.cell; }

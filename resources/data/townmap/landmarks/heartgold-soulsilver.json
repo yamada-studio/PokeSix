@@ -1,0 +1,265 @@
+{
+  "_comment": [
+    "타운맵 [랜드마크] 탭: 장소(location identifier)마다 시설 · 이벤트 한 줄씩.",
+    "사실만 우리 말로 적는다(docs/i18n/README.md 저작권 원칙). name · detail은 한국어 글자 또는 {ko, en, ja}."
+  ],
+  "versionGroup": "heartgold-soulsilver",
+  "landmarks": {
+    "new-bark-town": [
+      {
+        "name": "공박사 연구소",
+        "detail": "스타팅 포켓몬 · 도감"
+      }
+    ],
+    "violet-city": [
+      {
+        "name": "체육관 — 비행 · 비상"
+      },
+      {
+        "name": "포켓몬 학교"
+      }
+    ],
+    "sprout-tower": [
+      {
+        "name": "장로와 승부",
+        "detail": "이기면 기술머신70 플래시"
+      }
+    ],
+    "azalea-town": [
+      {
+        "name": "체육관 — 벌레 · 호일"
+      },
+      {
+        "name": "가라공방",
+        "detail": "규토리로 몬스터볼 제작"
+      }
+    ],
+    "goldenrod-city": [
+      {
+        "name": "체육관 — 노말 · 아카네"
+      },
+      {
+        "name": "백화점",
+        "detail": "기술머신 · 진화의돌 · 영양 드링크"
+      },
+      {
+        "name": "게임코너",
+        "detail": "코인 교환 — 기술머신 · 포켓몬"
+      },
+      {
+        "name": "자전거가게"
+      },
+      {
+        "name": "라디오타워"
+      },
+      {
+        "name": "이름 감정사"
+      }
+    ],
+    "johto-route-34": [
+      {
+        "name": "키우미집",
+        "detail": "포켓몬 맡기기 · 알"
+      }
+    ],
+    "national-park": [
+      {
+        "name": "벌레잡기 대회",
+        "detail": "화 · 목 · 토"
+      }
+    ],
+    "ecruteak-city": [
+      {
+        "name": "체육관 — 고스트 · 맥"
+      },
+      {
+        "name": "무도장",
+        "detail": "로켓단을 이기면 비전머신03 파도타기"
+      },
+      {
+        "name": "불탄탑"
+      },
+      {
+        "name": "방울탑"
+      }
+    ],
+    "olivine-city": [
+      {
+        "name": "체육관 — 강철 · 미캉"
+      },
+      {
+        "name": "담청등대",
+        "detail": "아픈 포켓몬 아물다"
+      },
+      {
+        "name": "항구",
+        "detail": "아쿠아호 — 관동 왕복"
+      }
+    ],
+    "cianwood-city": [
+      {
+        "name": "체육관 — 격투 · 시지마"
+      },
+      {
+        "name": "약국",
+        "detail": "비전약"
+      }
+    ],
+    "mahogany-town": [
+      {
+        "name": "체육관 — 얼음 · 류옹"
+      },
+      {
+        "name": "로켓단 아지트",
+        "detail": "분노의호수 사건"
+      }
+    ],
+    "lake-of-rage": [
+      {
+        "name": "붉은 갸라도스",
+        "detail": "이벤트 — 빨간비늘"
+      }
+    ],
+    "blackthorn-city": [
+      {
+        "name": "체육관 — 드래곤 · 이향"
+      },
+      {
+        "name": "기술 떠올리기",
+        "detail": "하트비늘로 레벨업 기술 복원"
+      },
+      {
+        "name": "용의굴 입구"
+      }
+    ],
+    "frontier-access": [
+      {
+        "name": "배틀프런티어",
+        "detail": "BP 교환 · NPC 가르침"
+      }
+    ],
+    "johto-route-39": [
+      {
+        "name": "모모목장",
+        "detail": "밀크탱크 돌보기 이벤트"
+      }
+    ],
+    "whirl-islands": [
+      {
+        "name": "루기아",
+        "detail": "은빛날개 필요"
+      }
+    ],
+    "bell-tower": [
+      {
+        "name": "칠색조",
+        "detail": "무지개날개 필요"
+      }
+    ],
+    "dragons-den": [
+      {
+        "name": "장로의 시험",
+        "detail": "합격하면 미뇽(신속)"
+      }
+    ],
+    "pallet-town": [
+      {
+        "name": "오박사 연구소",
+        "detail": "도감 평가"
+      }
+    ],
+    "viridian-city": [
+      {
+        "name": "체육관 — 그린",
+        "detail": "8번째 관동 배지"
+      }
+    ],
+    "pewter-city": [
+      {
+        "name": "체육관 — 바위 · 웅"
+      }
+    ],
+    "cerulean-city": [
+      {
+        "name": "체육관 — 물 · 이슬"
+      }
+    ],
+    "vermilion-city": [
+      {
+        "name": "체육관 — 전기 · 마티스"
+      },
+      {
+        "name": "항구",
+        "detail": "아쿠아호 — 성도 왕복"
+      }
+    ],
+    "celadon-city": [
+      {
+        "name": "체육관 — 풀 · 민화"
+      },
+      {
+        "name": "백화점"
+      },
+      {
+        "name": "게임코너"
+      }
+    ],
+    "fuchsia-city": [
+      {
+        "name": "체육관 — 독 · 쟈넌"
+      }
+    ],
+    "saffron-city": [
+      {
+        "name": "체육관 — 에스퍼 · 초련"
+      },
+      {
+        "name": "마그넷트레인 역"
+      }
+    ],
+    "lavender-town": [
+      {
+        "name": "라디오탑 관동 방송국",
+        "detail": "확장 카드"
+      },
+      {
+        "name": "포켓몬 하우스"
+      }
+    ],
+    "seafoam-islands": [
+      {
+        "name": "체육관 — 불꽃 · 카츠라",
+        "detail": "홍련섬에서 옮겨 왔다"
+      }
+    ],
+    "cinnabar-island": [
+      {
+        "name": "포켓몬저택 터"
+      }
+    ],
+    "indigo-plateau": [
+      {
+        "name": "포켓몬리그",
+        "detail": "사천왕 · 챔피언"
+      }
+    ],
+    "mt-silver": [
+      {
+        "name": "은빛산 정상",
+        "detail": "레드 — 16배지 후"
+      }
+    ],
+    "johto-safari-zone": [
+      {
+        "name": "사파리존",
+        "detail": "구역 배치 커스텀"
+      }
+    ],
+    "kanto-power-plant": [
+      {
+        "name": "관동발전소",
+        "detail": "발전기 부품 사건"
+      }
+    ]
+  }
+}

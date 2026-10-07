@@ -19,6 +19,13 @@ and the project uses [Semantic Versioning](https://semver.org/).
   without it simply falls back to the Qt dialog.
 
 ### Added
+- The town map's location panel grows three tabs in its header — [야생] [아이템] [랜드마크].
+  야생 is the encounter list as before; 아이템 lists what the acquisition book records at that
+  location (grouped per item, with the TM's move and how/cost lines — fed by the 606 HGSS
+  sources that carry a location id); 랜드마크 is a new hand-written dictionary
+  (`townmap/landmarks/heartgold-soulsilver.json`, 33 places) of gyms, shops and events — the
+  Day Care on Route 34, Goldenrod's department store and Game Corner, the Move Reminder in
+  Blackthorn and so on.
 - The combined map wears region name tags: "성도" at the Johto layer's top-left and "관동" at
   the Kanto layer's top-right, anchored to the map so they travel with the drag.
 - The town map atlas joins two-region games into one continuous map: Johto and Kanto are

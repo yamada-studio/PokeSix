@@ -1,5 +1,7 @@
 #pragma once
 
+#include "data/text/localizedtext.h"
+
 #include <QHash>
 #include <QList>
 #include <QPoint>
@@ -41,4 +43,12 @@ struct RegionMap
 // 그 지방의 지도. 파일이 없으면 isValid() == false인 빈 맵
 const RegionMap &regionMap(const QString &region);
 QStringList regions(); // 지도가 준비된 지방들
+
+// [랜드마크] 탭: 장소의 시설 · 이벤트(townmap/landmarks/<게임 묶음>.json). 없으면 빈 목록
+struct Landmark
+{
+    LocalizedText name;
+    LocalizedText detail; // 비어도 된다
+};
+QList<Landmark> landmarks(const QString &versionGroup, const QString &location);
 } // namespace com::yamada::studio::townmapbook

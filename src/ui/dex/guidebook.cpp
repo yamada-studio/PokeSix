@@ -320,6 +320,26 @@ QString costLabel(int amount, const QString &unit)
     return costText(amount, unit);
 }
 
+QList<ItemAt> itemsAt(const QString &versionGroup, const QString &where, Language language,
+                      const QString &version)
+{
+    QList<ItemAt> found;
+    const GameBook &game = book().games.value(versionGroup);
+    for (auto it = game.items.cbegin(); it != game.items.cend(); ++it)
+        for (const Source &source : it.value()) {
+            if (source.where != where)
+                continue;
+            if (!source.versions.isEmpty() && !version.isEmpty()
+                && !source.versions.contains(version))
+                continue;
+            Source line = source; // 이미 그 장소에 있다 — 장소는 빼고 방법 · 비용 · 조건만
+            line.where.clear();
+            line.place = {};
+            found.append({it.key(), sourceText(line, language)});
+        }
+    return found;
+}
+
 QString tutorCost(const QString &versionGroup, const QString &move, Language language)
 {
     QStringList lines;

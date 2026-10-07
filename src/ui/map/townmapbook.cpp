@@ -92,6 +92,50 @@ const QHash<QString, townmapbook::RegionMap> &book()
     static const QHash<QString, townmapbook::RegionMap> instance = load();
     return instance;
 }
+
+// 글자 하나(한국어) 또는 {ko, en, ja} — guidebook과 같은 모양
+LocalizedText localizedOf(const QJsonValue &value)
+{
+    if (!value.isObject())
+        return {value.toString(), {}, {}};
+    const QJsonObject o = value.toObject();
+    return {o.value(QStringLiteral("ko")).toString(), o.value(QStringLiteral("en")).toString(),
+            o.value(QStringLiteral("ja")).toString()};
+}
+
+using LandmarkTable = QHash<QString, QHash<QString, QList<townmapbook::Landmark>>>;
+
+LandmarkTable loadLandmarks()
+{
+    LandmarkTable table;
+    QDirIterator files(QStringLiteral(":/data/townmap/landmarks"), {QStringLiteral("*.json")});
+    while (files.hasNext()) {
+        const QString path = files.next();
+        QFile file(path);
+        if (!file.open(QIODevice::ReadOnly))
+            continue;
+        const QJsonObject root = QJsonDocument::fromJson(file.readAll()).object();
+        const QString group = root.value(QStringLiteral("versionGroup"))
+                                      .toString(QFileInfo(path).completeBaseName());
+        const QJsonObject landmarks = root.value(QStringLiteral("landmarks")).toObject();
+        for (auto it = landmarks.begin(); it != landmarks.end(); ++it) {
+            QList<townmapbook::Landmark> list;
+            for (const QJsonValue &value : it.value().toArray()) {
+                const QJsonObject l = value.toObject();
+                list.append({localizedOf(l.value(QStringLiteral("name"))),
+                             localizedOf(l.value(QStringLiteral("detail")))});
+            }
+            table[group].insert(it.key(), list);
+        }
+    }
+    return table;
+}
+
+const LandmarkTable &landmarkTable()
+{
+    static const LandmarkTable instance = loadLandmarks();
+    return instance;
+}
 } // namespace
 
 namespace com::yamada::studio::townmapbook {
@@ -107,5 +151,10 @@ QStringList regions()
     QStringList keys = book().keys();
     keys.sort();
     return keys;
+}
+
+QList<Landmark> landmarks(const QString &versionGroup, const QString &location)
+{
+    return landmarkTable().value(versionGroup).value(location);
 }
 } // namespace com::yamada::studio::townmapbook

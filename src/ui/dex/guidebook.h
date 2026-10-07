@@ -50,6 +50,17 @@ QList<std::pair<int, QString>> tutorCostAmounts(const QString &versionGroup, con
 // 비용 한 덩이의 화면 글자: (48, "bp") → "48BP", (2, "red-shard") → "빨강조각 2개"
 QString costLabel(int amount, const QString &unit);
 
+// 그 장소(location identifier)에서 얻는 아이템들 — 타운맵의 [아이템] 탭.
+// text는 장소를 뺀 한 줄("필드", "받기 (엔딩 후)", "교환 · 배틀프런티어 48BP" …).
+// 장소 identifier가 없는 입수처(place 글자만)는 아직 못 찾는다(T2 보강 대상)
+struct ItemAt
+{
+    QString item; // 아이템 identifier("tm13")
+    QString text;
+};
+QList<ItemAt> itemsAt(const QString &versionGroup, const QString &where, Language language,
+                      const QString &version = {});
+
 // 장소 이름: 사전(한국어) → 도로 · 수로 번호 규칙("201번 도로") → PokéAPI 이름(대체 순서)
 QString placeName(const QString &identifier, const LocalizedText &pokeapiName, Language language);
 

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "data/repository/repository.h"
 #include "data/text/localizedtext.h"
 
 #include <QHash>
@@ -27,14 +28,19 @@ public:
     TownMapPage(Repository *repository, AppState *state, QWidget *parent = nullptr);
 
 private:
+    enum class InfoTab { Wild, Items, Landmarks };
+
     void refresh(); // 세대 · 게임 · 언어가 바뀌었다
     void selectRegion(const QString &region);
     QString regionTitle(const QString &key, Language language); // "johto-kanto" → "성도 · 관동"
-    void showLocation(const QString &location); // 빈 문자열 = 선택 해제(안내 문구)
+    void showLocation(const QString &location);  // 빈 문자열 = 선택 해제(안내 문구)
+    void showItems(const QString &location);     // [아이템] 탭 내용
+    void showLandmarks(const QString &location); // [랜드마크] 탭 내용
 
     Repository *m_repository = nullptr;
     AppState *m_state = nullptr;
     SpriteCache *m_pokemonIcons = nullptr;
+    SpriteCache *m_itemIcons = nullptr;
 
     GameSelector *m_game = nullptr;
     QHBoxLayout *m_regionChips = nullptr; // 지방 칩들(게임이 바뀌면 다시 만든다)
@@ -46,6 +52,10 @@ private:
     QWidget *m_detailBody = nullptr; // 출현 목록(고르면 다시 만든다)
     QVBoxLayout *m_detailLayout = nullptr;
 
+    InfoTab m_infoTab = InfoTab::Wild;
+    QList<ItemRow> m_itemRows; // [아이템] 탭의 이름 찾기(세대마다 한 번)
+    int m_itemRowsGeneration = 0;
+    QString m_versionGroup; // 지금 게임 묶음("heartgold-soulsilver") — 아이템 · 랜드마크 사전 키
     QString m_version;                     // 지금 게임("soulsilver")
     QString m_region;                      // 지금 지방("johto")
     QHash<QString, LocalizedText> m_names; // 지금 지방의 장소 이름
