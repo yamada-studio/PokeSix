@@ -1004,6 +1004,14 @@ to see its details here</translation>
         <source>자세히 보기</source>
         <translation>Details</translation>
     </message>
+    <message>
+        <source>NPC</source>
+        <translation>NPC</translation>
+    </message>
+    <message>
+        <source>알</source>
+        <translation type="unfinished">Egg</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::SpeciesTableModel</name>

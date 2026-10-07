@@ -7,6 +7,11 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Slot cards say how each assigned move is learned, right before the 물/특 badge: a Heart Scale
+  item icon when the move needs the Move Reminder, "Lv.55" for level-up moves, "TM26"/"HM03"
+  for machines, and NPC/알 for tutor and egg moves. To give the wider labels room, the wide
+  layout splits the card area and the analysis panel 1:1 (the card column keeps a 612px
+  minimum; the heatmap shrinks its cells down to 24px as needed).
 - Squad editing gets undo / redo / clear-all, as three borderless icon buttons right of the
   HM-shuttle button (the classic round arrows). Every committed edit — Pokémon, move, memo,
   ability, nature, item, shuttle, name, drag reorder, import — is one history step (up to 50),

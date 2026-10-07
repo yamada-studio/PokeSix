@@ -50,6 +50,39 @@ QPixmap itemPixmap(SpriteCache *icons, const ItemRow &item, int generation)
         QPixmapCache::insert(cacheKey, pixmap);
     return pixmap;
 }
+// 배치한 기술을 그 포켓몬이 어떻게 배우는가 — 기술 칸의 물/특 배지 왼쪽에 작게 표시한다:
+// 자력이면 "Lv.55", 기술 떠올리기면 하트비늘 아이콘, 머신이면 "TM13"(가르침 NPC · 알은 글자)
+struct MoveSource
+{
+    enum Kind { None, Level, Reminder, Machine, Tutor, Egg } kind = None;
+    QString text; // Level · Machine의 글자(Reminder는 아이콘, Tutor · Egg는 그릴 때 tr)
+};
+
+MoveSource moveSourceOf(const PokemonDetail &detail, int moveId)
+{
+    bool reminder = false;
+    for (const MoveEntry &move : detail.levelMoves)
+        if (move.moveId == moveId) {
+            if (!move.needsReminder) // 레벨 순 목록이라 첫 자력 줄이 가장 이르다
+                return {MoveSource::Level, QStringLiteral("Lv.%1").arg(move.level)};
+            reminder = true;
+        }
+    if (reminder)
+        return {MoveSource::Reminder, {}};
+    for (const MoveEntry &move : detail.machineMoves)
+        if (move.moveId == moveId)
+            return {MoveSource::Machine,
+                    QStringLiteral("%1%2")
+                            .arg(move.hiddenMachine ? QStringLiteral("HM") : QStringLiteral("TM"))
+                            .arg(move.machineNumber, 2, 10, QLatin1Char('0'))};
+    for (const MoveEntry &move : detail.tutorMoves)
+        if (move.moveId == moveId)
+            return {MoveSource::Tutor, {}};
+    for (const MoveEntry &move : detail.eggMoves)
+        if (move.moveId == moveId)
+            return {MoveSource::Egg, {}};
+    return {};
+}
 } // namespace
 
 namespace com::yamada::studio {
@@ -635,11 +668,44 @@ void SlotCard::paintMove(QPainter &painter, const QRect &rect, int index, bool h
     }
     const QRectF badge(rect.right() - 26, rect.top() + 5, 20, rect.height() - 10);
     squadpaint::paintDamageClass(painter, badge, move.damageClass);
+    // 배지 바로 왼쪽: 배우는 방법(Lv.55 · 하트비늘 아이콘 · TM13 · NPC · 알)
+    qreal markerLeft = badge.left() - 4;
+    if (slotMove->learnable) {
+        const MoveSource source = moveSourceOf(m_session->detail(m_slot), move.moveId);
+        if (source.kind == MoveSource::Reminder) {
+            const QString key = ItemRowDelegate::iconKey(QStringLiteral("heart-scale"), {},
+                                                         m_session->generation());
+            const QString file = m_itemIcons->path(key);
+            if (file.isEmpty())
+                m_itemIcons->request(key); // 도착하면 ready → 카드를 다시 그린다
+            const QPixmap heart = file.isEmpty() ? QPixmap() : squadpaint::trimmedIcon(file, 13);
+            if (!heart.isNull()) {
+                markerLeft -= heart.deviceIndependentSize().width();
+                painter.drawPixmap(
+                        QPointF(markerLeft,
+                                rect.center().y() - heart.deviceIndependentSize().height() / 2),
+                        heart);
+                markerLeft -= 4;
+            }
+        } else if (source.kind != MoveSource::None) {
+            const QString text = source.kind == MoveSource::Tutor ? tr("NPC")
+                                 : source.kind == MoveSource::Egg ? tr("알")
+                                                                  : source.text;
+            const QFont small = theme::font(theme::kFamilyData, 9, QFont::Bold);
+            painter.setFont(small);
+            painter.setPen(QColor(tok::kText3));
+            const qreal textWidth = QFontMetricsF(small).horizontalAdvance(text);
+            markerLeft -= textWidth;
+            painter.drawText(QRectF(markerLeft, rect.top(), textWidth, rect.height()),
+                             Qt::AlignLeft | Qt::AlignVCenter, text);
+            markerLeft -= 4;
+        }
+    }
     const QFont font = theme::font(theme::kFamilyBody, 12, QFont::ExtraBold);
     painter.setFont(font);
     painter.setPen(QColor(slotMove->learnable ? tok::kText1 : tok::kRedText));
     const int left = rect.left() + 24;
-    const int width = int(badge.left()) - 4 - left;
+    const int width = int(markerLeft) - 4 - left;
     painter.drawText(
             QRect(left, rect.top(), width, rect.height()), Qt::AlignLeft | Qt::AlignVCenter,
             QFontMetricsF(font).elidedText(move.name.text(m_language), Qt::ElideRight, width));
