@@ -14,6 +14,10 @@ struct GenerationFeatures
     bool darkAndSteel = false;    // 악 · 강철 타입(2세대부터)
     bool fairy = false; // 페어리 타입(6세대 XY부터). 강철이 고스트 · 악을 반감하지 않게 됨
     bool splitByMove = false; // 물리 · 특수를 기술마다 판정(4세대 DP부터). 아니면 타입이 정한다
+    // 비전머신(파도타기 · 괴력)을 파티 기술 칸에 가르쳐야 함(6세대 XY · ORAS까지). 7세대부터는
+    // 내장 시스템이 대신한다: 포켓라이드(SM) · 로토무 자전거(SwSh) · 포켓치 비전기술(BDSP) ·
+    // 라이드(LA · SV) — 비전셔틀이 필요 없다
+    bool hiddenMachines = false;
 };
 
 inline constexpr int kFirstGeneration = 1;
@@ -21,28 +25,40 @@ inline constexpr int kLastGeneration = 9;
 
 constexpr GenerationFeatures featuresOf(int generation)
 {
-    // 1세대 · 2세대 · 3세대 · 4세대 · 5세대 · 6세대 이후
+    // 1세대 · 2세대 · 3세대 · 4세대 · 5세대 · 6세대 · 7세대 이후
     constexpr GenerationFeatures kTable[] = {
-            {},
-            {.heldItems = true, .specialSplit = true, .darkAndSteel = true},
-            {.heldItems = true,
-             .specialSplit = true,
-             .abilities = true,
-             .natures = true,
-             .darkAndSteel = true},
+            {.hiddenMachines = true},
+            {.heldItems = true, .specialSplit = true, .darkAndSteel = true, .hiddenMachines = true},
             {.heldItems = true,
              .specialSplit = true,
              .abilities = true,
              .natures = true,
              .darkAndSteel = true,
-             .splitByMove = true},
+             .hiddenMachines = true},
+            {.heldItems = true,
+             .specialSplit = true,
+             .abilities = true,
+             .natures = true,
+             .darkAndSteel = true,
+             .splitByMove = true,
+             .hiddenMachines = true},
             {.heldItems = true,
              .specialSplit = true,
              .abilities = true,
              .natures = true,
              .hiddenAbilities = true,
              .darkAndSteel = true,
-             .splitByMove = true},
+             .splitByMove = true,
+             .hiddenMachines = true},
+            {.heldItems = true,
+             .specialSplit = true,
+             .abilities = true,
+             .natures = true,
+             .hiddenAbilities = true,
+             .darkAndSteel = true,
+             .fairy = true,
+             .splitByMove = true,
+             .hiddenMachines = true},
             {.heldItems = true,
              .specialSplit = true,
              .abilities = true,
