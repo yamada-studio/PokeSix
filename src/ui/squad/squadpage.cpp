@@ -248,6 +248,9 @@ QWidget *SquadPage::buildTopBar()
     m_shuttleButton = new QPushButton;
     m_shuttleButton->setObjectName(QStringLiteral("squadShuttleButton"));
     m_shuttleButton->setCursor(Qt::PointingHandCursor);
+    // 아이콘을 글자 뒤에: QPushButton은 아이콘이 늘 글자 앞이라 방향을 뒤집는다("비전셔틀 ·
+    // 다꼬리 <아이콘>"). 한국어는 LTR 글자라 글자 순서는 그대로다
+    m_shuttleButton->setLayoutDirection(Qt::RightToLeft);
     m_shuttleButton->setToolTip(
             tr("파도타기 · 괴력 같은 비전머신을 대신 드는 7번째 멤버 — 분석에는 안 들어가요"));
     connect(m_shuttleButton, &QPushButton::clicked, this, &SquadPage::showShuttleDialog);
