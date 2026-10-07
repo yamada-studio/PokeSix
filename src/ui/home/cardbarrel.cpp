@@ -25,12 +25,12 @@ using namespace com::yamada::studio;
 constexpr qreal kCardRatio = 10.0 / 14.0;
 constexpr qreal kCardMinHeight = 200;
 constexpr qreal kCardMaxHeight = 320;
-constexpr int kTopPad = 10; // 카드 위아래 여유(배럴은 카드가 기울지 않아 처짐이 없다)
-constexpr int kBandHeight = 40; // 윗띠(세대 번호)
+constexpr int kTopPad = 10;         // 카드 위아래 여유(배럴은 카드가 기울지 않아 처짐이 없다)
+constexpr int kBandHeight = 40;     // 윗띠(세대 번호)
 constexpr qreal kDepthScale = 0.20; // 뒤로 간 카드가 작아지는 몫 (정면 1 ↔ 모서리 1 − 0.20)
-constexpr qreal kMinFacing = 0.06; // 가로 압축(cos)의 바닥 — 0이 되면 역변환이 깨진다
-constexpr int kTurnMs = 420;       // 한 칸 돌리기
-constexpr int kEnterMs = 760;      // 등장(반 바퀴쯤 돌면서 자리를 잡는다)
+constexpr qreal kMinFacing = 0.06;  // 가로 압축(cos)의 바닥 — 0이 되면 역변환이 깨진다
+constexpr int kTurnMs = 420;        // 한 칸 돌리기
+constexpr int kEnterMs = 760;       // 등장(반 바퀴쯤 돌면서 자리를 잡는다)
 constexpr qreal kEnterOffset = 2.6; // 등장을 시작하는 각도(라디안)
 constexpr qreal kDragThreshold = 6; // 이보다 멀리 끌면 클릭이 아니라 돌리기
 
@@ -453,7 +453,9 @@ void CardBarrel::paintCard(QPainter &painter, const Layout &barrel, int index) c
             const Spot &spot = spots[slot];
             const qreal cx = stage.center().x() + spot.x * stage.width();
             // 발밑 그림자(눌린 타원) — 서 있는 느낌
-            QColor shade(QColor(tok::kInk));
+            // `QColor shade(QColor(tok::kInk))`는 함수 선언으로도 읽혀(most vexing parse) MSVC가
+            // 거부한다. 중괄호 초기화는 선언으로 읽힐 수 없다
+            QColor shade {tok::kInk};
             shade.setAlphaF(0.10);
             const qreal shadowW = stage.width() * (spot.height > 0.42 ? 0.30 : 0.22) * layerScale;
             painter.setPen(Qt::NoPen);

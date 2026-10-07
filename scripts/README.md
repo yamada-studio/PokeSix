@@ -9,11 +9,13 @@ scripts/
 │   ├── env.sh        공통 설정 (source 전용)
 │   ├── setup.sh      의존성 설치: apt 패키지(빠진 것만 sudo) + Qt(aqtinstall)
 │   ├── build.sh      configure → build → test (→ install)
-│   └── run.sh        실행 (없으면 빌드부터)
+│   ├── run.sh        실행 (없으면 빌드부터)
+│   ├── package.sh    release 빌드 → AppImage (→ --install: 앱 메뉴 등록)
+│   └── quickstart.sh setup → package → 실행, 한 번에
 ├── macos/            bash 3.2 호환 · Xcode CLT + Homebrew
-│   └── env.sh  setup.sh  build.sh  run.sh
+│   └── env.sh  setup.sh  build.sh  run.sh  package.sh(.dmg)  quickstart.sh
 └── windows/          cmd (.bat) · MSVC 2022 · winget
-    └── env.bat setup.bat build.bat run.bat
+    └── env.bat setup.bat build.bat run.bat package.bat(.zip) quickstart.bat
 ```
 
 ## 옵션 요약
@@ -23,6 +25,8 @@ scripts/
 | `setup` | `--no-system` · `--no-qt` | `--no-system` · `--no-qt` · `--yes` (VS 설치 확인 생략) |
 | `build` | `debug`/`release` · `--clean` · `--no-test` · `--format` · `--tidy` · `--install <prefix>` | `debug`/`release` · `--clean` · `--no-test` · `--install <prefix>` |
 | `run` | `debug`/`release` · `--rebuild` · `--log` · `--offscreen` · `--gdb`(Linux) / `--lldb` · `--open`(macOS) · `-- <앱 인자>` | `debug`/`release` · `--rebuild` · `--log` · `--offscreen` · `--vs` · `-- <앱 인자>` |
+| `package` | `--no-build` · `--install`(Linux: AppImage를 앱 메뉴에 등록) | `--no-build` |
+| `quickstart` | `--no-run` | `--no-run` |
 
 ## OS별 참고
 
@@ -39,7 +43,7 @@ scripts/
 |---|---|
 | linux | ✅ setup · build(debug/release, `--format`, `--install`) · run(`--offscreen`) · shellcheck |
 | macos | ⚠ shellcheck(bash)만 통과. macOS 실기 미검증 |
-| windows | ✅ Windows 11 실기(2026-10-04): winget으로 VS 2022 Community · uv 설치, aqtinstall로 Qt 6.8.3, build(debug) · ctest 71개 · run(`--log`). `shift`가 `%0`을 밀어 `%~dp0`가 깨지던 버그를 고쳤다 |
+| windows | ✅ Windows 11 실기(2026-10-04): winget으로 VS 2022 Community · uv 설치, aqtinstall로 Qt 6.8.3, build(debug) · ctest 71개 · run(`--log`). `shift`가 `%0`을 밀어 `%~dp0`가 깨지던 버그를 고쳤다. **2026-10-07: `quickstart.bat --no-run` 끝까지 통과** — release 빌드 · ctest 96개 · windeployqt · `PokeSix-0.0.1-win64.zip`(17.6MB), 패키지 exe가 Qt 없는 PATH에서 실행됨. 최소 Qt 설치(`--archives`)는 이 머신에 Qt가 이미 있어 미검증 |
 
 ## 스크립트를 고칠 때
 
@@ -47,5 +51,6 @@ scripts/
 - Qt 버전 변경은 `QT_VERSION` 한 줄만 고친다
 - `.sh`: `shellcheck -x -P SCRIPTDIR scripts/*/*.sh`(`uvx --from shellcheck-py shellcheck …`)
 - `.bat`: `( )` 블록 안에서 경로 변수를 펼치지 않는다(`Program Files (x86)`의 `)`). 분기는 `goto`로 처리한다
+- `.bat`: `cmake`를 직접 부르는 스크립트는 먼저 `call "%~dp0env.bat" :find_cmake`를 한다. `build.bat`이 PATH에 더한 VS 번들 CMake는 `setlocal` 때문에 호출한 쪽으로 돌아오지 않는다(`package.bat`의 `cmake --install`이 이걸로 깨졌었다)
 - `.bat`: 인자 루프에서는 반드시 **`shift /1`**. 그냥 `shift`는 `%0`까지 밀어서, 그 뒤의 `%~dp0`(스크립트 폴더)가 현재 폴더로 바뀐다(`run.bat --log`가 `env.bat`을 못 찾던 원인)
 - `.bat`: winget 1.29는 portable 패키지(uv)를 `%LOCALAPPDATA%\Microsoft\WinGet\Packages\<id>_…\`에 두고, `WinGet\Links` 폴더는 만들지 않을 수 있다(심볼릭 링크에 개발자 모드가 필요). 같은 세션에서 바로 쓰려면 두 경로를 모두 PATH에 더한다

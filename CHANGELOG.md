@@ -13,6 +13,23 @@ and the project uses [Semantic Versioning](https://semver.org/).
   export/import/image sharing. The note about the removed search box is gone.
 
 ### Fixed
+- Windows quickstart runs end to end (verified 2026-10-07: setup → release build → 96 tests →
+  windeployqt → `PokeSix-0.0.1-win64.zip`, 17.6 MB, and the packaged exe starts on a PATH
+  without Qt). Three things were broken on MSVC:
+  - `cardbarrel.cpp` declared `QColor shade(QColor(tok::kInk));`, which MSVC reads as a function
+    declaration (most vexing parse) and rejects because the "parameter name" is qualified; GCC
+    happened to accept it. Brace initialization now.
+  - `package.bat` called `cmake --install` without looking for the VS-bundled CMake (`build.bat`
+    does, but its PATH change is local to it), so a machine without cmake on PATH stopped right
+    after the build.
+  - Two `RepositoryTest` squad-session tests failed because `AppState` used the default
+    `QSettings` format: on Windows that is the registry, and with no organization name set in the
+    test binary every write is silently dropped (Linux's file backend writes to "Unknown
+    Organization" and passed). The app and the test main now set `QSettings::IniFormat` as
+    conventions §8 always said, the test main gives the process an organization/application
+    name, and the tests redirect `IniFormat` (not `NativeFormat`) to a temporary folder. Settings
+    on Windows therefore move from the registry to `%APPDATA%\YamadaStudio\PokeSix.ini`; the
+    generation and game chosen before this change are not carried over.
 - The AppImage shows the desktop's native file dialogs (Nautilus-style on GNOME) instead of
   Qt's built-in fallback: the platform theme plugins (libqgtk3, libqxdgdesktopportal) are now
   bundled — copied without their dependency walk, so the host's GTK3 is used and a host
