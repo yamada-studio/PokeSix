@@ -251,6 +251,7 @@ QWidget *SquadPage::buildTopBar()
     m_shuttleButton->setToolTip(
             tr("파도타기 · 괴력 같은 비전머신을 대신 드는 7번째 멤버 — 분석에는 안 들어가요"));
     connect(m_shuttleButton, &QPushButton::clicked, this, &SquadPage::showShuttleDialog);
+    connect(m_pokemonIcons, &SpriteCache::ready, this, &SquadPage::refreshShuttleButton);
     layout->addWidget(m_shuttleButton);
     layout->addStretch();
     m_saveStatus = new QLabel(tr("✓ 자동 저장"));
@@ -502,10 +503,7 @@ void SquadPage::refresh()
     m_game->setVisible(m_session->games().size() > 1); // 게임이 하나뿐인 세대는 고를 것이 없다
     m_pips->update();
     m_count->setText(QStringLiteral("%1 / 6").arg(squad.filled()));
-    const PokemonDetail &shuttle = m_session->shuttleDetail();
-    m_shuttleButton->setText(shuttle.isValid()
-                                     ? tr("비전셔틀 · %1").arg(shuttle.name.text(language))
-                                     : tr("+ 비전셔틀"));
+    refreshShuttleButton();
 
     if (m_selected >= 0 && !m_session->detail(m_selected).isValid())
         m_selected = -1;
@@ -1042,6 +1040,28 @@ void SquadPage::showProblemDialog()
     dialog.exec();
     m_dialogProblems = nullptr;
     onProblemHovered(-1); // 창을 닫으면 카드 경고 · 열 강조를 푼다
+}
+
+void SquadPage::refreshShuttleButton()
+{
+    const PokemonDetail &shuttle = m_session->shuttleDetail();
+    if (!shuttle.isValid()) {
+        m_shuttleButton->setText(tr("+ 비전셔틀"));
+        m_shuttleButton->setIcon(QIcon());
+        return;
+    }
+    m_shuttleButton->setText(tr("비전셔틀 · %1").arg(shuttle.name.text(m_state->language())));
+    // 박스 아이콘(없으면 받기 시작 — ready가 다시 부른다)
+    const QString key = QString::number(shuttle.pokemonId);
+    const QString path = m_pokemonIcons->path(key);
+    if (path.isEmpty()) {
+        m_pokemonIcons->request(key);
+        m_shuttleButton->setIcon(QIcon());
+        return;
+    }
+    const QPixmap icon = squadpaint::trimmedIcon(path, 22);
+    m_shuttleButton->setIcon(icon);
+    m_shuttleButton->setIconSize(icon.size());
 }
 
 void SquadPage::showShuttleDialog()

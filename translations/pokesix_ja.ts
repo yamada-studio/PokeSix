@@ -887,7 +887,7 @@
     </message>
     <message>
         <source>%1이(가) 배울 수 없어요</source>
-        <translation>%1は覚えられません</translation>
+        <translation type="vanished">%1は覚えられません</translation>
     </message>
     <message>
         <source>기술 칸 4개가 다 찼어요</source>
@@ -912,6 +912,18 @@
     <message>
         <source>7번째 멤버예요 — 본편 6자리 분석(히트맵 · 문제)에는 들어가지 않아요</source>
         <translation>7人目のメンバーです — 本編6枠の分析（ヒートマップ · 問題）には入りません</translation>
+    </message>
+    <message>
+        <source>비전머신</source>
+        <translation>ひでんマシン</translation>
+    </message>
+    <message>
+        <source>누가 드나</source>
+        <translation>だれが持つか</translation>
+    </message>
+    <message>
+        <source>배울 수 없어요</source>
+        <translation>覚えられません</translation>
     </message>
 </context>
 <context>

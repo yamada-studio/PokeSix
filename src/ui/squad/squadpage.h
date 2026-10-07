@@ -85,8 +85,9 @@ private:
     // 문제 목록은 자기 칸 안에서만 스크롤한다(히트맵 · 분포가 항상 보이게). 넓은 배치에서는 남는
     // 세로를 채우되 내용보다 커지지 않고, 좁은 배치에서는 kProblemVisibleRows 줄까지만 편다
     void syncProblemHeight();
-    void showProblemDialog(); // "크게 보기" — 문제 전체를 큰 창에서
-    void showShuttleDialog(); // 상단 막대의 [비전셔틀] — 7번째 멤버 창
+    void showProblemDialog();    // "크게 보기" — 문제 전체를 큰 창에서
+    void showShuttleDialog();    // 상단 막대의 [비전셔틀] — 7번째 멤버 창
+    void refreshShuttleButton(); // [비전셔틀 · 잠만보] 글자 + 박스 아이콘
 
     QString typeName(const QString &key) const;
     QString suggestion() const; // 빈 자리 제안 문구

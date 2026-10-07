@@ -154,10 +154,15 @@ QPushButton#squadShuttleButton {
 }
 QPushButton#squadShuttleButton:hover { background: @blue.tint; }
 QPushButton#shuttlePickButton {
-  background: @paper.alt; border: 2px solid @ink; border-radius: 10px; padding: 6px 14px;
-  font-family: "Do Hyeon"; font-size: 17px; color: @text.1;
+  background: @paper.alt; border: 2px solid @ink; border-radius: 12px; padding: 6px 16px;
+  font-family: "Do Hyeon"; font-size: 20px; color: @text.1;
 }
 QPushButton#shuttlePickButton:hover { background: @blue.tint; }
+QFrame#shuttleTable { background: @paper.alt; border: 2px solid @ink; border-radius: 12px; }
+QLabel#shuttleStatus { font-size: 12px; font-weight: 700; color: @text.2; }
+QLabel#shuttleStatus[state="ok"] { color: @green; }
+QLabel#shuttleStatus[state="warn"] { color: @red.text; }
+QLabel#shuttleStatus[state="none"] { color: @text.3; font-weight: 400; }
 QLabel#squadSaveStatus { font-size: 13px; font-weight: 700; color: @green; }
 QLabel#squadSaveStatus[state="pending"] { color: @text.3; }
 QLabel#squadSaveStatus[state="error"] { color: @red; }

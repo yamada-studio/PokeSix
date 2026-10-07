@@ -4,8 +4,10 @@
 #include "ui/widgets/typechip.h"
 
 #include <QCoreApplication>
+#include <QImage>
 #include <QPainter>
 #include <QPainterPath>
+#include <QPixmap>
 
 namespace com::yamada::studio::squadpaint {
 QString typeAbbr(const tok::TypeColor &type, Language language)
@@ -76,5 +78,26 @@ void paintHatch(QPainter &painter, const QRectF &rect)
     for (qreal x = rect.left() - rect.height(); x < rect.right(); x += 5)
         painter.drawLine(QPointF(x, rect.bottom()), QPointF(x + rect.height(), rect.top()));
     painter.restore();
+}
+
+QPixmap trimmedIcon(const QString &path, int height)
+{
+    const QImage image(path);
+    if (image.isNull())
+        return {};
+    // 알파가 있는 픽셀의 경계 상자(그림 부분)만 남긴다
+    int left = image.width(), top = image.height(), right = -1, bottom = -1;
+    for (int y = 0; y < image.height(); ++y)
+        for (int x = 0; x < image.width(); ++x)
+            if (qAlpha(image.pixel(x, y)) > 0) {
+                left = qMin(left, x);
+                top = qMin(top, y);
+                right = qMax(right, x);
+                bottom = qMax(bottom, y);
+            }
+    if (right < 0)
+        return {};
+    const QImage trimmed = image.copy(QRect(QPoint(left, top), QPoint(right, bottom)));
+    return QPixmap::fromImage(trimmed).scaledToHeight(height, Qt::SmoothTransformation);
 }
 } // namespace com::yamada::studio::squadpaint

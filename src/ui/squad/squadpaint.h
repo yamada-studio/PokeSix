@@ -7,6 +7,7 @@
 #include <QString>
 
 class QPainter;
+class QPixmap;
 
 // 스쿼드 화면의 카드 · 히트맵 · 문제 목록이 같이 쓰는 그리기 조각.
 namespace com::yamada::studio::squadpaint {
@@ -24,4 +25,8 @@ void paintTypeBox(QPainter &painter, const QRectF &rect, const tok::TypeColor &t
 void paintDamageClass(QPainter &painter, const QRectF &rect, int damageClass);
 // 사선 무늬(세대에 없는 타입 칸 · 빈 기술 칸)
 void paintHatch(QPainter &painter, const QRectF &rect);
+
+// 박스 아이콘 파일을 투명 여백 없이 height 높이로 — 그대로 쓰면 작은 포켓몬이 캔버스 구석에
+// 조그맣게 나온다(비전셔틀 버튼 · 창). 파일을 못 읽으면 빈 QPixmap
+QPixmap trimmedIcon(const QString &path, int height);
 } // namespace com::yamada::studio::squadpaint
