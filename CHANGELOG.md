@@ -19,6 +19,9 @@ and the project uses [Semantic Versioning](https://semver.org/).
   without it simply falls back to the Qt dialog.
 
 ### Added
+- Unova joins the town map atlas (82 places): the B2W2-era map serves both BW and B2W2 —
+  places that don't exist yet in BW simply show no encounter data there. Pokéwood and the PWT
+  have no PokéAPI location and wait for the landmark dictionary.
 - The town map's location panel grows three tabs in its header — [야생] [아이템] [랜드마크].
   야생 is the encounter list as before; 아이템 lists what the acquisition book records at that
   location (grouped per item, with the TM's move and how/cost lines — fed by the 606 HGSS
