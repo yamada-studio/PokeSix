@@ -26,7 +26,6 @@
 namespace {
 using namespace com::yamada::studio;
 
-constexpr int kRing = 3;    // 선택(노랑) · 경고(빨강) 테 자리
 constexpr int kHeader = 34; // 머리 띠
 constexpr int kPadding = 12;
 constexpr int kMoveHeight = 28;

@@ -133,6 +133,7 @@ private:
     bool m_wide = false;
 
     PanelFrame *m_analysis = nullptr;
+    QWidget *m_analysisColumn = nullptr; // 분석 열(카드의 테 자리만큼 위 · 아래를 들인다)
     QScrollArea *m_analysisScroll = nullptr; // 분석 몸통(넓은 배치에서 안쪽 스크롤)
     QLabel *m_problemPill = nullptr;
     QLabel *m_emptyAnalysis = nullptr;

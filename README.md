@@ -56,7 +56,7 @@ selected generation — drag the barrel, scroll the mouse wheel, press <kbd>←<
 side card to bring it to the front. Each card shows the starters of every series in that generation
 (4th: Sinnoh in front, the HeartGold/SoulSilver Johto starters on the step behind) and the regions it
 covers. Then open **Squad**, **Pokédex** or **Items** from the menu below.
-
+<!--  -->
 Inside the app, the generation button in the top bar switches generations at any time.
 
 The **game** — the version you are actually playing — is chosen with the version chips on each screen
