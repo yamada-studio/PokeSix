@@ -720,6 +720,48 @@ TEST_F(RepositoryTest, ListsTheHiddenMachinesOfAGame)
     EXPECT_TRUE(repository.hiddenMachineMoves(QStringLiteral("black-white"), 5).isEmpty());
 }
 
+TEST_F(RepositoryTest, SquadSessionUndoRedoAndClearAll)
+{
+    QTemporaryDir settings;
+    QSettings::setPath(QSettings::NativeFormat, QSettings::UserScope, settings.path());
+    QTemporaryDir dir;
+    Repository repository(s_dbPath);
+    SquadStore store(dir.filePath(QStringLiteral("squads.json")));
+    AppState state;
+    state.setGeneration(4);
+    SquadSession session(&repository, &store, &state);
+    EXPECT_FALSE(session.canUndo()); // 새로 연 스쿼드 — 기록 없음
+
+    session.setPokemon(0, 445); // 한카리아스
+    session.setMove(0, 0, 89);  // 지진
+    EXPECT_TRUE(session.canUndo());
+    EXPECT_FALSE(session.canRedo());
+
+    session.undo(); // 기술만 되돌린다
+    EXPECT_EQ(session.member(0).pokemonId, 445);
+    EXPECT_EQ(session.member(0).moves[0], 0);
+    EXPECT_TRUE(session.canRedo());
+    session.undo(); // 포켓몬도
+    EXPECT_EQ(session.member(0).pokemonId, 0);
+    EXPECT_FALSE(session.canUndo());
+
+    session.redo();
+    EXPECT_EQ(session.member(0).pokemonId, 445);
+    session.redo();
+    EXPECT_EQ(session.member(0).moves[0], 89);
+    EXPECT_FALSE(session.canRedo());
+
+    session.clearAll(); // 일괄 비우기도 한 단계다
+    EXPECT_EQ(session.squad().filled(), 0);
+    session.undo();
+    EXPECT_EQ(session.member(0).pokemonId, 445);
+    EXPECT_EQ(session.member(0).moves[0], 89);
+
+    session.setVersion(QStringLiteral("diamond")); // 스쿼드가 바뀌면 기록도 처음부터
+    EXPECT_FALSE(session.canUndo());
+    EXPECT_FALSE(session.canRedo());
+}
+
 TEST_F(RepositoryTest, MachineLearnersFollowTheGame)
 {
     Repository repository(s_dbPath);

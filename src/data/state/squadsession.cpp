@@ -50,15 +50,10 @@ void SquadSession::reload()
                       : m_store->squad(m_generation, m_versionGroup);
     m_items.clear();
     m_itemsLoaded = false;
-    for (int slot = 0; slot < int(kSquadSize); ++slot)
-        resolve(slot);
-    resolveShuttle();
-    for (const SquadMember &member : m_squad.members) { // nature() · item()이 찾을 목록
-        if (member.natureId > 0)
-            natures();
-        if (member.itemId > 0)
-            items();
-    }
+    m_committed = m_squad; // 되돌리기 기록은 스쿼드(세대 · 버전)마다 따로 — 바뀌면 비운다
+    m_undoStack.clear();
+    m_redoStack.clear();
+    resolveAll();
     analyze();
     qCInfo(lcData) << "squad of" << m_version << "(generation" << m_generation << ") has"
                    << m_squad.filled() << "members";
@@ -100,6 +95,19 @@ void SquadSession::resolve(int slot)
 {
     resolveMember(m_squad.members[std::size_t(slot)], m_details[std::size_t(slot)],
                   m_moves[std::size_t(slot)]);
+}
+
+void SquadSession::resolveAll()
+{
+    for (int slot = 0; slot < int(kSquadSize); ++slot)
+        resolve(slot);
+    resolveShuttle();
+    for (const SquadMember &member : m_squad.members) { // nature() · item()이 찾을 목록
+        if (member.natureId > 0)
+            natures();
+        if (member.itemId > 0)
+            items();
+    }
 }
 
 void SquadSession::resolveShuttle()
@@ -161,9 +169,50 @@ void SquadSession::analyze()
 
 void SquadSession::commit()
 {
+    if (m_squad != m_committed) { // 편집 한 번 = 되돌리기 한 단계(무변화 커밋은 쌓지 않는다)
+        constexpr qsizetype kHistoryLimit = 50;
+        m_undoStack.append(m_committed);
+        if (m_undoStack.size() > kHistoryLimit)
+            m_undoStack.removeFirst();
+        m_redoStack.clear();
+        m_committed = m_squad;
+    }
     m_store->setSquad(m_generation, m_version, m_squad);
     analyze();
     emit changed();
+}
+
+void SquadSession::undo()
+{
+    if (m_undoStack.isEmpty())
+        return;
+    m_redoStack.append(m_squad);
+    m_squad = m_undoStack.takeLast();
+    m_committed = m_squad; // commit이 이 되돌리기를 또 기록하지 않게
+    resolveAll();
+    commit();
+}
+
+void SquadSession::redo()
+{
+    if (m_redoStack.isEmpty())
+        return;
+    m_undoStack.append(m_squad);
+    m_squad = m_redoStack.takeLast();
+    m_committed = m_squad;
+    resolveAll();
+    commit();
+}
+
+void SquadSession::clearAll()
+{
+    Squad empty;
+    empty.name = m_squad.name;
+    if (m_squad == empty)
+        return;
+    m_squad = empty;
+    resolveAll();
+    commit(); // 기록에 쌓인다 → 실수로 비워도 undo로 돌아온다
 }
 
 QList<SquadSession::LearnableMove> SquadSession::learnableMoves(int slot) const
@@ -306,15 +355,7 @@ void SquadSession::setMove(int slot, int index, int moveId)
 void SquadSession::replaceSquad(const Squad &squad)
 {
     m_squad = squad;
-    for (int slot = 0; slot < int(kSquadSize); ++slot)
-        resolve(slot);
-    resolveShuttle();
-    for (const SquadMember &member : m_squad.members) { // nature() · item()이 찾을 목록
-        if (member.natureId > 0)
-            natures();
-        if (member.itemId > 0)
-            items();
-    }
+    resolveAll();
     commit();
 }
 

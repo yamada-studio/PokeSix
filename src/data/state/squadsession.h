@@ -83,6 +83,12 @@ public:
     void setMemo(int slot, const QString &memo);
     // 스쿼드를 통째로 바꾼다(불러오기) — 지금 세대 · 버전의 스쿼드로 저장된다
     void replaceSquad(const Squad &squad);
+    // 되돌리기 — 세션이 커밋한 편집마다 한 단계(기록은 reload에서 비워진다: 스쿼드마다 따로)
+    bool canUndo() const { return !m_undoStack.isEmpty(); }
+    bool canRedo() const { return !m_redoStack.isEmpty(); }
+    void undo();
+    void redo();
+    void clearAll(); // 멤버 6자리와 비전셔틀을 모두 비운다(이름은 남는다) — 되돌릴 수 있다
     void setShuttlePokemon(int pokemonId);      // 기술은 비운다
     void setShuttleMove(int index, int moveId); // 0 = 비우기
     void clearShuttle();
@@ -100,6 +106,7 @@ public slots:
 
 private:
     void resolve(int slot); // 포켓몬 · 기술을 그 세대 값으로
+    void resolveAll(); // 여섯 자리 + 셔틀 전부(성격 · 물건 목록도 미리 읽는다)
     void resolveShuttle();
     // resolve의 몸통: member의 포켓몬 · 기술을 그 세대 값으로 detail · moves에 풀어 둔다
     void resolveMember(const SquadMember &member, PokemonDetail &detail,
@@ -125,5 +132,9 @@ private:
     QList<ItemRow> m_items;
     bool m_itemsLoaded = false;
     SquadAnalysis m_analysis;
+    // 되돌리기 기록: commit이 "마지막으로 커밋한 스쿼드"와 달라질 때마다 직전 상태를 쌓는다
+    Squad m_committed;
+    QList<Squad> m_undoStack;
+    QList<Squad> m_redoStack;
 };
 } // namespace com::yamada::studio

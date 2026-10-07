@@ -32,6 +32,7 @@
 #include "ui/theme/tokens.h"
 #include "ui/widgets/panelframe.h"
 #include "ui/widgets/shadowbutton.h"
+#include "ui/widgets/svgicon.h"
 #include "ui/widgets/typechip.h"
 
 #include <QBoxLayout>
@@ -57,9 +58,24 @@
 #include <QScrollBar>
 #include <QStandardPaths>
 #include <QStyle>
+#include <QToolButton>
 
 namespace {
 using namespace com::yamada::studio;
+
+// 편집 도구 아이콘(전형적인 undo · redo · reset 둥근 화살표). 색은 %1로 끼운다
+const char kUndoSvg[]
+        = R"(<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%1" )"
+          R"(stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">)"
+          R"(<path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>)";
+const char kRedoSvg[]
+        = R"(<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%1" )"
+          R"(stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">)"
+          R"(<path d="M15 14l5-5-5-5"/><path d="M20 9H9.5a5.5 5.5 0 0 0 0 11H13"/></svg>)";
+const char kClearSvg[]
+        = R"(<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%1" )"
+          R"(stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">)"
+          R"(<path d="M22 4v6h-6"/><path d="M20.5 15a8.5 8.5 0 1 1-2-8.9L22 10"/></svg>)";
 
 constexpr QMargins kPageMargins {20, 16, 20, 20}; // 화면 공통 여백(02 SCR 공통)
 constexpr int kCardGap = 12;
@@ -263,6 +279,30 @@ QWidget *SquadPage::buildTopBar()
     connect(m_shuttleButton, &QPushButton::clicked, this, &SquadPage::showShuttleDialog);
     connect(m_pokemonIcons, &SpriteCache::ready, this, &SquadPage::refreshShuttleButton);
     layout->addWidget(m_shuttleButton);
+    // 편집 도구: 되돌리기 · 다시 실행 · 일괄 비우기 — 테두리 없는 아이콘 버튼(엑셀 식)
+    auto iconButton = [&](const char *svg, const QString &tip) {
+        QToolButton *button = new QToolButton;
+        button->setObjectName(QStringLiteral("squadIconButton"));
+        button->setCursor(Qt::PointingHandCursor);
+        button->setToolTip(tip);
+        const auto colored = [svg](QRgb color) {
+            return QString::fromLatin1(svg).arg(QColor(color).name());
+        };
+        QIcon icon = svgicon::icon(colored(tok::kText1), 20, devicePixelRatioF());
+        icon.addPixmap(svgicon::pixmap(colored(tok::kText3), 20, devicePixelRatioF()),
+                       QIcon::Disabled);
+        button->setIcon(icon);
+        button->setIconSize(QSize(20, 20));
+        layout->addWidget(button);
+        return button;
+    };
+    m_undoButton = iconButton(kUndoSvg, tr("되돌리기"));
+    connect(m_undoButton, &QToolButton::clicked, m_session, &SquadSession::undo);
+    m_redoButton = iconButton(kRedoSvg, tr("다시 실행"));
+    connect(m_redoButton, &QToolButton::clicked, m_session, &SquadSession::redo);
+    m_clearButton = iconButton(kClearSvg,
+                               tr("일괄 비우기 — 멤버와 비전셔틀을 모두 비워요(되돌릴 수 있어요)"));
+    connect(m_clearButton, &QToolButton::clicked, m_session, &SquadSession::clearAll);
     layout->addStretch();
     // 공유 묶음: 스쿼드를 파일로 주고받거나(불러오기 · 내보내기) 이미지로 공유한다
     auto tool = [&](const QString &text, const QString &tip) {
@@ -538,6 +578,9 @@ void SquadPage::refresh()
     m_pips->update();
     m_count->setText(QStringLiteral("%1 / 6").arg(squad.filled()));
     refreshShuttleButton();
+    m_undoButton->setEnabled(m_session->canUndo());
+    m_redoButton->setEnabled(m_session->canRedo());
+    m_clearButton->setEnabled(squad.filled() > 0 || !squad.shuttle.isEmpty());
 
     if (m_selected >= 0 && !m_session->detail(m_selected).isValid())
         m_selected = -1;

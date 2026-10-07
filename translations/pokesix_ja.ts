@@ -1481,6 +1481,18 @@
         <source>파일에 쓰지 못했어요</source>
         <translation>ファイルに書き込めませんでした</translation>
     </message>
+    <message>
+        <source>되돌리기</source>
+        <translation>元に戻す</translation>
+    </message>
+    <message>
+        <source>다시 실행</source>
+        <translation>やり直す</translation>
+    </message>
+    <message>
+        <source>일괄 비우기 — 멤버와 비전셔틀을 모두 비워요(되돌릴 수 있어요)</source>
+        <translation>一括クリア — メンバーとひでんシャトルをすべて空にします（元に戻せます）</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::SquadSession</name>
