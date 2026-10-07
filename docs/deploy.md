@@ -217,8 +217,12 @@ macOS 러너(AppleClang 15)는 람다의 구조적 바인딩 캡처를 거부하
 - **macOS** (**적용됨**, 2026-10-07): `scripts/macos/package.sh` — release 빌드(테스트 포함) →
   `cmake --install`(macdeployqt가 `.app`에 프레임워크를 넣는다) → LICENSE · 고지문 · /Applications
   링크를 담아 `hdiutil`로 `build/package/PokeSix-<버전>-macos.dmg` + SHA-256.
-  `scripts/macos/quickstart.sh` = setup → package → 실행. 서명 · 공증(Apple Developer 연 99달러)이
-  없어 Gatekeeper가 경고한다 — 처음 한 번 우클릭 → 열기
+  `scripts/macos/quickstart.sh` = setup → package → 실행. macdeployqt 뒤에 **ad-hoc 재서명**을
+  한다(서명이 깨진 arm64 바이너리는 아예 안 뜬다). 공증(notarization, Apple Developer 연
+  99달러)은 없으므로 **내려받은 dmg는 Gatekeeper가 "손상되었기 때문에 열 수 없습니다"로
+  막는다** — 실제 손상이 아니고, 서명 없는 앱은 우클릭 → 열기 우회도 안 된다. 받는 쪽이 한 번
+  `xattr -d com.apple.quarantine <dmg>`로 격리를 풀어야 한다(README "Download" 절에 안내).
+  직접 빌드한 사본에는 격리 속성이 없어 그냥 열린다. 공증을 붙이면 경고가 사라진다(백로그)
 - **Linux** (**적용됨**, 2026-10-07): `scripts/linux/package.sh` — release 빌드(테스트 포함) →
   `build/package/AppDir`에 install → `linuxdeploy` + `linuxdeploy-plugin-qt`(처음 한 번
   `build/package/tools`에 받아 둔다)로 `build/package/PokeSix-<버전>-x86_64.AppImage` + SHA-256.
