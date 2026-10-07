@@ -1,0 +1,89 @@
+# 릴리스 빌드(3 OS): 태그(v*)를 푸시하면 패키지를 만들어 GitHub Release에 첨부한다.
+# 수동 실행(workflow_dispatch)은 아티팩트만 올린다 — 태그 전에 확인용.
+# Qt는 scripts/QT_VERSION 한 곳을 읽고, setup 스크립트와 같은 최소 아카이브만 받는다.
+name: release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+jobs:
+  linux:
+    runs-on: ubuntu-22.04 # 오래된 glibc로 빌드해야 AppImage가 더 많은 배포판에서 돈다
+    steps:
+      - uses: actions/checkout@v4
+      - id: qt-version
+        run: echo "version=$(tr -d '[:space:]' < scripts/QT_VERSION)" >> "$GITHUB_OUTPUT"
+      - uses: jurplel/install-qt-action@v4
+        with:
+          version: ${{ steps.qt-version.outputs.version }}
+          archives: 'qtbase qtsvg qttools icu'
+          cache: true
+      - name: System packages
+        run: sudo apt-get update && sudo apt-get install -y ninja-build libgl1-mesa-dev libfontconfig1-dev libfreetype-dev libx11-xcb-dev libxkbcommon-x11-dev
+      - name: Package (release build + tests + AppImage)
+        run: scripts/linux/package.sh
+        env:
+          QT_ROOT_DIR: ${{ env.QT_ROOT_DIR }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PokeSix-linux
+          path: build/package/PokeSix-*.AppImage
+      - uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: build/package/PokeSix-*.AppImage
+
+  windows:
+    runs-on: windows-latest # VS 2022 포함
+    steps:
+      - uses: actions/checkout@v4
+      - id: qt-version
+        shell: bash
+        run: echo "version=$(tr -d '[:space:]' < scripts/QT_VERSION)" >> "$GITHUB_OUTPUT"
+      - uses: jurplel/install-qt-action@v4
+        with:
+          version: ${{ steps.qt-version.outputs.version }}
+          arch: win64_msvc2022_64
+          archives: 'qtbase qtsvg qttools'
+          cache: true
+      - name: Package (release build + tests + ZIP)
+        shell: cmd
+        run: scripts\windows\package.bat
+        env:
+          QT_ROOT_DIR: ${{ env.QT_ROOT_DIR }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PokeSix-windows
+          path: build/windows-msvc/package/PokeSix-*-win64.zip
+      - uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: build/windows-msvc/package/PokeSix-*-win64.zip
+
+  macos:
+    runs-on: macos-14 # Apple Silicon
+    steps:
+      - uses: actions/checkout@v4
+      - id: qt-version
+        run: echo "version=$(tr -d '[:space:]' < scripts/QT_VERSION)" >> "$GITHUB_OUTPUT"
+      - uses: jurplel/install-qt-action@v4
+        with:
+          version: ${{ steps.qt-version.outputs.version }}
+          archives: 'qtbase qtsvg qttools'
+          cache: true
+      - name: System packages
+        run: brew install ninja
+      - name: Package (release build + tests + dmg)
+        run: scripts/macos/package.sh
+        env:
+          QT_ROOT_DIR: ${{ env.QT_ROOT_DIR }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PokeSix-macos
+          path: build/package/PokeSix-*-macos.dmg
+      - uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: build/package/PokeSix-*-macos.dmg

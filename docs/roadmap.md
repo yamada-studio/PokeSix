@@ -177,7 +177,8 @@ E2(스쿼드) 이어서. 순서는 가벼운 것부터.
 
 ## Phase G — 배포 준비 → v1.0.0
 
-CI(GitHub Actions, 3개 OS), 패키징(dmg / zip / AppImage), sanitizer 프리셋, i18n 영어 번역.
+~~CI(GitHub Actions, 3개 OS)~~ · ~~패키징(dmg / zip / AppImage)~~ — 2026-10-07 완료(릴리스
+워크플로 + scripts/<os>/package). sanitizer 프리셋, i18n 영어 번역.
 Windows `.exe` 배포 방안(windeployqt → `qt_generate_deploy_app_script` → ZIP/설치 프로그램 → CI)과 실행 CLI 정리는 [deploy.md](deploy.md).
 
 ---

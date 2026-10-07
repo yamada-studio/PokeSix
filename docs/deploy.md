@@ -177,11 +177,14 @@ include(CPack)
 5. `--language en` · `ja` 문구 확인
 6. 압축 파일 이름에 버전(`PokeSix-0.0.1-win64.zip`), SHA-256을 릴리스 노트에
 
-### 2-7. 방안 D — CI에서 자동으로 (Phase G)
+### 2-7. 방안 D — CI에서 자동으로 (**적용됨**, 2026-10-07)
 
-GitHub Actions `windows-latest` + [`jurplel/install-qt-action`](https://github.com/jurplel/install-qt-action)(Qt 6.8.3 고정, `scripts/QT_VERSION`을 읽는다) →
-`scripts\windows\build.bat release --install dist\PokeSix` → ZIP → 태그 푸시 때 GitHub Release에 첨부.
-Linux(AppImage) · macOS(dmg)도 같은 워크플로의 매트릭스로. 로드맵 백로그 "GitHub Actions CI (3 OS)" 항목이 이것이다.
+[.github/workflows/release.yml](../.github/workflows/release.yml): 태그(`v*`)를 푸시하면 3 OS에서
+`scripts/<os>/package.*`를 돌려 AppImage · ZIP · dmg를 만들고 GitHub Release에 첨부한다
+(`workflow_dispatch`로 태그 없이 아티팩트만 확인할 수도 있다). Qt는 `scripts/QT_VERSION`을 읽어
+setup과 같은 최소 아카이브만 받고, Linux는 ubuntu-22.04에서 빌드해 AppImage의 glibc 호환을 넓힌다.
+**사용자는 Releases에서 파일 하나만 받으면 된다 — Qt · 컴파일러 · setup 불필요.**
+아직 실제 러너에서 돌려 보지 않았다: 첫 태그 때 로그를 보고 다듬는다.
 
 ### 2-8. 다른 OS 한 줄씩
 
