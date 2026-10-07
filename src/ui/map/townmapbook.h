@@ -2,6 +2,7 @@
 
 #include <QHash>
 #include <QList>
+#include <QPoint>
 #include <QRect>
 #include <QSize>
 #include <QString>
@@ -14,19 +15,27 @@ namespace com::yamada::studio::townmapbook {
 struct Node
 {
     QString location; // PokéAPI location identifier("goldenrod-city")
-    QString region; // 비어 있으면 파일의 지방. 경계 노드만 따로("tohjo-falls" → kanto)
-    QRect rect; // 원본 이미지 좌표(크롭 전)
+    QString region;   // 장소가 속한 지방("johto") — 이름 찾기용
+    QRect rect;       // 캔버스 좌표
+};
+
+// 지도 그림 한 장(합본은 여러 장을 이어 붙인다 — 성도 + 관동)
+struct Layer
+{
+    QString source; // 받을 그림의 key("johto" → pokearth/johto.png)
+    QString url;
+    QSize size;    // 원본 크기
+    QRect crop;    // 원본에서 쓸 영역
+    QPoint offset; // 캔버스에서의 자리
 };
 
 struct RegionMap
 {
-    QString region; // "johto"
-    QString imageUrl;
-    QSize imageSize;
-    QRect crop; // 보여 줄 영역. isNull이면 전체
-    QList<Node> nodes;
+    QString region; // "johto" · "johto-kanto"(합본)
+    QSize canvas;   // 전체 캔버스 크기
+    QList<Layer> layers;
+    QList<Node> nodes; // 캔버스 좌표
     bool isValid() const { return !nodes.isEmpty(); }
-    QRect view() const { return crop.isNull() ? QRect(QPoint(0, 0), imageSize) : crop; }
 };
 
 // 그 지방의 지도. 파일이 없으면 isValid() == false인 빈 맵

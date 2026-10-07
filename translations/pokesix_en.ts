@@ -1601,7 +1601,7 @@ abilities &amp; natures (gen 3+) and held items (gen 2+)</translation>
         <source>지도에서 장소를 고르면
 그 게임의 야생 출현이 보여요</source>
         <translation>Pick a place on the map to see
-that game's wild encounters</translation>
+that game&apos;s wild encounters</translation>
     </message>
     <message>
         <source>장소</source>
@@ -1617,7 +1617,7 @@ that game's wild encounters</translation>
     </message>
     <message>
         <source>%1 · %2곳</source>
-        <translation>%1 · %2 places</translation>
+        <translation type="vanished">%1 · %2 places</translation>
     </message>
     <message>
         <source>이 게임에는 이곳의 야생 출현 자료가 없어요</source>
@@ -1634,6 +1634,10 @@ that game's wild encounters</translation>
     <message>
         <source>%1 · %2%</source>
         <translation>%1 · %2%</translation>
+    </message>
+    <message>
+        <source>%1곳</source>
+        <translation>%1 places</translation>
     </message>
 </context>
 <context>

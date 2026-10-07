@@ -1617,7 +1617,7 @@
     </message>
     <message>
         <source>%1 · %2곳</source>
-        <translation>%1 · %2か所</translation>
+        <translation type="vanished">%1 · %2か所</translation>
     </message>
     <message>
         <source>이 게임에는 이곳의 야생 출현 자료가 없어요</source>
@@ -1634,6 +1634,10 @@
     <message>
         <source>%1 · %2%</source>
         <translation>%1 · %2%</translation>
+    </message>
+    <message>
+        <source>%1곳</source>
+        <translation>%1か所</translation>
     </message>
 </context>
 <context>
