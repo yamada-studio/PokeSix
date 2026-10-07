@@ -38,6 +38,8 @@ qt_add_library(pokesix_data STATIC
     store/squad.h
     store/squadstore.h
     store/squadstore.cpp
+    store/squadfile.h
+    store/squadfile.cpp
     analysis/squadinput.h
     analysis/squadinput.cpp
     sprites/spritecache.h

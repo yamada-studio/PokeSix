@@ -303,6 +303,21 @@ void SquadSession::setMove(int slot, int index, int moveId)
     commit();
 }
 
+void SquadSession::replaceSquad(const Squad &squad)
+{
+    m_squad = squad;
+    for (int slot = 0; slot < int(kSquadSize); ++slot)
+        resolve(slot);
+    resolveShuttle();
+    for (const SquadMember &member : m_squad.members) { // nature() · item()이 찾을 목록
+        if (member.natureId > 0)
+            natures();
+        if (member.itemId > 0)
+            items();
+    }
+    commit();
+}
+
 void SquadSession::setShuttlePokemon(int pokemonId)
 {
     SquadMember member;

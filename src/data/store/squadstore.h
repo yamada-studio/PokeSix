@@ -3,6 +3,7 @@
 #include "data/store/squad.h"
 
 #include <QHash>
+#include <QJsonObject>
 #include <QObject>
 #include <QTimer>
 
@@ -22,6 +23,10 @@ namespace com::yamada::studio {
 //                     },
 //       "heartgold-soulsilver": { … } } } } }
 // version 1(세대마다 스쿼드 하나 + "versionGroup")은 읽을 때 그 게임의 스쿼드로 옮긴다.
+// squads.json 한 스쿼드의 JSON 모양. 내보내기 파일(squadfile)도 같은 모양을 쓴다
+QJsonObject squadToJson(const Squad &squad);
+Squad squadFromJson(const QJsonObject &object);
+
 class SquadStore : public QObject
 {
     Q_OBJECT

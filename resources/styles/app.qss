@@ -153,6 +153,12 @@ QPushButton#squadShuttleButton {
   font-family: "Do Hyeon"; font-size: 15px; color: @text.1;
 }
 QPushButton#squadShuttleButton:hover { background: @blue.tint; }
+QPushButton#squadToolButton {
+  background: @paper.alt; border: 2px solid @ink; border-radius: 12px; padding: 1px 10px;
+  font-family: "Do Hyeon"; font-size: 15px; color: @text.1;
+}
+QPushButton#squadToolButton:hover { background: @blue.tint; }
+QPushButton#squadToolButton::menu-indicator { image: none; width: 0; }
 QPushButton#shuttlePickButton {
   background: @paper.alt; border: 2px solid @ink; border-radius: 12px; padding: 6px 16px;
   font-family: "Do Hyeon"; font-size: 20px; color: @text.1;
