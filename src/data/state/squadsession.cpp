@@ -52,6 +52,7 @@ void SquadSession::reload()
     m_itemsLoaded = false;
     for (int slot = 0; slot < int(kSquadSize); ++slot)
         resolve(slot);
+    resolveShuttle();
     for (const SquadMember &member : m_squad.members) { // nature() · item()이 찾을 목록
         if (member.natureId > 0)
             natures();
@@ -97,9 +98,18 @@ const QList<ItemRow> &SquadSession::items()
 
 void SquadSession::resolve(int slot)
 {
-    const SquadMember &member = m_squad.members[std::size_t(slot)];
-    PokemonDetail &detail = m_details[std::size_t(slot)];
-    auto &moves = m_moves[std::size_t(slot)];
+    resolveMember(m_squad.members[std::size_t(slot)], m_details[std::size_t(slot)],
+                  m_moves[std::size_t(slot)]);
+}
+
+void SquadSession::resolveShuttle()
+{
+    resolveMember(m_squad.shuttle, m_shuttleDetail, m_shuttleMoves);
+}
+
+void SquadSession::resolveMember(const SquadMember &member, PokemonDetail &detail,
+                                 std::array<std::optional<SlotMove>, 4> &moves)
+{
     moves = {};
     detail = member.isEmpty()
                      ? PokemonDetail()
@@ -290,6 +300,37 @@ void SquadSession::setMove(int slot, int index, int moveId)
             other = member.moves[std::size_t(index)];
     member.moves[std::size_t(index)] = moveId;
     resolve(slot);
+    commit();
+}
+
+void SquadSession::setShuttlePokemon(int pokemonId)
+{
+    SquadMember member;
+    member.pokemonId = pokemonId;
+    m_squad.shuttle = member;
+    resolveShuttle();
+    commit();
+}
+
+void SquadSession::setShuttleMove(int index, int moveId)
+{
+    SquadMember &shuttle = m_squad.shuttle;
+    if (shuttle.moves[std::size_t(index)] == moveId)
+        return;
+    for (int &other : shuttle.moves) // 같은 기술을 두 칸에 두지 않는다
+        if (moveId > 0 && other == moveId)
+            other = shuttle.moves[std::size_t(index)];
+    shuttle.moves[std::size_t(index)] = moveId;
+    resolveShuttle();
+    commit();
+}
+
+void SquadSession::clearShuttle()
+{
+    if (m_squad.shuttle == SquadMember())
+        return;
+    m_squad.shuttle = SquadMember();
+    resolveShuttle();
     commit();
 }
 

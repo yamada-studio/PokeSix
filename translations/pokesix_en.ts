@@ -852,6 +852,69 @@ to see its details here</translation>
     </message>
 </context>
 <context>
+    <name>com::yamada::studio::ShuttleDialog</name>
+    <message>
+        <source>비전셔틀</source>
+        <translation>HM shuttle</translation>
+    </message>
+    <message>
+        <source>+ 포켓몬 고르기</source>
+        <translation>+ Pick a Pokémon</translation>
+    </message>
+    <message>
+        <source>눌러서 다른 포켓몬으로 바꿔요</source>
+        <translation>Click to pick a different Pokémon</translation>
+    </message>
+    <message>
+        <source>비우기</source>
+        <translation>Clear</translation>
+    </message>
+    <message>
+        <source>기술 %1 / 4</source>
+        <translation>Moves %1 / 4</translation>
+    </message>
+    <message>
+        <source>이 게임에는 비전머신이 없어요</source>
+        <translation>This game has no HMs</translation>
+    </message>
+    <message>
+        <source>셔틀</source>
+        <translation>Shuttle</translation>
+    </message>
+    <message>
+        <source>먼저 셔틀 포켓몬을 골라요</source>
+        <translation>Pick a shuttle Pokémon first</translation>
+    </message>
+    <message>
+        <source>%1이(가) 배울 수 없어요</source>
+        <translation>%1 cannot learn this</translation>
+    </message>
+    <message>
+        <source>기술 칸 4개가 다 찼어요</source>
+        <translation>All four move slots are full</translation>
+    </message>
+    <message>
+        <source>셔틀이 들어요 — %1의 기술 칸을 비워도 돼요</source>
+        <translation>The shuttle carries it — %1 can free that move slot</translation>
+    </message>
+    <message>
+        <source>셔틀이 들어요</source>
+        <translation>The shuttle carries it</translation>
+    </message>
+    <message>
+        <source>본편: %1</source>
+        <translation>Main team: %1</translation>
+    </message>
+    <message>
+        <source>아무도 안 들어요</source>
+        <translation>Nobody carries it</translation>
+    </message>
+    <message>
+        <source>7번째 멤버예요 — 본편 6자리 분석(히트맵 · 문제)에는 들어가지 않아요</source>
+        <translation>A seventh member — it stays out of the six-slot analysis (heatmap · problems)</translation>
+    </message>
+</context>
+<context>
     <name>com::yamada::studio::SlotCard</name>
     <message>
         <source>역할 메모 (예: 선봉 · 고속 스위퍼)</source>
@@ -1301,6 +1364,22 @@ abilities &amp; natures (gen 3+) and held items (gen 2+)</translation>
     <message>
         <source>%1 — 가르침 %2</source>
         <translation>%1 — tutor %2</translation>
+    </message>
+    <message>
+        <source>파도타기 · 괴력 같은 비전머신을 대신 드는 7번째 멤버 — 분석에는 안 들어가요</source>
+        <translation>A seventh member that carries HMs like Surf and Strength — not part of the analysis</translation>
+    </message>
+    <message>
+        <source>비전셔틀 · %1</source>
+        <translation>HM shuttle · %1</translation>
+    </message>
+    <message>
+        <source>+ 비전셔틀</source>
+        <translation>+ HM shuttle</translation>
+    </message>
+    <message>
+        <source>비전셔틀 고르기</source>
+        <translation>Pick the HM shuttle</translation>
     </message>
 </context>
 <context>

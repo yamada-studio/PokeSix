@@ -20,6 +20,7 @@
 #include "ui/squad/heatmapview.h"
 #include "ui/squad/listpicker.h"
 #include "ui/squad/problemlist.h"
+#include "ui/squad/shuttledialog.h"
 #include "ui/squad/slotcard.h"
 #include "ui/squad/splitbar.h"
 #include "ui/squad/squadpaint.h"
@@ -243,6 +244,14 @@ QWidget *SquadPage::buildTopBar()
     m_count = new QLabel;
     m_count->setObjectName(QStringLiteral("squadCount"));
     layout->addWidget(m_count);
+    // 비전셔틀(7번째 멤버): 카드 6장을 건드리지 않게 버튼 → 창으로
+    m_shuttleButton = new QPushButton;
+    m_shuttleButton->setObjectName(QStringLiteral("squadShuttleButton"));
+    m_shuttleButton->setCursor(Qt::PointingHandCursor);
+    m_shuttleButton->setToolTip(
+            tr("파도타기 · 괴력 같은 비전머신을 대신 드는 7번째 멤버 — 분석에는 안 들어가요"));
+    connect(m_shuttleButton, &QPushButton::clicked, this, &SquadPage::showShuttleDialog);
+    layout->addWidget(m_shuttleButton);
     layout->addStretch();
     m_saveStatus = new QLabel(tr("✓ 자동 저장"));
     m_saveStatus->setObjectName(QStringLiteral("squadSaveStatus"));
@@ -493,6 +502,10 @@ void SquadPage::refresh()
     m_game->setVisible(m_session->games().size() > 1); // 게임이 하나뿐인 세대는 고를 것이 없다
     m_pips->update();
     m_count->setText(QStringLiteral("%1 / 6").arg(squad.filled()));
+    const PokemonDetail &shuttle = m_session->shuttleDetail();
+    m_shuttleButton->setText(shuttle.isValid()
+                                     ? tr("비전셔틀 · %1").arg(shuttle.name.text(language))
+                                     : tr("+ 비전셔틀"));
 
     if (m_selected >= 0 && !m_session->detail(m_selected).isValid())
         m_selected = -1;
@@ -1031,6 +1044,14 @@ void SquadPage::showProblemDialog()
     onProblemHovered(-1); // 창을 닫으면 카드 경고 · 열 강조를 푼다
 }
 
+void SquadPage::showShuttleDialog()
+{
+    ShuttleDialog dialog(m_repository, m_state, m_session, m_pokemonIcons, this);
+    connect(&dialog, &ShuttleDialog::pickRequested, this,
+            [this] { pickPokemon(SquadSession::kShuttleSlot); });
+    dialog.exec();
+}
+
 void SquadPage::showMemberDetail(int slot)
 {
     const int pokemonId = m_session->member(slot).pokemonId;
@@ -1057,6 +1078,8 @@ void SquadPage::showMemberDetail(int slot)
 
 void SquadPage::pickPokemon(int slot)
 {
+    // kShuttleSlot = 비전셔틀(7번째 멤버): 같은 선택 창을 쓰되 중복 경고 없이, 셔틀에 저장한다
+    const bool shuttle = slot == SquadSession::kShuttleSlot;
     const Language language = m_state->language();
     const int generation = m_session->generation();
     // 도감 칩: 그 세대의 지방 도감. 처음엔 스쿼드 게임의 도감(Pt → 신오 Pt), 한 번 바꾸면 그 게임
@@ -1093,8 +1116,10 @@ void SquadPage::pickPokemon(int slot)
                                   .arg(row.dexNumber)
                                   .arg(row.speciesId)
                                   .arg(row.name.all()));
-            warnings.append(warningFor(slot, row.speciesId));
-            if (row.pokemonId == m_session->member(slot).pokemonId)
+            warnings.append(shuttle ? QString() : warningFor(slot, row.speciesId));
+            const int chosenId
+                    = shuttle ? m_session->shuttle().pokemonId : m_session->member(slot).pokemonId;
+            if (row.pokemonId == chosenId)
                 current = int(i);
         }
     };
@@ -1104,7 +1129,7 @@ void SquadPage::pickPokemon(int slot)
     };
     SpriteCache *icons = m_pokemonIcons;
     ListPicker picker(
-            tr("%1세대 포켓몬 고르기").arg(generation), search,
+            shuttle ? tr("비전셔틀 고르기") : tr("%1세대 포켓몬 고르기").arg(generation), search,
             [this, &rows, &warnings, icons, language](QPainter &painter, const QRect &r, int i,
                                                       bool) {
                 if (i < 0) { // 칸 제목
@@ -1182,8 +1207,13 @@ void SquadPage::pickPokemon(int slot)
     picker.setCurrentRow(current);
     if (picker.exec() != QDialog::Accepted || picker.chosenRow() < 0)
         return;
-    m_session->setPokemon(slot, rows.at(picker.chosenRow()).pokemonId);
-    qCInfo(lcUi) << "squad slot" << slot << "=" << rows.at(picker.chosenRow()).pokemonId;
+    const int pokemonId = rows.at(picker.chosenRow()).pokemonId;
+    if (shuttle)
+        m_session->setShuttlePokemon(pokemonId);
+    else
+        m_session->setPokemon(slot, pokemonId);
+    qCInfo(lcUi) << "squad slot" << (shuttle ? QStringLiteral("shuttle") : QString::number(slot))
+                 << "=" << pokemonId;
 }
 
 void SquadPage::pickMove(int slot, int index)

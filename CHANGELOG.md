@@ -7,6 +7,12 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- The squad gains an HM-shuttle slot ("비전셔틀", a seventh member): a top-bar button opens a
+  dialog where you pick the shuttle Pokémon and check which of the game's HMs it carries (up to
+  four). Each HM row shows who covers it — the shuttle, a main member burning a move slot on it
+  ("셔틀이 들어요 — 갸라도스의 기술 칸을 비워도 돼요"), or nobody. The shuttle stays out of the
+  six-slot analysis and the member count, and is saved per version under a `shuttle` key that old
+  files simply don't have (`Repository::hiddenMachineMoves` lists a game's HMs).
 - The squad analysis panel gains a "리소스 투자" (resource investment) section: it tallies what the
   move layout consumes — Heart Scales (move-reminder moves), TM purchases and NPC move-tutor fees —
   with per-currency totals (BP, coins, shards, money) beside the section title. A TM the game drops

@@ -6,6 +6,7 @@ add_executable(pokesix_data_tests
     genranges_test.cpp
     csvimporter_test.cpp
     repository_test.cpp
+    squadstore_test.cpp
 )
 pokesix_target_defaults(pokesix_data_tests)
 
