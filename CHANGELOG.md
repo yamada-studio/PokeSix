@@ -6,6 +6,12 @@ and the project uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+- The release workflow asks for `contents: write` on GITHUB_TOKEN. The organization pins the default
+  token to read-only, so the v0.1.0 tag run built all three packages but every release step got
+  403 "Resource not accessible by integration"; the 0.1.0 release was therefore published by hand
+  from that run's artifacts. The next tag should attach its files on its own.
+
 ## [0.1.0] - 2026-10-07
 
 Phase A (intro screen and the main-screen shell) is complete, and the release pipeline exists:
