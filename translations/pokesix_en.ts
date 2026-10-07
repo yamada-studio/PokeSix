@@ -1481,6 +1481,18 @@ abilities &amp; natures (gen 3+) and held items (gen 2+)</translation>
         <source>파일에 쓰지 못했어요</source>
         <translation>Could not write the file</translation>
     </message>
+    <message>
+        <source>되돌리기</source>
+        <translation>Undo</translation>
+    </message>
+    <message>
+        <source>다시 실행</source>
+        <translation>Redo</translation>
+    </message>
+    <message>
+        <source>일괄 비우기 — 멤버와 비전셔틀을 모두 비워요(되돌릴 수 있어요)</source>
+        <translation>Clear all — empties every member and the HM shuttle (undoable)</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::SquadSession</name>

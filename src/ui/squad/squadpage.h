@@ -13,6 +13,7 @@ class QLineEdit;
 class QPixmap;
 class QPropertyAnimation;
 class QPushButton;
+class QToolButton;
 class QScrollArea;
 
 namespace com::yamada::studio {
@@ -118,6 +119,9 @@ private:
     SquadPips *m_pips = nullptr;
     QLabel *m_count = nullptr;
     QPushButton *m_shuttleButton = nullptr; // [비전셔틀 · 잠만보] — 누르면 셔틀 창
+    QToolButton *m_undoButton = nullptr;    // 되돌리기 ↶
+    QToolButton *m_redoButton = nullptr;    // 다시 실행 ↷
+    QToolButton *m_clearButton = nullptr;   // 일괄 비우기 ⟳
     QLabel *m_saveStatus = nullptr;
     QWidget *m_topBar = nullptr; // 오른쪽 끝을 분석 창과 맞추려고 스크롤바 폭만큼 들여 쓴다
 

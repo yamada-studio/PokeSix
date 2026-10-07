@@ -159,6 +159,9 @@ QPushButton#squadToolButton {
 }
 QPushButton#squadToolButton:hover { background: @blue.tint; }
 QPushButton#squadToolButton::menu-indicator { image: none; width: 0; }
+QToolButton#squadIconButton { background: transparent; border: none; border-radius: 6px; padding: 3px; }
+QToolButton#squadIconButton:hover:enabled { background: @blue.tint; }
+QToolButton#squadIconButton:pressed { background: @blue.cell; }
 QPushButton#shuttlePickButton {
   background: @paper.alt; border: 2px solid @ink; border-radius: 12px; padding: 6px 16px;
   font-family: "Do Hyeon"; font-size: 20px; color: @text.1;

@@ -7,6 +7,11 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Squad editing gets undo / redo / clear-all, as three borderless icon buttons right of the
+  HM-shuttle button (the classic round arrows). Every committed edit — Pokémon, move, memo,
+  ability, nature, item, shuttle, name, drag reorder, import — is one history step (up to 50),
+  kept per squad and reset when the generation or game changes. "일괄 비우기" empties the six
+  members and the shuttle (the name stays) and is itself undoable, so it asks no confirmation.
 - Packaging (Phase G lite): `scripts/linux/package.sh` builds the release (tests included),
   installs into an AppDir and runs linuxdeploy + its Qt plugin (downloaded once into
   `build/package/tools`) to produce `build/package/PokeSix-<version>-x86_64.AppImage`;
