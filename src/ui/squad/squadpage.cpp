@@ -80,7 +80,7 @@ const char kClearSvg[]
 // 화면 공통 여백(02 SCR 공통). 아래만 12: 분석 창 · 카드가 창 바닥에 더 가깝게(사용자 의견)
 constexpr QMargins kPageMargins {20, 16, 20, 12};
 constexpr int kCardGap = 12;
-constexpr int kWideCardAreaWidth = 2 * 300 + kCardGap; // 넓은 화면: 슬롯 그리드 600
+constexpr int kWideCardAreaWidth = 2 * 300 + kCardGap; // 넓은 화면: 카드 열의 최소 폭
 // 카드 끌기 애니메이션: 밀려나는 카드 · 놓은 카드가 칸에 들어가는 시간, 끝에 닿을 때 굴리는 양
 constexpr int kShiftMs = 180;
 constexpr int kDropMs = 140;
@@ -513,10 +513,17 @@ void SquadPage::placeCards(bool wide)
         m_grid->setColumnStretch(c, c < columns ? 1 : 0);
     m_columns->setDirection(wide ? QBoxLayout::LeftToRight : QBoxLayout::TopToBottom);
     if (wide) {
-        m_cardArea->setFixedWidth(kWideCardAreaWidth);
+        // 카드 열 : 분석 열 = 1 : 1 (사용자 결정) — 카드가 넓어져 기술 이름 · 배움 표시가 숨 쉰다.
+        // 분석 열은 히트맵 최소 폭까지만 줄어든다(HeatmapView가 셀 폭을 폭에 맞춘다)
+        m_cardArea->setMinimumWidth(kWideCardAreaWidth);
+        m_cardArea->setMaximumWidth(QWIDGETSIZE_MAX);
+        m_columns->setStretch(0, 1);
+        m_columns->setStretch(1, 1);
     } else {
         m_cardArea->setMinimumWidth(0);
         m_cardArea->setMaximumWidth(QWIDGETSIZE_MAX);
+        m_columns->setStretch(0, 0);
+        m_columns->setStretch(1, 1);
     }
     // 넓으면: 분석 창이 열 세로를 채우고, 넘치는 내용은 창 안에서 스크롤 → 바깥은 안 밀린다.
     // 좁으면: 분석 창을 내용 높이대로 펴고(안쪽 스크롤 없음) 페이지 전체가 스크롤한다(전처럼).

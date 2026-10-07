@@ -1004,6 +1004,14 @@
         <source>자세히 보기</source>
         <translation>詳しく見る</translation>
     </message>
+    <message>
+        <source>NPC</source>
+        <translation>NPC</translation>
+    </message>
+    <message>
+        <source>알</source>
+        <translation type="unfinished">タマゴ</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::SpeciesTableModel</name>
