@@ -30,6 +30,9 @@ public:
              QWidget *parent = nullptr);
 
     static constexpr int kHeight = 258; // 내용이 꼭 맞는 기준 높이
+    // 선택(노랑) · 경고(빨강) 테 자리 — 카드 그림(그림자 포함)은 이 안쪽에 그려진다.
+    // SquadPage가 분석 창의 시각적 끝단을 카드와 맞추는 데도 쓴다
+    static constexpr int kRing = 3;
     static constexpr int kMinimumHeight = 234; // 줄 사이 숨만 줄인 최소(창이 낮으면 여기까지)
     static constexpr int kMinimumWidth = 262;
 

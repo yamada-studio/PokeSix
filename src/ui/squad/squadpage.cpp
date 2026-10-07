@@ -77,7 +77,8 @@ const char kClearSvg[]
           R"(stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">)"
           R"(<path d="M22 4v6h-6"/><path d="M20.5 15a8.5 8.5 0 1 1-2-8.9L22 10"/></svg>)";
 
-constexpr QMargins kPageMargins {20, 16, 20, 20}; // 화면 공통 여백(02 SCR 공통)
+// 화면 공통 여백(02 SCR 공통). 아래만 12: 분석 창 · 카드가 창 바닥에 더 가깝게(사용자 의견)
+constexpr QMargins kPageMargins {20, 16, 20, 12};
 constexpr int kCardGap = 12;
 constexpr int kWideCardAreaWidth = 2 * 300 + kCardGap; // 넓은 화면: 슬롯 그리드 600
 // 카드 끌기 애니메이션: 밀려나는 카드 · 놓은 카드가 칸에 들어가는 시간, 끝에 닿을 때 굴리는 양
@@ -174,7 +175,7 @@ SquadPage::SquadPage(Repository *repository, AppState *state, QWidget *parent)
     QWidget *content = new QWidget;
     content->setObjectName(QStringLiteral("squadContent")); // app.qss: 투명
     m_columns = new QBoxLayout(QBoxLayout::TopToBottom, content);
-    m_columns->setContentsMargins(0, 0, 4, 8); // 오른쪽 4: 스크롤바와 그림자 사이
+    m_columns->setContentsMargins(0, 0, 4, 4); // 오른쪽 4: 스크롤바와 그림자 사이
     m_columns->setSpacing(16);
     m_cardArea = new QWidget;
     m_grid = new QGridLayout(m_cardArea);
@@ -198,7 +199,14 @@ SquadPage::SquadPage(Repository *repository, AppState *state, QWidget *parent)
         m_cards.append(card);
     }
     m_columns->addWidget(m_cardArea, 0, Qt::AlignTop);
-    m_columns->addWidget(buildAnalysis(), 1); // 넓은 배치: 세로를 채운다(placeCards가 바꾼다)
+    // 분석 열: 카드가 선택 테 자리(SlotCard::kRing)만큼 안쪽에 그려지므로, 분석 창도 같은 만큼
+    // 들여 넣어야 두 열의 시각적 위 · 아래 끝단이 맞는다
+    m_analysisColumn = new QWidget;
+    QVBoxLayout *analysisColumn = new QVBoxLayout(m_analysisColumn);
+    analysisColumn->setContentsMargins(0, SlotCard::kRing, 0, SlotCard::kRing);
+    analysisColumn->setSpacing(0);
+    analysisColumn->addWidget(buildAnalysis());
+    m_columns->addWidget(m_analysisColumn, 1); // 넓은 배치: 세로를 채운다(placeCards가 바꾼다)
     m_columns->addStretch();
     placeCards(false);
 
@@ -512,7 +520,7 @@ void SquadPage::placeCards(bool wide)
     }
     // 넓으면: 분석 창이 열 세로를 채우고, 넘치는 내용은 창 안에서 스크롤 → 바깥은 안 밀린다.
     // 좁으면: 분석 창을 내용 높이대로 펴고(안쪽 스크롤 없음) 페이지 전체가 스크롤한다(전처럼).
-    m_columns->setAlignment(m_analysis, wide ? Qt::Alignment() : Qt::AlignTop);
+    m_columns->setAlignment(m_analysisColumn, wide ? Qt::Alignment() : Qt::AlignTop);
     m_analysisScroll->setVerticalScrollBarPolicy(wide ? Qt::ScrollBarAsNeeded
                                                       : Qt::ScrollBarAlwaysOff);
     syncAnalysisHeight();

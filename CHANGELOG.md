@@ -397,6 +397,10 @@ and the project uses [Semantic Versioning](https://semver.org/).
   data grows to 28.9 MB). Moves introduced in generation 9 still lack Korean text in PokéAPI.
 
 ### Changed
+- The squad page's two columns now end flush: slot cards paint inside a 3px selection-ring
+  inset, so the analysis column is inset by the same amount top and bottom
+  (`SlotCard::kRing`), and the page's bottom margin shrinks (20→12, column margin 8→4) —
+  the cards grow by the difference and the window-bottom gap tightens.
 - The setup scripts say so when the Qt download goes quiet: aqtinstall only prints a line per
   finished archive, and qtbase/qtdeclarative are large enough that the install can look stuck for
   10+ minutes while it is actually downloading.
