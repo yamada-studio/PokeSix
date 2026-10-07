@@ -26,12 +26,13 @@ MapView::MapView(QWidget *parent)
 }
 
 void MapView::setRegion(const QString &region, const QHash<QString, LocalizedText> &names,
-                        Language language)
+                        Language language, const QStringList &layerLabels)
 {
     const townmapbook::RegionMap &map = townmapbook::regionMap(region);
     m_map = map.isValid() ? &map : nullptr;
     m_names = names;
     m_language = language;
+    m_layerLabels = layerLabels;
     m_zoom = 0;
     m_pan = {};
     m_hover.clear();
@@ -165,6 +166,29 @@ void MapView::paintEvent(QPaintEvent *event)
     }
 
     painter.setRenderHint(QPainter::Antialiasing);
+    // 합본(성도 + 관동): 첫 지방은 왼쪽 위, 다음 지방은 그 레이어의 오른쪽 위에 이름표
+    if (m_map->layers.size() > 1 && !m_layerLabels.isEmpty()) {
+        painter.setFont(theme::font(theme::kFamilyTitle, 16));
+        const int s = scale();
+        for (qsizetype i = 0; i < m_map->layers.size() && i < m_layerLabels.size(); ++i) {
+            const QString label = m_layerLabels.at(i);
+            if (label.isEmpty())
+                continue;
+            const townmapbook::Layer &layer = m_map->layers.at(i);
+            const QRect area(topLeft + layer.offset * s, layer.crop.size() * s);
+            const QSizeF text = QFontMetricsF(painter.font()).size(0, label);
+            QRectF chip(0, 0, text.width() + 18, text.height() + 6);
+            if (i == 0)
+                chip.moveTopLeft(area.topLeft() + QPoint(8, 8));
+            else
+                chip.moveTopRight(area.topRight() + QPoint(-8, 8));
+            painter.setPen(Qt::NoPen);
+            painter.setBrush(QColor(tok::kInk));
+            painter.drawRoundedRect(chip, 6, 6);
+            painter.setPen(QColor(tok::kWhite));
+            painter.drawText(chip, Qt::AlignCenter, label);
+        }
+    }
     // 선택: 노랑 테(스쿼드 카드의 선택 테와 같은 말)
     auto outline = [&](const QString &location, QRgb color, qreal width) {
         QRect first;

@@ -200,7 +200,10 @@ void TownMapPage::selectRegion(const QString &region)
         }
     }
     const Language language = m_state->language();
-    m_view->setRegion(region, m_names, language);
+    QStringList layerLabels;
+    for (const townmapbook::Layer &layer : map.layers)
+        layerLabels.append(m_repository->regionDisplayName(layer.source).text(language));
+    m_view->setRegion(region, m_names, language, layerLabels);
     m_detail->setTitle(tr("장소"), QString());
     showLocation(QString());
 

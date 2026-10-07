@@ -19,8 +19,10 @@ class MapView : public QWidget
 public:
     explicit MapView(QWidget *parent = nullptr);
 
+    // layerLabels: 레이어(이어 붙인 지도)마다 모서리에 쓸 지방 이름("성도" · "관동").
+    // 레이어가 하나뿐이면 그리지 않는다
     void setRegion(const QString &region, const QHash<QString, LocalizedText> &names,
-                   Language language);
+                   Language language, const QStringList &layerLabels = {});
     void select(const QString &location); // 빈 문자열 = 선택 해제
     QString selected() const { return m_selected; }
 
@@ -59,5 +61,6 @@ private:
     bool m_dragging = false;
     QString m_hover;
     QString m_selected;
+    QStringList m_layerLabels;
 };
 } // namespace com::yamada::studio
