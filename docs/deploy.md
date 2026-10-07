@@ -187,6 +187,9 @@ include(CPack)
 `scripts/<os>/package.*`를 돌려 AppImage · ZIP · dmg를 만들고 GitHub Release에 첨부한다
 (`workflow_dispatch`로 태그 없이 아티팩트만 확인할 수도 있다). Qt는 `scripts/QT_VERSION`을 읽어
 setup과 같은 최소 아카이브만 받고, Linux는 ubuntu-22.04에서 빌드해 AppImage의 glibc 호환을 넓힌다.
+
+**첫 실행 검증(2026-10-07, `workflow_dispatch`)**: 3 OS 모두 통과 — AppImage 38.9MB · dmg 31.4MB · ZIP 17.5MB, 소요 Linux 3.5분 · macOS 2.5분 · Windows 7.5분(Qt 캐시 후). 첫 시도에서 고친 것 둘:
+macOS 러너(AppleClang 15)는 람다의 구조적 바인딩 캡처를 거부하고, `windows-latest`는 이제 VS 2026 이미지라 **`windows-2022`로 고정**했다(프리셋이 "Visual Studio 17 2022"). 태그 → Release 첨부 경로는 아직 돌려 보지 않았다.
 **사용자는 Releases에서 파일 하나만 받으면 된다 — Qt · 컴파일러 · setup 불필요.**
 아직 실제 러너에서 돌려 보지 않았다: 첫 태그 때 로그를 보고 다듬는다.
 

@@ -20,14 +20,15 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 | Linux (Ubuntu 24.04) | ✅ 최소 Qt(`--archives`) 포함 | ✅ 96 | ✅ | ✅ AppImage · `--install` | ✅ |
 | Windows 11 (MSVC 2022) | ✅ 전체 Qt. **최소 Qt 미검증**(이미 설치돼 있어 경로를 안 탐) | ✅ 96 (Release · Debug) | ✅ | ✅ ZIP 17.6MB, Qt 없는 PATH에서 실행 확인 | ✅ `--no-run` |
 | macOS | ⚠ 실기 없음 | ⚠ | ⚠ | ⚠ dmg 스크립트만 | ⚠ |
-| GitHub Actions | — | — | — | ⚠ 첫 실행 전 | — |
+| GitHub Actions | — | ✅ 3 OS(러너에서 ctest 포함) | — | ✅ `workflow_dispatch` 실행 37600397225: AppImage 38.9MB · dmg 31.4MB · ZIP 17.5MB 아티팩트. 태그 릴리스는 아직 안 만듦 | — |
 
 ### 진행 중
 
-- **릴리스 CI 첫 실행**: `workflow_dispatch`(아티팩트만, 태그 없이)로 3개 OS 잡을 돌려 보고 깨지는 것을 고친 뒤 `v0.0.1` 태그로 진짜 릴리스를 만든다. 결과는 아래 세션 기록에 적는다.
+- **첫 태그 릴리스**: CI는 검증됐다(위). 남은 것은 **어느 버전으로 태그를 칠지**의 결정 — 규칙은 "Phase 완료 = MINOR"인데 완료된 Phase가 없다. 선택지: (a) 지금 CMake 버전 그대로 `v0.0.1` 태그 → 패키지 이름 `PokeSix-0.0.1-*`(CHANGELOG의 0.0.1 절은 Phase 0만 적혀 있어 어긋남), (b) Phase A를 끝내고 `v0.1.0`, (c) 중간 빌드는 태그 없이 `workflow_dispatch` 아티팩트(90일 보관)로만 공유. 사용자 결정 대기.
 
 ### 열린 일 (작은 것부터)
 
+0. **VS 2026 지원**: GitHub의 `windows-latest`는 이제 `windows-2025-vs2026`(VS 18)이라 CI 잡을 `windows-2022`로 고정해 두었다. `windows-2022` 이미지가 은퇴하기 전에 `CMakePresets.json`에 "Visual Studio 18 2026" 프리셋과 `env.bat :find_vs`의 `[17.0,19.0)` 범위를 더해야 한다(Qt `msvc2022_64` 바이너리는 v145 툴셋과 ABI 호환)
 1. MSVC 경고 C4305(`double`→`float`) 두 곳: `src/ui/widgets/versionchip.cpp:170`, `src/ui/dex/statradar.cpp:80`. 동작 영향 없음. `static_cast<float>` 또는 `qreal` 유지로 정리하면 된다(사용자 코드 영역 — 가이드 대상)
 2. Windows 최소 Qt 설치 검증: `C:\Qt`가 없는 PC에서 `scripts\windows\setup.bat` → `--archives qtbase qtsvg qttools`만 받아 빌드되는지
 3. 스쿼드 분석 패널의 문제 칸 높이(넓은 배치 최소 2줄 · 좁은 배치 최대 4줄, `squadpage.cpp`의 `kProblemVisibleRows`) — 사용자 피드백 대기
@@ -58,7 +59,9 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 - Linux 쪽 142개 커밋을 받은 뒤 `quickstart.bat`이 Windows에서 세 군데 깨졌다 → 전부 고쳐 통과:
   `cardbarrel.cpp` most vexing parse(MSVC만 거부) · `package.bat`이 VS 번들 cmake를 안 찾음 · `QSettings` 기본 형식(Windows 레지스트리 + 테스트에 조직 이름 없음 → 쓰기 무시)으로 테스트 2개 실패.
   상세는 CHANGELOG `Fixed`와 커밋 `63f2115`
-- 릴리스 CI 첫 실행: 진행 중(위)
+- 릴리스 CI 첫 실행(`workflow_dispatch`, 태그 없음): 1차 — Linux 성공, macOS는 AppleClang 15가 람다의 구조적 바인딩 캡처(`moveeffect.cpp`)를 거부, Windows는 `windows-latest`에 VS 2022가 없음. 둘 다 고친 2차(37600397225)는 3 OS 모두 성공, 소요 Linux 3.5분 · macOS 2.5분 · Windows 7.5분. 커밋 `3996834`
+- GitHub API는 `gh` 없이 Git Credential Manager의 토큰(`repo` · `workflow` 범위)으로 호출했다. 헬퍼는 세션 임시 폴더에만 있었고 리포에는 없다 — 회사 세션에서는 `gh`를 쓰는 편이 낫다
+- `docs/worklog.md`(이 문서) 시작, CLAUDE.md에서 연결
 
 ### 2026-10-04 — Windows 첫 세팅
 

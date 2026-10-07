@@ -13,6 +13,7 @@ and the project uses [Semantic Versioning](https://semver.org/).
   export/import/image sharing. The note about the removed search box is gone.
 
 ### Fixed
+- The release workflow passes on real runners (run 37600397225, all three OSes): macos-14 ships AppleClang 15, which rejects a lambda capturing a structured binding in moveeffect.cpp (copied to a plain local), and windows-latest became the windows-2025-vs2026 image with no VS 2022, so the Windows job is pinned to windows-2022 until the presets support VS 2026.
 - Windows quickstart runs end to end (verified 2026-10-07: setup → release build → 96 tests →
   windeployqt → `PokeSix-0.0.1-win64.zip`, 17.6 MB, and the packaged exe starts on a PATH
   without Qt). Three things were broken on MSVC:
@@ -46,8 +47,8 @@ and the project uses [Semantic Versioning](https://semver.org/).
 - A release workflow (`.github/workflows/release.yml`): pushing a `v*` tag builds the AppImage,
   the Windows ZIP and the macOS dmg on three GitHub runners (minimal Qt archives, Linux on
   ubuntu-22.04 for wider glibc compatibility) and attaches them to the GitHub Release — end
-  users download one file and never need Qt, a compiler or the setup scripts. Not yet exercised
-  on a real runner.
+  users download one file and never need Qt, a compiler or the setup scripts. First exercised on 2026-10-07 via workflow_dispatch: all three jobs pass and upload the
+  AppImage, dmg and ZIP as artifacts (the tag path is unchanged and still untested).
 - macOS packaging and quickstart: `scripts/macos/package.sh` installs the release build (which
   runs macdeployqt, so the .app carries the Qt frameworks), adds the licenses and an
   /Applications link, and builds `PokeSix-<version>-macos.dmg` with hdiutil + SHA-256;
