@@ -153,18 +153,33 @@ follow the same language.
 Requirements: a C++20 compiler, CMake 3.21+, Ninja (Linux/macOS), and **Qt 6.8 or newer**
 (Widgets, Svg, Sql, Network).
 
-One script per step, one folder per OS:
+**Quick start** — one script does everything after a fresh clone: dependencies (incl. Qt 6.8.3),
+release build with tests, a package, and launches it.
+
+```bash
+git clone https://github.com/yamada-studio/PokeSix.git
+cd PokeSix
+scripts/linux/quickstart.sh         # Linux: setup → build → AppImage → run
+```
+```bat
+scripts\windows\quickstart.bat      # Windows: setup → build → portable ZIP → run
+```
+
+Add `--no-run` to stop after packaging. The result is a real distributable:
+`build/package/PokeSix-<version>-x86_64.AppImage` on Linux,
+`build\windows-msvc\package\PokeSix-<version>-win64.zip` on Windows (the extracted folder's
+`bin\PokeSix.exe` runs on a PC without Qt).
+
+Each step also exists on its own, one folder per OS:
 
 | | Linux (Ubuntu 24.04) | macOS | Windows (MSVC 2022) |
 |---|---|---|---|
 | Install dependencies (incl. Qt 6.8.3) | `scripts/linux/setup.sh` | `scripts/macos/setup.sh` | `scripts\windows\setup.bat` |
 | Configure, build, test | `scripts/linux/build.sh` | `scripts/macos/build.sh` | `scripts\windows\build.bat` |
-| Run | `scripts/linux/run.sh` | `scripts/macos/run.sh` | `scripts\windows\run.bat` |
+| Run a dev build | `scripts/linux/run.sh` | `scripts/macos/run.sh` | `scripts\windows\run.bat` |
+| Package (AppImage / ZIP) | `scripts/linux/package.sh` | — (planned: .dmg) | `scripts\windows\package.bat` |
 
 ```bash
-git clone https://github.com/yamada-studio/PokeSix.git
-cd PokeSix
-scripts/linux/setup.sh      # system packages (asks for sudo only if something is missing) + Qt via aqtinstall
 scripts/linux/build.sh      # debug build + tests;  add `release`, `--clean`, `--install <prefix>`
 scripts/linux/run.sh        # builds first if needed; `--help` for options
 ```

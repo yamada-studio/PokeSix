@@ -71,13 +71,32 @@ set_target_properties(PokeSix PROPERTIES
     MACOSX_BUNDLE_SHORT_VERSION_STRING "${PROJECT_VERSION}"
 )
 
-# ── Install (최소) ────────────────────────────────────────────
-# Qt 런타임 동봉은 하지 않는다. 패키징이 필요해지면
-# qt_generate_deploy_app_script() 를 붙인다 (docs/build.md "Packaging" 참고).
+# ── Install ──────────────────────────────────────────────────
 install(TARGETS PokeSix
     BUNDLE  DESTINATION .
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
+
+# Windows · macOS: 설치할 때 Qt 런타임을 같이 넣는다(windeployqt / macdeployqt) — 설치 폴더째가
+# 포터블 배포본이 된다(docs/deploy.md §2-3). Linux는 Qt deploy가 지원하지 않아 조용히 건너뛴다:
+# AppImage는 scripts/linux/package.sh가 linuxdeploy로 만든다.
+if(WIN32)
+    set(POKESIX_DEPLOY_OPTIONS DEPLOY_TOOL_OPTIONS
+        --compiler-runtime          # vc_redist가 없는 PC용 VC++ 런타임
+        --no-system-d3d-compiler --no-opengl-sw # QPainter 래스터만 쓴다(약 20MB 절약)
+        --exclude-plugins qsqlodbc,qsqlpsql,qsqlmimer # SQLite만 쓴다
+    )
+else()
+    set(POKESIX_DEPLOY_OPTIONS "")
+endif()
+qt_generate_deploy_app_script(
+    TARGET PokeSix
+    OUTPUT_SCRIPT pokesix_deploy_script
+    NO_UNSUPPORTED_PLATFORM_ERROR
+    NO_TRANSLATIONS                 # Qt 자체 번역은 안 쓴다(우리 번역은 :/i18n 안)
+    ${POKESIX_DEPLOY_OPTIONS}
+)
+install(SCRIPT ${pokesix_deploy_script})
 
 # Linux: 데스크톱 환경(런처·독)이 찾는 표준 위치에 .desktop 과 hicolor 아이콘 테마를 설치
 if(UNIX AND NOT APPLE)

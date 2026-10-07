@@ -7,6 +7,20 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Packaging (Phase G lite): `scripts/linux/package.sh` builds the release (tests included),
+  installs into an AppDir and runs linuxdeploy + its Qt plugin (downloaded once into
+  `build/package/tools`) to produce `build/package/PokeSix-<version>-x86_64.AppImage`;
+  `scripts\windows\package.bat` builds the release, installs with the new
+  `qt_generate_deploy_app_script` hook (windeployqt runs at install, with
+  `--compiler-runtime`, D3D/OpenGL-sw and unused SQL drivers excluded), ships LICENSE and
+  THIRD_PARTY_NOTICES.md, and zips `PokeSix-<version>-win64.zip`. Both print a SHA-256.
+  The TLS plugins ride along (`EXTRA_PLUGINS`) so the first-run data download works on a
+  machine without Qt, the offscreen platform plugin is bundled for headless runs, and the
+  unused SQL drivers (mimer/odbc/psql/mysql) are dropped from the AppImage.
+- One script from a fresh clone to a running app: `scripts/linux/quickstart.sh` and
+  `scripts\windows\quickstart.bat` chain setup → release build with tests → package →
+  launch (`--no-run` stops after packaging). The README's Building section now leads with
+  them.
 - The HM-shuttle button only appears through generation 6: from generation 7 the games replaced
   party-taught HMs with built-in systems (Poké Ride in SM/USUM, the Rotom Bike in SwSh, the
   Pokétch hidden-move app in BDSP — even though its data still lists HM items — and ride Pokémon
