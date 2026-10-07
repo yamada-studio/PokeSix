@@ -7,6 +7,11 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- The HM-shuttle dialog got a design pass: the shuttle Pokémon shows as a large margin-trimmed box
+  icon with its type chips, the HM table sits in a bordered panel with column headers and a type
+  chip per move, coverage texts are colored by state, HMs the chosen shuttle cannot learn show a
+  red "배울 수 없어요" warning instead of a silent disabled checkbox, and the top-bar button
+  carries the shuttle's small icon next to its name.
 - The squad gains an HM-shuttle slot ("비전셔틀", a seventh member): a top-bar button opens a
   dialog where you pick the shuttle Pokémon and check which of the game's HMs it carries (up to
   four). Each HM row shows who covers it — the shuttle, a main member burning a move slot on it

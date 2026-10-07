@@ -887,7 +887,7 @@ to see its details here</translation>
     </message>
     <message>
         <source>%1이(가) 배울 수 없어요</source>
-        <translation>%1 cannot learn this</translation>
+        <translation type="vanished">%1 cannot learn this</translation>
     </message>
     <message>
         <source>기술 칸 4개가 다 찼어요</source>
@@ -912,6 +912,18 @@ to see its details here</translation>
     <message>
         <source>7번째 멤버예요 — 본편 6자리 분석(히트맵 · 문제)에는 들어가지 않아요</source>
         <translation>A seventh member — it stays out of the six-slot analysis (heatmap · problems)</translation>
+    </message>
+    <message>
+        <source>비전머신</source>
+        <translation>HMs</translation>
+    </message>
+    <message>
+        <source>누가 드나</source>
+        <translation>Who carries it</translation>
+    </message>
+    <message>
+        <source>배울 수 없어요</source>
+        <translation>cannot learn it</translation>
     </message>
 </context>
 <context>
