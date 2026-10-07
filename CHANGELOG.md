@@ -6,6 +6,12 @@ and the project uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-10-07
+
+Phase A (intro screen and the main-screen shell) is complete, and the release pipeline exists:
+quickstart and package scripts on all three OSes, the GitHub release workflow, and the
+`--screenshot` capture tool. Everything below shipped between 0.0.1 and this tag.
+
 ### Documentation
 - README refreshed: the four screenshots are recaptured (sprite-free, as always) showing the new
   squad top bar, move-source badges, 1:1 column split and the item/dex preview panes, and the
@@ -44,6 +50,8 @@ and the project uses [Semantic Versioning](https://semver.org/).
   tests, and the app runs.
 
 ### Added
+- Ctrl+0 returns to the intro from any page (the mark button does the same by mouse), so the
+  intro ↔ main screen round trip works from the keyboard alone (A10).
 - Keyboard users get a focus ring on the intro menu (A7): when focus reaches the menu with Tab or
   Shift+Tab, a pale blue ring (3 px, 2 px outside the card) surrounds the selected card and follows
   ↑/↓; clicking or the automatic focus on showing the intro draws no ring. The ring is painted by
