@@ -1010,7 +1010,7 @@
     </message>
     <message>
         <source>알</source>
-        <translation type="unfinished">タマゴ</translation>
+        <translation>タマゴ</translation>
     </message>
 </context>
 <context>

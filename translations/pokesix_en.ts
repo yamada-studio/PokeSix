@@ -1010,7 +1010,7 @@ to see its details here</translation>
     </message>
     <message>
         <source>알</source>
-        <translation type="unfinished">Egg</translation>
+        <translation>Egg</translation>
     </message>
 </context>
 <context>
