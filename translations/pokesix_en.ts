@@ -27,7 +27,7 @@
     <name>com::yamada::studio::AppBar</name>
     <message>
         <source>포켓몬 · 기술 · 아이템 검색</source>
-        <translation>Search Pokémon · moves · items</translation>
+        <translation type="vanished">Search Pokémon · moves · items</translation>
     </message>
 </context>
 <context>

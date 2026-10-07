@@ -397,6 +397,10 @@ and the project uses [Semantic Versioning](https://semver.org/).
   data grows to 28.9 MB). Moves introduced in generation 9 still lack Korean text in PokéAPI.
 
 ### Changed
+- The app bar drops the search box — it was a non-functional placeholder (only Ctrl+K focus was
+  wired). The generation button moves to the bar's right end, with the bar's right padding set so
+  the button's edge lines up with the page content below (the squad's "자동 저장됨" and the
+  analysis panel).
 - The squad page's two columns now end flush: slot cards paint inside a 3px selection-ring
   inset, so the analysis column is inset by the same amount top and bottom
   (`SlotCard::kRing`), and the page's bottom margin shrinks (20→12, column margin 8→4) —

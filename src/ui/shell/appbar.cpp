@@ -4,7 +4,6 @@
 #include "ui/shell/markbutton.h"
 #include "ui/theme/tokens.h"
 #include "ui/widgets/generationbutton.h"
-#include "ui/widgets/searchfield.h"
 
 #include <QColor>
 #include <QHBoxLayout>
@@ -16,7 +15,10 @@ using namespace com::yamada::studio;
 constexpr int kHeight = tok::kSizeAppBar; // 60 (아래 먹선 3 포함)
 constexpr int kBottomLine = 3;
 constexpr int kPaddingX = 20; // padding: 0 20px
-constexpr int kGap = 24;      // 항목 사이 gap: 24px
+// 오른쪽만 24: 본문 오른쪽 여백(20) + 열 오른쪽 여백(4) — 세대 버튼의 오른쪽 끝이 본문(스쿼드의
+// "자동 저장됨" · 분석 창)과 같은 줄에 선다
+constexpr int kPaddingRight = 24;
+constexpr int kGap = 24; // 항목 사이 gap: 24px
 constexpr int kMinGap = 12; // 탭 ↔ 세대 버튼 최소 간격(디자인은 1fr 빈칸이라 최소값이 없다)
 
 // MarkButton은 hover 모양(안쪽 여백 3 · 8 + 점선 테 2 + 간격 2)이 들어갈 자리까지 위젯 크기에
@@ -34,7 +36,7 @@ AppBar::AppBar(QWidget *parent)
     QWidget::setFixedHeight(kHeight);
 
     QHBoxLayout *layout = new QHBoxLayout(this);
-    layout->setContentsMargins(kPaddingX - kMarkLeftExtra, 0, kPaddingX, 0);
+    layout->setContentsMargins(kPaddingX - kMarkLeftExtra, 0, kPaddingRight, 0);
     layout->setSpacing(0); // 칸마다 addSpacing으로
 
     m_mark = new MarkButton;
@@ -48,13 +50,10 @@ AppBar::AppBar(QWidget *parent)
     layout->addSpacing(kMinGap);
     layout->addStretch();
 
+    // 세대 버튼이 막대의 오른쪽 끝이다(검색 칸은 기능 없는 틀이라 뺐다 — 사용자 결정)
     m_generation = new GenerationButton(GenerationButton::Size::Compact);
     // 현재 세대 · 메뉴 범위는 MainWindow가 AppState와 연결한다(generationButton()).
     layout->addWidget(m_generation, 0, Qt::AlignVCenter);
-    layout->addSpacing(kGap);
-
-    m_search = new SearchField(tr("포켓몬 · 기술 · 아이템 검색"), QStringLiteral("Ctrl K"));
-    layout->addWidget(m_search, 0, Qt::AlignVCenter);
 
     connect(m_mark, &MarkButton::clicked, this, &AppBar::homeRequested);
     connect(m_tabs, &AppTabBar::pageSelected, this,
