@@ -1,6 +1,5 @@
 #include "ui/shell/mainwindow.h"
 
-#include "data/db/gamedatabase.h"
 #include "data/repository/repository.h"
 #include "data/state/appstate.h"
 #include "data/update/dataupdater.h"
@@ -22,8 +21,11 @@
 #include <QVBoxLayout>
 
 namespace com::yamada::studio {
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(Repository *repository, AppState *state, DataUpdater *dataUpdater,
+                       QWidget *parent)
     : QMainWindow(parent)
+    , m_state(state)
+    , m_repository(repository)
 {
     QMainWindow::setWindowTitle(
             QStringLiteral("PokeSix %1").arg(QApplication::applicationVersion()));
@@ -34,15 +36,11 @@ MainWindow::MainWindow(QWidget *parent)
     //         └ QVBoxLayout (margins 0, spacing 0)
     //            ├ AppBar    높이 60 — 마크 · 탭 4 · 세대 버튼 · 검색
     //            └ m_pages   [도감(DexPage) · 아이템(ItemsPage) · 스쿼드 · 설정(자리 표시)]
-
-    // 첫 실행 데이터 받기 · 변환. 인트로가 쓰지만 MainWindow가 만들어 넘긴다(생성자 주입).
-    // A3에서 앱 초기화 계층(pokesix_app)이 생기면 거기서 만들어 넘기게 된다.
-    DataUpdater *dataUpdater = new DataUpdater(this);
+    //
+    // Repository(DB 조회 창구) · AppState(세대 · 게임 · 언어) · DataUpdater(첫 실행 받기)는
+    // Application이 만들어 넘겼다. 화면들은 포인터만 받아 쓴다(생성자 주입).
 
     m_screens = new QStackedWidget;
-    // 앱 상태(지금은 정주행 중인 세대). 화면들은 이 객체를 받아 generationChanged를 구독한다.
-    m_state = new AppState(this);
-
     HomePage *home = new HomePage(dataUpdater, m_state);
     m_screens->addWidget(home);
 
@@ -53,15 +51,12 @@ MainWindow::MainWindow(QWidget *parent)
 
     m_appBar = new AppBar;
     m_pages = new QStackedWidget;
-    // 페이지 순서는 Page(page.h)와 같다. 도감은 D2에서 실제 화면이 되었고, 나머지는 Phase E에서
-    // 하나씩 채운다. 지금은 이름만 보이는 자리 표시.
-    // Repository는 게임 데이터 DB 조회 창구다. 화면들은 포인터만 받아 쓴다(생성자 주입).
-    m_repository = std::make_unique<Repository>(gamedatabase::defaultPath());
-    m_dexPage = new DexPage(m_repository.get(), m_state);
-    m_pages->addWidget(m_dexPage);                                    // [0] 도감
-    m_pages->addWidget(new ItemsPage(m_repository.get(), m_state));   // [1] 아이템
-    m_pages->addWidget(new TownMapPage(m_repository.get(), m_state)); // [2] 타운맵
-    SquadPage *squad = new SquadPage(m_repository.get(), m_state);
+    // 페이지 순서는 Page(page.h)와 같다. 설정은 아직 이름만 보이는 자리 표시(Phase E4).
+    m_dexPage = new DexPage(m_repository, m_state);
+    m_pages->addWidget(m_dexPage);                              // [0] 도감
+    m_pages->addWidget(new ItemsPage(m_repository, m_state));   // [1] 아이템
+    m_pages->addWidget(new TownMapPage(m_repository, m_state)); // [2] 타운맵
+    SquadPage *squad = new SquadPage(m_repository, m_state);
     m_pages->addWidget(squad); // [3] 스쿼드
     // 데이터 받기가 끝나 DB 파일이 바뀌었다 → 옛 연결을 닫고(다음 조회가 새 파일을 연다) 앱 시작
     // 때부터 살아 있던 스쿼드를 새 데이터로 다시 읽는다
@@ -111,8 +106,6 @@ MainWindow::MainWindow(QWidget *parent)
     }
     qCInfo(lcUi) << "MainWindow initialized";
 }
-
-MainWindow::~MainWindow() = default;
 
 void MainWindow::open(Page page)
 {

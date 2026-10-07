@@ -44,6 +44,14 @@ and the project uses [Semantic Versioning](https://semver.org/).
   tests, and the app runs.
 
 ### Added
+- The app layer exists (A3): `src/app/Application` is the composition root — it owns the
+  QApplication, parses the command line, sets the log line format
+  (`hh:mm:ss.zzz L category: message`), applies language and theme, creates AppState,
+  Repository and DataUpdater and injects them into MainWindow, whose constructor now takes
+  them. `main.cpp` shrinks to two lines. `--screenshot <screen> <WxH> <out.png>` (screens:
+  intro, dex, items, map, squad, settings; `--screenshot-delay <ms>`, default 1200 so the intro's
+  card fan has finished spreading) opens that screen at that size, grabs the window to a PNG and
+  exits — the capture tool the roadmap's A10 design comparison needs. Works offscreen.
 - A release workflow (`.github/workflows/release.yml`): pushing a `v*` tag builds the AppImage,
   the Windows ZIP and the macOS dmg on three GitHub runners (minimal Qt archives, Linux on
   ubuntu-22.04 for wider glibc compatibility) and attaches them to the GitHub Release — end

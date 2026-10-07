@@ -42,7 +42,7 @@ endif()
 #     lrelease가 .qm을 만들어 실행 파일 리소스(:/i18n/pokesix_en.qm …)에 넣는다.
 # 게임 데이터 이름(포켓몬 · 아이템 …)은 번역 파일이 아니라 DB의 ko/en/ja 열에서 온다.
 qt_add_translations(TARGETS PokeSix
-    SOURCE_TARGETS PokeSix pokesix_ui pokesix_data
+    SOURCE_TARGETS PokeSix pokesix_app pokesix_ui pokesix_data
     TS_FILES
         ${PROJECT_SOURCE_DIR}/translations/pokesix_en.ts
         ${PROJECT_SOURCE_DIR}/translations/pokesix_ja.ts
@@ -51,14 +51,9 @@ qt_add_translations(TARGETS PokeSix
     LUPDATE_OPTIONS -source-language ko_KR -locations none
 )
 
-target_compile_definitions(PokeSix PRIVATE
-    POKESIX_VERSION="${PROJECT_VERSION}"
-)
-
-# TODO: app / ui / data 타깃이 생기면 여기를 `pokesix_app` 하나로 바꾼다.
+# 실행 파일은 부트스트랩(app)만 링크한다. ui · data · core는 app 뒤에 딸려온다(PUBLIC 전파).
 target_link_libraries(PokeSix PRIVATE
-    pokesix_core
-    pokesix_ui
+    pokesix_app
 )
 
 # Linux: 설치한 실행 파일이 Qt(~/Qt/6.8.3/…/lib)를 찾을 수 있도록, 링크한 라이브러리 경로를
