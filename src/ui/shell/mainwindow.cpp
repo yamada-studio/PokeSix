@@ -107,11 +107,6 @@ MainWindow::MainWindow(QWidget *parent)
         const Page page = pages[i];
         connect(shortcut, &QShortcut::activated, this, [this, page] { open(page); });
     }
-    QShortcut *search = new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_K), shell);
-    search->setContext(Qt::WidgetWithChildrenShortcut);
-    connect(search, &QShortcut::activated, this,
-            [this] { m_appBar->searchField()->setFocus(Qt::ShortcutFocusReason); });
-
     qCInfo(lcUi) << "MainWindow initialized";
 }
 

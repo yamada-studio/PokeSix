@@ -27,7 +27,7 @@
     <name>com::yamada::studio::AppBar</name>
     <message>
         <source>포켓몬 · 기술 · 아이템 검색</source>
-        <translation>ポケモン・わざ・どうぐを検索</translation>
+        <translation type="vanished">ポケモン・わざ・どうぐを検索</translation>
     </message>
 </context>
 <context>
