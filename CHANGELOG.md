@@ -397,6 +397,12 @@ and the project uses [Semantic Versioning](https://semver.org/).
   data grows to 28.9 MB). Moves introduced in generation 9 still lack Korean text in PokéAPI.
 
 ### Changed
+- The HM-shuttle dialog: the shuttle's icon fits inside the pick button (36px, with a breath
+  before the name), the coverage column is titled "채용" and shows each carrying member as a
+  small box icon + name instead of "본편: 이름" text.
+- The share image no longer shows white boxes around the cards and the analysis panel: it is
+  composed with `render(DrawChildren)` instead of `grab()`, so the unpainted ring insets and
+  rounded corners keep the paper background.
 - The generation button reads [▾ 4세대] (chevron first), and its dropdown is a custom popup the
   same width as the button: each row's background is that generation's color stripes (replacing
   the small swatch icons), rows are separated by a 1px ink line except after the last, the

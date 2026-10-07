@@ -1218,12 +1218,12 @@ void SquadPage::importSquad()
 
 QPixmap SquadPage::squadImage()
 {
-    // 화면에 그려진 카드 영역 · 분석 창을 그대로 떠서 제목 띠와 함께 한 장으로 엮는다
-    const QPixmap cards = m_cardArea->grab();
-    const QPixmap analysis = m_analysis->grab();
+    // 화면에 그려진 카드 영역 · 분석 창을 그대로 떠서 제목 띠와 함께 한 장으로 엮는다.
+    // grab() 대신 render(DrawChildren): grab은 위젯이 칠하지 않은 자리(카드의 테 자리 · 둥근
+    // 모서리 밖)를 흰 바탕으로 채워 버린다 — 배경 없이 그려야 종이색이 비친다
     const qreal dpr = devicePixelRatioF();
-    const QSizeF cardSize = cards.deviceIndependentSize();
-    const QSizeF analysisSize = analysis.deviceIndependentSize();
+    const QSizeF cardSize = m_cardArea->size();
+    const QSizeF analysisSize = m_analysis->size();
     const int pad = 20;
     const int titleHeight = 56;
     const int width = int(cardSize.width() + analysisSize.width()) + pad * 3;
@@ -1243,8 +1243,9 @@ QPixmap SquadPage::squadImage()
     painter.setPen(QColor(tok::kText3));
     painter.drawText(QRect(pad, 0, width - pad * 2, titleHeight), Qt::AlignRight | Qt::AlignVCenter,
                      tr("PokeSix · %1세대 규칙").arg(m_session->generation()));
-    painter.drawPixmap(QPointF(pad, titleHeight), cards);
-    painter.drawPixmap(QPointF(pad * 2 + cardSize.width(), titleHeight), analysis);
+    m_cardArea->render(&painter, QPoint(pad, titleHeight), QRegion(), QWidget::DrawChildren);
+    m_analysis->render(&painter, QPoint(pad * 2 + int(cardSize.width()), titleHeight), QRegion(),
+                       QWidget::DrawChildren);
     return image;
 }
 

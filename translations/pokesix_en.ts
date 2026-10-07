@@ -895,7 +895,7 @@ to see its details here</translation>
     </message>
     <message>
         <source>셔틀이 들어요 — %1의 기술 칸을 비워도 돼요</source>
-        <translation>The shuttle carries it — %1 can free that move slot</translation>
+        <translation type="vanished">The shuttle carries it — %1 can free that move slot</translation>
     </message>
     <message>
         <source>셔틀이 들어요</source>
@@ -903,7 +903,7 @@ to see its details here</translation>
     </message>
     <message>
         <source>본편: %1</source>
-        <translation>Main team: %1</translation>
+        <translation type="vanished">Main team: %1</translation>
     </message>
     <message>
         <source>아무도 안 들어요</source>
@@ -919,11 +919,23 @@ to see its details here</translation>
     </message>
     <message>
         <source>누가 드나</source>
-        <translation>Who carries it</translation>
+        <translation type="vanished">Who carries it</translation>
     </message>
     <message>
         <source>배울 수 없어요</source>
         <translation>cannot learn it</translation>
+    </message>
+    <message>
+        <source>채용</source>
+        <translation>Carried by</translation>
+    </message>
+    <message>
+        <source>셔틀이 들어요 ·</source>
+        <translation>The shuttle carries it ·</translation>
+    </message>
+    <message>
+        <source>— 기술 칸을 비워도 돼요</source>
+        <translation>— that move slot can be freed</translation>
     </message>
 </context>
 <context>
