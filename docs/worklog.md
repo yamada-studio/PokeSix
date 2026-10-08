@@ -24,11 +24,8 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 
 ### 진행 중
 
-- **H1 — 세이브(.sav) 파티 읽기, 사용자 구현 중**(2026-10-08 시작). 브랜치 **`feat/h1-save-reader`**(뼈대 · 테스트 ·
-  CLI 도구 틀) — 다른 머신에서 이어 하려면 사용자가 `git push -u origin feat/h1-save-reader` 후 그쪽에서 switch.
-  가이드 [h1-save-reader.md](guides/h1-save-reader.md), 결정 [ADR 0018](decisions/0018-save-import-read-only.md).
-  이 브랜치의 save 테스트 24개는 사용자가 TODO를 채울 때까지 **일부러 빨강**이다 — main에 merge하지 않는다.
-  사용자가 막혀서 물어보면 가이드의 CP 번호로 진단한다(구현을 대신 쓰지 않는다 — CLAUDE.md §1)
+- **H2 — 스쿼드 불러오기가 `.sav`를 받는다**(2026-10-08 시작). 브랜치 `feat/h2-squad-sav-import`, 가이드
+  [h2-squad-sav-import.md](guides/h2-squad-sav-import.md). H1(core 세이브 파서)은 main에 merge됨
 
 ### 열린 일 (작은 것부터)
 
@@ -55,10 +52,20 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 ### Linux (Ubuntu 24.04)
 
 - `~/Qt/6.8.3/gcc_64`, `QT_ROOT_DIR`은 `~/.bashrc`. 142개 커밋(Phase G lite · Phase T · 스쿼드 기능)은 여기서 이루어졌다
+- melonDS 1.1(AppImage)은 `~/melonDS-1.1/`, 4세대 ROM · 세이브는 `~/melonDS-1.1/gen4/`(melonDS가 같은 이름의 `.nds` ↔ `.sav`를 짝짓는다).
+  2026-10-08 현재 `포켓몬스터 소울실버(K).sav`(한국판, 512 KiB)만 있다 — Pt 세이브는 아직 없다. H1 디버깅은 스냅샷 복사본
+  `~/pokesix-saves/soulsilver.sav`로 한다(게임에서 저장하면 원본의 카운터 · 슬롯이 바뀌므로)
 
 ---
 
 ## 최근 세션 (역순)
+
+### 2026-10-08 — H1 완료 · merge, H2 시작 (Linux 세션)
+
+- H1 진단 통과(경고 0 · 테스트 131 · RealSave(SS) 통과 · clang-format): 사용자 구현 CP1–CP5 + 로그. 채운 TODO 주석은 지우고 merge
+- 진단 중 발견해 고친 것: 파일 밖 footer가 CRC 0 = 0으로 "맞음"이 되던 뼈대 버그(`BlockFooter::inFile`), 도구가 512 KiB 미만 파일에서 멈추지 않던 것
+- 사용자 기억의 스쿼드와 비교: 기술 24 · 특성 6 · 성격(홍수몬) 전부 일치, 파티 순서와 기술 칸 순서만 다름(세이브가 게임 순서)
+- VS Code 디버깅 실습: 개인 `.vscode/launch.json` · `tasks.json`(git 제외) — 세이브 도구 · core 테스트 · 앱 세 설정
 
 ### 2026-10-08 — docs/data/ 세이브 · PK4 바이트 지도 (Linux 세션)
 
@@ -86,7 +93,7 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 - 뼈대: `src/core/save/`(savebytes · saveblock · pkmcodec · partyreader — 헤더 완성, 몸통 TODO), 도구
   `tools/readsav`(`pokesix-read-sav`, `pokesix.save` 로그 줄이 TODO), 테스트 32개(+ RealSave 2개는 환경 변수 있을 때만).
   테스트는 scratch의 버리는 참조 구현으로 32/32 통과 확인, 도구도 합성 세이브로 출력 확인(가이드의 기대 출력이 그것)
-- **미확인**: footer 끝 − 0x0C가 블록 크기인지(Bulbapedia 기준, PKHeX에선 미확인) — 가이드 CP0에서 사용자 실파일로 확인하게 했다.
+- ~~미확인: footer 끝 − 0x0C가 블록 크기인지~~ → 사용자 CP0(SS 한국판 실파일)으로 확인: `28 f6 00 00` = 0xF628. 같은 출력에서 HGSS는 major가 두 슬롯 모두 0이고 저장 횟수가 minor(100 · 99)에 있음을 확인 — 주석 · 가이드 교정.
   한국판 매직 0x20070903 외 레이아웃 차이는 없다고 보고 있음(PKHeX 기준)
 
 ### 2026-10-08 — 빌드 식별 문자열 · Windows .msi (Linux 세션)

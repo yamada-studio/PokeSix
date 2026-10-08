@@ -1,0 +1,132 @@
+#pragma once
+
+// 테스트용 합성 세이브. 진짜 세이브는 리포에 넣지 않으므로(개인 데이터 · 게임 데이터) 테스트가
+// 알려진 포켓몬으로 세이브를 직접 만든다 — 파서의 역방향(평문 → 섞기 → 암호화 → footer).
+//
+// 낮은 층 함수(crc16Ccitt · cryptArray · pkmChecksum)는 각자의 테스트가 **외부 검증 값**으로 먼저
+// 확인한다(savebytes_test · pkmcodec_test). 이 도우미는 그 함수들을 그대로 써서 위층(블록 ·
+// 파티) 테스트용 바이트를 만든다. 그래서 CP 순서대로 통과시키면 된다.
+#include "core/save/partyreader.h"
+
+#include <algorithm>
+#include <optional>
+#include <vector>
+
+namespace synth {
+using namespace com::yamada::studio::save;
+
+inline void putU16(std::span<std::uint8_t> data, std::size_t offset, std::uint16_t value)
+{
+    data[offset] = std::uint8_t(value & 0xFF);
+    data[offset + 1] = std::uint8_t(value >> 8);
+}
+
+inline void putU32(std::span<std::uint8_t> data, std::size_t offset, std::uint32_t value)
+{
+    putU16(data, offset, std::uint16_t(value & 0xFFFF));
+    putU16(data, offset + 2, std::uint16_t(value >> 16));
+}
+
+struct MemberSpec
+{
+    std::uint32_t pid = 0x12345678;
+    std::uint16_t species = 392; // 초염몽
+    std::uint16_t heldItem = 0;
+    std::uint8_t ability = 66; // 맹화
+    std::uint8_t formByte = 0; // 비트 0 운명 · 1–2 성별 · 3–7 폼
+    std::array<std::uint16_t, 4> moves {7, 53, 394, 0};
+    std::array<std::uint8_t, 6> evs {};
+    std::uint32_t iv32 = 0;
+    std::uint8_t level = 50;
+    std::uint16_t hp = 100;
+    std::uint16_t maxHp = 120;
+};
+
+// 평문 PKM(블록 A · B · C · D 순서, 체크섬 포함)
+inline Pkm plainPkm(const MemberSpec &m)
+{
+    Pkm p {};
+    putU32(p, 0x00, m.pid);
+    putU16(p, 0x08, m.species);
+    putU16(p, 0x0A, m.heldItem);
+    p[0x15] = m.ability;
+    for (std::size_t k = 0; k < 6; ++k)
+        p[0x18 + k] = m.evs[k];
+    for (std::size_t k = 0; k < 4; ++k)
+        putU16(p, 0x28 + 2 * k, m.moves[k]);
+    putU32(p, 0x38, m.iv32);
+    p[0x40] = m.formByte;
+    p[0x8C] = m.level;
+    putU16(p, 0x8E, m.hp);
+    putU16(p, 0x90, m.maxHp);
+    putU16(p, 0x06, pkmChecksum(p));
+    return p;
+}
+
+// 세이브에 들어 있는 모양: 블록을 PID 순서로 섞고 두 영역을 암호화한다
+inline Pkm encodePkm(const Pkm &plain)
+{
+    Pkm out = plain;
+    const std::uint32_t pid = readU32(plain, 0x00);
+    const std::uint16_t checksum = readU16(plain, 0x06);
+    const int s = int(((pid >> 13) & 0x1F) % 24); // 파서의 shuffleIndex와 독립으로 계산
+    for (std::size_t i = 0; i < 4; ++i) {
+        const std::size_t pos = kBlockPosition[std::size_t(s)][i];
+        std::copy_n(plain.begin() + std::ptrdiff_t(kHeaderSize + i * kBlockSize), kBlockSize,
+                    out.begin() + std::ptrdiff_t(kHeaderSize + pos * kBlockSize));
+    }
+    cryptArray(std::span(out).subspan(kHeaderSize, kBlocksSize), checksum);
+    cryptArray(std::span(out).subspan(kStoredSize, kPartyPkmSize - kStoredSize), pid);
+    return out;
+}
+
+struct SlotSpec
+{
+    std::uint32_t major = 1;
+    std::uint32_t minor = 0;
+    std::vector<MemberSpec> party = {};
+    bool corrupt = false; // CRC를 쓴 뒤 데이터 한 바이트를 바꾼다
+};
+
+inline void writeSlot(std::vector<std::uint8_t> &save, std::size_t start, const SaveLayout &layout,
+                      const SlotSpec &slot)
+{
+    const std::span block(save.data() + start, layout.generalSize);
+    std::fill(block.begin(), block.end(), std::uint8_t {0});
+    block[layout.partyCountOffset] = std::uint8_t(slot.party.size());
+    for (std::size_t i = 0; i < slot.party.size(); ++i) {
+        const Pkm pkm = encodePkm(plainPkm(slot.party[i]));
+        std::copy(pkm.begin(), pkm.end(),
+                  block.begin() + std::ptrdiff_t(layout.partyOffset + i * kPartyPkmSize));
+    }
+    const std::size_t end = layout.generalSize;
+    putU32(block, end - 0x14, slot.major);
+    putU32(block, end - 0x10, slot.minor);
+    putU32(block, end - 0x0C, std::uint32_t(layout.generalSize));
+    putU32(block, end - 0x08, 0x20060623);
+    putU16(block, end - 0x02, crc16Ccitt(block.first(layout.generalSize - layout.footerSize)));
+    if (slot.corrupt)
+        block[0x10] ^= 0xFF;
+}
+
+// 슬롯을 비워 두면(nullopt) 한 번도 안 쓴 플래시처럼 0xFF로 남는다
+inline std::vector<std::uint8_t> buildSave(const SaveLayout &layout,
+                                           const std::optional<SlotSpec> &slot0,
+                                           const std::optional<SlotSpec> &slot1 = std::nullopt)
+{
+    std::vector<std::uint8_t> save(kSaveSize, 0xFF);
+    if (slot0)
+        writeSlot(save, 0, layout, *slot0);
+    if (slot1)
+        writeSlot(save, kSlotSize, layout, *slot1);
+    return save;
+}
+
+inline const SaveLayout &layoutOf(std::string_view versionGroup)
+{
+    for (const SaveLayout &layout : kGen4Layouts)
+        if (layout.versionGroup == versionGroup)
+            return layout;
+    return kGen4Layouts[0];
+}
+} // namespace synth

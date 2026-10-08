@@ -6,6 +6,18 @@ and the project uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- 4th-generation save reading in core (`src/core/save/`, H1 — written by the user following the
+  H1 guide): CRC-16 block validation and newest-slot selection, game detection from the save alone
+  (DP / Pt / HGSS), Pokémon record decryption (LCRNG and block unshuffling, checksum-verified) and
+  party parsing (species, form, item, ability, nature, moves, IVs, EVs, level, HP). Read-only by
+  design (ADR 0018). A real Korean SoulSilver save decodes to the party as played.
+- `pokesix-read-sav` developer tool: prints each parser stage through the `pokesix.save` logging
+  category (`--verbose` for footer and per-member decode lines, `--hex` for decrypted records) and
+  refuses files that are not 4th-gen saves.
+- Tests: 32 parser tests built on a synthetic-save generator with outside reference values, plus
+  `RealSave` tests that run against your own saves via `POKESIX_SAVE_PT` / `POKESIX_SAVE_HGSS`.
+
 ### Documentation
 - `docs/data/`: byte and bit maps of 4th-generation save files per series (DP, Pt, HGSS — block
   sizes, footers, trainer info, bag pouches, PC boxes) and of the PK4 Pokémon record (every field,

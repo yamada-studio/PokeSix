@@ -4,6 +4,12 @@ add_executable(pokesix_core_tests
     squadanalyzer_test.cpp
     movereach_test.cpp
     resourceledger_test.cpp
+    # H1 세이브 읽기 — CP마다 한 파일. 합성 세이브 도우미는 syntheticsave.h
+    savebytes_test.cpp
+    saveblock_test.cpp
+    pkmcodec_test.cpp
+    partyreader_test.cpp
+    realsave_test.cpp
 )
 pokesix_target_defaults(pokesix_core_tests)
 

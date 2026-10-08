@@ -118,7 +118,7 @@ xxd -s 0xCF18 -l 0x14 ~/pokesix-saves/platinum.sav
 |---|---|---|
 | −0x14 | `xx xx xx xx` | major — 저장 카운터 |
 | −0x10 | `xx xx xx xx` | minor |
-| −0x0C | `2c cf 00 00`? | 블록 크기 — **0xCF2C가 나오는지 확인**(주석이 "CP0에서 확인"이라고 적은 칸) |
+| −0x0C | `2c cf 00 00` | 블록 크기 = 0xCF2C (SS 실파일에서 `28 f6 00 00` = 0xF628로 확인됨) |
 | −0x08 | `23 06 06 20` 또는 `03 09 07 20` | 매직 0x20060623(일본 · 해외판) · 0x20070903(한국판) |
 | −0x02 | `xx xx` | 저장된 CRC |
 
@@ -128,12 +128,14 @@ xxd -s 0xCF18 -l 0x14 ~/pokesix-saves/platinum.sav
 xxd -s $((0x40000 + 0xCF18)) -l 0x14 ~/pokesix-saves/platinum.sav
 ```
 
-두 major 중 **큰 쪽이 지금 슬롯**이다(보통 1 차이). 노트에 적어 둔다: "Pt: 슬롯 ? 가 최신, major = ?". CP2의 정답이다.
+두 슬롯의 (major, minor)를 비교해 **큰 쪽이 지금 슬롯**이다 — major부터, 같으면 minor(보통 1 차이). 노트에 적어 둔다:
+"Pt: 슬롯 ? 가 최신, 카운터 = ?". CP2의 정답이다.
 
 ### 확인 3 — SS(HGSS)
 
 HGSS 일반 블록은 `0xF628`, footer는 0x10바이트다. 그래도 카운터는 세 게임 모두 **끝 − 0x14**부터 읽는다(PKHeX의 판정
-규칙). HGSS에서는 그 칸이 footer(0x10) 바로 앞, CRC 범위 안에 놓인다 — 내 파일에서 두 슬롯의 이 값이 1 차이로 보이는지 확인한다:
+규칙). HGSS에서는 그 칸이 footer(0x10) 바로 앞, CRC 범위 안에 놓인다. 실제 SS 파일에서는 **major가 두 슬롯 모두 0이고
+저장 횟수는 minor(끝 − 0x10)에 있었다**(예: 100 · 99) — 그래서 언제나 (major, minor) 쌍으로 비교한다:
 
 ```bash
 xxd -s $((0xF628 - 0x14)) -l 0x14 ~/pokesix-saves/soulsilver.sav
@@ -500,7 +502,7 @@ $RS ~/pokesix-saves/soulsilver.sav
 [build.md §VS Code](../build.md)대로 `launch.json` 없이 CMake Tools가 디버거를 붙인다.
 
 1. 상태 막대에서 **Launch Target**을 `pokesix-read-sav`로 고른다
-2. 인자는 `.vscode/settings.json`(git 제외)에:
+2. 인자는 **사용자 설정**(Ctrl+, → User 탭 → 오른쪽 위 "설정 열기(JSON)")에 — 리포의 `.vscode/settings.json`은 공유 파일이라 개인 경로를 넣지 않는다:
    ```json
    "cmake.debugConfig": {
        "args": ["/home/<계정>/pokesix-saves/platinum.sav", "-v"]
