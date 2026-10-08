@@ -47,16 +47,19 @@ void logFooters(save::Bytes bytes)
             //   게임(layout.versionGroup — QString::fromUtf8(layout.versionGroup.data(),
             //   qsizetype(layout.versionGroup.size()))) · 슬롯(start) · major · minor · size ·
             //   magic(hex) · CRC stored/computed(hex(…, 4)) · ok(footer.crcOk())
-            qCDebug(lcSave).noquote() << QStringLiteral("%1 slot@%2 major=%3 minor=%4 size=%5 magic=%6 crc=%7/%8 %9")
-                .arg(QString::fromUtf8(layout.versionGroup.data(), qsizetype(layout.versionGroup.size())), -20)
-                .arg(hex(start, 5))
-                .arg(footer.major)
-                .arg(footer.minor)
-                .arg(hex(footer.size, 0))
-                .arg(hex(footer.magic, 8))
-                .arg(hex(footer.storedCrc, 4))
-                .arg(hex(footer.computedCrc, 4))
-                .arg(footer.crcOk() ? "OK" : "--");
+            qCDebug(lcSave).noquote()
+                    << QStringLiteral("%1 slot@%2 major=%3 minor=%4 size=%5 magic=%6 crc=%7/%8 %9")
+                               .arg(QString::fromUtf8(layout.versionGroup.data(),
+                                                      qsizetype(layout.versionGroup.size())),
+                                    -20)
+                               .arg(hex(start, 5))
+                               .arg(footer.major)
+                               .arg(footer.minor)
+                               .arg(hex(footer.size, 0))
+                               .arg(hex(footer.magic, 8))
+                               .arg(hex(footer.storedCrc, 4))
+                               .arg(hex(footer.computedCrc, 4))
+                               .arg(footer.crcOk() ? "OK" : "--");
         }
     }
 }
@@ -101,8 +104,10 @@ int main(int argc, char *argv[])
                                         .arg(path)
                                         .arg(raw.size())
                                         .arg(hex(std::uint64_t(raw.size()), 0));
-    if (bytes.size() < save::kSaveSize)
-        qCWarning(lcSave) << "smaller than a 4th-gen save (512 KiB)";
+    if (bytes.size() < save::kSaveSize) {
+        qCCritical(lcSave) << "smaller than a 4th-gen save (512 KiB) — not a save file";
+        return 2;
+    }
 
     // CP2: footer → 게임 · 슬롯
     logFooters(bytes);
@@ -143,13 +148,55 @@ int main(int argc, char *argv[])
         // TODO(CP4-log) qCInfo().noquote() 한 줄 요약. 예)
         //   "1  #392 Lv.50  HP 100/120  item 0  ability 66  nature 3  moves 7 53 394 0"
         //   알이면 끝에 " (egg)". 폼이 0이 아니면 "#479-1"처럼
-        (void)member;
+        qCInfo(lcSave).noquote() << QStringLiteral("%1  #%2%3 Lv.%4  HP %5/%6  item %7  ability %8 "
+                                                   " nature %9  moves %10 %11 %12 %13")
+                                                    .arg(i + 1)
+                                                    .arg(member.species)
+                                                    .arg(member.form != 0
+                                                                 ? QStringLiteral("-%1").arg(
+                                                                           member.form)
+                                                                 : QString())
+                                                    .arg(member.level)
+                                                    .arg(member.hp)
+                                                    .arg(member.maxHp)
+                                                    .arg(member.heldItem)
+                                                    .arg(member.ability)
+                                                    .arg(member.nature)
+                                                    .arg(member.moves[0])
+                                                    .arg(member.moves[1])
+                                                    .arg(member.moves[2])
+                                                    .arg(member.moves[3])
+                                            + (member.egg ? QStringLiteral(" (egg)") : QString());
     }
 
     // CP5: 위의 수동 경로와 readParty(앱이 쓸 한 번에 읽기)가 같은 답을 내는지
     const auto party = save::readParty(bytes);
-    // TODO(CP5-log) party가 없으면 qCCritical 후 return 3. 있으면 qCInfo로
-    //   "readParty: <게임> · <멤버 수> members" — 멤버 수가 count와 다르면 qCWarning
-    (void)party;
+
+    if (!party.has_value()) {
+        qCCritical(lcSave) << "readParty failed — run with --verbose to see why";
+        return 3;
+    }
+    const std::size_t found = party->members.size();
+    qCInfo(lcSave).noquote() << QStringLiteral("readParty: %1 · %2 members")
+                                        .arg(QString::fromUtf8(
+                                                party->layout->versionGroup.data(),
+                                                qsizetype(party->layout->versionGroup.size())))
+                                        .arg(found);
+    if (found != std::size_t(count))
+        qCWarning(lcSave) << "readParty found" << found << "members, the step-by-step path"
+                          << count;
+    for (std::size_t i = 0; i < std::size_t(count) && i < 6; ++i) {
+        const std::size_t at = general + layout->partyOffset + i * save::kPartyPkmSize;
+        const save::DecodedPkm pkm = save::decodePkm(bytes.subspan(at, save::kPartyPkmSize));
+        const save::ReadMember member1 = save::parseMember(pkm);
+        if (i >= found) {
+            qCWarning(lcSave) << "member" << i + 1 << "missing in readParty";
+            continue;
+        }
+        const save::ReadMember &member2 = party->members[i];
+        if (member1.pid != member2.pid)
+            qCWarning(lcSave) << "member" << i + 1 << "PID mismatch" << hex(member1.pid)
+                              << "!=" << hex(member2.pid);
+    }
     return 0;
 }

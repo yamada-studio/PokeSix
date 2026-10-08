@@ -74,6 +74,15 @@ TEST(SaveBlock, BlankSaveHasNoActiveBlock)
     EXPECT_EQ(activeGeneralBlock(buildSave(kPlatinum, std::nullopt), kPlatinum), std::nullopt);
 }
 
+TEST(SaveBlock, BlockOutsideTheFileIsNeverValid)
+{
+    // 파일보다 큰 블록: 읽지 못한 footer는 저장 CRC · 계산 CRC가 둘 다 0이지만 "맞음"이 아니어야
+    // 한다
+    const std::vector<std::uint8_t> tiny(12, 0);
+    EXPECT_FALSE(readFooter(tiny, 0, kPlatinum).crcOk());
+    EXPECT_EQ(activeGeneralBlock(tiny, kPlatinum), std::nullopt);
+}
+
 TEST(SaveBlock, WrongGameLayoutNeverValidates)
 {
     // 블록 크기가 다르면 CRC 범위 · footer 위치가 달라져 맞을 수 없다 → 이것이 게임 판별의 근거

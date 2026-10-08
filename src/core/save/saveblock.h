@@ -50,7 +50,10 @@ struct BlockFooter
     std::uint32_t magic = 0; // 끝 − 0x08: 0x20060623(일본 · 해외판) · 0x20070903(한국판)
     std::uint16_t storedCrc = 0;   // 끝 − 0x02
     std::uint16_t computedCrc = 0; // crc16Ccitt([blockStart, 끝 − footerSize))
-    bool crcOk() const { return storedCrc == computedCrc; }
+    // 블록이 파일 안에 있어 실제로 읽었다. 아니면 위 값이 전부 0이라 CRC가 "맞아" 보이므로 따로
+    // 둔다
+    bool inFile = false;
+    bool crcOk() const { return inFile && storedCrc == computedCrc; }
 };
 
 BlockFooter readFooter(Bytes save, std::size_t blockStart, const SaveLayout &layout);
