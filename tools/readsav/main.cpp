@@ -2,8 +2,7 @@
 //
 // 4세대(DP · Pt · HGSS) 세이브의 파티를 core 파서로 읽어 찍는다. 파서의 단계(footer → 슬롯 →
 // PKM 풀기 → 필드 → readParty)마다 pokesix.save 카테고리로 로그를 남겨서, 어느 단계에서
-// 틀렸는지 바로 보이게 한다. 가이드: docs/guides/h1-save-reader.md — 각 CP의 "② 로그"에서
-// 아래 TODO(CPn-log)를 채운다.
+// 틀렸는지 바로 보이게 한다. 가이드: docs/guides/h1-save-reader.md, 바이트 지도: docs/data/gen4/.
 #include "core/save/partyreader.h"
 
 #include <QCommandLineParser>
@@ -43,10 +42,6 @@ void logFooters(save::Bytes bytes)
     for (const save::SaveLayout &layout : save::kGen4Layouts) {
         for (const std::size_t start : {std::size_t {0}, save::kSlotSize}) {
             const save::BlockFooter footer = save::readFooter(bytes, start, layout);
-            // TODO(CP2-log) qCDebug(lcSave).noquote() << QStringLiteral("…").arg(…) 로 한 줄:
-            //   게임(layout.versionGroup — QString::fromUtf8(layout.versionGroup.data(),
-            //   qsizetype(layout.versionGroup.size()))) · 슬롯(start) · major · minor · size ·
-            //   magic(hex) · CRC stored/computed(hex(…, 4)) · ok(footer.crcOk())
             qCDebug(lcSave).noquote()
                     << QStringLiteral("%1 slot@%2 major=%3 minor=%4 size=%5 magic=%6 crc=%7/%8 %9")
                                .arg(QString::fromUtf8(layout.versionGroup.data(),
@@ -137,17 +132,20 @@ int main(int argc, char *argv[])
     for (int i = 0; i < count && i < 6; ++i) {
         const std::size_t at = general + layout->partyOffset + std::size_t(i) * save::kPartyPkmSize;
         const save::DecodedPkm pkm = save::decodePkm(bytes.subspan(at, save::kPartyPkmSize));
-        // TODO(CP3-log) qCDebug: 몇 번째(i + 1) · 파일 위치(hex(at, 5)) · PID(hex) · shuffle 번호 ·
-        //   체크섬 stored/computed(hex(…, 4))
+        qCDebug(lcSave).noquote() << QStringLiteral(
+                                             "member %1 @%2 PID=%3 shuffle=%4 checksum=%5/%6")
+                                             .arg(i + 1)
+                                             .arg(hex(at, 5))
+                                             .arg(hex(pkm.pid, 8))
+                                             .arg(pkm.shuffle)
+                                             .arg(hex(pkm.storedChecksum, 4))
+                                             .arg(hex(pkm.computedChecksum, 4));
         if (!pkm.ok())
             qCWarning(lcSave) << "member" << i + 1 << "checksum mismatch — decryption is wrong";
         if (parser.isSet(hexDump))
             dumpHex(pkm.data);
 
         const save::ReadMember member = save::parseMember(pkm);
-        // TODO(CP4-log) qCInfo().noquote() 한 줄 요약. 예)
-        //   "1  #392 Lv.50  HP 100/120  item 0  ability 66  nature 3  moves 7 53 394 0"
-        //   알이면 끝에 " (egg)". 폼이 0이 아니면 "#479-1"처럼
         qCInfo(lcSave).noquote() << QStringLiteral("%1  #%2%3 Lv.%4  HP %5/%6  item %7  ability %8 "
                                                    " nature %9  moves %10 %11 %12 %13")
                                                     .arg(i + 1)
