@@ -15,8 +15,10 @@ compile_commands.json
 *.user
 *.user.*
 .qtcreator/
-# VS Code (공유할 설정이 생기면 예외로 추가: !.vscode/extensions.json)
-.vscode/
+# VS Code: 공유 설정 두 개만 커밋한다(IntelliSense · CMake 프리셋, 권장 확장). 나머지(launch.json 등)는 개인 것
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
 # CLion
 .idea/
 cmake-build-*/
