@@ -6,6 +6,13 @@ and the project uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Documentation
+- `docs/ui/`: a map of the whole Qt UI, surveyed from the code — the inheritance tree of all 70 UI
+  classes, every screen's layout drawn as ASCII boxes, the QObject parent-child tree of each page,
+  the signal paths between them, the model/view chains, the shared components and how tokens and
+  QSS reach widgets. It also lists the code comments that have drifted from the code and a few
+  small behavioural issues found along the way.
+
 ### Added
 - Windows gets a real installer: `PokeSix-<version>-win64.msi` (CPack's WIX generator over the
   same windeployqt install tree — start-menu shortcut, license page, in-place upgrades via a
