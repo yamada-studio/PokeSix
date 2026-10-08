@@ -72,7 +72,7 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 - 뼈대: `src/core/save/`(savebytes · saveblock · pkmcodec · partyreader — 헤더 완성, 몸통 TODO), 도구
   `tools/readsav`(`pokesix-read-sav`, `pokesix.save` 로그 줄이 TODO), 테스트 32개(+ RealSave 2개는 환경 변수 있을 때만).
   테스트는 scratch의 버리는 참조 구현으로 32/32 통과 확인, 도구도 합성 세이브로 출력 확인(가이드의 기대 출력이 그것)
-- **미확인**: footer 끝 − 0x0C가 블록 크기인지(Bulbapedia 기준, PKHeX에선 미확인) — 가이드 CP0에서 사용자 실파일로 확인하게 했다.
+- ~~미확인: footer 끝 − 0x0C가 블록 크기인지~~ → 사용자 CP0(SS 한국판 실파일)으로 확인: `28 f6 00 00` = 0xF628. 같은 출력에서 HGSS는 major가 두 슬롯 모두 0이고 저장 횟수가 minor(100 · 99)에 있음을 확인 — 주석 · 가이드 교정.
   한국판 매직 0x20070903 외 레이아웃 차이는 없다고 보고 있음(PKHeX 기준)
 
 ### 2026-10-08 — 빌드 식별 문자열 · Windows .msi (Linux 세션)

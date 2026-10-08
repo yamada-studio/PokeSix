@@ -41,9 +41,12 @@ inline constexpr std::array kGen4Layouts = {
 // 일반 블록 끝의 footer. 위치는 모두 "블록 끝"(blockStart + generalSize) 기준
 struct BlockFooter
 {
-    std::uint32_t major = 0; // 끝 − 0x14: 저장 카운터(클수록 최신)
+    // 끝 − 0x14: 저장 카운터 major. HGSS에서는 0이고 실제 저장 횟수는 minor에 있다(실파일 확인) —
+    // 그래서 항상 (major, minor) 쌍으로 비교한다
+    std::uint32_t major = 0;
     std::uint32_t minor = 0; // 끝 − 0x10: major가 같을 때 비교
-    std::uint32_t size = 0; // 끝 − 0x0C: 블록 크기(generalSize와 같아야 한다 — CP0에서 확인)
+    // 끝 − 0x0C: 블록 크기 = generalSize (SS 한국판 실파일로 확인 · 2026-10-08)
+    std::uint32_t size = 0;
     std::uint32_t magic = 0; // 끝 − 0x08: 0x20060623(일본 · 해외판) · 0x20070903(한국판)
     std::uint16_t storedCrc = 0;   // 끝 − 0x02
     std::uint16_t computedCrc = 0; // crc16Ccitt([blockStart, 끝 − footerSize))
