@@ -1,0 +1,7 @@
+{
+    // 이 리포를 열면 VS Code가 설치를 권한다(docs/build.md §6)
+    "recommendations": [
+        "ms-vscode.cmake-tools",
+        "ms-vscode.cpptools"
+    ]
+}

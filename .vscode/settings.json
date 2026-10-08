@@ -1,0 +1,14 @@
+{
+    // 리포 공유 설정 — 모든 머신에 같이 적용된다. 개인 설정(디버그 인자 · 환경 변수의 개인 경로 등)은
+    // 사용자 설정(Ctrl+, → User)에 넣는다. 자세한 건 docs/build.md §6.
+
+    // C/C++ IntelliSense를 실제 빌드와 같은 플래그(-std=c++20 · include 경로 · Qt 헤더)로 돌린다.
+    // 1순위: CMake Tools가 고른 프리셋의 정보(Linux · macOS · Windows 공통)
+    // 2순위: CMake Tools가 아직 구성 전이면 Linux 빌드가 만든 compile_commands.json(없으면 무시된다)
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/build/linux-debug/compile_commands.json",
+    "C_Cpp.default.cppStandard": "c++20",
+
+    // CMake Tools는 리포의 CMakePresets.json을 그대로 쓴다 — 빌드 폴더가 scripts/<os>/와 같다
+    "cmake.useCMakePresets": "always"
+}
