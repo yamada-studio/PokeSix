@@ -132,8 +132,8 @@ std::optional<squadfile::Portable> load(const QString &path, Repository &reposit
     portable.game = chosen;
     // TODO(H2-CP4-7)
     qCInfo(lcData).noquote() << QStringLiteral("save import: %1 · %2 members")
-        .arg(portable.game)
-        .arg(portable.squad.filled());
+                                        .arg(portable.game)
+                                        .arg(portable.squad.filled());
 
     return portable;
 }

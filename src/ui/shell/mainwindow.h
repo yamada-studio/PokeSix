@@ -36,7 +36,7 @@ private:
     QStackedWidget *m_pages = nullptr;   // 본 화면의 페이지. 순서 = Page
     AppBar *m_appBar = nullptr;
     AppState *m_state = nullptr;
-    DexPage *m_dexPage = nullptr;       // 도감 탭(목록 ↔ 상세) // object tree로 소유(this가 부모)
+    DexPage *m_dexPage = nullptr; // 도감 탭(목록 ↔ 상세) // object tree로 소유(this가 부모)
     Repository *m_repository = nullptr; // 소유하지 않는다(Application이 소유)
 
     // 처음 여는 크기: 도감 표(840) + 창 테두리 · 여백이 딱 들어가는 폭, 인트로(최소 높이 804)가 다

@@ -224,6 +224,8 @@ SquadPage::SquadPage(Repository *repository, AppState *state, QWidget *parent)
     m_scroll->viewport()->installEventFilter(this); // 크기가 정해지면 카드 높이를 맞춘다
     layout->addWidget(m_scroll, 1);
 
+    setAcceptDrops(true);
+
     // 세션이 바뀌면(편집 · 세대) 전부 다시 그린다. 언어가 바뀌면 이름 · 타입 글자만 바뀐다
     // TODO(H2-CP6-1) setAcceptDrops(true) — 이 페이지가 끌어다 놓기를 받겠다고 Qt에 알린다
     connect(m_session, &SquadSession::changed, this, &SquadPage::refresh);
@@ -1201,32 +1203,12 @@ void SquadPage::exportSquad()
 //   성공 문구는 세이브일 때 tr("✓ 세이브에서 파티를 불러왔어요")처럼 따로
 void SquadPage::importFile(const QString &path)
 {
-    (void)path;
-}
-
-void SquadPage::dragEnterEvent(QDragEnterEvent *event)
-{
-    // TODO(H2-CP6-2) event->mimeData()->urls()가 파일 하나이고(isLocalFile) 확장자가 우리가 받는 것
-    //   (pks · json · sav · dsv)이면 event->acceptProposedAction(). 아니면 아무것도 안 한다(거절)
-    QWidget::dragEnterEvent(event);
-}
-
-void SquadPage::dropEvent(QDropEvent *event)
-{
-    // TODO(H2-CP6-3) urls().constFirst().toLocalFile()을 importFile에 넘기고 acceptProposedAction()
-    QWidget::dropEvent(event);
-}
-
-void SquadPage::importSquad()
-{
-    const QString dir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
-    // 초기 내보내기가 .json이었다 — 그 파일들도 계속 읽는다
-    const QString path = QFileDialog::
-            getOpenFileName(this, tr("스쿼드 불러오기"), dir, tr("PokeSix 스쿼드 (*.pks *.json)") /* TODO(H2-CP5-2) 세이브도: ";;" 로 필터를 더하거나 한 필터에 *.sav *.dsv 추가 */);
-    if (path.isEmpty())
-        return;
     QString error;
-    const std::optional<squadfile::Portable> loaded = squadfile::load(path, &error);
+    const bool isSave = saveimport::isSaveFile(path);
+    const std::optional<squadfile::Portable> loaded
+            = isSave ? saveimport::load(path, *m_repository, &error)
+                     : squadfile::load(path, &error);
+
     if (!loaded) {
         QMessageBox::warning(this, tr("스쿼드 불러오기"), error);
         return;
@@ -1253,7 +1235,48 @@ void SquadPage::importSquad()
     if (m_state->game() != version)
         m_state->setGame(version);
     m_session->replaceSquad(loaded->squad);
-    flashStatus(tr("✓ 스쿼드를 불러왔어요"));
+
+    flashStatus(isSave ? tr("✓ 세이브에서 파티를 불러왔어요") : tr("✓ 스쿼드를 불러왔어요"));
+}
+
+void SquadPage::dragEnterEvent(QDragEnterEvent *event)
+{
+    // TODO(H2-CP6-2) event->mimeData()->urls()가 파일 하나이고(isLocalFile) 확장자가 우리가 받는 것
+    //   (pks · json · sav · dsv)이면 event->acceptProposedAction(). 아니면 아무것도 안 한다(거절)
+    QWidget::dragEnterEvent(event);
+
+    const QList<QUrl> urls = event->mimeData()->urls();
+    if (urls.size() != 1 || !urls.constFirst().isLocalFile())
+        return;
+    const QString suffix = QFileInfo(urls.constFirst().toLocalFile()).suffix().toLower();
+    static const QStringList kAccepted = {QStringLiteral("pks"), QStringLiteral("json"),
+                                          QStringLiteral("sav"), QStringLiteral("dsv")};
+
+    if (kAccepted.contains(suffix))
+        event->acceptProposedAction();
+}
+
+void SquadPage::dropEvent(QDropEvent *event)
+{
+    // TODO(H2-CP6-3) urls().constFirst().toLocalFile()을 importFile에 넘기고 acceptProposedAction()
+    QWidget::dropEvent(event);
+    if (event->mimeData()->hasUrls()) {
+        importFile(event->mimeData()->urls().constFirst().toLocalFile());
+        event->acceptProposedAction();
+    }
+}
+
+void SquadPage::importSquad()
+{
+    const QString dir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
+    // 초기 내보내기가 .json이었다 — 그 파일들도 계속 읽는다
+    const QString path = QFileDialog::getOpenFileName(
+            this, tr("스쿼드 불러오기"), dir,
+            tr("PokeSix 스쿼드 · 게임 세이브 (*.pks *.json *.sav *.dsv);;PokeSix 스쿼드 (*.pks "
+               "*.json);;게임 세이브 (*.sav *.dsv)"));
+    if (path.isEmpty())
+        return;
+    importFile(path);
 }
 
 QPixmap SquadPage::squadImage()
