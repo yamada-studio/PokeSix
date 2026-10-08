@@ -45,3 +45,8 @@ Thumbs.db
 
 # aqtinstall 이 실행 위치에 남기는 로그
 aqtinstall.log
+
+# 게임 세이브 · ROM — 개인 데이터이자 게임 데이터. 절대 커밋하지 않는다(CLAUDE.md §7, H1 가이드)
+*.sav
+*.dsv
+*.nds

@@ -24,7 +24,11 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 
 ### 진행 중
 
-- 없음. 다음 후보: Phase B(컴포넌트 갤러리 `--gallery`) 또는 E4(설정 화면). 사용자가 다음 단계를 고른다.
+- **H1 — 세이브(.sav) 파티 읽기, 사용자 구현 중**(2026-10-08 시작). 브랜치 **`feat/h1-save-reader`**(뼈대 · 테스트 ·
+  CLI 도구 틀) — 다른 머신에서 이어 하려면 사용자가 `git push -u origin feat/h1-save-reader` 후 그쪽에서 switch.
+  가이드 [h1-save-reader.md](guides/h1-save-reader.md), 결정 [ADR 0018](decisions/0018-save-import-read-only.md).
+  이 브랜치의 save 테스트 24개는 사용자가 TODO를 채울 때까지 **일부러 빨강**이다 — main에 merge하지 않는다.
+  사용자가 막혀서 물어보면 가이드의 CP 번호로 진단한다(구현을 대신 쓰지 않는다 — CLAUDE.md §1)
 
 ### 열린 일 (작은 것부터)
 
@@ -55,6 +59,18 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 ---
 
 ## 최근 세션 (역순)
+
+### 2026-10-08 — H1 시작: 세이브 읽기 설계 확정 · 가이드 (Linux 세션)
+
+- 사용자 결정: 세이브 화면을 새로 만들지 않고 **스쿼드 불러오기가 `.sav`를 받는다**, 읽기 전용(편집 · 내보내기 없음) →
+  [ADR 0018](decisions/0018-save-import-read-only.md). 파서는 사용자가 직접(가이드 + 로그 + 디버그 CLI 단계별)
+- overlay-design.md §5 수치 교정(PKHeX 대조): 파티 수 DP 0x94 · Pt 0x9C · HGSS 0x94, 파티 DP 0x98 · Pt 0xA0 · HGSS 0x98,
+  일반 블록 HGSS 0xF628(앞선 판의 0xF700은 보관 블록 위치), footer 카운터는 세 게임 모두 끝 − 0x14 · − 0x10, CRC-16/CCITT-FALSE
+- 뼈대: `src/core/save/`(savebytes · saveblock · pkmcodec · partyreader — 헤더 완성, 몸통 TODO), 도구
+  `tools/readsav`(`pokesix-read-sav`, `pokesix.save` 로그 줄이 TODO), 테스트 32개(+ RealSave 2개는 환경 변수 있을 때만).
+  테스트는 scratch의 버리는 참조 구현으로 32/32 통과 확인, 도구도 합성 세이브로 출력 확인(가이드의 기대 출력이 그것)
+- **미확인**: footer 끝 − 0x0C가 블록 크기인지(Bulbapedia 기준, PKHeX에선 미확인) — 가이드 CP0에서 사용자 실파일로 확인하게 했다.
+  한국판 매직 0x20070903 외 레이아웃 차이는 없다고 보고 있음(PKHeX 기준)
 
 ### 2026-10-08 — 빌드 식별 문자열 · Windows .msi (Linux 세션)
 
