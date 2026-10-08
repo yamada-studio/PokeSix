@@ -1062,7 +1062,11 @@ int Repository::natureIdForGameIndex(int gameIndex)
     // 붙은 자리:
     //   query.prepare("SELECT id FROM natures WHERE game_index = :index");
     //   query.bindValue(":index", gameIndex);  →  exec()와 next()가 성공하면 query.value(0).toInt()
-    (void)gameIndex;
+    query.prepare(QStringLiteral("SELECT id FROM natures WHERE game_index = :index"));
+    query.bindValue(QStringLiteral(":index"), gameIndex);
+    if (query.exec() && query.next()) {
+        return query.value(0).toInt();
+    }
     return 0;
 }
 
@@ -1072,8 +1076,13 @@ int Repository::itemIdForGameIndex(int generation, int gameIndex)
         return 0;
     QSqlQuery query(QSqlDatabase::database(m_connection));
     // TODO(H2-CP3-2) item_generations에서 generation과 game_index가 맞는 줄의 item_id (자리 두 개)
-    (void)generation;
-    (void)gameIndex;
+    query.prepare(QStringLiteral("SELECT item_id FROM item_generations "
+                                 "WHERE generation = :generation AND game_index = :index"));
+    query.bindValue(QStringLiteral(":generation"), generation);
+    query.bindValue(QStringLiteral(":index"), gameIndex);
+    if (query.exec() && query.next()) {
+        return query.value(0).toInt();
+    }
     return 0;
 }
 
@@ -1083,7 +1092,12 @@ int Repository::defaultPokemonId(int speciesId)
         return 0;
     QSqlQuery query(QSqlDatabase::database(m_connection));
     // TODO(H2-CP3-3) pokemon에서 species_id = :species AND is_default = 1 인 줄의 id
-    (void)speciesId;
+    query.prepare(QStringLiteral(
+            "SELECT id FROM pokemon WHERE species_id = :species_id AND is_default = 1"));
+    query.bindValue(QStringLiteral(":species_id"), speciesId);
+    if (query.exec() && query.next()) {
+        return query.value(0).toInt();
+    }
     return 0;
 }
 

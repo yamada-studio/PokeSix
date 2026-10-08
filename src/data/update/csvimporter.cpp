@@ -742,13 +742,14 @@ bool CsvImporter::importItems(QSqlDatabase &db)
     // TODO(H2-CP2-4) game_index 칸도 넣는다: INSERT 문에 칸 · ? 하나씩, 읽는 CSV 칸에 "game_index",
     //   exec 인자에 v[2].toInt()
     Insert generations(db, QStringLiteral("INSERT OR IGNORE INTO item_generations (item_id, "
-                                          "generation) VALUES (?, ?)"));
+                                          "generation, game_index) VALUES (?, ?, ?)"));
     if (!generations.isValid())
         return fail(generations.error());
     return forEachRecord(QStringLiteral("item_game_indices"),
-                         {QStringLiteral("item_id"), QStringLiteral("generation_id")},
+                         {QStringLiteral("item_id"), QStringLiteral("generation_id"),
+                          QStringLiteral("game_index")},
                          [&](const QStringList &v) {
-                             return generations.exec({v[0].toInt(), v[1].toInt()})
+                             return generations.exec({v[0].toInt(), v[1].toInt(), v[2].toInt()})
                                     || fail(generations.error());
                          });
 }
@@ -1307,17 +1308,18 @@ bool CsvImporter::importNatures(QSqlDatabase &db)
         return false;
     // TODO(H2-CP2-5) game_index 칸도 넣는다(natures.csv의 "game_index" — 위와 같은 요령)
     Insert insert(db, QStringLiteral("INSERT INTO natures (id, identifier, increased_stat, "
-                                     "decreased_stat, name_ko, name_en, name_ja) "
-                                     "VALUES (?, ?, ?, ?, ?, ?, ?)"));
+                                     "decreased_stat, game_index, name_ko, name_en, name_ja) "
+                                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?)"));
     if (!insert.isValid())
         return fail(insert.error());
     return forEachRecord(QStringLiteral("natures"),
                          {QStringLiteral("id"), QStringLiteral("identifier"),
-                          QStringLiteral("increased_stat_id"), QStringLiteral("decreased_stat_id")},
+                          QStringLiteral("increased_stat_id"), QStringLiteral("decreased_stat_id"),
+                          QStringLiteral("game_index")},
                          [&](const QStringList &v) {
                              const Names &n = names.value(v[0].toInt());
                              return insert.exec({v[0].toInt(), v[1], v[2].toInt(), v[3].toInt(),
-                                                 textOrNull(n[0]), textOrNull(n[1]),
+                                                 v[4].toInt(), textOrNull(n[0]), textOrNull(n[1]),
                                                  textOrNull(n[2])})
                                     || fail(insert.error());
                          });
