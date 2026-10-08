@@ -14,6 +14,15 @@ add_library(pokesix_core STATIC
     analysis/squadanalyzer.cpp
     analysis/resourceledger.h
     analysis/resourceledger.cpp
+    # H1 — 4세대 세이브(.sav) 파티 읽기 (docs/guides/h1-save-reader.md)
+    save/savebytes.h
+    save/savebytes.cpp
+    save/saveblock.h
+    save/saveblock.cpp
+    save/pkmcodec.h
+    save/pkmcodec.cpp
+    save/partyreader.h
+    save/partyreader.cpp
 )
 add_library(PokeSix::core ALIAS pokesix_core)
 
