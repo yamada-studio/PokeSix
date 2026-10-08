@@ -24,8 +24,8 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 
 ### 진행 중
 
-- **H6 — 사용자 구현 대기**(브랜치 `feat/h6-multigen-save`, [가이드](guides/h6-multigen-save.md)). 뼈대 · 테스트는 커밋돼 있고 빨강 18개가
-  CP1–CP5를 채우면 초록이 된다. 이 브랜치는 빨강이라 main에 merge하지 않았다(가이드 · 로드맵 · data/gen5만 main에 먼저 반영).
+- **H6 — 사용자 구현 대기**(브랜치 `feat/h6-multigen-save`, [가이드](guides/h6-multigen-save.md)). 뼈대 · 테스트는 커밋돼 있고 빨강 19개가
+  CP1–CP5를 채우면 초록이 된다. 구조는 기기별 리더([ADR 0019](decisions/0019-save-readers-per-platform.md)). 이 브랜치는 빨강이라 main에 merge하지 않았다(가이드 · 로드맵 · data/gen5만 main에 먼저 반영).
   H6 뒤 후보: 폼 표 · 세이브 파일 감시 · 전투 분석 입력 넓히기([data/battle-inputs.md](data/battle-inputs.md) §4) · Phase B · E4
 
 ### 열린 일 (작은 것부터)
@@ -55,7 +55,7 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 - `~/Qt/6.8.3/gcc_64`, `QT_ROOT_DIR`은 `~/.bashrc`. 142개 커밋(Phase G lite · Phase T · 스쿼드 기능)은 여기서 이루어졌다
 - melonDS 1.1(AppImage)은 `~/melonDS-1.1/`, 4세대 ROM · 세이브는 `~/melonDS-1.1/gen4/`(melonDS가 같은 이름의 `.nds` ↔ `.sav`를 짝짓는다).
   2026-10-08 현재 `포켓몬스터 소울실버(K).sav`(한국판, 512 KiB)만 있다 — Pt 세이브는 아직 없다. H1 디버깅은 스냅샷 복사본
-  `~/pokesix-saves/soulsilver.sav`로 한다(게임에서 저장하면 원본의 카운터 · 슬롯이 바뀌므로)
+  `~/pokesix-saves/포켓몬스터 소울실버(K).sav`로 한다(게임에서 저장하면 원본의 카운터 · 슬롯이 바뀌므로)
 
 ---
 
@@ -65,9 +65,14 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 
 - 사용자 질문("4세대 하드코딩 아니지?")에서 출발: 게임 단위 판별은 표였지만 세대는 `saveimport`의 `kGeneration = 4`로 고정이었음 →
   사용자가 정한 세 단계(① 판별 ② 추출 ③ Portable 구성)로 H6 설계. overlay-design §5 · roadmap · data README 교정은 먼저 merge(e7b317f)
-- 뼈대: `saveformat.{h,cpp}`(함수 포인터 형식 표) · `gen5.{h,cpp}`(PKHeX 수치) · `ReadParty` 세대 중립화(`readGen4Party`로 개명) ·
-  PK5 220 B · 성격 `0x41` · 숨겨진 특성 `0x42` 비트 0. 테스트 Gen5 11 · SaveFormat 4 · SaveImport 3 추가
+- 첫 뼈대: `saveformat.{h,cpp}`(함수 포인터 형식 표) · `gen5.{h,cpp}`(PKHeX 수치) · `ReadParty` 세대 중립화 ·
+  PK5 220 B · 성격 `0x41` · 숨겨진 특성 `0x42` 비트 0 (→ 아래 재작업으로 대체)
 - 검증: scratch worktree의 버리는 참조 구현으로 코드 테스트 161개 전부 통과(env 검사는 그 worktree에서 빌드하지 않아 제외). worktree는 삭제
+- **구조 재작업(같은 날, 사용자 검토)**: 세대별 파일(`gen5.*` · `saveformat.*`)은 "하드코딩이 파일 단위로 옮겨 갔을 뿐"이라는 지적 →
+  기기별 클래스(`PartyReader` 부모 → `PartyNdsReader`, 파일명 `partyndsreader` — 사용자가 부모 이름을 앞에 두자고 정함) + 시리즈 표
+  `kNdsSeries` + 검증 방식 `std::variant<FooterSlots, ChecksumTable>` + `PkmFormat`(PK4 · PK5) → [ADR 0019](decisions/0019-save-readers-per-platform.md).
+  H1 코드는 로직 그대로 옮김. 사용자가 첫 뼈대에 채우던 CP1 · CP2-1(커밋 전)은 구조가 바뀌어 덮어썼다(가이드에 옮겨 간 자리 명시).
+  참조 구현으로 163개 전부 통과 + 실제 SS 세이브 결과가 H1과 동일. 빨강 19개
 - **미확인(◇)**: 5세대 수치 전부 — BW · B2W2 실파일 없음. 합성 세이브는 같은 수치로 만들었으므로 "PKHeX 수치를 맞게 옮겼다"까지만 보장한다
 
 ### 2026-10-08 — H2 완료 · merge (Linux 세션)

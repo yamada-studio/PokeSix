@@ -1,9 +1,9 @@
-# H6 — 세이브가 세대를 알려 준다 (4세대 + 5세대 BW · B2W2)
+# H6 — 세이브가 세대를 알려 준다 (기기별 리더 · 4세대 + 5세대 BW · B2W2)
 
 > 학습 루프 ① 가이드. 브랜치: `feat/h6-multigen-save` (Claude가 만들어 둠)
 > 뼈대 · 테스트는 준비돼 있다. **`// TODO(H6-CPn-m)`만 채우면 된다.** 빈칸이 있어도 빌드된다.
 > 앞 단계: [H1](h1-save-reader.md)(4세대 core 파서) · [H2](h2-squad-sav-import.md)(앱에서 불러오기) ·
-> 설계: [overlay-design.md §5](../overlay-design.md#5-세이브-파싱--core에-둔다-qt-없음) · 5세대 수치: [data/gen5/](../data/gen5/README.md)
+> 구조 결정: [ADR 0019](../decisions/0019-save-readers-per-platform.md) · 5세대 수치: [data/gen5/](../data/gen5/README.md)
 
 ## 전체 그림 — 세 단계
 
@@ -13,134 +13,188 @@ H2까지의 파서는 **게임 단위로는** 자동 판별(DP · Pt · HGSS)이
 ```
 .sav 바이트
    │
-   ① 판별   "이 파일은 몇 세대 · 어느 시리즈인가"          CP1 · CP2 · CP3
+   ① 판별   "어느 기기 · 어느 시리즈의 세이브인가"                              CP1 · CP2 · CP3
    │        readParty(save)
-   │          for (형식 : saveFormats())   4세대 → 5세대
-   │              형식.read(save)          각 형식이 자기 체크섬을 검증 — 맞는 형식은 하나뿐
+   │          for (리더 : partyReaders())        기기 — 지금은 NDS 하나
+   │            리더->read(save)
+   │              for (시리즈 : kNdsSeries)      DP · Pt · HGSS · BW · B2W2
+   │                검증 방식으로 체크섬 확인    FooterSlots(4세대식) | ChecksumTable(5세대식)
    │
-   ② 추출   그 형식의 규칙으로 파티를 꺼낸다               CP4
-   │        4세대: 슬롯 · footer · PK4 236 B          5세대: 체크섬 모음 블록 · 파티 블록 · PK5 220 B
-   │        → ReadParty { generation, versionGroup, partyOffset, members }   ← 세대와 상관없는 같은 모양
+   ② 추출   그 시리즈의 숫자로 파티를 꺼낸다                                    CP4
+   │        파티 수 · 위치 · 포켓몬 형식(PK4 236 B | PK5 220 B · 성격 칸 · 숨겨진 특성 칸)
+   │        → ReadParty { generation, versionGroup, partyOffset, members }   ← 기기 · 세대와 상관없는 같은 모양
    │
-   ③ 구성   그 세대의 번호표로 Portable을 만든다            CP5
+   ③ 구성   그 세대의 번호표로 Portable을 만든다                                 CP5
             party->generation → 버전 다수결 · 물건 번호 변환 · Portable.generation
 ```
 
-**핵심 설계 두 가지**
+### 무엇을 어디로 나눴나 ([ADR 0019](../decisions/0019-save-readers-per-platform.md))
 
-1. **파일 크기로 고르지 않는다.** 4세대도 5세대도 512 KiB다. 대신 형식마다 "이 구조로 읽으면 체크섬이 맞는가"를 본다.
-   H1에서 DP · Pt · HGSS를 가른 원리(표의 행마다 footer CRC 검증)를 **세대 단위로 한 단계 올린 것**이다.
-2. **세대 차이는 if가 아니라 표의 행이다**(CLAUDE.md §4). 6세대를 넣을 때 `if (gen == 6)`을 찾아다니지 않고 형식 표에 한 줄 더한다.
-   CAN 덤프에 빗대면: ID별 디코더 표인데, 이 파일에는 ID가 없어서 디코더마다 체크섬으로 "내 프레임인가"를 스스로 확인하는 셈이다.
+세이브 구조는 세대보다 **기기**를 따라간다(같은 기기의 게임은 같은 저장 방식을 쓴다). 그래서:
+
+| 축 | 표현 | 위치 |
+|---|---|---|
+| **기기**(NDS · 나중에 GBA · 3DS · Switch) | 클래스 — 부모 `PartyReader`의 자식 | `partyreader.h`(부모) · `partyndsreader.h`(NDS) |
+| **시리즈**(DP · Pt · HGSS · BW · B2W2) | 표의 행 — `kNdsSeries` | `partyndsreader.h` |
+| **검증 구조**(4세대식 · 5세대식) | 함수 — 구조가 다를 때만 나눈다 | `saveblock.h/.cpp` |
+| **포켓몬 형식**(PK4 · PK5) | 데이터 — `PkmFormat` 행 | `pkmcodec.h` |
+
+```
+src/core/save/
+├ savebytes.h/.cpp       readU16 · CRC — 공통
+├ pkmcodec.h/.cpp        포켓몬 암호 + PkmFormat(kPk4 · kPk5)          — 기기와 무관
+├ saveblock.h/.cpp       NDS 검증 방식: FooterSlots · ChecksumTable
+├ partyreader.h/.cpp     부모: ReadMember · ReadParty · parseMember · PartyReader · readParty
+└ partyndsreader.h/.cpp  자식: kNdsSeries(5줄) · class PartyNdsReader
+  (나중에) partygbareader · party3dsreader · partyswitchreader — 기기마다 한 쌍
+```
+
+**`if (gen == 5)`가 한 줄도 없다.** 6세대를 더할 때 4 · 5세대 코드를 건드리지 않고, 표에 줄을 더하거나 기기 리더를 한 쌍 더한다.
 
 | 단계 | | 체크포인트 | 파일 | 배우는 것 |
 |---|---|---|---|---|
-| ① 판별 | ⬜ | **CP1 공통 결과 모양** | `src/core/save/partyreader.cpp` | 세대 중립 구조체 |
-| ① 판별 | ⬜ | **CP2 형식 목록** | `src/core/save/saveformat.cpp` | 함수 포인터 표 · `constexpr std::array` · `std::span` |
-| ① 판별 | ⬜ | **CP3 5세대 판별** | `src/core/save/gen5.cpp` | 두 겹 CRC(블록 CRC + 모음 블록), 파일 밖 읽기 막기 |
-| ② 추출 | ⬜ | **CP4 5세대 파티 · PK5** | `pkmcodec.cpp` · `gen5.cpp` | 220 B 레코드, 스트림 암호의 앞부분, 세대별로 다른 칸 덮어쓰기 |
+| ① 판별 | ⬜ | **CP1 기기 리더 등록** | `partyreader.cpp` | 가상 함수 · 부모 포인터로 자식 부르기(다형성) · 함수 안의 `static` |
+| ① 판별 | ⬜ | **CP2 NDS 시리즈 판별** | `partyndsreader.cpp` | `std::variant` · `std::visit` · 오버로드 · `static` 멤버 함수 |
+| ① 판별 | ⬜ | **CP3 5세대식 검증** | `saveblock.cpp` · `partyndsreader.cpp` | 두 겹 CRC(블록 CRC + 모음 블록 사본), 파일 밖 읽기 막기 |
+| ② 추출 | ⬜ | **CP4 PK5** | `pkmcodec.cpp` · `partyreader.cpp` · `partyndsreader.cpp` | `std::optional`로 "칸이 있을 때만", 스트림 암호의 앞부분 |
 | ③ 구성 | ⬜ | **CP5 Portable** | `src/data/store/saveimport.cpp` | 상수 지우고 컴파일러에게 고칠 곳 묻기 |
-| (선택) | ⬜ | **CP6 readsav 로그** | `tools/readsav/main.cpp` | `span` 순회, 판별 과정 찍기 |
-| | ⬜ | **완료 확인** | 테스트 · 앱 | 4세대 회귀 없음 |
+| (선택) | ⬜ | **CP6 readsav 로그** | `tools/readsav/main.cpp` | 판별 과정 찍기 |
+| | ⬜ | **완료 확인** | 테스트 · 실파일 · 앱 | 4세대 회귀 없음 |
 
 ### 준비된 것 (Claude가 만들어 둠)
 
 | 파일 | 상태 |
 |---|---|
-| `src/core/save/partyreader.h` | **완성.** `ReadParty`(세대 중립) · `ReadMember`에 `hiddenAbility` · 4세대 읽기는 `readGen4Party`로 이름이 바뀜 |
-| `src/core/save/saveformat.h` | **완성.** `SaveFormat` · `saveFormats()` · `readParty()` 선언 |
-| `src/core/save/gen5.h` | **완성.** `Gen5Layout` 표(BW · B2W2) · 상수 · 함수 선언. 머리 주석이 5세대 파일 지도 |
-| `saveformat.cpp` · `gen5.cpp` · `pkmcodec.cpp` · `partyreader.cpp` · `saveimport.cpp` | 고칠 자리에 `TODO(H6-…)` |
-| `gen5.cpp`의 `infoBlockStart` | **완성**(한 줄 — 본보기) |
-| `tests/` | 새 테스트 — `Gen5` 11 · `SaveFormat` 4 · `SaveImport` 3, 기존 4세대 테스트는 새 이름에 맞춤. 일회용 참조 구현으로 전부 통과 확인 |
-| `tests/core/syntheticsave.h` | 합성 5세대 세이브 `buildGen5Save` — **진짜 BW 세이브가 없어서** 5세대는 PKHeX 수치로 만든 가짜 파일로 확인한다 |
+| `partyreader.h` | **완성.** `PartyReader` 인터페이스 · `ReadParty`(기기 중립) · `parseMember(pkm, format)` · `partyReaders()` · `readParty()` 선언 |
+| `partyndsreader.h` | **완성.** `NdsSeries` · `kNdsSeries` 5줄 · `class PartyNdsReader` 선언 |
+| `saveblock.h` | **완성.** `FooterSlots`(옛 `SaveLayout`의 블록 숫자) · `ChecksumTable` · 함수 선언 |
+| `pkmcodec.h` | **완성.** `PkmFormat` · `kPk4` · `kPk5` |
+| **옮겨 둔 H1 코드** | `readFooter` · `activeGeneralBlock`(인자 타입만 `FooterSlots`로), `parseMember`, 그리고 H1의 4세대 파티 조립을 `PartyNdsReader::readSeries`로 — **로직은 그대로** |
+| `readSeries` | 이미 짜 둔 부분: 크기 검사 · `ReadParty` 세 칸(지난번 CP1에서 쓰신 세 줄이 `series.…`로 여기 들어갔다) · 파티 수 · 반복문. 빈칸은 판별(CP2-2)과 형식(CP4-3) |
+| `tests/` | 새 테스트 + H1 테스트 옮김. `partyndsreader_test.cpp`(새) · `saveblock_test.cpp`(5세대식 추가) · `partyreader_test.cpp`(부모 쪽). 일회용 참조 구현으로 **163개 전부 통과 · 실제 소울실버 세이브 결과 동일** 확인 |
+| `tests/core/syntheticsave.h` | `seriesOf("platinum")` · `buildSave`(4세대식) · `buildTableSave`(5세대식). **진짜 BW 세이브가 없어서** 5세대는 PKHeX 수치로 만든 합성 세이브로 확인한다 |
 
-지금 상태: **테스트 18개가 빨강**(나머지 144개는 초록). CP마다 해당 테스트가 초록으로 바뀐다.
+> 첫 뼈대(세대별 `gen5.*` · `saveformat.*`)는 [ADR 0019](../decisions/0019-save-readers-per-platform.md)로 기기별 구조로 바뀌었다.
+> 거기서 채우신 CP1 세 줄은 `readSeries`의 `series.…` 세 줄로, 형식 표는 CP1-1의 리더 목록으로 자리를 옮겼다.
+
+지금 상태: **테스트 19개가 빨강**(나머지 144개는 초록). CP마다 해당 테스트가 초록으로 바뀐다.
 
 ```bash
 cmake --build --preset linux-debug
-ctest --preset linux-debug -R "PartyReader|SaveFormat|Gen5|SaveImport" --output-on-failure
+ctest --preset linux-debug -R "SaveBlock|PkmCodec|PartyReader|PartyNdsReader|SaveImport" --output-on-failure
 ```
 
 | CP | 초록으로 바뀌는 테스트 |
 |---|---|
-| CP1 | `PartyReader.ReadsAPlatinumParty` · `DetectsEachGameFromTheBlockSize` · `ReadsTheNewestSlot` (3) |
-| CP2 | `SaveFormat.ListsTheGenerationsInOrder` · `ReadsAFourthGenerationSave` + 4세대 `SaveImportTest` 넷 (6) |
-| CP3 | `Gen5.ValidatesTheInfoBlockOfItsOwnGameOnly` · `ChecksThePartyBlockCrcInBothPlaces` (2) |
-| CP4 | `Gen5.Decodes220BytePartyPokemon` · `ReadsABlackWhiteParty` · `ReadsABlack2White2Party` · `SaveFormat.ReadsAFifthGenerationSave` (4) |
+| CP1 | `PartyReader.ListsTheNdsReader` (1) |
+| CP2 | `PartyNdsReader.ReadsAPlatinumParty` · `ReadsTheNewestSlot` · `AcceptsADeSmuMEFooter` · `PartyReader.ReadsAFourthGenerationSave` + 4세대 `SaveImportTest` 넷 (8) |
+| CP3 | `SaveBlock.ValidatesTheChecksumTableOfItsOwnSeriesOnly` · `ChecksThePartyBlockCrcInBothPlaces` (2) |
+| CP4 | `PkmCodec.DecodesA220BytePk5` · `PartyReader.ReadsTheNatureAndHiddenAbilityOfAPk5` · `ReadsAFifthGenerationSave` · `PartyNdsReader.ReadsABlackWhiteParty` · `DetectsEverySeries` (5) |
 | CP5 | `SaveImport.NamesTheFifthGenerationOriginGames` · `SaveImportTest.TurnsABlackWhitePartyIntoASquad` · `PicksBlack2OrWhite2ByOrigin` (3) |
 
-`Gen5.RejectsACorruptedInfoBlock` · `NeverValidatesOutsideTheFile` · `RejectsAnEmptyParty` 같은 "거절" 테스트는 빈칸(늘 `false`)으로도 지금 초록이다.
-채운 뒤에도 **초록으로 남아 있어야** 하는 안전망이다 — 채우다가 빨강이 되면 판정이 너무 느슨한 것.
+"거절" 테스트(`RejectsACorruptedChecksumTable` · `ChecksumTableOutsideTheFileIsNeverValid` · `RejectsAPartyBlockThatDoesNotCheckOut` ·
+`NoSeriesReadsAnotherSeriesSave` · `IgnoresTheFifthGenerationBytesInAPk4` …)는 빈칸으로도 지금 초록이다.
+채운 뒤에도 **초록으로 남아 있어야** 하는 안전망이다 — 채우다가 빨강이 되면 판정이 너무 느슨하거나, 4세대에 5세대 규칙이 새어 든 것.
 
 ---
 
 # ① 판별
 
-## CP1 — 공통 결과 모양 (`partyreader.cpp`, 3줄)
+## CP1 — 기기 리더 등록 (`partyreader.cpp`)
 
-H2의 `ReadParty`는 4세대 전용 칸(`layout` · 슬롯 시작)을 들고 있었다. 이제 바깥(saveimport · readsav)은 **어느 세대인지 몰라도**
-결과를 쓸 수 있어야 하므로, 결과에는 세대와 상관없는 칸 세 개만 남겼다:
+### 새 개념: 가상 함수 인터페이스
 
 ```cpp
-struct ReadParty {
-    int generation = 0;              // 4 · 5 — ③ 단계가 이걸로 번호표를 고른다
-    std::string_view versionGroup;   // "heartgold-soulsilver" · "black-white" — PokéAPI 이름 그대로
-    std::size_t partyOffset = 0;     // 파일에서 첫 포켓몬의 위치 (로그 · 디버깅용)
-    std::vector<ReadMember> members;
+class PartyReader {                                              // 부모 — partyreader.h
+public:
+    virtual ~PartyReader() = default;
+    virtual std::string_view platform() const = 0;               // = 0: 몸통 없음, 자식이 반드시 구현
+    virtual std::optional<ReadParty> read(Bytes save) const = 0;
+};
+
+class PartyNdsReader final : public PartyReader {                // 자식 — partyndsreader.h
+public:
+    std::string_view platform() const override;                  // override: "부모의 그 함수를 구현한다"
+    std::optional<ReadParty> read(Bytes save) const override;    //   — 이름 · 인자가 틀리면 컴파일 오류로 잡아 준다
 };
 ```
 
-- `TODO(H6-CP1)`: `readGen4Party` 안에서 세 칸을 채운다. 값은 TODO 주석에 그대로 있다 — `layout`과 `general`(고른 슬롯의 일반 블록 시작)
-- `versionGroup`이 `string_view`여도 되는 이유: 가리키는 글자가 `kGen4Layouts` 표의 문자열 리터럴이라 프로그램이 끝날 때까지 살아 있다
+- `= 0`이 하나라도 있으면 **추상 클래스** — `PartyReader` 자체는 객체로 못 만든다. 모양(인터페이스)만 정한다
+- 부모 포인터 `const PartyReader *r = &nds;`로 `r->read(save)`를 부르면, **실행할 때** 실제 객체(자식)의 `read`가 불린다.
+  이게 다형성이다. 객체마다 숨은 "가상 함수 표(vtable)" 포인터가 있어서 거기서 함수를 찾는다
+- `virtual ~PartyReader() = default;` — 부모 포인터로 자식을 지울 때 자식 소멸자도 불리게 하는 관례. 상속 받을 클래스엔 늘 둔다
+- `final` — 이 클래스를 더 상속하지 않는다(NDS 안의 차이는 상속이 아니라 표의 행으로 표현하므로)
 
-확인: `ctest --preset linux-debug -R PartyReader` → 전부 초록
-
-## CP2 — 형식 목록 (`saveformat.cpp`)
-
-### 새 개념: 함수 포인터 표
-
-```cpp
-struct SaveFormat {
-    int generation = 0;
-    std::string_view name;
-    std::optional<ReadParty> (*read)(Bytes save) = nullptr;   // "Bytes를 받아 optional<ReadParty>를 주는 함수"의 주소
-};
-```
-
-`read`는 **함수를 가리키는 변수**다. `&readGen4Party`처럼 함수 이름 앞에 `&`를 붙이면 부르지 않고 주소만 담고,
-나중에 `format.read(save)`로 보통 함수처럼 부른다. ROS 2로 치면 콜백을 등록해 두는 것과 같다 — 다만 상태(캡처)가 없는 함수라
-`std::function`도, 가상 함수를 가진 클래스 계층도 필요 없다.
-
-| 선택지 | 장점 | 이 경우 |
-|---|---|---|
-| **함수 포인터 표** (추천) | `constexpr` 표 한 장, 힙 · 가상 호출 없음, 세대 추가 = 한 줄 | 형식마다 상태가 없다 — 딱 맞다 |
-| `std::function` | 람다 캡처 가능 | 캡처할 게 없다 — 무겁기만 하다 |
-| `class SaveFormat { virtual … }` | 형식마다 함수 여러 개(쓰기 · 박스 읽기 …)를 묶기 좋다 | 함수가 여럿 생기면(세이브 쓰기 · 박스) 그때 옮긴다 |
+ROS 2로 치면 **pluginlib의 base class**다. 다만 pluginlib는 실행 중에 `.so`를 찾아 올리지만, 여기는 기기가 몇 개 안 되고 미리 정해져
+있으니 **목록에 직접 적는다**(CP1-1).
 
 ### TODO
 
-- `TODO(H6-CP2-1)` 형식 표. 지금은 빈 표(`std::array<SaveFormat, 0>`) — 두 행으로 바꾼다:
+- `TODO(H6-CP1-1)` `partyReaders()` — 리더 객체와 목록을 **함수 안의 `static`**으로:
   ```cpp
-  constexpr std::array kFormats = {
-          SaveFormat {4, "4세대 NDS (DP · Pt · HGSS)", &readGen4Party},
-          SaveFormat {5, /* 이름 */, /* 5세대 읽기 함수의 주소 */},
-  };
+  static const PartyNdsReader nds;
+  static const std::array<const PartyReader *, 1> readers = {&nds};
+  return readers;   // std::array → std::span 으로 저절로 바뀐다(복사 아님, 창)
   ```
-  `std::array kFormats = {…}`처럼 크기를 안 써도 된다(C++17 CTAD — 원소 수를 컴파일러가 센다).
-  `saveFormats()`는 이미 `return kFormats;` — `std::array`가 `std::span`으로 저절로 바뀐다(복사 아님, 창)
-- `TODO(H6-CP2-2)` `readParty`: 표를 차례로 돌며 `format.read(save)`가 값을 주면 바로 그 값을 돌려준다. 끝까지 없으면 `nullopt`.
-  H1의 `for (layout : kGen4Layouts) if (auto start = …)` 와 똑같은 모양이다
+  함수 안의 `static`은 **처음 불릴 때 한 번만** 만들어지고(C++11부터 스레드 안전) 프로그램이 끝날 때까지 산다 — 그래서 그 주소를 돌려줘도 된다.
+  지역 변수(`static` 없이)였다면 함수가 끝나는 순간 사라져서, 돌려준 포인터가 허공을 가리킨다
+- `TODO(H6-CP1-2)` `readParty` — `partyReaders()`를 차례로 돌며 `reader->read(save)`가 값을 주면 바로 돌려준다. 끝까지 없으면 `nullopt`.
+  H1의 `for (layout : kGen4Layouts) if (auto start = …)`와 같은 모양이다
 
-5세대 행의 `readGen5Party`는 지금 늘 `nullopt`라서, 이 단계에서는 4세대만 읽힌다. 그래도 4세대 앱 경로가 이미 이걸 탄다 —
-`saveimport::load`가 `save::readParty`를 부르기 때문이다. 그래서 **H2 테스트 넷이 여기서 다시 초록**이 된다.
+확인: `ctest --preset linux-debug -R PartyReader.ListsTheNdsReader` → 초록. 나머지는 NDS 리더의 `read`가 아직 빈칸이라 CP2에서
 
-**순서가 중요한가?** 맞는 형식이 하나뿐이라 결과는 같다. 다만 "4세대 세이브를 5세대 규칙으로 읽으면 반드시 실패하는가"는
-테스트로 못 박아 둔다(`Gen5.IsNotFooledByAFourthGenerationSave`).
+## CP2 — NDS 안의 시리즈 판별 (`partyndsreader.cpp`)
 
-확인: `ctest --preset linux-debug -R "SaveFormat|SaveImportTest" --output-on-failure` → `ReadsAFifth…` · 5세대 SaveImport 둘을 뺀 나머지 초록
+### 새 개념: `std::variant` · `std::visit`
 
-## CP3 — 5세대 판별 (`gen5.cpp`)
+시리즈 표의 행:
+
+```cpp
+struct NdsSeries {
+    int generation;
+    std::string_view versionGroup;
+    std::variant<FooterSlots, ChecksumTable> check;   // 둘 중 "하나"가 든 상자
+    std::size_t partyCountOffset, partyOffset;        // 기준(base)에서부터 센 위치
+    const PkmFormat *pkm;
+};
+// {4, "platinum",    FooterSlots {0xCF2C, 0x14},                      0x9C,    0xA0,    &kPk4}
+// {5, "black-white", ChecksumTable {0x24000, 0x8C, 0x18E00, …},       0x18E04, 0x18E08, &kPk5}
+```
+
+`std::variant<A, B>`는 **A 또는 B 중 하나**를 담는 타입 안전한 union이다(ROS 2 메시지에는 없는 개념 — 굳이 빗대면 "type 필드 +
+필드 묶음 여러 개"를 컴파일러가 대신 관리해 주는 것). 4세대 행에는 `FooterSlots`가, 5세대 행에는 `ChecksumTable`이 든다.
+
+그 안의 것을 꺼내 쓰는 표준 방법이 `std::visit`:
+
+```cpp
+const std::optional<std::size_t> base = std::visit(
+        [&](const auto &check) { return findBase(save, check); },   // auto = 실제로 든 타입
+        series.check);
+```
+
+- 람다의 `auto` 인자는 variant에 실제로 든 타입이 된다. `check`가 `FooterSlots`면 `findBase(Bytes, const FooterSlots &)`가,
+  `ChecksumTable`이면 `findBase(Bytes, const ChecksumTable &)`가 불린다 — **이름이 같고 인자 타입만 다른 함수(오버로드)를 컴파일러가 고른다**
+- 그래서 "검증 방식마다 함수 하나"가 if 없이 된다. 6세대식 검증이 생기면 variant에 타입 하나, `findBase` 오버로드 하나를 더한다.
+  하나를 빠뜨리면 **컴파일 오류**로 알려 준다(if 사슬은 빠뜨려도 조용히 지나간다)
+
+**기준(base)**: 파티 위치는 검증이 알려 주는 "기준"에서부터 센다. 4세대식은 고른 슬롯의 일반 블록 시작(0 또는 `0x40000`),
+5세대식은 슬롯이 없으니 0(파일 시작). 그래서 표의 5세대 행은 `0x18E04` · `0x18E08`처럼 파일 기준 위치를 그대로 적는다.
+
+**`static` 멤버 함수**: `readSeries` · `findBase`는 `static`이다 — 객체 상태(`this`)를 쓰지 않으니 `PartyNdsReader::readSeries(save, series)`처럼
+객체 없이 부를 수 있다. 테스트 · readsav가 "이 시리즈로 읽어 봐"를 직접 부를 때 쓴다.
+
+### TODO
+
+- `TODO(H6-CP2-1)` `read()`: `kNdsSeries`를 차례로 `readSeries(save, series)`에 넣어 값이 나오면 돌려준다. 끝까지 없으면 `nullopt`
+- `TODO(H6-CP2-2)` `readSeries`의 판별 줄: 지금 `const std::optional<std::size_t> base;`(빈 값) — 위의 `std::visit` 줄로 바꾼다
+- `TODO(H6-CP2-3)` `findBase(save, const FooterSlots &)`: H1의 `activeGeneralBlock(save, check)`를 돌려주면 끝(한 줄)
+
+5세대 쪽 `findBase`는 아직 늘 `nullopt`라서 이 단계에서는 4세대만 읽힌다. 그래도 앱 경로(`saveimport` → `readParty`)가 이걸 타므로
+**H2 테스트 넷이 여기서 다시 초록**이 된다.
+
+확인: `ctest --preset linux-debug -R "PartyNdsReader|PartyReader|SaveImportTest" --output-on-failure` → CP2 표의 8개 초록
+
+## CP3 — 5세대식 검증 (`saveblock.cpp` · `partyndsreader.cpp`)
 
 ### 5세대 파일 지도
 
@@ -148,101 +202,95 @@ struct SaveFormat {
 .sav 512 KiB — 앞쪽 "본 세이브"(BW 0x24000 · B2W2 0x26000 바이트)만 읽는다
 0x00000 ┬ …
 0x18E00 ├ 파티 블록 (0x534 B)        +4 파티 수(u8) · +8부터 PK5 220 B × 6
-0x19336 ├ 파티 블록의 CRC (u16)      ← 저장 위치 ①
+0x19336 ├ 파티 블록의 CRC (u16)      ← 저장 위치 ①  partyCrcAt
         ├ …
 끝−0x100├ 체크섬 모음 블록 (BW 0x8C · B2W2 0x94 B)   모든 블록의 CRC를 한 곳에 다시 모은 표
-        │   +0x34 = 파티 블록 CRC의 사본           ← 저장 위치 ②
+        │   +0x34 = 파티 블록 CRC의 사본           ← 저장 위치 ②  partyCrcMirror
         └ 모음 블록 + 길이 + 0x0E = 모음 블록 자신의 CRC (u16)
-("끝" = 본 세이브 크기 — BW 0x24000 · B2W2 0x26000)
+("끝" = mainSize, 본 세이브 크기)
 ```
 
-4세대와 다른 점:
-
-| | 4세대 | 5세대 |
+| | 4세대식 `FooterSlots` | 5세대식 `ChecksumTable` |
 |---|---|---|
 | 슬롯 | 두 슬롯을 번갈아 쓴다 → 최신 판정 | 번갈아 쓰지 않는다 → 최신 판정 없음 |
 | 블록 검증 | 블록 끝 footer의 CRC 하나 | 블록 CRC + **모음 블록에 사본** — 두 곳 |
-| 게임 판별 | 일반 블록 **크기**가 시리즈마다 달라 footer 자리가 다르다 | 본 세이브 **크기**가 달라 모음 블록 자리가 다르다 |
-| CRC 계산 | CRC-16/CCITT-FALSE (`crc16Ccitt`) | **같은 함수** |
+| 시리즈 판별 | 일반 블록 **크기**가 달라 footer 자리가 다르다 | 본 세이브 **크기**가 달라 모음 블록 자리가 다르다 |
+| CRC 계산 | `crc16Ccitt` | **같은 함수** |
 
 판별 원리는 같다 — "BW라면 여기에 모음 블록이 있을 것"이라 가정하고 CRC를 맞춰 본다. 틀린 가정이면 엉뚱한 바이트를 CRC로 읽어 맞을 수 없다.
 
 ### TODO
 
-`infoBlockStart(layout)`(= `mainSize − 0x100`)은 본보기로 채워 뒀다.
+`checksumTableStart(check)`(= `mainSize − 0x100`)는 본보기로 채워 뒀다.
 
-- `TODO(H6-CP3-1)` `infoBlockValid(save, layout)`
-  1. `start = infoBlockStart(layout)`, CRC 저장 위치 `at = start + layout.infoLength + 0x0E`
+- `TODO(H6-CP3-1)` `checksumTableValid(save, check)` (`saveblock.cpp`)
+  1. `start = checksumTableStart(check)`, CRC 저장 위치 `at = start + check.tableLength + 0x0E`
   2. **먼저** `at + 2 > save.size()`면 `false` — H1 CP2에서 겪은 "파일 밖을 0으로 읽으면 0 = 0으로 맞아 보인다"를 막는다
-     (`std::span`의 `operator[]`는 범위 검사를 하지 않는다 — 넘으면 정의되지 않은 동작)
-  3. `crc16Ccitt(save.subspan(start, layout.infoLength)) == readU16(save, at)`
-- `TODO(H6-CP3-2)` `partyBlockValid(save, layout)`
-  1. 같은 요령으로 파일 크기부터 확인(파티 CRC 위치 `kGen5PartyCrc + 2`와 사본 위치 둘 다)
-  2. `crc = crc16Ccitt(save.subspan(kGen5PartyBlock, kGen5PartyBlockSize))`
-  3. `crc == readU16(save, kGen5PartyCrc)` **그리고** `crc == readU16(save, infoBlockStart(layout) + kGen5PartyCrcMirror)`
-- `TODO(H6-CP3-3)` `readGen5Party` 맨 앞: `kGen5Layouts`를 돌며 `infoBlockValid`인 첫 행을 고른다(`const Gen5Layout *` 하나). 없으면 `nullopt`
-
-```cpp
-const Gen5Layout *layout = nullptr;
-for (const Gen5Layout &candidate : kGen5Layouts)
-    if (/* ? */) { layout = &candidate; break; }
-if (!layout) return std::nullopt;
-```
+     (`std::span`의 `operator[]` · `subspan`은 범위 검사를 하지 않는다 — 넘으면 정의되지 않은 동작)
+  3. `crc16Ccitt(save.subspan(start, check.tableLength)) == readU16(save, at)`
+- `TODO(H6-CP3-2)` `partyBlockValid(save, check)` (`saveblock.cpp`)
+  1. 두 저장 위치(`check.partyCrcAt`, `checksumTableStart(check) + check.partyCrcMirror`)가 파일 안인지부터
+  2. `crc = crc16Ccitt(save.subspan(check.partyBlock, check.partyBlockSize))`
+  3. 두 위치의 u16 **둘 다**와 같은가
+- `TODO(H6-CP3-3)` `findBase(save, const ChecksumTable &)` (`partyndsreader.cpp`): 둘 다 맞으면 `0`(기준 = 파일 시작), 아니면 `nullopt`
 
 **왜 사본까지 보나**: 블록 뒤 CRC만 맞고 사본이 틀리면, 게임이 저장하다 끊긴 것이거나 누가 블록만 고친 파일이다.
 게임은 두 곳을 함께 갱신하므로 둘 다 맞아야 "정상 저장"이다. 테스트 `ChecksThePartyBlockCrcInBothPlaces`가 사본만 망가뜨려 확인한다.
 
-확인: `ctest --preset linux-debug -R Gen5 --output-on-failure` → CP3 둘 초록. 거절 테스트 셋은 계속 초록
+확인: `ctest --preset linux-debug -R SaveBlock --output-on-failure` → 전부 초록
 
 ---
 
 # ② 추출
 
-## CP4 — 5세대 파티 · PK5 (`pkmcodec.cpp` · `gen5.cpp`)
+## CP4 — PK5 (`pkmcodec.cpp` · `partyreader.cpp` · `partyndsreader.cpp`)
 
-### PK5 = PK4와 거의 같다
+### PK5 = PK4와 거의 같다 — 다른 건 숫자뿐
 
-| | PK4 (4세대) | PK5 (5세대) |
-|---|---|---|
-| 파티 레코드 | 236 B = 저장 136 + 배틀 스탯 100 | **220 B** = 저장 136 + 배틀 스탯 **84** |
-| 암호화 · 블록 섞기 · 체크섬 | LCRNG XOR, `((pid >> 13) & 0x1F) % 24`, u16 합 | **같다** |
-| 레벨 · HP · 능력치 위치 | `0x8C` · `0x8E` · `0x90` … | **같다** |
-| 성격 | `pid % 25` | **`0x41` 바이트에 따로 저장** |
-| 숨겨진 특성 | 없음 | **`0x42`의 비트 0** |
-| 출신 게임(`0x5F`) | 7 HG · 8 SS · 10 D · 11 P · 12 Pt | 20 W · 21 B · 22 W2 · 23 B2 |
+| | PK4 | PK5 | `PkmFormat` 칸 |
+|---|---|---|---|
+| 파티 레코드 | 236 B = 저장 136 + 배틀 스탯 100 | **220 B** = 저장 136 + 배틀 스탯 **84** | `partySize` |
+| 암호화 · 블록 섞기 · 체크섬 | LCRNG XOR, `((pid >> 13) & 0x1F) % 24`, u16 합 | **같다** | — |
+| 레벨 · HP · 능력치 위치 | `0x8C` · `0x8E` · `0x90` … | **같다** | — |
+| 성격 | `pid % 25` | **`0x41` 바이트에 따로 저장** | `natureAt` = 없음 · `0x41` |
+| 숨겨진 특성 | 없음 | **`0x42`의 비트 0** | `hiddenAbilityAt` = 없음 · `0x42` |
 
-그래서 새 디코더를 만들지 않고 **H1의 `decodePkm`을 220 B도 받게 넓히고**, 다른 칸 둘만 덮어쓴다.
+```cpp
+inline constexpr PkmFormat kPk4 {"PK4", 236, std::nullopt, std::nullopt};
+inline constexpr PkmFormat kPk5 {"PK5", 220, 0x41, 0x42};
+```
+
+새 디코더를 만들지 않는다. **H1의 `decodePkm`을 220 B도 받게 넓히고, `parseMember`가 형식의 숫자를 보게** 한다.
 
 ### 왜 220 B를 그냥 받아도 되나 — 스트림 암호의 앞부분
 
 배틀 스탯은 PID로 시작한 난수열을 **앞에서부터 한 u16씩** XOR한다. 84바이트를 풀 때 쓰는 난수는 100바이트를 풀 때의 **앞 42개와 똑같다**.
 그러니 길이만 `encrypted.size() − kStoredSize`로 바꾸면 220 · 236 둘 다 맞게 풀린다. (CAN으로 치면 같은 키 스트림으로 짧은 프레임을 푸는 것)
 
+### `std::optional` — "칸이 있을 때만"
+
+```cpp
+if (format.natureAt)                          // 값이 있나? (bool처럼 쓴다)
+    member.nature = data[*format.natureAt];   // *로 꺼낸다
+```
+
+PK4는 `natureAt`이 비어 있어 이 줄을 건너뛰고, 위에서 계산한 `pid % 25`가 남는다. **세대를 묻지 않고 "그 칸이 있나"를 묻는다** —
+그래서 `parseMember`에 `if (gen == 5)`가 없다. 7세대 형식이 성격을 다른 위치에 두면 `PkmFormat` 행의 숫자만 다르다.
+
 ### TODO
 
 - `TODO(H6-CP4-1)` `decodePkm` (`pkmcodec.cpp`)
-  - 크기 검사: `!= kPartyPkmSize` → "236도 아니고 220도 아니면"
+  - 크기 검사: "`kPk4.partySize`도 `kPk5.partySize`도 아니면" 빈 결과
   - 배틀 스탯 `cryptArray`의 길이: `kPartyPkmSize − kStoredSize` → `encrypted.size() − kStoredSize`
   - `std::copy`는 그대로 — `pkm.data`(236 B 배열)의 앞 220 B만 채우고 나머지는 0으로 남는다. `parseMember`가 읽는 칸(최대 `0x91`)은 전부 앞쪽이다
-- `TODO(H6-CP4-2)` CP3에서 고른 `layout`으로 `partyBlockValid`가 아니면 `nullopt`
-- `TODO(H6-CP4-3)` 파티 수 = `save[kGen5PartyBlock + kGen5PartyCountOffset]`, 1–6이 아니면 `nullopt`(4세대와 같은 규칙)
-- `TODO(H6-CP4-4)` 한 마리씩:
-  ```cpp
-  const std::size_t at = kGen5PartyBlock + kGen5PartyOffset + std::size_t(i) * kGen5PartyPkmSize;
-  const DecodedPkm pkm = decodePkm(save.subspan(at, kGen5PartyPkmSize));
-  ReadMember member = parseMember(pkm);   // 4 · 5세대 공통 칸은 여기서
-  member.nature = /* ? */;                // 5세대 진짜 성격: 풀린 data의 0x41
-  member.hiddenAbility = /* ? */;         // 0x42의 비트 0 — (x & 0x01) != 0
-  party.members.push_back(member);
-  ```
-  `parseMember`가 넣은 `pid % 25`를 **덮어쓰는** 것이 포인트다. 5세대는 싱크로 · 변하지않는돌 등으로 성격이 PID와 따로 정해질 수 있어서
-  게임이 성격을 따로 저장한다. 테스트 `ReadsABlackWhiteParty`의 조로아크는 PID % 25 = 4인데 `0x41` = 9(촐랑)라서, 덮어쓰지 않으면 바로 빨강이 된다.
-- `TODO(H6-CP4-5)` `ReadParty{ generation = 5, versionGroup = layout->versionGroup, partyOffset = kGen5PartyBlock + kGen5PartyOffset, members }`
+- `TODO(H6-CP4-2)` `parseMember` (`partyreader.cpp`): 위의 `optional` 두 줄 — 성격, 그리고 숨겨진 특성 `(data[…] & 0x01) != 0`
+- `TODO(H6-CP4-3)` `readSeries`의 반복문 (`partyndsreader.cpp`): `kPartyPkmSize` 두 군데 → `series.pkm->partySize`,
+  `parseMember(pkm)` → `parseMember(pkm, *series.pkm)`
 
-**`parseMember`에 `if (gen == 5)`를 넣지 않는 이유**: 공통 칸 해석은 한 곳, 세대마다 다른 칸은 **그 세대의 읽기 함수**가 덮어쓴다.
-세대 차이가 `gen5.cpp` 안에 모여 있어서 6세대를 더할 때 4 · 5세대 코드를 건드리지 않는다.
+테스트 `ReadsABlackWhiteParty`의 조로아크는 PID % 25 = 4인데 `0x41` = 9(촐랑)다. CP4-2를 빠뜨리면 바로 빨강이 된다.
+반대로 `IgnoresTheFifthGenerationBytesInAPk4`는 PK4에서 `0x41`을 성격으로 읽지 않는지(4세대의 그 자리는 빛나는 잎) 지킨다.
 
-확인: `ctest --preset linux-debug -R "Gen5|SaveFormat" --output-on-failure` → 전부 초록
+확인: `ctest --preset linux-debug -R "PkmCodec|PartyReader|PartyNdsReader" --output-on-failure` → 전부 초록
 
 ---
 
@@ -280,18 +328,22 @@ if (!layout) return std::nullopt;
 
 ## CP6 (선택) — readsav가 판별 과정을 보여 주게 (`tools/readsav/main.cpp`)
 
-H1의 readsav는 4세대 단계별 경로(footer → 슬롯 → PKM)를 찍는 도구다. 마지막의 `readParty` 비교 앞에 `TODO(H6-CP6)` 자리가 있다:
+H1의 readsav는 4세대 단계별 경로(footer → 슬롯 → PKM)를 찍는 도구다(이번에 `kNdsSeries`의 4세대 행을 쓰도록 옮겨 뒀다).
+마지막의 `readParty` 비교 앞에 `TODO(H6-CP6)` 자리가 있다:
 
 ```cpp
-for (const save::SaveFormat &format : save::saveFormats())
-    qCDebug(lcSave).noquote() << /* 형식 이름 · format.read(bytes) ? "OK" : "--" */;
+for (const save::NdsSeries &s : save::kNdsSeries)
+    qCDebug(lcSave).noquote() << /* 시리즈 이름 · (PartyNdsReader::readSeries(bytes, s) ? "OK" : "--") */;
 ```
 
-그리고 `readParty:` 줄에 `gen %1`을 더한다. 기대 출력(`--verbose`, 소울실버 — 형식 이름은 CP2에서 정한 것):
+그리고 `readParty:` 줄에 `gen %1`을 더한다. 기대 출력(`--verbose`, 소울실버):
 
 ```
-D pokesix.save: 4세대 NDS (DP · Pt · HGSS) OK
-D pokesix.save: 5세대 NDS (BW · B2W2) --
+D pokesix.save: diamond-pearl --
+D pokesix.save: platinum --
+D pokesix.save: heartgold-soulsilver OK
+D pokesix.save: black-white --
+D pokesix.save: black-2-white-2 --
 I pokesix.save: readParty: gen 4 · heartgold-soulsilver · 6 members
 ```
 
@@ -304,21 +356,21 @@ I pokesix.save: readParty: gen 4 · heartgold-soulsilver · 6 members
 
 ### 4세대가 그대로인지 (회귀)
 
-세대 판별 구조로 바꿨어도 손에 있는 진짜 세이브는 전과 같이 읽혀야 한다:
+구조를 바꿨어도 손에 있는 진짜 세이브는 전과 같이 읽혀야 한다(참조 구현으로는 확인했다 — 직접 채운 코드로 다시):
 
 ```bash
-export POKESIX_SAVE_HGSS=~/melonDS-1.1/gen4/<소울실버>.sav
-export POKESIX_SAVE_PT=~/melonDS-1.1/gen4/<플라티나>.sav
-ctest --preset linux-debug -R RealSave --output-on-failure
+export POKESIX_SAVE_HGSS="$HOME/pokesix-saves/포켓몬스터 소울실버(K).sav"
+ctest --preset linux-debug -R RealSave --output-on-failure -V
 ```
-출력 첫 줄에 `generation 4, party at 0x…`가 찍힌다(HGSS 첫 포켓몬 = 고른 슬롯 시작 + `0x98`). BW · B2W2는 파일이 없으니 `SKIPPED`가 정상이다.
+첫 줄에 `generation 4, party at 0x00098`, 이어서 H1 때와 같은 6마리(프테라 Lv.48 · 물건 217 · 성격 4 …).
+Pt · BW · B2W2는 파일이 없으면 `Skipped`가 정상이다.
 
 ### 완료 조건
 
-- [ ] `ctest --preset linux-debug` 전부 통과(빨강 18개 → 0), 경고 0, `clang-format -i` (바꾼 파일들)
-- [ ] `RealSave.HeartGoldSoulSilver` · `RealSave.Platinum` 통과 — 4세대 실파일 회귀 없음
+- [ ] `ctest --preset linux-debug` 전부 통과(빨강 19개 → 0), 경고 0, `clang-format -i` (바꾼 파일들)
+- [ ] `RealSave.HeartGoldSoulSilver` 통과 — 4세대 실파일 회귀 없음
 - [ ] 앱에서 소울실버 세이브 불러오기 · 끌어다 놓기가 H2 때와 똑같이 된다(게임 소울실버, 6마리, 성격 · 물건까지)
-- [ ] `grep -rn kGeneration src/` 결과가 비어 있다 — 세대 숫자를 박아 둔 곳이 없다
+- [ ] `grep -rn "kGeneration\|gen >= \|gen == " src/core/save src/data/store` 결과가 비어 있다 — 세대 숫자로 가르는 곳이 없다
 - [ ] (선택) CP6 readsav 출력
 
 5세대는 **합성 세이브로만** 확인한다 — 수치 출처는 PKHeX이고 실파일 검증은 ◇다([data/gen5/](../data/gen5/README.md)).
@@ -330,5 +382,5 @@ BW · B2W2 세이브가 생기면 `POKESIX_SAVE_BW` · `POKESIX_SAVE_B2W2`로 `R
 
 - 5세대 단계별 readsav 경로 · 실파일 검증(세이브가 생기면)
 - 폼 표(로토무 · 기라티나 …, 5세대는 볼트로스 · 토네로스 · 큐레무까지) — 지금은 기본 폼
-- 숨겨진 특성(`hiddenAbility`)을 스쿼드의 특성 고르기에 반영 — 지금은 `ability` 번호가 그대로 들어가므로 이미 맞는 특성이 온다. 표시만의 문제
-- 6세대 이후(3DS 세이브 · PK6, 체크섬 구조가 또 다르다) — 형식 표에 한 줄 + `gen6.cpp`
+- 숨겨진 특성(`hiddenAbility`)을 스쿼드 화면에 표시 — 특성 번호(`0x15`)는 이미 맞는 특성이 온다. 표시만의 문제
+- 다른 기기: `PartyGbaReader`(3세대 — 섹션 회전 · 다른 암호, `PkmFormat`로는 안 되고 디코더도 새로) · `Party3dsReader`(6 · 7세대 — 같은 암호, 칸 위치가 많이 달라 `PkmFormat`이 커진다)

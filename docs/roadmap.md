@@ -179,7 +179,7 @@ E2(스쿼드) 이어서. 순서는 가벼운 것부터.
 |---|---|---|---|---|
 | ✅ | **H1** ([가이드](guides/h1-save-reader.md)) | core `save/`: 바이트 · CRC → footer · 슬롯 → PKM 복호화 · 섞기 → 필드 → `readParty()`. 디버그 CLI `pokesix-read-sav`(단계별 `pokesix.save` 로그) | 리틀 엔디언 · 비트 연산 · CRC · LCRNG · `std::span` · 표로 표현한 포맷 · `QLoggingCategory` · gdb / gtest 필터 | 합성 세이브 테스트 32개 통과 · 본인 Pt · SS 세이브가 게임 화면의 파티와 같다 |
 | ✅ | **H2** ([가이드](guides/h2-squad-sav-import.md)) | 아이템 · 성격 내부 번호 → PokéAPI id(스키마 올림) · ReadParty → Squad · 스쿼드 불러오기에 `.sav`(게임 전환 확인 · 드래그 앤 드롭) | `QFileDialog` 필터 · `QDropEvent` · 레이어 경계 변환 | 불러오기로 세이브를 고르면 스쿼드에 파티가 들어온다 |
-| 🟨 | **H6** ([가이드](guides/h6-multigen-save.md)) | ① 판별: 세대별 형식 표(`SaveFormat`)를 차례로 시도 ② 추출: 5세대(BW · B2W2) 파티 블록 · PK5 ③ 구성: `party->generation`으로 Portable — 설계: [overlay-design.md §5](overlay-design.md#5-세이브-파싱--core에-둔다-qt-없음) | 표 + 전략으로 세대 늘리기, 체크섬 검증으로 세대 자동 판별 | 4세대 테스트 그대로 통과 · BW 세이브 파티 복원 |
+| 🟨 | **H6** ([가이드](guides/h6-multigen-save.md)) | ① 판별: 기기별 리더(`PartyReader` → `PartyNdsReader`)가 시리즈 표를 체크섬으로 시도 ② 추출: 5세대(BW · B2W2) 파티 블록 · PK5 ③ 구성: `party->generation`으로 Portable — 구조: [ADR 0019](decisions/0019-save-readers-per-platform.md) | 가상 함수 인터페이스 · `std::variant`/`std::visit` · 표로 세대 늘리기, 체크섬 검증으로 세대 자동 판별 | 4세대 테스트 그대로 통과 · BW 세이브 파티 복원 |
 
 - **H1 완료(2026-10-08)**: 뼈대(헤더) · 테스트 · CLI 도구의 틀은 Claude가, 파서 본문(CP1–CP5)과 도구의 로그 줄은 사용자가 구현했다. 실제 소울실버 세이브의 파티 6마리가 게임과 일치(기술 24 · 특성 6, 프테라의 능력치 6이 공식과 일치). 데이터 구조는 [data/gen4/](data/gen4/README.md)
 - **H6 시작(2026-10-08)**: 사용자가 정한 세 단계(판별 → 추출 → 구성)로 뼈대 · 테스트를 준비(CP1–CP5 + 선택 CP6). 5세대 실파일이 없어 PKHeX 수치로 만든 합성 세이브로만 검증한다 — [data/gen5/](data/gen5/README.md)

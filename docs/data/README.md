@@ -22,7 +22,7 @@ docs/data/
    └ README.md         BW · B2W2 세이브 구조(체크섬 모음 블록 · 파티 블록), 게임 판별, PK5가 PK4와 다른 칸
 ```
 
-다른 세대는 그 세대를 다룰 때 같은 모양으로 더한다. 세대를 세이브만으로 판별하는 형식 표(`src/core/save/saveformat.h`)는 로드맵 H6 —
+다른 세대는 그 세대를 다룰 때 같은 모양으로 더한다. 세대를 세이브만으로 판별하는 기기별 리더(`src/core/save/partyreader.h`, [ADR 0019](../decisions/0019-save-readers-per-platform.md))는 로드맵 H6 —
 설계는 [overlay-design.md §5](../overlay-design.md#5-세이브-파싱--core에-둔다-qt-없음)의 "여러 세대를 자동 판별하는 구조".
 
 ## 진행 현황
@@ -74,4 +74,4 @@ docs/data/
 
 - 구현 가이드: [guides/h1-save-reader.md](../guides/h1-save-reader.md) · 결정: [ADR 0018](../decisions/0018-save-import-read-only.md)
 - 설계 검토(오버레이 · 라이브 모드 포함): [overlay-design.md](../overlay-design.md)
-- 코드: `src/core/save/` — `SaveLayout` 표(`saveblock.h`)가 [gen4/README.md](gen4/README.md)의 비교표와 같은 값이다
+- 코드: `src/core/save/` — 시리즈 표 `kNdsSeries`(`partyndsreader.h`)가 [gen4/README.md](gen4/README.md) · [gen5/README.md](gen5/README.md)의 비교표와 같은 값이다. 구조 결정: [ADR 0019](../decisions/0019-save-readers-per-platform.md)

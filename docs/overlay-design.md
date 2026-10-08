@@ -96,21 +96,22 @@ H1 · H2는 4세대만 다룬다. 4세대 **안의** 게임(DP · Pt · HGSS)은
 코드가 4세대 모양이다: 슬롯 · footer 구조(`saveblock.h`), PKM 236바이트 · 칸 위치(`pkmcodec.h` · `parseMember`),
 `readParty`가 `kGen4Layouts`만 순회, `saveimport`의 `kGeneration = 4` 상수.
 
-다른 세대를 더할 때는 판별 원리를 한 단계 올린다 — **파일 크기가 아니라 체크섬 검증으로** 고른다(4 · 5세대는 둘 다 512 KiB):
+다른 세대를 더할 때는 판별 원리를 한 단계 올린다 — **파일 크기가 아니라 체크섬 검증으로** 고른다(4 · 5세대는 둘 다 512 KiB).
+구조는 [ADR 0019](decisions/0019-save-readers-per-platform.md)로 확정했다(H6):
 
 ```
-struct SaveFormat {                 // 세대마다 하나 — 데이터(레이아웃 표 · 칸 지도) + 알고리즘(체크섬 검증 · PKM 풀기)
-    int generation;
-    std::optional<ReadParty> (*read)(Bytes save);   // 체크섬이 맞을 때만 값을 준다
-};
-inline constexpr std::array kFormats = { gen4::format, gen5::format /*, gen3::format */ };
+PartyReader (partyreader.h — 부모 인터페이스 · 결과 모양 · readParty 입구)
+  └ PartyNdsReader (partyndsreader.h)   kNdsSeries: DP · Pt · HGSS · BW · B2W2 — 표의 행
+       검증 방식(saveblock.h): FooterSlots(4세대식) · ChecksumTable(5세대식) — std::variant, 방식마다 함수 하나
+       포켓몬 형식(pkmcodec.h): PkmFormat kPk4 · kPk5 — 크기 · 성격 위치 · 숨겨진 특성 위치
+  (나중에) PartyGbaReader · Party3dsReader · PartySwitchReader — 기기마다 한 쌍
 
-readParty(save): kFormats를 차례로 시도 → 첫 성공. ReadParty에 generation을 담는다
+readParty(save): 기기 리더를 차례로 → 리더가 자기 표의 행을 차례로 → 체크섬이 맞는 첫 행. ReadParty에 generation
 saveimport:      kGeneration 상수 대신 party->generation. 출신 게임 번호 표도 세대별로 늘린다
 ```
 
-- 같은 모양의 차이(블록 크기 · 칸 위치 · PKM 길이)는 **표**, 알고리즘이 다른 부분(체크섬 방식 · 3세대의 XOR 암호)은 **세대별 전략** — CLAUDE.md §4의 "데이터(테이블/전략)"
-- 5세대는 4세대와 암호화 · 섞기가 같아 `pkmcodec`을 공유한다. 3세대(128 KiB · 섹션 회전 · PID ^ 트레이너 ID XOR · 100바이트 PKM)는 형식을 새로 짠다
+- 같은 모양의 차이(블록 크기 · 칸 위치 · PKM 길이)는 **표**, 구조가 다른 부분(체크섬 방식 · 3세대의 XOR 암호)은 **방식별 함수** — CLAUDE.md §4의 "데이터(테이블/전략)"
+- 세대가 아니라 **기기**로 나누는 이유: 세이브 구조는 기기의 저장 방식을 따라간다. 3세대(GBA — 128 KiB · 섹션 회전 · PID ^ 트레이너 ID XOR · 100바이트 PKM)는 `PartyGbaReader`로 새로 짠다
 
 ### 게임 내부 번호 → PokéAPI id
 
