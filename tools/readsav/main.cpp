@@ -47,7 +47,16 @@ void logFooters(save::Bytes bytes)
             //   게임(layout.versionGroup — QString::fromUtf8(layout.versionGroup.data(),
             //   qsizetype(layout.versionGroup.size()))) · 슬롯(start) · major · minor · size ·
             //   magic(hex) · CRC stored/computed(hex(…, 4)) · ok(footer.crcOk())
-            (void)footer;
+            qCDebug(lcSave).noquote() << QStringLiteral("%1 slot@%2 major=%3 minor=%4 size=%5 magic=%6 crc=%7/%8 %9")
+                .arg(QString::fromUtf8(layout.versionGroup.data(), qsizetype(layout.versionGroup.size())), -20)
+                .arg(hex(start, 5))
+                .arg(footer.major)
+                .arg(footer.minor)
+                .arg(hex(footer.size, 0))
+                .arg(hex(footer.magic, 8))
+                .arg(hex(footer.storedCrc, 4))
+                .arg(hex(footer.computedCrc, 4))
+                .arg(footer.crcOk() ? "OK" : "--");
         }
     }
 }
