@@ -7,6 +7,11 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Documentation
+- `docs/data/`: byte and bit maps of 4th-generation save files per series (DP, Pt, HGSS — block
+  sizes, footers, trainer info, bag pouches, PC boxes) and of the PK4 Pokémon record (every field,
+  bit fields, encryption, derived values such as nature, Hidden Power and the stat formula), checked
+  against a real Korean SoulSilver save down to all six stored stats. `battle-inputs.md` lists where
+  each battle-simulation input comes from — save, database or calculation.
 - `docs/ui/`: a map of the whole Qt UI, surveyed from the code — the inheritance tree of all 70 UI
   classes, every screen's layout drawn as ASCII boxes, the QObject parent-child tree of each page,
   the signal paths between them, the model/view chains, the shared components and how tokens and

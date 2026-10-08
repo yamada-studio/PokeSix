@@ -390,6 +390,8 @@ gdb --args $RS ~/pokesix-saves/platinum.sav
 
 ## CP4 — 필드 읽기 (`partyreader.cpp`의 `parseMember`)
 
+> 한 마리의 **전체 바이트 지도**(전투에 쓰이는 칸 표시 · 실파일 검증 · 능력치 공식)는 [docs/data/gen4/pk4.md](../data/gen4/pk4.md). 아래는 CP4에 필요한 칸만 추린 것이다.
+
 ### 비트 필드
 
 0x38의 u32 하나에 개체값 6개와 플래그 두 개가 들어 있다:
