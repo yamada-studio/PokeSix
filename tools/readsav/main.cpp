@@ -168,6 +168,8 @@ int main(int argc, char *argv[])
     }
 
     // CP5: 위의 수동 경로와 readParty(앱이 쓸 한 번에 읽기)가 같은 답을 내는지
+    // TODO(H6-CP6) (선택) save::saveFormats()를 돌며 형식마다 "gen4 OK" · "gen5 --"를 qCDebug로,
+    //   아래 "readParty:" 줄에 party->generation도 찍는다
     const auto party = save::readParty(bytes);
 
     if (!party.has_value()) {
