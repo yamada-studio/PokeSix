@@ -24,11 +24,8 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 
 ### 진행 중
 
-- **H1 — 세이브(.sav) 파티 읽기, 사용자 구현 중**(2026-10-08 시작). 브랜치 **`feat/h1-save-reader`**(뼈대 · 테스트 ·
-  CLI 도구 틀) — 다른 머신에서 이어 하려면 사용자가 `git push -u origin feat/h1-save-reader` 후 그쪽에서 switch.
-  가이드 [h1-save-reader.md](guides/h1-save-reader.md), 결정 [ADR 0018](decisions/0018-save-import-read-only.md).
-  이 브랜치의 save 테스트 24개는 사용자가 TODO를 채울 때까지 **일부러 빨강**이다 — main에 merge하지 않는다.
-  사용자가 막혀서 물어보면 가이드의 CP 번호로 진단한다(구현을 대신 쓰지 않는다 — CLAUDE.md §1)
+- **H2 — 스쿼드 불러오기가 `.sav`를 받는다**(2026-10-08 시작). 브랜치 `feat/h2-squad-sav-import`, 가이드
+  [h2-squad-sav-import.md](guides/h2-squad-sav-import.md). H1(core 세이브 파서)은 main에 merge됨
 
 ### 열린 일 (작은 것부터)
 
@@ -62,6 +59,13 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 ---
 
 ## 최근 세션 (역순)
+
+### 2026-10-08 — H1 완료 · merge, H2 시작 (Linux 세션)
+
+- H1 진단 통과(경고 0 · 테스트 131 · RealSave(SS) 통과 · clang-format): 사용자 구현 CP1–CP5 + 로그. 채운 TODO 주석은 지우고 merge
+- 진단 중 발견해 고친 것: 파일 밖 footer가 CRC 0 = 0으로 "맞음"이 되던 뼈대 버그(`BlockFooter::inFile`), 도구가 512 KiB 미만 파일에서 멈추지 않던 것
+- 사용자 기억의 스쿼드와 비교: 기술 24 · 특성 6 · 성격(홍수몬) 전부 일치, 파티 순서와 기술 칸 순서만 다름(세이브가 게임 순서)
+- VS Code 디버깅 실습: 개인 `.vscode/launch.json` · `tasks.json`(git 제외) — 세이브 도구 · core 테스트 · 앱 세 설정
 
 ### 2026-10-08 — docs/data/ 세이브 · PK4 바이트 지도 (Linux 세션)
 
