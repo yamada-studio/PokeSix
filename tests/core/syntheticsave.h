@@ -40,6 +40,7 @@ struct MemberSpec
     std::uint8_t level = 50;
     std::uint16_t hp = 100;
     std::uint16_t maxHp = 120;
+    std::uint8_t originGame = 8; // 0x5F 출신 게임(8 = 소울실버)
 };
 
 // 평문 PKM(블록 A · B · C · D 순서, 체크섬 포함)
@@ -56,6 +57,7 @@ inline Pkm plainPkm(const MemberSpec &m)
         putU16(p, 0x28 + 2 * k, m.moves[k]);
     putU32(p, 0x38, m.iv32);
     p[0x40] = m.formByte;
+    p[0x5F] = m.originGame;
     p[0x8C] = m.level;
     putU16(p, 0x8E, m.hp);
     putU16(p, 0x90, m.maxHp);

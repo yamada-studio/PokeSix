@@ -7,6 +7,7 @@
 #include "data/sprites/spritecache.h"
 #include "data/state/appstate.h"
 #include "data/state/squadsession.h"
+#include "data/store/saveimport.h"
 #include "data/store/squadfile.h"
 #include "data/store/squadstore.h"
 #include "ui/dex/dexdetailpage.h"
@@ -38,6 +39,8 @@
 #include <QBoxLayout>
 #include <QClipboard>
 #include <QDialog>
+#include <QDragEnterEvent>
+#include <QDropEvent>
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QFontMetricsF>
@@ -49,6 +52,7 @@
 #include <QListView>
 #include <QMenu>
 #include <QMessageBox>
+#include <QMimeData>
 #include <QPainter>
 #include <QPixmapCache>
 #include <QPropertyAnimation>
@@ -221,6 +225,7 @@ SquadPage::SquadPage(Repository *repository, AppState *state, QWidget *parent)
     layout->addWidget(m_scroll, 1);
 
     // 세션이 바뀌면(편집 · 세대) 전부 다시 그린다. 언어가 바뀌면 이름 · 타입 글자만 바뀐다
+    // TODO(H2-CP6-1) setAcceptDrops(true) — 이 페이지가 끌어다 놓기를 받겠다고 Qt에 알린다
     connect(m_session, &SquadSession::changed, this, &SquadPage::refresh);
     connect(m_state, &AppState::languageChanged, this, &SquadPage::refresh);
     connect(m_store, &SquadStore::saveScheduled, this, [this] {
@@ -1188,12 +1193,36 @@ void SquadPage::exportSquad()
         QMessageBox::warning(this, tr("스쿼드 내보내기"), error);
 }
 
+// TODO(H2-CP5-1) 아래 importSquad의 "QString error;"부터 끝까지를 이 함수로 옮기고, importSquad는
+//   파일 창에서 path를 받은 뒤 importFile(path)만 부르게 한다. 옮긴 코드의 loaded를 고르는 줄을
+//   saveimport::isSaveFile(path) ? saveimport::load(path, *m_repository, &error)
+//                                : squadfile::load(path, &error)
+//   로 바꾸면 나머지(세대 · 게임 전환, 덮어쓰기 확인, replaceSquad)는 그대로 쓰인다.
+//   성공 문구는 세이브일 때 tr("✓ 세이브에서 파티를 불러왔어요")처럼 따로
+void SquadPage::importFile(const QString &path)
+{
+    (void)path;
+}
+
+void SquadPage::dragEnterEvent(QDragEnterEvent *event)
+{
+    // TODO(H2-CP6-2) event->mimeData()->urls()가 파일 하나이고(isLocalFile) 확장자가 우리가 받는 것
+    //   (pks · json · sav · dsv)이면 event->acceptProposedAction(). 아니면 아무것도 안 한다(거절)
+    QWidget::dragEnterEvent(event);
+}
+
+void SquadPage::dropEvent(QDropEvent *event)
+{
+    // TODO(H2-CP6-3) urls().constFirst().toLocalFile()을 importFile에 넘기고 acceptProposedAction()
+    QWidget::dropEvent(event);
+}
+
 void SquadPage::importSquad()
 {
     const QString dir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
     // 초기 내보내기가 .json이었다 — 그 파일들도 계속 읽는다
-    const QString path = QFileDialog::getOpenFileName(this, tr("스쿼드 불러오기"), dir,
-                                                      tr("PokeSix 스쿼드 (*.pks *.json)"));
+    const QString path = QFileDialog::
+            getOpenFileName(this, tr("스쿼드 불러오기"), dir, tr("PokeSix 스쿼드 (*.pks *.json)") /* TODO(H2-CP5-2) 세이브도: ";;" 로 필터를 더하거나 한 필터에 *.sav *.dsv 추가 */);
     if (path.isEmpty())
         return;
     QString error;

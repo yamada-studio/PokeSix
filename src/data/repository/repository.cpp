@@ -1053,6 +1053,40 @@ void Repository::fillAbilities(PokemonDetail &detail)
         namebook::fill(namebook::Kind::AbilityEffect, ability.identifier, ability.effect);
 }
 
+int Repository::natureIdForGameIndex(int gameIndex)
+{
+    if (!open())
+        return 0;
+    QSqlQuery query(QSqlDatabase::database(m_connection));
+    // TODO(H2-CP3-1) natures에서 game_index가 gameIndex인 줄의 id. 이 파일의 다른 함수처럼 이름
+    // 붙은 자리:
+    //   query.prepare("SELECT id FROM natures WHERE game_index = :index");
+    //   query.bindValue(":index", gameIndex);  →  exec()와 next()가 성공하면 query.value(0).toInt()
+    (void)gameIndex;
+    return 0;
+}
+
+int Repository::itemIdForGameIndex(int generation, int gameIndex)
+{
+    if (!open())
+        return 0;
+    QSqlQuery query(QSqlDatabase::database(m_connection));
+    // TODO(H2-CP3-2) item_generations에서 generation과 game_index가 맞는 줄의 item_id (자리 두 개)
+    (void)generation;
+    (void)gameIndex;
+    return 0;
+}
+
+int Repository::defaultPokemonId(int speciesId)
+{
+    if (!open())
+        return 0;
+    QSqlQuery query(QSqlDatabase::database(m_connection));
+    // TODO(H2-CP3-3) pokemon에서 species_id = :species AND is_default = 1 인 줄의 id
+    (void)speciesId;
+    return 0;
+}
+
 QList<Nature> Repository::natures()
 {
     QList<Nature> natures;

@@ -53,6 +53,9 @@ signals:
 protected:
     void showEvent(QShowEvent *event) override;
     void resizeEvent(QResizeEvent *event) override;
+    // 파일 끌어다 놓기(H2): .pks · .json · .sav · .dsv를 페이지에 놓으면 불러온다
+    void dragEnterEvent(QDragEnterEvent *event) override;
+    void dropEvent(QDropEvent *event) override;
     // 스크롤 viewport의 크기 변화를 엿본다 — SquadPage::resizeEvent 시점에는 viewport가 아직
     // 옛 크기라서, 카드 높이를 거기서 재면 분석 창과 바닥이 어긋난다
     bool eventFilter(QObject *watched, QEvent *event) override;
@@ -93,6 +96,8 @@ private:
     // 상단 막대 오른쪽의 공유 묶음: 파일 내보내기 · 불러오기, 이미지 복사 · 저장
     void exportSquad();
     void importSquad();
+    // 파일 하나를 불러온다 — 스쿼드 파일(.pks · .json)이든 게임 세이브(.sav · .dsv)든 (H2)
+    void importFile(const QString &path);
     QPixmap squadImage(); // 카드 6장 + 분석 창을 제목 띠와 함께 한 장으로
     void copyImage();
     void saveImage();

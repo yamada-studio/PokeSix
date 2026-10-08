@@ -23,6 +23,7 @@ ReadMember parseMember(const DecodedPkm &pkm)
     for (int k = 0; k < 6; ++k) {
         member.ivs[k] = (iv32 >> (5 * k)) & 0x1F;
     }
+    // TODO(H2-CP1) originGame = 0x5F의 1바이트(블록 C) — docs/data/gen4/pk4.md
     member.level = data[0x8C];
     member.hp = readU16(data, 0x8E);
     member.maxHp = readU16(data, 0x90);

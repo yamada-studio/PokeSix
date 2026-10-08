@@ -282,6 +282,10 @@ public:
     static QString representativeVersionGroup(int generation);
     // 성격 25가지(id 순). 성격은 3세대부터 — 1–2세대 화면은 쓰지 않는다
     QList<Nature> natures();
+    // 세이브의 게임 번호 → DB id (H2 · docs/data/battle-inputs.md §3). 찾지 못하면 0
+    int natureIdForGameIndex(int gameIndex);               // PID % 25 → natures.id
+    int itemIdForGameIndex(int generation, int gameIndex); // 세대별 아이템 번호 → items.id
+    int defaultPokemonId(int speciesId);                   // 종 → 기본 폼의 pokemon.id
     // 종 → 진화 전 종(species.evolves_from). 진화 전이 없는 종은 빠진다. 스쿼드의 "진화 전 · 후
     // 모습이 이미 있어요" 경고에 쓴다
     QHash<int, int> evolvesFrom();

@@ -8,8 +8,12 @@ add_executable(pokesix_data_tests
     repository_test.cpp
     squadstore_test.cpp
     squadfile_test.cpp
+    saveimport_test.cpp   # H2
 )
 pokesix_target_defaults(pokesix_data_tests)
+
+# H2: 세이브 불러오기 테스트가 core의 합성 세이브 생성기(tests/core/syntheticsave.h)를 같이 쓴다
+target_include_directories(pokesix_data_tests PRIVATE ${PROJECT_SOURCE_DIR}/tests/core)
 
 target_link_libraries(pokesix_data_tests PRIVATE
     pokesix_data

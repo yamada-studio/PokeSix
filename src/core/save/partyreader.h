@@ -25,6 +25,7 @@ struct ReadMember
     std::array<int, 6> evs {}; // 0x18 u8 × 6: HP · 공격 · 방어 · 스피드 · 특공 · 특방
     std::array<int, 6> ivs {}; // 0x38 u32의 5비트 × 6, 같은 순서(비트 0–4가 HP)
     bool egg = false;          // 0x38 u32의 비트 30
+    int originGame = 0;        // 0x5F u8: 출신 게임 7 HG · 8 SS · 10 D · 11 P · 12 Pt (H2)
     int level = 0;             // 0x8C u8 (배틀 스탯)
     int hp = 0;                // 0x8E u16
     int maxHp = 0;             // 0x90 u16
