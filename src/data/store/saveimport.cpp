@@ -11,7 +11,8 @@
 
 namespace com::yamada::studio::saveimport {
 namespace {
-// 지금은 4세대 표(kGen4Layouts)만 있다. 5세대(H6)가 오면 SaveLayout에 세대를 넣는다
+// 지금 파서는 4세대 모양이라 세대를 상수로 둔다. 세대를 늘리면(H6) ReadParty가 세대를 담고 이
+// 상수는 없어진다 — docs/overlay-design.md §5 "여러 세대를 자동 판별하는 구조"
 constexpr int kGeneration = 4;
 
 QString tr(const char *text)
