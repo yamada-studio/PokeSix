@@ -7,6 +7,14 @@ and the project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- The Squad page imports a party straight from a 4th-gen game save (H2 — written by the user
+  following the H2 guide): [Import] accepts `.sav` / `.dsv` next to `.pks`, and dropping one of
+  those files on the page works too, with a translucent "drop here" overlay while dragging. The
+  save's party lands in game order with moves, ability, nature and held item; the version (e.g.
+  HeartGold vs SoulSilver) is chosen from where the party members were caught. Read-only (ADR 0018).
+- Item and nature game numbers are now kept in the database (`game_index`), so save data maps to
+  PokéAPI ids. **The schema version is 12: the first launch after updating rebuilds the game data
+  from the cached CSV files** (the first-run panel appears again for a few seconds).
 - 4th-generation save reading in core (`src/core/save/`, H1 — written by the user following the
   H1 guide): CRC-16 block validation and newest-slot selection, game detection from the save alone
   (DP / Pt / HGSS), Pokémon record decryption (LCRNG and block unshuffling, checksum-verified) and
