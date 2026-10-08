@@ -3,7 +3,7 @@
 //   export POKESIX_SAVE_HGSS=$HOME/pokesix-saves/soulsilver.sav
 //   ctest --preset linux-debug -R RealSave --output-on-failure -V
 // 읽은 파티를 찍으므로 -V(자세히)로 보면 게임 화면의 파티와 나란히 비교할 수 있다.
-#include "core/save/partyreader.h"
+#include "core/save/saveformat.h"
 
 #include <gtest/gtest.h>
 
@@ -33,10 +33,10 @@ void checkRealSave(const char *envName, std::string_view expectedGroup)
     ASSERT_FALSE(bytes.empty()) << "cannot read " << path;
     const auto party = readParty(bytes);
     ASSERT_TRUE(party.has_value()) << "no party found in " << path;
-    EXPECT_EQ(party->layout->versionGroup, expectedGroup);
+    EXPECT_EQ(party->versionGroup, expectedGroup);
 
-    std::printf("  %s: slot 0x%05zX, save counter %u.%u (major.minor)\n", path, party->generalStart,
-                party->footer.major, party->footer.minor);
+    std::printf("  %s: generation %d, party at 0x%05zX\n", path, party->generation,
+                party->partyOffset);
     for (std::size_t i = 0; i < party->members.size(); ++i) {
         const ReadMember &m = party->members[i];
         std::printf("  %zu  #%d Lv.%d  moves %d %d %d %d  item %d  ability %d  nature %d%s\n",
@@ -44,7 +44,7 @@ void checkRealSave(const char *envName, std::string_view expectedGroup)
                     m.heldItem, m.ability, m.nature, m.egg ? "  (egg)" : "");
         EXPECT_TRUE(m.checksumOk) << "member " << i + 1;
         EXPECT_GE(m.species, 1) << "member " << i + 1;
-        EXPECT_LE(m.species, 493) << "member " << i + 1; // 4세대 전국도감 끝
+        EXPECT_LE(m.species, 649) << "member " << i + 1; // 5세대 전국도감 끝
         if (!m.egg) {
             EXPECT_GE(m.level, 1) << "member " << i + 1;
             EXPECT_LE(m.level, 100) << "member " << i + 1;
@@ -61,4 +61,15 @@ TEST(RealSave, Platinum)
 TEST(RealSave, HeartGoldSoulSilver)
 {
     checkRealSave("POKESIX_SAVE_HGSS", "heartgold-soulsilver");
+}
+
+// H6 — 5세대 세이브가 생기면: POKESIX_SAVE_BW · POKESIX_SAVE_B2W2
+TEST(RealSave, BlackWhite)
+{
+    checkRealSave("POKESIX_SAVE_BW", "black-white");
+}
+
+TEST(RealSave, Black2White2)
+{
+    checkRealSave("POKESIX_SAVE_B2W2", "black-2-white-2");
 }

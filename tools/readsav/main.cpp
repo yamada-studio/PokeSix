@@ -3,7 +3,7 @@
 // 4세대(DP · Pt · HGSS) 세이브의 파티를 core 파서로 읽어 찍는다. 파서의 단계(footer → 슬롯 →
 // PKM 풀기 → 필드 → readParty)마다 pokesix.save 카테고리로 로그를 남겨서, 어느 단계에서
 // 틀렸는지 바로 보이게 한다. 가이드: docs/guides/h1-save-reader.md, 바이트 지도: docs/data/gen4/.
-#include "core/save/partyreader.h"
+#include "core/save/saveformat.h"
 
 #include <QCommandLineParser>
 #include <QCoreApplication>
@@ -177,8 +177,8 @@ int main(int argc, char *argv[])
     const std::size_t found = party->members.size();
     qCInfo(lcSave).noquote() << QStringLiteral("readParty: %1 · %2 members")
                                         .arg(QString::fromUtf8(
-                                                party->layout->versionGroup.data(),
-                                                qsizetype(party->layout->versionGroup.size())))
+                                                party->versionGroup.data(),
+                                                qsizetype(party->versionGroup.size())))
                                         .arg(found);
     if (found != std::size_t(count))
         qCWarning(lcSave) << "readParty found" << found << "members, the step-by-step path"

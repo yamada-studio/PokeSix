@@ -23,6 +23,11 @@ add_library(pokesix_core STATIC
     save/pkmcodec.cpp
     save/partyreader.h
     save/partyreader.cpp
+    # H6 — 세대별 형식(4 · 5세대)과 형식 목록
+    save/saveformat.h
+    save/saveformat.cpp
+    save/gen5.h
+    save/gen5.cpp
 )
 add_library(PokeSix::core ALIAS pokesix_core)
 

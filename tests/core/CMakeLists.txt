@@ -10,6 +10,9 @@ add_executable(pokesix_core_tests
     pkmcodec_test.cpp
     partyreader_test.cpp
     realsave_test.cpp
+    # H6 — 세대별 형식
+    gen5_test.cpp
+    saveformat_test.cpp
 )
 pokesix_target_defaults(pokesix_core_tests)
 

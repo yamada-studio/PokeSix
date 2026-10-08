@@ -30,23 +30,24 @@ ReadMember parseMember(const DecodedPkm &pkm)
     return member;
 }
 
-std::optional<ReadParty> readParty(Bytes save)
+std::optional<ReadParty> readGen4Party(Bytes save)
 {
     if (save.size() < kSaveSize)
         return std::nullopt;
     for (const SaveLayout &layout : kGen4Layouts) {
         if (const auto start = activeGeneralBlock(save, layout)) {
             ReadParty party;
-            party.layout = &layout;
-            party.generalStart = *start;
-            party.footer = readFooter(save, *start, layout);
-            const int count = save[party.generalStart + layout.partyCountOffset];
+            const std::size_t general = *start; // 고른 슬롯의 일반 블록 시작(0 또는 kSlotSize)
+            // TODO(H6-CP1) 세대와 상관없는 칸 세 개를 채운다:
+            //   party.generation = 4;  party.versionGroup = layout.versionGroup;
+            //   party.partyOffset = general + layout.partyOffset  (파일에서 첫 포켓몬의 위치)
+            const int count = save[general + layout.partyCountOffset];
             if (count < 1 || count > 6) {
                 return std::nullopt;
             }
             for (int i = 0; i < count; ++i) {
                 const std::size_t at
-                        = party.generalStart + layout.partyOffset + std::size_t(i) * kPartyPkmSize;
+                        = general + layout.partyOffset + std::size_t(i) * kPartyPkmSize;
                 const DecodedPkm pkm = decodePkm(save.subspan(at, kPartyPkmSize));
                 party.members.push_back(parseMember(pkm));
             }

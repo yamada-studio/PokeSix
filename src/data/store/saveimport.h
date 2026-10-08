@@ -25,7 +25,8 @@ namespace com::yamada::studio::saveimport {
 bool isSaveFile(const QString &path);
 
 // 출신 게임 번호(PK4 0x5F) → PokéAPI version identifier. 모르는 값이면 빈 문자열
-//   7 heartgold · 8 soulsilver · 10 diamond · 11 pearl · 12 platinum
+//   7 heartgold · 8 soulsilver · 10 diamond · 11 pearl · 12 platinum (4세대)
+//   20 white · 21 black · 22 white-2 · 23 black-2 (5세대, H6)
 QString versionOfOriginGame(int originGame);
 
 // 실패하면 std::nullopt — error에 사람이 읽을 한 줄(파일을 못 연다 · 4세대 세이브가 아니다 …)

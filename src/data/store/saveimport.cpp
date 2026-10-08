@@ -1,6 +1,6 @@
 #include "data/store/saveimport.h"
 
-#include "core/save/partyreader.h"
+#include "core/save/saveformat.h"
 #include "data/logging/logging.h"
 #include "data/repository/repository.h"
 
@@ -11,8 +11,10 @@
 
 namespace com::yamada::studio::saveimport {
 namespace {
-// 지금 파서는 4세대 모양이라 세대를 상수로 둔다. 세대를 늘리면(H6) ReadParty가 세대를 담고 이
-// 상수는 없어진다 — docs/overlay-design.md §5 "여러 세대를 자동 판별하는 구조"
+// TODO(H6-CP5-1) 이 상수를 지운다 — 이제 세대는 세이브가 알려 준다(party->generation). 지우면 아래
+// 세 곳이
+//   컴파일 오류로 알려 준다: versionsOfGroup(세대를 인자로 받게), itemIdForGameIndex,
+//   portable.generation
 constexpr int kGeneration = 4;
 
 QString tr(const char *text)
@@ -21,7 +23,8 @@ QString tr(const char *text)
 }
 
 // 게임 묶음("heartgold-soulsilver")의 버전들({"heartgold", "soulsilver"}) — DB의 게임 표에서
-QStringList versionsOfGroup(Repository &repository, const QString &versionGroup)
+QStringList versionsOfGroup(Repository &repository,
+                            const QString &versionGroup) // TODO(H6-CP5-2) int generation 인자
 {
     for (const GameInfo &game : repository.gamesForGeneration(kGeneration)) {
         if (game.versionGroup == versionGroup)
@@ -43,6 +46,7 @@ QString versionOfOriginGame(int originGame)
             {7, QStringLiteral("heartgold")}, {8, QStringLiteral("soulsilver")},
             {10, QStringLiteral("diamond")},  {11, QStringLiteral("pearl")},
             {12, QStringLiteral("platinum")},
+            // TODO(H6-CP5-3) 5세대: 20 white · 21 black · 22 white-2 · 23 black-2
     };
     return versions.value(originGame);
 }
@@ -72,8 +76,8 @@ std::optional<squadfile::Portable> load(const QString &path, Repository &reposit
     // ③ 버전 고르기: 묶음의 버전 중 파티 멤버의 출신 게임이 가장 많은 쪽. 아무도 안 맞으면(다른
     // 게임에서
     //   데려온 포켓몬뿐) 묶음의 첫 버전
-    const QString versionGroup = QString::fromUtf8(party->layout->versionGroup.data(),
-                                                   qsizetype(party->layout->versionGroup.size()));
+    const QString versionGroup
+            = QString::fromUtf8(party->versionGroup.data(), qsizetype(party->versionGroup.size()));
     const QStringList versions = versionsOfGroup(repository, versionGroup);
     QHash<QString, int> votes; // 버전 → 그 버전 출신 멤버 수
     for (const save::ReadMember &member : party->members) {

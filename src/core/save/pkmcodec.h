@@ -16,6 +16,8 @@
 // 박스의 포켓몬은 앞 136바이트만 있다. 수치 출처: PKHeX PokeCrypto · PK4(수치만 참고).
 namespace com::yamada::studio::save {
 inline constexpr std::size_t kPartyPkmSize = 236;
+inline constexpr std::size_t kGen5PartyPkmSize
+        = 220; // 5세대 파티(배틀 스탯이 100이 아니라 84바이트) (H6)
 inline constexpr std::size_t kStoredSize = 136; // 헤더 8 + 블록 128
 inline constexpr std::size_t kHeaderSize = 8;
 inline constexpr std::size_t kBlockSize = 32;
@@ -58,6 +60,7 @@ struct DecodedPkm
     bool ok() const { return decoded && storedChecksum == computedChecksum; }
 };
 
-// encrypted: 세이브에서 자른 236바이트. 크기가 다르면 빈 DecodedPkm
+// encrypted: 세이브에서 자른 한 마리 — 236바이트(4세대 파티) 또는 220바이트(5세대 파티, H6).
+// 220바이트면 data의 뒤 16바이트는 0으로 남는다. 다른 크기면 빈 DecodedPkm
 DecodedPkm decodePkm(Bytes encrypted);
 } // namespace com::yamada::studio::save

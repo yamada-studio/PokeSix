@@ -47,6 +47,9 @@ std::uint16_t pkmChecksum(const Pkm &decrypted)
 DecodedPkm decodePkm(Bytes encrypted)
 {
     DecodedPkm pkm;
+    // TODO(H6-CP4-1) 5세대 파티(kGen5PartyPkmSize = 220)도 받는다: 크기 검사를 "236 또는 220"으로,
+    //   std::copy는 encrypted 길이만큼(그대로 두면 된다), 아래 배틀 스탯 cryptArray의 길이를
+    //   kPartyPkmSize − kStoredSize 대신 encrypted.size() − kStoredSize로
     if (encrypted.size() != kPartyPkmSize)
         return pkm;
     std::copy(encrypted.begin(), encrypted.end(), pkm.data.begin());

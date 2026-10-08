@@ -6,6 +6,7 @@
 // 낮은 층 함수(crc16Ccitt · cryptArray · pkmChecksum)는 각자의 테스트가 **외부 검증 값**으로 먼저
 // 확인한다(savebytes_test · pkmcodec_test). 이 도우미는 그 함수들을 그대로 써서 위층(블록 ·
 // 파티) 테스트용 바이트를 만든다. 그래서 CP 순서대로 통과시키면 된다.
+#include "core/save/gen5.h"
 #include "core/save/partyreader.h"
 
 #include <algorithm>
@@ -41,6 +42,8 @@ struct MemberSpec
     std::uint16_t hp = 100;
     std::uint16_t maxHp = 120;
     std::uint8_t originGame = 8; // 0x5F 출신 게임(8 = 소울실버)
+    std::uint8_t natureByte = 0; // 0x41 — 5세대의 성격(4세대에서는 빛나는 잎 자리, 테스트는 0)
+    bool hiddenAbility = false; // 0x42 비트 0 — 5세대
 };
 
 // 평문 PKM(블록 A · B · C · D 순서, 체크섬 포함)
@@ -57,6 +60,8 @@ inline Pkm plainPkm(const MemberSpec &m)
         putU16(p, 0x28 + 2 * k, m.moves[k]);
     putU32(p, 0x38, m.iv32);
     p[0x40] = m.formByte;
+    p[0x41] = m.natureByte;
+    p[0x42] = m.hiddenAbility ? 1 : 0;
     p[0x5F] = m.originGame;
     p[0x8C] = m.level;
     putU16(p, 0x8E, m.hp);
@@ -130,5 +135,49 @@ inline const SaveLayout &layoutOf(std::string_view versionGroup)
         if (layout.versionGroup == versionGroup)
             return layout;
     return kGen4Layouts[0];
+}
+// ── 5세대(H6) ────────────────────────────────────────────────
+// 본 세이브의 파티 블록 + 체크섬 모음 블록만 채운 BW · B2W2 세이브(나머지는 0).
+// 순서가 중요하다: 파티 CRC를 먼저 계산해 두 곳(블록 뒤 · 모음 블록의 사본)에 쓰고, 그 사본이 든
+// 모음 블록 전체의 CRC를 마지막에 쓴다
+struct Gen5SaveSpec
+{
+    std::vector<MemberSpec> party = {};
+    bool corruptInfo = false; // 모음 블록 CRC를 쓴 뒤 그 안의 한 바이트를 바꾼다
+    bool corruptParty = false; // 파티 블록 CRC를 쓴 뒤 파티 블록 한 바이트를 바꾼다
+};
+
+inline std::vector<std::uint8_t> buildGen5Save(const Gen5Layout &layout, const Gen5SaveSpec &spec)
+{
+    std::vector<std::uint8_t> save(kSaveSize, 0);
+    const std::span all(save);
+    all[kGen5PartyBlock + kGen5PartyCountOffset] = std::uint8_t(spec.party.size());
+    for (std::size_t i = 0; i < spec.party.size(); ++i) {
+        // 220바이트 = 236바이트 암호문의 앞부분(배틀 스탯 스트림은 앞에서부터 같은 키라 잘라도
+        // 맞다)
+        const Pkm pkm = encodePkm(plainPkm(spec.party[i]));
+        std::copy_n(pkm.begin(), kGen5PartyPkmSize,
+                    save.begin()
+                            + std::ptrdiff_t(kGen5PartyBlock + kGen5PartyOffset
+                                             + i * kGen5PartyPkmSize));
+    }
+    const std::uint16_t partyCrc = crc16Ccitt(all.subspan(kGen5PartyBlock, kGen5PartyBlockSize));
+    putU16(all, kGen5PartyCrc, partyCrc);
+    const std::size_t info = layout.mainSize - 0x100;
+    putU16(all, info + kGen5PartyCrcMirror, partyCrc);
+    putU16(all, info + layout.infoLength + 0x0E, crc16Ccitt(all.subspan(info, layout.infoLength)));
+    if (spec.corruptInfo)
+        save[info + 0x10] ^= 0xFF;
+    if (spec.corruptParty)
+        save[kGen5PartyBlock + kGen5PartyOffset + 0x20] ^= 0xFF;
+    return save;
+}
+
+inline const Gen5Layout &gen5LayoutOf(std::string_view versionGroup)
+{
+    for (const Gen5Layout &layout : kGen5Layouts)
+        if (layout.versionGroup == versionGroup)
+            return layout;
+    return kGen5Layouts[0];
 }
 } // namespace synth

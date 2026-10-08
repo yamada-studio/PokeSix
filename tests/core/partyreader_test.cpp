@@ -1,4 +1,5 @@
 // H1 CP4 · CP5 — 필드 읽기와 세이브 → 파티 조립. ctest -R PartyReader
+#include "core/save/saveformat.h"
 #include "syntheticsave.h"
 
 #include <gtest/gtest.h>
@@ -78,10 +79,11 @@ TEST(PartyReader, ReadsAPlatinumParty)
     c.pid = 0x7777AAAA;
     const auto save = buildSave(synth::layoutOf("platinum"), SlotSpec {.party = {a, b, c}});
 
-    const auto party = readParty(save);
+    const auto party = readGen4Party(save);
     ASSERT_TRUE(party.has_value());
-    EXPECT_EQ(party->layout->versionGroup, "platinum");
-    EXPECT_EQ(party->generalStart, 0u);
+    EXPECT_EQ(party->generation, 4);
+    EXPECT_EQ(party->versionGroup, "platinum");
+    EXPECT_EQ(party->partyOffset, synth::layoutOf("platinum").partyOffset); // 슬롯 0의 파티
     ASSERT_EQ(party->members.size(), 3u);
     EXPECT_EQ(party->members[0].species, 392);
     EXPECT_EQ(party->members[1].species, 398);
@@ -93,9 +95,9 @@ TEST(PartyReader, ReadsAPlatinumParty)
 TEST(PartyReader, DetectsEachGameFromTheBlockSize)
 {
     for (const SaveLayout &layout : kGen4Layouts) {
-        const auto party = readParty(buildSave(layout, SlotSpec {.party = {MemberSpec {}}}));
+        const auto party = readGen4Party(buildSave(layout, SlotSpec {.party = {MemberSpec {}}}));
         ASSERT_TRUE(party.has_value()) << layout.versionGroup;
-        EXPECT_EQ(party->layout->versionGroup, layout.versionGroup);
+        EXPECT_EQ(party->versionGroup, layout.versionGroup);
     }
 }
 
@@ -108,10 +110,10 @@ TEST(PartyReader, ReadsTheNewestSlot)
     const auto save = buildSave(synth::layoutOf("heartgold-soulsilver"),
                                 SlotSpec {.major = 10, .party = {old}},
                                 SlotSpec {.major = 11, .party = {new1, new2}});
-    const auto party = readParty(save);
+    const auto party = readGen4Party(save);
     ASSERT_TRUE(party.has_value());
-    EXPECT_EQ(party->generalStart, kSlotSize);
-    EXPECT_EQ(party->footer.major, 11u);
+    // 슬롯 1(major 11)이 최신 — 파티 위치가 그 슬롯 안이다
+    EXPECT_EQ(party->partyOffset, kSlotSize + synth::layoutOf("heartgold-soulsilver").partyOffset);
     ASSERT_EQ(party->members.size(), 2u);
     EXPECT_EQ(party->members[0].species, 388);
 }
@@ -120,17 +122,18 @@ TEST(PartyReader, AcceptsADeSmuMEFooter)
 {
     auto save = buildSave(synth::layoutOf("platinum"), SlotSpec {.party = {MemberSpec {}}});
     save.resize(kSaveSize + 122, 0); // .dsv 꼬리
-    EXPECT_TRUE(readParty(save).has_value());
+    EXPECT_TRUE(readGen4Party(save).has_value());
 }
 
 TEST(PartyReader, RejectsWhatIsNotASave)
 {
-    EXPECT_FALSE(readParty(std::vector<std::uint8_t>(1000, 0)).has_value()); // 너무 작다
-    EXPECT_FALSE(readParty(std::vector<std::uint8_t>(kSaveSize, 0xFF)).has_value()); // 빈 플래시
-    EXPECT_FALSE(readParty(std::vector<std::uint8_t>(kSaveSize, 0x00)).has_value());
+    EXPECT_FALSE(readGen4Party(std::vector<std::uint8_t>(1000, 0)).has_value()); // 너무 작다
+    EXPECT_FALSE(
+            readGen4Party(std::vector<std::uint8_t>(kSaveSize, 0xFF)).has_value()); // 빈 플래시
+    EXPECT_FALSE(readGen4Party(std::vector<std::uint8_t>(kSaveSize, 0x00)).has_value());
 }
 
 TEST(PartyReader, RejectsAnEmptyParty)
 {
-    EXPECT_FALSE(readParty(buildSave(synth::layoutOf("platinum"), SlotSpec {})).has_value());
+    EXPECT_FALSE(readGen4Party(buildSave(synth::layoutOf("platinum"), SlotSpec {})).has_value());
 }
