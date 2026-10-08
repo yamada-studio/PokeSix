@@ -273,8 +273,12 @@ CMake Error at .../GoogleTestAddTests.cmake:132 (message):
 - 확장: **CMake Tools**, **C/C++**(cpptools). 디버거는 gdb(Linux) / lldb(macOS) / MSVC(Windows)
 - 명령 팔레트 → `CMake: Select Configure Preset` / `Select Build Preset` / `Select Test Preset`
 - 빌드 F7, 실행 Shift+F5, 디버그 Ctrl+F5. `launch.json` 없이 CMake Tools가 디버거를 붙인다
-- 디버그 실행의 환경 변수는 `.vscode/settings.json`의 `cmake.debugConfig.environment`에 넣는다
-  (`.vscode/`는 git에서 제외한다)
+- 리포에 **공유 설정**이 있다: `.vscode/settings.json`(IntelliSense를 CMake Tools · `compile_commands.json`의
+  실제 빌드 플래그로 — 이게 없으면 `std::span` 같은 C++20 코드에 빨간 줄이 뜬다)과 `.vscode/extensions.json`(권장 확장).
+  나머지 `.vscode/` 파일은 git에서 제외한다
+- 개인 경로가 들어가는 설정(디버그 인자 `cmake.debugConfig.args` · 환경 변수 `cmake.debugConfig.environment`)은
+  공유 파일 말고 **사용자 설정**(Ctrl+, → User 탭)에 넣는다 — 커밋되지 않는다
+- 빨간 줄이 남으면: 명령 팔레트 → `Developer: Reload Window`, 그래도 남으면 `C/C++: Reset IntelliSense Database`
 - VS Code가 `QT_ROOT_DIR`을 모르면 터미널에서 `code .`로 열거나 `CMakeUserPresets.json`을 쓴다
 - 선택: The Qt Company의 VS Code 확장(Qt Extension Pack) — 디버거의 Qt 타입 표시, `.ui`/`.qrc` 지원
 
