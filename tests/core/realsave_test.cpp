@@ -35,8 +35,8 @@ void checkRealSave(const char *envName, std::string_view expectedGroup)
     ASSERT_TRUE(party.has_value()) << "no party found in " << path;
     EXPECT_EQ(party->layout->versionGroup, expectedGroup);
 
-    std::printf("  %s: slot 0x%05zX, save counter %u\n", path, party->generalStart,
-                party->footer.major);
+    std::printf("  %s: slot 0x%05zX, save counter %u.%u (major.minor)\n", path, party->generalStart,
+                party->footer.major, party->footer.minor);
     for (std::size_t i = 0; i < party->members.size(); ++i) {
         const ReadMember &m = party->members[i];
         std::printf("  %zu  #%d Lv.%d  moves %d %d %d %d  item %d  ability %d  nature %d%s\n",
