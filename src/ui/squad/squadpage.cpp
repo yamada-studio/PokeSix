@@ -19,6 +19,7 @@
 #include "ui/items/itemrowdelegate.h"
 #include "ui/logging/logging.h"
 #include "ui/squad/dexfilterbar.h"
+#include "ui/squad/dropoverlay.h"
 #include "ui/squad/heatmapview.h"
 #include "ui/squad/listpicker.h"
 #include "ui/squad/problemlist.h"
@@ -225,6 +226,8 @@ SquadPage::SquadPage(Repository *repository, AppState *state, QWidget *parent)
     layout->addWidget(m_scroll, 1);
 
     setAcceptDrops(true);
+    // TODO(H2-CP8-6) 덮개 만들기: m_dropOverlay = new DropOverlay(this) — 레이아웃에 넣지
+    // 않는다(위에 떠 있다)
 
     // 세션이 바뀌면(편집 · 세대) 전부 다시 그린다. 언어가 바뀌면 이름 · 타입 글자만 바뀐다
     // TODO(H2-CP6-1) setAcceptDrops(true) — 이 페이지가 끌어다 놓기를 받겠다고 Qt에 알린다
@@ -561,6 +564,7 @@ void SquadPage::resizeEvent(QResizeEvent *event)
     const bool wide = width() >= kWideWidth;
     if (wide != m_wide)
         placeCards(wide);
+    // TODO(H2-CP8-7) 덮개가 늘 페이지 전체를 덮게: m_dropOverlay->setGeometry(rect())
     // 카드 높이는 여기서 재지 않는다 — viewport의 Resize(eventFilter)가 정확한 시점이다
 }
 
@@ -1254,10 +1258,20 @@ void SquadPage::dragEnterEvent(QDragEnterEvent *event)
 
     if (kAccepted.contains(suffix))
         event->acceptProposedAction();
+    // TODO(H2-CP8-8) 받은 경우에만 덮개를 보인다: 위 if 안에서 m_dropOverlay->raise()(맨 위로) ·
+    // show()
+}
+
+void SquadPage::dragLeaveEvent(QDragLeaveEvent *event)
+{
+    // TODO(H2-CP8-9) 끌던 파일이 창 밖으로 나갔다 — 덮개를 숨긴다(m_dropOverlay->hide())
+    QWidget::dragLeaveEvent(event);
 }
 
 void SquadPage::dropEvent(QDropEvent *event)
 {
+    // TODO(H2-CP8-10) 놓았다 — 불러오기 전에 덮개부터 숨긴다(덮어쓰기 확인 창 뒤에 덮개가 남지
+    // 않게)
     // TODO(H2-CP6-3) urls().constFirst().toLocalFile()을 importFile에 넘기고 acceptProposedAction()
     QWidget::dropEvent(event);
     if (event->mimeData()->hasUrls()) {
