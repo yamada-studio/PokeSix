@@ -65,7 +65,7 @@ TEST_F(RepositoryTest, TypesAndStatsFollowTheGeneration)
     const auto gen5 = repository.speciesForGeneration(5);
     const auto gen6 = repository.speciesForGeneration(6);
     EXPECT_EQ(find(gen5, 35)->types,
-              QStringList {QStringLiteral("normal")});                       // 삐삐: 5세대까지 노말
+              QStringList {QStringLiteral("normal")}); // 삐삐: 5세대까지 노말
     EXPECT_EQ(find(gen6, 35)->types, QStringList {QStringLiteral("fairy")}); // 6세대부터 페어리
     EXPECT_EQ(find(gen6, 445)->types,
               (QStringList {QStringLiteral("dragon"), QStringLiteral("ground")}));
@@ -303,9 +303,11 @@ TEST_F(RepositoryTest, MachineContentsFollowTheGame)
     // 없다)
     const QList<ItemRow> letsGo
             = repository.itemsForGeneration(7, QStringLiteral("lets-go-pikachu-lets-go-eevee"));
-    for (const ItemRow &row : letsGo)
-        if (row.pocket == QStringLiteral("machines"))
+    for (const ItemRow &row : letsGo) {
+        if (row.pocket == QStringLiteral("machines")) {
             EXPECT_FALSE(row.machineMove.isEmpty()) << qPrintable(row.identifier);
+        }
+    }
     // 게임을 주지 않으면 세대 기준(그 세대 첫 게임 = 썬문)
     EXPECT_EQ(findItem(repository.itemsForGeneration(7), QStringLiteral("tm01"))->machineMove.ko,
               QStringLiteral("분발"));
@@ -798,7 +800,7 @@ TEST_F(RepositoryTest, VersionsResolveAndKnowTheirExclusives)
     EXPECT_EQ(repository.resolveVersion(4, QStringLiteral("soulsilver")),
               QStringLiteral("soulsilver"));
     EXPECT_EQ(repository.resolveVersion(4, QStringLiteral("heartgold-soulsilver")),
-              QStringLiteral("heartgold"));                                  // 옛 저장값(묶음)
+              QStringLiteral("heartgold")); // 옛 저장값(묶음)
     EXPECT_EQ(repository.resolveVersion(4, {}), QStringLiteral("platinum")); // 대표 게임
     EXPECT_EQ(repository.resolveVersion(4, QStringLiteral("black")), QStringLiteral("platinum"));
     // 시드의 식스테일(37)은 SS에만 나온다 → HG에서 본 다른 버전 한정
@@ -895,6 +897,33 @@ TEST_F(RepositoryTest, RefusesADatabaseWithAnotherSchemaVersion)
     ASSERT_TRUE(QFile::copy(s_dbPath, path)); // 데이터 받기가 새 DB로 바꿔 놓았다
     repository.close();
     EXPECT_EQ(repository.speciesForGeneration(4).size(), 5);
+}
+
+// ── H2: 세이브의 게임 번호 → DB id ───────────────────────────
+// 픽스처: 성격 개구쟁이 = game_index 4 · id 17(번호가 다르다), 4세대 아이템 번호 234 = item 211
+
+TEST_F(RepositoryTest, MapsTheNatureGameIndexToItsId) // H2-CP3-1
+{
+    Repository repository(s_dbPath);
+    EXPECT_EQ(repository.natureIdForGameIndex(0), 1);  // 노력(hardy)
+    EXPECT_EQ(repository.natureIdForGameIndex(4), 17); // 개구쟁이(naughty)
+    EXPECT_EQ(repository.natureIdForGameIndex(99), 0);
+}
+
+TEST_F(RepositoryTest, MapsTheItemGameIndexToItsId) // H2-CP3-2
+{
+    Repository repository(s_dbPath);
+    EXPECT_EQ(repository.itemIdForGameIndex(4, 234), 211);
+    EXPECT_EQ(repository.itemIdForGameIndex(4, 1), 1);
+    EXPECT_EQ(repository.itemIdForGameIndex(4, 999999), 0);
+}
+
+TEST_F(RepositoryTest, FindsTheDefaultPokemonOfASpecies) // H2-CP3-3
+{
+    Repository repository(s_dbPath);
+    EXPECT_EQ(repository.defaultPokemonId(445), 445); // 한카리아스
+    EXPECT_EQ(repository.defaultPokemonId(35), 35);   // 삐삐
+    EXPECT_EQ(repository.defaultPokemonId(9999), 0);
 }
 
 TEST_F(RepositoryTest, KnowsWhatEachSpeciesEvolvesFrom)

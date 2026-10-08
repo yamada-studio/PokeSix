@@ -108,6 +108,8 @@ qt_add_library(pokesix_ui STATIC
     map/mapview.cpp
     map/townmappage.h
     map/townmappage.cpp
+    squad/dropoverlay.h      # H2-CP8 끌어다 놓기 안내 덮개
+    squad/dropoverlay.cpp
     squad/shuttledialog.h
     squad/shuttledialog.cpp
     squad/squadpage.h

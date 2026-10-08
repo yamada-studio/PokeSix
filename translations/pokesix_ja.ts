@@ -286,6 +286,17 @@
     </message>
 </context>
 <context>
+    <name>com::yamada::studio::DropOverlay</name>
+    <message>
+        <source>여기에 놓으면 불러와요</source>
+        <translation>ここにドロップすると読み込みます</translation>
+    </message>
+    <message>
+        <source>스쿼드 파일(.pks) · 게임 세이브(.sav · .dsv)</source>
+        <translation>スクワッドファイル(.pks) · ゲームのセーブ(.sav · .dsv)</translation>
+    </message>
+</context>
+<context>
     <name>com::yamada::studio::EncounterList</name>
     <message>
         <source>야생에서는 만날 수 없어요. 위의 진화 전 단계를 잡아 진화시켜요.</source>
@@ -1486,7 +1497,7 @@
     </message>
     <message>
         <source>%1세대는 아직 몰라요</source>
-        <translation>第%1世代にはまだ対応していません</translation>
+        <translation type="vanished">第%1世代にはまだ対応していません</translation>
     </message>
     <message>
         <source>불러온 스쿼드</source>
@@ -1550,7 +1561,19 @@
     </message>
     <message>
         <source>PokeSix 스쿼드 (*.pks *.json)</source>
-        <translation>PokeSixスクワッド (*.pks *.json)</translation>
+        <translation type="vanished">PokeSixスクワッド (*.pks *.json)</translation>
+    </message>
+    <message>
+        <source>%1세대는 아직 준비되지 않았어요</source>
+        <translation>第%1世代にはまだ対応していません</translation>
+    </message>
+    <message>
+        <source>✓ 세이브에서 파티를 불러왔어요</source>
+        <translation>✓ セーブから手持ちを読み込みました</translation>
+    </message>
+    <message>
+        <source>PokeSix 스쿼드 · 게임 세이브 (*.pks *.json *.sav *.dsv);;PokeSix 스쿼드 (*.pks *.json);;게임 세이브 (*.sav *.dsv)</source>
+        <translation>PokeSixスクワッド · ゲームのセーブ (*.pks *.json *.sav *.dsv);;PokeSixスクワッド (*.pks *.json);;ゲームのセーブ (*.sav *.dsv)</translation>
     </message>
 </context>
 <context>
@@ -1749,6 +1772,17 @@
     <message>
         <source>이 버전에서는 얻을 수 없어요(다른 버전 한정)</source>
         <translation>このバージョンでは手に入りません(他バージョン限定)</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::saveimport</name>
+    <message>
+        <source>파일을 열 수 없어요: %1</source>
+        <translation>ファイルを開けませんでした: %1</translation>
+    </message>
+    <message>
+        <source>4세대(DP · Pt · HGSS) 세이브가 아니에요</source>
+        <translation>第4世代(DP · Pt · HGSS)のセーブではありません</translation>
     </message>
 </context>
 <context>

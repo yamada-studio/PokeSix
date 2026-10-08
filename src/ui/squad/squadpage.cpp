@@ -7,6 +7,7 @@
 #include "data/sprites/spritecache.h"
 #include "data/state/appstate.h"
 #include "data/state/squadsession.h"
+#include "data/store/saveimport.h"
 #include "data/store/squadfile.h"
 #include "data/store/squadstore.h"
 #include "ui/dex/dexdetailpage.h"
@@ -18,6 +19,7 @@
 #include "ui/items/itemrowdelegate.h"
 #include "ui/logging/logging.h"
 #include "ui/squad/dexfilterbar.h"
+#include "ui/squad/dropoverlay.h"
 #include "ui/squad/heatmapview.h"
 #include "ui/squad/listpicker.h"
 #include "ui/squad/problemlist.h"
@@ -38,6 +40,8 @@
 #include <QBoxLayout>
 #include <QClipboard>
 #include <QDialog>
+#include <QDragEnterEvent>
+#include <QDropEvent>
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QFontMetricsF>
@@ -49,6 +53,7 @@
 #include <QListView>
 #include <QMenu>
 #include <QMessageBox>
+#include <QMimeData>
 #include <QPainter>
 #include <QPixmapCache>
 #include <QPropertyAnimation>
@@ -59,6 +64,7 @@
 #include <QScrollBar>
 #include <QStandardPaths>
 #include <QStyle>
+#include <QTimer>
 #include <QToolButton>
 
 namespace {
@@ -219,6 +225,10 @@ SquadPage::SquadPage(Repository *repository, AppState *state, QWidget *parent)
     m_scroll->setWidget(content);
     m_scroll->viewport()->installEventFilter(this); // 크기가 정해지면 카드 높이를 맞춘다
     layout->addWidget(m_scroll, 1);
+
+    setAcceptDrops(true);
+    // 끌어다 놓기 안내 덮개 — 레이아웃 밖에 떠 있고 resizeEvent가 페이지 전체 크기로 맞춘다
+    m_dropOverlay = new DropOverlay(this);
 
     // 세션이 바뀌면(편집 · 세대) 전부 다시 그린다. 언어가 바뀌면 이름 · 타입 글자만 바뀐다
     connect(m_session, &SquadSession::changed, this, &SquadPage::refresh);
@@ -555,6 +565,8 @@ void SquadPage::resizeEvent(QResizeEvent *event)
     if (wide != m_wide)
         placeCards(wide);
     // 카드 높이는 여기서 재지 않는다 — viewport의 Resize(eventFilter)가 정확한 시점이다
+    if (m_dropOverlay)
+        m_dropOverlay->setGeometry(rect());
 }
 
 bool SquadPage::eventFilter(QObject *watched, QEvent *event)
@@ -1188,16 +1200,14 @@ void SquadPage::exportSquad()
         QMessageBox::warning(this, tr("스쿼드 내보내기"), error);
 }
 
-void SquadPage::importSquad()
+void SquadPage::importFile(const QString &path)
 {
-    const QString dir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
-    // 초기 내보내기가 .json이었다 — 그 파일들도 계속 읽는다
-    const QString path = QFileDialog::getOpenFileName(this, tr("스쿼드 불러오기"), dir,
-                                                      tr("PokeSix 스쿼드 (*.pks *.json)"));
-    if (path.isEmpty())
-        return;
     QString error;
-    const std::optional<squadfile::Portable> loaded = squadfile::load(path, &error);
+    const bool isSave = saveimport::isSaveFile(path);
+    const std::optional<squadfile::Portable> loaded
+            = isSave ? saveimport::load(path, *m_repository, &error)
+                     : squadfile::load(path, &error);
+
     if (!loaded) {
         QMessageBox::warning(this, tr("스쿼드 불러오기"), error);
         return;
@@ -1206,7 +1216,7 @@ void SquadPage::importSquad()
     const QString version = m_repository->resolveVersion(loaded->generation, loaded->game);
     if (version.isEmpty()) {
         QMessageBox::warning(this, tr("스쿼드 불러오기"),
-                             tr("%1세대는 아직 몰라요").arg(loaded->generation));
+                             tr("%1세대는 아직 준비되지 않았어요").arg(loaded->generation));
         return;
     }
     const Squad existing = m_store->squad(loaded->generation, version);
@@ -1224,7 +1234,57 @@ void SquadPage::importSquad()
     if (m_state->game() != version)
         m_state->setGame(version);
     m_session->replaceSquad(loaded->squad);
-    flashStatus(tr("✓ 스쿼드를 불러왔어요"));
+
+    flashStatus(isSave ? tr("✓ 세이브에서 파티를 불러왔어요") : tr("✓ 스쿼드를 불러왔어요"));
+}
+
+void SquadPage::dragEnterEvent(QDragEnterEvent *event)
+{
+    QWidget::dragEnterEvent(event);
+
+    const QList<QUrl> urls = event->mimeData()->urls();
+    if (urls.size() != 1 || !urls.constFirst().isLocalFile())
+        return;
+    const QString suffix = QFileInfo(urls.constFirst().toLocalFile()).suffix().toLower();
+    static const QStringList kAccepted = {QStringLiteral("pks"), QStringLiteral("json"),
+                                          QStringLiteral("sav"), QStringLiteral("dsv")};
+
+    if (kAccepted.contains(suffix)) {
+        event->acceptProposedAction();
+        m_dropOverlay->raise();
+        m_dropOverlay->show();
+    }
+}
+
+void SquadPage::dragLeaveEvent(QDragLeaveEvent *event)
+{
+    QWidget::dragLeaveEvent(event);
+    m_dropOverlay->hide();
+}
+
+void SquadPage::dropEvent(QDropEvent *event)
+{
+    m_dropOverlay->hide(); // 덮어쓰기 확인 창이 뜨기 전에
+    if (!event->mimeData()->hasUrls())
+        return;
+    event->acceptProposedAction();
+    // 불러오기는 놓기 처리가 끝난 뒤로 미룬다: importFile이 확인 창(exec)을 띄우는 동안 끌어 온 쪽
+    // (파일 관리자)이 놓기의 답을 기다리며 멈춰 있지 않게
+    const QString path = event->mimeData()->urls().constFirst().toLocalFile();
+    QTimer::singleShot(0, this, [this, path] { importFile(path); });
+}
+
+void SquadPage::importSquad()
+{
+    const QString dir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
+    // 초기 내보내기가 .json이었다 — 그 파일들도 계속 읽는다
+    const QString path = QFileDialog::getOpenFileName(
+            this, tr("스쿼드 불러오기"), dir,
+            tr("PokeSix 스쿼드 · 게임 세이브 (*.pks *.json *.sav *.dsv);;PokeSix 스쿼드 (*.pks "
+               "*.json);;게임 세이브 (*.sav *.dsv)"));
+    if (path.isEmpty())
+        return;
+    importFile(path);
 }
 
 QPixmap SquadPage::squadImage()

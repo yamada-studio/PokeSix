@@ -35,7 +35,7 @@
 // [이름] 포켓몬 · 타입 이름은 ko / en / ja 열로 둔다(PokéAPI languages: 3 = ko, 9 = en, 11 = ja).
 //   UI 문구(tr())와는 별개의 경로다(architecture.md §4).
 namespace com::yamada::studio::schema {
-inline constexpr int kVersion = 11; // 스키마를 바꾸면 올린다. meta 표에 기록된다
+inline constexpr int kVersion = 12; // 스키마를 바꾸면 올린다. meta 표에 기록된다
 
 inline constexpr std::array kStatements = {
         // 이 DB를 만든 원천과 스키마 버전 (key = 'schema_version', 'source_commit', 'imported_at')
@@ -112,9 +112,10 @@ inline constexpr std::array kStatements = {
         id INTEGER PRIMARY KEY, identifier TEXT NOT NULL,
         category_id INTEGER NOT NULL REFERENCES item_categories(id), cost INTEGER,
         name_ko TEXT, name_en TEXT, name_ja TEXT))",
+        // game_index: 그 세대 게임 속 아이템 번호(세이브의 물건 번호) — 세이브 불러오기(H2)가 쓴다
         R"(CREATE TABLE item_generations (
         item_id INTEGER NOT NULL REFERENCES items(id), generation INTEGER NOT NULL,
-        PRIMARY KEY (item_id, generation)))",
+        game_index INTEGER, PRIMARY KEY (item_id, generation)))",
         // 지금(최신 게임) 값. 옛 세대 값은 move_changelog에서 고른다(Repository). damage_class: 1
         // 변화 ·
         // 2 물리 · 3 특수 — 3세대까지는 기술이 아니라 타입이 물리/특수를 정했다(core 규칙이 아니라
@@ -169,9 +170,11 @@ inline constexpr std::array kStatements = {
         ability_id INTEGER NOT NULL, generation INTEGER NOT NULL,
         text_ko TEXT, text_en TEXT, text_ja TEXT, PRIMARY KEY (ability_id, generation)))",
         // 성격: 오르는 · 내리는 능력치(stats.id 2–6). 둘이 같으면 무보정(노력 · 수줍음 …)
+        // game_index: 게임 속 성격 순서(세이브의 PID % 25) — id와 순서가 다르다
         R"(CREATE TABLE natures (
         id INTEGER PRIMARY KEY, identifier TEXT NOT NULL, increased_stat INTEGER NOT NULL,
-        decreased_stat INTEGER NOT NULL, name_ko TEXT, name_en TEXT, name_ja TEXT))",
+        decreased_stat INTEGER NOT NULL, game_index INTEGER, name_ko TEXT, name_en TEXT,
+        name_ja TEXT))",
         R"(CREATE TABLE encounters (
         pokemon_id INTEGER NOT NULL, version_id INTEGER NOT NULL, location_id INTEGER NOT NULL,
         method_id INTEGER NOT NULL, min_level INTEGER NOT NULL, max_level INTEGER NOT NULL,

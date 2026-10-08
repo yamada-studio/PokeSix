@@ -35,7 +35,7 @@ void DexFilterBar::setDexes(const QList<DexInfo> &dexes, Language language, int 
         m_group->addButton(chip, id);
         m_layout->addWidget(chip);
     };
-    add(new VersionChip({{tr("전국"), QColor(tok::kWhite), QColor(tok::kInk)}}, {}),
+    add(new VersionChip({{tr("전국"), QColor(tok::kWhite), QColor(tok::kInk), {}}}, {}),
         tr("그 세대까지 나온 포켓몬 전부"), kNational);
 
     // 칩 글자(버전 약칭 이어 붙임)가 겹치는 도감(칼로스 센트럴 · 코스트 · 마운틴 = 모두 XY)은

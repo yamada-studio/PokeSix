@@ -24,8 +24,8 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 
 ### 진행 중
 
-- **H2 — 스쿼드 불러오기가 `.sav`를 받는다**(2026-10-08 시작). 브랜치 `feat/h2-squad-sav-import`, 가이드
-  [h2-squad-sav-import.md](guides/h2-squad-sav-import.md). H1(core 세이브 파서)은 main에 merge됨
+- 없음. **Phase H의 H1 · H2 완료**(세이브 → 스쿼드). 다음 후보: 폼 표 · 세이브 파일 감시(자동 갱신) · 전투 분석 입력 넓히기
+  ([data/battle-inputs.md](data/battle-inputs.md) §4) · Phase B(컴포넌트 갤러리) · E4(설정). 사용자가 고른다
 
 ### 열린 일 (작은 것부터)
 
@@ -59,6 +59,17 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 ---
 
 ## 최근 세션 (역순)
+
+### 2026-10-08 — H2 완료 · merge (Linux 세션)
+
+- 사용자 구현 CP1–CP8(CP8 = 끌어다 놓기 안내 덮개, 사용자 추가 요청). 진단에서 고친 것: 스키마 · 변환기의 칸 누락과
+  쉼표 실수(INTEGER라는 칸이 생김), 조회의 세대 조건 · bindValue 오타, egg 덮어쓰기(중복 줄), importFile 옮기기 미완,
+  setAcceptDrops 위치 — 각각 원인을 설명하고 고침. 정리: 다 채운 TODO 삭제, 드롭 후 불러오기를 다음 루프로 미룸
+  (확인 창이 드래그 원본을 막지 않게), 번역 7문구 × 2
+- **스키마 12**: 업데이트 후 첫 실행에 데이터를 다시 만든다(캐시 CSV, 수 초) — CHANGELOG에 명시
+- 실데이터 확인: 캐시 CSV로 만든 DB + 실제 SS 세이브 → soulsilver · 6마리, 성격 · 물건까지 H1 표와 일치. 앱에서 불러오기 · 드롭 · 덮개 사용자 확인
+- 클린 빌드에서만 보이던 숨은 경고 2개(repository_test dangling else · VersionChip::Part 초기화) 정리
+- UI 자동 테스트는 없다(core · data · env만) — 로직은 data에 두고 UI는 얇게. 화면이 안정되는 F–G쯤 `tests/ui/` 검토
 
 ### 2026-10-08 — H1 완료 · merge, H2 시작 (Linux 세션)
 

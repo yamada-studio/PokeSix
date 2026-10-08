@@ -43,7 +43,7 @@ signals:
 
 protected:
     void keyPressEvent(QKeyEvent *event) override;
-    void focusInEvent(QFocusEvent *event) override;  // Tab으로 들어왔는지(reason)를 기억한다
+    void focusInEvent(QFocusEvent *event) override; // Tab으로 들어왔는지(reason)를 기억한다
     void focusOutEvent(QFocusEvent *event) override; // 링을 지운다
     void paintEvent(QPaintEvent *event) override;    // 선택된 카드 바깥의 포커스 링
 

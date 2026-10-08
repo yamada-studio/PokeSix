@@ -32,7 +32,8 @@ H1은 "세이브를 **읽을 수 있다**"였다. H2는 그걸 앱에서 **쓸 �
 | ⬜ | **CP4 세이브 → 스쿼드** | `src/data/store/saveimport.cpp` | `QFile` · `QByteArray` ↔ `std::span`, 레이어 경계, `qCInfo(lcData)` |
 | ⬜ | **CP5 불러오기 창** | `src/ui/squad/squadpage.cpp` | 함수 뽑아내기, `QFileDialog` 필터 |
 | ⬜ | **CP6 끌어다 놓기** | `src/ui/squad/squadpage.cpp` | Qt 이벤트: `dragEnterEvent` · `dropEvent` · `QMimeData` |
-| ⬜ | **CP7 실제 확인 = 완료** | 앱 실행 | VS Code로 앱 디버깅 |
+| ⬜ | **CP7 실제 확인** | 앱 실행 | VS Code로 앱 디버깅 |
+| ⬜ | **CP8 끌어다 놓기 안내 덮개 = 완료** | `src/ui/squad/dropoverlay.cpp` · `squadpage.cpp` | 겹쳐 그리는 자식 위젯, 반투명 그리기, 점선 펜, `dragLeaveEvent` |
 
 ### 준비된 것 (Claude가 만들어 둠)
 
@@ -271,7 +272,62 @@ ROS 2에 빗대면 `dragEnterEvent`는 메시지를 받기 전의 **필터**(이
 - [ ] 세이브가 아닌 파일(예: 아무 텍스트 파일 이름을 `.sav`로)을 고르면 경고 창이 뜨고 스쿼드는 그대로
 - [ ] 로그에 `save import: soulsilver · 6 members`
 
-다 되면 **"H2 진단해줘"** → Claude가 diff · 빌드 · 테스트를 보고, 새 문구의 번역(영어 · 일본어)을 채우고, 커밋 · merge한다.
+CP8까지 다 되면 **"H2 진단해줘"** → Claude가 diff · 빌드 · 테스트를 보고, 새 문구의 번역(영어 · 일본어)을 채우고, 커밋 · merge한다.
+
+## CP8 — 끌어다 놓기 안내 덮개 (사용자 추가 요청)
+
+지금은 파일을 끌고 들어와도 커서만 바뀐다. 흔한 앱처럼 **화면이 뿌옇게 덮이고, 점선 테두리 안에 "여기에 놓으면 불러와요"**가
+보이게 한다. 받지 않는 파일(예: `.png`)을 끌어오면 덮개가 뜨지 않는다 — "놓아도 된다"는 신호가 된다.
+
+```
+끌고 들어옴(받는 파일) ─▶ dragEnterEvent ─▶ 덮개 raise() · show()
+창 밖으로 나감          ─▶ dragLeaveEvent ─▶ 덮개 hide()
+놓음                   ─▶ dropEvent      ─▶ 덮개 hide() → importFile
+```
+
+### 새 개념
+
+**겹쳐 그리는 자식 위젯** — `DropOverlay`는 `new DropOverlay(this)`로 SquadPage의 자식이지만 **레이아웃에 넣지 않는다.**
+레이아웃 밖의 자식은 스스로 위치 · 크기를 정해야 하므로 SquadPage의 `resizeEvent`에서 `setGeometry(rect())`로 늘 페이지 전체를
+덮게 한다(앱 막대의 마크 버튼 테 · PanelFrame의 머리 위젯과 같은 방식 — [docs/ui/08-widgets.md](../ui/08-widgets.md)).
+형제 위젯끼리는 나중에 만든 것이 위에 그려지지만, 확실히 하려고 보일 때 `raise()`로 맨 위에 올린다.
+
+**이벤트 통과** — 덮개가 마우스 아래에 깔리면 끌어다 놓기 이벤트를 덮개가 먼저 받게 된다. `Qt::WA_TransparentForMouseEvents`를 켜면
+Qt가 이벤트 받을 위젯을 찾을 때 덮개를 **없는 것처럼 건너뛴다** → 이벤트는 계속 SquadPage로 간다. 이걸 빼면 덮개가 뜨는 순간
+SquadPage가 "파일이 나갔다"(dragLeave)로 착각해 덮개가 깜빡일 수 있다.
+
+**반투명 그리기** — 위젯 바탕을 칠하지 않으면 투명하다. `QColor`의 알파(0 투명 – 255 불투명)를 215쯤 주고 `fillRect`하면
+뒤의 카드가 흐리게 비친다. 점선은 `QPen`에 `Qt::DashLine`.
+
+### TODO
+
+| TODO | 파일 | 할 일 |
+|---|---|---|
+| `H2-CP8-1` · `2` | `dropoverlay.cpp` 생성자 | `setAttribute(Qt::WA_TransparentForMouseEvents)` · `hide()` |
+| `H2-CP8-3` | `dropoverlay.cpp` paintEvent | 종이색 반투명 막(`tok::kPaper` + 알파 `kWashAlpha`) |
+| `H2-CP8-4` | 〃 | 파랑 점선 둥근 테두리 — 안쪽 여백 `kInset`, 펜 절반만큼 더 들이기 |
+| `H2-CP8-5` | 〃 | 제목 · 설명 두 줄을 가운데에(도현 28 · 본문 14). `rect()`를 세로 가운데 선으로 나눠 위 칸 아래 정렬 · 아래 칸 위 정렬 |
+| `H2-CP8-6` | `squadpage.cpp` 생성자 | `m_dropOverlay = new DropOverlay(this)` |
+| `H2-CP8-7` | `resizeEvent` | `m_dropOverlay->setGeometry(rect())` |
+| `H2-CP8-8` | `dragEnterEvent` | 받는 파일일 때만(if 안에서 — 중괄호!) `raise()` · `show()` |
+| `H2-CP8-9` | `dragLeaveEvent` | `hide()` |
+| `H2-CP8-10` | `dropEvent` | 맨 앞에서 `hide()` — 덮어쓰기 확인 창이 뜨기 전에 |
+
+`dragEnterEvent`의 `if (kAccepted.contains(suffix))` 아래는 지금 한 줄이라 중괄호가 없다. 두 줄을 더 넣으려면 `{ }`로 감싼다 —
+안 감싸면 `raise()` · `show()`가 if와 상관없이 늘 실행된다.
+
+### 확인
+
+1. `.sav`를 끌고 스쿼드 화면에 들어오면 덮개가 뜬다 → 창 밖으로 다시 빼면 사라진다
+2. 놓으면 덮개가 사라지고 덮어쓰기 확인 창이 뜬다(덮개가 창 뒤에 남아 있지 않다)
+3. `.png` 같은 파일을 끌어오면 덮개가 **뜨지 않는다**(커서도 🚫)
+4. 창 크기를 바꾼 뒤에 끌어와도 덮개가 페이지 전체를 덮는다
+5. 스쿼드 이름 칸 · 카드 메모 칸(`QLineEdit`) 위를 지나가면 덮개가 잠깐 사라질 수 있다 — 그 칸이 **글자 드롭**을 받으려고
+   이벤트를 가져가서(그 칸에 놓으면 파일 경로가 글자로 들어간다). 거슬리면 그 칸들에 `setAcceptDrops(false)`
+   (`m_name`은 `buildTopBar`, 메모 칸은 `SlotCard` 생성자의 `m_memo`)
+
+**더 해 볼 거리(선택)**: 받지 않는 파일일 때 빨강 덮개("이 파일은 못 읽어요") · 덮개가 0.15초에 걸쳐 스르르 나타나기
+(`QGraphicsOpacityEffect` + `QPropertyAnimation` — 자식 위젯은 `setWindowOpacity`가 안 먹는다).
 
 ## 다음 — 이 뒤에 할 수 있는 것
 

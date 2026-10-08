@@ -178,10 +178,11 @@ E2(스쿼드) 이어서. 순서는 가벼운 것부터.
 | | 단계 | 내용 | 배우는 것 | 완료 조건 |
 |---|---|---|---|---|
 | ✅ | **H1** ([가이드](guides/h1-save-reader.md)) | core `save/`: 바이트 · CRC → footer · 슬롯 → PKM 복호화 · 섞기 → 필드 → `readParty()`. 디버그 CLI `pokesix-read-sav`(단계별 `pokesix.save` 로그) | 리틀 엔디언 · 비트 연산 · CRC · LCRNG · `std::span` · 표로 표현한 포맷 · `QLoggingCategory` · gdb / gtest 필터 | 합성 세이브 테스트 32개 통과 · 본인 Pt · SS 세이브가 게임 화면의 파티와 같다 |
-| 🟨 | **H2** ([가이드](guides/h2-squad-sav-import.md)) | 아이템 · 성격 내부 번호 → PokéAPI id(스키마 올림) · ReadParty → Squad · 스쿼드 불러오기에 `.sav`(게임 전환 확인 · 드래그 앤 드롭) | `QFileDialog` 필터 · `QDropEvent` · 레이어 경계 변환 | 불러오기로 세이브를 고르면 스쿼드에 파티가 들어온다 |
+| ✅ | **H2** ([가이드](guides/h2-squad-sav-import.md)) | 아이템 · 성격 내부 번호 → PokéAPI id(스키마 올림) · ReadParty → Squad · 스쿼드 불러오기에 `.sav`(게임 전환 확인 · 드래그 앤 드롭) | `QFileDialog` 필터 · `QDropEvent` · 레이어 경계 변환 | 불러오기로 세이브를 고르면 스쿼드에 파티가 들어온다 |
 | ⬜ | H6 | 5세대(BW · B2W2) `SaveLayout` · PK5 | 표의 행만으로 세대가 늘어나는지 | BW 세이브 파티 복원 |
 
 - **H1 완료(2026-10-08)**: 뼈대(헤더) · 테스트 · CLI 도구의 틀은 Claude가, 파서 본문(CP1–CP5)과 도구의 로그 줄은 사용자가 구현했다. 실제 소울실버 세이브의 파티 6마리가 게임과 일치(기술 24 · 특성 6, 프테라의 능력치 6이 공식과 일치). 데이터 구조는 [data/gen4/](data/gen4/README.md)
+- **H2 완료(2026-10-08)**: 뼈대 · 테스트는 Claude, CP1–CP8은 사용자가 구현(CP8 끌어다 놓기 덮개는 사용자 추가 요청). 실제 소울실버 세이브를 불러오기 · 끌어다 놓기로 넣으면 파티 6마리가 게임 순서대로 성격 · 물건까지 채워진다. 남은 것: 폼 표(로토무 등), 세이브 파일 감시(자동 갱신)
 
 ## Phase F — 반응형 · 설정 · 다크 테마 (PROMPT 4-6, 4-7) → v0.6.0
 

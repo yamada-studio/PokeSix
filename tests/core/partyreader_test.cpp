@@ -50,6 +50,13 @@ TEST(PartyReader, ParsesEveryField)
     EXPECT_EQ(m.maxHp, 131);
 }
 
+TEST(PartyReader, ReadsTheOriginGame) // H2-CP1
+{
+    MemberSpec spec;
+    spec.originGame = 12; // 플라티나
+    EXPECT_EQ(roundTrip(spec).originGame, 12);
+}
+
 TEST(PartyReader, ReadsTheEggBitApartFromIvs)
 {
     MemberSpec spec;

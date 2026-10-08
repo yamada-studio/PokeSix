@@ -1053,6 +1053,48 @@ void Repository::fillAbilities(PokemonDetail &detail)
         namebook::fill(namebook::Kind::AbilityEffect, ability.identifier, ability.effect);
 }
 
+int Repository::natureIdForGameIndex(int gameIndex)
+{
+    if (!open())
+        return 0;
+    QSqlQuery query(QSqlDatabase::database(m_connection));
+    query.prepare(QStringLiteral("SELECT id FROM natures WHERE game_index = :index"));
+    query.bindValue(QStringLiteral(":index"), gameIndex);
+    if (query.exec() && query.next()) {
+        return query.value(0).toInt();
+    }
+    return 0;
+}
+
+int Repository::itemIdForGameIndex(int generation, int gameIndex)
+{
+    if (!open())
+        return 0;
+    QSqlQuery query(QSqlDatabase::database(m_connection));
+    query.prepare(QStringLiteral("SELECT item_id FROM item_generations "
+                                 "WHERE generation = :generation AND game_index = :index"));
+    query.bindValue(QStringLiteral(":generation"), generation);
+    query.bindValue(QStringLiteral(":index"), gameIndex);
+    if (query.exec() && query.next()) {
+        return query.value(0).toInt();
+    }
+    return 0;
+}
+
+int Repository::defaultPokemonId(int speciesId)
+{
+    if (!open())
+        return 0;
+    QSqlQuery query(QSqlDatabase::database(m_connection));
+    query.prepare(QStringLiteral(
+            "SELECT id FROM pokemon WHERE species_id = :species_id AND is_default = 1"));
+    query.bindValue(QStringLiteral(":species_id"), speciesId);
+    if (query.exec() && query.next()) {
+        return query.value(0).toInt();
+    }
+    return 0;
+}
+
 QList<Nature> Repository::natures()
 {
     QList<Nature> natures;

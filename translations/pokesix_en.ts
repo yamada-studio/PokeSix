@@ -286,6 +286,17 @@ to see a summary here</translation>
     </message>
 </context>
 <context>
+    <name>com::yamada::studio::DropOverlay</name>
+    <message>
+        <source>여기에 놓으면 불러와요</source>
+        <translation>Drop here to import</translation>
+    </message>
+    <message>
+        <source>스쿼드 파일(.pks) · 게임 세이브(.sav · .dsv)</source>
+        <translation>Squad file (.pks) · game save (.sav · .dsv)</translation>
+    </message>
+</context>
+<context>
     <name>com::yamada::studio::EncounterList</name>
     <message>
         <source>야생에서는 만날 수 없어요. 위의 진화 전 단계를 잡아 진화시켜요.</source>
@@ -1486,7 +1497,7 @@ abilities &amp; natures (gen 3+) and held items (gen 2+)</translation>
     </message>
     <message>
         <source>%1세대는 아직 몰라요</source>
-        <translation>Generation %1 is not supported yet</translation>
+        <translation type="vanished">Generation %1 is not supported yet</translation>
     </message>
     <message>
         <source>불러온 스쿼드</source>
@@ -1550,7 +1561,19 @@ abilities &amp; natures (gen 3+) and held items (gen 2+)</translation>
     </message>
     <message>
         <source>PokeSix 스쿼드 (*.pks *.json)</source>
-        <translation>PokeSix squad (*.pks *.json)</translation>
+        <translation type="vanished">PokeSix squad (*.pks *.json)</translation>
+    </message>
+    <message>
+        <source>%1세대는 아직 준비되지 않았어요</source>
+        <translation>Generation %1 is not supported yet</translation>
+    </message>
+    <message>
+        <source>✓ 세이브에서 파티를 불러왔어요</source>
+        <translation>✓ Party imported from the save</translation>
+    </message>
+    <message>
+        <source>PokeSix 스쿼드 · 게임 세이브 (*.pks *.json *.sav *.dsv);;PokeSix 스쿼드 (*.pks *.json);;게임 세이브 (*.sav *.dsv)</source>
+        <translation>PokeSix squad · game save (*.pks *.json *.sav *.dsv);;PokeSix squad (*.pks *.json);;Game save (*.sav *.dsv)</translation>
     </message>
 </context>
 <context>
@@ -1749,6 +1772,17 @@ that game&apos;s wild encounters</translation>
     <message>
         <source>이 버전에서는 얻을 수 없어요(다른 버전 한정)</source>
         <translation>Not obtainable in this version (other version only)</translation>
+    </message>
+</context>
+<context>
+    <name>com::yamada::studio::saveimport</name>
+    <message>
+        <source>파일을 열 수 없어요: %1</source>
+        <translation>Could not open the file: %1</translation>
+    </message>
+    <message>
+        <source>4세대(DP · Pt · HGSS) 세이브가 아니에요</source>
+        <translation>Not a 4th-generation (DP · Pt · HGSS) save</translation>
     </message>
 </context>
 <context>

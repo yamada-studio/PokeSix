@@ -18,6 +18,7 @@ class QScrollArea;
 
 namespace com::yamada::studio {
 class AppState;
+class DropOverlay;
 class GameSelector;
 class HeatmapView;
 class PanelFrame;
@@ -53,6 +54,10 @@ signals:
 protected:
     void showEvent(QShowEvent *event) override;
     void resizeEvent(QResizeEvent *event) override;
+    // 파일 끌어다 놓기(H2): .pks · .json · .sav · .dsv를 페이지에 놓으면 불러온다
+    void dragEnterEvent(QDragEnterEvent *event) override;
+    void dropEvent(QDropEvent *event) override;
+    void dragLeaveEvent(QDragLeaveEvent *event) override; // H2-CP8: 끌던 파일이 창 밖으로 나감
     // 스크롤 viewport의 크기 변화를 엿본다 — SquadPage::resizeEvent 시점에는 viewport가 아직
     // 옛 크기라서, 카드 높이를 거기서 재면 분석 창과 바닥이 어긋난다
     bool eventFilter(QObject *watched, QEvent *event) override;
@@ -93,6 +98,8 @@ private:
     // 상단 막대 오른쪽의 공유 묶음: 파일 내보내기 · 불러오기, 이미지 복사 · 저장
     void exportSquad();
     void importSquad();
+    // 파일 하나를 불러온다 — 스쿼드 파일(.pks · .json)이든 게임 세이브(.sav · .dsv)든 (H2)
+    void importFile(const QString &path);
     QPixmap squadImage(); // 카드 6장 + 분석 창을 제목 띠와 함께 한 장으로
     void copyImage();
     void saveImage();
@@ -133,6 +140,7 @@ private:
     bool m_wide = false;
 
     PanelFrame *m_analysis = nullptr;
+    DropOverlay *m_dropOverlay = nullptr; // H2-CP8: 끌어다 놓기 안내 덮개(페이지 전체를 덮는 자식)
     QWidget *m_analysisColumn = nullptr; // 분석 열(카드의 테 자리만큼 위 · 아래를 들인다)
     QScrollArea *m_analysisScroll = nullptr; // 분석 몸통(넓은 배치에서 안쪽 스크롤)
     QLabel *m_problemPill = nullptr;
