@@ -35,8 +35,6 @@
 // [이름] 포켓몬 · 타입 이름은 ko / en / ja 열로 둔다(PokéAPI languages: 3 = ko, 9 = en, 11 = ja).
 //   UI 문구(tr())와는 별개의 경로다(architecture.md §4).
 namespace com::yamada::studio::schema {
-// TODO(H2-CP2-3) 아래 두 표에 칸을 더했으면 12로 올린다 — 버전이 다르면 앱이 기존 DB를 버리고 다시
-// 만든다
 inline constexpr int kVersion = 12; // 스키마를 바꾸면 올린다. meta 표에 기록된다
 
 inline constexpr std::array kStatements = {
@@ -114,8 +112,7 @@ inline constexpr std::array kStatements = {
         id INTEGER PRIMARY KEY, identifier TEXT NOT NULL,
         category_id INTEGER NOT NULL REFERENCES item_categories(id), cost INTEGER,
         name_ko TEXT, name_en TEXT, name_ja TEXT))",
-        // TODO(H2-CP2-1) game_index INTEGER 칸을 더한다 — 그 세대 게임의 아이템 번호(세이브의 물건
-        // 번호)
+        // game_index: 그 세대 게임 속 아이템 번호(세이브의 물건 번호) — 세이브 불러오기(H2)가 쓴다
         R"(CREATE TABLE item_generations (
         item_id INTEGER NOT NULL REFERENCES items(id), generation INTEGER NOT NULL,
         game_index INTEGER, PRIMARY KEY (item_id, generation)))",
@@ -173,7 +170,7 @@ inline constexpr std::array kStatements = {
         ability_id INTEGER NOT NULL, generation INTEGER NOT NULL,
         text_ko TEXT, text_en TEXT, text_ja TEXT, PRIMARY KEY (ability_id, generation)))",
         // 성격: 오르는 · 내리는 능력치(stats.id 2–6). 둘이 같으면 무보정(노력 · 수줍음 …)
-        // TODO(H2-CP2-2) game_index INTEGER 칸을 더한다 — 게임 속 성격 순서(세이브의 PID % 25)
+        // game_index: 게임 속 성격 순서(세이브의 PID % 25) — id와 순서가 다르다
         R"(CREATE TABLE natures (
         id INTEGER PRIMARY KEY, identifier TEXT NOT NULL, increased_stat INTEGER NOT NULL,
         decreased_stat INTEGER NOT NULL, game_index INTEGER, name_ko TEXT, name_en TEXT,

@@ -32,16 +32,12 @@ QStringList versionsOfGroup(Repository &repository, const QString &versionGroup)
 
 bool isSaveFile(const QString &path)
 {
-    // TODO(H2-CP4-1) QFileInfo(path).suffix()를 소문자로(toLower) 바꿔 "sav" 또는 "dsv"인가
     const QString suffix = QFileInfo(path).suffix().toLower();
     return suffix == QStringLiteral("sav") || suffix == QStringLiteral("dsv");
 }
 
 QString versionOfOriginGame(int originGame)
 {
-    // TODO(H2-CP4-2) 헤더 주석의 다섯 쌍을 표로. 예) static const QHash<int, QString> 하나 +
-    //   value(originGame) — 없는 키면 QHash::value가 빈 QString을 준다
-    //   7 heartgold · 8 soulsilver · 10 diamond · 11 pearl · 12 platinum
     static const QHash<int, QString> versions = {
             {7, QStringLiteral("heartgold")}, {8, QStringLiteral("soulsilver")},
             {10, QStringLiteral("diamond")},  {11, QStringLiteral("pearl")},
@@ -52,8 +48,7 @@ QString versionOfOriginGame(int originGame)
 
 std::optional<squadfile::Portable> load(const QString &path, Repository &repository, QString *error)
 {
-    // ① 파일 → 바이트. 실패하면 error에 tr("파일을 열 수 없어요: %1").arg(file.errorString())
-    // TODO(H2-CP4-3) QFile file(path) · open(QIODevice::ReadOnly) · readAll()
+    // ① 파일 → 바이트
     QFile file(path);
     if (!file.open(QIODevice::ReadOnly)) {
         if (error) // 부르는 쪽이 error를 안 넘길 수도 있다(기본값 nullptr)
@@ -61,10 +56,8 @@ std::optional<squadfile::Portable> load(const QString &path, Repository &reposit
         return std::nullopt;
     }
 
-    // ② 바이트 → 파티. Qt의 QByteArray를 core가 아는 save::Bytes(std::span)로 — 레이어 경계의 변환
-    //   (CLAUDE.md §4). reinterpret_cast<const std::uint8_t *>(raw.constData()),
-    //   std::size_t(raw.size()) 실패하면 tr("4세대(DP · Pt · HGSS) 세이브가 아니에요")
-    // TODO(H2-CP4-4) const auto party = save::readParty(bytes);
+    // ② 바이트 → 파티: QByteArray를 core가 아는 save::Bytes(std::span)로 — 레이어 경계의
+    // 변환(CLAUDE.md §4)
     const QByteArray raw = file.readAll();
     const save::Bytes bytes(reinterpret_cast<const std::uint8_t *>(raw.constData()),
                             std::size_t(raw.size()));
@@ -75,11 +68,9 @@ std::optional<squadfile::Portable> load(const QString &path, Repository &reposit
         return std::nullopt;
     }
 
-    // ③ 버전 고르기: 그 게임 묶음(party->layout->versionGroup)의 버전들 중 파티 멤버 출신 게임
-    //   (versionOfOriginGame(member.originGame))이 가장 많은 쪽. 하나도 안 맞으면(다른 게임에서
-    //   데려온 포켓몬뿐) 묶음의 첫 버전. 묶음의 버전 목록은
-    //   repository.gamesForGeneration(kGeneration)의 GameInfo 중 versionGroup이 같은 것의 versions
-
+    // ③ 버전 고르기: 묶음의 버전 중 파티 멤버의 출신 게임이 가장 많은 쪽. 아무도 안 맞으면(다른
+    // 게임에서
+    //   데려온 포켓몬뿐) 묶음의 첫 버전
     const QString versionGroup = QString::fromUtf8(party->layout->versionGroup.data(),
                                                    qsizetype(party->layout->versionGroup.size()));
     const QStringList versions = versionsOfGroup(repository, versionGroup);
@@ -99,15 +90,9 @@ std::optional<squadfile::Portable> load(const QString &path, Repository &reposit
         }
     }
 
-    // ④ 멤버 → SquadMember (같은 자리 순서 그대로)
-    //   - 알이면 빈 자리로 둔다(싸우지 않는다)
-    //   - pokemonId = repository.defaultPokemonId(species). form이 0이 아니면 아직 폼 표가 없으니
-    //     qCWarning(lcData)로 남기고 기본 폼으로
-    //   - moves · abilityId는 번호가 PokéAPI id와 같다 — 그대로
-    //   - natureId = repository.natureIdForGameIndex(member.nature)
-    //   - itemId = heldItem이 0이면 0, 아니면 repository.itemIdForGameIndex(kGeneration, heldItem)
+    // ④ 멤버 → SquadMember: 자리 순서를 그대로(세이브의 i번째 → 스쿼드의 i번째). 물건 · 성격은 게임
+    //   번호라 DB id로 바꾸고, 종 · 기술 · 특성은 번호가 같다
     squadfile::Portable portable;
-    // 자리 순서를 그대로: 세이브의 i번째 → 스쿼드의 i번째 (파티는 최대 6, 스쿼드도 6자리)
     for (std::size_t i = 0; i < party->members.size() && i < portable.squad.members.size(); ++i) {
         const save::ReadMember &member = party->members[i];
         if (member.egg)
@@ -125,12 +110,9 @@ std::optional<squadfile::Portable> load(const QString &path, Repository &reposit
                              : repository.itemIdForGameIndex(kGeneration, member.heldItem);
     }
 
-    // ⑤ Portable { generation = kGeneration, game = 고른 버전, squad }. 이름은 비워 둔다(기본
-    // 이름이 보인다)
-    //   qCInfo(lcData)로 "save import: <게임> · <n> members" 한 줄
+    // ⑤ 이름은 비워 둔다 — 스쿼드 화면이 기본 이름("소울실버 스쿼드")을 보인다
     portable.generation = kGeneration;
     portable.game = chosen;
-    // TODO(H2-CP4-7)
     qCInfo(lcData).noquote() << QStringLiteral("save import: %1 · %2 members")
                                         .arg(portable.game)
                                         .arg(portable.squad.filled());

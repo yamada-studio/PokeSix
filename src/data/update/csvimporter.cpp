@@ -739,8 +739,6 @@ bool CsvImporter::importItems(QSqlDatabase &db)
         return false;
 
     // 3) 세대별 존재: 그 세대 게임의 아이템 번호(game index)가 있으면 그 세대에 있다
-    // TODO(H2-CP2-4) game_index 칸도 넣는다: INSERT 문에 칸 · ? 하나씩, 읽는 CSV 칸에 "game_index",
-    //   exec 인자에 v[2].toInt()
     Insert generations(db, QStringLiteral("INSERT OR IGNORE INTO item_generations (item_id, "
                                           "generation, game_index) VALUES (?, ?, ?)"));
     if (!generations.isValid())
@@ -1306,7 +1304,6 @@ bool CsvImporter::importNatures(QSqlDatabase &db)
                            return true;
                        }))
         return false;
-    // TODO(H2-CP2-5) game_index 칸도 넣는다(natures.csv의 "game_index" — 위와 같은 요령)
     Insert insert(db, QStringLiteral("INSERT INTO natures (id, identifier, increased_stat, "
                                      "decreased_stat, game_index, name_ko, name_en, name_ja) "
                                      "VALUES (?, ?, ?, ?, ?, ?, ?, ?)"));

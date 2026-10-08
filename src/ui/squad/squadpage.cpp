@@ -64,6 +64,7 @@
 #include <QScrollBar>
 #include <QStandardPaths>
 #include <QStyle>
+#include <QTimer>
 #include <QToolButton>
 
 namespace {
@@ -226,12 +227,10 @@ SquadPage::SquadPage(Repository *repository, AppState *state, QWidget *parent)
     layout->addWidget(m_scroll, 1);
 
     setAcceptDrops(true);
-    // TODO(H2-CP8-6) 덮개 만들기: m_dropOverlay = new DropOverlay(this) — 레이아웃에 넣지
-    // 않는다(위에 떠 있다)
+    // 끌어다 놓기 안내 덮개 — 레이아웃 밖에 떠 있고 resizeEvent가 페이지 전체 크기로 맞춘다
     m_dropOverlay = new DropOverlay(this);
 
     // 세션이 바뀌면(편집 · 세대) 전부 다시 그린다. 언어가 바뀌면 이름 · 타입 글자만 바뀐다
-    // TODO(H2-CP6-1) setAcceptDrops(true) — 이 페이지가 끌어다 놓기를 받겠다고 Qt에 알린다
     connect(m_session, &SquadSession::changed, this, &SquadPage::refresh);
     connect(m_state, &AppState::languageChanged, this, &SquadPage::refresh);
     connect(m_store, &SquadStore::saveScheduled, this, [this] {
@@ -565,9 +564,9 @@ void SquadPage::resizeEvent(QResizeEvent *event)
     const bool wide = width() >= kWideWidth;
     if (wide != m_wide)
         placeCards(wide);
-    // TODO(H2-CP8-7) 덮개가 늘 페이지 전체를 덮게: m_dropOverlay->setGeometry(rect())
     // 카드 높이는 여기서 재지 않는다 — viewport의 Resize(eventFilter)가 정확한 시점이다
-    m_dropOverlay->setGeometry(rect());
+    if (m_dropOverlay)
+        m_dropOverlay->setGeometry(rect());
 }
 
 bool SquadPage::eventFilter(QObject *watched, QEvent *event)
@@ -1201,12 +1200,6 @@ void SquadPage::exportSquad()
         QMessageBox::warning(this, tr("스쿼드 내보내기"), error);
 }
 
-// TODO(H2-CP5-1) 아래 importSquad의 "QString error;"부터 끝까지를 이 함수로 옮기고, importSquad는
-//   파일 창에서 path를 받은 뒤 importFile(path)만 부르게 한다. 옮긴 코드의 loaded를 고르는 줄을
-//   saveimport::isSaveFile(path) ? saveimport::load(path, *m_repository, &error)
-//                                : squadfile::load(path, &error)
-//   로 바꾸면 나머지(세대 · 게임 전환, 덮어쓰기 확인, replaceSquad)는 그대로 쓰인다.
-//   성공 문구는 세이브일 때 tr("✓ 세이브에서 파티를 불러왔어요")처럼 따로
 void SquadPage::importFile(const QString &path)
 {
     QString error;
@@ -1247,8 +1240,6 @@ void SquadPage::importFile(const QString &path)
 
 void SquadPage::dragEnterEvent(QDragEnterEvent *event)
 {
-    // TODO(H2-CP6-2) event->mimeData()->urls()가 파일 하나이고(isLocalFile) 확장자가 우리가 받는 것
-    //   (pks · json · sav · dsv)이면 event->acceptProposedAction(). 아니면 아무것도 안 한다(거절)
     QWidget::dragEnterEvent(event);
 
     const QList<QUrl> urls = event->mimeData()->urls();
@@ -1263,28 +1254,24 @@ void SquadPage::dragEnterEvent(QDragEnterEvent *event)
         m_dropOverlay->raise();
         m_dropOverlay->show();
     }
-    // TODO(H2-CP8-8) 받은 경우에만 덮개를 보인다: 위 if 안에서 m_dropOverlay->raise()(맨 위로) ·
-    // show()
 }
 
 void SquadPage::dragLeaveEvent(QDragLeaveEvent *event)
 {
-    // TODO(H2-CP8-9) 끌던 파일이 창 밖으로 나갔다 — 덮개를 숨긴다(m_dropOverlay->hide())
     QWidget::dragLeaveEvent(event);
     m_dropOverlay->hide();
 }
 
 void SquadPage::dropEvent(QDropEvent *event)
 {
-    // TODO(H2-CP8-10) 놓았다 — 불러오기 전에 덮개부터 숨긴다(덮어쓰기 확인 창 뒤에 덮개가 남지
-    // 않게)
-    m_dropOverlay->hide();
-    // TODO(H2-CP6-3) urls().constFirst().toLocalFile()을 importFile에 넘기고 acceptProposedAction()
-    QWidget::dropEvent(event);
-    if (event->mimeData()->hasUrls()) {
-        importFile(event->mimeData()->urls().constFirst().toLocalFile());
-        event->acceptProposedAction();
-    }
+    m_dropOverlay->hide(); // 덮어쓰기 확인 창이 뜨기 전에
+    if (!event->mimeData()->hasUrls())
+        return;
+    event->acceptProposedAction();
+    // 불러오기는 놓기 처리가 끝난 뒤로 미룬다: importFile이 확인 창(exec)을 띄우는 동안 끌어 온 쪽
+    // (파일 관리자)이 놓기의 답을 기다리며 멈춰 있지 않게
+    const QString path = event->mimeData()->urls().constFirst().toLocalFile();
+    QTimer::singleShot(0, this, [this, path] { importFile(path); });
 }
 
 void SquadPage::importSquad()
