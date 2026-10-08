@@ -86,7 +86,7 @@ TEST_F(SaveImportTest, TurnsAPartyIntoASquad) // H2-CP4-3 … 7
     garchomp.ability = 8;    // 모래숨기 — 특성은 번호 그대로
     garchomp.moves = {89, 337, 0, 0};
     const MemberSpec clefairy = member(35, 12);
-    const auto bytes = synth::buildSave(synth::layoutOf("platinum"),
+    const auto bytes = synth::buildSave(synth::seriesOf("platinum"),
                                         SlotSpec {.party = {garchomp, clefairy}});
 
     Repository repository(s_dbPath);
@@ -112,7 +112,7 @@ TEST_F(SaveImportTest, LeavesEggsOutOfTheSquad) // H2-CP4-6
 {
     MemberSpec egg = member(35, 12);
     egg.iv32 = 1u << 30;
-    const auto bytes = synth::buildSave(synth::layoutOf("platinum"),
+    const auto bytes = synth::buildSave(synth::seriesOf("platinum"),
                                         SlotSpec {.party = {member(445, 12), egg}});
     Repository repository(s_dbPath);
     const auto loaded = saveimport::load(writeSave(bytes, QStringLiteral("egg.sav")), repository);
@@ -124,7 +124,7 @@ TEST_F(SaveImportTest, LeavesEggsOutOfTheSquad) // H2-CP4-6
 TEST_F(SaveImportTest, PicksTheVersionMostOfThePartyCameFrom) // H2-CP4-5
 {
     const auto bytes
-            = synth::buildSave(synth::layoutOf("heartgold-soulsilver"),
+            = synth::buildSave(synth::seriesOf("heartgold-soulsilver"),
                                SlotSpec {.party = {member(445, 8), member(35, 8), member(36, 7)}});
     Repository repository(s_dbPath);
     const auto loaded = saveimport::load(writeSave(bytes, QStringLiteral("ss.sav")), repository);
@@ -135,7 +135,7 @@ TEST_F(SaveImportTest, PicksTheVersionMostOfThePartyCameFrom) // H2-CP4-5
 TEST_F(SaveImportTest, FallsBackToTheFirstVersionOfTheGame) // H2-CP4-5
 {
     // 파티가 전부 다른 게임(다이아)에서 데려온 포켓몬이면 그 묶음의 첫 버전
-    const auto bytes = synth::buildSave(synth::layoutOf("heartgold-soulsilver"),
+    const auto bytes = synth::buildSave(synth::seriesOf("heartgold-soulsilver"),
                                         SlotSpec {.party = {member(445, 10)}});
     Repository repository(s_dbPath);
     const auto loaded
@@ -169,8 +169,8 @@ TEST_F(SaveImportTest, TurnsABlackWhitePartyIntoASquad) // H6-CP5
     garchomp.natureByte = 9;               // 5세대는 성격이 0x41에 따로 있다(촐랑)
     garchomp.heldItem = 234;
     garchomp.moves = {89, 337, 0, 0};
-    const auto bytes = synth::buildGen5Save(synth::gen5LayoutOf("black-white"),
-                                            synth::Gen5SaveSpec {.party = {garchomp}});
+    const auto bytes = synth::buildTableSave(synth::seriesOf("black-white"),
+                                             synth::TableSaveSpec {.party = {garchomp}});
 
     Repository repository(s_dbPath);
     QString error;
@@ -188,9 +188,9 @@ TEST_F(SaveImportTest, TurnsABlackWhitePartyIntoASquad) // H6-CP5
 
 TEST_F(SaveImportTest, PicksBlack2OrWhite2ByOrigin) // H6-CP5-3
 {
-    const auto bytes = synth::buildGen5Save(
-            synth::gen5LayoutOf("black-2-white-2"),
-            synth::Gen5SaveSpec {.party = {member(445, 22), member(35, 22), member(36, 23)}});
+    const auto bytes = synth::buildTableSave(
+            synth::seriesOf("black-2-white-2"),
+            synth::TableSaveSpec {.party = {member(445, 22), member(35, 22), member(36, 23)}});
     Repository repository(s_dbPath);
     const auto loaded = saveimport::load(writeSave(bytes, QStringLiteral("w2.sav")), repository);
     ASSERT_TRUE(loaded.has_value());

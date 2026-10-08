@@ -1,6 +1,6 @@
 #include "data/store/saveimport.h"
 
-#include "core/save/saveformat.h"
+#include "core/save/partyreader.h"
 #include "data/logging/logging.h"
 #include "data/repository/repository.h"
 
@@ -11,10 +11,9 @@
 
 namespace com::yamada::studio::saveimport {
 namespace {
-// TODO(H6-CP5-1) 이 상수를 지운다 — 이제 세대는 세이브가 알려 준다(party->generation). 지우면 아래
-// 세 곳이
-//   컴파일 오류로 알려 준다: versionsOfGroup(세대를 인자로 받게), itemIdForGameIndex,
-//   portable.generation
+// TODO(H6-CP5-1) 이 상수를 지운다 — 이제 세대는 세이브가 알려 준다(party->generation).
+//   지우면 쓰던 세 곳이 컴파일 오류로 나온다: versionsOfGroup(세대를 인자로 받게),
+//   itemIdForGameIndex, portable.generation
 constexpr int kGeneration = 4;
 
 QString tr(const char *text)

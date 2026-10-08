@@ -5,7 +5,9 @@
 #include <array>
 #include <cstddef>
 #include <cstdint>
+#include <optional>
 #include <span>
+#include <string_view>
 
 // 포켓몬 한 마리(PKM)의 암호 풀기 (H1 CP3). 가이드: docs/guides/h1-save-reader.md
 //
@@ -15,9 +17,7 @@
 //   0x88 … 0xEB  배틀 스탯(레벨 · HP · 능력치)   — 암호화됨     (시드 = PID)
 // 박스의 포켓몬은 앞 136바이트만 있다. 수치 출처: PKHeX PokeCrypto · PK4(수치만 참고).
 namespace com::yamada::studio::save {
-inline constexpr std::size_t kPartyPkmSize = 236;
-inline constexpr std::size_t kGen5PartyPkmSize
-        = 220; // 5세대 파티(배틀 스탯이 100이 아니라 84바이트) (H6)
+inline constexpr std::size_t kPartyPkmSize = 236; // PK4 파티 — 가장 큰 파티 레코드(data 배열 크기)
 inline constexpr std::size_t kStoredSize = 136; // 헤더 8 + 블록 128
 inline constexpr std::size_t kHeaderSize = 8;
 inline constexpr std::size_t kBlockSize = 32;
@@ -60,7 +60,23 @@ struct DecodedPkm
     bool ok() const { return decoded && storedChecksum == computedChecksum; }
 };
 
-// encrypted: 세이브에서 자른 한 마리 — 236바이트(4세대 파티) 또는 220바이트(5세대 파티, H6).
+// encrypted: 세이브에서 자른 한 마리 — kPk4.partySize(236) 또는 kPk5.partySize(220) (H6).
 // 220바이트면 data의 뒤 16바이트는 0으로 남는다. 다른 크기면 빈 DecodedPkm
 DecodedPkm decodePkm(Bytes encrypted);
+
+// 포켓몬 한 마리 형식의 차이 (H6). 암호 · 블록 섞기 · 체크섬은 PK4 · PK5가 같고, 다른 것은 이
+// 숫자들뿐이다 — 세대마다 코드를 나누지 않고 이 표의 행으로 표현한다(CLAUDE.md §4). 기기와는
+// 상관없는 축이다 (같은 암호가 NDS · 3DS · Switch에 걸쳐 쓰인다)
+struct PkmFormat
+{
+    std::string_view name;               // "PK4" · "PK5" — 로그용
+    std::size_t partySize = 0;           // 파티 한 마리 바이트 수
+    std::optional<std::size_t> natureAt; // 성격 바이트 위치. 없으면 pid % 25
+    std::optional<std::size_t> hiddenAbilityAt; // 숨겨진 특성 플래그(비트 0) 위치. 없으면 늘 false
+};
+
+// PK4: 4세대. 성격은 PID에서 계산, 숨겨진 특성 없음
+inline constexpr PkmFormat kPk4 {"PK4", 236, std::nullopt, std::nullopt};
+// PK5: 5세대. 배틀 스탯이 84바이트라 220, 성격은 0x41에 따로 저장, 0x42 비트 0 = 숨겨진 특성
+inline constexpr PkmFormat kPk5 {"PK5", 220, 0x41, 0x42};
 } // namespace com::yamada::studio::save

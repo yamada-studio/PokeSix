@@ -1,18 +1,28 @@
-// H1 CP4 · CP5 — 필드 읽기와 세이브 → 파티 조립. ctest -R PartyReader
-#include "core/save/saveformat.h"
+// 부모(기기와 상관없는 쪽) — H1 CP4 필드 읽기 · H6 CP1 기기 리더 등록 · CP4 PK5 칸. ctest -R
+// PartyReader 시리즈별 읽기(슬롯 · 게임 판별)는 partyndsreader_test.cpp
+#include "core/save/partyreader.h"
 #include "syntheticsave.h"
 
 #include <gtest/gtest.h>
 
 using namespace com::yamada::studio::save;
 using synth::buildSave;
+using synth::buildTableSave;
 using synth::MemberSpec;
 using synth::SlotSpec;
+using synth::TableSaveSpec;
 
 namespace {
 ReadMember roundTrip(const MemberSpec &spec)
 {
     return parseMember(decodePkm(synth::encodePkm(synth::plainPkm(spec))));
+}
+
+// PK5: 세이브에 있는 모양 그대로 220바이트로 잘라서 푼다
+ReadMember roundTripPk5(const MemberSpec &spec)
+{
+    const Pkm encrypted = synth::encodePkm(synth::plainPkm(spec));
+    return parseMember(decodePkm(Bytes(encrypted).first(kPk5.partySize)), kPk5);
 }
 } // namespace
 
@@ -67,73 +77,63 @@ TEST(PartyReader, ReadsTheEggBitApartFromIvs)
     EXPECT_EQ(m.ivs, (std::array<int, 6> {31, 31, 31, 31, 31, 31}));
 }
 
-// ── CP5 readParty ───────────────────────────────────────────
-
-TEST(PartyReader, ReadsAPlatinumParty)
+TEST(PartyReader, IgnoresTheFifthGenerationBytesInAPk4) // H6-CP4-2
 {
-    MemberSpec a, b, c;
-    a.species = 392;
-    b.species = 398;
-    b.pid = 0x0BADF00D;
-    c.species = 448;
-    c.pid = 0x7777AAAA;
-    const auto save = buildSave(synth::layoutOf("platinum"), SlotSpec {.party = {a, b, c}});
+    MemberSpec spec;
+    spec.pid = 0x2313;   // % 25 = 4
+    spec.natureByte = 9; // 4세대에서는 빛나는 잎 자리 — 성격이 아니다
+    spec.hiddenAbility = true;
+    const ReadMember m = roundTrip(spec);
+    EXPECT_EQ(m.nature, 4);
+    EXPECT_FALSE(m.hiddenAbility);
+}
 
-    const auto party = readGen4Party(save);
+TEST(PartyReader, ReadsTheNatureAndHiddenAbilityOfAPk5) // H6-CP4-1 · 2
+{
+    MemberSpec spec;
+    spec.species = 571;  // 조로아크
+    spec.pid = 0x2313;   // % 25 = 4 — PK5는 이 값을 쓰지 않는다
+    spec.natureByte = 9; // PK5의 진짜 성격: 9 = 촐랑(Lax)
+    spec.hiddenAbility = true;
+    const ReadMember m = roundTripPk5(spec);
+    EXPECT_TRUE(m.checksumOk);
+    EXPECT_EQ(m.species, 571);
+    EXPECT_EQ(m.nature, 9);
+    EXPECT_TRUE(m.hiddenAbility);
+    EXPECT_EQ(m.level, 50); // 배틀 스탯(84바이트)도 풀린다
+}
+
+// ── H6 CP1 기기 리더 등록 · readParty ─────────────────────────
+
+TEST(PartyReader, ListsTheNdsReader) // H6-CP1-1
+{
+    const auto readers = partyReaders();
+    ASSERT_EQ(readers.size(), 1u);
+    ASSERT_NE(readers[0], nullptr);
+    EXPECT_EQ(readers[0]->platform(), "nds");
+}
+
+TEST(PartyReader, ReadsAFourthGenerationSave) // H6-CP1-2 + CP2
+{
+    const auto party = readParty(buildSave(synth::seriesOf("heartgold-soulsilver"),
+                                           SlotSpec {.party = {MemberSpec {}}}));
     ASSERT_TRUE(party.has_value());
     EXPECT_EQ(party->generation, 4);
-    EXPECT_EQ(party->versionGroup, "platinum");
-    EXPECT_EQ(party->partyOffset, synth::layoutOf("platinum").partyOffset); // 슬롯 0의 파티
-    ASSERT_EQ(party->members.size(), 3u);
-    EXPECT_EQ(party->members[0].species, 392);
-    EXPECT_EQ(party->members[1].species, 398);
-    EXPECT_EQ(party->members[2].species, 448);
-    for (const ReadMember &m : party->members)
-        EXPECT_TRUE(m.checksumOk);
+    EXPECT_EQ(party->versionGroup, "heartgold-soulsilver");
 }
 
-TEST(PartyReader, DetectsEachGameFromTheBlockSize)
+TEST(PartyReader, ReadsAFifthGenerationSave) // H6-CP1-2 + CP2 · CP3 · CP4
 {
-    for (const SaveLayout &layout : kGen4Layouts) {
-        const auto party = readGen4Party(buildSave(layout, SlotSpec {.party = {MemberSpec {}}}));
-        ASSERT_TRUE(party.has_value()) << layout.versionGroup;
-        EXPECT_EQ(party->versionGroup, layout.versionGroup);
-    }
-}
-
-TEST(PartyReader, ReadsTheNewestSlot)
-{
-    MemberSpec old, new1, new2;
-    old.species = 387;
-    new1.species = 388;
-    new2.species = 16;
-    const auto save = buildSave(synth::layoutOf("heartgold-soulsilver"),
-                                SlotSpec {.major = 10, .party = {old}},
-                                SlotSpec {.major = 11, .party = {new1, new2}});
-    const auto party = readGen4Party(save);
+    const auto party = readParty(buildTableSave(synth::seriesOf("black-2-white-2"),
+                                                TableSaveSpec {.party = {MemberSpec {}}}));
     ASSERT_TRUE(party.has_value());
-    // 슬롯 1(major 11)이 최신 — 파티 위치가 그 슬롯 안이다
-    EXPECT_EQ(party->partyOffset, kSlotSize + synth::layoutOf("heartgold-soulsilver").partyOffset);
-    ASSERT_EQ(party->members.size(), 2u);
-    EXPECT_EQ(party->members[0].species, 388);
+    EXPECT_EQ(party->generation, 5);
+    EXPECT_EQ(party->versionGroup, "black-2-white-2");
 }
 
-TEST(PartyReader, AcceptsADeSmuMEFooter)
+TEST(PartyReader, RejectsWhatNoReaderRecognises) // H6-CP1-2
 {
-    auto save = buildSave(synth::layoutOf("platinum"), SlotSpec {.party = {MemberSpec {}}});
-    save.resize(kSaveSize + 122, 0); // .dsv 꼬리
-    EXPECT_TRUE(readGen4Party(save).has_value());
-}
-
-TEST(PartyReader, RejectsWhatIsNotASave)
-{
-    EXPECT_FALSE(readGen4Party(std::vector<std::uint8_t>(1000, 0)).has_value()); // 너무 작다
-    EXPECT_FALSE(
-            readGen4Party(std::vector<std::uint8_t>(kSaveSize, 0xFF)).has_value()); // 빈 플래시
-    EXPECT_FALSE(readGen4Party(std::vector<std::uint8_t>(kSaveSize, 0x00)).has_value());
-}
-
-TEST(PartyReader, RejectsAnEmptyParty)
-{
-    EXPECT_FALSE(readGen4Party(buildSave(synth::layoutOf("platinum"), SlotSpec {})).has_value());
+    EXPECT_FALSE(readParty(std::vector<std::uint8_t>(kSaveSize, 0x00)).has_value());
+    EXPECT_FALSE(readParty(std::vector<std::uint8_t>(kSaveSize, 0xFF)).has_value());
+    EXPECT_FALSE(readParty(std::vector<std::uint8_t>(100, 0)).has_value());
 }

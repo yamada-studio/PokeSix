@@ -3,7 +3,7 @@
 //   export POKESIX_SAVE_HGSS=$HOME/pokesix-saves/soulsilver.sav
 //   ctest --preset linux-debug -R RealSave --output-on-failure -V
 // 읽은 파티를 찍으므로 -V(자세히)로 보면 게임 화면의 파티와 나란히 비교할 수 있다.
-#include "core/save/saveformat.h"
+#include "core/save/partyreader.h"
 
 #include <gtest/gtest.h>
 

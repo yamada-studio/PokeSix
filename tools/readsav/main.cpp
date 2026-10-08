@@ -3,7 +3,7 @@
 // 4세대(DP · Pt · HGSS) 세이브의 파티를 core 파서로 읽어 찍는다. 파서의 단계(footer → 슬롯 →
 // PKM 풀기 → 필드 → readParty)마다 pokesix.save 카테고리로 로그를 남겨서, 어느 단계에서
 // 틀렸는지 바로 보이게 한다. 가이드: docs/guides/h1-save-reader.md, 바이트 지도: docs/data/gen4/.
-#include "core/save/saveformat.h"
+#include "core/save/partyndsreader.h"
 
 #include <QCommandLineParser>
 #include <QCoreApplication>
@@ -36,16 +36,19 @@ void dumpHex(save::Bytes data)
     }
 }
 
-// CP2: 모든 게임 표 × 두 슬롯의 footer — 어느 조합의 CRC가 맞는지가 곧 게임 판별이다
+// CP2: 4세대 시리즈(FooterSlots) × 두 슬롯의 footer — 어느 조합의 CRC가 맞는지가 곧 게임 판별이다
 void logFooters(save::Bytes bytes)
 {
-    for (const save::SaveLayout &layout : save::kGen4Layouts) {
+    for (const save::NdsSeries &series : save::kNdsSeries) {
+        const auto *check = std::get_if<save::FooterSlots>(&series.check);
+        if (!check)
+            continue; // 5세대식(ChecksumTable)은 footer가 없다
         for (const std::size_t start : {std::size_t {0}, save::kSlotSize}) {
-            const save::BlockFooter footer = save::readFooter(bytes, start, layout);
+            const save::BlockFooter footer = save::readFooter(bytes, start, *check);
             qCDebug(lcSave).noquote()
                     << QStringLiteral("%1 slot@%2 major=%3 minor=%4 size=%5 magic=%6 crc=%7/%8 %9")
-                               .arg(QString::fromUtf8(layout.versionGroup.data(),
-                                                      qsizetype(layout.versionGroup.size())),
+                               .arg(QString::fromUtf8(series.versionGroup.data(),
+                                                      qsizetype(series.versionGroup.size())),
                                     -20)
                                .arg(hex(start, 5))
                                .arg(footer.major)
@@ -106,31 +109,34 @@ int main(int argc, char *argv[])
 
     // CP2: footer → 게임 · 슬롯
     logFooters(bytes);
-    const save::SaveLayout *layout = nullptr;
+    const save::NdsSeries *series = nullptr; // 4세대 시리즈 한 행
     std::size_t general = 0;
-    for (const save::SaveLayout &candidate : save::kGen4Layouts) {
-        if (const auto start = save::activeGeneralBlock(bytes, candidate)) {
-            layout = &candidate;
+    for (const save::NdsSeries &candidate : save::kNdsSeries) {
+        const auto *check = std::get_if<save::FooterSlots>(&candidate.check);
+        if (!check)
+            continue;
+        if (const auto start = save::activeGeneralBlock(bytes, *check)) {
+            series = &candidate;
             general = *start;
             break;
         }
     }
-    if (!layout) {
+    if (!series) {
         qCCritical(lcSave) << "no valid general block for any 4th-gen game"
                            << "— run with --verbose and read the footer lines";
         return 2;
     }
-    const int count = bytes[general + layout->partyCountOffset];
+    const int count = bytes[general + series->partyCountOffset];
     qCInfo(lcSave).noquote() << QStringLiteral("game %1 · slot at %2 · party %3")
                                         .arg(QString::fromUtf8(
-                                                layout->versionGroup.data(),
-                                                qsizetype(layout->versionGroup.size())))
+                                                series->versionGroup.data(),
+                                                qsizetype(series->versionGroup.size())))
                                         .arg(hex(general, 5))
                                         .arg(count);
 
     // CP3 · CP4: 한 마리씩 — readParty를 거치지 않고 단계 함수를 직접 불러 중간값을 찍는다
     for (int i = 0; i < count && i < 6; ++i) {
-        const std::size_t at = general + layout->partyOffset + std::size_t(i) * save::kPartyPkmSize;
+        const std::size_t at = general + series->partyOffset + std::size_t(i) * save::kPartyPkmSize;
         const save::DecodedPkm pkm = save::decodePkm(bytes.subspan(at, save::kPartyPkmSize));
         qCDebug(lcSave).noquote() << QStringLiteral(
                                              "member %1 @%2 PID=%3 shuffle=%4 checksum=%5/%6")
@@ -168,8 +174,9 @@ int main(int argc, char *argv[])
     }
 
     // CP5: 위의 수동 경로와 readParty(앱이 쓸 한 번에 읽기)가 같은 답을 내는지
-    // TODO(H6-CP6) (선택) save::saveFormats()를 돌며 형식마다 "gen4 OK" · "gen5 --"를 qCDebug로,
-    //   아래 "readParty:" 줄에 party->generation도 찍는다
+    // TODO(H6-CP6) (선택) save::kNdsSeries를 돌며 시리즈마다 PartyNdsReader::readSeries의 결과를
+    //   "platinum --" · "heartgold-soulsilver OK"처럼 qCDebug로, 아래 "readParty:" 줄에
+    //   party->generation도 찍는다
     const auto party = save::readParty(bytes);
 
     if (!party.has_value()) {
@@ -186,7 +193,7 @@ int main(int argc, char *argv[])
         qCWarning(lcSave) << "readParty found" << found << "members, the step-by-step path"
                           << count;
     for (std::size_t i = 0; i < std::size_t(count) && i < 6; ++i) {
-        const std::size_t at = general + layout->partyOffset + i * save::kPartyPkmSize;
+        const std::size_t at = general + series->partyOffset + i * save::kPartyPkmSize;
         const save::DecodedPkm pkm = save::decodePkm(bytes.subspan(at, save::kPartyPkmSize));
         const save::ReadMember member1 = save::parseMember(pkm);
         if (i >= found) {

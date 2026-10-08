@@ -6,11 +6,11 @@
 // 낮은 층 함수(crc16Ccitt · cryptArray · pkmChecksum)는 각자의 테스트가 **외부 검증 값**으로 먼저
 // 확인한다(savebytes_test · pkmcodec_test). 이 도우미는 그 함수들을 그대로 써서 위층(블록 ·
 // 파티) 테스트용 바이트를 만든다. 그래서 CP 순서대로 통과시키면 된다.
-#include "core/save/gen5.h"
-#include "core/save/partyreader.h"
+#include "core/save/partyndsreader.h"
 
 #include <algorithm>
 #include <optional>
+#include <variant>
 #include <vector>
 
 namespace synth {
@@ -87,6 +87,7 @@ inline Pkm encodePkm(const Pkm &plain)
     return out;
 }
 
+// ── 4세대식(FooterSlots) ────────────────────────────────────
 struct SlotSpec
 {
     std::uint32_t major = 1;
@@ -95,89 +96,94 @@ struct SlotSpec
     bool corrupt = false; // CRC를 쓴 뒤 데이터 한 바이트를 바꾼다
 };
 
-inline void writeSlot(std::vector<std::uint8_t> &save, std::size_t start, const SaveLayout &layout,
+inline const NdsSeries &seriesOf(std::string_view versionGroup)
+{
+    for (const NdsSeries &series : kNdsSeries)
+        if (series.versionGroup == versionGroup)
+            return series;
+    return kNdsSeries[0];
+}
+
+inline const FooterSlots &footerSlotsOf(const NdsSeries &series)
+{
+    return std::get<FooterSlots>(series.check);
+}
+
+inline const ChecksumTable &checksumTableOf(const NdsSeries &series)
+{
+    return std::get<ChecksumTable>(series.check);
+}
+
+inline void writeSlot(std::vector<std::uint8_t> &save, std::size_t start, const NdsSeries &series,
                       const SlotSpec &slot)
 {
-    const std::span block(save.data() + start, layout.generalSize);
+    const FooterSlots &check = footerSlotsOf(series);
+    const std::span block(save.data() + start, check.generalSize);
     std::fill(block.begin(), block.end(), std::uint8_t {0});
-    block[layout.partyCountOffset] = std::uint8_t(slot.party.size());
+    block[series.partyCountOffset] = std::uint8_t(slot.party.size());
     for (std::size_t i = 0; i < slot.party.size(); ++i) {
         const Pkm pkm = encodePkm(plainPkm(slot.party[i]));
         std::copy(pkm.begin(), pkm.end(),
-                  block.begin() + std::ptrdiff_t(layout.partyOffset + i * kPartyPkmSize));
+                  block.begin() + std::ptrdiff_t(series.partyOffset + i * kPartyPkmSize));
     }
-    const std::size_t end = layout.generalSize;
+    const std::size_t end = check.generalSize;
     putU32(block, end - 0x14, slot.major);
     putU32(block, end - 0x10, slot.minor);
-    putU32(block, end - 0x0C, std::uint32_t(layout.generalSize));
+    putU32(block, end - 0x0C, std::uint32_t(check.generalSize));
     putU32(block, end - 0x08, 0x20060623);
-    putU16(block, end - 0x02, crc16Ccitt(block.first(layout.generalSize - layout.footerSize)));
+    putU16(block, end - 0x02, crc16Ccitt(block.first(check.generalSize - check.footerSize)));
     if (slot.corrupt)
         block[0x10] ^= 0xFF;
 }
 
-// 슬롯을 비워 두면(nullopt) 한 번도 안 쓴 플래시처럼 0xFF로 남는다
-inline std::vector<std::uint8_t> buildSave(const SaveLayout &layout,
+// 4세대 시리즈의 세이브. 슬롯을 비워 두면(nullopt) 한 번도 안 쓴 플래시처럼 0xFF로 남는다
+inline std::vector<std::uint8_t> buildSave(const NdsSeries &series,
                                            const std::optional<SlotSpec> &slot0,
                                            const std::optional<SlotSpec> &slot1 = std::nullopt)
 {
     std::vector<std::uint8_t> save(kSaveSize, 0xFF);
     if (slot0)
-        writeSlot(save, 0, layout, *slot0);
+        writeSlot(save, 0, series, *slot0);
     if (slot1)
-        writeSlot(save, kSlotSize, layout, *slot1);
+        writeSlot(save, kSlotSize, series, *slot1);
     return save;
 }
 
-inline const SaveLayout &layoutOf(std::string_view versionGroup)
-{
-    for (const SaveLayout &layout : kGen4Layouts)
-        if (layout.versionGroup == versionGroup)
-            return layout;
-    return kGen4Layouts[0];
-}
-// ── 5세대(H6) ────────────────────────────────────────────────
-// 본 세이브의 파티 블록 + 체크섬 모음 블록만 채운 BW · B2W2 세이브(나머지는 0).
+// ── 5세대식(ChecksumTable) (H6) ─────────────────────────────
+// 파티 블록 + 체크섬 모음 블록만 채운 세이브(나머지는 0).
 // 순서가 중요하다: 파티 CRC를 먼저 계산해 두 곳(블록 뒤 · 모음 블록의 사본)에 쓰고, 그 사본이 든
 // 모음 블록 전체의 CRC를 마지막에 쓴다
-struct Gen5SaveSpec
+struct TableSaveSpec
 {
     std::vector<MemberSpec> party = {};
-    bool corruptInfo = false; // 모음 블록 CRC를 쓴 뒤 그 안의 한 바이트를 바꾼다
+    bool corruptTable = false; // 모음 블록 CRC를 쓴 뒤 그 안의 한 바이트를 바꾼다
     bool corruptParty = false; // 파티 블록 CRC를 쓴 뒤 파티 블록 한 바이트를 바꾼다
 };
 
-inline std::vector<std::uint8_t> buildGen5Save(const Gen5Layout &layout, const Gen5SaveSpec &spec)
+inline std::vector<std::uint8_t> buildTableSave(const NdsSeries &series, const TableSaveSpec &spec)
 {
+    const ChecksumTable &check = checksumTableOf(series);
+    const std::size_t pkmSize = series.pkm->partySize;
     std::vector<std::uint8_t> save(kSaveSize, 0);
     const std::span all(save);
-    all[kGen5PartyBlock + kGen5PartyCountOffset] = std::uint8_t(spec.party.size());
+    all[series.partyCountOffset] = std::uint8_t(spec.party.size());
     for (std::size_t i = 0; i < spec.party.size(); ++i) {
         // 220바이트 = 236바이트 암호문의 앞부분(배틀 스탯 스트림은 앞에서부터 같은 키라 잘라도
         // 맞다)
         const Pkm pkm = encodePkm(plainPkm(spec.party[i]));
-        std::copy_n(pkm.begin(), kGen5PartyPkmSize,
-                    save.begin()
-                            + std::ptrdiff_t(kGen5PartyBlock + kGen5PartyOffset
-                                             + i * kGen5PartyPkmSize));
+        std::copy_n(pkm.begin(), pkmSize,
+                    save.begin() + std::ptrdiff_t(series.partyOffset + i * pkmSize));
     }
-    const std::uint16_t partyCrc = crc16Ccitt(all.subspan(kGen5PartyBlock, kGen5PartyBlockSize));
-    putU16(all, kGen5PartyCrc, partyCrc);
-    const std::size_t info = layout.mainSize - 0x100;
-    putU16(all, info + kGen5PartyCrcMirror, partyCrc);
-    putU16(all, info + layout.infoLength + 0x0E, crc16Ccitt(all.subspan(info, layout.infoLength)));
-    if (spec.corruptInfo)
-        save[info + 0x10] ^= 0xFF;
+    const std::uint16_t partyCrc = crc16Ccitt(all.subspan(check.partyBlock, check.partyBlockSize));
+    putU16(all, check.partyCrcAt, partyCrc);
+    const std::size_t table = check.mainSize - 0x100;
+    putU16(all, table + check.partyCrcMirror, partyCrc);
+    putU16(all, table + check.tableLength + 0x0E,
+           crc16Ccitt(all.subspan(table, check.tableLength)));
+    if (spec.corruptTable)
+        save[table + 0x10] ^= 0xFF;
     if (spec.corruptParty)
-        save[kGen5PartyBlock + kGen5PartyOffset + 0x20] ^= 0xFF;
+        save[series.partyOffset + 0x20] ^= 0xFF;
     return save;
-}
-
-inline const Gen5Layout &gen5LayoutOf(std::string_view versionGroup)
-{
-    for (const Gen5Layout &layout : kGen5Layouts)
-        if (layout.versionGroup == versionGroup)
-            return layout;
-    return kGen5Layouts[0];
 }
 } // namespace synth

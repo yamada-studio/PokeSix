@@ -115,3 +115,14 @@ TEST(PkmCodec, WrongSizeIsNeverOk)
     const std::array<std::uint8_t, kStoredSize> boxSized {};
     EXPECT_FALSE(decodePkm(boxSized).ok());
 }
+
+TEST(PkmCodec, DecodesA220BytePk5) // H6-CP4-1
+{
+    const Pkm plain = synth::plainPkm({});
+    const Pkm encrypted = synth::encodePkm(plain);
+    const DecodedPkm pkm = decodePkm(Bytes(encrypted).first(kPk5.partySize));
+    EXPECT_TRUE(pkm.ok());
+    EXPECT_EQ(readU16(pkm.data, 0x08), 392);
+    EXPECT_EQ(pkm.data[0x8C],
+              50); // 배틀 스탯(레벨)도 풀린다 — 84바이트 스트림 = 100바이트 스트림의 앞부분
+}
