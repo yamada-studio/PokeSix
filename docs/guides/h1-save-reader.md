@@ -500,7 +500,7 @@ $RS ~/pokesix-saves/soulsilver.sav
 [build.md §VS Code](../build.md)대로 `launch.json` 없이 CMake Tools가 디버거를 붙인다.
 
 1. 상태 막대에서 **Launch Target**을 `pokesix-read-sav`로 고른다
-2. 인자는 `.vscode/settings.json`(git 제외)에:
+2. 인자는 **사용자 설정**(Ctrl+, → User 탭 → 오른쪽 위 "설정 열기(JSON)")에 — 리포의 `.vscode/settings.json`은 공유 파일이라 개인 경로를 넣지 않는다:
    ```json
    "cmake.debugConfig": {
        "args": ["/home/<계정>/pokesix-saves/platinum.sav", "-v"]
