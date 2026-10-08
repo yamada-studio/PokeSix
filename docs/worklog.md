@@ -55,6 +55,9 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 ### Linux (Ubuntu 24.04)
 
 - `~/Qt/6.8.3/gcc_64`, `QT_ROOT_DIR`은 `~/.bashrc`. 142개 커밋(Phase G lite · Phase T · 스쿼드 기능)은 여기서 이루어졌다
+- melonDS 1.1(AppImage)은 `~/melonDS-1.1/`, 4세대 ROM · 세이브는 `~/melonDS-1.1/gen4/`(melonDS가 같은 이름의 `.nds` ↔ `.sav`를 짝짓는다).
+  2026-10-08 현재 `포켓몬스터 소울실버(K).sav`(한국판, 512 KiB)만 있다 — Pt 세이브는 아직 없다. H1 디버깅은 스냅샷 복사본
+  `~/pokesix-saves/soulsilver.sav`로 한다(게임에서 저장하면 원본의 카운터 · 슬롯이 바뀌므로)
 
 ---
 
