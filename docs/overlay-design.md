@@ -87,6 +87,30 @@ melonDS는 게임이 플래시에 쓰는 순간 **동기적으로** `.sav`에 �
 - 파일 512 KiB. 주 세이브 0x00000, 백업 0x24000. 블록마다 CRC16-CCITT가 있고 체크섬 모음 블록이 0x23F00 부근에 있다
 - 파티 블록은 0x18E00 부근(BW), 포켓몬 6 × **220바이트**. 암호화 · 셔플은 4세대와 같은 방식, 필드 배치가 조금 다르다(PK5)
 - B2W2는 블록 배치가 BW와 다르다 → 역시 `SaveLayout` 표의 행 하나
+- **4세대와 다른 점(2026-10-08 정정)**: 슬롯 구조(주 · 백업)와 체크섬 방식(블록별 CRC를 모아 둔 표)이 4세대 footer와 다르고,
+  PKM은 220바이트에 성격이 0x41에 따로 있다(PID % 25가 아니다). 그래서 "표의 행만 추가"로는 안 되고 **세대별 형식 전략**이 필요하다(아래)
+
+### 여러 세대를 자동 판별하는 구조 (H1 · H2 이후 정리, 2026-10-08)
+
+H1 · H2는 4세대만 다룬다. 4세대 **안의** 게임(DP · Pt · HGSS)은 표(`kGen4Layouts`)로 판별되지만, 세대 단위로는
+코드가 4세대 모양이다: 슬롯 · footer 구조(`saveblock.h`), PKM 236바이트 · 칸 위치(`pkmcodec.h` · `parseMember`),
+`readParty`가 `kGen4Layouts`만 순회, `saveimport`의 `kGeneration = 4` 상수.
+
+다른 세대를 더할 때는 판별 원리를 한 단계 올린다 — **파일 크기가 아니라 체크섬 검증으로** 고른다(4 · 5세대는 둘 다 512 KiB):
+
+```
+struct SaveFormat {                 // 세대마다 하나 — 데이터(레이아웃 표 · 칸 지도) + 알고리즘(체크섬 검증 · PKM 풀기)
+    int generation;
+    std::optional<ReadParty> (*read)(Bytes save);   // 체크섬이 맞을 때만 값을 준다
+};
+inline constexpr std::array kFormats = { gen4::format, gen5::format /*, gen3::format */ };
+
+readParty(save): kFormats를 차례로 시도 → 첫 성공. ReadParty에 generation을 담는다
+saveimport:      kGeneration 상수 대신 party->generation. 출신 게임 번호 표도 세대별로 늘린다
+```
+
+- 같은 모양의 차이(블록 크기 · 칸 위치 · PKM 길이)는 **표**, 알고리즘이 다른 부분(체크섬 방식 · 3세대의 XOR 암호)은 **세대별 전략** — CLAUDE.md §4의 "데이터(테이블/전략)"
+- 5세대는 4세대와 암호화 · 섞기가 같아 `pkmcodec`을 공유한다. 3세대(128 KiB · 섹션 회전 · PID ^ 트레이너 ID XOR · 100바이트 PKM)는 형식을 새로 짠다
 
 ### 게임 내부 번호 → PokéAPI id
 
@@ -200,7 +224,7 @@ app/              --overlay [sav 경로] 인자, 설정 탭 "오버레이" 항�
 | **H3** | `OverlayWindow`: 항상 위 · 프레임 없음 · 반투명 · 위치 기억 · `--overlay` 인자 | 창 플래그 · `WA_TranslucentBackground` · 포커스 정책 | 모든 OS에서 작은 창으로 파티 · 히트맵 · 문제가 보인다 |
 | **H4** | Windows 창 추적(`EmulatorWindowTracker`) → 게임 창 오른쪽에 도킹, 이동 · 크기 변경 따라가기 | Win32 API를 Qt와 섞는 법, `#ifdef` 가두기 | melonDS 창을 옮기면 오버레이가 따라온다 |
 | **H5** | 추천 기술(`movesuggester`) + TM 가방 읽기 | 점수 규칙을 표로, gtest | 커버리지 구멍마다 추천이 나온다 |
-| **H6** | 5세대 `SaveLayout`(BW · B2W2) · PK5 | 표 행만 추가로 세대가 늘어나는지 검증 | BW 세이브 6마리 복원 |
+| **H6** | 세대별 형식 전략(`SaveFormat`)으로 구조 바꾸기 + 5세대(BW · B2W2) 형식 · PK5 | 표와 전략으로 세대 늘리기, 체크섬 검증으로 세대 자동 판별 | 4세대 테스트가 그대로 통과 + BW 세이브 6마리 복원 |
 | **H7** | (선택) `GdbMemorySource` 라이브 모드 · 배틀 상대 타입 표시 | `QTcpSocket` · GDB RSP | 저장 없이 갱신, 상대 타입이 보인다 |
 
 선행: Phase C(core 타입)와 D(DB · `SquadSession`)는 이미 있다. Phase E2(스쿼드 화면)의 히트맵을 재사용하므로 E2 뒤에 시작한다. Phase F · G와는 독립이다.
