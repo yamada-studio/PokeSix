@@ -25,3 +25,4 @@
 | [0015](0015-home-card-fan.md) | 홈(인트로)의 세대 선택은 카드 부채꼴로 | Accepted |
 | [0016](0016-outside-decorations-drawn-by-parent.md) | 상자 바깥 장식(포커스 링 · 선택 테)은 부모 위젯이 자기 여백에 그린다 | Accepted |
 | [0017](0017-build-identity-string.md) | 빌드 식별 문자열: git describe를 빌드마다 헤더로 생성, Debug는 C++에서 표시 | Accepted |
+| [0018](0018-save-import-read-only.md) | 세이브(.sav)는 읽기 전용으로, 새 화면 없이 스쿼드 "불러오기"에서 받는다. 1차 4세대, 파서는 사용자 구현 | Accepted |

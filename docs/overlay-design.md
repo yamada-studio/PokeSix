@@ -1,6 +1,6 @@
 # 에뮬레이터 오버레이 — 검토와 설계
 
-- 상태: **검토 문서(Proposed)**. 구현을 시작할 때 ADR로 결정을 확정하고 로드맵에 Phase H로 올린다
+- 상태: **검토 문서(Proposed)**. 1단계(세이브 읽기)는 [ADR 0018](decisions/0018-save-import-read-only.md)로 확정됐다 — 새 화면 대신 **스쿼드 불러오기가 `.sav`를 받는다**(읽기 전용). 로드맵 Phase H
 - 날짜: 2026-10-04
 - 대상: melonDS에서 4 · 5세대(DS) 정주행. "OP.GG처럼" 게임 창 옆에 현재 파티의 상성 · 문제점 · 추천 기술을 띄운다
 
@@ -74,12 +74,12 @@ melonDS는 게임이 플래시에 쓰는 순간 **동기적으로** `.sav`에 �
 
 ### 4세대 (DP · Pt · HGSS)
 
-- 파일 512 KiB. **두 슬롯**(0x00000, 0x40000)에 각각 일반(small) 블록 + 보관(big) 블록. 각 블록 끝의 footer에 저장 횟수와 CRC16-CCITT 체크섬이 있다 → **저장 횟수가 큰 슬롯이 현재**, 체크섬이 안 맞으면 그 슬롯을 버린다
-- small 블록 크기는 게임마다 다르다(DP 0xC100 · Pt 0xCF2C · HGSS 0xF700) → 게임별 `SaveLayout` 표 하나
-- 파티: small 블록 안에서 파티 수 1바이트(DP 0x98 · Pt 0x9C 부근 — 게임마다 다름) + 포켓몬 6 × **236바이트**
+- 파일 512 KiB. **두 슬롯**(0x00000, 0x40000)에 각각 일반(small) 블록 + 보관(big) 블록. 각 블록 끝의 footer에 저장 카운터와 CRC-16/CCITT-FALSE가 있다 → CRC가 맞는 슬롯 중 **(major, minor) 카운터가 큰 쪽이 현재**(블록 끝 − 0x14 · − 0x10, PKHeX `SAV4BlockDetection`). CRC는 블록 끝의 u16, 범위는 블록에서 footer를 뺀 부분
+- 일반 블록 크기 · footer 길이는 게임마다 다르다: **DP 0xC100 / 0x14 · Pt 0xCF2C / 0x14 · HGSS 0xF628 / 0x10**(HGSS 보관 블록은 0xF700에서 시작 — 앞선 판의 "0xF700"은 보관 블록 위치였다) → 게임별 `SaveLayout` 표 하나. 블록 크기가 달라 틀린 표로는 CRC가 맞지 않으므로 **세이브만으로 게임을 판별할 수 있다**(§4의 ROM 헤더는 DP 안에서 D/P를 가를 때만 필요)
+- 파티: 일반 블록 시작 기준 파티 수 1바이트(**DP 0x94 · Pt 0x9C · HGSS 0x94**) + 그 4바이트 뒤부터 포켓몬 6 × **236바이트**(DP 0x98 · Pt 0xA0 · HGSS 0x98)
 - PKM 236바이트 = 헤더 8(PID · 체크섬) + 데이터 128(32바이트 블록 A · B · C · D, **PID로 정한 순서로 섞여 있음**: `((PID >> 0xD) & 0x1F) % 24`) + 배틀 스탯 100
   - 데이터 128바이트는 **체크섬을 시드로 한 LCRNG**(`X[n+1] = 0x41C64E6D·X[n] + 0x6073`)의 상위 16비트와 2바이트씩 XOR 해서 푼다. 배틀 스탯은 PID를 시드로 같은 방식
-  - 블록 A: 종(0x08) · 지닌 물건(0x0A) · 경험치 · 특성(0x15) · 노력치(0x18–0x1D). 블록 B: 기술 4(0x28–0x2F) · PP · 개체값(0x38, 5비트 × 6) · 폼 비트. 성격 = `PID % 25`. 배틀 스탯: 레벨(0x8C) · 현재/최대 HP · 능력치
+  - 블록 A: 종(0x08) · 지닌 물건(0x0A) · 경험치 · 특성(0x15) · 노력치(0x18–0x1D). 블록 B: 기술 4(0x28–0x2F) · PP · 개체값(0x38, 5비트 × 6 + 비트 30 알 · 31 별명) · 폼(0x40의 위 5비트). 성격 = `PID % 25`(4세대는 성격 칸이 없다 — 5세대 PK5는 0x41에 따로 있다). 배틀 스탯: 레벨(0x8C) · 현재/최대 HP(0x8E · 0x90) · 능력치
 - 알(egg) 플래그가 켜진 자리는 분석에서 뺀다
 
 ### 5세대 (BW · B2W2)
@@ -180,7 +180,7 @@ app/              --overlay [sav 경로] 인자, 설정 탭 "오버레이" 항�
 
 | # | 질문 | 언제 |
 |---|---|---|
-| 1 | 두 슬롯 중 "현재"를 저장 횟수로만 판단해도 되는가(새 게임 직후 · 저장 중 전원 꺼짐)? PKHeX의 판정 규칙을 따른다 | H1 |
+| 1 | ~~두 슬롯 중 "현재"를 저장 횟수로만 판단해도 되는가~~ → CRC가 맞는 슬롯만 후보, 그중 (major, minor)가 큰 쪽(PKHeX 규칙). 한 번도 안 쓴 슬롯은 0xFF로 차 있어 CRC가 맞지 않는다 | H1 ✅ |
 | 2 | melonDS가 파일을 쓰는 도중 읽었을 때 체크섬 검증으로 충분히 걸러지는가. 디바운스 값 | H2 |
 | 3 | DeSmuME `.dsv`는 끝에 footer(122바이트)가 붙는다. 크기로 감지해 잘라낸다 | H2 |
 | 4 | 폼 비트 → `pokemon.id` 표의 범위(4 · 5세대 폼만) | H2 |
@@ -195,8 +195,8 @@ app/              --overlay [sav 경로] 인자, 설정 탭 "오버레이" 항�
 
 | 단계 | 내용 | 배우는 것 | 완료 조건 |
 |---|---|---|---|
-| **H1** | core `save/`: Platinum `SaveLayout` · PKM 복호화 · 셔플 · `readParty()`. 합성 세이브 gtest | 비트 연산 · LCRNG · `std::span` · 표로 표현한 포맷 | 합성 세이브 6마리 복원. 본인 세이브로 로컬 확인 |
-| **H2** | `gamecodes.json` · `item_game_indices` 변환 · `SaveFileSource`(감시 · 디바운스) · `PartyBridge` → 스쿼드 화면에 "라이브" 배지 | `QFileSystemWatcher` · `QTimer` 디바운스 · 스레드 없이 비동기 흐름 | 게임에서 저장 → 1초 안에 스쿼드 화면이 바뀐다 |
+| **H1** | core `save/`: DP · Pt · HGSS `SaveLayout` · PKM 복호화 · 셔플 · `readParty()` + 디버그 CLI `pokesix-read-sav`. 합성 세이브 gtest ([가이드](guides/h1-save-reader.md)) | 비트 연산 · LCRNG · `std::span` · 표로 표현한 포맷 · `QLoggingCategory` | 합성 세이브 테스트 통과. 본인 Pt · SS 세이브로 로컬 확인 |
+| **H2** | (ADR 0018) 아이템 · 성격 내부 번호 → PokéAPI id(`item_game_indices`의 번호 · `natures.game_index`, 스키마 올림) · `PartyBridge`(ReadParty → Squad) · 스쿼드 **불러오기가 `.sav`를 받는다**(게임 전환 확인 · 드래그 앤 드롭). 파일 감시 · "라이브" 배지는 그다음 | `QFileDialog` 필터 · 드래그 앤 드롭(`QDropEvent`) · 레이어 경계의 타입 변환 | 불러오기로 Pt · SS 세이브를 고르면 스쿼드에 파티 6마리가 들어온다 |
 | **H3** | `OverlayWindow`: 항상 위 · 프레임 없음 · 반투명 · 위치 기억 · `--overlay` 인자 | 창 플래그 · `WA_TranslucentBackground` · 포커스 정책 | 모든 OS에서 작은 창으로 파티 · 히트맵 · 문제가 보인다 |
 | **H4** | Windows 창 추적(`EmulatorWindowTracker`) → 게임 창 오른쪽에 도킹, 이동 · 크기 변경 따라가기 | Win32 API를 Qt와 섞는 법, `#ifdef` 가두기 | melonDS 창을 옮기면 오버레이가 따라온다 |
 | **H5** | 추천 기술(`movesuggester`) + TM 가방 읽기 | 점수 규칙을 표로, gtest | 커버리지 구멍마다 추천이 나온다 |
