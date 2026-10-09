@@ -6,6 +6,18 @@ and the project uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-10-09
+
+Two fixes for people who installed 0.2.0: the squad analysis panel went black on a Windows PC in
+dark mode, and the macOS dmg now explains the Gatekeeper dialog where it appears.
+
+### Fixed
+- The analysis panel (and anything else that relied on a transparent background over the paper)
+  turned black on Windows PCs set to dark mode: since Qt 6.5 the Windows platform applies a dark
+  palette when the system is dark, and the app never set its own. The paper theme is light by
+  design (a dark theme is Phase F3), so the theme now pins the color scheme to light
+  (`QStyleHints::setColorScheme`) and fills the palette roles from the design tokens.
+
 ### Changed
 - The macOS dmg carries `READ ME FIRST - macOS.txt` next to the app: Gatekeeper's "damaged and
   can't be opened" dialog (quarantine on a non-notarized, ad-hoc-signed app) appears right over the
