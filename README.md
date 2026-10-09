@@ -11,7 +11,7 @@ and how your six-member party holds up against every attacking type.
 <sub>Screenshots are taken without game pictures — the app downloads Pokémon and item icons on first
 use, so they appear blank here.</sub>
 
-> **Status:** early development (v0.1.0). The Pokédex, Squad and Items screens work end to end;
+> **Status:** early development (v0.2.0). The Pokédex, Squad and Items screens work end to end;
 > Settings is not wired up yet. The UI is written in
 > Korean first, with English and Japanese translations.
 

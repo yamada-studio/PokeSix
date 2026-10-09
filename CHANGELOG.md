@@ -6,7 +6,22 @@ and the project uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-10-09
+
+Save-file import (Phase H1–H2), a Windows .msi installer and a build identity string, plus the
+Windows database-swap fix. Features shipped mid-phase, so this is a MINOR bump
+(versioning-and-git.md §1).
+
 ### Fixed
+- Windows packages carry the MSVC runtime (`msvcp140.dll`, `vcruntime140.dll`, `vcruntime140_1.dll`)
+  next to the exe: windeployqt's `--compiler-runtime` only finds `vc_redist.x64.exe` inside a VS
+  developer environment, so neither the scripts nor CI had been shipping any runtime. CMake's
+  `InstallRequiredSystemLibraries` now installs the DLLs app-local, as the VS redistribution terms
+  allow (THIRD_PARTY_NOTICES.md).
+- `package.bat` stops with a clear message when the package folder cannot be cleared because a
+  PokeSix started from it (quickstart does that) is still running, instead of failing later in
+  `cmake --install`.
+- The msi was built and verified on a real Windows 11 (install → Start menu → run → uninstall).
 - Windows: updating to a new schema while another PokeSix window was open (e.g. the installed
   0.1.0 next to a dev build) ended in "데이터를 받지 못했어요 — cannot move …pokesix.sqlite.importing":
   Windows will not delete or rename a database file another process has open, Linux will. The
