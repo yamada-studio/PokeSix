@@ -62,3 +62,8 @@ reproduced:
 - **GoogleTest** — BSD-3-Clause; downloaded at build time for the tests only.
 - **Do Hyeon, Nanum Gothic, Nanum Gothic Coding, Silkscreen** — SIL Open Font License 1.1;
   the license texts are in `resources/fonts/OFL-*.txt`.
+- **Microsoft Visual C++ runtime** (`msvcp140*.dll`, `vcruntime140*.dll` next to `PokeSix.exe`,
+  Windows packages only) — redistributable files listed in Visual Studio's REDIST
+  terms, shipped unmodified app-local as those terms allow.
+- **WiX Toolset 3.14** (Microsoft Reciprocal License) builds the Windows `.msi`. The toolset itself
+  is not part of the packages; its license applies to the tool, not to installers made with it.

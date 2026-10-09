@@ -45,7 +45,7 @@ scripts\windows\run.bat release --offscreen -- --screenshot intro 1440x900 %TEMP
 ```bash
 scripts/linux/run.sh release --offscreen -- --screenshot squad 1440x900 /tmp/squad.png
 ```
-캡처에는 스프라이트가 찍히므로 **리포에 커밋하지 않는다**(CLAUDE.md §7). 첫 실행(DB 없음) 상태면 인트로에 FirstRunPanel이 보이고 다른 화면은 비어 있다.
+캡처에는 스프라이트가 찍히므로 **리포에 커밋하지 않는다**(CLAUDE.md §7). **Windows 배포본(zip · msi)에는 offscreen 플랫폼 플러그인이 없다** — 거기서 `--offscreen`을 주면 "no Qt platform plugin could be initialized … Available: windows" 창이 뜬다. 캡처는 개발 빌드(`run.bat --offscreen`)로 하거나, 배포본에서는 `--offscreen` 없이 창을 띄운 채 찍는다. 첫 실행(DB 없음) 상태면 인트로에 FirstRunPanel이 보이고 다른 화면은 비어 있다.
 
 예정된 인자(로드맵): `--gallery`(Phase B), `--overlay [sav]`([overlay-design.md](overlay-design.md)).
 인자를 더할 때는 `src/app/application.cpp`의 `parseArguments()`에 `QCommandLineOption`을 추가하고 이 표를 갱신한다.
@@ -116,7 +116,7 @@ imageformats\ iconengines\ styles\ generic\ networkinformation\
 
 | 옵션 | 왜 |
 |---|---|
-| `--compiler-runtime` | VC++ 2022 재배포 패키지(`vc_redist.x64.exe`)를 같이 둔다. 없는 PC에서는 `VCRUNTIME140.dll` 오류가 난다 |
+| `--compiler-runtime` | VS 개발 환경 변수(`VCINSTALLDIR`)가 있을 때만 `vc_redist.x64.exe`를 둔다 — 스크립트 · CI에서는 아무것도 안 넣는다. 그래서 이 리포는 CMake `InstallRequiredSystemLibraries`로 `msvcp140.dll` · `vcruntime140.dll` · `vcruntime140_1.dll`을 `bin`에 같이 넣는다(app-local). 없는 PC에서는 `VCRUNTIME140.dll` 오류가 난다 |
 | `--no-translations` | Qt 자체 번역(`qtbase_ko.qm` 등)은 안 쓴다. 우리 번역은 실행 파일 안(`:/i18n`)에 있다 |
 | `--no-system-d3d-compiler` · `--no-opengl-sw` | QPainter 래스터만 쓰므로 D3D 컴파일러 · 소프트웨어 OpenGL(약 20MB)이 필요 없다 |
 | `--exclude-plugins qsqlodbc,qsqlpsql,qsqlmimer` | SQLite만 쓴다. 다른 SQL 드라이버는 빼도 된다 |
@@ -173,7 +173,7 @@ include(CPack)
 | 형식 | 장점 | 단점 | 언제 |
 |---|---|---|---|
 | **ZIP(포터블)** | 가장 단순. 압축 풀고 실행. 설치 흔적 없음 | 시작 메뉴 · 바로 가기 없음. SmartScreen 경고(아래) | **유지 — msi와 같이 배포** |
-| **MSI (CPack WIX)** | 진짜 설치본: 시작 메뉴 · 제거 · 업그레이드(고정 UPGRADE_GUID). WiX 무료, GitHub 러너 프리인스톨, CMake `install()` 트리 재사용 | 화면이 기본 MSI 마법사. 로컬 생성엔 WiX 3.14 필요 | **적용됨(2026-10-08)** — `package.bat`이 zip 다음에 `cpack -G WIX` |
+| **MSI (CPack WIX)** | 진짜 설치본: 시작 메뉴 · 제거 · 업그레이드(고정 UPGRADE_GUID). WiX 무료, GitHub 러너 프리인스톨, CMake `install()` 트리 재사용 | 화면이 기본 MSI 마법사. 로컬 생성엔 WiX 3.14 필요 | **적용됨(2026-10-08) · 실기 검증(2026-10-09: 설치 → 시작 메뉴 → 실행 → 제거)** — `package.bat`이 zip 다음에 `cpack -G WIX` |
 | Inno Setup | 스크립트 한 장(`.iss`)으로 설치 · 제거 · 시작 메뉴 · 바로 가기. 무료 · 널리 쓰임 | 도구 하나 더, `install()` 트리와 이중 관리 | 마법사 화면을 꾸미고 싶어지면 |
 | NSIS (CPack 내장) | CMake만으로 생성(`CPACK_GENERATOR NSIS`) | 화면이 구식, 커스터마이즈가 번거롭다 | 안 쓴다(WIX로 충분) |
 | MSIX / Microsoft Store | 자동 업데이트, 샌드박스 | **코드 서명 필수**, 패키지 ID · 스토어 계정 | 당장은 아님 |
