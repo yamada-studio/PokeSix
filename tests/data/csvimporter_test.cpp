@@ -1,6 +1,8 @@
+#include "data/db/gamedatabase.h"
 #include "data/update/csvimporter.h"
 #include "data/update/csvsource.h"
 
+#include <QFile>
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QTemporaryDir>
@@ -182,4 +184,74 @@ TEST(CsvImporterFailure, MissingFolderFailsAndLeavesNoDatabase)
     EXPECT_FALSE(importer.errorString().isEmpty());
     EXPECT_FALSE(QFile::exists(dbPath));
     EXPECT_FALSE(QFile::exists(dbPath + QStringLiteral(".importing")));
+}
+
+// ── 바꿔 넣지 못한 임시 DB(gamedatabase::pendingPath) ────────────────────────────────────────
+// Windows에서 다른 PokeSix 창이 옛 DB를 열어 두면 변환이 끝나도 파일을 바꿔 넣지 못한다. 그때 남긴
+// 임시 DB를 다음 실행(Application) · 다시 시도(CsvImporter::run)가 넣어 준다.
+namespace {
+using namespace com::yamada::studio;
+
+QString fixturesDir()
+{
+    return QStringLiteral(POKESIX_FIXTURES_DIR "/pokeapi-csv");
+}
+} // namespace
+
+TEST(PendingImport, IsAdoptedWhenItMatchesThisBuild)
+{
+    QTemporaryDir dir;
+    const QString dbPath = dir.filePath(QStringLiteral("pokesix.sqlite"));
+    CsvImporter importer;
+    ASSERT_TRUE(importer.run(fixturesDir(), dbPath)) << importer.errorString().toStdString();
+    // 변환은 끝났는데 자리에 못 넣은 상황을 흉내 낸다: 완성본을 .importing으로 옮기고 옛 파일은
+    // 비운다
+    const QString pending = gamedatabase::pendingPath(dbPath);
+    ASSERT_TRUE(QFile::rename(dbPath, pending));
+    {
+        QFile old(dbPath);
+        ASSERT_TRUE(old.open(QIODevice::WriteOnly));
+        old.write("not a database");
+    }
+    EXPECT_FALSE(gamedatabase::isUsable(dbPath));
+    EXPECT_TRUE(gamedatabase::matchesThisBuild(pending));
+
+    EXPECT_TRUE(gamedatabase::adoptPendingImport(dbPath));
+    EXPECT_FALSE(QFile::exists(pending));
+    EXPECT_TRUE(gamedatabase::isUsable(dbPath));
+    EXPECT_FALSE(gamedatabase::adoptPendingImport(dbPath)); // 두 번째는 넣을 것이 없다
+}
+
+TEST(PendingImport, StaleOrHalfWrittenTempIsDiscarded)
+{
+    QTemporaryDir dir;
+    const QString dbPath = dir.filePath(QStringLiteral("pokesix.sqlite"));
+    const QString pending = gamedatabase::pendingPath(dbPath);
+    {
+        QFile half(pending); // 변환 도중 죽어서 meta 표가 없는 파일
+        ASSERT_TRUE(half.open(QIODevice::WriteOnly));
+        half.write("half");
+    }
+    EXPECT_FALSE(gamedatabase::matchesThisBuild(pending));
+    EXPECT_FALSE(gamedatabase::adoptPendingImport(dbPath));
+    EXPECT_FALSE(QFile::exists(pending)); // 지웠다
+    EXPECT_FALSE(QFile::exists(dbPath));  // 옛 파일을 건드리지 않았다
+}
+
+TEST(PendingImport, RunAdoptsInsteadOfReimporting)
+{
+    QTemporaryDir dir;
+    const QString dbPath = dir.filePath(QStringLiteral("pokesix.sqlite"));
+    CsvImporter first;
+    ASSERT_TRUE(first.run(fixturesDir(), dbPath)) << first.errorString().toStdString();
+    const QString pending = gamedatabase::pendingPath(dbPath);
+    ASSERT_TRUE(QFile::rename(dbPath, pending));
+
+    // 다시 시도: CSV 폴더가 엉터리여도 완성된 임시 DB가 있으면 그것을 넣고 성공한다
+    CsvImporter retry;
+    EXPECT_TRUE(retry.run(dir.filePath(QStringLiteral("no-such-csv")), dbPath))
+            << retry.errorString().toStdString();
+    EXPECT_FALSE(retry.pendingSwap());
+    EXPECT_TRUE(gamedatabase::isUsable(dbPath));
+    EXPECT_FALSE(QFile::exists(pending));
 }

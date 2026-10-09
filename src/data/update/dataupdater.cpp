@@ -22,7 +22,7 @@ void ImportWorker::importCsv(const QString &csvDir, const QString &dbPath)
     //        emit importFinished(결과, importer.errorString()); 으로 알린다
     CsvImporter importer;
     const bool ok = importer.run(csvDir, dbPath);
-    emit importFinished(ok, importer.errorString());
+    emit importFinished(ok, importer.errorString(), importer.pendingSwap());
 }
 
 // ── DataUpdater (UI 스레드) ──────────────────────────────────────────────────
@@ -107,12 +107,14 @@ void DataUpdater::onDownloadFinished()
         return;
     }
     emit progress(90, tr("데이터 정리하는 중"));
+    // DB 파일이 바뀔 참이다 → 이 프로세스의 연결부터 닫게 한다(MainWindow가 Repository::close)
+    emit aboutToReplaceDatabase();
     // worker에게 변환을 시킨다: emit importRequested(CSV 폴더, DB 경로);
     //        CSV 폴더 = m_downloader->directory(), DB 경로 = gamedatabase::defaultPath()
     emit importRequested(m_downloader->directory(), gamedatabase::defaultPath());
 }
 
-void DataUpdater::onImportFinished(bool ok, const QString &error)
+void DataUpdater::onImportFinished(bool ok, const QString &error, bool pendingSwap)
 {
     qCInfo(lcData) << "import result on thread" << QThread::currentThread();
     // ok면 emit progress(100, tr("준비 완료")); 와 emit finished();
@@ -121,6 +123,10 @@ void DataUpdater::onImportFinished(bool ok, const QString &error)
     if (ok) {
         emit progress(100, tr("준비 완료"));
         emit finished();
+    } else if (pendingSwap) {
+        // 새 DB는 다 만들었다. 옛 파일을 다른 PokeSix 창이 잡고 있어 못 바꿔 넣었을
+        // 뿐이다(Windows).
+        emit replaceBlocked(error);
     } else {
         emit failed(error);
     }

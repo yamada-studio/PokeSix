@@ -27,6 +27,10 @@ class CsvImporter
 public:
     bool run(const QString &csvDir, const QString &dbPath);
     QString errorString() const { return m_error; }
+    // run()이 false일 때: 새 DB는 다 만들었지만 dbPath 자리에 넣지 못했다(다른 프로세스가 옛 DB를
+    // 열어 둠 — Windows). 임시 DB(gamedatabase::pendingPath)는 남아 있고, 다음 실행 · 다시 시도 때
+    // 자동으로 들어간다. 받기 실패 · 변환 실패와 구분해 안내하기 위한 플래그.
+    bool pendingSwap() const { return m_pendingSwap; }
 
 private:
     bool createSchema(QSqlDatabase &db);
@@ -46,13 +50,13 @@ private:
     bool importPokedexes(QSqlDatabase &db); // pokedexes + pokedex_version_groups + dex_numbers
     // 아이템(E3): 분류 · 아이템 + 이름 · 세대별 존재 · 세대별 한국어 효과 문구
     bool importItems(QSqlDatabase &db);
-    bool importMoves(QSqlDatabase &db); // 기술 + 이름 + 세대별 타입(기술머신 아이콘 · 타입 칩)
+    bool importMoves(QSqlDatabase &db);    // 기술 + 이름 + 세대별 타입(기술머신 아이콘 · 타입 칩)
     bool importMachines(QSqlDatabase &db); // 기술머신 → 세대별로 담긴 기술 + 게임마다의 번호 표
     bool importPokemonMoves(QSqlDatabase &db); // 습득 기술(레벨업 · 교배 · NPC · 기술머신)
-    bool importEncounters(QSqlDatabase &db); // 장소 · 방법 · 야생 출현(묶어서)
-    bool importEvolutions(QSqlDatabase &db); // 진화 방법(세대마다)
-    bool importAbilities(QSqlDatabase &db); // 특성 · 포켓몬 특성(세대 구간) · 설명문
-    bool importNatures(QSqlDatabase &db);   // 성격(오르는 · 내리는 능력치)
+    bool importEncounters(QSqlDatabase &db);   // 장소 · 방법 · 야생 출현(묶어서)
+    bool importEvolutions(QSqlDatabase &db);   // 진화 방법(세대마다)
+    bool importAbilities(QSqlDatabase &db);    // 특성 · 포켓몬 특성(세대 구간) · 설명문
+    bool importNatures(QSqlDatabase &db);      // 성격(오르는 · 내리는 능력치)
     // 게임 설명문(item · ability · move_flavor_text) → table(idField, generation, text_*)
     bool importFlavorTexts(QSqlDatabase &db, const QString &csv, const QString &idColumn,
                            const QString &table, const QString &idField);
@@ -72,6 +76,7 @@ private:
 
     QString m_csvDir;
     QString m_error;
+    bool m_pendingSwap = false;
 
     // 앞 단계에서 읽어 두고 뒤 단계의 구간 시작 세대(firstGen)로 쓴다.
     QHash<int, int> m_typeIntroGen;    // type_id → 처음 나온 세대

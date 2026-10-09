@@ -203,6 +203,10 @@ void Application::buildObjects()
     // 디자인 스타일: 번들 글꼴 등록 + app.qss(@token 치환) 적용. 위젯을 만들기 전에 불러야 한다.
     theme::apply(m_app);
 
+    // 지난 실행에서 변환은 끝났는데 다른 PokeSix 창이 옛 DB를 잡고 있어 못 바꿔 넣은 새 DB가 있으면
+    // 지금 넣는다 — 아직 아무도 DB를 열지 않은 유일한 시점이다(Windows 파일 잠금, build.md §5-8).
+    gamedatabase::adoptPendingImport(gamedatabase::defaultPath());
+
     // 게임 데이터 DB 조회 창구. QObject가 아니라서 unique_ptr로 소유한다. 화면들은 포인터만 받는다.
     m_repository = std::make_unique<Repository>(gamedatabase::defaultPath());
     // 앱 상태(정주행 중인 세대 · 게임 · 언어). 화면들은 이 객체를 받아 *Changed를 구독한다.

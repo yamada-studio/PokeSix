@@ -33,6 +33,9 @@ public:
 
     void setProgress(int percent, const QString &label); // Downloading 상태로 바꾸고 막대를 채운다
     void showFailure(const QString &detail); // Failed 상태로 바꾸고 오류 내용을 보여 준다
+    // Failed 상태인데 원인이 네트워크가 아니다: 새 DB는 만들었지만 다른 PokeSix 창이 옛 DB를 잡고
+    // 있어 바꿔 넣지 못했다(Windows). 제목 · 안내 문구를 그 경우에 맞게 바꾼다
+    void showReplaceBlocked(const QString &detail);
 
     // 이 상태에서 키보드 포커스를 받을 버튼(첫 포커스 = "데이터 받기", 디자인 02b)
     QWidget *focusTarget() const;
@@ -57,6 +60,8 @@ private:
     SegmentProgress *m_progress = nullptr;
     QLabel *m_stepLabel = nullptr;
     QLabel *m_percentLabel = nullptr;
+    QLabel *m_failedTitle = nullptr; // "데이터를 받지 못했어요" / "데이터를 바꿔 넣지 못했어요"
+    QLabel *m_failedHint = nullptr;  // 네트워크 안내 / 다른 창 안내
     QLabel *m_errorLabel = nullptr;
 };
 } // namespace com::yamada::studio

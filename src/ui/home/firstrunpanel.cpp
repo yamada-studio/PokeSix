@@ -146,13 +146,15 @@ QWidget *FirstRunPanel::buildFailedPage()
     icon->setPixmap(svgicon::pixmap(svgWithColor(kWarningSvg, tok::kRed), kWarningSize,
                                     devicePixelRatioF()));
     title->addWidget(icon);
-    title->addWidget(makeLabel(tr("데이터를 받지 못했어요"), "firstRunFailedTitle"));
+    m_failedTitle = makeLabel(tr("데이터를 받지 못했어요"), "firstRunFailedTitle");
+    title->addWidget(m_failedTitle);
     title->addStretch();
     layout->addLayout(title);
 
-    layout->addWidget(
-            makeLabel(tr("네트워크 연결을 확인하고 다시 시도해 주세요. 받은 부분은 남아 있어요."),
-                      "firstRunBody", true));
+    m_failedHint
+            = makeLabel(tr("네트워크 연결을 확인하고 다시 시도해 주세요. 받은 부분은 남아 있어요."),
+                        "firstRunBody", true);
+    layout->addWidget(m_failedHint);
     m_errorLabel = makeLabel(QString(), "firstRunMeta", true);
     layout->addWidget(m_errorLabel);
 
@@ -186,6 +188,19 @@ void FirstRunPanel::setProgress(int percent, const QString &label)
 
 void FirstRunPanel::showFailure(const QString &detail)
 {
+    m_failedTitle->setText(tr("데이터를 받지 못했어요"));
+    m_failedHint->setText(
+            tr("네트워크 연결을 확인하고 다시 시도해 주세요. 받은 부분은 남아 있어요."));
+    m_errorLabel->setText(detail);
+    setState(State::Failed);
+}
+
+void FirstRunPanel::showReplaceBlocked(const QString &detail)
+{
+    m_failedTitle->setText(tr("데이터를 바꿔 넣지 못했어요"));
+    m_failedHint->setText(
+            tr("새 데이터는 준비됐어요. 다른 PokeSix 창이 열려 있으면 모두 닫고 다시 시도해 "
+               "주세요. 다음에 실행할 때는 자동으로 적용돼요."));
     m_errorLabel->setText(detail);
     setState(State::Failed);
 }
