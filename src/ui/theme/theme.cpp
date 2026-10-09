@@ -8,7 +8,9 @@
 #include <QDirIterator>
 #include <QFile>
 #include <QFontDatabase>
+#include <QPalette>
 #include <QRegularExpression>
+#include <QStyleHints>
 
 #include <algorithm>
 #include <array>
@@ -123,6 +125,29 @@ QString substituteTokens(const QString &styleSheet)
 void apply(QApplication &app)
 {
     loadBundledFonts();
+
+    // 종이 테마는 OS 설정과 무관하게 밝다(다크 테마는 Phase F3에서 토큰 교체로). Windows는
+    // Qt 6.5부터 시스템이 다크 모드면 앱 팔레트를 어둡게 바꾸는데, QSS가 `background:
+    // transparent`로 비워 둔 자리(분석 창의 스크롤 영역 등)에는 그 어두운 Window 색이 비쳐 검은
+    // 상자가 됐다(v0.2.0 msi, 다크 모드 PC). 색 구성표를 밝음으로 고정하고 팔레트의 기본 역할도
+    // 토큰으로 채운다 — QSS가 정하지 않은 위젯도 종이 위에 선다.
+    QGuiApplication::styleHints()->setColorScheme(Qt::ColorScheme::Light);
+    QPalette palette = app.palette();
+    palette.setColor(QPalette::Window, QColor(tok::kPaper));
+    palette.setColor(QPalette::WindowText, QColor(tok::kText1));
+    palette.setColor(QPalette::Base, QColor(tok::kWhite));
+    palette.setColor(QPalette::AlternateBase, QColor(tok::kPaper));
+    palette.setColor(QPalette::Text, QColor(tok::kText1));
+    palette.setColor(QPalette::PlaceholderText, QColor(tok::kText3));
+    palette.setColor(QPalette::Button, QColor(tok::kWhite));
+    palette.setColor(QPalette::ButtonText, QColor(tok::kText1));
+    palette.setColor(QPalette::ToolTipBase, QColor(tok::kWhite));
+    palette.setColor(QPalette::ToolTipText, QColor(tok::kText1));
+    palette.setColor(QPalette::Highlight, QColor(tok::kYellow));
+    palette.setColor(QPalette::HighlightedText, QColor(tok::kInk));
+    palette.setColor(QPalette::Mid, QColor(tok::kLine));
+    palette.setColor(QPalette::Dark, QColor(tok::kLineStrong));
+    app.setPalette(palette);
 
     QFile file(QStringLiteral(":/styles/app.qss"));
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {

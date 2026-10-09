@@ -9,6 +9,7 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 
 ## 지금 상태 — 2026-10-09
 
+- **`v0.2.1`(2026-10-09, PATCH)**: Windows 다크 모드 검은 패널 수정 + dmg 안의 macOS 안내문. 릴리스 결과는 세션 기록에
 - **`v0.2.0` 릴리스(2026-10-09)**: https://github.com/yamada-studio/PokeSix/releases/tag/v0.2.0 — 이번에는 **CI가 Release를 스스로 만들고 4개 파일(zip · msi · AppImage · dmg)을 붙였다**(`permissions: contents: write` 확인). 노트 본문 · SHA-256만 API로 채웠다. 러너의 WiX 3.14로 msi도 나온다
 - 2026-10-09(집 Windows): 회사 세션의 H1 · H2(스키마 12)를 Windows에서 처음 돌리다 만난 **DB 교체 실패(파일 잠금)** 를 고쳤다 — [build.md §5-8](build.md#db-swap-blocked). 145 테스트 통과. Windows 패키지에 빠져 있던 MSVC 런타임을 동봉했고 msi를 실기 검증했다
 - `v0.1.0`(2026-10-07)은 Phase A 완료 태그. 그때는 조직의 read-only 토큰 때문에 Release를 손으로 올렸다
@@ -68,6 +69,11 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 - 수정(`gamedatabase` · `CsvImporter` · `DataUpdater` · `FirstRunPanel` · `Application` · `MainWindow`): 교체가 막히면 완성된 임시 DB를 남기고 `replaceBlocked`로 알림 → 패널이 "다른 PokeSix 창을 닫고 다시 시도" 안내, [다시 시도]는 재변환 없이 교체만, 다음 실행 때 `adoptPendingImport`가 DB를 열기 전에 교체. 같은 프로세스의 Repository는 변환 전에 닫는다(`aboutToReplaceDatabase`). 스키마 · CSV 커밋이 다른 임시 파일은 폐기. 테스트 3개(`PendingImport.*`)
 - 실기 확인: 설치본이 떠 있는 상태에서 새 빌드 시작 → 로그 `cannot remove … (opened by another process?)`, 두 파일 모두 보존. **설치본을 닫고 다시 실행하면 11:27에 만든 `.importing`이 자동 적용된다**(사용자 확인 필요). 설치본은 `package.bat`/msi로 다시 만들어 교체하면 스키마가 맞는다
 - **v0.2.0 릴리스 · msi 검증**(같은 날 오후): 버전 규칙에 "Phase 중간이라도 기능이 들어가면 MINOR"를 명시하고 0.2.0으로. WiX 3.14를 winget(관리자 UAC, NetFx3 필요)으로 설치해 `package.bat`으로 zip + msi 생성. 발견 · 수정 셋: ① 포터블 exe가 떠 있으면 `rmdir`이 조용히 실패하고 `cmake --install`에서 죽음 → `package.bat`이 바로 "실행 중인 PokeSix를 닫으라"고 멈춤. ② `windeployqt --compiler-runtime`은 VS 환경 변수 없이는 vc_redist를 안 넣어 **지금까지 Windows 패키지에 CRT가 없었다** → `InstallRequiredSystemLibraries`로 `msvcp140*` · `vcruntime140*`를 bin에 동봉(THIRD_PARTY_NOTICES 갱신). ③ Windows 패키지에는 offscreen 플러그인이 없어 `--offscreen` 테스트가 "no Qt platform plugin" 창을 띄웠다(사용자가 그 창을 봄) — 배포본 캡처는 창을 띄운 채로. msi: 설치(UAC) → `%APPDATA%` 시작 메뉴 바로가기(per-user 컴포넌트) → 설치된 exe가 Qt 없는 PATH에서 `--screenshot` 성공 → 제거 후 폴더 · 바로가기 · 제거 항목 모두 사라짐
+
+### 2026-10-09 — Windows 다크 모드에서 분석 창이 검게 (집 세션) → v0.2.1
+
+- 친구 PC(msi 0.2.0)에서 스쿼드 분석 창 몸통이 검게. 처음엔 공유 이미지 렌더를 의심했으나 라이브 창도 같다고 함 → **Windows 다크 모드** 가설을 내 PC에서 `AppsUseLightTheme=0`으로 재현(캡처로 확인). 원인: Qt 6.5+ Windows가 다크 팔레트를 적용하고, 앱은 팔레트를 안 정해 `background: transparent` 자리에 어두운 Window 색이 비침. 수정: `theme::apply`에서 `setColorScheme(Light)` + 토큰 팔레트. 재현 캡처에서 종이색 확인. [build.md §5-9](build.md#dark-mode)
+- 버그 수정만이라 **v0.2.1(PATCH)**. dmg 안내문 변경도 같이 나간다
 
 ### 2026-10-09 — macOS "손상됨" 후속 (집 세션)
 

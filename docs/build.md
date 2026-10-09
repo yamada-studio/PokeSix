@@ -277,6 +277,13 @@ W pokesix.data: import failed: "cannot replace … (opened by another PokeSix wi
 - 스키마 버전이나 PokéAPI CSV 커밋이 다른 임시 파일(옛 빌드 · 죽은 변환)은 버린다
 - 그래도 안 되면: 작업 관리자에서 `PokeSix.exe`를 모두 끝내고 다시 실행한다. 어느 프로세스가 잡고 있는지는 PowerShell `[System.IO.File]::Open(path,'Open','ReadWrite','None')`가 던지는 예외나 Sysinternals `handle.exe pokesix.sqlite`로 본다
 
+<a id="dark-mode"></a>
+### 5-9. Windows 다크 모드 PC에서 패널 바탕이 검게 보임 (v0.2.0 이하)
+
+- Qt 6.5부터 Windows 플랫폼 플러그인은 시스템이 다크 모드면 앱 팔레트를 어둡게 만든다. 이 앱은 QSS와 직접 그리기에만 기대고 팔레트를 정하지 않아서, QSS가 `background: transparent`로 비워 둔 자리(스쿼드 분석 창의 스크롤 영역 등)에 어두운 `Window` 색이 비쳤다
+- v0.2.1부터 `theme::apply`가 색 구성표를 밝음으로 고정(`QStyleHints::setColorScheme(Light)`)하고 팔레트 역할을 토큰으로 채운다. 다크 테마는 Phase F3에서 토큰 교체로 한다
+- 재현 · 확인: `HKCU\…\Themes\Personalize\AppsUseLightTheme`을 0으로 바꾸고 `--screenshot squad 1440x900 out.png`(offscreen 말고 실제 창)로 찍는다. 끝나면 1로 되돌린다
+
 ---
 
 ## 6. IDE
