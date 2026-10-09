@@ -6,6 +6,12 @@ and the project uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+- The macOS dmg carries `READ ME FIRST - macOS.txt` next to the app: Gatekeeper's "damaged and
+  can't be opened" dialog (quarantine on a non-notarized, ad-hoc-signed app) appears right over the
+  dmg window, so the one-time `xattr -d com.apple.quarantine` fix is now readable there, in Korean
+  and English. README adds the eject step and the `curl -LO` download that carries no flag.
+
 ## [0.2.0] - 2026-10-09
 
 Save-file import (Phase H1–H2), a Windows .msi installer and a build identity string, plus the

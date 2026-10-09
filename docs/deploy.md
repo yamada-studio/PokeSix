@@ -221,8 +221,10 @@ macOS 러너(AppleClang 15)는 람다의 구조적 바인딩 캡처를 거부하
   한다(서명이 깨진 arm64 바이너리는 아예 안 뜬다). 공증(notarization, Apple Developer 연
   99달러)은 없으므로 **내려받은 dmg는 Gatekeeper가 "손상되었기 때문에 열 수 없습니다"로
   막는다** — 실제 손상이 아니고, 서명 없는 앱은 우클릭 → 열기 우회도 안 된다. 받는 쪽이 한 번
-  `xattr -d com.apple.quarantine <dmg>`로 격리를 풀어야 한다(README "Download" 절에 안내).
-  직접 빌드한 사본에는 격리 속성이 없어 그냥 열린다. 공증을 붙이면 경고가 사라진다(백로그)
+  `xattr -d com.apple.quarantine <dmg>`로 격리를 풀어야 한다(README "Download" 절에 안내,
+  2026-10-09부터 dmg 안의 `READ ME FIRST - macOS.txt`에도 같은 안내 — 그 창이 dmg 위에 뜨기 때문).
+  `curl -LO`로 받으면 격리 속성이 붙지 않는다. 직접 빌드한 사본에도 없어 그냥 열린다.
+  공증을 붙이면 경고가 사라진다(백로그). 무료 대안으로 Homebrew tap(`brew install --cask --no-quarantine`)이 있다(worklog 열린 일)
 - **Linux** (**적용됨**, 2026-10-07): `scripts/linux/package.sh` — release 빌드(테스트 포함) →
   `build/package/AppDir`에 install → `linuxdeploy` + `linuxdeploy-plugin-qt`(처음 한 번
   `build/package/tools`에 받아 둔다)로 `build/package/PokeSix-<버전>-x86_64.AppImage` + SHA-256.
