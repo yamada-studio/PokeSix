@@ -43,6 +43,29 @@ cmake --install "$POKESIX_ROOT/build/macos-release" --prefix "$staging"
 cp "$POKESIX_ROOT/LICENSE" "$POKESIX_ROOT/THIRD_PARTY_NOTICES.md" "$staging/"
 # Finder convention: drag the app onto this link to install
 ln -sfn /Applications "$staging/Applications"
+# The Gatekeeper "damaged" dialog appears over the mounted dmg window, so the fix must be
+# readable right there: a plain text file next to the app (text files are never blocked).
+cat > "$staging/READ ME FIRST - macOS.txt" <<EOF
+PokeSix $version — macOS 첫 실행 안내 / first-run note
+
+"'PokeSix'은(는) 손상되었기 때문에 열 수 없습니다" 창이 떴나요?
+파일이 손상된 것이 아닙니다. 이 앱은 Apple 공증(유료 개발자 계정)이 없어서, 브라우저로 받은
+파일에 macOS가 붙이는 격리(quarantine) 표시 때문에 Gatekeeper가 막는 것입니다. 한 번만 풀면 됩니다.
+
+  1. 이 디스크 이미지를 추출(꺼내기)합니다.
+  2. 터미널(응용 프로그램 → 유틸리티 → 터미널)에서:
+       xattr -d com.apple.quarantine ~/Downloads/PokeSix-$version-macos.dmg
+  3. dmg를 다시 열고 PokeSix를 Applications로 끌어다 놓습니다.
+
+이미 Applications에 복사했다면 대신:  xattr -cr /Applications/PokeSix.app
+터미널로 내려받으면(curl -LO <릴리스 URL>) 격리 표시가 아예 붙지 않습니다.
+
+"PokeSix is damaged and can't be opened"? It is not. The app is not notarized (that needs a paid
+Apple Developer account), so macOS quarantines the browser download. Clear the flag once:
+eject this image, run  xattr -d com.apple.quarantine ~/Downloads/PokeSix-$version-macos.dmg
+in Terminal, open the dmg again and drag PokeSix to Applications. Already copied? Run
+xattr -cr /Applications/PokeSix.app  instead. Downloads made with curl carry no quarantine flag.
+EOF
 
 # macdeployqt rewrites install names inside the bundle, which can leave stale ad-hoc
 # signatures behind (arm64 refuses to start those at all). Re-sign the whole bundle with a

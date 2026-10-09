@@ -177,15 +177,19 @@ setup needed. SHA-256 checksums are in each release's notes.
 
 **macOS says the app "is damaged and can't be opened"?** It is not damaged. The app is not
 notarized with Apple (that requires a paid developer account), so macOS quarantines anything a
-browser downloads and shows this message — and for non-notarized apps the usual
-right-click → Open trick does not work either. Clear the flag once:
+browser downloads and, on Apple Silicon, shows this message for ad-hoc-signed apps — there is no
+"Open Anyway" button for it and the right-click → Open trick does not apply. Clear the flag once:
 
-```bash
-xattr -d com.apple.quarantine ~/Downloads/PokeSix-<version>-macos.dmg
-```
+1. Eject the mounted PokeSix image (the dialog's only button does that).
+2. In Terminal:
+   ```bash
+   xattr -d com.apple.quarantine ~/Downloads/PokeSix-<version>-macos.dmg
+   ```
+3. Open the dmg again and drag PokeSix to Applications.
 
-then open the dmg again. If the app is already in Applications, clear it there instead:
-`xattr -cr /Applications/PokeSix.app`.
+If the app is already in Applications, clear it there instead: `xattr -cr /Applications/PokeSix.app`.
+Downloading with `curl -LO <release asset URL>` instead of a browser avoids the flag altogether.
+The same steps are in `READ ME FIRST - macOS.txt` inside the dmg.
 
 ## Building
 
