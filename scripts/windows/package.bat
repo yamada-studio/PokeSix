@@ -53,6 +53,12 @@ if not exist "%POKESIX_ROOT%\build\windows-msvc\src\Release\PokeSix.exe" (
 
 set "PKG=%POKESIX_ROOT%\build\windows-msvc\package"
 if exist "%PKG%\PokeSix" rmdir /s /q "%PKG%\PokeSix"
+rem rmdir does not fail when a file inside is in use (Windows keeps open files), so check the result:
+rem a PokeSix.exe started from this folder (quickstart does that) blocks the whole packaging.
+if exist "%PKG%\PokeSix" (
+    echo error: cannot clear %PKG%\PokeSix - is PokeSix running from that folder? Close it and retry. 1>&2
+    exit /b 1
+)
 echo ==^> install + windeployqt -^> %PKG%\PokeSix
 cmake --install "%POKESIX_ROOT%\build\windows-msvc" --config Release --prefix "%PKG%\PokeSix"
 if errorlevel 1 exit /b 1

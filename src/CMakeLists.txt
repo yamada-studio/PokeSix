@@ -67,6 +67,15 @@ set_target_properties(PokeSix PROPERTIES
 )
 
 # ── Install ──────────────────────────────────────────────────
+# Windows: MSVC 런타임(msvcp140 · vcruntime140 · vcruntime140_1)을 exe 옆(bin)에 같이 넣는다(app-local).
+# windeployqt --compiler-runtime 은 VS 개발 환경 변수(VCINSTALLDIR)가 있어야만 vc_redist 를 찾아서,
+# 스크립트 · CI 에서는 아무것도 넣지 않았다. CMake 표준 모듈이 컴파일러 옆의 재배포 DLL 을 찾아 준다.
+# VS 재배포 약관이 허용하는 파일들이다(THIRD_PARTY_NOTICES.md).
+if(WIN32)
+    set(CMAKE_INSTALL_SYSTEM_RUNTIME_DESTINATION ${CMAKE_INSTALL_BINDIR})
+    include(InstallRequiredSystemLibraries)
+endif()
+
 install(TARGETS PokeSix
     BUNDLE  DESTINATION .
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
@@ -77,7 +86,7 @@ install(TARGETS PokeSix
 # AppImage는 scripts/linux/package.sh가 linuxdeploy로 만든다.
 if(WIN32)
     set(POKESIX_DEPLOY_OPTIONS DEPLOY_TOOL_OPTIONS
-        --compiler-runtime          # vc_redist가 없는 PC용 VC++ 런타임
+        --compiler-runtime          # (VS 환경 변수가 있을 때만 vc_redist 를 둔다 — 실제 런타임은 위 InstallRequiredSystemLibraries)
         --no-system-d3d-compiler --no-opengl-sw # QPainter 래스터만 쓴다(약 20MB 절약)
         --exclude-plugins qsqlodbc,qsqlpsql,qsqlmimer # SQLite만 쓴다
     )

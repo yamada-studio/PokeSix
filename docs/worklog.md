@@ -36,7 +36,7 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 3. 스쿼드 분석 패널의 문제 칸 높이(넓은 배치 최소 2줄 · 좁은 배치 최대 4줄, `squadpage.cpp`의 `kProblemVisibleRows`) — 사용자 피드백 대기
 4. 에뮬레이터 오버레이: [overlay-design.md](overlay-design.md)는 검토 문서. 시작하려면 ADR로 결정을 확정하고 roadmap에 Phase H를 올린다(H1 = core 세이브 파서)
 5. Windows 설정이 레지스트리 → `%APPDATA%\YamadaStudio\PokeSix.ini`로 바뀌었다(2026-10-07). 이전에 레지스트리에 저장된 세대 · 게임은 이어지지 않는다(한 번 다시 고르면 끝). 레지스트리 잔여물은 `HKCU\Software\YamadaStudio`에 남아 있어도 무해하다
-6. **Windows .msi 검증**: `package.bat`의 cpack -G WIX 경로를 실기(집 PC, WiX 필요: `winget install --id WiXToolset.WiXToolset`) 또는 CI workflow_dispatch로 한 번 통과시킬 것(2026-10-08 작성, 미실행). 설치 → 시작 메뉴 실행 → 제거까지
+6. ~~**Windows .msi 검증**~~ → 2026-10-09 집 PC에서 통과(WiX 3.14 winget 설치 · `package.bat` → msi · 설치 → 사용자 시작 메뉴 바로가기 → 설치된 exe 실행 → 제거 깨끗). 남은 것: CI 러너(windows-2022, WiX 프리인스톨)에서 msi가 나오는지는 v0.2.0 태그 실행으로 확인
 7. macOS 공증(notarization): Apple Developer(연 99달러) + CI secrets(`notarytool`)를 붙이면 내려받은 dmg의 Gatekeeper "손상됨" 차단이 사라진다. 그 전까지는 README Download 절의 `xattr` 안내로 운용(2026-10-08). `scripts/macos/package.sh`의 ad-hoc 재서명은 실기 Mac에서 아직 안 돌려 봤다
 
 ---
@@ -66,6 +66,7 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 - 증상: 첫 실행 패널 "데이터를 받지 못했어요 / cannot move …pokesix.sqlite.importing to …pokesix.sqlite". 원인: 설치본 `C:\PokeSix\bin\PokeSix.exe`(v0.1.0 · 스키마 11)가 떠 있어 옛 DB를 읽기 전용으로 잡고 있었고, 새 Debug 빌드(스키마 12)의 변환 결과를 Windows가 바꿔 넣지 못함. PowerShell 배타 열기로 잠금 확인. Linux에서는 열린 파일도 교체되므로 회사 세션에서는 안 보였다
 - 수정(`gamedatabase` · `CsvImporter` · `DataUpdater` · `FirstRunPanel` · `Application` · `MainWindow`): 교체가 막히면 완성된 임시 DB를 남기고 `replaceBlocked`로 알림 → 패널이 "다른 PokeSix 창을 닫고 다시 시도" 안내, [다시 시도]는 재변환 없이 교체만, 다음 실행 때 `adoptPendingImport`가 DB를 열기 전에 교체. 같은 프로세스의 Repository는 변환 전에 닫는다(`aboutToReplaceDatabase`). 스키마 · CSV 커밋이 다른 임시 파일은 폐기. 테스트 3개(`PendingImport.*`)
 - 실기 확인: 설치본이 떠 있는 상태에서 새 빌드 시작 → 로그 `cannot remove … (opened by another process?)`, 두 파일 모두 보존. **설치본을 닫고 다시 실행하면 11:27에 만든 `.importing`이 자동 적용된다**(사용자 확인 필요). 설치본은 `package.bat`/msi로 다시 만들어 교체하면 스키마가 맞는다
+- **v0.2.0 릴리스 · msi 검증**(같은 날 오후): 버전 규칙에 "Phase 중간이라도 기능이 들어가면 MINOR"를 명시하고 0.2.0으로. WiX 3.14를 winget(관리자 UAC, NetFx3 필요)으로 설치해 `package.bat`으로 zip + msi 생성. 발견 · 수정 셋: ① 포터블 exe가 떠 있으면 `rmdir`이 조용히 실패하고 `cmake --install`에서 죽음 → `package.bat`이 바로 "실행 중인 PokeSix를 닫으라"고 멈춤. ② `windeployqt --compiler-runtime`은 VS 환경 변수 없이는 vc_redist를 안 넣어 **지금까지 Windows 패키지에 CRT가 없었다** → `InstallRequiredSystemLibraries`로 `msvcp140*` · `vcruntime140*`를 bin에 동봉(THIRD_PARTY_NOTICES 갱신). ③ Windows 패키지에는 offscreen 플러그인이 없어 `--offscreen` 테스트가 "no Qt platform plugin" 창을 띄웠다(사용자가 그 창을 봄) — 배포본 캡처는 창을 띄운 채로. msi: 설치(UAC) → `%APPDATA%` 시작 메뉴 바로가기(per-user 컴포넌트) → 설치된 exe가 Qt 없는 PATH에서 `--screenshot` 성공 → 제거 후 폴더 · 바로가기 · 제거 항목 모두 사라짐
 
 ### 2026-10-08 — H2 완료 · merge (Linux 세션)
 
