@@ -9,8 +9,9 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 
 ## 지금 상태 — 2026-10-09
 
-- 2026-10-09(집 Windows): 회사 세션의 H1 · H2(스키마 12)를 Windows에서 처음 돌리다 만난 **DB 교체 실패(파일 잠금)** 를 고쳤다 — [build.md §5-8](build.md#db-swap-blocked). 145 테스트 통과
-- **Phase A 완료 → `v0.1.0`** 태그(2026-10-07). 릴리스 CI가 태그로 3 OS 패키지를 GitHub Release에 붙인다 — 결과는 세션 기록에.
+- **`v0.2.0` 릴리스(2026-10-09)**: https://github.com/yamada-studio/PokeSix/releases/tag/v0.2.0 — 이번에는 **CI가 Release를 스스로 만들고 4개 파일(zip · msi · AppImage · dmg)을 붙였다**(`permissions: contents: write` 확인). 노트 본문 · SHA-256만 API로 채웠다. 러너의 WiX 3.14로 msi도 나온다
+- 2026-10-09(집 Windows): 회사 세션의 H1 · H2(스키마 12)를 Windows에서 처음 돌리다 만난 **DB 교체 실패(파일 잠금)** 를 고쳤다 — [build.md §5-8](build.md#db-swap-blocked). 145 테스트 통과. Windows 패키지에 빠져 있던 MSVC 런타임을 동봉했고 msi를 실기 검증했다
+- `v0.1.0`(2026-10-07)은 Phase A 완료 태그. 그때는 조직의 read-only 토큰 때문에 Release를 손으로 올렸다
 - 원격 `origin` = github.com/yamada-studio/PokeSix. `main`과 동기화.
 - 버전 `0.1.0`. Phase B · C · D · E · T가 섞여 진행 중이고 Phase G는 "lite"(패키징 스크립트 · CI)만. 단계별 상태는 roadmap.md.
 
@@ -21,7 +22,7 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 | Linux (Ubuntu 24.04) | ✅ 최소 Qt(`--archives`) 포함 | ✅ 96 | ✅ | ✅ AppImage · `--install` | ✅ |
 | Windows 11 (MSVC 2022) | ✅ 전체 Qt. **최소 Qt 미검증**(이미 설치돼 있어 경로를 안 탐) | ✅ 96 (Release · Debug) | ✅ | ✅ ZIP 17.6MB, Qt 없는 PATH에서 실행 확인 | ✅ `--no-run` |
 | macOS | ⚠ 실기 없음 | ⚠ | ⚠ | ⚠ dmg 스크립트만 | ⚠ |
-| GitHub Actions | — | ✅ 3 OS(러너에서 ctest 포함) | — | ✅ `workflow_dispatch` 실행 37600397225: AppImage 38.9MB · dmg 31.4MB · ZIP 17.5MB 아티팩트. 태그 릴리스는 아직 안 만듦 | — |
+| GitHub Actions | — | ✅ 3 OS(러너에서 ctest 포함) | — | ✅ 태그 `v0.2.0` 실행 37897235019: Release 자동 생성 + zip 18.2MB · msi 18.5MB · AppImage 39.5MB · dmg 32.1MB 첨부 | — |
 
 ### 진행 중
 
