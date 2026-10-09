@@ -1,5 +1,6 @@
 #include "data/update/csvimporter.h"
 
+#include "data/db/gamedatabase.h"
 #include "data/db/schema.h"
 #include "data/logging/logging.h"
 #include "data/update/csvreader.h"
@@ -120,8 +121,20 @@ bool CsvImporter::run(const QString &csvDir, const QString &dbPath)
     m_speciesIntroGen.clear();
     m_pokemonIntroGen.clear();
 
-    const QString tempPath = dbPath + QStringLiteral(".importing");
-    QFile::remove(tempPath); // 지난번에 실패하고 남은 임시 파일
+    m_pendingSwap = false;
+
+    // 지난번에 변환은 끝났는데 바꿔 넣지 못한 임시 DB가 있으면(Windows: 다른 PokeSix 창이 옛 DB를
+    // 열어 둠) 다시 30초를 쓰지 않고 그것부터 넣어 본다. 이 빌드와 맞지 않는 임시 파일은 지워진다.
+    const QString tempPath = gamedatabase::pendingPath(dbPath);
+    if (gamedatabase::adoptPendingImport(dbPath))
+        return true;
+    if (QFile::exists(tempPath) && gamedatabase::matchesThisBuild(tempPath)) {
+        m_pendingSwap = true; // 완성된 임시 DB는 있는데 여전히 못 넣는다 → 그대로 두고 알린다
+        return fail(QStringLiteral("cannot replace %1 (opened by another PokeSix window?) — "
+                                   "the new data is kept as %2")
+                            .arg(dbPath, tempPath));
+    }
+    QFile::remove(tempPath); // 변환 도중 죽어서 남은 반쪽짜리
 
     // 연결 이름은 객체마다 다르게 — 같은 이름으로 두 번 addDatabase하면 앞의 연결을 덮어쓴다.
     const QString connection
@@ -165,10 +178,14 @@ bool CsvImporter::run(const QString &csvDir, const QString &dbPath)
         QFile::remove(tempPath);
         return false;
     }
-    // 완성된 DB로 교체. QFile::rename은 대상이 있으면 실패하므로 먼저 지운다.
-    QFile::remove(dbPath);
-    if (!QFile::rename(tempPath, dbPath))
-        return fail(QStringLiteral("cannot move %1 to %2").arg(tempPath, dbPath));
+    // 완성된 DB로 교체. 막히면(다른 프로세스가 옛 DB를 열어 둠) 임시 DB를 남겨 두고 실패로 알린다 —
+    // 다음 실행 · 다시 시도 때 adoptPendingImport가 넣는다.
+    if (!gamedatabase::replaceWith(dbPath, tempPath)) {
+        m_pendingSwap = true;
+        return fail(QStringLiteral("cannot replace %1 (opened by another PokeSix window?) — "
+                                   "the new data is kept as %2")
+                            .arg(dbPath, tempPath));
+    }
     qCInfo(lcData) << "imported PokéAPI CSV" << m_csvDir << "into" << dbPath;
     return true;
 }

@@ -6,6 +6,18 @@ and the project uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+- Windows: updating to a new schema while another PokeSix window was open (e.g. the installed
+  0.1.0 next to a dev build) ended in "데이터를 받지 못했어요 — cannot move …pokesix.sqlite.importing":
+  Windows will not delete or rename a database file another process has open, Linux will. The
+  importer now keeps the finished temporary database when the swap is blocked, the first-run
+  panel explains the real cause ("다른 PokeSix 창이 열려 있으면 모두 닫고 다시 시도") instead of blaming
+  the network, [다시 시도] swaps the kept file in without a second 30-second import, and the next
+  launch adopts it automatically before anything opens the database. The updater also tells the
+  window to close its own connection before the swap (`aboutToReplaceDatabase`), and a temporary
+  file from another build or a crashed import is discarded (schema version and CSV commit must
+  match).
+
 ### Added
 - The Squad page imports a party straight from a 4th-gen game save (H2 — written by the user
   following the H2 guide): [Import] accepts `.sav` / `.dsv` next to `.pks`, and dropping one of

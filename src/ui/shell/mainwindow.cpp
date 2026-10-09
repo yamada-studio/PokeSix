@@ -64,6 +64,10 @@ MainWindow::MainWindow(Repository *repository, AppState *state, DataUpdater *dat
         m_repository->close();
         squad->reloadData();
     });
+    // 변환이 DB 파일을 바꿔치기하기 전에 이 프로세스의 연결을 닫는다. Windows는 열린 파일을
+    // 지우거나 이름을 바꾸지 못한다(Linux는 된다 — 그래서 Linux에서는 안 보이던 문제).
+    connect(dataUpdater, &DataUpdater::aboutToReplaceDatabase, this,
+            [this] { m_repository->close(); });
     QLabel *placeholder = new QLabel(tr("%1 — 준비 중이에요").arg(tr("설정")));
     placeholder->setObjectName(QStringLiteral("pagePlaceholder"));
     placeholder->setAlignment(Qt::AlignCenter);

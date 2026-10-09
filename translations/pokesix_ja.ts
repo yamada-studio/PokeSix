@@ -464,6 +464,14 @@
         <source>다시 시도</source>
         <translation>再試行</translation>
     </message>
+    <message>
+        <source>데이터를 바꿔 넣지 못했어요</source>
+        <translation>新しいデータに切り替えられませんでした</translation>
+    </message>
+    <message>
+        <source>새 데이터는 준비됐어요. 다른 PokeSix 창이 열려 있으면 모두 닫고 다시 시도해 주세요. 다음에 실행할 때는 자동으로 적용돼요.</source>
+        <translation>新しいデータは準備できています。ほかの PokeSix ウィンドウが開いていればすべて閉じて再試行してください。次回起動時には自動的に適用されます。</translation>
+    </message>
 </context>
 <context>
     <name>com::yamada::studio::GenerationButton</name>

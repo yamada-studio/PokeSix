@@ -7,9 +7,10 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 
 ---
 
-## 지금 상태 — 2026-10-07
+## 지금 상태 — 2026-10-09
 
-- **Phase A 완료 → `v0.1.0`** 태그(이 세션). 릴리스 CI가 태그로 3 OS 패키지를 GitHub Release에 붙인다 — 결과는 세션 기록에.
+- 2026-10-09(집 Windows): 회사 세션의 H1 · H2(스키마 12)를 Windows에서 처음 돌리다 만난 **DB 교체 실패(파일 잠금)** 를 고쳤다 — [build.md §5-8](build.md#db-swap-blocked). 145 테스트 통과
+- **Phase A 완료 → `v0.1.0`** 태그(2026-10-07). 릴리스 CI가 태그로 3 OS 패키지를 GitHub Release에 붙인다 — 결과는 세션 기록에.
 - 원격 `origin` = github.com/yamada-studio/PokeSix. `main`과 동기화.
 - 버전 `0.1.0`. Phase B · C · D · E · T가 섞여 진행 중이고 Phase G는 "lite"(패키징 스크립트 · CI)만. 단계별 상태는 roadmap.md.
 
@@ -59,6 +60,12 @@ Claude는 작업 덩어리가 끝날 때마다 이 문서의 "지금 상태"와 
 ---
 
 ## 최근 세션 (역순)
+
+### 2026-10-09 — Windows: 스키마 12 첫 실행의 DB 교체 실패 (집 세션)
+
+- 증상: 첫 실행 패널 "데이터를 받지 못했어요 / cannot move …pokesix.sqlite.importing to …pokesix.sqlite". 원인: 설치본 `C:\PokeSix\bin\PokeSix.exe`(v0.1.0 · 스키마 11)가 떠 있어 옛 DB를 읽기 전용으로 잡고 있었고, 새 Debug 빌드(스키마 12)의 변환 결과를 Windows가 바꿔 넣지 못함. PowerShell 배타 열기로 잠금 확인. Linux에서는 열린 파일도 교체되므로 회사 세션에서는 안 보였다
+- 수정(`gamedatabase` · `CsvImporter` · `DataUpdater` · `FirstRunPanel` · `Application` · `MainWindow`): 교체가 막히면 완성된 임시 DB를 남기고 `replaceBlocked`로 알림 → 패널이 "다른 PokeSix 창을 닫고 다시 시도" 안내, [다시 시도]는 재변환 없이 교체만, 다음 실행 때 `adoptPendingImport`가 DB를 열기 전에 교체. 같은 프로세스의 Repository는 변환 전에 닫는다(`aboutToReplaceDatabase`). 스키마 · CSV 커밋이 다른 임시 파일은 폐기. 테스트 3개(`PendingImport.*`)
+- 실기 확인: 설치본이 떠 있는 상태에서 새 빌드 시작 → 로그 `cannot remove … (opened by another process?)`, 두 파일 모두 보존. **설치본을 닫고 다시 실행하면 11:27에 만든 `.importing`이 자동 적용된다**(사용자 확인 필요). 설치본은 `package.bat`/msi로 다시 만들어 교체하면 스키마가 맞는다
 
 ### 2026-10-08 — H2 완료 · merge (Linux 세션)
 
